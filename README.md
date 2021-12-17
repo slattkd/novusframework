@@ -1,6 +1,7 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+The Novus Framework (Novus is latin for "New") is designed from teh ground up for a a performant well maintained funnel framework for Pineapple Company. The Framework allows quick launching of well tested 
+and complex systems in a tidy, easy to update package.
 
 ### What is this repository for? ###
 
@@ -10,8 +11,9 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
+* Summary of set up (use composer update to install dependencies)
+* Uses TailWindCSS as the CSS Framework (Ship tiny!) 
+  https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 * Dependencies
 * Database configuration
 * How to run tests
