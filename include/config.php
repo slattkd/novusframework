@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 // Debug Toggle
 // TODO: Add ability to securly enable debug through a cookie.
 if ($_SERVER['HTTP_HOST'] == 'novusframework.test' || $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ) {
-    $site['debug'] = false;
+    $site['debug'] = true;
 } else {
 	$site['debug'] = false;
 }
