@@ -65,7 +65,7 @@ if ($site['debug'] == true) {
 } else {
     //redirect site to encoded string
     $encodedUrl = obfuscateString($querystring);
-    header("Location: ".$_SERVER['HTTP_HOST']."/?offer=".$encodedUrl); 
+    //header("Location: ".$_SERVER['HTTP_HOST']."/?offer=".$encodedUrl); 
 
 }
 

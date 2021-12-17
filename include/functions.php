@@ -18,21 +18,21 @@ function setParameters($param)
 function obfuscateString($s) 
 {
     global $site;
-    global $debugbar;
-    $debugbar['time']->startMeasure('encoding', 'Encoding URL');
+    if ($site['debug'] == true) { global $debugbar;}
+    if ($site['debug'] == true) { $debugbar['time']->startMeasure('encoding', 'Encoding URL'); }
         $secretHash = $site['urlkey'];
         return openssl_encrypt($s, 'AES-256-CBC', $secretHash, 0, 'Q[MGzrE@S97C">83');
-    $debugbar['time']->stopMeasure('encoding');
+    if ($site['debug'] == true) {  $debugbar['time']->stopMeasure('encoding'); }
 }
 
 function unobfuscateString($s)
 {
     global $site;
-    global $debugbar;
-    $debugbar['time']->startMeasure('decoding', 'Decoding URL');
+    if ($site['debug'] == true) {global $debugbar;} 
+    if ($site['debug'] == true) { $debugbar['time']->startMeasure('decoding', 'Decoding URL');}
         $secretHash = $site['urlkey'];
         return openssl_decrypt($s, 'AES-256-CBC', $secretHash, 0, 'Q[MGzrE@S97C">83');
-    
+    if ($site['debug'] == true) {  $debugbar['time']->stopMeasure('decoding'); }
 }
 
 //TODO: Add developer / debug

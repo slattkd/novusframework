@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 // Debug Toggle
 // TODO: Add ability to securly enable debug through a cookie.
 if ($_SERVER['HTTP_HOST'] == 'novusframework.test' || $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ) {
-    $site['debug'] = true;
+    $site['debug'] = false;
 } else {
 	$site['debug'] = false;
 }
@@ -19,37 +19,36 @@ if ($site['debug'] == true) {
     $debugbarRenderer = $debugbar->getJavascriptRenderer();
 }
 
-$debugbar['time']->startMeasure('collectvars', 'Collecting variables from config');
-//Cake Redirect Toggle
-$site['useCake'] = true;
+if ($site['debug'] == true) { $debugbar['time']->startMeasure('collectvars', 'Collecting variables from config'); }
+	//Cake Redirect Toggle
+	$site['useCake'] = true;
 
-//Campaign Settings
-$site['campaign'] = 22;
-$site['freeship'] = 5;
-$site['defaultAffId'] = 2126;
+	//Campaign Settings
+	$site['campaign'] = 22;
+	$site['freeship'] = 5;
+	$site['defaultAffId'] = 2126;
 
-// Tracking
-$site['GTMContainer'] = '';
+	// Tracking
+	$site['GTMContainer'] = '';
 
-// This URL Key is used to decode the obfuscated URL
-$site['urlkey'] = "PXTfHbayAvPnBkp4UYx5eS88qwccEwr7Pc5hPLKq";
+	// This URL Key is used to decode the obfuscated URL
+	$site['urlkey'] = "PXTfHbayAvPnBkp4UYx5eS88qwccEwr7Pc5hPLKq";
 
-// Company Variables
-$company['name'] = 'Novus Framework, LLC';
-$company['email'] = 'help@novusframework.com';
-$company['phone'] = '1-800-888-8888';
-$company['address1'] = '123 Anywhere St.';
-$company['address2'] = 'Suite 1337';
-$company['city'] = 'Brooklyn';
-$company['state'] = 'NY';
-$company['zip'] = '11111';
+	// Company Variables
+	$company['name'] = 'Novus Framework, LLC';
+	$company['email'] = 'help@novusframework.com';
+	$company['phone'] = '1-800-888-8888';
+	$company['address1'] = '123 Anywhere St.';
+	$company['address2'] = 'Suite 1337';
+	$company['city'] = 'Brooklyn';
+	$company['state'] = 'NY';
+	$company['zip'] = '11111';
 
-$site['logo'] = '/images/novusframeworklogo.png';
-$site['imgpath'] = '//s3.amazonaws.com/secretfatlosstrick/';
-$site['contactlink'] = 'mailto:help@revivalpointllc.com';
+	$site['logo'] = '/images/novusframeworklogo.png';
+	$site['imgpath'] = '//s3.amazonaws.com/secretfatlosstrick/';
+	$site['contactlink'] = 'mailto:help@revivalpointllc.com';
 
-
-$debugbar['time']->stopMeasure('collectvars');
+if ($site['debug'] == true) { $debugbar['time']->stopMeasure('collectvars'); }
 
 // Does this need to live in the config, it's a constant and shoudl never change
 $usStates = [
