@@ -15,7 +15,7 @@ $context = $connectionFactory->createContext();
 $fooQueue = $context->createQueue('aQueue');
 $consumer = $context->createConsumer($fooQueue);
 
-// process a message
+// process a message 
 $message = $consumer->receive();
 
 echo ('we consumed the queue');

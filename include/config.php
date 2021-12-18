@@ -1,6 +1,6 @@
 <?php
 //
-require 'vendor/autoload.php';
+require 'vendor/autoload.php'; 
 
 //TODO: Add all config variables to customize the site
 

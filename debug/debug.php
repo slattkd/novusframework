@@ -9,7 +9,7 @@ $debugbar->addCollector(new DebugBar\DataCollector\ConfigCollector($site,"Config
 $debugbar->addCollector(new DebugBar\DataCollector\ConfigCollector($company,"Company"));
 
 /*
-//Debug Bar Examples
+//Debug Bar Examples 
 
 //Debug Message Example
 $debugbar["messages"]->addMessage("Debugging is the BEST bug!");
@@ -22,7 +22,7 @@ $debugbar['time']->stopMeasure('longop');
 //Debug timer in a function example
 $debugbar['time']->measure('Function wrapped operation', function() {
     //sleep(1);
-}); 
+
 
 
 //Debug Exception Example

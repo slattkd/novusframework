@@ -4,6 +4,6 @@
         <div class="p-2 md:pr-28 backdrop-blur-sm bg-white/60 md:backdrop-filter-none md:bg-white/10">
             <div class="text-[8px] md:text-base font-bold uppercase">Contact Customer Service</div>
             <div class="text-red-600 hover:text-red-500 text-md md:text-3xl font-bold subpixel-antialiased "><?php echo $company['phone']?></div>
-        </div>
+        </div> 
     </section>
 </div>

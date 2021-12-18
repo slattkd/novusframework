@@ -46,7 +46,7 @@ if (isset($_GET['s4']) && $_GET['s4'] !== ""){
 }
 
 //TODO: Add ability to decode string to url variables
-// encoded string to debug bar
+// encoded string to debug bar 
 $url = $_SERVER['REQUEST_URI'];
 $querystring = "";
 if( isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING']) ) {

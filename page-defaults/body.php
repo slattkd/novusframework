@@ -20,7 +20,7 @@
 
             Savings: $785.94
 
-            Keep reading for all of the details.
+            Keep reading for all of the details. 
 
             </p>
         </div>
