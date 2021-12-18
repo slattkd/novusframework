@@ -16,7 +16,7 @@ require_once ('../include/event-capture.php');
 
 */
 
-/*
+/* 
 
 $fooQueue = $context->createQueue('aQueue');
 $consumer = $context->createConsumer($fooQueue);
