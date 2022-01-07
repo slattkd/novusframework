@@ -1,7 +1,6 @@
 <?php
 
 require_once ('../include/config.php');
-//require_once ('../debug/profiler.php');
 require_once ('../include/functions.php');
 require_once ('../include/director.php');
 require_once ('../include/event-capture.php'); 

@@ -2,6 +2,8 @@
 //
 require '../vendor/autoload.php'; 
 
+
+
 //TODO: Add all config variables to customize the site
 
 // Debug Toggle
@@ -33,6 +35,14 @@ if ($site['debug'] == true) { $debugbar['time']->startMeasure('collectvars', 'Co
 
 	// This URL Key is used to decode the obfuscated URL
 	$site['urlkey'] = "PXTfHbayAvPnBkp4UYx5eS88qwccEwr7Pc5hPLKq";
+	$site['iv'] = '4AI9kpWvjsKTDsYW';
+
+	$site['cakeApiUrl'] = 'https://gdc.network-stats.com/';
+	$site['cakeApiKey'] ='QeTXa9UguH3vekAtU5Ttq9V6LWAaGB';
+
+	$site['stickyApi'] 	= 'pineappleapi';
+	$site['stickyPass'] = 'nWsw3BzrhnFBkJ';
+	$site['stickyUrl'] 	= 'gdc.sticky.io';
 
 	// Company Variables
 	$company['name'] = 'Novus Framework, LLC';

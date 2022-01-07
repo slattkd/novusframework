@@ -7,7 +7,7 @@
 
 use Enqueue\Fs\FsConnectionFactory;
 $connectionFactory = new FsConnectionFactory([
-    'path' => './queue',
+    'path' => '../queue', //place above root not publicly available
     'pre_fetch_count' => 1,
 ]);
 $context = $connectionFactory->createContext();
@@ -15,7 +15,7 @@ $context = $connectionFactory->createContext();
 $fooQueue = $context->createQueue('aQueue');
 $message = $context->createMessage('Hello world!'.time());
 
-$context->createProducer()->send($fooQueue, $message);
+//$context->createProducer()->send($fooQueue, $message);
 
 
 

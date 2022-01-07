@@ -14,6 +14,7 @@ and complex systems in a tidy, easy to update package.
 * Summary of set up (use composer update to install dependencies)
 * Uses TailWindCSS as the CSS Framework (Ship tiny!) 
   https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+  https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
 * Dependencies
 * Database configuration
 * How to run tests

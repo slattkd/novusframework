@@ -14,6 +14,7 @@ return array(
     'Queue\\' => array($vendorDir . '/fordnox/php-queue-manager/Queue'),
     'QueueExample\\' => array($vendorDir . '/fordnox/php-queue-manager/QueueExample'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
+    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Interop\\Queue\\' => array($vendorDir . '/queue-interop/queue-interop/src'),
     'Enqueue\\Fs\\' => array($vendorDir . '/enqueue/fs'),
     'Enqueue\\Dsn\\' => array($vendorDir . '/enqueue/dsn'),
