@@ -10,18 +10,11 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'blue': '#016ea9',
-            
-          }
-        }
-      }
-    }
-  </script>
+<link href="./css/main.css" rel="stylesheet">
+<style>
+h1 {
+    font-size: 30px;
+}
+</style>
 
 

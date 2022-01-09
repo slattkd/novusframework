@@ -1,4 +1,6 @@
 <?php
+
+//header("Content-Security-Policy: default-src 'self' https://cdn.tailwindcss.com/");
 //
 require '../vendor/autoload.php'; 
 

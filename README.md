@@ -3,6 +3,10 @@
 The Novus Framework (Novus is latin for "New") is designed from teh ground up for a a performant well maintained funnel framework for Pineapple Company. The Framework allows quick launching of well tested 
 and complex systems in a tidy, easy to update package.
 
+### How to Use tailwind ###
+* Open Terminal and CD to local directory
+* Run: npx tailwindcss -i input.css -o ./public/css/main.css --watch --minify
+
 ### What is this repository for? ###
 
 * Quick summary

@@ -22,44 +22,51 @@ s1= The s1 Parameter, or Sub ID parameter, is all too often misunderstood. Since
 // only start a new session if a session does not exist.
 if (!isset($_SESSION)) session_start(['read_and_close' => true]);
 
-if (isset($_GET['o']) && $_GET['o'] !== ""){
-    $_SESSION['o'] = $_GET['o'];
+function setSessionVars($qsArray = null) {
+    if (isset($_GET['o']) && $_GET['o'] !== ""){
+        $_SESSION['o'] = $_GET['o'];
+    }
+    if (isset($_GET['r']) && $_GET['r'] !== ""){
+        $_SESSION['r'] = $_GET['r'];
+    }
+    if (isset($_GET['a']) && $_GET['a'] !== "" || $qsArray['a']){
+        if (isset($qsArray['a'])){
+            $_SESSION['affid'] = $qsArray['a'];
+        } else {
+            $_SESSION['affid'] = $_GET['a'];
+        }  
+    }
+    if (isset($_GET['blog']) && $_GET['blog'] !== ""){
+        $_SESSION['blog'] = $_GET['blog'];
+    }
+    if (isset($_GET['post']) && $_GET['post'] !== ""){
+        $_SESSION['post'] = $_GET['post'];
+    }
+    if (isset($_GET['s']) && $_GET['s'] !== ""){
+        $_SESSION['s'] = $_GET['s'];
+    }
+    if (isset($_GET['s1']) && $_GET['s1'] !== ""){
+        $_SESSION['s1'] = $_GET['s1'];
+    }
+    if (isset($_GET['s2']) && $_GET['s2'] !== ""){
+        $_SESSION['s2'] = $_GET['s2'];
+    }
+    if (isset($_GET['s3']) && $_GET['s3'] !== ""){
+        $_SESSION['s3'] = $_GET['s3'];
+    }
+    if (isset($_GET['s4']) && $_GET['s4'] !== ""){
+        $_SESSION['s4'] = $_GET['s4'];
+    }
+    if (isset($_GET['offer']) && $_GET['offer'] !== ""){
+        //AES 256 encoding strinf with offer tracking values
+        $_SESSION['offer'] = $_GET['offer'];
+    }
+    if (isset($_GET['reqid']) && $_GET['reqid'] !== ""){
+        //request id for serverside tracking
+        $_SESSION['reqid'] = $_GET['reqid'];
+    }
 }
-if (isset($_GET['r']) && $_GET['r'] !== ""){
-    $_SESSION['r'] = $_GET['r'];
-}
-if (isset($_GET['a']) && $_GET['a'] !== ""){
-    $_SESSION['affid'] = $_GET['a'];
-}
-if (isset($_GET['blog']) && $_GET['blog'] !== ""){
-    $_SESSION['blog'] = $_GET['blog'];
-}
-if (isset($_GET['post']) && $_GET['post'] !== ""){
-    $_SESSION['post'] = $_GET['post'];
-}
-if (isset($_GET['s']) && $_GET['s'] !== ""){
-    $_SESSION['s'] = $_GET['s'];
-}
-if (isset($_GET['s1']) && $_GET['s1'] !== ""){
-    $_SESSION['s1'] = $_GET['s1'];
-}
-if (isset($_GET['s2']) && $_GET['s2'] !== ""){
-    $_SESSION['s2'] = $_GET['s2'];
-}
-if (isset($_GET['s3']) && $_GET['s3'] !== ""){
-    $_SESSION['s3'] = $_GET['s3'];
-}
-if (isset($_GET['s4']) && $_GET['s4'] !== ""){
-    $_SESSION['s4'] = $_GET['s4'];
-}
-if (isset($_GET['offer']) && $_GET['offer'] !== ""){
-    //AES 256 encoding strinf with offer tracking values
-    $_SESSION['offer'] = $_GET['offer'];
-}
-if (isset($_GET['reqid']) && $_GET['reqid'] !== ""){
-    //request id for serverside tracking
-    $_SESSION['reqid'] = $_GET['reqid'];
-}
+
 
 //TODO: Add ability to decode string to url variables
 // encoded string to debug bar 
@@ -70,28 +77,46 @@ It creates a $querystring variable for use on passing to new pages,
 encoded URL might be the better option as our ucstomers or fraudsters wont be
 able to adjust or modify parameters
 */
-$url = $_SERVER['REQUEST_URI'];
-$querystring = "";
+//$url            = $_SERVER['REQUEST_URI'];
+$querystring    = "";
+$qsArray        = [];
+
 if( isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING']) ) {
     $querystring = "?".$_SERVER['QUERY_STRING'];
 }
 
-if ($site['debug'] == true) {
-    
+if ($querystring !== ""){
+    debugMessage("QueryString: ".$querystring);
     $encodedUrl = obfuscateString($querystring);
-    debugMessage("Encoded URL: ".$_SERVER['HTTP_HOST']."/?offer=".$encodedUrl);
+
+    debugMessage("Encoded URL: "."http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'] . "/?offer=".$encodedUrl);
     debugMessage("Encoded Length: ".strlen($encodedUrl));
 
-    $decodedUrl = unobfuscateString($encodedUrl);
-    debugMessage("Decoded URL: ".$_SERVER['HTTP_HOST']."/".$decodedUrl);
-
-} else {
-    //redirect site to encoded string
-    /*
     if (!isset($_GET['offer']) ){
-        $encodedUrl = obfuscateString($querystring);
-        header("Location: https://".$_SERVER['HTTP_HOST']."?offer=".$encodedUrl); 
-    }\*/
+        //Forward page to encrypted URL
+        if ($site['debug'] !== true) {
+            header("Location: http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'] . "/?offer=".$encodedUrl);   
+        }
+    } else {
+        // Capture and decode encrypted URL
+        if (isset($_GET['offer']) && $_GET['offer'] !== ""){
+            $decodedUrl = unobfuscateString($_GET['offer']);
+            
+            //Check for Validity
+            debugMessage("Decoded URL: ".$_SERVER['HTTP_HOST']."/".$decodedUrl);
+            $decodedUrl = str_replace('?','',$decodedUrl);
+            parse_str($decodedUrl, $qsArray);
+            debugMessage("Decoded Querystring: ".$decodedUrl);
+            debugMessage("Affilate Querystring: ".$qsArray['a']);
+
+            
+        }
+    }
+
+    //Grab and process session variables
+    setSessionVars($qsArray);
+    
 }
+
 
 //TODO: Change currency display based on physical Location or currency Data
