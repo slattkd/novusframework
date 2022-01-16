@@ -10,7 +10,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="./css/main.css" rel="stylesheet">
+<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet">
 <style>
 h1 {
     font-size: 30px;

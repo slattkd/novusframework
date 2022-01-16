@@ -376,9 +376,15 @@ SetEnvIf brokenvary 1 force-no-vary
     ## Remove Extensions ##
     # change the .php extension with whatever you need
     #
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME}\.php -f
-    RewriteRule ^(.*)$ $1.php
+  #  RewriteCond %{REQUEST_FILENAME} !-d
+  #  RewriteCond %{REQUEST_FILENAME}\.php -f
+  #  RewriteRule ^(.*)$ $1.php
+    
+    RewriteCond %{SCRIPT_FILENAME} !-f
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-l
+    RewriteRule ^(.*)$ index.php/$1
+    
     #
     ## Remove Bad Bots from crawling ##
     # IF THE UA STARTS WITH THESE

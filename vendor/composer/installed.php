@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '813fa2a1d541d9018edfc463f4bd82e239448b31',
+        'reference' => 'eb9cae00ebd604c645d01368dca54ced8aebfd16',
         'name' => 'mike/novusframework',
         'dev' => true,
     ),
@@ -61,7 +61,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '813fa2a1d541d9018edfc463f4bd82e239448b31',
+            'reference' => 'eb9cae00ebd604c645d01368dca54ced8aebfd16',
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(

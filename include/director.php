@@ -7,9 +7,9 @@ This all happens before any analytics, events, or pixels are sent
 */
 
 
+//print_r($getFileListAsArray('../page-tests', true, '', true));
 
 
-//TODO: Add Session handling - Change to reflect decoded session object instead of $_GET
 
 
 /*
@@ -22,64 +22,37 @@ s1= The s1 Parameter, or Sub ID parameter, is all too often misunderstood. Since
 // only start a new session if a session does not exist.
 if (!isset($_SESSION)) session_start(['read_and_close' => true]);
 
-function setSessionVars($qsArray = null) {
-    if (isset($_GET['o']) && $_GET['o'] !== ""){
-        $_SESSION['o'] = $_GET['o'];
-    }
-    if (isset($_GET['r']) && $_GET['r'] !== ""){
-        $_SESSION['r'] = $_GET['r'];
-    }
-    if (isset($_GET['a']) && $_GET['a'] !== "" || $qsArray['a']){
-        if (isset($qsArray['a'])){
-            $_SESSION['affid'] = $qsArray['a'];
+
+
+function setSessionVars($encryptedData = null) {
+    //Check for allowed querystring keys, reduces attempts on invalid data.
+    $whitelistKeys = ['a','o','r','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer'];
+    $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
+
+    foreach ($allowedData as $queryString => $value) {
+        // us $queryString to reset values to different session varaibles or match to querystring value 
+        if ($queryString == 'a'){
+            $_SESSION['affid'] = $value;
         } else {
-            $_SESSION['affid'] = $_GET['a'];
+            $_SESSION[$queryString] = $value;
         }  
-    }
-    if (isset($_GET['blog']) && $_GET['blog'] !== ""){
-        $_SESSION['blog'] = $_GET['blog'];
-    }
-    if (isset($_GET['post']) && $_GET['post'] !== ""){
-        $_SESSION['post'] = $_GET['post'];
-    }
-    if (isset($_GET['s']) && $_GET['s'] !== ""){
-        $_SESSION['s'] = $_GET['s'];
-    }
-    if (isset($_GET['s1']) && $_GET['s1'] !== ""){
-        $_SESSION['s1'] = $_GET['s1'];
-    }
-    if (isset($_GET['s2']) && $_GET['s2'] !== ""){
-        $_SESSION['s2'] = $_GET['s2'];
-    }
-    if (isset($_GET['s3']) && $_GET['s3'] !== ""){
-        $_SESSION['s3'] = $_GET['s3'];
-    }
-    if (isset($_GET['s4']) && $_GET['s4'] !== ""){
-        $_SESSION['s4'] = $_GET['s4'];
-    }
-    if (isset($_GET['offer']) && $_GET['offer'] !== ""){
-        //AES 256 encoding strinf with offer tracking values
-        $_SESSION['offer'] = $_GET['offer'];
-    }
-    if (isset($_GET['reqid']) && $_GET['reqid'] !== ""){
-        //request id for serverside tracking
-        $_SESSION['reqid'] = $_GET['reqid'];
     }
 }
 
+//TODO:
+/* Add the ability to include URLs
 
-//TODO: Add ability to decode string to url variables
-// encoded string to debug bar 
 
+//TODO: Add ability to decode string to url variables: DONE!
 /*
-This was brought over from teh old funnel not ure if it is needed yet... 1/7/2022
+This was brought over from the old funnel not ure if it is needed yet... 1/7/2022
 It creates a $querystring variable for use on passing to new pages, 
 encoded URL might be the better option as our ucstomers or fraudsters wont be
 able to adjust or modify parameters
 */
-//$url            = $_SERVER['REQUEST_URI'];
+
 $querystring    = "";
-$qsArray        = [];
+$encryptedData  = [];
 
 if( isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING']) ) {
     $querystring = "?".$_SERVER['QUERY_STRING'];
@@ -97,24 +70,24 @@ if ($querystring !== ""){
         if ($site['debug'] !== true) {
             header("Location: http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'] . "/?offer=".$encodedUrl);   
         }
+
+        $decodedUrl = unobfuscateString($encodedUrl);
     } else {
         // Capture and decode encrypted URL
         if (isset($_GET['offer']) && $_GET['offer'] !== ""){
             $decodedUrl = unobfuscateString($_GET['offer']);
-            
-            //Check for Validity
-            debugMessage("Decoded URL: ".$_SERVER['HTTP_HOST']."/".$decodedUrl);
-            $decodedUrl = str_replace('?','',$decodedUrl);
-            parse_str($decodedUrl, $qsArray);
-            debugMessage("Decoded Querystring: ".$decodedUrl);
-            debugMessage("Affilate Querystring: ".$qsArray['a']);
-
-            
         }
     }
 
+    //Check for Validity
+    debugMessage("Decoded URL: ".$_SERVER['HTTP_HOST']."/".$decodedUrl);
+    $decodedUrl = str_replace('?','',$decodedUrl);
+
+    parse_str($decodedUrl, $encryptedData);
+    debugMessage("Decoded Querystring: ".$decodedUrl);
+
     //Grab and process session variables
-    setSessionVars($qsArray);
+    setSessionVars($encryptedData);
     
 }
 

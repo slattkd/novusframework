@@ -7,6 +7,16 @@ and complex systems in a tidy, easy to update package.
 * Open Terminal and CD to local directory
 * Run: npx tailwindcss -i input.css -o ./public/css/main.css --watch --minify
 
+### Setting up Nginx
+If you are using Nginx please make sure that url-rewriting is enabled.
+
+You can easily enable url-rewriting by adding the following configuration for the Nginx configuration-file for the demo-project.
+
+```
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+```
 ### What is this repository for? ###
 
 * Quick summary
