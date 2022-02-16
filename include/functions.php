@@ -1,7 +1,7 @@
 <?php
 
 
-// PHP URL Roter Functions
+// PHP URL Router Functions
 
 function getFileListAsArray($dir, $recursive = true, $basedir = '', $include_dirs = false) {
     if ($dir == '') {return array();} else {$results = array(); $subresults = array();}

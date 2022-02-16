@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    color: blue;
+}
+

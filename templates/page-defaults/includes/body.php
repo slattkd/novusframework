@@ -1,5 +1,5 @@
 <section class="max-w-5xl mx-auto bg-white shadow-md mt-6">
-    <h1>Wait... Your Order is Not Complete!</h1>
+    <h1>Sample</h1>
     <p>Do not hit the "Back" button as it can cause multiple charges to your card.</p>
     <div class="flex flex-wrap">
         <div class="w-full md:w-1/2 p-4">

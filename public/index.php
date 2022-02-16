@@ -22,24 +22,32 @@ foreach ($templatesDefault as &$value) {
 */
 
 
+
 // get url slugs and look if it matches path or route, else return 404.
 $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $slug = trim(parse_url($url, PHP_URL_PATH), '/');
 
-//This allows the index.php not to be included in the url.
+//Allows the index.php not to be included in the url if it is a folder path
 if (!str_ends_with($slug, '.php')) {
     if (str_ends_with($slug, '/index.php') || $slug == null) {
         $slug = $slug.'index.php';
     } else {
+        if (!str_ends_with($slug, '.php')){
+            $slug = $slug.'.php';
+            //echo '<br>SLUG1:'.$slug;
+        } else {
+        //this is the root directory, lookup main index file.
         $slug = $slug.'/index.php';
+        }
     }
 }
 
+//echo '<br>SLUG:'.$slug;
 
 //check in slug for page-test override
 if (in_array($slug, $templatesTest)) {
     //if the slug matches, override the template being loaded.
-    debugMessage("Loaded from 'page-tests' folder");
+    debugMessage("Loaded from 'page-tests' folder"); 
     require_once ('../templates/page-tests/'.$slug);
 } elseif (in_array($slug, $templatesDefault)) {
     //Load the default url

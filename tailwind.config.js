@@ -1,7 +1,8 @@
 module.exports = {
   content: [
     './public/**/*.{php,html,js}',
-    './page-defaults/**/*.{php,html,js}',
+    './templates/page-defaults/**/*.{php,html,js}',
+    './templates/page-tests/**/*.{php,html,js}',
     ],
   theme: {
     extend: {
@@ -10,6 +11,17 @@ module.exports = {
         
       }
     },
+    borderWidth: {
+      DEFAULT: '1px',
+      '0': '0',
+      '2': '2px',
+      '3': '3px',
+      '4': '4px',
+      '6': '6px',
+      '8': '8px',
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

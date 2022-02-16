@@ -47,16 +47,16 @@ if ($site['debug'] == true) { $debugbar['time']->startMeasure('collectvars', 'Co
 	$site['stickyUrl'] 	= 'gdc.sticky.io';
 
 	// Company Variables
-	$company['name'] = 'Novus Framework, LLC';
-	$company['email'] = 'help@novusframework.com';
-	$company['phone'] = '1-800-888-8888';
-	$company['address1'] = '123 Anywhere St.';
-	$company['address2'] = 'Suite 1337';
-	$company['city'] = 'Brooklyn';
-	$company['state'] = 'NY';
-	$company['zip'] = '11111';
+	$company['name'] = 'Clarity Naturals';
+	$company['email'] = 'support@claritynaturalsstore.com';
+	$company['phone'] = '(855) 665-0715';
+	$company['address1'] = '5136 W Clifton St';
+	$company['address2'] = '';
+	$company['city'] = 'Tampa';
+	$company['state'] = 'FL';
+	$company['zip'] = '33634';
 
-	$site['logo'] = '/images/novusframeworklogo.png';
+	$site['logo'] = '/images/claritynaturals_logo_horizontal.png';
 	$site['imgpath'] = '//s3.amazonaws.com/secretfatlosstrick/';
 	$site['contactlink'] = 'mailto:help@revivalpointllc.com';
 
