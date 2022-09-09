@@ -12,6 +12,6 @@
           <a class="p-4" href="/terms" alt="terms" target="_blank">Terms and Conditions</a>
           <a class="p-4" href="mailto:<?php echo $company['email']?>" alt="contact">Contact</a>
         </div>
-        <p class="text-xs text-center">© Revival Point, LLC 2022 All rights reserved.</p> 
+        <p class="text-xs text-center">© <?php echo $company['name']?>2022 All rights reserved.</p>
     </div>
 </footer>

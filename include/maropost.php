@@ -20,10 +20,10 @@ class Maropost {
 
     const BUYER_ROOT = 1131; // page id for buyer root
 
-    public function __Construct( $authToken = FALSE, $baseUrl = FALSE, $db ) {
+    public function __Construct($authToken = false, $baseUrl = false, $db) {
+        $this->database = $db;
         $this->authToken = $authToken ?: $this->authToken;
         $this->baseUrl    = $baseUrl ?: $this->baseUrl;
-        $this->database = $db;
     }
 
     /**

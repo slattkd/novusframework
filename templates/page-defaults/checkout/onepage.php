@@ -615,7 +615,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                         <form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' onSubmit="getDate();" id="step_1" class="col-sm-12">
                             <input type="hidden" name="previous_page" value="checkout/order">
                             <input type="hidden" name="current_page" value="/checkout/onepage">
-                            <input type="hidden" name="next_page" value="/up1/upsell-6-month-supply">
+                            <input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
                             <input type="hidden" name="product_id" id='product_id'  value="<?php echo $pid; ?>">
                             <input type="hidden" name="form_id" value="step_<?php echo $s; ?>">
                             <input type="hidden" name="step" value="<?php echo $s; ?>">
@@ -1404,6 +1404,6 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
-    template('debug', 'debug');
+    template('debug', null, null, 'debug');
 } ?>
 </html>

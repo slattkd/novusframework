@@ -1,336 +1,144 @@
-<html>
+<?php
+session_start();
+date_default_timezone_set( "America/New_York" );
+error_reporting(0);
+require_once($_SERVER['DOCUMENT_ROOT'].'/shared-gm/site.php');  
+	include('config.php');
+	include('inc/class.cart.php');
 
+$_SESSION['o'] = $_GET['o'];
+$_SESSION['r'] = $_GET['r'];
+$_SESSION['affid'] = $_GET['a'];
+$_SESSION['blog'] = $_GET['blog'];
+$_SESSION['post'] = $_GET['post'];
+$_SESSION['s'] = $_GET['s'];
+$_SESSION['s1'] = $_GET['s1'];
+$_SESSION['s2'] = $_GET['s2'];
+$_SESSION['s3'] = $_GET['s3'];
+$_SESSION['s4'] = $_GET['s4'];
+$_SESSION['utm_source'] = $_GET['utm_source'];
+$_SESSION['utm_medium'] = $_GET['utm_medium'];
+$_SESSION['utm_campaign'] = $_GET['utm_campaign'];
+$_SESSION['utm_term'] = $_GET['utm_term'];
+$_SESSION['utm_content'] = $_GET['utm_content'];
+?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <?php template('includes/header'); ?>
-    <title>Harvard-Trained Doctor Discovers 10-Second Egyptian Ritual</title>
+  <?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/pixelhead.php'); ?>
+  <title><?php echo $company->name; ?></title>
+  <meta name="google-site-verification" content="dkgity5MUDLaGEc6Qfixegc7Sg24QkJfi73InFcZGAM" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
+  <link rel="stylesheet" href="../tailwind/shared/css/base.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .bg-image {
+      background-color: #cccccc;
+      background-image: url("https://5gmale.com/images/home.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      min-height: 500px;
+    }
+
+    .circle-image {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  </style>
 </head>
+<body>
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/pixelbody.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/header.php'); ?>
 
-<body class="bg-white">
-    <?php //template('includes/navigation');?>
-    <section class="max-w-5xl mx-auto bg-white mt-6 flex justify-center">
-        <img class="p-4" src="/images/soundon.png" alt="Make sure your sound is turned on.">
-    </section>
-    <section class="max-w-5xl mx-auto bg-gray mt-6 flex justify-center">
-        <div id="vidalytics_embed_ILce73CjYug5qahI" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
-        <script type="text/javascript">
-        (function (v, i, d, a, l, y, t, c, s) {
-            y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
-            if (!vsl){vsl=function(u,cb){
-                if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
-                if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
-                i.getElementsByTagName("head")[0].appendChild(s);
-            };}
-            vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
-        })(window, document, 'Vidalytics', 'vidalytics_embed_ILce73CjYug5qahI', 'https://quick.vidalytics.com/embeds/KwmJQD4K/ILce73CjYug5qahI/');
-        </script>
-
-    </section>
-    <section class="max-w-5xl mx-auto bg-white mt-6 flex justify-center">
-        <a href="product/"><img src="/images/next_step_button.png" alt="Next Step"></a>
-    </section>
-
-    <ul class="max-w-5xl mx-auto flex flex-col mt-20">
-        <li class="bg-slate-300 my-2 shadow-lg" x-data="accordion(1)">
-            <h2 @click="handleClick()" class="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer">
-                <span>Scientific References</span>
-                <svg :class="handleRotate()" class="fill-current border-slate-800 h-6 w-6 transform transition-transform duration-500" viewBox="0 0 20 20">
-                    <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
-                </svg>
-            </h2>
-            <div x-ref="tab" :style="handleToggle()" class="border-l-2 border-slate-800 overflow-hidden max-h-0 duration-500 transition-all">
-                <div class="p-3 text-gray-900 bg-white text-xs">
-
-
-                    <p class="pt-3 font-bold ">Citation 1</p>
-                    <p class="p-2">Fahy, Gregory M., et al. “Reversal of Epigenetic Aging and Immunosenescent Trends in Humans.” Wiley Online Library, John Wiley & Sons, Ltd, 8 Sept. 2019, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/acel.13028" rel="nofollow">https://onlinelibrary.wiley.com/doi/full/10.1111/acel.13028</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 2</p>
-                    <p class="p-2">Contreras, Raian E., et al. “Physiological and Epigenetic Features of Yoyo Dieting and Weight Control.” Frontiers, Frontiers, 1 Jan. 1AD, <a href="https://www.frontiersin.org/articles/10.3389/fgene.2019.01015/full" rel="nofollow">https://www.frontiersin.org/articles/10.3389/fgene.2019.01015/full</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 3</p>
-                    <p class="p-2">Dalgaard, Kevin, et al. &quot;Trim28 Haploinsufficiency Triggers Bi-Stable Epigenetic Obesity.&quot; Cell, vol. 164, no. 3, 2016, pp. 353&ndash;364., <a rel="nofollow" href="https://doi.org/10.1016/j.cell.2015.12.025">https://doi.org/10.1016/j.cell.2015.12.025</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 4</p>
-                    <p class="p-2">Fahy GM; Brooke RT; Watson JP; Good Z; Vasanawala SS; Maecker H; Leipold MD; Lin DTS; Kobor MS; Horvath S; &quot;Reversal of Epigenetic Aging and Immunosenescent Trends in Humans.&quot; Aging Cell, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/31496122/">https://pubmed.ncbi.nlm.nih.gov/31496122/</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 5</p>
-                    <p class="p-2">O&apos;Neill, Mike. &quot;Scientists Reverse the Aging Clock: Restore Age-Related Vision Loss through Epigenetic Reprogramming.&quot; SciTechDaily, 9 Dec. 2020,<a rel="nofollow" href="https://scitechdaily.com/scientists-reverse-the-aging-clock-restore-age-related-vision-loss-through-epigenetic-reprogramming/"> https://scitechdaily.com/scientists-reverse-the-aging-clock-restore-age-related-vision-loss-through-epigenetic-reprogramming/</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 6</p>
-                    <p class="p-2">Schoofs, Mark. &quot;New Gene Therapy Appears to Shrink Tumors in Two Cases.&quot; The Wall Street Journal, Dow Jones &amp; Company, 1 Sept. 2006, <a rel="nofollow" href="https://www.wsj.com/articles/SB115704231287350662#:~:text=For%20the%20first%20time%20in,17%20patients%20who%20were%20treated">https://www.wsj.com/articles/SB115704231287350662#:~:text=For%20the%20first%20time%20in,17%20patients%20who%20were%20treated</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 7</p>
-                    <p class="p-2">&quot;Type 2 Diabetes, Obesity May Soon Be Reversed with Gene Therapy.&quot; Medical News Today, MediLexicon International, <a rel="nofollow" href="https://www.medicalnewstoday.com/articles/322434">https://www.medicalnewstoday.com/articles/322434</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 8</p>
-                    <p class="p-2">Data, Reports And. &quot;Epigenetics Market to Reach USD 19.12 Billion by 2026: Reports and Data.&quot; Epigenetics Market to Reach USD 19.12 Billion by 2026 | Reports And Data, 16 Oct. 2019, <a rel="nofollow" href="https://www.prnewswire.com/news-releases/epigenetics-market-to-reach-usd-19-12-billion-by-2026--reports-and-data-300939670.html">https://www.prnewswire.com/news-releases/epigenetics-market-to-reach-usd-19-12-billion-by-2026--reports-and-data-300939670.html</a>.</p>
-                    <p class="pt-3 font-bold ">Citation 9</p>
-                    <p class="p-2">Sykiotis, Gerasimos P, et al. &quot;The Role of the Antioxidant and Longevity-Promoting NRF2 Pathway in Metabolic Regulation.&quot; Current Opinion in Clinical Nutrition and Metabolic Care, U.S. National Library of Medicine, Jan. 2011, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3092636/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3092636/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 10</p>
-                    <p class="p-2">Seo, Hyun-Ae, and In-Kyu Lee. &quot;The Role of Nrf2: Adipocyte Differentiation, Obesity, and Insulin Resistance.&quot; Oxidative Medicine and Cellular Longevity, Hindawi Publishing Corporation, 2013, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3781919/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3781919/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 11</p>
-                    <p class="p-2">Yagishita Y; Uruno A; Fukutomi T; Saito R; Saigusa D; Pi J; Fukamizu A; Sugiyama F; Takahashi S; Yamamoto M; &quot;Nrf2 Improves Leptin and Insulin Resistance Provoked by Hypothalamic Oxidative Stress.&quot; Cell Reports, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28228267/">https://pubmed.ncbi.nlm.nih.gov/28228267/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 12</p>
-                    <p class="p-2">Jones RM; Desai C; Darby TM; Luo L; Wolfarth AA; Scharer CD; Ardita CS; Reedy AR; Keebaugh ES; Neish AS; &quot;Lactobacilli Modulate Epithelial Cytoprotection through the Nrf2 Pathway.&quot; Cell Reports, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26279578/">https://pubmed.ncbi.nlm.nih.gov/26279578/</a>.</p>
-                    <p class="p-2">Luongo, Diomira, et al. &quot;Differential Modulation of Innate Immunity in Vitro by Probiotic Strains of Lactobacillus Gasseri.&quot; BMC Microbiology, BioMed Central, 23 Dec. 2013, <a rel="nofollow" href="https://bmcmicrobiol.biomedcentral.com/articles/10.1186/1471-2180-13-29">https://bmcmicrobiol.biomedcentral.com/articles/10.1186/1471-2180-13-29</a>8.</p>
-                    <p class="pt-3 font-bold">Citation 13</p>
-                    <p class="p-2">Koh A; De Vadder F; Kovatcheva-Datchary P; B&auml;ckhed F; &quot;From Dietary Fiber to Host Physiology: Short-Chain Fatty Acids as Key Bacterial Metabolites.&quot; Cell, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/27259147/">https://pubmed.ncbi.nlm.nih.gov/27259147/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 14</p>
-                    <p class="p-2">Jang J; Wang Y; Kim HS; Lalli MA; Kosik KS; &quot;Nrf2, a Regulator of the Proteasome, Controls Self-Renewal and Pluripotency in Human Embryonic Stem Cells.&quot; Stem Cells (Dayton, Ohio), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/24895273/">https://pubmed.ncbi.nlm.nih.gov/24895273/</a>.</p>
-                    <p class="p-2">Urban, Nadine, et al. &quot;Non-Linear Impact of Glutathione Depletion on C. Elegans Life Span and Stress Resistance.&quot; Redox Biology, Elsevier, Apr. 2017, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5228094">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5228094</a>/.</p>
-                    <p class="p-2">Fang, Evandro F., et al. &quot;Tomatidine Enhances Lifespan and Healthspan in C. Elegans through Mitophagy Induction via the SKN-1/nrf2 Pathway.&quot; Nature News, Nature Publishing Group, 11 Apr. 2017, <a rel="nofollow" href="https://www.nature.com/articles/srep46208">https://www.nature.com/articles/srep46208</a>.</p>
-                    <p class="pt-3 font-bold">Citation 15</p>
-                    <p class="p-2">Chaiprasongsuk, Anyamanee, et al. &quot;Activation of NRF2 Reduces UVA-Mediated MMP-1 Upregulation via MAPK/AP-1 Signaling Cascades: The Photoprotective Effects of Sulforaphane and Hispidulin.&quot; Journal of Pharmacology and Experimental Therapeutics, American Society for Pharmacology and Experimental Therapeutics, 1 Mar. 2017, <a rel="nofollow" href="https://jpet.aspetjournals.org/content/360/3/388">https://jpet.aspetjournals.org/content/360/3/388</a>.</p>
-                    <p class="p-2">Okawa H; Motoha, shi H; Kobayashi A; Aburatani H; Kensler TW; Yamamoto M; &quot;Hepatocyte-Specific Deletion of the KEAP1 Gene Activates Nrf2 and Confers Potent Resistance against Acute Drug Toxicity.&quot; Biochemical and Biophysical Research Communications, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16293230/">https://pubmed.ncbi.nlm.nih.gov/16293230/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 16</p>
-                    <p class="p-2">Bai, Yang, et al. &quot;Sulforaphane Protects against Cardiovascular Disease via NRF2 Activation.&quot; Oxidative Medicine and Cellular Longevity, Hindawi Publishing Corporation, 2015, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4637098/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4637098/</a>.</p>
-                    <p class="p-2">Paolocci N; Cannavo A;Chelko SP; Montano. &quot;Burning Redoxstats in the Brainstem: Lack of Nrf2 and the Rise of Hypertension.&quot; Hypertension (Dallas, Tex. : 1979), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28461602/">https://pubmed.ncbi.nlm.nih.gov/28461602/</a>.</p>
-                    <p class="p-2">Gao L; Zimmerman MC; Biswal S; Zucker. &quot;Selective NRF2 Gene Deletion in the Rostral Ventrolateral Medulla Evokes Hypertension and Sympathoe class="pt-3 font-bold"xcitation in Mice.&quot; Hypertension (Dallas, Tex. : 1979), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28461605/">https://pubmed.ncbi.nlm.nih.gov/28461605/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 17</p>
-                    <p class="p-2">Guo, Yue, et al. &quot;Epigenetic Regulation of KEAP1-nrf2 Signaling.&quot; Free Radical Biology &amp;amp; Medicine, U.S. National Library of Medicine, Nov. 2015, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4955581/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4955581/</a>.</p>
-                    <p class="p-2">Brennan, Melanie S., et al. &quot;The Nrf2 Transcriptional Target, OSGIN1, Contributes to Monomethyl Fumarate-Mediated Cytoprotection in Human Astrocytes.&quot; Nature News, Nature Publishing Group, 9 Feb. 2017, <a rel="nofollow" href="https://www.nature.com/articles/srep42054">https://www.nature.com/articles/srep42054</a>.</p>
-                    <p class="p-2">Pajares, M., et al. &quot;Modulation of Proteostasis by Transcription Factor Nrf2 and Impact in Neurodegenerative Diseases: Semantic Scholar.&quot; SemanticScholar, <a rel="nofollow" href="https://www.semanticscholar.org/paper/Modulation-of-proteostasis-by-transcription-factor-Pajares-Cuadrado/ed5540bbc932764c6add025891702517ea6d0cb1?p2df">https://www.semanticscholar.org/paper/Modulation-of-proteostasis-by-transcription-factor-Pajares-Cuadrado/ed5540bbc932764c6add025891702517ea6d0cb1?p2df</a>.</p>
-                    <p class="pt-3 font-bold">Citation 18</p>
-                    <p class="p-2">Gout B; Bourges C; Paineau-Dubreuil. &quot;Satiereal, a Crocus Sativus L Extract, Reduces Snacking and Increases Satiety in a Randomized Placebo-Controlled Study of Mildly Overweight, Healthy Women.&quot; Nutrition Research (New York, N.Y.), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20579522/">https://pubmed.ncbi.nlm.nih.gov/20579522/</a>.</p>
-                    <p class="p-2">Abedimanesh N; Bathaie SZ; Abedimanesh S; Motlagh B; Separham A; Ostadrahimi A; &quot;Saffron and Crocin Improved Appetite, Dietary Intakes and Body Composition in Patients with Coronary Artery Disease.&quot; Journal of Cardiovascular and Thoracic Research, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/29391933/">https://pubmed.ncbi.nlm.nih.gov/29391933/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 19</p>
-                    <p class="p-2">Abedimanesh N; Bathaie SZ; Abedimanesh S; Motlagh B; Separham A; Ostadrahimi A; &quot;Saffron and Crocin Improved Appetite, Dietary Intakes and Body Composition in Patients with Coronary Artery Disease.&quot; Journal of Cardiovascular and Thoracic Research, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/29391933/">https://pubmed.ncbi.nlm.nih.gov/29391933/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 20</p>
-                    <p class="p-2">Gout B; Bourges C; Paineau-Dubreuil. &quot;Satiereal, a Crocus Sativus L Extract, Reduces Snacking and Increases Satiety in a Randomized Placebo-Controlled Study of Mildly Overweight, Healthy Women.&quot; Nutrition Research (New York, N.Y.), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20579522/">https://pubmed.ncbi.nlm.nih.gov/20579522/</a>.</p>
-                    <p class="p-2">Abedimanesh N; Bathaie SZ; Abedimanesh S; Motlagh B; Separham A; Ostadrahimi A; &quot;Saffron and Crocin Improved Appetite, Dietary Intakes and Body Composition in Patients with Coronary Artery Disease.&quot; Journal of Cardiovascular and Thoracic Research, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/29391933/">https://pubmed.ncbi.nlm.nih.gov/29391933/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 21</p>
-                    <p class="p-2">Gout B; Bourges C; Paineau-Dubreuil. &quot;Satiereal, a Crocus Sativus L Extract, Reduces Snacking and Increases Satiety in a Randomized Placebo-Controlled Study of Mildly Overweight, Healthy Women.&quot; Nutrition Research (New York, N.Y.), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20579522/">https://pubmed.ncbi.nlm.nih.gov/20579522/</a>.</p>
-                    <p class="p-2">Abedimanesh N; Bathaie SZ; Abedimanesh S; Motlagh B; Separham A; Ostadrahimi A; &quot;Saffron and Crocin Improved Appetite, Dietary Intakes and Body Composition in Patients with Coronary Artery Disease.&quot; Journal of Cardiovascular and Thoracic Research, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/29391933/">https://pubmed.ncbi.nlm.nih.gov/29391933/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 22</p>
-                    <p class="p-2">Basti A; Moshiri E; Noorbala AA; Jamshidi AH; Abbasi SH; Akhondzadeh S; &quot;Comparison of Petal of Crocus Sativus L. and Fluoxetine in the Treatment of Depressed Outpatients: A Pilot Double-Blind Randomized Trial.&quot; Progress in Neuro-Psychopharmacology &amp;amp; Biological Psychiatry, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/17174460/">https://pubmed.ncbi.nlm.nih.gov/17174460/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 23</p>
-                    <p class="p-2">Fukui H; Toyoshima K; Komaki. &quot;Psychological and Neuroendocrinological Effects of Odor of Saffron (Crocus Sativus).&quot; Phytomedicine: International Journal of Phytotherapy and Phytopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/21242071/">https://pubmed.ncbi.nlm.nih.gov/21242071/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 24</p>
-                    <p class="p-2">Kashani L; Eslatmanesh S; Saedi N; Niroomand N; Ebrahimi M; Hosseinian M; Foroughifar T; Salimi S; Akhondzadeh S; &quot;Comparison of Saffron versus Fluoxetine in Treatment of Mild to Moderate Postpartum Depression: A Double-Blind, Randomized Clinical Trial.&quot; Pharmacopsychiatry, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/27595298/">https://pubmed.ncbi.nlm.nih.gov/27595298/</a>.</p>
-                    <p class="p-2">Noorbala AA; Akhondzadeh S; Tahmacebi-Pour N; Jamshidi. &quot;Hydro-Alcoholic Extract of Crocus Sativus L. versus Fluoxetine in the Treatment of Mild to Moderate Depression: A Double-Blind, Randomized Pilot Trial.&quot; Journal of Ethnopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/15707766/">https://pubmed.ncbi.nlm.nih.gov/15707766/</a>.</p>
-                    <p class="p-2">Shafiee M; Arekhi S; Omranzadeh A; Sahebkar. &quot;Saffron in the Treatment of Depression, Anxiety and Other Mental Disorders: Current Evidence and Potential Mechanisms of Action.&quot; Journal of Affective Disorders, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/29136602/">https://pubmed.ncbi.nlm.nih.gov/29136602/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 25</p>
-                    <p class="p-2">Kashani L; Raisi F; Saroukhani S; Sohrabi H; Modabbernia A; Nasehi AA; Jamshidi A; Ashrafi M; Mansouri P; Ghaeli P; Akhondzadeh S; &quot;Saffron for Treatment of Fluoxetine-Induced Sexual Dysfunction in Women: Randomized Double-Blind Placebo-Controlled Study.&quot; Human Psychopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/23280545/">https://pubmed.ncbi.nlm.nih.gov/23280545/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 26</p>
-                    <p class="p-2">Maleki-Saghooni N; Mirzaeii K; Hosseinzadeh H; Sadeghi R; Irani M; &quot;A Systematic Review and Meta-Analysis of Clinical Trials on Saffron ( Crocus Sativus) Effectiveness and Safety on Erectile Dysfunction and Semen Parameters.&quot; Avicenna Journal of Phytomedicine, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/29881706/">https://pubmed.ncbi.nlm.nih.gov/29881706/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 27</p>
-                    <p class="p-2">&quot;Genetic Risk Factor Associated with Erectile Dysfunction.&quot; National Institute of Diabetes and Digestive and Kidney Diseases, U.S. Department of Health and Human Services, <a rel="nofollow" href="https://www.niddk.nih.gov/news/archive/2018/genetic-risk-factor-associated-with-erectile-dysfunction">https://www.niddk.nih.gov/news/archive/2018/genetic-risk-factor-associated-with-erectile-dysfunction</a>.</p>
-                    <p class="pt-3 font-bold">Citation 28</p>
-                    <p class="p-2">Aung HH; Wang CZ; Ni M; Fishbein A; Mehendale SR; Xie JT; Shoyama CY; Yuan CS; &quot;Crocin from Crocus Sativus Possesses Significant Anti-Proliferation Effects on Human Colorectal Cancer Cells.&quot; Experimental Oncology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/18004240/">https://pubmed.ncbi.nlm.nih.gov/18004240/</a>.</p>
-                    <p class="p-2">Samarghandian S; Borji A; &quot;Anticarcinogenic Effect of Saffron (Crocus Sativus L.) and Its Ingredients.&quot; Pharmacognosy Research, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/24761112/">https://pubmed.ncbi.nlm.nih.gov/24761112/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 29</p>
-                    <p class="p-2">Khazdair MR; Boskabady MH; Hosseini M; Rezaee R; M Tsatsakis A; &quot;The Effects of Crocus Sativus (Saffron) and Its Constituents on Nervous System: A Review.&quot; Avicenna Journal of Phytomedicine, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26468457/">https://pubmed.ncbi.nlm.nih.gov/26468457/</a>.</p>
-                    <p class="p-2">Adalier N; Parker H; &quot;Vitamin E, Turmeric and Saffron in Treatment of Alzheimer&apos;s Disease.&quot; Antioxidants (Basel, Switzerland), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/27792130/">https://pubmed.ncbi.nlm.nih.gov/27792130/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 30</p>
-                    <p class="p-2">Lashay A; Sadough G; Ashrafi E;Lashay M; Movassat M; Akhondzadeh S; &quot;Short-Term Outcomes of Saffron Supplementation in Patients with Age-Related Macular Degeneration: A Double-Blind, Placebo-Controlled, Randomized Trial.&quot; Medical Hypothesis, Discovery &amp; Innovation Ophthalmology Journal, U.S. National Library of Medicine,<a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28289690/"> https://pubmed.ncbi.nlm.nih.gov/28289690/</a>.</p>
-                    <p class="p-2">Piccardi M; Marangoni D; Minnella AM; Savastano MC; Valentini P; Ambrosio L; Capoluongo E; Maccarone R; Bisti S; Falsini B; &quot;A Longitudinal Follow-up Study of Saffron Supplementation in Early Age-Related Macular Degeneration: Sustained Benefits to Central Retinal Function.&quot; Evidence-Based Complementary and Alternative Medicine : ECAM, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22852021/">https://pubmed.ncbi.nlm.nih.gov/22852021/</a>.</p>
-                    <p class="p-2">Fern&aacute;ndez-S&aacute;nchez L; Lax P; Noailles A; Angulo A; Maneu V; Cuenca N; &quot;Natural Compounds from Saffron and Bear Bile Prevent Vision Loss and Retinal Degeneration.&quot; Molecules (Basel, Switzerland), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26263962/">https://pubmed.ncbi.nlm.nih.gov/26263962/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 31</p>
-                    <p class="p-2">Fatehi M; Rashidabady T; Fatehi-Hassanabad Z;. &quot;Effects of Crocus Sativus Petals&apos; Extract on Rat Blood Pressure and on Responses Induced by Electrical Field Stimulation in the Rat Isolated Vas Deferens and Guinea-Pig Ileum.&quot; Journal of Ethnopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/12648816/">https://pubmed.ncbi.nlm.nih.gov/12648816/</a>.</p>
-                    <p class="p-2">Kamalipour M; Akhondzadeh S; &quot;Cardiovascular Effects of Saffron: An Evidence-Based Review.&quot; The Journal of Tehran Heart Center, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/23074606/">https://pubmed.ncbi.nlm.nih.gov/23074606/</a>.</p>
-                    <p class="p-2">He SY; Qian ZY; Wen N; Tang FT; Xu GL; Zhou CH; &quot;Influence of Crocetin on Experimental Atherosclerosis in Hyperlipidamic-Diet Quails.&quot; European Journal of Pharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/17109848/">https://pubmed.ncbi.nlm.nih.gov/17109848/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 32</p>
-                    <p class="p-2">Samarghandian S; Azimi-Nezhad M; Farkhondeh T; &quot;Immunomodulatory and Antioxidant Effects of Saffron Aqueous Extract (Crocus Sativus L.) on Streptozotocin-Induced Diabetes in Rats.&quot; Indian Heart Journal, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28460761/">https://pubmed.ncbi.nlm.nih.gov/28460761/</a>.</p>
-                    <p class="p-2">Kang C; Lee H; Jung ES; Seyedian R; Jo M; Kim J; Kim JS; Kim E; &quot;Saffron (Crocus Sativus L.) Increases Glucose Uptake and Insulin Sensitivity in Muscle Cells via Multipathway Mechanisms.&quot; Food Chemistry, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22980812/">https://pubmed.ncbi.nlm.nih.gov/22980812/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 33</p>
-                    <p class="p-2">Safarinejad MR; Shafiei N; Safarinejad S;. &quot;A Prospective Double-Blind Randomized Placebo-Controlled Study of the Effect of Saffron (Crocus Sativus Linn.) on Semen Parameters and Seminal Plasma Antioxidant Capacity in Infertile Men with Idiopathic Oligoasthenoteratozoospermia.&quot; Phytotherapy Research: PTR, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20824894/">https://pubmed.ncbi.nlm.nih.gov/20824894/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 34</p>
-                    <p class="p-2">Efentakis P; Rizakou A; Christodoulou E; Chatzianastasiou A; L&oacute;pez MG; Le&oacute;n R; Balafas E; Kadoglou NPE; Tseti I; Skaltsa H; Kostomitsopoulos N; Iliodromitis EK; Valsami G; Andreadou I; &quot;Saffron (Crocus Sativus) Intake Provides Nutritional Preconditioning against Myocardial Ischemia-Reperfusion Injury in Wild Type and ApoE (-/-) Mice: Involvement of Nrf2 Activation.&quot; Nutrition, Metabolism, and Cardiovascular Diseases : NMCD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28964663/">https://pubmed.ncbi.nlm.nih.gov/28964663/</a>.</p>
-                    <p class="p-2">Pan PK; Qiao LY; Wen XN; &quot;Safranal Prevents Rotenone-Induced Oxidative Stress and Apoptosis in an in Vitro Model of Parkinson&apos;s Disease through Regulating KEAP1/nrf2 Signaling Pathway.&quot; Cellular and Molecular Biology (Noisy-Le-Grand, France), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28145852/">https://pubmed.ncbi.nlm.nih.gov/28145852/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 35</p>
-                    <p class="p-2">Efentakis P; Rizakou A; Christodoulou E; Chatzianastasiou A; L&oacute;pez MG; Le&oacute;n R; Balafas E; Kadoglou NPE; Tseti I; Skaltsa H; Kostomitsopoulos N; Iliodromitis EK; Valsami G; Andreadou I; &quot;Saffron (Crocus Sativus) Intake Provides Nutritional Preconditioning against Myocardial Ischemia-Reperfusion Injury in Wild Type and ApoE (-/-) Mice: Involvement of Nrf2 Activation.&quot; Nutrition, Metabolism, and Cardiovascular Diseases : NMCD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28964663/">https://pubmed.ncbi.nlm.nih.gov/28964663/</a>.</p>
-                    <p class="p-2">Pan PK; Qiao LY; Wen XN; &quot;Safranal Prevents Rotenone-Induced Oxidative Stress and Apoptosis in an in Vitro Model of Parkinson&apos;s Disease through Regulating KEAP1/nrf2 Signaling Pathway.&quot; Cellular and Molecular Biology (Noisy-Le-Grand, France), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28145852/">https://pubmed.ncbi.nlm.nih.gov/28145852/</a>.</p>
-                    <p class="p-2">Dianat, Mahin, et al. &quot;Crocin Attenuates Cigarette Smoke-Induced Lung Injury and Cardiac Dysfunction by Anti-Oxidative Effects: The Role of Nrf2 Antioxidant System in Preventing Oxidative Stress.&quot; Respiratory Research, BioMed Central, 10 Apr. 2018, <a rel="nofollow" href="https://respiratory-research.biomedcentral.com/articles/10.1186/s12931-018-0766-3">https://respiratory-research.biomedcentral.com/articles/10.1186/s12931-018-0766-3</a>.</p>
-                    <p class="pt-3 font-bold">Citation 36</p>
-                    <p class="p-2">Das, Ila, et al. &quot;Antioxidative Effects of the Spice Cardamom against Non-Melanoma Skin Cancer by Modulating Nuclear Factor Erythroid-2-Related Factor 2 and NF-&Kappa;B Signalling Pathways: British Journal of Nutrition.&quot; Cambridge Core, Cambridge University Press, 19 Dec. 2011, <a rel="nofollow" href="https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/antioxidative-effects-of-the-spice-cardamom-against-nonmelanoma-skin-cancer-by-modulating-nuclear-factor-erythroid2related-factor-2-and-nfb-signalling-pathways/DFD8E735BC4A20681C2B30E566E75462">https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/antioxidative-effects-of-the-spice-cardamom-against-nonmelanoma-skin-cancer-by-modulating-nuclear-factor-erythroid2related-factor-2-and-nfb-signalling-pathways/DFD8E735BC4A20681C2B30E566E75462</a>.</p>
-                    <p class="pt-3 font-bold">Citation 37</p>
-                    <p class="p-2">Rahman, Md Mizanur, et al. &quot;Cardamom Powder Supplementation Prevents Obesity, Improves Glucose Intolerance, Inflammation and Oxidative Stress in Liver of High Carbohydrate High Fat Diet Induced Obese Rats.&quot; Lipids in Health and Disease, BioMed Central, 14 Aug. 2017, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5557534/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5557534/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 38</p>
-                    <p class="p-2">Di Rocco, Giuliana, et al. &quot;Stem Cells under the Influence of Alcohol: Effects of Ethanol Consumption on STEM/Progenitor Cells.&quot; Cellular and Molecular Life Sciences : CMLS, Springer International Publishing, Jan. 2019, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6339663/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6339663/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 39</p>
-                    <p class="p-2">Das I; Acharya A; Berry DL; Sen S; Williams E; Permaul E; Sengupta A; Bhattacharya S; Saha T; &quot;Antioxidative Effects of the Spice Cardamom against Non-Melanoma Skin Cancer by Modulating Nuclear Factor Erythroid-2-Related Factor 2 and NF-&Kappa;B Signalling Pathways.&quot; The British Journal of Nutrition, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22182368/">https://pubmed.ncbi.nlm.nih.gov/22182368/</a>.</p>
-                    <p class="p-2">Jou YJ; Chen CJ; Liu YC; Way TD; Lai CH; Hua CH; Wang CY; Huang SH; Kao JY; Lin CW; &quot;Quantitative Phosphoproteomic Analysis Reveals &gamma;-Bisabolene Inducing p53-Mediated Apoptosis of Human Oral Squamous Cell Carcinoma via HDAC2 Inhibition and ERK1/2 Activation.&quot; Proteomics, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26194454/">https://pubmed.ncbi.nlm.nih.gov/26194454/</a>.</p>
-                    <p class="p-2">Qiblawi S; Al-Hazimi A; Al-Mogbel M; Hossain A; Bagchi D; &quot;Chemopreventive Effects of Cardamom (Elettaria Cardamomum L.) on Chemically Induced Skin Carcinogenesis in Swiss Albino Mice.&quot; Journal of Medicinal Food, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22404574/">https://pubmed.ncbi.nlm.nih.gov/22404574/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 40</p>
-                    <p class="p-2">Kandikattu HK; Rachitha P; Jayashree GV; Krupashree K; Sukhith M; Majid A; Amruta N; Khanum F; &quot;Anti-Inflammatory and Anti-Oxidant Effects of Cardamom (Elettaria Repens (Sonn.) Baill) and Its Phytochemical Analysis by 4D GCXGC TOF-MS.&quot; Biomedicine &amp; Pharmacotherapy = Biomedecine &amp; Pharmacotherapie, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28458157/">https://pubmed.ncbi.nlm.nih.gov/28458157/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 41</p>
-                    <p class="p-2">Jamal A; Javed K; Aslam M; Jafri MA; &quot;Gastroprotective Effect of Cardamom, Elettaria Cardamomum Maton. Fruits in Rats.&quot; Journal of Ethnopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16298093/">https://pubmed.ncbi.nlm.nih.gov/16298093/</a>.</p>
-                    <p class="p-2">Mahady GB; Pendland SL; Stoia A; Hamill FA; Fabricant D; Dietz BM; Chadwick LR; &quot;In Vitro Susceptibility of Helicobacter Pylori to Botanical Extracts Used Traditionally for the Treatment of Gastrointestinal Disorders.&quot; Phytotherapy Research : PTR, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16317658">https://pubmed.ncbi.nlm.nih.gov/16317658</a>.</p>
-                    <p class="pt-3 font-bold">Citation 42</p>
-                    <p class="p-2">Sharma, Ratika. &quot;Cardamom Comfort.&quot; Dental Research Journal, Medknow Publications &amp; Media Pvt Ltd, Mar. 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3353705/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3353705/</a>.</p>
-                    <p class="p-2">Aneja KR; Joshi R; Antimicrobial Activity of Amomum Subulatum and Elettaria Cardamomum Against Dental Caries Causing Microorganisms. <a rel="nofollow" href="https://www.researchgate.net/publication/50874100_Antimicrobial_Activity_of_Amomum_subulatum_and_Elettaria_cardamomum_Against_Dental_Caries_Causing_Microorganisms.">https://www.researchgate.net/publication/50874100_Antimicrobial_Activity_of_Amomum_subulatum_and_Elettaria_cardamomum_Against_Dental_Caries_Causing_Microorganisms.</a></p>
-                    <p class="pt-3 font-bold">Citation 43</p>
-                    <p class="p-2">Adams, Cat. &quot;The Complicated Evolutionary History of Spicy Chili Peppers.&quot; Science in the News, 12 Aug. 2013, <a rel="nofollow" href="https://sitn.hms.harvard.edu/flash/2012/issue131b/">https://sitn.hms.harvard.edu/flash/2012/issue131b/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 44</p>
-                    <p class="p-2">Baskaran, Padmamalini, et al. &quot;Capsaicin Induces Browning of White Adipose Tissue and Counters Obesity by Activating TRPV1 Channel-Dependent Mechanisms.&quot; British Journal of Pharmacology, John Wiley and Sons Inc., Aug. 2016, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4945767/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4945767/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 45</p>
-                    <p class="p-2">Seale P; Lazar MA; &quot;Brown Fat in Humans: Turning up the Heat on Obesity.&quot; National Institutes of Health, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/19564460/">https://pubmed.ncbi.nlm.nih.gov/19564460/</a>.&nbsp;</p>
-                    <p class="pt-3 font-bold">Citation 46</p>
-                    <p class="p-2">Akbari, Maryam, et al. &quot;The Effects of Curcumin on Weight Loss among Patients with Metabolic Syndrome and Related Disorders: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.&quot; Frontiers in Pharmacology, Frontiers Media S.A., 12 June 2019, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6582779/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6582779/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 47</p>
-                    <p class="p-2">Menon VP; Sudheer AR; &quot;Antioxidant and Anti-Inflammatory Properties of Curcumin.&quot; Advances in Experimental Medicine and Biology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/17569207/">https://pubmed.ncbi.nlm.nih.gov/17569207/</a>.</p>
-                    <p class="p-2">Barclay LR; Vinqvist MR; Mukai K; Goto H; Hashimoto Y; Tokunaga A; Uno H; &quot;On the Antioxidant Mechanism of Curcumin: Classical Methods Are Needed to Determine Antioxidant Mechanism and Activity.&quot; Organic Letters, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/10964379/">https://pubmed.ncbi.nlm.nih.gov/10964379/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 48</p>
-                    <p class="p-2">Dong, Suzhen, et al. &quot;Curcumin Enhances Neurogenesis and Cognition in Aged Rats: Implications for Transcriptional Interactions Related to Growth and Synaptic Plasticity.&quot; PloS One, Public Library of Science, 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3281036/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3281036/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 49</p>
-                    <p class="p-2">Chandran B; Goel A; &quot;A Randomized, Pilot Study to Assess the Efficacy and Safety of Curcumin in Patients with Active Rheumatoid Arthritis.&quot; Phytotherapy Research : PTR, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22407780/">https://pubmed.ncbi.nlm.nih.gov/22407780/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 50</p>
-                    <p class="p-2">Kulkarni, Shrinivas K., et al. &quot;Antidepressant Activity of Curcumin: Involvement of Serotonin and Dopamine System.&quot; Psychopharmacology, Springer-Verlag, 3 Sept. 2008, <a rel="nofollow" href="https://link.springer.com/article/10.1007/s00213-008-1300-y">https://link.springer.com/article/10.1007/s00213-008-1300-y</a>.</p>
-                    <p class="p-2">Xu, Ying, et al. &quot;The Effects of Curcumin on Depressive-like Behaviors in Mice.&quot; European Journal of Pharmacology, Elsevier, 28 June 2005, <a rel="nofollow" href="https://www.sciencedirect.com/science/article/abs/pii/S0014299905006230">https://www.sciencedirect.com/science/article/abs/pii/S0014299905006230</a>.</p>
-                    <p class="pt-3 font-bold">Citation 51</p>
-                    <p class="p-2">Sikora E; Bielak-Zmijewska A; Mosieniak G; Piwocka K; &quot;The Promise of Slow down Ageing May Come from Curcumin.&quot; Current Pharmaceutical Design, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20388102/">https://pubmed.ncbi.nlm.nih.gov/20388102/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 52</p>
-                    <p class="p-2">Shan B; Cai YZ; Sun M; Corke H; &quot;Antioxidant Capacity of 26 Spice Extracts and Characterization of Their Phenolic Constituents.&quot; Journal of Agricultural and Food Chemistry, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16190627/">https://pubmed.ncbi.nlm.nih.gov/16190627/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 53</p>
-                    <p class="p-2">Gunawardena D; Karunaweera N; Lee S; van Der Kooy F; Harman DG; Raju R; Bennett L; Gyengesi E; Sucher NJ; M&uuml;nch G; &quot;Anti-Inflammatory Activity of Cinnamon (C. Zeylanicum and C. Cassia) Extracts - Identification of e-Cinnamaldehyde and O-Methoxy Cinnamaldehyde as the Most Potent Bioactive Compounds.&quot; Food &amp; Function, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/25629927/">https://pubmed.ncbi.nlm.nih.gov/25629927/</a>.</p>
-                    <p class="p-2">Liao JC; Deng JS; Chiu CS; Hou WC; Huang SS; Shie PH; Huang GJ; &quot;Anti-Inflammatory Activities of Cinnamomum Cassia Constituents in Vitro and in Vivo.&quot; Evidence-Based Complementary and Alternative Medicine: ECAM, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22536283/">https://pubmed.ncbi.nlm.nih.gov/22536283/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 54</p>
-                    <p class="p-2">Allen RW; Schwartzman E; Baker WL; Coleman CI; Phung OJ; &quot;Cinnamon Use in Type 2 Diabetes: An Updated Systematic Review and Meta-Analysis.&quot; Annals of Family Medicine, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/24019277/">https://pubmed.ncbi.nlm.nih.gov/24019277/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 55</p>
-                    <p class="p-2">Qin, Bolin, et al. &quot;Cinnamon: Potential Role in the Prevention of Insulin Resistance, Metabolic Syndrome, and Type 2 Diabetes.&quot; Journal of Diabetes Science and Technology, Diabetes Technology Society, 1 May 2010, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047/</a>.</p>
-                    <p class="p-2">Anderson RA; &quot;Chromium and Polyphenols from Cinnamon Improve Insulin Sensitivity.&quot; The Proceedings of the Nutrition Society, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/18234131/">https://pubmed.ncbi.nlm.nih.gov/18234131/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 56</p>
-                    <p class="p-2">Mang B; Wolters M; Schmitt B; Kelb K; Lichtinghagen R; Stichtenoth DO; Hahn A; &quot;Effects of a Cinnamon Extract on Plasma Glucose, HBA, and Serum Lipids in Diabetes Mellitus Type 2.&quot; European Journal of Clinical Investigation, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16634838">https://pubmed.ncbi.nlm.nih.gov/16634838</a>.</p>
-                    <p class="p-2">Qin, Bolin, et al. &quot;Cinnamon: Potential Role in the Prevention of Insulin Resistance, Metabolic Syndrome, and Type 2 Diabetes.&quot; Journal of Diabetes Science and Technology, Diabetes Technology Society, 1 May 2010, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047</a>.</p>
-                    <p class="p-2">Kirkham S; Akilen R; Sharma S; Tsiami A; &quot;The Potential of Cinnamon to Reduce Blood Glucose Levels in Patients with Type 2 Diabetes and Insulin Resistance.&quot; Diabetes, Obesity &amp; Metabolism, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/19930003/">https://pubmed.ncbi.nlm.nih.gov/19930003/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 57</p>
-                    <p class="p-2">Peterson DW; George RC; Scaramozzino F; LaPointe NE; Anderson RA; Graves DJ; Lew J; &quot;Cinnamon Extract Inhibits Tau Aggregation Associated with Alzheimer&apos;s Disease in Vitro.&quot; Journal of Alzheimer&apos;s Disease : JAD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/19433898/">https://pubmed.ncbi.nlm.nih.gov/19433898/</a>.</p>
-                    <p class="p-2">George RC; Lew J; Graves DJ; &quot;Interaction of Cinnamaldehyde and Epicatechin with Tau: Implications of Beneficial Effects in Modulating Alzheimer&apos;s Disease Pathogenesis.&quot; Journal of Alzheimer&apos;s Disease : JAD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/23531502/">https://pubmed.ncbi.nlm.nih.gov/23531502/</a>.</p>
-                    <p class="p-2">Anderson RA; Qin B; Canini F; Poulet L; Roussel AM; &quot;Cinnamon Counteracts the Negative Effects of a High Fat/High Fructose Diet on Behavior, Brain Insulin Signaling and Alzheimer-Associated Changes.&quot; PloS One, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/24349472/">https://pubmed.ncbi.nlm.nih.gov/24349472/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 58</p>
-                    <p class="p-2">Premanathan M; Rajendran S; Ramanathan T; Kathiresan K; Nakashima H; Yamamoto N; Cinnamon and Chronic Diseases | Springerlink. <a rel="nofollow" href="https://link.springer.com/chapter/10.1007%2F978-3-319-41342-6_1">https://link.springer.com/chapter/10.1007%2F978-3-319-41342-6_1</a>.</p>
-                    <p class="pt-3 font-bold">Citation 59</p>
-                    <p class="p-2">Ebrahimzadeh Attari, Vahideh, et al. &quot;Changes of Serum Adipocytokines and Body Weight Following Zingiber Officinale Supplementation in Obese Women: A RCT.&quot; European Journal of Nutrition, Springer Berlin Heidelberg, 29 Aug. 2015, <a rel="nofollow" href="https://link.springer.com/article/10.1007%2Fs00394-015-1027-6">https://link.springer.com/article/10.1007%2Fs00394-015-1027-6</a>.</p>
-                    <p class="p-2">A.P Crofts, Catherine, et al. Hyperinsulinemia: A Unifying Theory of Chronic Disease? <a rel="nofollow" href="https://betabios.com/wp-content/uploads/2018/04/Hyperinsulinemia.pdf">https://betabios.com/wp-content/uploads/2018/04/Hyperinsulinemia.pdf</a>.</p>
-                    <p class="pt-3 font-bold">Citation 60</p>
-                    <p class="p-2">Bartels, E.M., et al. &quot;Efficacy and Safety of Ginger in Osteoarthritis Patients: A Meta-Analysis of Randomized Placebo-Controlled Trials.&quot; Osteoarthritis and Cartilage, W.B. Saunders, 7 Oct. 2014, <a rel="nofollow" href="https://www.sciencedirect.com/science/article/pii/S106345841401276X">https://www.sciencedirect.com/science/article/pii/S106345841401276X</a>.</p>
-                    <p class="pt-3 font-bold">Citation 61</p>
-                    <p class="p-2">Khandouzi, Nafiseh, et al. &quot;The Effects of Ginger on Fasting Blood Sugar, Hemoglobin a1c, Apolipoprotein B, Apolipoprotein A-I and Malondialdehyde in Type 2 Diabetic Patients.&quot; Iranian Journal of Pharmaceutical Research : IJPR, Shaheed Beheshti University of Medical Sciences, 2015, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 62</p>
-                    <p class="p-2">Khandouzi, Nafiseh, et al. &quot;The Effects of Ginger on Fasting Blood Sugar, Hemoglobin a1c, Apolipoprotein B, Apolipoprotein A-I and Malondialdehyde in Type 2 Diabetic Patients.&quot; Iranian Journal of Pharmaceutical Research : IJPR, Shaheed Beheshti University of Medical Sciences, 2015, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 63</p>
-                    <p class="p-2">Nikkhah Bodagh, Mehrnaz, et al. &quot;Ginger in Gastrointestinal Disorders: A Systematic Review of Clinical Trials.&quot; Food Science &amp; Nutrition, John Wiley and Sons Inc., 5 Nov. 2018, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6341159/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6341159/</a>.</p>
-                    <p class="p-2">Hu, Ming-Luen, et al. &quot;Effect of Ginger on Gastric Motility and Symptoms of Functional Dyspepsia.&quot; World Journal of Gastroenterology, Baishideng Publishing Group Co., Limited, 7 Jan. 2011, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3016669/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3016669/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 64</p>
-                    <p class="p-2">Saenghong, Naritsara, et al. &quot;Zingiber Officinale Improves Cognitive Function of the Middle-Aged Healthy Women.&quot; Evidence-Based Complementary and Alternative Medicine : ECAM, Hindawi Publishing Corporation, 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3253463/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3253463/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 65</p>
-                    <p class="p-2">Karuppiah, Ponmurugan, and Shyamkumar Rajaram. &quot;Antibacterial Effect of Allium Sativum Cloves and Zingiber Officinale Rhizomes against Multiple-Drug Resistant Clinical Pathogens.&quot; Asian Pacific Journal of Tropical Biomedicine, Asian Pacific Tropical Medicine Press, Aug. 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3609356">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3609356</a>.</p>
-                    <p class="p-2">Gull, Iram, et al. &quot;Inhibitory Effect of Allium Sativum and Zingiber Officinale Extracts on Clinically Important Drug Resistant Pathogenic Bacteria.&quot; Annals of Clinical Microbiology and Antimicrobials, BioMed Central, 27 Apr. 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3418209/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3418209/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 66</p>
-                    <p class="p-2">Chang JS; Wang KC; Yeh CF; Shieh DE; Chiang LC; &quot;Fresh Ginger (Zingiber Officinale) Has Anti-Viral Activity against Human Respiratory Syncytial Virus in Human Respiratory Tract Cell Lines.&quot; Journal of Ethnopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/23123794/">https://pubmed.ncbi.nlm.nih.gov/23123794/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 67</p>
-                    <p class="p-2">Efentakis P; Rizakou A; Christodoulou E; Chatzianastasiou A; L&oacute;pez MG; Le&oacute;n R; Balafas E; Kadoglou NPE; Tseti I; Skaltsa H; Kostomitsopoulos N; Iliodromitis EK; Valsami G; Andreadou I; &quot;Saffron (Crocus Sativus) Intake Provides Nutritional Preconditioning against Myocardial Ischemia-Reperfusion Injury in Wild Type and ApoE (-/-) Mice: Involvement of Nrf2 Activation.&quot; Nutrition, Metabolism, and Cardiovascular Diseases : NMCD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28964663/">https://pubmed.ncbi.nlm.nih.gov/28964663/</a>.</p>
-                    <p class="p-2">Pan PK; Qiao LY; Wen XN; &quot;Safranal Prevents Rotenone-Induced Oxidative Stress and Apoptosis in an in Vitro Model of Parkinson&apos;s Disease through Regulating KEAP1/nrf2 Signaling Pathway.&quot; Cellular and Molecular Biology (Noisy-Le-Grand, France), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28145852/">https://pubmed.ncbi.nlm.nih.gov/28145852/</a>.</p>
-                    <p class="p-2">Joung EJ; Li MH; Lee HG; Somparn N; Jung YS; Na HK; Kim SH; Cha YN; Surh YJ; &quot;Capsaicin Induces Heme Oxygenase-1 Expression in HepG2 Cells via Activation of PI3K-nrf2 Signaling: NAD(P)H:Quinone Oxidoreductase as a Potential Target.&quot; Antioxidants &amp; Redox Signaling, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/17979524/">https://pubmed.ncbi.nlm.nih.gov/17979524/</a>.</p>
-                    <p class="p-2">Macci&ograve;, Antonio, and Clelia Madeddu. &quot;Management of Anemia of Inflammation in the Elderly.&quot; Anemia, Hindawi Publishing Corporation, 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471391/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471391/</a>.</p>
-                    <p class="p-2">Wondrak GT; Villeneuve NF; Lamore SD; Bause AS; Jiang T; Zhang DD; &quot;The Cinnamon-Derived Dietary Factor Cinnamic Aldehyde Activates the Nrf2-Dependent Antioxidant Response in Human Epithelial Colon Cells.&quot; Molecules (Basel, Switzerland), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20657484/">https://pubmed.ncbi.nlm.nih.gov/20657484/</a>.</p>
-                    <p class="p-2">Peng S; Yao J; Liu Y ;Duan D; Zhang X; Fang J; &quot;Activation of NRF2 Target Enzymes Conferring Protection against Oxidative Stress in PC12 Cells by Ginger Principal Constituent 6-Shogaol.&quot; Food &amp; Function, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26169810/">https://pubmed.ncbi.nlm.nih.gov/26169810/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 68</p>
-                    <p class="p-2">Shoba G; Joy D; Joseph T; Majeed M; Rajendran R; Srinivas PS; &quot;Influence of Piperine on the Pharmacokinetics of Curcumin in Animals and Human Volunteers.&quot; Planta Medica, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/9619120/">https://pubmed.ncbi.nlm.nih.gov/9619120/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 69</p>
-                    <p class="p-2">Das, Ila, et al. &quot;Antioxidative Effects of the Spice Cardamom against Non-Melanoma Skin Cancer by Modulating Nuclear Factor Erythroid-2-Related Factor 2 and NF-&Kappa;B Signalling Pathways: British Journal of Nutrition.&quot; Cambridge Core, Cambridge University Press, 19 Dec. 2011, <a rel="nofollow" href="https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/antioxidative-effects-of-the-spice-cardamom-against-nonmelanoma-skin-cancer-by-modulating-nuclear-factor-erythroid2related-factor-2-and-nfb-signalling-pathways/DFD8E735BC4A20681C2B30E566E7546">https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/antioxidative-effects-of-the-spice-cardamom-against-nonmelanoma-skin-cancer-by-modulating-nuclear-factor-erythroid2related-factor-2-and-nfb-signalling-pathways/DFD8E735BC4A20681C2B30E566E7546</a>2.</p>
-                    <p class="pt-3 font-bold">Citation 70</p>
-                    <p class="p-2">Rahman, Md Mizanur, et al. &quot;Cardamom Powder Supplementation Prevents Obesity, Improves Glucose Intolerance, Inflammation and Oxidative Stress in Liver of High Carbohydrate High Fat Diet Induced Obese Rats.&quot; Lipids in Health and Disease, BioMed Central, 14 Aug. 2017, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5557534/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5557534/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 71</p>
-                    <p class="p-2">Di Rocco, Giuliana, et al. &quot;Stem Cells under the Influence of Alcohol: Effects of Ethanol Consumption on STEM/Progenitor Cells.&quot; Cellular and Molecular Life Sciences : CMLS, Springer International Publishing, Jan. 2019, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6339663/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6339663/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 72</p>
-                    <p class="p-2">Das I; Acharya A; Berry DL; Sen S; Williams E; Permaul E; Sengupta A; Bhattacharya S; Saha T; &quot;Antioxidative Effects of the Spice Cardamom against Non-Melanoma Skin Cancer by Modulating Nuclear Factor Erythroid-2-Related Factor 2 and NF-&Kappa;B Signalling Pathways.&quot; The British Journal of Nutrition, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22182368/">https://pubmed.ncbi.nlm.nih.gov/22182368/</a>.</p>
-                    <p class="p-2">Jou YJ; Chen CJ; Liu YC; Way TD; Lai CH; Hua CH; Wang CY; Huang SH; Kao JY; Lin CW; &quot;Quantitative Phosphoproteomic Analysis Reveals &gamma;-Bisabolene Inducing p53-Mediated Apoptosis of Human Oral Squamous Cell Carcinoma via HDAC2 Inhibition and ERK1/2 Activation.&quot; Proteomics, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26194454/">https://pubmed.ncbi.nlm.nih.gov/26194454/</a>.</p>
-                    <p class="p-2">Qiblawi S; Al-Hazimi A; Al-Mogbel M; Hossain A; Bagchi D; &quot;Chemopreventive Effects of Cardamom (Elettaria Cardamomum L.) on Chemically Induced Skin Carcinogenesis in Swiss Albino Mice.&quot; Journal of Medicinal Food, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22404574/">https://pubmed.ncbi.nlm.nih.gov/22404574/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 73</p>
-                    <p class="p-2">Kandikattu HK; Rachitha P; Jayashree GV; Krupashree K; Sukhith M; Majid A; Amruta N; Khanum F; &quot;Anti-Inflammatory and Anti-Oxidant Effects of Cardamom (Elettaria Repens (Sonn.) Baill) and Its Phytochemical Analysis by 4D GCXGC TOF-MS.&quot; Biomedicine &amp; Pharmacotherapy = Biomedecine &amp; Pharmacotherapie, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28458157/">https://pubmed.ncbi.nlm.nih.gov/28458157/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 74</p>
-                    <p class="p-2">Jamal A; Javed K; Aslam M; Jafri MA; &quot;Gastroprotective Effect of Cardamom, Elettaria Cardamomum Maton. Fruits in Rats.&quot; Journal of Ethnopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16298093/">https://pubmed.ncbi.nlm.nih.gov/16298093/</a>.</p>
-                    <p class="p-2">Mahady GB; Pendland SL; Stoia A; Hamill FA; Fabricant D; Dietz BM; Chadwick LR; &quot;In Vitro Susceptibility of Helicobacter Pylori to Botanical Extracts Used Traditionally for the Treatment of Gastrointestinal Disorders.&quot; Phytotherapy Research : PTR, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16317658">https://pubmed.ncbi.nlm.nih.gov/16317658</a>.</p>
-                    <p class="pt-3 font-bold">Citation 75</p>
-                    <p class="p-2">Sharma, Ratika. &quot;Cardamom Comfort.&quot; Dental Research Journal, Medknow Publications &amp; Media Pvt Ltd, Mar. 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3353705/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3353705/</a>.</p>
-                    <p class="p-2">Aneja KR; Joshi R; Antimicrobial Activity of Amomum Subulatum and Elettaria Cardamomum Against Dental Caries Causing Microorganisms. <a rel="nofollow" href="https://www.researchgate.net/publication/50874100_Antimicrobial_Activity_of_Amomum_subulatum_and_Elettaria_cardamomum_Against_Dental_Caries_Causing_Microorganisms">https://www.researchgate.net/publication/50874100_Antimicrobial_Activity_of_Amomum_subulatum_and_Elettaria_cardamomum_Against_Dental_Caries_Causing_Microorganisms</a>.</p>
-                    <p class="pt-3 font-bold">Citation 76</p>
-                    <p class="p-2">Adams, Cat. &quot;The Complicated Evolutionary History of Spicy Chili Peppers.&quot; Science in the News, 12 Aug. 2013, <a rel="nofollow" href="https://sitn.hms.harvard.edu/flash/2012/issue131b/">https://sitn.hms.harvard.edu/flash/2012/issue131b/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 77</p>
-                    <p class="p-2">Baskaran, Padmamalini, et al. &quot;Capsaicin Induces Browning of White Adipose Tissue and Counters Obesity by Activating TRPV1 Channel-Dependent Mechanisms.&quot; British Journal of Pharmacology, John Wiley and Sons Inc., Aug. 2016, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4945767/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4945767/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 78</p>
-                    <p class="p-2">Akbari, Maryam, et al. &quot;The Effects of Curcumin on Weight Loss among Patients with Metabolic Syndrome and Related Disorders: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.&quot; Frontiers in Pharmacology, Frontiers Media S.A., 12 June 2019, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6582779/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6582779/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 79</p>
-                    <p class="p-2">Dong, Suzhen, et al. &quot;Curcumin Enhances Neurogenesis and Cognition in Aged Rats: Implications for Transcriptional Interactions Related to Growth and Synaptic Plasticity.&quot; PloS One, Public Library of Science, 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3281036/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3281036/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 80</p>
-                    <p class="p-2">Sikora E; Bielak-Zmijewska A; Mosieniak G; Piwocka K; &quot;The Promise of Slow down Ageing May Come from Curcumin.&quot; Current Pharmaceutical Design, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20388102/">https://pubmed.ncbi.nlm.nih.gov/20388102/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 81</p>
-                    <p class="p-2">Shan B; Cai YZ; Sun M; Corke H; &quot;Antioxidant Capacity of 26 Spice Extracts and Characterization of Their Phenolic Constituents.&quot; Journal of Agricultural and Food Chemistry, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16190627/">https://pubmed.ncbi.nlm.nih.gov/16190627/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 82</p>
-                    <p class="p-2">Gunawardena D; Karunaweera N; Lee S; van Der Kooy F; Harman DG; Raju R; Bennett L; Gyengesi E; Sucher NJ; M&uuml;nch G; &quot;Anti-Inflammatory Activity of Cinnamon (C. Zeylanicum and C. Cassia) Extracts - Identification of e-Cinnamaldehyde and O-Methoxy Cinnamaldehyde as the Most Potent Bioactive Compounds.&quot; Food &amp; Function, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/25629927/">https://pubmed.ncbi.nlm.nih.gov/25629927/</a>.</p>
-                    <p class="p-2">Liao JC; Deng JS; Chiu CS; Hou WC; Huang SS; Shie PH; Huang GJ; &quot;Anti-Inflammatory Activities of Cinnamomum Cassia Constituents in Vitro and in Vivo.&quot; Evidence-Based Complementary and Alternative Medicine: ECAM, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/22536283/">https://pubmed.ncbi.nlm.nih.gov/22536283/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 83</p>
-                    <p class="p-2">Allen RW; Schwartzman E; Baker WL; Coleman CI; Phung OJ; &quot;Cinnamon Use in Type 2 Diabetes: An Updated Systematic Review and Meta-Analysis.&quot; Annals of Family Medicine, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/24019277/">https://pubmed.ncbi.nlm.nih.gov/24019277/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 84</p>
-                    <p class="p-2">Qin, Bolin, et al. &quot;Cinnamon: Potential Role in the Prevention of Insulin Resistance, Metabolic Syndrome, and Type 2 Diabetes.&quot; Journal of Diabetes Science and Technology, Diabetes Technology Society, 1 May 2010, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047/</a>.</p>
-                    <p class="p-2">Anderson RA; &quot;Chromium and Polyphenols from Cinnamon Improve Insulin Sensitivity.&quot; The Proceedings of the Nutrition Society, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/18234131">https://pubmed.ncbi.nlm.nih.gov/18234131</a>/.</p>
-                    <p class="pt-3 font-bold">Citation 85</p>
-                    <p class="p-2">Mang B; Wolters M; Schmitt B; Kelb K; Lichtinghagen R; Stichtenoth DO; Hahn A; &quot;Effects of a Cinnamon Extract on Plasma Glucose, HBA, and Serum Lipids in Diabetes Mellitus Type 2.&quot; European Journal of Clinical Investigation, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/16634838">https://pubmed.ncbi.nlm.nih.gov/16634838</a>.</p>
-                    <p class="p-2">Qin, Bolin, et al. &quot;Cinnamon: Potential Role in the Prevention of Insulin Resistance, Metabolic Syndrome, and Type 2 Diabetes.&quot; Journal of Diabetes Science and Technology, Diabetes Technology Society, 1 May 2010, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2901047</a>.</p>
-                    <p class="p-2">Kirkham S; Akilen R; Sharma S; Tsiami A; &quot;The Potential of Cinnamon to Reduce Blood Glucose Levels in Patients with Type 2 Diabetes and Insulin Resistance.&quot; Diabetes, Obesity &amp; Metabolism, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/19930003/">https://pubmed.ncbi.nlm.nih.gov/19930003/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 86</p>
-                    <p class="p-2">Peterson DW; George RC; Scaramozzino F; LaPointe NE; Anderson RA; Graves DJ; Lew J; &quot;Cinnamon Extract Inhibits Tau Aggregation Associated with Alzheimer&apos;s Disease in Vitro.&quot; Journal of Alzheimer&apos;s Disease : JAD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/19433898/">https://pubmed.ncbi.nlm.nih.gov/19433898/</a>.</p>
-                    <p class="p-2">George RC; Lew J; Graves DJ; &quot;Interaction of Cinnamaldehyde and Epicatechin with Tau: Implications of Beneficial Effects in Modulating Alzheimer&apos;s Disease Pathogenesis.&quot; Journal of Alzheimer&apos;s Disease : JAD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/23531502/">https://pubmed.ncbi.nlm.nih.gov/23531502/</a>.</p>
-                    <p class="p-2">Anderson RA; Qin B; Canini F; Poulet L; Roussel AM; &quot;Cinnamon Counteracts the Negative Effects of a High Fat/High Fructose Diet on Behavior, Brain Insulin Signaling and Alzheimer-Associated Changes.&quot; PloS One, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/24349472/">https://pubmed.ncbi.nlm.nih.gov/24349472/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 87</p>
-                    <p class="p-2">Premanathan M; Rajendran S; Ramanathan T; Kathiresan K; Nakashima H; Yamamoto N; Cinnamon and Chronic Diseases | Springerlink. <a rel="nofollow" href="https://link.springer.com/chapter/10.1007%2F978-3-319-41342-6_1">https://link.springer.com/chapter/10.1007%2F978-3-319-41342-6_1</a>.</p>
-                    <p class="pt-3 font-bold">Citation 88</p>
-                    <p class="p-2">Ebrahimzadeh Attari, Vahideh, et al. &quot;Changes of Serum Adipocytokines and Body Weight Following Zingiber Officinale Supplementation in Obese Women: A RCT.&quot; European Journal of Nutrition, Springer Berlin Heidelberg, 29 Aug. 2015, <a rel="nofollow" href="https://link.springer.com/article/10.1007%2Fs00394-015-1027-6">https://link.springer.com/article/10.1007%2Fs00394-015-1027-6</a>.</p>
-                    <p class="p-2">A.P Crofts, Catherine, et al. Hyperinsulinemia: A Unifying Theory of Chronic Disease? <a rel="nofollow" href="https://betabios.com/wp-content/uploads/2018/04/Hyperinsulinemia.pdf">https://betabios.com/wp-content/uploads/2018/04/Hyperinsulinemia.pdf</a>.</p>
-                    <p class="pt-3 font-bold">Citation 89</p>
-                    <p class="p-2">Bartels, E.M., et al. &quot;Efficacy and Safety of Ginger in Osteoarthritis Patients: A Meta-Analysis of Randomized Placebo-Controlled Trials.&quot; Osteoarthritis and Cartilage, W.B. Saunders, 7 Oct. 2014, <a rel="nofollow" href="https://www.sciencedirect.com/science/article/pii/S106345841401276X">https://www.sciencedirect.com/science/article/pii/S106345841401276X</a>.</p>
-                    <p class="pt-3 font-bold">Citation 90</p>
-                    <p class="p-2">Khandouzi, Nafiseh, et al. &quot;The Effects of Ginger on Fasting Blood Sugar, Hemoglobin a1c, Apolipoprotein B, Apolipoprotein A-I and Malondialdehyde in Type 2 Diabetic Patients.&quot; Iranian Journal of Pharmaceutical Research : IJPR, Shaheed Beheshti University of Medical Sciences, 2015, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 91</p>
-                    <p class="p-2">Khandouzi, Nafiseh, et al. &quot;The Effects of Ginger on Fasting Blood Sugar, Hemoglobin a1c, Apolipoprotein B, Apolipoprotein A-I and Malondialdehyde in Type 2 Diabetic Patients.&quot; Iranian Journal of Pharmaceutical Research : IJPR, Shaheed Beheshti University of Medical Sciences, 2015, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4277626/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 92</p>
-                    <p class="p-2">Nikkhah Bodagh, Mehrnaz, et al. &quot;Ginger in Gastrointestinal Disorders: A Systematic Review of Clinical Trials.&quot; Food Science &amp; Nutrition, John Wiley and Sons Inc., 5 Nov. 2018, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6341159/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6341159/</a>.</p>
-                    <p class="p-2">Hu, Ming-Luen, et al. &quot;Effect of Ginger on Gastric Motility and Symptoms of Functional Dyspepsia.&quot; World Journal of Gastroenterology, Baishideng Publishing Group Co., Limited, 7 Jan. 2011, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3016669/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3016669/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 93</p>
-                    <p class="p-2">Saenghong, Naritsara, et al. &quot;Zingiber Officinale Improves Cognitive Function of the Middle-Aged Healthy Women.&quot; Evidence-Based Complementary and Alternative Medicine : ECAM, Hindawi Publishing Corporation, 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3253463/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3253463/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 94</p>
-                    <p class="p-2">Karuppiah, Ponmurugan, and Shyamkumar Rajaram. &quot;Antibacterial Effect of Allium Sativum Cloves and Zingiber Officinale Rhizomes against Multiple-Drug Resistant Clinical Pathogens.&quot; Asian Pacific Journal of Tropical Biomedicine, Asian Pacific Tropical Medicine Press, Aug. 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3609356">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3609356</a>.</p>
-                    <p class="p-2">Gull, Iram, et al. &quot;Inhibitory Effect of Allium Sativum and Zingiber Officinale Extracts on Clinically Important Drug Resistant Pathogenic Bacteria.&quot; Annals of Clinical Microbiology and Antimicrobials, BioMed Central, 27 Apr. 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3418209/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3418209/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 95</p>
-                    <p class="p-2">Chang JS; Wang KC; Yeh CF; Shieh DE; Chiang LC; &quot;Fresh Ginger (Zingiber Officinale) Has Anti-Viral Activity against Human Respiratory Syncytial Virus in Human Respiratory Tract Cell Lines.&quot; Journal of Ethnopharmacology, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/23123794/">https://pubmed.ncbi.nlm.nih.gov/23123794/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 96</p>
-                    <p class="p-2">Efentakis P; Rizakou A; Christodoulou E; Chatzianastasiou A; L&oacute;pez MG; Le&oacute;n R; Balafas E; Kadoglou NPE; Tseti I; Skaltsa H; Kostomitsopoulos N; Iliodromitis EK; Valsami G; Andreadou I; &quot;Saffron (Crocus Sativus) Intake Provides Nutritional Preconditioning against Myocardial Ischemia-Reperfusion Injury in Wild Type and ApoE (-/-) Mice: Involvement of Nrf2 Activation.&quot; Nutrition, Metabolism, and Cardiovascular Diseases : NMCD, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28964663/">https://pubmed.ncbi.nlm.nih.gov/28964663/</a>.</p>
-                    <p class="p-2">Pan PK; Qiao LY; Wen XN; &quot;Safranal Prevents Rotenone-Induced Oxidative Stress and Apoptosis in an in Vitro Model of Parkinson&apos;s Disease through Regulating KEAP1/nrf2 Signaling Pathway.&quot; Cellular and Molecular Biology (Noisy-Le-Grand, France), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/28145852/">https://pubmed.ncbi.nlm.nih.gov/28145852/</a>.</p>
-                    <p class="p-2">Joung EJ; Li MH; Lee HG; Somparn N; Jung YS; Na HK; Kim SH; Cha YN; Surh YJ; &quot;Capsaicin Induces Heme Oxygenase-1 Expression in HepG2 Cells via Activation of PI3K-nrf2 Signaling: NAD(P)H:Quinone Oxidoreductase as a Potential Target.&quot; Antioxidants &amp; Redox Signaling, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/17979524/">https://pubmed.ncbi.nlm.nih.gov/17979524/</a>.</p>
-                    <p class="p-2">Macci&ograve;, Antonio, and Clelia Madeddu. &quot;Management of Anemia of Inflammation in the Elderly.&quot; Anemia, Hindawi Publishing Corporation, 2012, <a rel="nofollow" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471391/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471391/</a>.</p>
-                    <p class="p-2">Wondrak GT; Villeneuve NF; Lamore SD; Bause AS; Jiang T; Zhang DD; &quot;The Cinnamon-Derived Dietary Factor Cinnamic Aldehyde Activates the Nrf2-Dependent Antioxidant Response in Human Epithelial Colon Cells.&quot; Molecules (Basel, Switzerland), U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/20657484/">https://pubmed.ncbi.nlm.nih.gov/20657484/</a>.</p>
-                    <p class="p-2">Peng S; Yao J; Liu Y ;Duan D; Zhang X; Fang J; &quot;Activation of NRF2 Target Enzymes Conferring Protection against Oxidative Stress in PC12 Cells by Ginger Principal Constituent 6-Shogaol.&quot; Food &amp; Function, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/26169810/">https://pubmed.ncbi.nlm.nih.gov/26169810/</a>.</p>
-                    <p class="pt-3 font-bold">Citation 97</p>
-                    <p class="p-2">Shoba G; Joy D; Joseph T; Majeed M; Rajendran R; Srinivas PS; &quot;Influence of Piperine on the Pharmacokinetics of Curcumin in Animals and Human Volunteers.&quot; Planta Medica, U.S. National Library of Medicine, <a rel="nofollow" href="https://pubmed.ncbi.nlm.nih.gov/9619120/">https://pubmed.ncbi.nlm.nih.gov/9619120/</a>.</p>
-
-
-
-                </div>
+<div class="">
+	<div class="flex justify-center md:justify-end bg-image">
+		<div class="flex flex-col justify-center md:w-1/2 text-center p-3 md:p-0 md:text-left">
+			<div class="bg-gray-600 font-bold text-3xl text-white p-3 px-4">BECOME SUPERNATURAL</div>
+			<div class="font-semibold text-xl text-white py-5">SUPERIOR NATURAL ENERGY FOR TODAY’S MAN</div>
+			<div>
+				<a href="/tailwind/5gmale-t.php">
+				<button class="w-auto bg-black border border-transparent py-2 px-3 text-base text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 hover:bg-gray-800">
+              SHOP NOW</button>
+					</a>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="container container-md mx-auto">
+	<section aria-labelledby="policy-heading" class="my-12 lg:my-20">
+        <div class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
+          <div class="flex flex-col">
+            <div class="flex justify-center">
+              <img class="circle-image" src="https://5gmale.com/images/icons/about-icon.png" alt="">
             </div>
-        </li>
-    </ul>
 
-    <?php template('includes/footer'); ?>
-    <?php if ($site['debug'] == true) {
-        template('debug', 'debug');
-    } ?>
+            <h3 class="mt-3 text-center text-lg font-bold text-gray-900">ABOUT</h3>
+            <p class="mt-3 text-base text-gray-300 text-center">
+              Learn about Supernatural Man
+            </p>
+				 <a href="/tailwind/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="flex justify-center">
+              <img class="circle-image" src="https://5gmale.com/images/icons/help-icon.png" alt="">
+            </div>
+
+            <h3 class="mt-3 text-center text-lg font-bold text-gray-900">HOW WE HELP</h3>
+            <p class="mt-3 text-base text-gray-300 text-center">
+              We have helped thousands of men with these issues.
+            </p>
+				 <a href="/tailwind/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+          </div>
+            
+			  <div class="flex flex-col">
+            <div class="flex justify-center">
+              <img class="circle-image" src="https://5gmale.com/images/icons/product-icon.png" alt="">
+            </div>
+
+            <h3 class="mt-3 text-center text-lg font-bold text-gray-900">PRODUCTS</h3>
+            <p class="mt-3 text-base text-gray-300 text-center">
+              We have a variety of products that can help your needs.
+            </p>
+				 <a href="/tailwind/5gmale-t.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="flex justify-center">
+              <img class="circle-image" src="https://5gmale.com/images/icons/support-icon.png" alt="">
+            </div>
+
+            <h3 class="mt-3 text-center text-lg font-bold text-gray-900">SUPPORT</h3>
+            <p class="mt-3 text-base text-gray-300 text-center">
+              We’re here to Help.
+            </p>
+				 <a href="/tailwind/support.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+          </div>
+        </div>
+      </section>
+		<section>
+			<div class="flex justify-center my-12 lg:my-20">
+				<div class="flex flex-col">
+					<h3 class="text-3xl font-semibold text-center">Here is Out Top Product</h3>
+					<img class="mt-6 mx-auto" style="max-width: 500px" src="https://5gmale.com/images/products/5g.png" alt="5g male product bottle">
+					<p class="text-center text-xl mb-6">5G MALE</p>
+					<div class="flex justify-center w-2/3 md:w-1/2 mx-auto" style="max-width: 80ch">
+						<p>These statements have not been evaluated by the Food and Drug Administration. These products are not intended to treat, cure or prevent any disease. Results may vary from person to person.</p>
+					</div>
+					
+				</div>
+			</div>
+
+		</section>
+</div>
+
+
+<?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/footer.php'); ?>	
 </body>
-<script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.store('accordion', {
-            tab: 0
-        });
-
-        Alpine.data('accordion', (idx) => ({
-            init() {
-                this.idx = idx;
-            },
-            idx: -1,
-            handleClick() {
-                this.$store.accordion.tab = this.$store.accordion.tab === this.idx ? 0 : this.idx;
-            },
-            handleRotate() {
-                return this.$store.accordion.tab === this.idx ? 'rotate-180' : '';
-            },
-            handleToggle() {
-                return this.$store.accordion.tab === this.idx ? `max-height: ${this.$refs.tab.scrollHeight}px` : '';
-            }
-        }));
-    })
-</script>
-
 </html>

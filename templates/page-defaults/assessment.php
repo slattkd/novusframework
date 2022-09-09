@@ -183,7 +183,7 @@ if (!empty($_POST))
 
         <?php if ($site['debug'] == true) {
             // Show Debug bar only on whitelisted domains.
-            template('debug', 'debug');
+            template('debug', null, null, 'debug');
         } ?>
     </body>
 </html>

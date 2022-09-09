@@ -15,6 +15,8 @@
 </div>
 
 <script type="text/javascript">
+console.log("Video ID: <?php echo $videoID; ?>");
+console.log("Button Drop Time: <?php echo $dropTime; ?>" );
 var EMBED_CODE_ID = 'vidalytics_embed_<?php echo $videoID; ?>'; // update this to match your Vidalytics Embed ID
 var vidalyticsPlayerAPI = null;
 
@@ -31,6 +33,13 @@ function initializePlayerAPI() {
 
 initializePlayerAPI();
 
+function popButton(){
+    //Show the pop button
+    var popButton = document.getElementById("container-buy");
+    popButton.classList.remove("hidden");
+}
+
+
 function getPlayer() {
     //console.log('getPlayer()');
     var embeds = (_vidalytics || {}).embeds || {};
@@ -44,10 +53,9 @@ function onPlayerAPIAvailableCallback() {
     //console.log("onPlayerAPIAvailableCallback()");
     vidalyticsPlayerAPI._player.addEventHandler('onTimeChanged', function () {
         if (vidalyticsPlayerAPI.getCurrentVideoTime() >= <?php echo $dropTime; ?>) {
-            $("#container-buy").show();
-            $('html, body').animate({
-                scrollTop: $("#container-buy").offset().top
-            },1000);
+            popButton();
+            var containerbuy = document.getElementById("container-buy");
+            containerbuy.scrollIntoView({behavior: "smooth"});
         }
     });
     }

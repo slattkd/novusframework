@@ -193,7 +193,7 @@ function debugMessage($message)
 /*
 Extends the template based on paths to easily add new versions for A/B testing.
 */
-function template($template, $templatePath = 'templates/page-defaults', $vwoVariable = null)
+function template($template, $vwoVariable = null, $current_step = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;
@@ -206,7 +206,7 @@ function template($template, $templatePath = 'templates/page-defaults', $vwoVari
 /*
 Extends the template based on paths to easily add new versions for A/B testing.
 */
-function video($template, $videoID = null, $dropTime = null, $vwoVariable = null, $templatePath = 'templates/page-defaults' )
+function video($template, $videoID = null, $dropTime = null, $vwoVariable = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;

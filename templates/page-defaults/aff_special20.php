@@ -11,7 +11,7 @@ $cookie_value = "yes";
     <title>Free Video - Limited Time Only!</title>
 
     <!-- might be for modal, might not be needed -->
-	<script>
+	  <script>
         fadeInDelay = 0;
         fadeInDiv = '#container-buy';
     </script>
@@ -71,7 +71,7 @@ $cookie_value = "yes";
         }
 
         a.img-link {
-            display: flex;
+
             justify-content: center;
             width: 100%;
         }
@@ -146,8 +146,8 @@ $cookie_value = "yes";
     <?php video('includes/player', $vidcode, $droptime);?>
 </div>
 
-<div class="container mx-auto mt-8 p-5 pb-5">
-    <a id="container-buy" class="img-link mt-5" href="assessment.php" target="_blank" onclick="hideTimerPopup()">
+<div class="container mx-auto mt-8 p-5 pb-5 bg-white">
+    <a id="container-buy" class="img-link mt-5 hidden" href="assessment.php" target="_blank" onclick="hideTimerPopup()">
         <img class="mx-auto" style="max-width: 350px;" src="/images/animated-button+test.png" alt="">
     </a>
     <div class="mt-5 p-4">
@@ -172,7 +172,7 @@ $cookie_value = "yes";
             </li>
         </ul>
         <p class="mt-5" style="text-align: center; font-size: 12px; color: #737373;">
-          &copy; Supernatural Man, LLC 2021 All rights reserved.
+          &copy; <?php echo $company['name'] ?> All rights reserved.
       </p>
     </div>
 </div>
@@ -223,12 +223,14 @@ $( document ).ready(function() {
 
 <!-- To fade in a form, enter the time in milliseconds and the id of the <div> to fade in -->
 <!-- @sheena - any idea what this does? -->
-<?php if ($_COOKIE[$cookie_name] == "yes") { ?>
+
+<?php if (@$_COOKIE[$cookie_name] == "yes") { ?>
 <script>
     fadeInDelay =0;
     fadeInDiv = '#container-buy, #top-btn';
     fadeOutDiv = '#main-hdl, #sub-hdl';
     sessionStorage.setItem("is_timer_complete", "no");
+    popButton();
 </script>
 
 
@@ -241,7 +243,9 @@ $( document ).ready(function() {
 
 <?php } else { ?>
 <script>
+    //add cookie/session logic for button pop
     //doStart1();
+    document.cookie = "<?php echo $cookie_name ?>=yes; max-age=" + 3600;
 </script>
 <?php } ?>
 
@@ -253,16 +257,18 @@ $( document ).ready(function() {
 </script>
 <!-- Buy Safe Script -->
 
+<script>
+<?php
+if (isset($_SESSION["alink"])) {
+    if ($_SESSION["alink"] == 'off') {
+        echo(`$("#afflink").css('display','none')`);
+    } else {
+        echo(`$("#afflink").css('display','inline-block')`);
+    }
+}
+?>
+</script>
 
-<?php if ($_SESSION["alink"] == 'off') { ?>
-<script>
-  $("#afflink").css('display','none');
-</script>
-<?php } else { ?>
-<script>
-  $("#afflink").css('display','inline-block');
-</script>
-<?php } ?>
 
 
 <?php
@@ -290,9 +296,11 @@ if ($_SESSION["a"] == 496) { ?>
 -->
 
 
+
+
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
-    template('debug', 'debug');
+    template('debug', null, null, 'debug');
 } ?>
 </body>
 </html>

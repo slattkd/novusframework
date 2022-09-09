@@ -15,6 +15,10 @@ switch ($url) {
         break;
     case "up01":
         //upsell 1 fire
+        /*
+        <iframe src="https://safetrkpro.com/p.ashx?o=35&e=1&fb=1&t=<?php echo $_SESSION['step_1_orderId']; ?>&r=<?php echo $_GET['r']; ?>" height="1" width="1" frameborder="0"></iframe>
+        <img src='http://api.content.ad/Lib/TrackConversion.aspx?aid=aa28b4f6-81b8-48dd-ae8a-f1529865501d' width='1' height='1' />
+        */
         break;
     case "up02":
         //upsell 2 fire
