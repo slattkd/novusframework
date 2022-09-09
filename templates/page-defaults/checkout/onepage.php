@@ -977,9 +977,6 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                       checkout.innerText = "Complete Purchase";
                     }
 
-
-
-
                     //var age = document.querySelector('input[name="age"]:checked').value;
                     //var weeklysex = document.querySelector('input[name="weeklysex"]:checked').value;
                     //var stayhard = document.querySelector('input[name="stayhard"]:checked').value;
