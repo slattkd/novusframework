@@ -1,13 +1,13 @@
-<?php 
+<?php
 
-// 
-/* 
-If a client requests custom pixels to be added to the site,include them here.
+//
+/*
+If a client requests custom pixels to be added to the site, include them here.
 This should be fired on every page, so via a proxy cron, through the queue manager
-it will not load or show in the source. Variables will need to passed tith the pixel.
+it will not load or show in the source. Variables will need to passed with the pixel.
 */
 
-// TODO: Add funtionality to prevent test orders from firing custom pixels (IE Taboola+Outbrain Issue)
+// TODO: Add functionality to prevent test orders from firing custom pixels (IE Taboola+Outbrain Issue)
 
 switch ($url) {
     case "lander":
@@ -32,7 +32,7 @@ switch ($url) {
 
 
 /*
-// GA4 varaibles needed to add
+// GA4 variables needed to add
 // Transaction variables
 var product_id;
 var product_ids; //array of all product ids in collection

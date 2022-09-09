@@ -6,9 +6,9 @@
 </head>
 
 <body class="bg-white">
-    <?php //template('includes/navigation'); 
+    <?php //template('includes/navigation');
     ?>
-    Hello
+    This is index22.php
 
     <?php template('includes/footer'); ?>
     <?php if ($site['debug'] == true) {

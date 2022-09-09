@@ -6,6 +6,7 @@
 
 
 use Enqueue\Fs\FsConnectionFactory;
+
 $connectionFactory = new FsConnectionFactory([
     'path' => '../queue', //place above root not publicly available
     'pre_fetch_count' => 1,
@@ -13,13 +14,13 @@ $connectionFactory = new FsConnectionFactory([
 $context = $connectionFactory->createContext();
 
 $fooQueue = $context->createQueue('aQueue');
-$message = $context->createMessage('Hello world!'.time());
+$message = $context->createMessage('Hello world!' . time());
 
 //$context->createProducer()->send($fooQueue, $message);
 
 
 
-//TODO: PHP Queue Manager 
+//TODO: PHP Queue Manager
 //Possibly- https://github.com/fordnox/php-queue-manager
 
 //require 'vendor/autoload.php';

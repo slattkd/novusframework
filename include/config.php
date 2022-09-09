@@ -2,141 +2,172 @@
 
 //header("Content-Security-Policy: default-src 'self' https://cdn.tailwindcss.com/");
 //
-require '../vendor/autoload.php'; 
-
-
+require '../vendor/autoload.php';
 
 //TODO: Add all config variables to customize the site
 
 // Debug Toggle
-// TODO: Add ability to securly enable debug through a cookie.
-if ($_SERVER['HTTP_HOST'] == 'novusframework.test' || $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ) {
+// TODO: Add ability to securely enable debug through a cookie.
+
+$debugCookie = $_COOKIE['debug'] ?? 'no';
+
+
+if (
+    $_SERVER['HTTP_HOST'] == 'novusframework.test' ||
+    $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ||
+    $debugCookie == 'js6^g1hks92'
+) {
     $site['debug'] = true;
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 } else {
-	$site['debug'] = false;
+    $site['debug'] = false;
 }
 
 // Require the Composer autoloader, if not already loaded
 use DebugBar\StandardDebugBar;
+
 if ($site['debug'] == true) {
-    $debugbar = new StandardDebugBar(); 
+    $debugbar = new StandardDebugBar();
     $debugbarRenderer = $debugbar->getJavascriptRenderer();
 }
 
-if ($site['debug'] == true) { $debugbar['time']->startMeasure('collectvars', 'Collecting variables from config'); }
-	//Cake Redirect Toggle
-	$site['useCake'] = true;
+if ($site['debug'] == true) {
+    $debugbar['time']->startMeasure('collectvars', 'Collecting variables from config');
+}
 
-	//Campaign Settings
-	$site['campaign'] = 22;
-	$site['freeship'] = 5;
-	$site['defaultAffId'] = 2126;
+//Cake Redirect Toggle
+$site['useCake'] = true;
+$site['useEverflow'] = true;
 
-	// Tracking
-	$site['GTMContainer'] = '';
 
-	// This URL Key is used to decode the obfuscated URL
-	$site['urlkey'] = "PXTfHbayAvPnBkp4UYx5eS88qwccEwr7Pc5hPLKq";
-	$site['iv'] = '4AI9kpWvjsKTDsYW';
+//Campaign Settings
+$site['campaign'] = 22;
+$site['freeship'] = 5;
+$site['defaultAffId'] = 2126;
 
-	$site['cakeApiUrl'] = 'https://gdc.network-stats.com/';
-	$site['cakeApiKey'] ='QeTXa9UguH3vekAtU5Ttq9V6LWAaGB';
+// Tracking
+$site['GTMContainer'] = 'GTM-T7RRXPJ';
+$site['googleSiteVerification'] = 'MtiLf9dEfLrFvmiovviCmLHIx4Cc0uD2RGsA72oC29E';
 
-	$site['stickyApi'] 	= 'pineappleapi';
-	$site['stickyPass'] = 'nWsw3BzrhnFBkJ';
-	$site['stickyUrl'] 	= 'gdc.sticky.io';
+// This URL Key is used to decode the obfuscated URL
+$site['urlkey']     = 'PXTfHbayAvPnBkp4UYx5eS88qwccEwr7Pc5hPLKq';
+$site['iv']         = '4AI9kpWvjsKTDsYW';
+$site['proxyKey']   = 'hsjdh772hjaklh28P8ENDJKJUKJDBAHJ2UBSKJjksjjs';
 
-	// Company Variables
-	$company['name'] = 'Clarity Naturals';
-	$company['email'] = 'support@claritynaturalsstore.com';
-	$company['phone'] = '(855) 665-0715';
-	$company['address1'] = '5136 W Clifton St';
-	$company['address2'] = '';
-	$company['city'] = 'Tampa';
-	$company['state'] = 'FL';
-	$company['zip'] = '33634';
+$site['cakeApiUrl'] = 'https://gdc.network-stats.com/';
+$site['cakeApiKey'] = 'QeTXa9UguH3vekAtU5Ttq9V6LWAaGB';
 
-	$site['logo'] = '/images/claritynaturals_logo_horizontal.png';
-	$site['imgpath'] = '//s3.amazonaws.com/secretfatlosstrick/';
-	$site['contactlink'] = 'mailto:help@revivalpointllc.com';
+$site['maropostApiKey'] = 'UrxhFyQYEmFCLGT8oVTthbUfmJeXzGsKrcgjK4ctQtzZEUT0BdBTrg';
+$site['maropostApiUrl'] = 'https://api.maropost.com/accounts/2161/';
 
-if ($site['debug'] == true) { $debugbar['time']->stopMeasure('collectvars'); }
+$site['stickyApi']  = 'pineappleapi';
+$site['stickyPass'] = 'nWsw3BzrhnFBkJ';
+$site['stickyUrl']  = 'gdc.sticky.io';
+/*
+$limelight_api_username     = '5gmale-funnel';
+$limelight_api_password     = 'MAzpqTRAXa4Dvk';
+$limelight_api_instance     = 'gdc.sticky.io';
+*/
 
-// Does this need to live in the config, it's a constant and shoudl never change
+// Company Variables
+$company['name'] = 'Supernatural Man LLC';
+$company['email'] = 'support@claritynaturalsstore.com';
+$company['phone'] = '(855) 665-0715';
+$company['address1'] = '5136 W Clifton St';
+$company['address2'] = '';
+$company['city'] = 'Tampa';
+$company['state'] = 'FL';
+$company['zip'] = '33634';
+
+$site['logo'] = '/images/claritynaturals_logo_horizontal.png';
+$site['imgpath'] = '//s3.amazonaws.com/secretfatlosstrick/';
+$site['contactlink'] = 'mailto:help@revivalpointllc.com';
+
+if ($site['debug'] == true) {
+    $debugbar['time']->stopMeasure('collectvars');
+}
+
+// Does this need to live in the config, it's a constant and should never change
 $usStates = [
-	'AL'=>'Alabama',
-	'AK'=>'Alaska',
-	'AS'=>'American Samoa',
-	'AZ'=>'Arizona',
-	'AR'=>'Arkansas',
-	'AA'=>'Armed Forces Americas',
-	'AE'=>'Armed Forces Middle East',
-	'AP'=>'Armed Forces Pacific',
-	'CA'=>'California',
-	'CO'=>'Colorado',
-	'CT'=>'Connecticut',
-	'DE'=>'Delaware',
-	'DC'=>'District of Columbia',
-	'FM'=>'Federated States of Micronesia',
-	'FL'=>'Florida',
-	'GA'=>'Georgia',
-	'GU'=>'Guam',
-	'HI'=>'Hawaii',
-	'ID'=>'Idaho',
-	'IL'=>'Illinois',
-	'IN'=>'Indiana',
-	'IA'=>'Iowa',
-	'KS'=>'Kansas',
-	'KY'=>'Kentucky',
-	'LA'=>'Louisiana',
-	'ME'=>'Maine',
-	'MD'=>'Maryland',
-	'MA'=>'Massachusetts',
-	'MI'=>'Michigan',
-	'MN'=>'Minnesota',
-	'MS'=>'Mississippi',
-	'MO'=>'Missouri',
-	'MT'=>'Montana',
-	'NE'=>'Nebraska',
-	'NV'=>'Nevada',
-	'NH'=>'New Hampshire',
-	'NJ'=>'New Jersey',
-	'NM'=>'New Mexico',
-	'NY'=>'New York',
-	'NC'=>'North Carolina',
-	'ND'=>'North Dakota',
-	'MP'=>'Northern Mariana Islands',
-	'OH'=>'Ohio',
-	'OK'=>'Oklahoma',
-	'OR'=>'Oregon',
-	'PA'=>'Pennsylvania',
-	'PR'=>'Puerto Rico',
-	'MH'=>'Republic of Marshall Islands',
-	'RI'=>'Rhode Island',
-	'SC'=>'South Carolina',
-	'SD'=>'South Dakota',
-	'TN'=>'Tennessee',
-	'TX'=>'Texas',
-	'UT'=>'Utah',
-	'VT'=>'Vermont',
-	'VI'=>'Virgin Islands of the U.S.',
-	'VA'=>'Virginia',
-	'WA'=>'Washington',
-	'WV'=>'West Virginia',
-	'WI'=>'Wisconsin',
-	'WY'=>'Wyoming'
+'AL' => 'Alabama',
+'AK' => 'Alaska',
+'AS' => 'American Samoa',
+'AZ' => 'Arizona',
+'AR' => 'Arkansas',
+'AA' => 'Armed Forces Americas',
+'AE' => 'Armed Forces Middle East',
+'AP' => 'Armed Forces Pacific',
+'CA' => 'California',
+'CO' => 'Colorado',
+'CT' => 'Connecticut',
+'DE' => 'Delaware',
+'DC' => 'District of Columbia',
+'FM' => 'Federated States of Micronesia',
+'FL' => 'Florida',
+'GA' => 'Georgia',
+'GU' => 'Guam',
+'HI' => 'Hawaii',
+'ID' => 'Idaho',
+'IL' => 'Illinois',
+'IN' => 'Indiana',
+'IA' => 'Iowa',
+'KS' => 'Kansas',
+'KY' => 'Kentucky',
+'LA' => 'Louisiana',
+'ME' => 'Maine',
+'MD' => 'Maryland',
+'MA' => 'Massachusetts',
+'MI' => 'Michigan',
+'MN' => 'Minnesota',
+'MS' => 'Mississippi',
+'MO' => 'Missouri',
+'MT' => 'Montana',
+'NE' => 'Nebraska',
+'NV' => 'Nevada',
+'NH' => 'New Hampshire',
+'NJ' => 'New Jersey',
+'NM' => 'New Mexico',
+'NY' => 'New York',
+'NC' => 'North Carolina',
+'ND' => 'North Dakota',
+'MP' => 'Northern Mariana Islands',
+'OH' => 'Ohio',
+'OK' => 'Oklahoma',
+'OR' => 'Oregon',
+'PA' => 'Pennsylvania',
+'PR' => 'Puerto Rico',
+'MH' => 'Republic of Marshall Islands',
+'RI' => 'Rhode Island',
+'SC' => 'South Carolina',
+'SD' => 'South Dakota',
+'TN' => 'Tennessee',
+'TX' => 'Texas',
+'UT' => 'Utah',
+'VT' => 'Vermont',
+'VI' => 'Virgin Islands of the U.S.',
+'VA' => 'Virginia',
+'WA' => 'Washington',
+'WV' => 'West Virginia',
+'WI' => 'Wisconsin',
+'WY' => 'Wyoming'
 ];
 
 
 
 
 // Get products from JSON file
-if ($site['debug'] == true) {$debugbar['time']->startMeasure('longop', 'Get Products JSON');}
+if ($site['debug'] == true) {
+    $debugbar['time']->startMeasure('longop', 'Get Products JSON');
+}
 
-	$productsJson = file_get_contents("../include/products.json");
-	$site['products'] = $someArray = json_decode($productsJson, true);
+$productsJson = file_get_contents("../include/products.json");
+$site['products'] = $someArray = json_decode($productsJson, true);
 
-if ($site['debug'] == true) {$debugbar['time']->stopMeasure('longop');}
+if ($site['debug'] == true) {
+    $debugbar['time']->stopMeasure('longop');
+}
 
 
 
@@ -160,7 +191,7 @@ var item_count      = "<?php echo isset($_SESSION['item_count']) ? $_SESSION['it
 var transaction_id  = "<?php echo isset($_SESSION['order_id']) ? $_SESSION['order_id'] : ''  ?>";
 var coupon          = "<?php echo isset($_SESSION['coupon']) ? $_SESSION['coupon'] : ''  ?>";  // optional
 var affiliation     = "<?php echo isset($_SESSION['affSubId']) ? $_SESSION['affSubId'] : ''  ?>"; // affiliate data??? $affid_subId
-var content         = "<?php echo isset($_SESSION['content']) ? $_SESSION['content'] : ''  ?>"; 
+var content         = "<?php echo isset($_SESSION['content']) ? $_SESSION['content'] : ''  ?>";
 
 // Customer variables
 var uid             = "<?php echo isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : '' ?>";
@@ -177,5 +208,3 @@ var acceptsmarketing= "<?php echo isset($_SESSION['acceptsMarketing']) ? $_SESSI
 
 </script>
 */
-
-?>

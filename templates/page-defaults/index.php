@@ -6,8 +6,7 @@
 </head>
 
 <body class="bg-white">
-    <?php //template('includes/navigation'); 
-    ?>
+    <?php //template('includes/navigation');?>
     <section class="max-w-5xl mx-auto bg-white mt-6 flex justify-center">
         <img class="p-4" src="/images/soundon.png" alt="Make sure your sound is turned on.">
     </section>

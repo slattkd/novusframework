@@ -1,0 +1,68 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.sans {
+  font-family: 'Open Sans', sans-serif !important;
+}
+.serif {
+  font-family: 'Times New Roman', serif !important;
+}
+
+.condensed {
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+.clickable {
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+}
+:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.75;
+  filter: contrast(0.6);
+}
+
+.container-md {
+  max-width: 1280px;
+  min-height: 100vh;
+}
+
+.container-vsl {
+  max-width: 768px;
+  min-height: 100vh;
+}
+
+.clickable {
+  cursor: pointer;
+  transform: all 200ms ease-in-out;
+}
+.clickable:hover {
+  opacity: 0.75;
+}
+
+
+
+.has-success .form-control {
+    border-bottom: 2px solid #168b3f;
+}
+
+.has-danger .form-control {
+    border-bottom: 2px solid #dc1d34;
+}
+
+.form-group .text-help {
+    color: #dc1d34;
+}
+
+.inline-label label{
+    display: inline;
+}
+
+.pristine-error {
+    display: table;
+}

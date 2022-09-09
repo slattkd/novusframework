@@ -52,6 +52,7 @@ if(in_array(@$_SESSION['product_id'], $viparr)){
             border: 3px dashed #e00000;
             padding: 5px 5px 35px;
             font-family: Lato, sans-serif;
+
         }
 
         .viphead {

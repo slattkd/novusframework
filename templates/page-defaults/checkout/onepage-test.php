@@ -3,20 +3,21 @@
 
 //$vwovar = '';
 
-$nextlink = '../shared/process/checkform.php' . $querystring;
-$nextpage = '/v/dcustom1.php';
+$nextlink = '../process.php' . $querystring;
+$nextpage = '/up1.php';
 $kount_session = str_replace('.', '', microtime(true));
 $prodtype = 6;
 
 if (isset($_POST['prodtype'])) {
     $prodtype = $_POST['prodtype'];
-} else if (isset($_SESSION['product_id'])) {
+} elseif (isset($_SESSION['product_id'])) {
     $prodtype = $_SESSION['product_id'];
 } else {
-    $prodtype = 6;
+    //This is the default product selected.
+    $prodtype = 676;
 }
 
-if (($prodtype == 1) || ($prodtype == 674)) {
+if (($prodtype == '1') || ($prodtype == 674)) {
     $productid = '674';
     $shippingid = '15';
     $baseprice = '49.95';
@@ -28,7 +29,7 @@ if (($prodtype == '1a') || ($prodtype == 768)) {
     $baseprice = '44.95';
     $vip = 1;
 }
-if (($prodtype == 3) || ($prodtype == 676)) {
+if (($prodtype == '3') || ($prodtype == 676)) {
     $productid = '676';
     $shippingid = '5';
     $baseprice = '129';
@@ -40,7 +41,7 @@ if (($prodtype == '3a') || ($prodtype == 769)) {
     $baseprice = '116.10';
     $vip = 1;
 }
-if (($prodtype == 6) || ($prodtype == 679)) {
+if (($prodtype == '6') || ($prodtype == 679)) {
     $productid = '679';
     $shippingid = '5';
     $baseprice = '197';
@@ -95,6 +96,9 @@ $sixauto = [
     'baseprice' => '117.30',
     'pid' => '770',
 ];
+
+//Show the selected product ID.
+debugMessage("Product Type: " . $prodtype);
 
 ?>
 <html>
@@ -241,9 +245,9 @@ $sixauto = [
                     <div style="margin-top: 30px;border:1px dotted red;padding:10px;">
                         <div style="float: left;height:50px;">
                             <input style="width: 50px; height: 25px;margin-top:-1px;" type="checkbox" name="vip" id="vip" <?php if ($vip == 1) {
-                                                                                                                                echo 'checked="checked"';
-                                                                                                                            } else {
-                                                                                                                            } ?> value="1">
+    echo 'checked="checked"';
+} else {
+} ?> value="1">
                         </div>
                         <div>
                             <div>Activate 10% VIP Discount For Free Shipping & Easy Monthly Auto-Refill!</div>
@@ -253,9 +257,6 @@ $sixauto = [
                 <img style="margin-left: -5px; width: 100%;" src="//<?php echo $_SERVER['HTTP_HOST']; ?>/images/guarantee.png">
 
                 <img style="margin-left: -44px" src="//<?php echo $_SERVER['HTTP_HOST']; ?>/images/rushblue.png" alt="rush my order" class="rushimg">
-
-
-
 
 
 
@@ -295,50 +296,62 @@ $sixauto = [
                             <input type="hidden" name="sessionId" value="<?php echo @$kount_session; ?>">
                             <input type="hidden" name="notes" value="<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
                             <input type="hidden" name="billings" id="billings" value="yes">
-                            <!--              <form  onsubmit="return false;"> -->
-                            <div class="form-top">
 
+                            <div class="form-top">
                                 <img style="width:100%" class="img-fluid" src="//<?php echo $_SERVER['HTTP_HOST']; ?>/images/order-frm-top.png">
                             </div>
                             <hr>
 
                             <div style="padding-top:10px" id="formfields">
 
-                                <div class="kform_spacer row">
+                                <div style="width:90%; margin: 0 auto; text-align: center;font-size:14px;color: #ff0000; font-weight: bold;">
+                                <?php
+                                $_SESSION['formerrors'] ?? $_SESSION['formerrors'] = array();
+                                foreach ($_SESSION['formerrors'] as $error) {
+                                    echo $error . '<br>';
+                                }
+                                unset($_SESSION['formerrors']);
+                                //unset($_SESSION['llerror']);
+                                ?>
+                                </div>
+
+                                <div>
                                     <div class="col-md-3"><small>First Name:</small></div>
                                     <input id="first_name" type="text" value='<?php echo @$post['first_name']; ?>' name="first_name" placeholder="First Name" class="required col-md-7 col-xs-12" data-error-message="Please enter your first name!" />
                                 </div>
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Last Name:</small></div>
                                     <input id='last_name' type="text" value='<?php echo @$post['last_name']; ?>' name="last_name" placeholder="Last Name" class="required col-md-7 col-xs-12" data-error-message="Please enter your last name!" />
                                 </div>
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Email:</small></div>
                                     <input id='email' type="text" value='<?php echo @$post['email']; ?>' name="email" placeholder="Email Address" onchange="mailverify()" class="required col-md-7 col-xs-12" data-validate="email" data-error-message="Please enter a valid email id!" />
                                 </div>
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Phone:</small></div>
                                     <input id='phone' type="text" value='<?php echo @$post['phone']; ?>' name="phone" maxlength="10" placeholder="Phone Number" class="required col-md-7 col-xs-12" data-validate="phone" data-min-length="10" data-max-length="15" data-error-message="Please enter a valid contact number!" />
                                 </div>
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Shipping Address:</small></div>
                                     <input id='shippingAddress1' value='<?php echo @$post['shippingAddress1']; ?>' type="text" name="shippingAddress1" id="shippingAddress1" placeholder="Your Address" class="required col-md-7 col-xs-12" data-error-message="Please enter your address!" />
                                 </div>
 
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Country:</small></div>
                                     <select id='shippingCountry' value='<?php echo @$post['shippingCountry']; ?>' name="shippingCountry" class="required tick_img_postn col-md-7 col-xs-12" data-selected="US" data-error-message="Please select your country!" style="color: #000;">
-                                        <option value="US" <?php if (@$post['shippingCountry'] == 'US') {
-                                                                echo "selected";
-                                                            } ?>>United States</option>
+                                        <option value="US" <?php
+                                        if (@$post['shippingCountry'] == 'US') {
+                                            echo "selected";
+                                        } ?>
+                                        >United States</option>
                                     </select>
                                 </div>
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>City:</small></div>
                                     <input id='shippingCity' value='<?php echo @$post['shippingCity']; ?>' type="text" name="shippingCity" id="shippingCity" placeholder="Your City" class="required col-md-7 col-xs-12" data-error-message="Please enter your city!" />
                                 </div>
@@ -359,7 +372,7 @@ $sixauto = [
                                     </select>
                                 </div>
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Zip:</small></div>
                                     <input id='shippingZip' value='<?php echo @$post['shippingZip']; ?>' type="text" name="shippingZip" id="shippingZip" maxlength="5" placeholder="Zip Code" class="required col-md-7 col-xs-12" data-error-message="Please enter a valid zip code!" />
                                 </div>
@@ -378,25 +391,25 @@ $sixauto = [
                                         Billing Address same as Shipping
                                     </label>
                                     <input type="radio" id='billingSameAsShippingYes' name="billingSameAsShipping" value="yes" <?php if (@$post['billingSameAsShipping'] == 'yes' || !isset($post['billingSameAsShipping'])) {
-                                                                                                                                    echo 'checked="checked"';
-                                                                                                                                } ?>> YES
+                                            echo 'checked="checked"';
+                                        } ?>> YES
                                     <input type="radio" id='billingSameAsShippingNo' name="billingSameAsShipping" value="no" <?php if (@$post['billingSameAsShipping'] == 'no') {
-                                                                                                                                    echo 'checked="checked"';
-                                                                                                                                } ?>> NO
+                                            echo 'checked="checked"';
+                                        } ?>> NO
 
                                 </div>
                                 <div class="billing-info" <?php if (@$post['billingSameAsShipping'] == 'yes' || !isset($post['billingSameAsShipping'])) {
-                                                                echo 'style="display:none;"';
-                                                            } ?>>
-                                    <div class="kform_spacer row">
+                                            //echo 'style="display:none;"';
+                                        } ?>>
+                                    <div>
                                         <div class="col-md-3"><small>Bill First:</small></div>
                                         <input id='billingFirstName' value='<?php echo @$post['billingFirstName']; ?>' type="text" name="billingFirstName" class="col-md-7 col-xs-12" placeholder="Billing First Name" data-error-message="Please enter your billing First Name!" />
                                     </div>
-                                    <div class="kform_spacer row">
+                                    <div>
                                         <div class="col-md-3"><small>Bill Last:</small></div>
                                         <input id='billingLastName' value='<?php echo @$post['billingLastName']; ?>' type="text" name="billingLastName" class="col-md-7 col-xs-12" placeholder="Billing Last Name" data-error-message="Please enter your billing Last Name!" />
                                     </div>
-                                    <div class="kform_spacer row">
+                                    <div>
                                         <div class="col-md-3"><small>Bill Address:</small></div>
                                         <input id='billingAddress1' value='<?php echo @$post['billingAddress1']; ?>' type="text" name="billingAddress1" class="col-md-7 col-xs-12" placeholder="Billing Address" data-error-message="Please enter your billing address!" />
                                     </div>
@@ -406,20 +419,20 @@ $sixauto = [
                 </div> -->
 
 
-                                    <div class="kform_spacer row">
+                                    <div>
                                         <div class="col-md-3"><small>Country:</small></div>
                                         <select name="billingCountry" value='<?php echo @$post['billingCountry']; ?>' class="col-md-7 col-xs-12" data-error-message="Please select your billing Country!" style="color: #000;">
                                             <option value="US" <?php if (@$post['billingCountry'] == 'US') {
-                                                                    echo "selected";
-                                                                } ?>>United States</option>
+                                            echo "selected";
+                                        } ?>>United States</option>
                                         </select>
                                     </div>
-                                    <div class="kform_spacer row">
+                                    <div>
                                         <div class="col-md-3"><small>City:</small></div>
                                         <input id='billingCity' value='<?php echo @$post['billingCity']; ?>' type="text" name="billingCity" class="col-md-7 col-xs-12" placeholder="Billing City" data-error-message="Please enter your billing city!" />
                                     </div>
 
-                                    <div class="kform_spacer row">
+                                    <div>
                                         <div class="col-md-3"><small>State:</small></div>
                                         <select name="billingState" value='<?php echo @$post['billingState']; ?>' id="billingState" class="tick_img_postn col-md-7 col-xs-12" data-error-message="Please select your state!" style="color: #000;">
                                             <option value="">Select State</option>
@@ -437,9 +450,7 @@ $sixauto = [
 
 
 
-
-
-                                    <div class="kform_spacer row">
+                                    <div>
                                         <div class="col-md-3"><small>Zip:</small></div>
                                         <input id='billingZip' value='<?php echo @$post['billingZip']; ?>' type="text" maxlength="5" class="col-md-7 col-xs-12" name="billingZip" placeholder="Billing Zip Code" data-error-message="Please enter a valid billing zip code!" />
                                     </div>
@@ -466,13 +477,13 @@ $sixauto = [
                                     </div>
                                 </div>
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Card #:</small></div>
                                     <input id='creditCardNumber' type="text" name="creditCardNumber" placeholder="Credit Card Number" class="required cc-number col-md-7 col-xs-12" maxlength="16" data-error-message="Please enter a valid credit card number!" />
                                 </div>
 
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>CVV #:</small></div>
                                     <input id='cvv' type="text" name="cvv" class="required col-md-7 col-xs-12" placeholder="Card Security Code" data-validate="cvv" maxlength="4" data-error-message="Please enter a valid CVV code!" />
 
@@ -481,7 +492,7 @@ $sixauto = [
 
 
 
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Exp Month:</small></div>
                                     <select id='expmonth' name="expmonth" class="required tick_img_postn col-md-7 col-xs-12" data-error-message="Please select a valid expiry month!">
                                         <option value="01">01</option>
@@ -498,7 +509,7 @@ $sixauto = [
                                         <option value="12">12</option>
                                     </select>
                                 </div>
-                                <div class="kform_spacer row">
+                                <div>
                                     <div class="col-md-3"><small>Exp Year:</small></div>
                                     <select id='expyear' name="expyear" class="required col-md-7 col-xs-12 tick_img_postn" data-error-message="Please select a valid expiry year!">
                                         <?php
@@ -571,8 +582,8 @@ $sixauto = [
 
     <?php template('includes/footer'); ?>
     <?php if ($site['debug'] == true) {
-        template('debug', 'debug');
-    } ?>
+                                            template('debug', 'debug');
+                                        } ?>
 </body>
 
 </html>
