@@ -41,7 +41,6 @@ if ($site['debug'] == true) {
 $site['useCake'] = true;
 $site['useEverflow'] = true;
 
-
 //Campaign Settings
 $site['campaign'] = 22;
 $site['freeship'] = 5;
@@ -65,6 +64,11 @@ $site['maropostApiUrl'] = 'https://api.maropost.com/accounts/2161/';
 $site['stickyApi']  = 'pineappleapi';
 $site['stickyPass'] = 'nWsw3BzrhnFBkJ';
 $site['stickyUrl']  = 'gdc.sticky.io';
+
+$site['logo'] = '/images/claritynaturals_logo_horizontal.png';
+$site['imgpath'] = '//s3.amazonaws.com/5gmale/';
+$site['contactlink'] = 'mailto:help@5gmale.com';
+
 /*
 $limelight_api_username     = '5gmale-funnel';
 $limelight_api_password     = 'MAzpqTRAXa4Dvk';
@@ -81,13 +85,15 @@ $company['city'] = 'Tampa';
 $company['state'] = 'FL';
 $company['zip'] = '33634';
 
-$site['logo'] = '/images/claritynaturals_logo_horizontal.png';
-$site['imgpath'] = '//s3.amazonaws.com/secretfatlosstrick/';
-$site['contactlink'] = 'mailto:help@revivalpointllc.com';
+
+
 
 if ($site['debug'] == true) {
     $debugbar['time']->stopMeasure('collectvars');
 }
+
+
+
 
 // Does this need to live in the config, it's a constant and should never change
 $usStates = [
@@ -162,8 +168,20 @@ if ($site['debug'] == true) {
     $debugbar['time']->startMeasure('longop', 'Get Products JSON');
 }
 
-$productsJson = file_get_contents("../include/products.json");
-$site['products'] = $someArray = json_decode($productsJson, true);
+//$productsJson = file_get_contents("../include/products.json");
+//$site['products'] = $someArray = json_decode($productsJson, true);
+
+//Add JSON products to Products global variable
+// Read the JSON file
+$productsJson = file_get_contents('../include/products.json');
+
+// Decode the JSON file
+$productsData = json_decode($productsJson, true);
+
+// Display data
+//print_r($productsData);
+
+$products = $productsData;
 
 if ($site['debug'] == true) {
     $debugbar['time']->stopMeasure('longop');

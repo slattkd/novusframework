@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set( "America/New_York" );
 error_reporting(0);
-require_once($_SERVER['DOCUMENT_ROOT'].'/shared-gm/site.php');  
+//require_once($_SERVER['DOCUMENT_ROOT'].'/shared-gm/site.php');
 	include('config.php');
 	include('inc/class.cart.php');
 
@@ -66,7 +66,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
               SHOP NOW</button>
 					</a>
 			</div>
-			
+
 		</div>
 	</div>
 </div>
@@ -96,7 +96,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             </p>
 				 <a href="/tailwind/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
-            
+
 			  <div class="flex flex-col">
             <div class="flex justify-center">
               <img class="circle-image" src="https://5gmale.com/images/icons/product-icon.png" alt="">
@@ -131,7 +131,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 					<div class="flex justify-center w-2/3 md:w-1/2 mx-auto" style="max-width: 80ch">
 						<p>These statements have not been evaluated by the Food and Drug Administration. These products are not intended to treat, cure or prevent any disease. Results may vary from person to person.</p>
 					</div>
-					
+
 				</div>
 			</div>
 
@@ -139,6 +139,6 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 </div>
 
 
-<?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/footer.php'); ?>	
+<?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/footer.php'); ?>
 </body>
 </html>

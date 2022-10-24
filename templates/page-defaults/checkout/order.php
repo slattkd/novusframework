@@ -41,11 +41,11 @@ if ((@$_SESSION['s1'] == '335059') || (@$_SESSION['s1'] == '704154')) {
 
 
 //Setup Countdown Timer
-$timerCheck = time() - $_SESSION['timer-gm'];
-if ($timerCheck < 0) {
+if (!isset($_SESSION['timer-gm'])) {
     $_SESSION['timer-gm'] = time();
 }
-if (!isset($_SESSION['timer-gm'])) {
+$timerCheck = time() - $_SESSION['timer-gm'];
+if ($timerCheck < 0) {
     $_SESSION['timer-gm'] = time();
 }
 $timerDelay = time() - $_SESSION['timer-gm'];

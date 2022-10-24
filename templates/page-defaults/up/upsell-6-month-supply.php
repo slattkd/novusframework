@@ -1,12 +1,22 @@
 <?php
-header("Cache-Control: max-age=300, must-revalidate");
-//include '../../includes/CakePost.inc.php';
-//CakePost::post($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
-
 $cookie_name = "returning_userup1";
 $cookie_value = "yes";
-$videoid = "jSBtEwenrKwiOeKu";
+$vidcode = "jSBtEwenrKwiOeKu";
 $droptime = "45";
+
+//PageTypes dictate what pixels are bing fired, options should be limited to:
+/*
+  1. vsl
+  2. wsl
+  3. assessemnt
+  4. order
+  5. onepage
+  6. step1, step2, step3
+  7. up1, up2, up3, up4
+  8. dn1, dn2, dn3
+  9. receipt
+*/
+$_SESSION['pageType'] = 'up1';
 
 setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
 
@@ -114,77 +124,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 
 <head>
 	<?php template("includes/header"); ?>
-
-    <?php if ($firedl) : ?>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': '<?php echo $dataLayer['event']; ?>',
-                'transactionId': '<?php echo $dataLayer['transactionId']; ?>',
-                'transactionTotal': '<?php echo $orderamt; ?>',
-                'transactionAffiliation': '<?php echo @$_SESSION['affid']; ?>',
-                'transactionProducts': [{
-                    'sku': '<?php echo $gtmsku; ?>',
-                    'name': '<?php echo $gtmname; ?>',
-                    'price': '<?php echo $orderamt; ?>',
-                    'quantity': 1
-                }]
-            });
-        </script>
-    <?php endif; ?>
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-T7RRXPJ');
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- Global site tag (gtag.js) - Google Ads: 688388232 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-688388232"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'AW-688388232');
-    </script>
-    <!-- Event snippet for Website sale conversion page -->
-    <script>
-        gtag('event', 'conversion', {
-            'send_to': 'AW-688388232/z6adCLjjyLYBEIjxn8gC',
-            'transaction_id': '<?php echo $_SESSION['step_1_orderId']; ?>'
-        });
-    </script>
-    <!-- Global site tag (gtag.js) - Google Ads: 761912273 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-761912273"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'AW-761912273');
-    </script>
-
-
-	<?php template("includes/header"); ?>
-    <title>100% SECURE - Supernatural Man LLC Checkout</title>
     <link rel="shortcut icon" href="https://s3.amazonaws.com/sec-image/upsells/skeletonkey/lock.png" type="image/png" />
-    <link rel="icon" type="image/png" href="/favicon.png">
 
     <style>
         body {
@@ -265,67 +205,8 @@ if (isset($_SESSION['step_1_orderId'])) {
                 </div>
                 <p class="w-full pb-3 text-center text-3xl">Watch This Short Presentation To Get Started With 5G Male And Secure An <strong>Additional 65% OFF</strong>…</p>
                 <!-- <p class="w-full pb-3 text-center text-lg">Tap The Video Below To Play</p> -->
-                <div class="flex justify-center w-full my-5">
-                    <div id="vidalytics_embed_jSBtEwenrKwiOeKu" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
-                    <script type="text/javascript">
-                        (function(v, i, d, a, l, y, t, c, s) {
-                            y = '_' + d.toLowerCase();
-                            c = d + 'L';
-                            if (!v[d]) {
-                                v[d] = {};
-                            }
-                            if (!v[c]) {
-                                v[c] = {};
-                            }
-                            if (!v[y]) {
-                                v[y] = {};
-                            }
-                            var vl = 'Loader',
-                                vli = v[y][vl],
-                                vsl = v[c][vl + 'Script'],
-                                vlf = v[c][vl + 'Loaded'],
-                                ve = 'Embed';
-                            if (!vsl) {
-                                vsl = function(u, cb) {
-                                    if (t) {
-                                        cb();
-                                        return;
-                                    }
-                                    s = i.createElement("script");
-                                    s.type = "text/javascript";
-                                    s.async = 1;
-                                    s.src = u;
-                                    if (s.readyState) {
-                                        s.onreadystatechange = function() {
-                                            if (s.readyState === "loaded" || s.readyState == "complete") {
-                                                s.onreadystatechange = null;
-                                                vlf = 1;
-                                                cb();
-                                            }
-                                        };
-                                    } else {
-                                        s.onload = function() {
-                                            vlf = 1;
-                                            cb();
-                                        };
-                                    }
-                                    i.getElementsByTagName("head")[0].appendChild(s);
-                                };
-                            }
-                            vsl(l + 'loader.min.js', function() {
-                                if (!vli) {
-                                    var vlc = v[c][vl];
-                                    vli = new vlc();
-                                }
-                                vli.loadScript(l + 'player.min.js', function() {
-                                    var vec = v[d][ve];
-                                    t = new vec();
-                                    t.run(a);
-                                });
-                            });
-                        })(window, document, 'Vidalytics', 'vidalytics_embed_jSBtEwenrKwiOeKu', 'https://quick.vidalytics.com/embeds/KwmJQD4K/jSBtEwenrKwiOeKu/');
-                    </script>
-
+                <div class="flex justify-center w-full my-5 upsell">
+                      <?php video('includes/player', $vidcode, $droptime);?>
                 </div>
                 <div class="w-full pb-3 text-center">
                     <h2 class="font-bold text-2xl text-red-500">Click The Button Below Now To See If You Qualify For This Discount</h2>
@@ -352,7 +233,7 @@ if (isset($_SESSION['step_1_orderId'])) {
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $179.69</strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 57% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/OCUS/?id=2&buy=1" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+                                <a href="/process-up/?pid=11&buy=1&up=test" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
                                 </div>
 
                             </div>
@@ -362,7 +243,7 @@ if (isset($_SESSION['step_1_orderId'])) {
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $297</strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A WHOPPING 65% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/OCUS/?id=2&buy=1" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+                                <a href="/process-up/?pid=250&buy=1" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
                                 </div>
                             </div>
                         </div>
@@ -445,31 +326,16 @@ if (isset($_SESSION['step_1_orderId'])) {
 
         // modal on mouseleave
         document.documentElement.addEventListener('mouseleave', () => {
-            window.modalHandler('exitModal', true);
+           // window.modalHandler('exitModal', true);
         })
 
         // modal on navigate away
         window.addEventListener('popstate', function(e) {
-            window.modalHandler('exitModal', true);
+           // window.modalHandler('exitModal', true);
         });
 
     </script>
 
-
-    <?php if ($_COOKIE[$cookie_name] == 'yes') { ?>
-        <script>
-            fadeInDelay = 0;
-            fadeInDiv = '#container-buy';
-            setTimeout(function() {
-                var scroll = $('.container-video').offset().top;
-                $('html, body').animate({
-                    scrollTop: scroll
-                }, 2000);
-            }, 2000);
-        </script>
-
-    <?php } ?>
-    <script src="/shared/js/fadeIn.js"></script>
 
 </body>
 <?php if ($site['debug'] == true) {

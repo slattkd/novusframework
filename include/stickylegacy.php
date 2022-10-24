@@ -363,28 +363,31 @@ class sticky
 
     public function newOrderCardOnFile($posted)
     {
-        global $product;
-        global $up;
-        global $freeshipping;
-        global $campaign;
+        global $site;
 
-        $campaign_id = $campaign[1]->campid;
-        $orderId = $_SESSION['order_id'];
-        $shipping_id = $freeshipping[1]->freeshipid;
-        $product_id = $up[$posted['up']]->option[$posted['buy']]->sticky_product_id;
+        print_r($posted);
+        echo $posted['pid'];
+
+        $vwoUpsellvar = (isset($_SESSION['vwoupvar'])) ? $_SESSION['vwoupvar'] : 'none';
+        $campaign_id     = $site['campaign'];
+        $orderId         = (isset($_SESSION['orderId'])) ? $_SESSION['orderId'] : $_COOKIE['step_1_orderId'];
+        $shipping_id     = $site['freeship'];
+        $product_id      = $posted['pid'];
+        //$product_price   = $step[$posted['step']]->option[$posted['buy']]->ll_product_price;
+        //$product_qty     = $step[$posted['step']]->option[$posted['buy']]->ll_product_qty;
 
 
-
-        $fields = array('username' =>  $this->sticky_username,
-                    'password' =>  $this->sticky_password,
-                    'method' =>  'NewOrderCardOnFile',
-                    'previousOrderId' =>  $orderId,
-                    'productId' =>  $product_id,
-                    'campaignId' =>  $campaign_id,
-                    'shippingId' =>  $shipping_id,
-                    'product_qty_' . $product_id =>  1
-                    );
-
+        $fields = array('username'                             => $this->sticky_username,
+                        'password'                             => $this->sticky_password,
+                        'method'                               => 'NewOrderCardOnFile',
+                        'previousOrderId'                      => $orderId,
+                        'productId'                            => $product_id,
+                        'campaignId'                           => $campaign_id,
+                        'shippingId'                           => $shipping_id,
+                        //'dynamic_product_price_' . $product_id => $product_price,
+                        'product_qty_' . $product_id           => 1,
+                        'afid'                                 => $vwoUpsellvar
+                        );
 
         $Curl_Session = curl_init();
         curl_setopt($Curl_Session, CURLOPT_URL, 'https://' . $this->sticky_instance . '/admin/transact.php');

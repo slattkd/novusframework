@@ -330,34 +330,6 @@ switch ($add2) {   //37 Sex Positions
         break;
 }
 
-//Affiliate Pixel - Optimize Bros
-if (@$_SESSION['a'] == '186') {
-    header("Content-Length: " . ob_get_length());
-    header("Connection: close");
-    ob_end_flush();
-    ob_flush();
-    flush();
-
-    if (isset($_GET['s2']) && $_GET['s2'] != '') {
-        $url = 'https://hlrke.voluumtrk2.com/postback?cid=' . $_GET['s2'] . '&txid=GDC-35&et=cart';
-
-        //open connection
-        $ch = curl_init();
-
-        //set the url, number of POST vars, POST data
-        curl_setopt($ch, CURLOPT_URL, $url);
-        //curl_setopt($ch,CURLOPT_POST, count($fields));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-
-        //execute post
-        $result = curl_exec($ch);
-
-        //close connection
-        curl_close($ch);
-    }
-}
-//End Affiliate Pixel
-
 //Decline Message Logic
 $timenow = date("H:i:s");
 $timeopen = date("08:00:00");

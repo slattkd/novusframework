@@ -52,12 +52,19 @@ use Monolog\Handler\StreamHandler;
 
 debugTimerStart('logger', 'Starting up logger');
     $logger = new Logger('System');
-    $logger->pushHandler(new StreamHandler('../log/system.log', Logger::INFO));
+    $logger->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_system.log', Logger::INFO));
 debugTimerEnd('logger');
+
+/*
+debugTimerStart('pixel-logger', 'Starting up pixel logger');
+    $loggerPixel = new Logger('Pixel');
+    $loggerPixel->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_pixel.log', Logger::INFO));
+debugTimerEnd('pixel-logger');
+*/
 
 debugTimerStart('404-logger', 'Starting up logger');
     $loggerNotFound = new Logger('404');
-    $loggerNotFound->pushHandler(new StreamHandler('../log/404.log', Logger::INFO));
+    $loggerNotFound->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_404.log', Logger::INFO));
 debugTimerEnd('404-logger');
 
 //TODO: Add Sticky API Functions
@@ -197,6 +204,7 @@ function template($template, $vwoVariable = null, $current_step = null, $templat
 {
     global $site;
     global $company;
+    global $products;
     global $debugbarRenderer;
     global $debugbar;
 
@@ -206,22 +214,38 @@ function template($template, $vwoVariable = null, $current_step = null, $templat
 /*
 Extends the template based on paths to easily add new versions for A/B testing.
 */
-function video($template, $videoID = null, $dropTime = null, $vwoVariable = null, $templatePath = 'templates/page-defaults')
+function video($template, $videoID = null, $dropTime = null, $overlay = null, $vwoVariable = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;
+    global $products;
     global $debugbarRenderer;
     global $debugbar;
 
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
-function modal($template, $modal_id = null, $modal_title = null, $modal_body = null, $modal_footer = null, $templatePath = 'templates/page-defaults' )
+function modal($template, $modal_id = null, $modal_title = null, $modal_body = null, $modal_footer = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;
+    global $products;
     global $debugbarRenderer;
     global $debugbar;
 
     require('../' . $templatePath . '/' . $template . '.php');
 }
+
+/*
+function pixelEvent($template, $event, $affid = null)
+{
+    global $site;
+    global $company;
+    global $products;
+    global $debugbarRenderer;
+    global $debugbar;
+    $templatePath = 'templates/page-defaults';
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+*/

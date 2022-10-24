@@ -36,6 +36,10 @@ if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
     $querystring = "?" . $_SERVER['QUERY_STRING'];
     $_SESSION['querystring'] = $querystring;
 }
+$_SESSION['url']      = $url;
+$_SESSION['slug']     = $slug;
+$_SESSION['pageType'] = pathinfo($slug, PATHINFO_FILENAME);
+$_SESSION['last']     = $_SESSION['url'];
 
 
 function setSessionVars($encryptedData = null)
@@ -44,7 +48,7 @@ function setSessionVars($encryptedData = null)
     $whitelistKeys = [
         'a','o','r','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
         'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
-        'alink','debug','coupon','vwovar','eftid'];
+        'alink','debug','coupon','vwovar','eftid','pid','up','dn','add1','add2','add3',"buy","id","pid","last"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
     foreach ($allowedData as $queryString => $value) {
@@ -53,6 +57,24 @@ function setSessionVars($encryptedData = null)
             $_SESSION['affid'] = $value ?? null;
             $_SESSION['a'] = $value ?? null;
             setCookie('affid', $value, time() + ( 60 * 60 * 24 * 45 ));
+        }
+        if ($queryString == 'pid') {
+            $_SESSION['pid'] = $value ?? null;
+        }
+        if ($queryString == 'up') {
+            $_SESSION['up'] = $value ?? null;
+        }
+        if ($queryString == 'dn') {
+            $_SESSION['dn'] = $value ?? null;
+        }
+        if ($queryString == 'add1') {
+            $_SESSION['add1'] = $value ?? null;
+        }
+        if ($queryString == 'add2') {
+            $_SESSION['add2'] = $value ?? null;
+        }
+        if ($queryString == 'add3') {
+            $_SESSION['add3'] = $value ?? null;
         }
         if ($queryString == 'o') {
             $_SESSION['o'] = $value ?? null;
@@ -98,7 +120,7 @@ function setSessionVars($encryptedData = null)
             $_SESSION['coupon'] = $value ?? null;
         }
         if ($queryString == 'debug') {
-            if ($value == 'js6^g1hks92') {
+            if ($value == 'js6^g1hks92%ks7392hald81^11') {
                 setCookie('debug', $value, time() + 128000, "/");
             } else {
                 setCookie('debug', "no", time() - 3600, "/");
@@ -106,6 +128,15 @@ function setSessionVars($encryptedData = null)
         }
         if ($queryString == 'vwovar') {
             $_SESSION['vwovar'] = $value ?? null;
+        }
+        if ($queryString == 'last') {
+            $_SESSION['last'] = $value ?? $_SESSION['url'];
+        }
+        if ($queryString == 'up') {
+            $_SESSION['up'] = 'https://' . $_SERVER['HTTP_HOST'] . '/up/' . $value ?? 'https://' . $_SERVER['HTTP_HOST'] . '/thankyou/';
+        }
+        if ($queryString == 'dn') {
+            $_SESSION['dn'] = 'https://' . $_SERVER['HTTP_HOST'] . '/dn/' . $value ?? null;
         }
 
 

@@ -59,12 +59,21 @@ foreach ($sessionFields as $sessionField) {
 if ($res[1] == 'responseCode=100') {// was prospect api call a success?
     debugMessage("Order Processed " . json_encode($response));
 
-    $oid_res = explode("=", $res[5]);
-    $cus_res = explode("=", $res[3]);
-    $test_order = explode("=", $res[9]);
-    $_SESSION['order_id'] = $oid_res[1];
-    $_SESSION['customer_id'] = $cus_res[1];
-    $_SESSION['orderTest'] = $test_order[1];
+    $oid_res        = explode("=", $res[5]);
+    $cus_res        = explode("=", $res[3]);
+    $test_order     = explode("=", $res[9]);
+    $order_total    = explode("=", $res[6]);
+    $product_id     = explode("=", $res[12]);
+    $product_name   = explode("=", $res[12]);
+    $product_price    = explode("=", $res[6]);
+    $_SESSION['orderId']        = $oid_res[1];
+    $_SESSION['customerId']     = $cus_res[1];
+    $_SESSION['orderTest']      = $test_order[1];
+    $_SESSION['orderTotal']     = $order_total[1];
+    $_SESSION['productId']      = $product_id[1];
+    $_SESSION['productName']    = $product_name[1];
+    $_SESSION['productPrice']   = $product_price[1];
+
 
     $logger->info('Order ID: ' . $oid_res[1]);
     $logger->info('Customer ID: ' . $cus_res[1]);

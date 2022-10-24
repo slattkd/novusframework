@@ -48,21 +48,25 @@ body {
 
 
 .has-success .form-control {
-    border-bottom: 2px solid #168b3f;
+  border-bottom: 2px solid #168b3f;
 }
 
 .has-danger .form-control {
-    border-bottom: 2px solid #dc1d34;
+  border-bottom: 2px solid #dc1d34;
 }
 
 .form-group .text-help {
-    color: #dc1d34;
+  color: #dc1d34;
 }
 
 .inline-label label{
-    display: inline;
+  display: inline;
 }
 
 .pristine-error {
-    display: table;
+  display: table;
+}
+
+.upsell .video-container {
+  width:1600px;
 }

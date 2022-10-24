@@ -8,8 +8,11 @@ $debugbar->addCollector(new DebugBar\DataCollector\ConfigCollector($site,"Config
 //Collects and show Config Company Data
 $debugbar->addCollector(new DebugBar\DataCollector\ConfigCollector($company,"Company"));
 
+//Collects and show Config Product Data
+$debugbar->addCollector(new DebugBar\DataCollector\ConfigCollector($products,"Products"));
+
 /*
-//Debug Bar Examples 
+//Debug Bar Examples
 
 //Debug Message Example
 $debugbar["messages"]->addMessage("Debugging is the BEST bug!");

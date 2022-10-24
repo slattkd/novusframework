@@ -5,6 +5,9 @@ $droptime = "2444";
 $cookie_name = "returning_user";
 $cookie_value = "yes";
 
+//PageType Override
+$_SESSION['pageType'] = 'vsl';
+
 ?>
 <head>
     <?php template("includes/header"); ?>
@@ -100,7 +103,6 @@ $cookie_value = "yes";
      </style>
 </head>
 
-<!-- HTML code from Bootply.com editor -->
 <body>
 
 <?php if ($_SESSION["a"] == 1125) { ?>
@@ -143,7 +145,7 @@ $cookie_value = "yes";
 </div>
 
 <div class="container-md mx-auto" style="background-color: #C90000;">
-    <?php video('includes/player', $vidcode, $droptime);?>
+    <?php video('includes/player', $vidcode, $droptime, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>
 </div>
 
 <div class="container mx-auto mt-8 p-5 pb-5 bg-white">
