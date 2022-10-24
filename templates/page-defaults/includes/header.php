@@ -62,7 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet">
 
 <!-- PIXELS -->
-<?php include($_SERVER['DOCUMENT_ROOT'] . '../../include/customPixels.php'); ?>
+<?php require($_SERVER['DOCUMENT_ROOT'] . '../../include/customPixels.php'); ?>
 
 <style>
 h1 {
