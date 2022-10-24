@@ -62,7 +62,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet">
 
 <!-- PIXELS -->
-<?php //require_once($_SERVER['DOCUMENT_ROOT'] . '../../include/customPixels.php'); ?>
+<?php
+// Different environments have a trailing slash in the apache config, this fixes it!
+require_once(rtrim($_SERVER['DOCUMENT_ROOT'], '/\\' ) . '../../include/customPixels.php');
+?>
 
 <style>
 h1 {
