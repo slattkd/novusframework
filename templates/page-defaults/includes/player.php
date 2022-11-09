@@ -66,7 +66,7 @@ function onPlayerAPIAvailableCallback() {
     });
 }
 
-
+/*
 $( ".click-to-play" ).click(function() {
     vidalyticsPlayerAPI.seekTo(0);
     vidalyticsPlayerAPI.play();
@@ -74,6 +74,7 @@ $( ".click-to-play" ).click(function() {
     $(".click-to-play").css("display", "none");
     //document.querySelector('#bmpui-id-7').click();
 });
+*/
 
 const overlay = document.getElementById('video-overlay');
 

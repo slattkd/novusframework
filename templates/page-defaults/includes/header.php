@@ -43,7 +43,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery-ui.min.js"></script>-->
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/fadeInOut-gm601.js"></script>-->
 <script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/pristine.min.js"></script>
-<!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/buy-safe.js"></script>-->
 <script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/basic-modal.js"></script>
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.fancybox.pack.js"></script>-->
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/stop-pop.js"></script>-->
@@ -60,7 +59,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!--<link rel="stylesheet" href="/css/jquery.fancybox.css">-->
 
-<!--<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/buy-safe.css" rel="stylesheet"> -->
 <link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet">
 <link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/upsell.css" rel="stylesheet" >
 
