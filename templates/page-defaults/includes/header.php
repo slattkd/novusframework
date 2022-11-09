@@ -49,19 +49,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- CSS -->
 <script src="https://cdn.tailwindcss.com"></script>  <!-- Should not be needed for production -->
-<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/base.css" media="print" onload="this.media='all'">
 
 <!-- Next 4 from order.php -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Cardo:400,400italic,700' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" media="print" onload="this.media='all'">
+<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Cardo:400,400italic,700' rel='stylesheet' type='text/css'  media="print" onload="this.media='all'"/>
 
 <!--<link rel="stylesheet" href="/css/jquery.fancybox.css">-->
 
 <!--<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/buy-safe.css" rel="stylesheet"> -->
-<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet">
-<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/upsell.css" rel="stylesheet" >
+<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/upsell.css" rel="stylesheet" media="print" onload="this.media='all'" >
 
 <!-- PIXELS -->
 <?php
