@@ -1,0 +1,1518 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp1541717ejb;
+        Mon, 11 Jul 2022 07:45:34 -0700 (PDT)
+X-Received: by 2002:a9d:6b06:0:b0:61c:1ac5:15b7 with SMTP id g6-20020a9d6b06000000b0061c1ac515b7mr7272851otp.123.1657550734291;
+        Mon, 11 Jul 2022 07:45:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657550734; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LZlpph2oirHVPiHu/vft6HQ7dLaWDAvE9+bOPyUQFSmFyV+3ZFTci4NyiLJAOVlZ6Y
+         9x7XJwW5Q8OcGl2erbbojWIDau+0qVGj9TOqy82ZO8PbTW3dp104C9Hxm3s/he0oLLdJ
+         hrCvBl3Vn2jPh9cZpmEADlKGqc1En6EptMn5IQU42BCWRPK+Cdp/MO3/h6dxM+t3ywyZ
+         BI4oyRXP0qb2CdMdaiVQI44MKcmCVp4shOr/qTc7mPVvJ1Sxk7XIj2ukLBIBDJKJThb1
+         Ca3LTjJnHx/YujILXnUFos3PJca/JUHb6xH2WHjRszpNOA1ARoEkQ8LgxOPW9+Qo6deC
+         hSbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:date:message-id:sender:reply-to:mime-version
+         :dkim-signature:dkim-signature;
+        bh=TIZUOU5CtuD4brOaKAAsWj/s2BS/Y15K/ilmCepQiXU=;
+        b=Me55ZiTSXWPIyCWl5j+kLRumN48G5gf5kOF1ETlgskx5PujI+mtVMRArz8ukjI/eqj
+         9Kp1JiCV9UQTDvGDyHpoxhj4V6ajCBuWhhOk06yYDIlGdyAU2yxu5CbPHxVqucouW8/b
+         5cCe12ajk6lTJm0cQu+wb128QP/u3sTzbxdRssaVK6w6VE+16l+1fM1XkoD91OI6u7An
+         /47NnLbqdMcaixkXmZo973UWVJubYQJzSM/rWwVrSH37kScY7ZoC8r60/Cv5jihCtI4k
+         JXVTcpVqUpebyFmZhfu+UxUFYG2FkpL9Clft/Nzje9kRPhLlYMFgI/sG+8rMVOaz/sDo
+         FSpg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=WC7OUruq;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=SkGTP7QK;
+       spf=pass (google.com: domain of amber@pineapple.co designates 209.85.220.73 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <amber@pineapple.co>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id x5-20020acae005000000b00337a510f485sor1258647oig.88.2022.07.11.07.45.34
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 11 Jul 2022 07:45:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amber@pineapple.co designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=WC7OUruq;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=SkGTP7QK;
+       spf=pass (google.com: domain of amber@pineapple.co designates 209.85.220.73 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=mime-version:reply-to:sender:message-id:date:subject:from:to;
+        bh=TIZUOU5CtuD4brOaKAAsWj/s2BS/Y15K/ilmCepQiXU=;
+        b=WC7OUruq00QcQLW+YkbFjaGt6ag09rIkq5Qr77nx0ltjHpvD88jmfaIW9oG6lJueXy
+         DSgYWvW5gNHL2H5xKn5sw0c6x+6EjMgMMNKeQv+R0zhYWBxKVytxa4q5t5mlo0DssoN1
+         ryTLTBiduJ52hYZpYjrSCK3lXK0a+aX0HRYNMduVQgMCzxErOoqNBl6PY595hhdojwnz
+         jnCSAF9Cd8r0LMWsWZ6TWigC+K6YMR62RyFHHLQZKfTq0+x0Deu/0dtu/MV6qEOjr+Ip
+         HMfLzjnuNCNrDHxFexq1IJIUtNb182a3kFDtw/RNJI3CpgjNnavGIwVcvF4pQdj0sqzS
+         YhCQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:reply-to:sender:message-id:date:subject:from:to;
+        bh=TIZUOU5CtuD4brOaKAAsWj/s2BS/Y15K/ilmCepQiXU=;
+        b=SkGTP7QKhVg7U0EUQ64JJdmwOqpaXBQekNKKr14D0h8YfnkAekOpCDOn/bWGObFKk7
+         u6gQc/rbFis01vooousVga9DyzeEN2YMp10aiVpCbF5V6cQJM8YcvlyjSnUPp5+n5jPy
+         75FvKBrW1S9vvh2phVV2Dmhk3S4r4OQlIZ/uXw+eivKl91lHzCz/JpiR1o1+HDRqVCr7
+         dbhSrmMxA8A/IT+7vpjpY3UIQSCRDR2zhiutpO8Ies5EZjy+r77UPu8RQjKRCthvI9fj
+         8dMTrrofSXcfei+Lrd2sB7ia4gFo+WzvVIzEXI6wjWoWvG71gSw5bISbVvXPwq8y3NkR
+         88Sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:reply-to:sender:message-id:date
+         :subject:from:to;
+        bh=TIZUOU5CtuD4brOaKAAsWj/s2BS/Y15K/ilmCepQiXU=;
+        b=MeX+ClvuggLEJ9IPN8VtAlu6uvBpkL2bFTlDyA4dKsq3fshoeOw9YZPbOUj7nD5fGD
+         pFWHRFvB+b8Qi4t7g1Ei72Y/fM+p2zUhopdye8I2sQOBbVTG75KOFuOg6NfDldJszY3a
+         O7xmMxFh1COoLC/xs0MXt3rlfcBcjw7gWPSK5PddPUY0lkiycpc88PZ7JbaLVBKdvg30
+         BAYqeNWWcFnrJO+rXtsi8AwAz+FH2CP5fEfQNjgoOSywsyW8wvwZJTj6Tg2WSVN9WWsi
+         jEipUhsBwk21EyjVl0OTAI558Nq3IiVjy2Mh5Z9uAMCiViiZetxq029YWZKaBxF9zyZx
+         dRjg==
+X-Gm-Message-State: AJIora9aWIJcDP3Tb8GGnRTjy0RmsaJ3nT2YrQJeYs9qrSzdupy+HwHU
+	WtOL8F7XT0JwnwGXn31PRnQyOI9sn8bFVzhMK2CKGghheA==
+X-Google-Smtp-Source: AGRyM1vNwerOE6VIZepF/LTIslf7BGVStGcjDmCDlGtG6AQNOkCrGC4EYlU+8LRhFkX2aOcpDG3Tu+V44WxgipaiUWi4
+MIME-Version: 1.0
+X-Received: by 2002:a05:6808:1148:b0:339:b283:a1e7 with SMTP id
+ u8-20020a056808114800b00339b283a1e7mr6992900oiu.92.1657550733906; Mon, 11 Jul
+ 2022 07:45:33 -0700 (PDT)
+Reply-To: Amber Glenn <amber@pineapple.co>
+Sender: Google Calendar <calendar-notification@google.com>
+Message-ID: <000000000000b130fb05e3889ad2@google.com>
+Date: Mon, 11 Jul 2022 14:45:33 +0000
+Subject: Invitation: All-Hands Meeting @ Wed Jul 13, 2022 11am - 12pm (CDT) (aubrey@pineapple.co)
+From: Amber Glenn <amber@pineapple.co>
+To: aubrey@pineapple.co, john.belkewitch@pineapple.co, 
+	Kevin Hipolito <kevin@pineapple.co>, Roshynne Deal <roshynne@pineapple.co>, emily@gothamclubmedia.com, 
+	Casey Byrne <casey@pineapple.co>, Luka <luka@pineapple.co>, bonnie@pineapple.co, 
+	megan@pineapple.co, john.leaver@pineapple.co, 
+	Rosito Gonzales <rosito@pineapple.co>, appay@pineapple.co, sean@pineapple.co, 
+	thomas@pineapple.co, ivy@pineapple.co, 
+	MaryAnn Manalaysay <maryann@pineapple.co>, grace@pineapple.co, andrea@pineapple.co, 
+	caroline@pineapple.co, All <all@pineapple.co>, 
+	Jaybee Bautista <jaybee@pineapple.co>, John Paulo Ladisla <jladisla@pineapple.co>, andres@pineapple.co, 
+	Dan Champion <dan@pineapple.co>, olivia@pineapple.co, colin@pineapple.co, 
+	marco@pineapple.co, seangrigsby@pineapple.co, shawna@pineapple.co, 
+	dj@pineapple.co, Ann Navaro <ann@pineapple.co>, sheena@pineapple.co, 
+	Anna Urbas <anna@pineapple.co>, kim@pineapple.co, carla@pineapple.co, 
+	kirsten@pineapple.co, ricardo@pineapple.co, kerry@pineapple.co, 
+	Jennelyn Lopez <jenny@pineapple.co>, Charisse De Leon <charisse@pineapple.co>, 
+	Carren Jimenez <carren@pineapple.co>, Shaun Strom <shaun@pineapple.co>, emilyfreiday@pineapple.co, 
+	franaffiliate@pineapple.co, jason@pineapple.co, 
+	Roselyn Nolasco <roselyn@pineapple.co>, edwin@pineapple.co, 
+	Shienna Yambao <shienna@pineapple.co>, jeannie@pineapple.co, tessa@pineapple.co, 
+	george@pineapple.co, support@pineapple.co, Brett Allcorn <brett@pineapple.co>, 
+	Mike McBrien <mike@pineapple.co>, ricky@pineapple.co, taylor@pineapple.co, 
+	stephen@pineapple.co, gene@pineapple.co, aimee.latuszek@pineapple.co, 
+	pineapple.co@allusers.d.calendar.google.com, 
+	Robert Martin <robert@revivalpointllc.com>, jack@pineapple.co, dimitri@pineapple.co, 
+	greg@pineapple.co, jeremy@pineapple.co, jobs@pineapple.co, 
+	Mary Rose Darcen <maryrose@pineapple.co>, Noimee Garcia <noimee@pineapple.co>, 
+	Michael Miranda <mmiranda@pineapple.co>, stephanie@pineapple.co, jarren@pineapple.co, 
+	Doug smith <doug.smith@5gmale.com>, maria@pineapple.co, 
+	Lizza Jane Comia <lizza@pineapple.co>, hr1@pineapple.co, sam@pineapple.co, 
+	Stephanie Rojas <srojas@pineapple.co>, abigail@pineapple.co, dane@pineapple.co, 
+	audrey worden <audrey@pineapple.co>, kendal@pineapple.co, allen@pineapple.co, 
+	"Daryl Sta. Ana" <daryl@pineapple.co>, Peter Perez <peter@revivalpointllc.com>, stacy@pineapple.co, 
+	ReNae Nieman <renae@pineapple.co>, Elaiza Ferrer <elaiza@pineapple.co>, feuerstein@pineapple.co, 
+	Lianne Mariano <lianne@pineapple.co>, heather@pineapple.co, 
+	Brooke Whoolery <brooke@pineapple.co>, Corina Norried <corina@pineapple.co>, derek@pineapple.co, 
+	ryanalarid@pineapple.co, jonathan@pineapple.co, doug@revivalpointllc.com, 
+	lisa@pineapple.co, Kara Byrne <karabyrne@pineapple.co>
+Content-Type: multipart/mixed; boundary="000000000000b1307a05e3889ad1"
+
+--000000000000b1307a05e3889ad1
+Content-Type: multipart/alternative; boundary="000000000000b1307905e3889acf"
+
+--000000000000b1307905e3889acf
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+QWxsLUhhbmRzIE1lZXRpbmcNCldlZG5lc2RheSBKdWwgMTMsIDIwMjIg4ouFIDExYW0g4oCTIDEy
+cG0NCkNlbnRyYWwgVGltZSAtIENoaWNhZ28NCg0KDQoNCkhleSwgcGxlYXNlIGpvaW4gbWUgZm9y
+IGFuIGFsbC1oYW5kcyBtZWV0aW5nIHRoaXMgV2VkbmVzZGF5IGF0IDEycG0gRVQgZm9yICANCjQ1
+IG1pbnV0ZXMgb24gWm9vbSAocGluZWFwcGxlLmNvL3pvb20pLknigJltIGdvaW5nIHRvIHJ1biB0
+aHJvdWdoIHNvbWUgb2YgdGhlICANCmNvbXBhbnnigJlzIGNvc3QgY3V0dGluZyBhY3Rpb25zIHdl
+4oCZcmUgdGFraW5nIHRvIGVuc3VyZSB3ZSBnZXQgdGhyb3VnaCB0aGlzICANCmVjb25vbWljIGRv
+d250dXJuLlRoZXJlIGlzIG5vIHJlYXNvbiBmb3IgYWxhcm0sIHRoZSBjb21wYW55IHJldmVudWUg
+aXMgIA0Kc3RlYWR5IGFuZCB3aGlsZSBpdOKAmXMgYSBkcm9wIGZyb20gMjAyMSwgaXTigJlzIHN0
+cm9uZ2VyIHRoYW4gaXQgd2FzIGluIDIwMjAuSSAgDQphbHNvIGxvb2sgYXQgdGhlc2UgdGltZXMg
+YXMgYW4gb3Bwb3J0dW5pdHkgdG8gZm9jdXMgb24gZ2V0dGluZyBsZWFuIGFuZCAgDQplZmZpY2ll
+bnQgaW4gd2F5cyB3ZSBtaWdodCBub3QgaGF2ZSBiZWVuIHdoZW4gd2Ugd2VyZSBncm93aW5nIG1v
+cmUgIA0KcmFwaWRseS5Mb29raW5nIGZvcndhcmQgdG8gdGFsa2luZyB0byB5b3UgV2VkbmVzZGF5
+IGF0IDEyUE0gIA0KRVQhTGluazombmJzcDtwaW5lYXBwbGUuY28vem9vbS1CcmV0dA0KDQpPcmdh
+bml6ZXINCmFtYmVyQHBpbmVhcHBsZS5jbw0KYW1iZXJAcGluZWFwcGxlLmNvDQoNCkd1ZXN0cw0K
+YW1iZXJAcGluZWFwcGxlLmNvIC0gb3JnYW5pemVyDQpqb2huLmJlbGtld2l0Y2hAcGluZWFwcGxl
+LmNvDQpLZXZpbiBIaXBvbGl0bw0KUm9zaHlubmUgRGVhbA0KZW1pbHlAZ290aGFtY2x1Ym1lZGlh
+LmNvbQ0KQ2FzZXkgQnlybmUNCkx1a2ENCmJvbm5pZUBwaW5lYXBwbGUuY28NCm1lZ2FuQHBpbmVh
+cHBsZS5jbw0Kam9obi5sZWF2ZXJAcGluZWFwcGxlLmNvDQpSb3NpdG8gR29uemFsZXMNCmFwcGF5
+QHBpbmVhcHBsZS5jbw0Kc2VhbkBwaW5lYXBwbGUuY28NCnRob21hc0BwaW5lYXBwbGUuY28NCml2
+eUBwaW5lYXBwbGUuY28NCk1hcnlBbm4gTWFuYWxheXNheQ0KZ3JhY2VAcGluZWFwcGxlLmNvDQph
+bmRyZWFAcGluZWFwcGxlLmNvDQpjYXJvbGluZUBwaW5lYXBwbGUuY28NCkFsbA0KSmF5YmVlIEJh
+dXRpc3RhDQpKb2huIFBhdWxvIExhZGlzbGENCmFuZHJlc0BwaW5lYXBwbGUuY28NCkRhbiBDaGFt
+cGlvbg0Kb2xpdmlhQHBpbmVhcHBsZS5jbw0KY29saW5AcGluZWFwcGxlLmNvDQptYXJjb0BwaW5l
+YXBwbGUuY28NCnNlYW5ncmlnc2J5QHBpbmVhcHBsZS5jbw0Kc2hhd25hQHBpbmVhcHBsZS5jbw0K
+ZGpAcGluZWFwcGxlLmNvDQpBbm4gTmF2YXJvDQpzaGVlbmFAcGluZWFwcGxlLmNvDQpBbm5hIFVy
+YmFzDQphdWJyZXlAcGluZWFwcGxlLmNvDQpraW1AcGluZWFwcGxlLmNvDQpjYXJsYUBwaW5lYXBw
+bGUuY28NCmtpcnN0ZW5AcGluZWFwcGxlLmNvDQpyaWNhcmRvQHBpbmVhcHBsZS5jbw0Ka2VycnlA
+cGluZWFwcGxlLmNvDQpKZW5uZWx5biBMb3Bleg0KQ2hhcmlzc2UgRGUgTGVvbg0KQ2FycmVuIEpp
+bWVuZXoNClNoYXVuIFN0cm9tDQplbWlseWZyZWlkYXlAcGluZWFwcGxlLmNvDQpmcmFuYWZmaWxp
+YXRlQHBpbmVhcHBsZS5jbw0KamFzb25AcGluZWFwcGxlLmNvDQpSb3NlbHluIE5vbGFzY28NCmVk
+d2luQHBpbmVhcHBsZS5jbw0KU2hpZW5uYSBZYW1iYW8NCmplYW5uaWVAcGluZWFwcGxlLmNvDQp0
+ZXNzYUBwaW5lYXBwbGUuY28NCmdlb3JnZUBwaW5lYXBwbGUuY28NCnN1cHBvcnRAcGluZWFwcGxl
+LmNvDQpCcmV0dCBBbGxjb3JuDQpNaWtlIE1jQnJpZW4NCnJpY2t5QHBpbmVhcHBsZS5jbw0KdGF5
+bG9yQHBpbmVhcHBsZS5jbw0Kc3RlcGhlbkBwaW5lYXBwbGUuY28NCmdlbmVAcGluZWFwcGxlLmNv
+DQphaW1lZS5sYXR1c3pla0BwaW5lYXBwbGUuY28NCnBpbmVhcHBsZS5jb0BhbGx1c2Vycy5kLmNh
+bGVuZGFyLmdvb2dsZS5jb20NClJvYmVydCBNYXJ0aW4NCmphY2tAcGluZWFwcGxlLmNvDQpkaW1p
+dHJpQHBpbmVhcHBsZS5jbw0KZ3JlZ0BwaW5lYXBwbGUuY28NCmplcmVteUBwaW5lYXBwbGUuY28N
+CmpvYnNAcGluZWFwcGxlLmNvDQpNYXJ5IFJvc2UgRGFyY2VuDQpOb2ltZWUgR2FyY2lhDQpNaWNo
+YWVsIE1pcmFuZGENCnN0ZXBoYW5pZUBwaW5lYXBwbGUuY28NCmphcnJlbkBwaW5lYXBwbGUuY28N
+CkRvdWcgc21pdGgNCm1hcmlhQHBpbmVhcHBsZS5jbw0KTGl6emEgSmFuZSBDb21pYQ0KaHIxQHBp
+bmVhcHBsZS5jbw0Kc2FtQHBpbmVhcHBsZS5jbw0KU3RlcGhhbmllIFJvamFzDQphYmlnYWlsQHBp
+bmVhcHBsZS5jbw0KZGFuZUBwaW5lYXBwbGUuY28NCmF1ZHJleSB3b3JkZW4NCmtlbmRhbEBwaW5l
+YXBwbGUuY28NCmFsbGVuQHBpbmVhcHBsZS5jbw0KRGFyeWwgU3RhLiBBbmENClBldGVyIFBlcmV6
+DQpzdGFjeUBwaW5lYXBwbGUuY28NClJlTmFlIE5pZW1hbg0KRWxhaXphIEZlcnJlcg0KZmV1ZXJz
+dGVpbkBwaW5lYXBwbGUuY28NCkxpYW5uZSBNYXJpYW5vDQpoZWF0aGVyQHBpbmVhcHBsZS5jbw0K
+QnJvb2tlIFdob29sZXJ5DQpDb3JpbmEgTm9ycmllZA0KZGVyZWtAcGluZWFwcGxlLmNvDQpyeWFu
+YWxhcmlkQHBpbmVhcHBsZS5jbw0Kam9uYXRoYW5AcGluZWFwcGxlLmNvDQpkb3VnQHJldml2YWxw
+b2ludGxsYy5jb20NCmxpc2FAcGluZWFwcGxlLmNvDQpLYXJhIEJ5cm5lDQpWaWV3IGFsbCBndWVz
+dCBpbmZvICANCmh0dHBzOi8vY2FsZW5kYXIuZ29vZ2xlLmNvbS9jYWxlbmRhci9ldmVudD9hY3Rp
+b249VklFVyZlaWQ9TW5abGRHdG9NWEpwY25FMGRIUmtNRGx4WldzMFpqWmhiblFnWVhWaWNtVjVR
+SEJwYm1WaGNIQnNaUzVqYncmdG9rPU1UZ2pZVzFpWlhKQWNHbHVaV0Z3Y0d4bExtTnZaR0l6TXpZ
+NVlXTTBNR0poWVRCaVpHWmtNR0UyTWpJeVl6QmtPVFE0WVRoalpETXdZV1kyTmcmY3R6PUFtZXJp
+Y2ElMkZDaGljYWdvJmhsPWVuJmVzPTENCg0KUmVwbHkgZm9yIGF1YnJleUBwaW5lYXBwbGUuY28g
+YW5kIHZpZXcgbW9yZSBkZXRhaWxzICANCmh0dHBzOi8vY2FsZW5kYXIuZ29vZ2xlLmNvbS9jYWxl
+bmRhci9ldmVudD9hY3Rpb249VklFVyZlaWQ9TW5abGRHdG9NWEpwY25FMGRIUmtNRGx4WldzMFpq
+WmhiblFnWVhWaWNtVjVRSEJwYm1WaGNIQnNaUzVqYncmdG9rPU1UZ2pZVzFpWlhKQWNHbHVaV0Z3
+Y0d4bExtTnZaR0l6TXpZNVlXTTBNR0poWVRCaVpHWmtNR0UyTWpJeVl6QmtPVFE0WVRoalpETXdZ
+V1kyTmcmY3R6PUFtZXJpY2ElMkZDaGljYWdvJmhsPWVuJmVzPTENCllvdXIgYXR0ZW5kYW5jZSBp
+cyBvcHRpb25hbC4NCg0Kfn4vL35+DQpJbnZpdGF0aW9uIGZyb20gR29vZ2xlIENhbGVuZGFyOiBo
+dHRwczovL2NhbGVuZGFyLmdvb2dsZS5jb20vY2FsZW5kYXIvDQoNCllvdSBhcmUgcmVjZWl2aW5n
+IHRoaXMgZW1haWwgYmVjYXVzZSB5b3UgYXJlIGFuIGF0dGVuZGVlIG9uIHRoZSBldmVudC4gVG8g
+IA0Kc3RvcCByZWNlaXZpbmcgZnV0dXJlIHVwZGF0ZXMgZm9yIHRoaXMgZXZlbnQsIGRlY2xpbmUg
+dGhpcyBldmVudC4NCg0KRm9yd2FyZGluZyB0aGlzIGludml0YXRpb24gY291bGQgYWxsb3cgYW55
+IHJlY2lwaWVudCB0byBzZW5kIGEgcmVzcG9uc2UgdG8gIA0KdGhlIG9yZ2FuaXplciwgYmUgYWRk
+ZWQgdG8gdGhlIGd1ZXN0IGxpc3QsIGludml0ZSBvdGhlcnMgcmVnYXJkbGVzcyBvZiAgDQp0aGVp
+ciBvd24gaW52aXRhdGlvbiBzdGF0dXMsIG9yIG1vZGlmeSB5b3VyIFJTVlAuDQoNCkxlYXJuIG1v
+cmUgaHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vY2FsZW5kYXIvYW5zd2VyLzM3MTM1I2Zvcndh
+cmRpbmcNCg==
+--000000000000b1307905e3889acf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title></title><!--[if !mso]><meta http-equiv=3D"X-UA-Compatible"=
+ content=3D"IE=3Dedge"><![endif]--><meta http-equiv=3D"Content-Type" conten=
+t=3D"text/html; charset=3DUTF-8"><meta name=3D"viewport" content=3D"width=
+=3Ddevice-width,initial-scale=3D1"><meta name=3D"color-scheme" content=3D"l=
+ight dark"><meta name=3D"supported-color-schemes" content=3D"light dark">
+    <style>
+      body, html {
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      #outlook a {
+        padding: 0;
+      }
+
+      .ReadMsgBody {
+        width: 100%;
+      }
+
+      .ExternalClass {
+        width: 100%;
+      }
+
+      .ExternalClass * {
+        line-height: 100%;
+      }
+
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+
+      p {
+        display: block;
+        margin: 13px 0;
+      }
+    </style>
+    <!--[if !mso]><!-->
+    <style>
+      @media only screen and (max-width:580px) {
+        @-ms-viewport {
+          width: 320px;
+        }
+
+        @viewport {
+          width: 320px;
+        }
+      }
+    </style>
+    <!--<![endif]-->
+    <!--[if mso]>
+          <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+          </xml>
+          <![endif]-->
+    <!--[if lte mso 11]>
+          <style>
+            .outlook-group-fix { width:100% !important; }
+          </style>
+    <![endif]-->
+
+    <!--[if !mso]><!-- -->
+  <style>body, html {font-family:Roboto,Helvetica,Arial,sans-serif;}@font-f=
+ace {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) forma=
+t('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) f=
+ormat('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) f=
+ormat('truetype');
+}
+@font-face {
+  font-family: 'Material Icons Extended';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/materialiconsextended/v139/kJEjBvgX7BgnkSr=
+UwT8UnLVc38YydejYY-oE_LvM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIlL3Owps=
+.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v14/4UabrENHsxJlGDuGo1OIlLU94Yt=
+zCwM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v14/4UabrENHsxJlGDuGo1OIlLV154t=
+zCwM.ttf) format('truetype');
+}
+</style><!--<![endif]-->
+      <style>
+        .body-container {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      </style>
+ =20
+      <style>
+        u+.body .body-container,
+        body[data-outlook-cycle] .body-container,
+        #MessageViewBody .body-container {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      </style>
+ =20
+    <style>
+      @media only screen and (min-width:580px) {
+        .column-per-37 {
+          width: 37% !important;
+          max-width: 37%;
+        }
+
+        .column-per-63 {
+          width: 63% !important;
+          max-width: 63%;
+        }
+      }
+    </style>
+ =20
+    <style>
+      .appointment-buttons th {
+        display: block;
+        clear: both;
+        float: left;
+        margin-top: 12px;
+      }
+
+      .appointment-buttons th a {
+        float: left;
+      }
+
+      #MessageViewBody .appointment-buttons th {
+       margin-top: 24px;
+      }
+    </style>
+ =20
+    <style>
+      @media only screen and (max-width:580px) {
+        table.full-width-mobile {
+          width: 100% !important;
+        }
+
+        td.full-width-mobile {
+          width: auto !important;
+        }
+      }
+    </style>
+    <style>
+      .main-container-inner,
+      .info-bar-inner {
+        padding: 12px 16px !important;
+      }
+
+      .main-column-table-ltr {
+        padding-right: 0 !important;
+      }
+
+      .main-column-table-rtl {
+        padding-left: 0 !important;
+      }
+
+      @media only screen and (min-width:580px) {
+        .main-container-inner {
+          padding: 24px 32px !important;
+        }
+
+        .info-bar-inner {
+          padding: 12px 32px !important;
+        }
+
+        .main-column-table-ltr {
+          padding-right: 32px !important;
+        }
+
+        .main-column-table-rtl {
+          padding-left: 32px !important;
+        }
+
+        .appointment-buttons th {
+          display: table-cell;
+          clear: none;
+        }
+      }
+
+      .primary-text {
+        color: #3c4043 !important;
+      }
+
+      .secondary-text,
+      .phone-number a {
+        color: #70757a !important;
+      }
+
+      .accent-text {
+        color: #1a73e8 !important;
+      }
+
+      .accent-text-dark {
+        color: #185abc !important;
+      }
+
+      .grey-button-text,
+      .attachment-chip a {
+        color: #5f6368 !important;
+      }
+
+      .primary-button {
+        background-color: #1a73e8 !important;
+      }
+
+      .primary-button-text {
+        color: #fff !important;
+      }
+
+      .underline-on-hover:hover {
+        text-decoration: underline !important;
+      }
+
+      .grey-infobar-text {
+        color: #202124 !important;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .primary-text:not([class^=3D"x_"]) {
+          color: #e8eaed !important;
+        }
+
+        .secondary-text:not([class^=3D"x_"]),
+        .phone-number:not([class^=3D"x_"]) a {
+          color: #9aa0a6 !important;
+        }
+
+        .grey-button-text:not([class^=3D"x_"]),
+        .attachment-chip:not([class^=3D"x_"]) a {
+          color: #bdc1c6 !important;
+        }
+
+        .accent-text:not([class^=3D"x_"]),
+        .hairline-button-text:not([class^=3D"x_"]) {
+          color: #8ab4f8 !important;
+        }
+
+        .primary-button:not([class^=3D"x_"]) {
+          background-color: #8ab4f8 !important;
+        }
+
+        .primary-button-text:not([class^=3D"x_"]) {
+          color: #202124 !important;
+        }
+      }
+    </style>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .cse-banner:not([class^=3D"x_"]) {
+          background-color: #3c4043 !important; /* Google Grey 800 */
+        }
+
+        .encryption-icon:not([class^=3D"x_"]) {
+          /* WARNING: This causes the whole style tag to get stripped in Gm=
+ail. */
+          background-image: url('https://fonts.gstatic.com/s/i/googlemateri=
+aliconsfilled/encrypted/v3/gm_grey200-24dp/2x/gm_filled_encrypted_gm_grey20=
+0_24dp.png') !important;
+        }
+      }
+    </style>
+    <!--[if !mso]><!-->
+    <style>
+      .prevent-link a {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+    </style>
+    <!--<![endif]-->
+
+    <!--[if mso | IE]>
+      <style>
+        .main-container-inner {
+          padding: 24px 32px !important;
+        }
+
+        .info-bar-inner {
+          padding: 12px 32px !important;
+        }
+
+        .cse-banner .encryption-icon {
+          /* We use the IE workaround instead. */
+          background-image: none !important;
+        }
+
+        .cse-banner .encryption-icon .ms-fallback {
+          display: block !important;
+        }
+
+        /* NB: Some MS clients ignore dark-scheme styling and apply their o=
+wn, so there's nothing we can do to help there. */
+        @media (prefers-color-scheme: dark) {
+          .cse-banner:not([class^=3D"x_"]) .encryption-icon .ms-fallback {
+            display: none !important;
+          }
+
+          .cse-banner:not([class^=3D"x_"]) .encryption-icon .ms-fallback-da=
+rk {
+            display: block !important;
+          }
+        }
+      </style>
+    <![endif]-->
+  </head><body class=3D"body"><span itemscope itemtype=3D"http://schema.org=
+/InformAction"><span style=3D"display:none" itemprop=3D"about" itemscope it=
+emtype=3D"http://schema.org/Person"><meta itemprop=3D"description" content=
+=3D"Invitation from Amber Glenn"/></span><span itemprop=3D"object" itemscop=
+e itemtype=3D"http://schema.org/Event"><meta itemprop=3D"eventStatus" conte=
+nt=3D"http://schema.org/EventScheduled"/><span itemprop=3D"publisher" items=
+cope itemtype=3D"http://schema.org/Organization"><meta itemprop=3D"name" co=
+ntent=3D"Google Calendar"/></span><meta itemprop=3D"eventId/googleCalendar"=
+ content=3D"2vetkh1rirq4ttd09qek4f6ant"/><span style=3D"display: none; font=
+-size: 1px; color: #fff; line-height: 1px; height: 0; max-height: 0; width:=
+ 0; max-width: 0; opacity: 0; overflow: hidden;" itemprop=3D"name">All-Hand=
+s Meeting</span><meta itemprop=3D"url" content=3D"https://calendar.google.c=
+om/calendar/event?action=3DVIEW&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhb=
+nQgYXVicmV5QHBpbmVhcHBsZS5jbw&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvZGIzMzY=
+5YWM0MGJhYTBiZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY2Ng&amp;ctz=3DAmerica%2FChicago=
+&amp;hl=3Den&amp;es=3D1"/><span aria-hidden=3D"true"><time itemprop=3D"star=
+tDate" datetime=3D"20220713T160000Z"></time><time itemprop=3D"endDate" date=
+time=3D"20220713T170000Z"></time></span><div style=3D"display: none; font-s=
+ize: 1px; color: #fff; line-height: 1px; height: 0; max-height: 0; width: 0=
+; max-width: 0; opacity: 0; overflow: hidden;">Hey, please join me for an a=
+ll-hands meeting this Wednesday at 12pm ET for 45 minutes on Zoom (pineappl=
+e.co/zoom).I=E2=80=99m going to run through some of the company=E2=80=99s c=
+ost cutting actions we=E2=80=99re taking to en</div><table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center" sty=
+le=3D"width:100%;" class=3D"body-container"><tbody><tr><td style=3D"" class=
+=3D"" align=3D"left"><!--[if mso | IE]><table border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation"><tr><td height=3D"16" style=3D"he=
+ight:16px;"><![endif]--><div style=3D"height:16px;" aria-hidden=3D"true"> &=
+nbsp; </div><!--[if mso | IE]></td></tr></table><![endif]--><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"c=
+enter" style=3D"width:100%;" class=3D""><tbody><tr><td style=3D"border: sol=
+id 1px #dadce0; border-radius: 8px; direction: rtl; font-size: 0; padding: =
+24px 32px; text-align: left; vertical-align: top;" class=3D"main-container-=
+inner"><!--[if mso | IE]><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr><![endif]--><div class=3D"" style=3D"font-=
+size: 13px; text-align: left; direction: ltr; display: inline-block; vertic=
+al-align: top; width: 100%;overflow: hidden; word-wrap: break-word;"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" wid=
+th=3D"100%" class=3D"main-column-table-ltr" style=3D"padding-right: 32px; p=
+adding-left: 0;;table-layout: fixed;"><tbody><tr><td class=3D"main-column-t=
+d" style=3D"padding:0; vertical-align:top;"><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=3D"tabl=
+e-layout: fixed;"><tr><td style=3D"font-size: 0; padding: 0; text-align: le=
+ft; word-break: break-word;;padding-bottom:24px;"><div style=3D"font-family=
+: Roboto, sans-serif;font-style: normal; font-weight: 400; font-size: 14px;=
+ line-height: 20px; letter-spacing: 0.2px;color: #3c4043; text-decoration: =
+none;" class=3D"primary-text" role=3D"presentation"><span>Hey, please join =
+me for an all-hands meeting this Wednesday at 12pm ET for 45 minutes on Zoo=
+m (<a href=3D"https://www.google.com/url?q=3Dhttp%3A%2F%2Fpineapple.co%2Fzo=
+om&amp;sa=3DD&amp;ust=3D1657982700000000&amp;usg=3DAOvVaw1Lpo9aymkccBSMz6st=
+hHsv" target=3D"_blank">pineapple.co/zoom</a>).<br><br>I=E2=80=99m going to=
+ run through some of the company=E2=80=99s cost cutting actions we=E2=80=99=
+re taking to ensure we get through this economic downturn.<br><br>There is =
+no reason for alarm, the company revenue is steady and while it=E2=80=99s a=
+ drop from 2021, it=E2=80=99s stronger than it was in 2020.<br><br>I also l=
+ook at these times as an opportunity to focus on getting lean and efficient=
+ in ways we might not have been when we were growing more rapidly.<br><br>L=
+ooking forward to talking to you Wednesday at 12PM ET!<br><br>Link:=C2=A0<a=
+ href=3D"https://www.google.com/url?q=3Dhttp%3A%2F%2Fpineapple.co%2Fzoom&am=
+p;sa=3DD&amp;ust=3D1657982700000000&amp;usg=3DAOvVaw1Lpo9aymkccBSMz6sthHsv"=
+ target=3D"_blank">pineapple.co/zoom</a><br><br>-Brett</span><meta itemprop=
+=3D"description" content=3D"Hey, please join me for an all-hands meeting th=
+is Wednesday at 12pm ET for 45 minutes on Zoom (pineapple.co/zoom).I=E2=80=
+=99m going to run through some of the company=E2=80=99s cost cutting action=
+s we=E2=80=99re taking to ensure we get through this economic downturn.Ther=
+e is no reason for alarm, the company revenue is steady and while it=E2=80=
+=99s a drop from 2021, it=E2=80=99s stronger than it was in 2020.I also loo=
+k at these times as an opportunity to focus on getting lean and efficient i=
+n ways we might not have been when we were growing more rapidly.Looking for=
+ward to talking to you Wednesday at 12PM ET!Link:&amp;nbsp;pineapple.co/zoo=
+m-Brett"/></div></td></tr><tr><td style=3D"font-size: 0; padding: 0; text-a=
+lign: left; word-break: break-word;;padding-bottom:24px;"><div style=3D"fon=
+t-family: Roboto, sans-serif;font-style: normal; font-weight: 400; font-siz=
+e: 14px; line-height: 20px; letter-spacing: 0.2px;color: #3c4043; text-deco=
+ration: none;" class=3D"primary-text" role=3D"presentation"><span aria-hidd=
+en=3D"true"><time itemprop=3D"startDate" datetime=3D"20220713T160000Z"></ti=
+me><time itemprop=3D"endDate" datetime=3D"20220713T170000Z"></time></span><=
+table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" style=3D"padding-bottom: 4px;"><tr><td><h2 class=3D"primary-text" style=
+=3D"font-size: 14px;color: #3c4043; text-decoration: none;font-weight: 700;=
+-webkit-font-smoothing: antialiased;margin: 0; padding: 0;">When</h2></td><=
+/tr></table><span>Wednesday Jul 13, 2022 =E2=8B=85 11am =E2=80=93 12pm (Cen=
+tral Time - Chicago)</span></div></td></tr><tr><td style=3D"font-size: 0; p=
+adding: 0; text-align: left; word-break: break-word;;padding-bottom:24px;">=
+<div style=3D"font-family: Roboto, sans-serif;font-style: normal; font-weig=
+ht: 400; font-size: 14px; line-height: 20px; letter-spacing: 0.2px;color: #=
+3c4043; text-decoration: none;" class=3D"primary-text" role=3D"presentation=
+"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
+ion" style=3D"padding-bottom: 4px;"><tr><td><h2 class=3D"primary-text" styl=
+e=3D"font-size: 14px;color: #3c4043; text-decoration: none;font-weight: 700=
+;-webkit-font-smoothing: antialiased;margin: 0; padding: 0;">Guests</h2></t=
+d></tr></table><div style=3D"padding-bottom: 4px; text-align: left;;color: =
+#3c4042;"><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://sch=
+ema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"p=
+rimary-text underline-on-hover" style=3D"display: inline-block;;color: #3c4=
+043; text-decoration: none;" href=3D"mailto:amber@pineapple.co">amber@pinea=
+pple.co</a></span><meta itemprop=3D"email" content=3D"amber@pineapple.co"/>=
+</span><span itemprop=3D"organizer" itemscope itemtype=3D"http://schema.org=
+/Person"><meta itemprop=3D"name" content=3D"amber@pineapple.co"/><meta item=
+prop=3D"email" content=3D"amber@pineapple.co"/></span><span class=3D"second=
+ary-text" style=3D"color: #70757a; text-decoration: none;"> - organizer</sp=
+an></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://sche=
+ma.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"pr=
+imary-text underline-on-hover" style=3D"display: inline-block;;color: #3c40=
+43; text-decoration: none;" href=3D"mailto:john.belkewitch@pineapple.co">jo=
+hn.belkewitch@pineapple.co</a></span><meta itemprop=3D"email" content=3D"jo=
+hn.belkewitch@pineapple.co"/></span><span class=3D"secondary-text" style=3D=
+"color: #70757a; text-decoration: none;"></span></div><div><span itemprop=
+=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itempro=
+p=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hove=
+r" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;" =
+href=3D"mailto:kevin@pineapple.co">Kevin Hipolito</a></span><meta itemprop=
+=3D"email" content=3D"kevin@pineapple.co"/></span><span class=3D"secondary-=
+text" style=3D"color: #70757a; text-decoration: none;"></span></div><div><s=
+pan itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><=
+span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text under=
+line-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decorat=
+ion: none;" href=3D"mailto:roshynne@pineapple.co">Roshynne Deal</a></span><=
+meta itemprop=3D"email" content=3D"roshynne@pineapple.co"/></span><span cla=
+ss=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></sp=
+an></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://sche=
+ma.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"pr=
+imary-text underline-on-hover" style=3D"display: inline-block;;color: #3c40=
+43; text-decoration: none;" href=3D"mailto:emily@gothamclubmedia.com">emily=
+@gothamclubmedia.com</a></span><meta itemprop=3D"email" content=3D"emily@go=
+thamclubmedia.com"/></span><span class=3D"secondary-text" style=3D"color: #=
+70757a; text-decoration: none;"></span></div><div><span itemprop=3D"attende=
+e" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" =
+class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D=
+"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mai=
+lto:casey@pineapple.co">Casey Byrne</a></span><meta itemprop=3D"email" cont=
+ent=3D"casey@pineapple.co"/></span><span class=3D"secondary-text" style=3D"=
+color: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D=
+"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=
+=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hover=
+" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;" h=
+ref=3D"mailto:luka@pineapple.co">Luka</a></span><meta itemprop=3D"email" co=
+ntent=3D"luka@pineapple.co"/></span><span class=3D"secondary-text" style=3D=
+"color: #70757a; text-decoration: none;"></span></div><div><span itemprop=
+=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itempro=
+p=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hove=
+r" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;" =
+href=3D"mailto:bonnie@pineapple.co">bonnie@pineapple.co</a></span><meta ite=
+mprop=3D"email" content=3D"bonnie@pineapple.co"/></span><span class=3D"seco=
+ndary-text" style=3D"color: #70757a; text-decoration: none;"></span></div><=
+div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Per=
+son"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text=
+ underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-d=
+ecoration: none;" href=3D"mailto:megan@pineapple.co">megan@pineapple.co</a>=
+</span><meta itemprop=3D"email" content=3D"megan@pineapple.co"/></span><spa=
+n class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"=
+></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http:/=
+/schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=
+=3D"primary-text underline-on-hover" style=3D"display: inline-block;;color:=
+ #3c4043; text-decoration: none;" href=3D"mailto:john.leaver@pineapple.co">=
+john.leaver@pineapple.co</a></span><meta itemprop=3D"email" content=3D"john=
+.leaver@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color=
+: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"atte=
+ndee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"nam=
+e" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=
+=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"=
+mailto:rosito@pineapple.co">Rosito Gonzales</a></span><meta itemprop=3D"ema=
+il" content=3D"rosito@pineapple.co"/></span><span class=3D"secondary-text" =
+style=3D"color: #70757a; text-decoration: none;"></span></div><div><span it=
+emprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span i=
+temprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-o=
+n-hover" style=3D"display: inline-block;;color: #3c4043; text-decoration: n=
+one;" href=3D"mailto:appay@pineapple.co">appay@pineapple.co</a></span><meta=
+ itemprop=3D"email" content=3D"appay@pineapple.co"/></span><span class=3D"s=
+econdary-text" style=3D"color: #70757a; text-decoration: none;"></span></di=
+v><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/=
+Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-t=
+ext underline-on-hover" style=3D"display: inline-block;;color: #3c4043; tex=
+t-decoration: none;" href=3D"mailto:sean@pineapple.co">sean@pineapple.co</a=
+></span><meta itemprop=3D"email" content=3D"sean@pineapple.co"/></span><spa=
+n class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"=
+></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http:/=
+/schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=
+=3D"primary-text underline-on-hover" style=3D"display: inline-block;;color:=
+ #3c4043; text-decoration: none;" href=3D"mailto:thomas@pineapple.co">thoma=
+s@pineapple.co</a></span><meta itemprop=3D"email" content=3D"thomas@pineapp=
+le.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; text=
+-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemscope=
+ itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"not=
+ranslate"><a class=3D"primary-text underline-on-hover" style=3D"display: in=
+line-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:ivy@pine=
+apple.co">ivy@pineapple.co</a></span><meta itemprop=3D"email" content=3D"iv=
+y@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #707=
+57a; text-decoration: none;"></span></div><div><span itemprop=3D"attendee" =
+itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" cla=
+ss=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"di=
+splay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto=
+:maryann@pineapple.co">MaryAnn Manalaysay</a></span><meta itemprop=3D"email=
+" content=3D"maryann@pineapple.co"/></span><span class=3D"secondary-text" s=
+tyle=3D"color: #70757a; text-decoration: none;"></span></div><div><span ite=
+mprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span it=
+emprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on=
+-hover" style=3D"display: inline-block;;color: #3c4043; text-decoration: no=
+ne;" href=3D"mailto:grace@pineapple.co">grace@pineapple.co</a></span><meta =
+itemprop=3D"email" content=3D"grace@pineapple.co"/></span><span class=3D"se=
+condary-text" style=3D"color: #70757a; text-decoration: none;"></span></div=
+><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/P=
+erson"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-te=
+xt underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text=
+-decoration: none;" href=3D"mailto:andrea@pineapple.co">andrea@pineapple.co=
+</a></span><meta itemprop=3D"email" content=3D"andrea@pineapple.co"/></span=
+><span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: n=
+one;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"h=
+ttp://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a c=
+lass=3D"primary-text underline-on-hover" style=3D"display: inline-block;;co=
+lor: #3c4043; text-decoration: none;" href=3D"mailto:caroline@pineapple.co"=
+>caroline@pineapple.co</a></span><meta itemprop=3D"email" content=3D"caroli=
+ne@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #70=
+757a; text-decoration: none;"></span></div><div><span itemprop=3D"attendee"=
+ itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" cl=
+ass=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"d=
+isplay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailt=
+o:all@pineapple.co">All</a></span><meta itemprop=3D"email" content=3D"all@p=
+ineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a=
+; text-decoration: none;"></span></div><div><span itemprop=3D"attendee" ite=
+mscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=
+=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"disp=
+lay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:j=
+aybee@pineapple.co">Jaybee Bautista</a></span><meta itemprop=3D"email" cont=
+ent=3D"jaybee@pineapple.co"/></span><span class=3D"secondary-text" style=3D=
+"color: #70757a; text-decoration: none;"></span></div><div><span itemprop=
+=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itempro=
+p=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hove=
+r" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;" =
+href=3D"mailto:jladisla@pineapple.co">John Paulo Ladisla</a></span><meta it=
+emprop=3D"email" content=3D"jladisla@pineapple.co"/></span><span class=3D"s=
+econdary-text" style=3D"color: #70757a; text-decoration: none;"></span></di=
+v><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/=
+Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-t=
+ext underline-on-hover" style=3D"display: inline-block;;color: #3c4043; tex=
+t-decoration: none;" href=3D"mailto:andres@pineapple.co">andres@pineapple.c=
+o</a></span><meta itemprop=3D"email" content=3D"andres@pineapple.co"/></spa=
+n><span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: =
+none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"=
+http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a =
+class=3D"primary-text underline-on-hover" style=3D"display: inline-block;;c=
+olor: #3c4043; text-decoration: none;" href=3D"mailto:dan@pineapple.co">Dan=
+ Champion</a></span><meta itemprop=3D"email" content=3D"dan@pineapple.co"/>=
+</span><span class=3D"secondary-text" style=3D"color: #70757a; text-decorat=
+ion: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtyp=
+e=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate=
+"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-blo=
+ck;;color: #3c4043; text-decoration: none;" href=3D"mailto:olivia@pineapple=
+.co">olivia@pineapple.co</a></span><meta itemprop=3D"email" content=3D"oliv=
+ia@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #70=
+757a; text-decoration: none;"></span></div><div><span itemprop=3D"attendee"=
+ itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" cl=
+ass=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"d=
+isplay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailt=
+o:colin@pineapple.co">colin@pineapple.co</a></span><meta itemprop=3D"email"=
+ content=3D"colin@pineapple.co"/></span><span class=3D"secondary-text" styl=
+e=3D"color: #70757a; text-decoration: none;"></span></div><div><span itempr=
+op=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itemp=
+rop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-ho=
+ver" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;=
+" href=3D"mailto:marco@pineapple.co">marco@pineapple.co</a></span><meta ite=
+mprop=3D"email" content=3D"marco@pineapple.co"/></span><span class=3D"secon=
+dary-text" style=3D"color: #70757a; text-decoration: none;"></span></div><d=
+iv><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Pers=
+on"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text =
+underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-de=
+coration: none;" href=3D"mailto:seangrigsby@pineapple.co">seangrigsby@pinea=
+pple.co</a></span><meta itemprop=3D"email" content=3D"seangrigsby@pineapple=
+.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; text-d=
+ecoration: none;"></span></div><div><span itemprop=3D"attendee" itemscope i=
+temtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notra=
+nslate"><a class=3D"primary-text underline-on-hover" style=3D"display: inli=
+ne-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:shawna@pin=
+eapple.co">shawna@pineapple.co</a></span><meta itemprop=3D"email" content=
+=3D"shawna@pineapple.co"/></span><span class=3D"secondary-text" style=3D"co=
+lor: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"a=
+ttendee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"=
+name" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" st=
+yle=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=
+=3D"mailto:dj@pineapple.co">dj@pineapple.co</a></span><meta itemprop=3D"ema=
+il" content=3D"dj@pineapple.co"/></span><span class=3D"secondary-text" styl=
+e=3D"color: #70757a; text-decoration: none;"></span></div><div><span itempr=
+op=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itemp=
+rop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-ho=
+ver" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;=
+" href=3D"mailto:ann@pineapple.co">Ann Navaro</a></span><meta itemprop=3D"e=
+mail" content=3D"ann@pineapple.co"/></span><span class=3D"secondary-text" s=
+tyle=3D"color: #70757a; text-decoration: none;"></span></div><div><span ite=
+mprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span it=
+emprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on=
+-hover" style=3D"display: inline-block;;color: #3c4043; text-decoration: no=
+ne;" href=3D"mailto:sheena@pineapple.co">sheena@pineapple.co</a></span><met=
+a itemprop=3D"email" content=3D"sheena@pineapple.co"/></span><span class=3D=
+"secondary-text" style=3D"color: #70757a; text-decoration: none;"></span></=
+div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.or=
+g/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary=
+-text underline-on-hover" style=3D"display: inline-block;;color: #3c4043; t=
+ext-decoration: none;" href=3D"mailto:anna@pineapple.co">Anna Urbas</a></sp=
+an><meta itemprop=3D"email" content=3D"anna@pineapple.co"/></span><span cla=
+ss=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></sp=
+an></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://sche=
+ma.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"pr=
+imary-text underline-on-hover" style=3D"display: inline-block;;color: #3c40=
+43; text-decoration: none;" href=3D"mailto:aubrey@pineapple.co">aubrey@pine=
+apple.co</a></span><meta itemprop=3D"email" content=3D"aubrey@pineapple.co"=
+/></span><span class=3D"secondary-text" style=3D"color: #70757a; text-decor=
+ation: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemt=
+ype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notransla=
+te"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-b=
+lock;;color: #3c4043; text-decoration: none;" href=3D"mailto:kim@pineapple.=
+co">kim@pineapple.co</a></span><meta itemprop=3D"email" content=3D"kim@pine=
+apple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; t=
+ext-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemsc=
+ope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"=
+notranslate"><a class=3D"primary-text underline-on-hover" style=3D"display:=
+ inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:carla=
+@pineapple.co">carla@pineapple.co</a></span><meta itemprop=3D"email" conten=
+t=3D"carla@pineapple.co"/></span><span class=3D"secondary-text" style=3D"co=
+lor: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"a=
+ttendee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"=
+name" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" st=
+yle=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=
+=3D"mailto:kirsten@pineapple.co">kirsten@pineapple.co</a></span><meta itemp=
+rop=3D"email" content=3D"kirsten@pineapple.co"/></span><span class=3D"secon=
+dary-text" style=3D"color: #70757a; text-decoration: none;"></span></div><d=
+iv><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Pers=
+on"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text =
+underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-de=
+coration: none;" href=3D"mailto:ricardo@pineapple.co">ricardo@pineapple.co<=
+/a></span><meta itemprop=3D"email" content=3D"ricardo@pineapple.co"/></span=
+><span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: n=
+one;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"h=
+ttp://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a c=
+lass=3D"primary-text underline-on-hover" style=3D"display: inline-block;;co=
+lor: #3c4043; text-decoration: none;" href=3D"mailto:kerry@pineapple.co">ke=
+rry@pineapple.co</a></span><meta itemprop=3D"email" content=3D"kerry@pineap=
+ple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; tex=
+t-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemscop=
+e itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"no=
+translate"><a class=3D"primary-text underline-on-hover" style=3D"display: i=
+nline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:jenny@p=
+ineapple.co">Jennelyn Lopez</a></span><meta itemprop=3D"email" content=3D"j=
+enny@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #=
+70757a; text-decoration: none;"></span></div><div><span itemprop=3D"attende=
+e" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" =
+class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D=
+"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mai=
+lto:charisse@pineapple.co">Charisse De Leon</a></span><meta itemprop=3D"ema=
+il" content=3D"charisse@pineapple.co"/></span><span class=3D"secondary-text=
+" style=3D"color: #70757a; text-decoration: none;"></span></div><div><span =
+itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span=
+ itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline=
+-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decoration:=
+ none;" href=3D"mailto:carren@pineapple.co">Carren Jimenez</a></span><meta =
+itemprop=3D"email" content=3D"carren@pineapple.co"/></span><span class=3D"s=
+econdary-text" style=3D"color: #70757a; text-decoration: none;"></span></di=
+v><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/=
+Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-t=
+ext underline-on-hover" style=3D"display: inline-block;;color: #3c4043; tex=
+t-decoration: none;" href=3D"mailto:shaun@pineapple.co">Shaun Strom</a></sp=
+an><meta itemprop=3D"email" content=3D"shaun@pineapple.co"/></span><span cl=
+ass=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></s=
+pan></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://sch=
+ema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"p=
+rimary-text underline-on-hover" style=3D"display: inline-block;;color: #3c4=
+043; text-decoration: none;" href=3D"mailto:emilyfreiday@pineapple.co">emil=
+yfreiday@pineapple.co</a></span><meta itemprop=3D"email" content=3D"emilyfr=
+eiday@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: =
+#70757a; text-decoration: none;"></span></div><div><span itemprop=3D"attend=
+ee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name"=
+ class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=
+=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"=
+mailto:franaffiliate@pineapple.co">franaffiliate@pineapple.co</a></span><me=
+ta itemprop=3D"email" content=3D"franaffiliate@pineapple.co"/></span><span =
+class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"><=
+/span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://s=
+chema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D=
+"primary-text underline-on-hover" style=3D"display: inline-block;;color: #3=
+c4043; text-decoration: none;" href=3D"mailto:jason@pineapple.co">jason@pin=
+eapple.co</a></span><meta itemprop=3D"email" content=3D"jason@pineapple.co"=
+/></span><span class=3D"secondary-text" style=3D"color: #70757a; text-decor=
+ation: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemt=
+ype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notransla=
+te"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-b=
+lock;;color: #3c4043; text-decoration: none;" href=3D"mailto:roselyn@pineap=
+ple.co">Roselyn Nolasco</a></span><meta itemprop=3D"email" content=3D"rosel=
+yn@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #70=
+757a; text-decoration: none;"></span></div><div><span itemprop=3D"attendee"=
+ itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" cl=
+ass=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"d=
+isplay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailt=
+o:edwin@pineapple.co">edwin@pineapple.co</a></span><meta itemprop=3D"email"=
+ content=3D"edwin@pineapple.co"/></span><span class=3D"secondary-text" styl=
+e=3D"color: #70757a; text-decoration: none;"></span></div><div><span itempr=
+op=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itemp=
+rop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-ho=
+ver" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;=
+" href=3D"mailto:shienna@pineapple.co">Shienna Yambao</a></span><meta itemp=
+rop=3D"email" content=3D"shienna@pineapple.co"/></span><span class=3D"secon=
+dary-text" style=3D"color: #70757a; text-decoration: none;"></span></div><d=
+iv><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Pers=
+on"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text =
+underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-de=
+coration: none;" href=3D"mailto:jeannie@pineapple.co">jeannie@pineapple.co<=
+/a></span><meta itemprop=3D"email" content=3D"jeannie@pineapple.co"/></span=
+><span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: n=
+one;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"h=
+ttp://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a c=
+lass=3D"primary-text underline-on-hover" style=3D"display: inline-block;;co=
+lor: #3c4043; text-decoration: none;" href=3D"mailto:tessa@pineapple.co">te=
+ssa@pineapple.co</a></span><meta itemprop=3D"email" content=3D"tessa@pineap=
+ple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; tex=
+t-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemscop=
+e itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"no=
+translate"><a class=3D"primary-text underline-on-hover" style=3D"display: i=
+nline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:george@=
+pineapple.co">george@pineapple.co</a></span><meta itemprop=3D"email" conten=
+t=3D"george@pineapple.co"/></span><span class=3D"secondary-text" style=3D"c=
+olor: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"=
+attendee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D=
+"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" s=
+tyle=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=
+=3D"mailto:support@pineapple.co">support@pineapple.co</a></span><meta itemp=
+rop=3D"email" content=3D"support@pineapple.co"/></span><span class=3D"secon=
+dary-text" style=3D"color: #70757a; text-decoration: none;"></span></div><d=
+iv><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Pers=
+on"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text =
+underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-de=
+coration: none;" href=3D"mailto:brett@pineapple.co">Brett Allcorn</a></span=
+><meta itemprop=3D"email" content=3D"brett@pineapple.co"/></span><span clas=
+s=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></spa=
+n></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schem=
+a.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"pri=
+mary-text underline-on-hover" style=3D"display: inline-block;;color: #3c404=
+3; text-decoration: none;" href=3D"mailto:mike@pineapple.co">Mike McBrien</=
+a></span><meta itemprop=3D"email" content=3D"mike@pineapple.co"/></span><sp=
+an class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;=
+"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http:=
+//schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=
+=3D"primary-text underline-on-hover" style=3D"display: inline-block;;color:=
+ #3c4043; text-decoration: none;" href=3D"mailto:ricky@pineapple.co">ricky@=
+pineapple.co</a></span><meta itemprop=3D"email" content=3D"ricky@pineapple.=
+co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; text-de=
+coration: none;"></span></div><div><span itemprop=3D"attendee" itemscope it=
+emtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notran=
+slate"><a class=3D"primary-text underline-on-hover" style=3D"display: inlin=
+e-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:taylor@pine=
+apple.co">taylor@pineapple.co</a></span><meta itemprop=3D"email" content=3D=
+"taylor@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color=
+: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"atte=
+ndee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"nam=
+e" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=
+=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"=
+mailto:stephen@pineapple.co">stephen@pineapple.co</a></span><meta itemprop=
+=3D"email" content=3D"stephen@pineapple.co"/></span><span class=3D"secondar=
+y-text" style=3D"color: #70757a; text-decoration: none;"></span></div><div>=
+<span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"=
+><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text und=
+erline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decor=
+ation: none;" href=3D"mailto:gene@pineapple.co">gene@pineapple.co</a></span=
+><meta itemprop=3D"email" content=3D"gene@pineapple.co"/></span><span class=
+=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></span=
+></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema=
+.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"prim=
+ary-text underline-on-hover" style=3D"display: inline-block;;color: #3c4043=
+; text-decoration: none;" href=3D"mailto:aimee.latuszek@pineapple.co">aimee=
+.latuszek@pineapple.co</a></span><meta itemprop=3D"email" content=3D"aimee.=
+latuszek@pineapple.co"/></span><span class=3D"secondary-text" style=3D"colo=
+r: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"att=
+endee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"na=
+me" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" styl=
+e=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D=
+"mailto:pineapple.co@allusers.d.calendar.google.com">pineapple.co@allusers.=
+d.calendar.google.com</a></span><meta itemprop=3D"email" content=3D"pineapp=
+le.co@allusers.d.calendar.google.com"/></span><span class=3D"secondary-text=
+" style=3D"color: #70757a; text-decoration: none;"></span></div><div><span =
+itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span=
+ itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline=
+-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decoration:=
+ none;" href=3D"mailto:robert@revivalpointllc.com">Robert Martin</a></span>=
+<meta itemprop=3D"email" content=3D"robert@revivalpointllc.com"/></span><sp=
+an class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;=
+"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http:=
+//schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=
+=3D"primary-text underline-on-hover" style=3D"display: inline-block;;color:=
+ #3c4043; text-decoration: none;" href=3D"mailto:jack@pineapple.co">jack@pi=
+neapple.co</a></span><meta itemprop=3D"email" content=3D"jack@pineapple.co"=
+/></span><span class=3D"secondary-text" style=3D"color: #70757a; text-decor=
+ation: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemt=
+ype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notransla=
+te"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-b=
+lock;;color: #3c4043; text-decoration: none;" href=3D"mailto:dimitri@pineap=
+ple.co">dimitri@pineapple.co</a></span><meta itemprop=3D"email" content=3D"=
+dimitri@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color=
+: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"atte=
+ndee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"nam=
+e" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=
+=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"=
+mailto:greg@pineapple.co">greg@pineapple.co</a></span><meta itemprop=3D"ema=
+il" content=3D"greg@pineapple.co"/></span><span class=3D"secondary-text" st=
+yle=3D"color: #70757a; text-decoration: none;"></span></div><div><span item=
+prop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span ite=
+mprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-=
+hover" style=3D"display: inline-block;;color: #3c4043; text-decoration: non=
+e;" href=3D"mailto:jeremy@pineapple.co">jeremy@pineapple.co</a></span><meta=
+ itemprop=3D"email" content=3D"jeremy@pineapple.co"/></span><span class=3D"=
+secondary-text" style=3D"color: #70757a; text-decoration: none;"></span></d=
+iv><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org=
+/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-=
+text underline-on-hover" style=3D"display: inline-block;;color: #3c4043; te=
+xt-decoration: none;" href=3D"mailto:jobs@pineapple.co">jobs@pineapple.co</=
+a></span><meta itemprop=3D"email" content=3D"jobs@pineapple.co"/></span><sp=
+an class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;=
+"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http:=
+//schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=
+=3D"primary-text underline-on-hover" style=3D"display: inline-block;;color:=
+ #3c4043; text-decoration: none;" href=3D"mailto:maryrose@pineapple.co">Mar=
+y Rose Darcen</a></span><meta itemprop=3D"email" content=3D"maryrose@pineap=
+ple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; tex=
+t-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemscop=
+e itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"no=
+translate"><a class=3D"primary-text underline-on-hover" style=3D"display: i=
+nline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:noimee@=
+pineapple.co">Noimee Garcia</a></span><meta itemprop=3D"email" content=3D"n=
+oimee@pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: =
+#70757a; text-decoration: none;"></span></div><div><span itemprop=3D"attend=
+ee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name"=
+ class=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=
+=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D"=
+mailto:mmiranda@pineapple.co">Michael Miranda</a></span><meta itemprop=3D"e=
+mail" content=3D"mmiranda@pineapple.co"/></span><span class=3D"secondary-te=
+xt" style=3D"color: #70757a; text-decoration: none;"></span></div><div><spa=
+n itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><sp=
+an itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underli=
+ne-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decoratio=
+n: none;" href=3D"mailto:stephanie@pineapple.co">stephanie@pineapple.co</a>=
+</span><meta itemprop=3D"email" content=3D"stephanie@pineapple.co"/></span>=
+<span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: no=
+ne;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"ht=
+tp://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a cl=
+ass=3D"primary-text underline-on-hover" style=3D"display: inline-block;;col=
+or: #3c4043; text-decoration: none;" href=3D"mailto:jarren@pineapple.co">ja=
+rren@pineapple.co</a></span><meta itemprop=3D"email" content=3D"jarren@pine=
+apple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; t=
+ext-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemsc=
+ope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"=
+notranslate"><a class=3D"primary-text underline-on-hover" style=3D"display:=
+ inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:doug.=
+smith@5gmale.com">Doug smith</a></span><meta itemprop=3D"email" content=3D"=
+doug.smith@5gmale.com"/></span><span class=3D"secondary-text" style=3D"colo=
+r: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"att=
+endee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"na=
+me" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" styl=
+e=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D=
+"mailto:maria@pineapple.co">maria@pineapple.co</a></span><meta itemprop=3D"=
+email" content=3D"maria@pineapple.co"/></span><span class=3D"secondary-text=
+" style=3D"color: #70757a; text-decoration: none;"></span></div><div><span =
+itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span=
+ itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline=
+-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decoration:=
+ none;" href=3D"mailto:lizza@pineapple.co">Lizza Jane Comia</a></span><meta=
+ itemprop=3D"email" content=3D"lizza@pineapple.co"/></span><span class=3D"s=
+econdary-text" style=3D"color: #70757a; text-decoration: none;"></span></di=
+v><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/=
+Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-t=
+ext underline-on-hover" style=3D"display: inline-block;;color: #3c4043; tex=
+t-decoration: none;" href=3D"mailto:hr1@pineapple.co">hr1@pineapple.co</a><=
+/span><meta itemprop=3D"email" content=3D"hr1@pineapple.co"/></span><span c=
+lass=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></=
+span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://sc=
+hema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"=
+primary-text underline-on-hover" style=3D"display: inline-block;;color: #3c=
+4043; text-decoration: none;" href=3D"mailto:sam@pineapple.co">sam@pineappl=
+e.co</a></span><meta itemprop=3D"email" content=3D"sam@pineapple.co"/></spa=
+n><span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: =
+none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"=
+http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a =
+class=3D"primary-text underline-on-hover" style=3D"display: inline-block;;c=
+olor: #3c4043; text-decoration: none;" href=3D"mailto:srojas@pineapple.co">=
+Stephanie Rojas</a></span><meta itemprop=3D"email" content=3D"srojas@pineap=
+ple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; tex=
+t-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemscop=
+e itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"no=
+translate"><a class=3D"primary-text underline-on-hover" style=3D"display: i=
+nline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:abigail=
+@pineapple.co">abigail@pineapple.co</a></span><meta itemprop=3D"email" cont=
+ent=3D"abigail@pineapple.co"/></span><span class=3D"secondary-text" style=
+=3D"color: #70757a; text-decoration: none;"></span></div><div><span itempro=
+p=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itempr=
+op=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hov=
+er" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;"=
+ href=3D"mailto:dane@pineapple.co">dane@pineapple.co</a></span><meta itempr=
+op=3D"email" content=3D"dane@pineapple.co"/></span><span class=3D"secondary=
+-text" style=3D"color: #70757a; text-decoration: none;"></span></div><div><=
+span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person">=
+<span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text unde=
+rline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decora=
+tion: none;" href=3D"mailto:audrey@pineapple.co">audrey worden</a></span><m=
+eta itemprop=3D"email" content=3D"audrey@pineapple.co"/></span><span class=
+=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></span=
+></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema=
+.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"prim=
+ary-text underline-on-hover" style=3D"display: inline-block;;color: #3c4043=
+; text-decoration: none;" href=3D"mailto:kendal@pineapple.co">kendal@pineap=
+ple.co</a></span><meta itemprop=3D"email" content=3D"kendal@pineapple.co"/>=
+</span><span class=3D"secondary-text" style=3D"color: #70757a; text-decorat=
+ion: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtyp=
+e=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate=
+"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-blo=
+ck;;color: #3c4043; text-decoration: none;" href=3D"mailto:allen@pineapple.=
+co">allen@pineapple.co</a></span><meta itemprop=3D"email" content=3D"allen@=
+pineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757=
+a; text-decoration: none;"></span></div><div><span itemprop=3D"attendee" it=
+emscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=
+=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"disp=
+lay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:d=
+aryl@pineapple.co">Daryl Sta. Ana</a></span><meta itemprop=3D"email" conten=
+t=3D"daryl@pineapple.co"/></span><span class=3D"secondary-text" style=3D"co=
+lor: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"a=
+ttendee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"=
+name" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" st=
+yle=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=
+=3D"mailto:peter@revivalpointllc.com">Peter Perez</a></span><meta itemprop=
+=3D"email" content=3D"peter@revivalpointllc.com"/></span><span class=3D"sec=
+ondary-text" style=3D"color: #70757a; text-decoration: none;"></span></div>=
+<div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Pe=
+rson"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-tex=
+t underline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-=
+decoration: none;" href=3D"mailto:stacy@pineapple.co">stacy@pineapple.co</a=
+></span><meta itemprop=3D"email" content=3D"stacy@pineapple.co"/></span><sp=
+an class=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;=
+"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http:=
+//schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=
+=3D"primary-text underline-on-hover" style=3D"display: inline-block;;color:=
+ #3c4043; text-decoration: none;" href=3D"mailto:renae@pineapple.co">ReNae =
+Nieman</a></span><meta itemprop=3D"email" content=3D"renae@pineapple.co"/><=
+/span><span class=3D"secondary-text" style=3D"color: #70757a; text-decorati=
+on: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=
+=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"=
+><a class=3D"primary-text underline-on-hover" style=3D"display: inline-bloc=
+k;;color: #3c4043; text-decoration: none;" href=3D"mailto:elaiza@pineapple.=
+co">Elaiza Ferrer</a></span><meta itemprop=3D"email" content=3D"elaiza@pine=
+apple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; t=
+ext-decoration: none;"></span></div><div><span itemprop=3D"attendee" itemsc=
+ope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"=
+notranslate"><a class=3D"primary-text underline-on-hover" style=3D"display:=
+ inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:feuer=
+stein@pineapple.co">feuerstein@pineapple.co</a></span><meta itemprop=3D"ema=
+il" content=3D"feuerstein@pineapple.co"/></span><span class=3D"secondary-te=
+xt" style=3D"color: #70757a; text-decoration: none;"></span></div><div><spa=
+n itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><sp=
+an itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text underli=
+ne-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decoratio=
+n: none;" href=3D"mailto:lianne@pineapple.co">Lianne Mariano</a></span><met=
+a itemprop=3D"email" content=3D"lianne@pineapple.co"/></span><span class=3D=
+"secondary-text" style=3D"color: #70757a; text-decoration: none;"></span></=
+div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.or=
+g/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary=
+-text underline-on-hover" style=3D"display: inline-block;;color: #3c4043; t=
+ext-decoration: none;" href=3D"mailto:heather@pineapple.co">heather@pineapp=
+le.co</a></span><meta itemprop=3D"email" content=3D"heather@pineapple.co"/>=
+</span><span class=3D"secondary-text" style=3D"color: #70757a; text-decorat=
+ion: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtyp=
+e=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate=
+"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-blo=
+ck;;color: #3c4043; text-decoration: none;" href=3D"mailto:brooke@pineapple=
+.co">Brooke Whoolery</a></span><meta itemprop=3D"email" content=3D"brooke@p=
+ineapple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a=
+; text-decoration: none;"></span></div><div><span itemprop=3D"attendee" ite=
+mscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=
+=3D"notranslate"><a class=3D"primary-text underline-on-hover" style=3D"disp=
+lay: inline-block;;color: #3c4043; text-decoration: none;" href=3D"mailto:c=
+orina@pineapple.co">Corina Norried</a></span><meta itemprop=3D"email" conte=
+nt=3D"corina@pineapple.co"/></span><span class=3D"secondary-text" style=3D"=
+color: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D=
+"attendee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=
+=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-hover=
+" style=3D"display: inline-block;;color: #3c4043; text-decoration: none;" h=
+ref=3D"mailto:derek@pineapple.co">derek@pineapple.co</a></span><meta itempr=
+op=3D"email" content=3D"derek@pineapple.co"/></span><span class=3D"secondar=
+y-text" style=3D"color: #70757a; text-decoration: none;"></span></div><div>=
+<span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"=
+><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-text und=
+erline-on-hover" style=3D"display: inline-block;;color: #3c4043; text-decor=
+ation: none;" href=3D"mailto:ryanalarid@pineapple.co">ryanalarid@pineapple.=
+co</a></span><meta itemprop=3D"email" content=3D"ryanalarid@pineapple.co"/>=
+</span><span class=3D"secondary-text" style=3D"color: #70757a; text-decorat=
+ion: none;"></span></div><div><span itemprop=3D"attendee" itemscope itemtyp=
+e=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate=
+"><a class=3D"primary-text underline-on-hover" style=3D"display: inline-blo=
+ck;;color: #3c4043; text-decoration: none;" href=3D"mailto:jonathan@pineapp=
+le.co">jonathan@pineapple.co</a></span><meta itemprop=3D"email" content=3D"=
+jonathan@pineapple.co"/></span><span class=3D"secondary-text" style=3D"colo=
+r: #70757a; text-decoration: none;"></span></div><div><span itemprop=3D"att=
+endee" itemscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"na=
+me" class=3D"notranslate"><a class=3D"primary-text underline-on-hover" styl=
+e=3D"display: inline-block;;color: #3c4043; text-decoration: none;" href=3D=
+"mailto:doug@revivalpointllc.com">doug@revivalpointllc.com</a></span><meta =
+itemprop=3D"email" content=3D"doug@revivalpointllc.com"/></span><span class=
+=3D"secondary-text" style=3D"color: #70757a; text-decoration: none;"></span=
+></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema=
+.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"prim=
+ary-text underline-on-hover" style=3D"display: inline-block;;color: #3c4043=
+; text-decoration: none;" href=3D"mailto:lisa@pineapple.co">lisa@pineapple.=
+co</a></span><meta itemprop=3D"email" content=3D"lisa@pineapple.co"/></span=
+><span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: n=
+one;"></span></div><div><span itemprop=3D"attendee" itemscope itemtype=3D"h=
+ttp://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"><a c=
+lass=3D"primary-text underline-on-hover" style=3D"display: inline-block;;co=
+lor: #3c4043; text-decoration: none;" href=3D"mailto:karabyrne@pineapple.co=
+">Kara Byrne</a></span><meta itemprop=3D"email" content=3D"karabyrne@pineap=
+ple.co"/></span><span class=3D"secondary-text" style=3D"color: #70757a; tex=
+t-decoration: none;"></span></div></div><a href=3D"https://calendar.google.=
+com/calendar/event?action=3DVIEW&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZh=
+bnQgYXVicmV5QHBpbmVhcHBsZS5jbw&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvZGIzMz=
+Y5YWM0MGJhYTBiZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY2Ng&amp;ctz=3DAmerica%2FChicag=
+o&amp;hl=3Den&amp;es=3D1" style=3D"display: inline-block;;color: #1a73e8; t=
+ext-decoration: none;font-weight: 700;" target=3D"_blank" class=3D"accent-t=
+ext underline-on-hover">View all guest info</a></div></td></tr><tr><td styl=
+e=3D"font-size: 0; padding: 0; text-align: left; word-break: break-word;;pa=
+dding-bottom:0px;"><div style=3D"color: #3c4043; text-decoration: none;;fon=
+t-family: Roboto, sans-serif;font-size: 14px; line-height: 20px; mso-line-h=
+eight-rule: exactly; text-align: left;" class=3D"primary-text"><div><span s=
+tyle=3D"font-weight: 700;-webkit-font-smoothing: antialiased;">Reply</span>=
+<span class=3D"secondary-text" style=3D"color: #70757a; text-decoration: no=
+ne;"> for <a class=3D"secondary-text underline-on-hover" style=3D"display: =
+inline-block;;color: #70757a; text-decoration: none;" href=3D"mailto:aubrey=
+@pineapple.co">aubrey@pineapple.co</a></span></div></div></td></tr><tr><td =
+style=3D"font-size: 0; padding: 0; text-align: left; word-break: break-word=
+;;padding-bottom:16px;"><div style=3D"font-family: Roboto, sans-serif;font-=
+size: 14px; line-height: 20px; mso-line-height-rule: exactly; text-align: l=
+eft;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"border-collapse: separate;"><tr><td style=3D"padding-top:=
+ 8px; padding-left: 0; padding-right: 12px;"><!-- RSVP buttons --><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"border: solid 1px #dadce0; border-radius: 16px; border-collapse: separa=
+te;font-family: &#39;Google Sans&#39;, Roboto, sans-serif;;display: inline-=
+block;;margin-right: 12px; margin-left: 0;"><tr><td align=3D"center" vertic=
+al-align=3D"middle" role=3D"presentation"><span itemprop=3D"potentialaction=
+" itemscope itemtype=3D"http://schema.org/RsvpAction"><meta itemprop=3D"att=
+endance" content=3D"http://schema.org/RsvpAttendance/Yes"/><span itemprop=
+=3D"handler" itemscope itemtype=3D"http://schema.org/HttpActionHandler"><li=
+nk itemprop=3D"method" href=3D"http://schema.org/HttpRequestMethod/GET"/><s=
+pan style=3D"color: #5f6367;"><a href=3D"https://calendar.google.com/calend=
+ar/event?action=3DRESPOND&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgYXV=
+icmV5QHBpbmVhcHBsZS5jbw&amp;rst=3D1&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvZ=
+GIzMzY5YWM0MGJhYTBiZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY2Ng&amp;ctz=3DAmerica%2FC=
+hicago&amp;hl=3Den&amp;es=3D1" style=3D"font-weight: 400;font-family: &#39;=
+Google Sans&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; line-=
+height: 120%; mso-line-height-rule: exactly; margin: 0; text-decoration: no=
+ne; text-transform: none;" class=3D"grey-button-text" itemprop=3D"url" targ=
+et=3D"_blank"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation"><tr><td align=3D"center" role=3D"presentation" valign=3D"=
+middle" style=3D"padding: 6px 0; padding-left: 16px; padding-right: 12px; w=
+hite-space: nowrap;"><span class=3D"grey-button-text" style=3D"font-weight:=
+ 400;font-family: &#39;Google Sans&#39;, Roboto, sans-serif;color: #5f6368;=
+ font-size: 14px; line-height: 120%; mso-line-height-rule: exactly; margin:=
+ 0; text-decoration: none; text-transform: none;">Yes</span></td></tr></tab=
+le></a></span></span></span></td><td align=3D"center" vertical-align=3D"mid=
+dle" role=3D"presentation" style=3D"border-left: solid 1px #dadce0; border-=
+right: solid 1px #dadce0;"><span itemprop=3D"potentialaction" itemscope ite=
+mtype=3D"http://schema.org/RsvpAction"><meta itemprop=3D"attendance" conten=
+t=3D"http://schema.org/RsvpAttendance/No"/><span itemprop=3D"handler" items=
+cope itemtype=3D"http://schema.org/HttpActionHandler"><link itemprop=3D"met=
+hod" href=3D"http://schema.org/HttpRequestMethod/GET"/><span style=3D"color=
+: #5f6367;"><a href=3D"https://calendar.google.com/calendar/event?action=3D=
+RESPOND&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgYXVicmV5QHBpbmVhcHBsZ=
+S5jbw&amp;rst=3D2&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvZGIzMzY5YWM0MGJhYTB=
+iZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY2Ng&amp;ctz=3DAmerica%2FChicago&amp;hl=3Den=
+&amp;es=3D1" style=3D"font-weight: 400;font-family: &#39;Google Sans&#39;, =
+Roboto, sans-serif;color: #5f6368; font-size: 14px; line-height: 120%; mso-=
+line-height-rule: exactly; margin: 0; text-decoration: none; text-transform=
+: none;" class=3D"grey-button-text" itemprop=3D"url" target=3D"_blank"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><=
+tr><td align=3D"center" role=3D"presentation" valign=3D"middle" style=3D"pa=
+dding: 6px 12px; white-space: nowrap;"><span class=3D"grey-button-text" sty=
+le=3D"font-weight: 400;font-family: &#39;Google Sans&#39;, Roboto, sans-ser=
+if;color: #5f6368; font-size: 14px; line-height: 120%; mso-line-height-rule=
+: exactly; margin: 0; text-decoration: none; text-transform: none;">No</spa=
+n></td></tr></table></a></span></span></span></td><td align=3D"center" vert=
+ical-align=3D"middle" role=3D"presentation"><span itemprop=3D"potentialacti=
+on" itemscope itemtype=3D"http://schema.org/RsvpAction"><meta itemprop=3D"a=
+ttendance" content=3D"http://schema.org/RsvpAttendance/Maybe"/><span itempr=
+op=3D"handler" itemscope itemtype=3D"http://schema.org/HttpActionHandler"><=
+link itemprop=3D"method" href=3D"http://schema.org/HttpRequestMethod/GET"/>=
+<span style=3D"color: #5f6367;"><a href=3D"https://calendar.google.com/cale=
+ndar/event?action=3DRESPOND&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgY=
+XVicmV5QHBpbmVhcHBsZS5jbw&amp;rst=3D3&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmN=
+vZGIzMzY5YWM0MGJhYTBiZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY2Ng&amp;ctz=3DAmerica%2=
+FChicago&amp;hl=3Den&amp;es=3D1" style=3D"font-weight: 400;font-family: &#3=
+9;Google Sans&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; lin=
+e-height: 120%; mso-line-height-rule: exactly; margin: 0; text-decoration: =
+none; text-transform: none;" class=3D"grey-button-text" itemprop=3D"url" ta=
+rget=3D"_blank"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation"><tr><td align=3D"center" role=3D"presentation" valign=3D=
+"middle" style=3D"padding: 6px 0; padding-left: 12px; padding-right: 16px; =
+white-space: nowrap;"><span class=3D"grey-button-text" style=3D"font-weight=
+: 400;font-family: &#39;Google Sans&#39;, Roboto, sans-serif;color: #5f6368=
+; font-size: 14px; line-height: 120%; mso-line-height-rule: exactly; margin=
+: 0; text-decoration: none; text-transform: none;">Maybe</span></td></tr></=
+table></a></span></span></span></td></tr></table><!-- More options --><a hr=
+ef=3D"https://calendar.google.com/calendar/event?action=3DVIEW&amp;eid=3DMn=
+ZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgYXVicmV5QHBpbmVhcHBsZS5jbw&amp;tok=3DMTgj=
+YW1iZXJAcGluZWFwcGxlLmNvZGIzMzY5YWM0MGJhYTBiZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY=
+2Ng&amp;ctz=3DAmerica%2FChicago&amp;hl=3Den&amp;es=3D1" style=3D"display: i=
+nline-block;;font-weight: 400;font-family: &#39;Google Sans&#39;, Roboto, s=
+ans-serif;color: #5f6368; font-size: 14px; line-height: 120%; mso-line-heig=
+ht-rule: exactly; margin: 0; text-decoration: none; text-transform: none;" =
+class=3D"grey-button-text" target=3D"_blank"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"border: solid 1px =
+#dadce0; border-radius: 16px; border-collapse: separate;font-family: &#39;G=
+oogle Sans&#39;, Roboto, sans-serif;"><tr><td align=3D"center" vertical-ali=
+gn=3D"middle" role=3D"presentation" style=3D"padding: 6px 0; padding-left: =
+16px; padding-right: 12px; white-space: nowrap;;color: #5f6367;"><span clas=
+s=3D"grey-button-text" style=3D"font-weight: 400;font-family: &#39;Google S=
+ans&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; line-height: =
+120%; mso-line-height-rule: exactly; margin: 0; text-decoration: none; text=
+-transform: none;">More options</span></td></tr></table></a></td></tr></tab=
+le></div></td></tr></table></td></tr></tbody></table></div><!--[if mso | IE=
+]></tr></table><![endif]--></td></tr></tbody></table><table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center" st=
+yle=3D"width:100%;" class=3D""><tbody><tr><td style=3D"font-size: 0; paddin=
+g: 0; text-align: left; word-break: break-word;;padding:4px 12px;" class=3D=
+"" align=3D"left"><div class=3D"secondary-text" style=3D"color: #70757a; te=
+xt-decoration: none;font-family: Roboto, sans-serif;font-size: 12px; line-h=
+eight: 16px; mso-line-height-rule: exactly; text-align: left;"><p>Invitatio=
+n from <a href=3D"https://calendar.google.com/calendar/" class=3D"accent-te=
+xt underline-on-hover" style=3D"font-family: Roboto, sans-serif;font-size: =
+12px; line-height: 16px; mso-line-height-rule: exactly;;color: #1a73e8; tex=
+t-decoration: none;" target=3D"_blank">Google Calendar</a></p><p>You are re=
+ceiving this email because you are subscribed to calendar notifications. To=
+ stop receiving these emails, go to <a href=3D"https://calendar.google.com/=
+calendar/r/settings" class=3D"accent-text underline-on-hover" style=3D"font=
+-family: Roboto, sans-serif;font-size: 12px; line-height: 16px; mso-line-he=
+ight-rule: exactly;;color: #1a73e8; text-decoration: none;" target=3D"_blan=
+k">Calendar settings</a>, select this calendar, and change "Other notificat=
+ions".</p><p>Forwarding this invitation could allow any recipient to send a=
+ response to the organizer, be added to the guest list, invite others regar=
+dless of their own invitation status, or modify your RSVP. <a class=3D"acce=
+nt-text underline-on-hover" style=3D"font-family: Roboto, sans-serif;font-s=
+ize: 12px; line-height: 16px; mso-line-height-rule: exactly;;color: #1a73e8=
+; text-decoration: none;" href=3D"https://support.google.com/calendar/answe=
+r/37135#forwarding">Learn more</a></p></div></td></tr></tbody></table></td>=
+</tr></tbody></table></span></span></body></html>
+--000000000000b1307905e3889acf
+Content-Type: text/calendar; charset="UTF-8"; method=REQUEST
+Content-Transfer-Encoding: quoted-printable
+
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20220713T160000Z
+DTEND:20220713T170000Z
+DTSTAMP:20220711T144533Z
+ORGANIZER;CN=3Damber@pineapple.co:mailto:amber@pineapple.co
+UID:2vetkh1rirq4ttd09qek4f6ant@google.com
+ATTENDEE;CUTYPE=3DINDIVIDUAL;ROLE=3DREQ-PARTICIPANT;PARTSTAT=3DNEEDS-ACTION=
+;RSVP=3D
+ TRUE;CN=3DAll;X-NUM-GUESTS=3D0:mailto:all@pineapple.co
+ATTENDEE;CUTYPE=3DINDIVIDUAL;ROLE=3DREQ-PARTICIPANT;PARTSTAT=3DNEEDS-ACTION=
+;RSVP=3D
+ TRUE;CN=3Daubrey@pineapple.co;X-NUM-GUESTS=3D0:mailto:aubrey@pineapple.co
+ATTENDEE;CUTYPE=3DINDIVIDUAL;ROLE=3DREQ-PARTICIPANT;PARTSTAT=3DACCEPTED;RSV=
+P=3DTRUE
+ ;CN=3Damber@pineapple.co;X-NUM-GUESTS=3D0:mailto:amber@pineapple.co
+X-MICROSOFT-CDO-OWNERAPPTID:-578948703
+CREATED:20220711T144522Z
+DESCRIPTION:Hey\, please join me for an all-hands meeting this Wednesday at
+  12pm ET for 45 minutes on Zoom (<a href=3D"http://pineapple.co/zoom">pine=
+app
+ le.co/zoom</a>).<br><br>I=E2=80=99m going to run through some of the compa=
+ny=E2=80=99s cost
+  cutting actions we=E2=80=99re taking to ensure we get through this econom=
+ic downtu
+ rn.<br><br>There is no reason for alarm\, the company revenue is steady an=
+d
+  while it=E2=80=99s a drop from 2021\, it=E2=80=99s stronger than it was i=
+n 2020.<br><br>I=20
+ also look at these times as an opportunity to focus on getting lean and ef=
+f
+ icient in ways we might not have been when we were growing more rapidly.<b=
+r
+ ><br>Looking forward to talking to you Wednesday at 12PM ET!<br><br>Link:&=
+n
+ bsp\;<a href=3D"http://pineapple.co/zoom">pineapple.co/zoom</a><br><br>-Br=
+ett
+ \n\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:=
+~
+ :~:~:~:~::~:~::-\nDo not edit this section of the description.\n\nView you=
+r
+  event at https://calendar.google.com/calendar/event?action=3DVIEW&eid=3DM=
+nZldG
+ toMXJpcnE0dHRkMDlxZWs0ZjZhbnQgYXVicmV5QHBpbmVhcHBsZS5jbw&tok=3DMTgjYW1iZXJ=
+AcG
+ luZWFwcGxlLmNvZGIzMzY5YWM0MGJhYTBiZGZkMGE2MjIyYzBkOTQ4YThjZDMwYWY2Ng&ctz=
+=3DAm
+ erica%2FChicago&hl=3Den&es=3D1.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~=
+:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20220711T144523Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:All-Hands Meeting
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
+
+--000000000000b1307905e3889acf--
+--000000000000b1307a05e3889ad1
+Content-Type: application/ics; name="invite.ics"
+Content-Disposition: attachment; filename="invite.ics"
+Content-Transfer-Encoding: base64
+
+QkVHSU46VkNBTEVOREFSDQpQUk9ESUQ6LS8vR29vZ2xlIEluYy8vR29vZ2xlIENhbGVuZGFyIDcw
+LjkwNTQvL0VODQpWRVJTSU9OOjIuMA0KQ0FMU0NBTEU6R1JFR09SSUFODQpNRVRIT0Q6UkVRVUVT
+VA0KQkVHSU46VkVWRU5UDQpEVFNUQVJUOjIwMjIwNzEzVDE2MDAwMFoNCkRURU5EOjIwMjIwNzEz
+VDE3MDAwMFoNCkRUU1RBTVA6MjAyMjA3MTFUMTQ0NTMzWg0KT1JHQU5JWkVSO0NOPWFtYmVyQHBp
+bmVhcHBsZS5jbzptYWlsdG86YW1iZXJAcGluZWFwcGxlLmNvDQpVSUQ6MnZldGtoMXJpcnE0dHRk
+MDlxZWs0ZjZhbnRAZ29vZ2xlLmNvbQ0KQVRURU5ERUU7Q1VUWVBFPUlORElWSURVQUw7Uk9MRT1S
+RVEtUEFSVElDSVBBTlQ7UEFSVFNUQVQ9TkVFRFMtQUNUSU9OO1JTVlA9DQogVFJVRTtDTj1BbGw7
+WC1OVU0tR1VFU1RTPTA6bWFpbHRvOmFsbEBwaW5lYXBwbGUuY28NCkFUVEVOREVFO0NVVFlQRT1J
+TkRJVklEVUFMO1JPTEU9UkVRLVBBUlRJQ0lQQU5UO1BBUlRTVEFUPU5FRURTLUFDVElPTjtSU1ZQ
+PQ0KIFRSVUU7Q049YXVicmV5QHBpbmVhcHBsZS5jbztYLU5VTS1HVUVTVFM9MDptYWlsdG86YXVi
+cmV5QHBpbmVhcHBsZS5jbw0KQVRURU5ERUU7Q1VUWVBFPUlORElWSURVQUw7Uk9MRT1SRVEtUEFS
+VElDSVBBTlQ7UEFSVFNUQVQ9QUNDRVBURUQ7UlNWUD1UUlVFDQogO0NOPWFtYmVyQHBpbmVhcHBs
+ZS5jbztYLU5VTS1HVUVTVFM9MDptYWlsdG86YW1iZXJAcGluZWFwcGxlLmNvDQpYLU1JQ1JPU09G
+VC1DRE8tT1dORVJBUFBUSUQ6LTU3ODk0ODcwMw0KQ1JFQVRFRDoyMDIyMDcxMVQxNDQ1MjJaDQpE
+RVNDUklQVElPTjpIZXlcLCBwbGVhc2Ugam9pbiBtZSBmb3IgYW4gYWxsLWhhbmRzIG1lZXRpbmcg
+dGhpcyBXZWRuZXNkYXkgYXQNCiAgMTJwbSBFVCBmb3IgNDUgbWludXRlcyBvbiBab29tICg8YSBo
+cmVmPSJodHRwOi8vcGluZWFwcGxlLmNvL3pvb20iPnBpbmVhcHANCiBsZS5jby96b29tPC9hPiku
+PGJyPjxicj5J4oCZbSBnb2luZyB0byBydW4gdGhyb3VnaCBzb21lIG9mIHRoZSBjb21wYW554oCZ
+cyBjb3N0DQogIGN1dHRpbmcgYWN0aW9ucyB3ZeKAmXJlIHRha2luZyB0byBlbnN1cmUgd2UgZ2V0
+IHRocm91Z2ggdGhpcyBlY29ub21pYyBkb3dudHUNCiBybi48YnI+PGJyPlRoZXJlIGlzIG5vIHJl
+YXNvbiBmb3IgYWxhcm1cLCB0aGUgY29tcGFueSByZXZlbnVlIGlzIHN0ZWFkeSBhbmQNCiAgd2hp
+bGUgaXTigJlzIGEgZHJvcCBmcm9tIDIwMjFcLCBpdOKAmXMgc3Ryb25nZXIgdGhhbiBpdCB3YXMg
+aW4gMjAyMC48YnI+PGJyPkkgDQogYWxzbyBsb29rIGF0IHRoZXNlIHRpbWVzIGFzIGFuIG9wcG9y
+dHVuaXR5IHRvIGZvY3VzIG9uIGdldHRpbmcgbGVhbiBhbmQgZWZmDQogaWNpZW50IGluIHdheXMg
+d2UgbWlnaHQgbm90IGhhdmUgYmVlbiB3aGVuIHdlIHdlcmUgZ3Jvd2luZyBtb3JlIHJhcGlkbHku
+PGJyDQogPjxicj5Mb29raW5nIGZvcndhcmQgdG8gdGFsa2luZyB0byB5b3UgV2VkbmVzZGF5IGF0
+IDEyUE0gRVQhPGJyPjxicj5MaW5rOiZuDQogYnNwXDs8YSBocmVmPSJodHRwOi8vcGluZWFwcGxl
+LmNvL3pvb20iPnBpbmVhcHBsZS5jby96b29tPC9hPjxicj48YnI+LUJyZXR0DQogXG5cbi06On46
+fjo6fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46
+fjp+On46fjp+DQogOn46fjp+On46On46fjo6LVxuRG8gbm90IGVkaXQgdGhpcyBzZWN0aW9uIG9m
+IHRoZSBkZXNjcmlwdGlvbi5cblxuVmlldyB5b3VyDQogIGV2ZW50IGF0IGh0dHBzOi8vY2FsZW5k
+YXIuZ29vZ2xlLmNvbS9jYWxlbmRhci9ldmVudD9hY3Rpb249VklFVyZlaWQ9TW5abGRHDQogdG9N
+WEpwY25FMGRIUmtNRGx4WldzMFpqWmhiblFnWVhWaWNtVjVRSEJwYm1WaGNIQnNaUzVqYncmdG9r
+PU1UZ2pZVzFpWlhKQWNHDQogbHVaV0Z3Y0d4bExtTnZaR0l6TXpZNVlXTTBNR0poWVRCaVpHWmtN
+R0UyTWpJeVl6QmtPVFE0WVRoalpETXdZV1kyTmcmY3R6PUFtDQogZXJpY2ElMkZDaGljYWdvJmhs
+PWVuJmVzPTEuXG4tOjp+On46On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46
+DQogfjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+Ojp+On46Oi0NCkxBU1QtTU9ESUZJ
+RUQ6MjAyMjA3MTFUMTQ0NTIzWg0KTE9DQVRJT046DQpTRVFVRU5DRTowDQpTVEFUVVM6Q09ORklS
+TUVEDQpTVU1NQVJZOkFsbC1IYW5kcyBNZWV0aW5nDQpUUkFOU1A6T1BBUVVFDQpFTkQ6VkVWRU5U
+DQpFTkQ6VkNBTEVOREFSDQo=
+--000000000000b1307a05e3889ad1--

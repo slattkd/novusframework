@@ -1,0 +1,272 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    color: #000;
+    background-color: #EEE;
+}
+.main_container {
+    padding: 0px;
+    margin: 25px auto;
+    overflow: auto;
+    width: 680px;
+}
+.slpage {
+    padding: 0px 0px 20px 0px;
+    overflow: hidden;
+    width: 100%;
+}
+.letter-body {
+    position: relative;
+    clear: both;
+    padding: 15px 50px;
+    /*width: 96%;*/
+    margin: 15px auto;
+    float:none;
+    border-radius: 5px;
+    border-width: 3px 1px 1px;
+    border-style: solid;
+    border-color: #D81E00 #000 #000;
+    background-color: #FFF;
+}
+p {
+    margin: 0px;
+    padding: 0px;
+}
+.p1 {
+    font-family: Arial,Verdana,sans-serif;
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0px;
+}
+
+.p3 {
+    font-family: Arial,sans-serif;
+    font-size: 14px;
+    line-height: 130%;
+    text-indent: 0px !important;
+}
+.p4 {
+    font-weight: 700;
+    font-size: 20px;
+    color: #D81E00;
+}
+.centered {
+    text-align: center;
+}
+.color-black {
+    color: #000;
+}
+.check-list {
+    background: transparent url("/images/check.png") no-repeat scroll 0px 0px;
+    padding-left: 50px;
+    list-style-type: none;
+    margin-top: 12px;
+}
+#guarantee-image-2 {
+    float: left;
+    margin-right: 20px;
+}
+.testimonial {
+    padding: 25px;
+    color: #666;
+    border: 2px solid #EEE;
+    margin: 0px 20px;
+    border-radius: 6px;
+    width: 335px;
+    float: right;
+}
+.benefit_box {
+    border: 1px dashed #808080;
+    padding: 15px;
+    margin: 0px auto;
+}
+.benefit_box ul {
+    margin: 5px;
+    padding: 20px;
+}
+.buy_box {
+    border: 4px dashed #C90000;
+    width: 80%;
+    margin: 40px auto;
+    float: none;
+}
+.buy_title {
+    font-size: 58px;
+    letter-spacing:-2px;
+    text-indent: 0em !important;
+    text-align:center;
+    font-weight: bold;
+    color: #C90000;
+}
+.buy_subtitle {
+    color: #666;
+    font-weight: bold;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    font-size: 28px;
+}
+.old_price {
+    color: #CCC;
+    text-decoration: line-through;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    font-size: 28px;
+    line-height: 130%;
+    text-align: center;
+    text-indent: 0em !important;
+    font-weight: bold;
+}
+.real_price {
+    font-size: 40px;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    color: #C90000;
+    line-height: 130%;
+    text-align: center;
+    text-indent: 0em !important;
+    font-weight: bold;
+}
+.timer {
+    text-align: center;
+    font-size: 22px;
+}
+.page_opener {
+    font-size: 23px;
+    line-height: 25px;
+    color: #C90000;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    text-align: center;
+    text-indent: 0em !important;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+.page_title {
+    font-size: 54px;
+    line-height: 62px;
+    color: #C90000;
+    font-weight: bold;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+    text-indent: 0;
+}
+.page_subtitle {
+    font-size: 25px;
+    line-height: 32px;
+    color: #C90000;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.page_subtitle_black {
+    color: #000;
+    font-size: 20px;
+    font-family: "PT Sans Narrow",Arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+#letter_body {
+    margin: 0px 0px 0px 0px;
+    padding: 10px 0px;
+}
+.mobile_br {
+    display: none;
+}
+
+#footer {
+    clear: both;
+    color: #C0C0C0;
+    margin: 80px 0px 0px;
+    border-top: 1px solid #CCC;
+    padding: 10px 0px 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+    .page_title {
+        font-size: 38px;
+        line-height: 40px;
+    }
+    .page_subtitle {
+        font-size: 24px;
+        line-height: 26px;
+    }
+    .letter-body {
+        padding: 20px;
+    }
+    .testimonial {
+        padding: 10px;
+        width: 210px;
+    }
+    .p1 {
+        text-indent: 0px;
+    }
+    .mobile_br {
+        display: block;
+    }
+}
+@media (max-width: 460px) {
+    .page_title {
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .page_subtitle {
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .buy_title, .real_price {
+        font-size: 32px;
+        line-height: 36px;
+        margin-bottom: 8px;
+    }
+    .p3 {
+        font-size: 22px;
+    }
+    .buy_subtitle {
+        font-size: 24px;
+        line-height: 26px;
+        text-align: center;
+        text-indent: 0px;
+    }
+    .main_container {
+        padding: 0px;
+        padding-top: 10px;
+        width: 100%;
+        margin: 0px;
+    }
+    .letter-body {
+        margin: 0px;
+        padding: 4px;
+        width: 100%;
+    }
+    .slpage {
+        padding: 20px 0px 20px 0px;
+        width: 100%;
+        float: none;
+        margin: 0px;
+    }
+    .testimonial {
+        padding: 10px;
+        width: 100%;
+        float: none;
+        margin: 0px auto;
+    }
+    .buy_box {
+        width: 95%;
+    }
+    .benefit_box ul {
+        margin: 5px;
+        padding: 10px;
+    }
+}
+@media (max-width: 920px) {
+    .main_container {
+        width: 96%;
+        margin: 0px auto;
+    }
+    .buy_box {
+        width: 90%;
+    }
+}

@@ -1,0 +1,107 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp917769ejl;
+        Mon, 2 May 2022 10:42:59 -0700 (PDT)
+X-Received: by 2002:a6b:f403:0:b0:657:880c:f351 with SMTP id i3-20020a6bf403000000b00657880cf351mr4620565iog.131.1651513379007;
+        Mon, 02 May 2022 10:42:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1651513379; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dVD3G9ML0Ck42eclxeR9g8BGfxmTwo0MuZsNmqXWGc9SlH9Q+Guuwzam6/feTLl4sC
+         LhmajXz3OYZgi7bzqDWCGubVYLnoUnQZyxUJ6LPhH6/cpOnn+oviZkl2DTjW85keELWw
+         MBPJKqUmzYfFC8ciaFZSq085d5hbwIhSyKAIPlVnUAOTVH/N0k9jN/ri008+JY8bUNNR
+         qxlWfBhEOyKIsdNBN83D7lFxBO0xzTjMX9OSvj4m1pdS6VMtQ0ks3tl8M2Gdbz07sxYr
+         pLyKBtU7Tl4rahzMeYQ2TdrsnVfH1n8t8DqmYEZtBoyHdj1WJ0FEQL6CHt8PSFWgVfvB
+         eNkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:in-reply-to:cc:references:message-id:date:subject:mime-version
+         :from:content-transfer-encoding:dkim-signature;
+        bh=/+VO8vd28uD4VHjrG929+/v78fTFrwfraaOtjwYBeH8=;
+        b=u52FE3FhYakyd9YKGaSNsXk/d/BhikS0+f/dkdFnazRpITSjACydKNxt6hwr48r3dP
+         fDdo4cS9QofEtMVsAjKPa3VhfEMRho6VIZ1BDEDwLWyhmgIS0XEpexaJs3ri6KP+SfvF
+         OS+Kbkbn89PQ3EBQJTpXPm6+3kFaziSPVmxr/J415BkFok4LJdFRhdUFyhBMJwssMBJq
+         7dl00RauoVy6PLmFK5FJ5zekcUa/1sENM6wgMH77O3LCI3L8q7/n5j6X2HPDrivdGi50
+         7AUzXztqe/pl9BVENyszhrN0M1NSyjiSD5kRQdJmlDD9W0jehJUdPqywe/mT5tp84a+V
+         1JDw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=edeIfjGU;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e13-20020a02210d000000b0032b01d953dfsor5557785jaa.116.2022.05.02.10.42.58
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 02 May 2022 10:42:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=edeIfjGU;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:from:mime-version:subject:date:message-id
+         :references:cc:in-reply-to:to;
+        bh=/+VO8vd28uD4VHjrG929+/v78fTFrwfraaOtjwYBeH8=;
+        b=edeIfjGUjNLg8jEUugAjufNfOpMbeH4SQ1CYL/QodGvaaSpowQhPW2fmQ+PswyK3vk
+         H8/0GjImS556mqfzBR+CF05fWHCKZnwXGLBfghL++VkjZE6dbPZGohp9PYLD8fPVyiDW
+         zM1wDwy2De8G+nenSvxkgqoUnkfafWmBi4/0qOBi7hAwiY4XIoUUhO2iN/0LE61MdLJ6
+         rCUei4Qi7gxlruKkhSZ8ENULN2HvZqP4+XoflLw3YgFcR1qTF3Jf3aky1pXOkdq2nwvi
+         94tcfCT+AcP2hZen4x135Abq0Vp7nStV/H2rVXpWxYdWSjyVXdJ40pgtVSkYidvV8o45
+         kS6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:content-transfer-encoding:from:mime-version
+         :subject:date:message-id:references:cc:in-reply-to:to;
+        bh=/+VO8vd28uD4VHjrG929+/v78fTFrwfraaOtjwYBeH8=;
+        b=1QneUfkKnWUrFStVEHZNdkk4rp+E11OoHvV8JeRpMgB1WVt58yP83L308ltVRUK6ui
+         p1AVXnCyUo8z2ssoCJ9MNJUXaJuDc4Z2r+cDhqCiGgW7lH8B3TwhHa5nAuMHTdOrp18I
+         vxYD+MnBeWQ/AF+AFkGij2xCTIINzfkKhkgQlL6bv0V3H0ZJfg1VrSjJLutdmfNuGn7s
+         L6BI6s18KqLxsXauotKqpkYMSOixZ4AWuSN+3M85m/O5PKD16w/SX1zOKELQ4cmSFi2s
+         dfGv5vB9j4vMF2Px+eajR56QsfAcLGDhRIyIo8b2iZMLA4B5dWbrM+uReFiXWdGQmv5u
+         f1CA==
+X-Gm-Message-State: AOAM530XcLCNpriGdJr+Wcj+/r+FVW7E/c5a1U+Qcv22YGTLuMqI+Tcz
+	qj8DMmLqE6Y/AEOFwSdrBRYpz2bc6iXCFwCR4BdYtFs0I9eGVJPyHQqJoRm9hN/k9jXDK5Kby26
+	zWI6r3ZsTJj3pI9c88MWt7uzgBhNKsAhllzU2vqYpeHTnXBcGSrjan/7AP+hS6/o=
+X-Google-Smtp-Source: ABdhPJyHpCOdRLA0usVCHIqFOx+w/A8MIt2dnifEvA2m285sRb0SEb+EHXv8yeNTL4SddcsvmWrz6Q==
+X-Received: by 2002:a05:6638:1914:b0:32a:8804:da85 with SMTP id p20-20020a056638191400b0032a8804da85mr5062629jal.212.1651513378471;
+        Mon, 02 May 2022 10:42:58 -0700 (PDT)
+Return-Path: <brooke@pineapple.co>
+Received: from smtpclient.apple ([2601:249:8c00:2b40:f5a8:9da7:5617:b4f9])
+        by smtp.gmail.com with ESMTPSA id u1-20020a056e02110100b002cde6e352d5sm2840203ilk.31.2022.05.02.10.42.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 May 2022 10:42:58 -0700 (PDT)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Brooke Whoolery <brooke@pineapple.co>
+Mime-Version: 1.0 (1.0)
+Subject: Re: Dr. Feurstein & Dr. Masley, April 2022
+Date: Mon, 2 May 2022 12:42:57 -0500
+Message-Id: <9BB283F1-A763-4274-829D-F0555AE58529@pineapple.co>
+References: <CAHbmDP-0QdSWV3Jzv4jTrkrCyG=j02epT+HH5j6eCfmn+0OJNw@mail.gmail.com>
+Cc: Sean Chipman <sean@pineapple.co>, Taylor Piccolo <taylor@pineapple.co>
+In-Reply-To: <CAHbmDP-0QdSWV3Jzv4jTrkrCyG=j02epT+HH5j6eCfmn+0OJNw@mail.gmail.com>
+To: Aubrey Allen <aubrey@pineapple.co>
+X-Mailer: iPhone Mail (19E258)
+
+Thank you!!=20
+
+> On May 2, 2022, at 12:37 PM, Aubrey Allen <aubrey@pineapple.co> wrote:
+>=20
+> =EF=BB=BF
+> Hello!
+>=20
+> For the month of April:
+>=20
+> # of Nitric Drive bottles sold =3D 1325
+> Total due to Dr. Feurstein =3D $132.50
+>=20
+> # of new Floraspring customers: 1428
+>=20
+>=20
+> Please let me know if there are any questions.
+>=20
+>=20
+> Thanks!
+> --=20
+> Aubrey Allen
+> Data Analytics Technician
+> Pineapple Products, Inc.

@@ -1,0 +1,289 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:1613:0:0:0:0 with SMTP id m19csp2210660ejd;
+        Thu, 21 Jul 2022 07:38:46 -0700 (PDT)
+X-Received: by 2002:a05:651c:4c7:b0:25d:8797:cd4b with SMTP id e7-20020a05651c04c700b0025d8797cd4bmr19179114lji.253.1658414326681;
+        Thu, 21 Jul 2022 07:38:46 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1658414326; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=eL66tfMtBZx4aUEpjAcApax0DXOY7pf/h7nHAgNAGyL1G9CZHYCHoT4GP9E6cS3+/M
+         dZ+4gB1gHeppnGZGfuw4AJB+gRm2kwQwa/cUhBFX/NVL7PIjBNOsmCmACyDkUJtesm2W
+         R8gHutGT/3FEHOei0uqLEUIFeGrWkOISEK4RoiAdV+y5PhLqGO0fGUHChDIi1eSu0ok8
+         ibvCPVMvyz9wAULVnnN0fjkrnWu9yk+tWUwKCWtN/SfgBuOLJqLDb0OGnYwOKml+yjHl
+         dNl7im4VA2UzHKZKnWEvOwlUhwl1MneP+C7hno2xWvyfijS6cyGTdhH5au3Y0VoJnfQL
+         1axA==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=GYHuVIP6GgKiV8pq72YZYIzEYPUG1BqlKYDAQm1Vocs=;
+        b=dnGT39aUAYzUQ9sMf0MR0+Rjso0COMN3Bd6BmUoyi+dFTN8TjGVI79uN1EHFWgQ1ye
+         ozy+m2Tgfmyt5NpyQ2HYZ62gP/gc2NrFMxpkXT6Afd9RsoMakeJ4F3UMl1ZggUgvzg1Z
+         AaIyc5obzQGBYqCxfGH4bASO1Hl4oBUDe9W4Ae21FZTSR6bHf4KTzMV3dZkghK6vDztF
+         FcJ9FkgBKXkdUCZaLmuGezR7ofbh2BQwxmW662ggrSKkYTHRg8NdTPjOdQWdy0NIGHcY
+         Ou4WsLqgpnO8QvCNZz3uM/HXP9a+NhKCqQppMd4preCA7EwjcjhFvmg2S8w74DSJ+qRG
+         rOMA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=Bkza11e7;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbd6zb2v26umbb5gj4wlamgqe26jp37q@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBD6ZB2V26UMBB5GJ4WLAMGQE26JP37Q@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBD6ZB2V26UMBB5GJ4WLAMGQE26JP37Q@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id o19-20020ac24c53000000b00489d43c4e1csor449586lfk.78.2022.07.21.07.38.46
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 21 Jul 2022 07:38:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbd6zb2v26umbb5gj4wlamgqe26jp37q@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=Bkza11e7;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbd6zb2v26umbb5gj4wlamgqe26jp37q@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBD6ZB2V26UMBB5GJ4WLAMGQE26JP37Q@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1658414326; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=DC2bEu2c2VuYm5pCWEHeBxZ1MIN+JVunD3O5TX19xOf6YRy/+QbNnMRedsKp5dGNaH
+         DkeV9onB/b5D+PVJgnZIxU2DNjAUSIMKcBuZbksiwlQM//WKUNttnab1sTwyGPLm2Ejc
+         1SjGrHeWoNhTplLNKlZ2tdbne84928xWNFz0IJjWP+aWMOhofvbF21n4+USGM5EOmZ0B
+         727VGdII6MDfxrwNSvbQIdv17kh2qtuHFK8eU2X1GS0+DBzcIrLm4FmbHPTI02F1dQZ1
+         dcXz6BkQrGhYVo7JaWJnaigp6gNM5vg3Svq18dpybzYpErFXupgh2W1N8vQbxdyTztQq
+         Sgkw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=GYHuVIP6GgKiV8pq72YZYIzEYPUG1BqlKYDAQm1Vocs=;
+        b=mRsNmQF++yCpNZ0jbMXGEYg3i/hZkFgK2cqSxHn9cDATyMMgtg0oDSx4lIk5JU2uRb
+         pHgwC0gvwrIs7nlsY7wXS+KvxUTR6p9TsrJXN7VN0ggWNlwtGGQklGh1/x6H9B7Jde3M
+         MQa1+sjerfvIgM4DuiBY6t5Ukq7fWXVkojQVYyew7WTU8pB54C0heQm4Z+bNZe7xNeqF
+         ccUcsdLnAe3hsyhnVRFZwEi7WJGDdneEaR8Pd7ZN605XPbGzSF1ivGhbSdW9jzWXyJFc
+         Tfqjt0lYZa+qIGp5UCFlKicbhoEmIJ/x31LVOoAvp70LZHmgxiOtJe8jkMnW1M1aLM1V
+         7HPw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=gTGx11IH;
+       spf=pass (google.com: domain of heather@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=heather@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-unsubscribe;
+        bh=GYHuVIP6GgKiV8pq72YZYIzEYPUG1BqlKYDAQm1Vocs=;
+        b=Bkza11e7mH4lLHktg7gt8bOEdQ6bCMdS8xIMRaK8Tyj1bp+LJR17YYZhZnujGjyObQ
+         teAbnX36/difFHjwx/dkJjZzwX5HyPzhkYk03KSn/oIHlpeFZbSwMuve5UCmVjJNgiYI
+         e7U6mjGcKks+4PZ2TJCKxllmaLXgwJeDuHB8ZRtLLcxS7jK1B/RGCQp9kz4bpbvJG7Tx
+         oKV+R3E9+l2oC8SE+DnXSZpDhDdBTImNTUygtWD0/9FZRnpnrbxrevM5RD1Sx9t52BJj
+         A0TnZfPt4LI/DPC1OSu+eqp/SzMdamzXb3VKeY6Fz/1ltScY/PUd7s2SZJ/e6vW7+rKn
+         h8jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-unsubscribe;
+        bh=GYHuVIP6GgKiV8pq72YZYIzEYPUG1BqlKYDAQm1Vocs=;
+        b=fkxZ44tTFBNuDuoY9cWPkdVDsOebriLSnuRk0wHi9tRrdJ8SafSqO7DwiIf3n+w0Ki
+         nZRwV0tfJc6o21JlU8NptKtHjYuDk/iGMzdJAt51ESnv94AN55rPIggosvs/JtKzZbPq
+         qCqWuKRf4/b21/YmZwAdUC9AfMI7v8D9zoHTC3pcTs7Q4jUlG7u7EtlPCHp8BvfGJs1Z
+         RfB+jIUn1x/SxboJ5LfsFTrKlCXwUlEIWI+2o3G/QCjyqeJNBZBI8H9q3xTXatpG7Av5
+         q2SLMF9C7Fsuowh6G/gAPG97yG1fXp4ki3NkV9OlQLueEPaZKXUeGcC7o9NZyWIaXnFo
+         Bo0Q==
+X-Gm-Message-State: AJIora/sFm5AyNRCVMdAV4XJYuZuO/adl+Md9p1LhKoev4CzjQnl5efa
+	barpobyce6p7SUjJdFKrXCOaxsmD
+X-Google-Smtp-Source: AGRyM1tlU5D9h2eioe5y1vY8rMtf2Xb6iEzMlihYIJTSYtRN+fW7NN4xmC4j931Hk03FRSkZlK+nPQ==
+X-Received: by 2002:ac2:5de2:0:b0:486:b92d:5d0e with SMTP id z2-20020ac25de2000000b00486b92d5d0emr22509914lfq.330.1658414326107;
+        Thu, 21 Jul 2022 07:38:46 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a05:6512:3581:b0:47f:a27f:43c5 with SMTP id
+ m1-20020a056512358100b0047fa27f43c5ls175633lfr.0.-pod-prod-gmail; Thu, 21 Jul
+ 2022 07:38:44 -0700 (PDT)
+X-Received: by 2002:a05:6512:2296:b0:489:d318:8849 with SMTP id f22-20020a056512229600b00489d3188849mr21341322lfu.69.1658414324505;
+        Thu, 21 Jul 2022 07:38:44 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a2e:7303:0:b0:25d:59c9:11f1 with SMTP id o3-20020a2e7303000000b0025d59c911f1ls447574ljc.4.-pod-prod-gmail;
+ Thu, 21 Jul 2022 07:38:43 -0700 (PDT)
+X-Received: by 2002:a05:651c:179a:b0:247:d37b:6ec5 with SMTP id bn26-20020a05651c179a00b00247d37b6ec5mr19961428ljb.112.1658414323226;
+        Thu, 21 Jul 2022 07:38:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658414323; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KaMg70i3zo4fKyoBVM8GZkGI7gksVKPi86xWNEx3DzR78MrYGKE5aOPKyw8bxWWb2G
+         xbAbMy7RoudaqI9AvVGaq2XaCKE/fqBC88GC/UgeedwziUgL5OIN2CXJ+SdD78liymhF
+         AJ8M67QLk2YZR/X/C8RWyI4lRWuQfIR4eAlHKdaUqcovXmHOuX/RiQfbf4UbabiowvI/
+         kVH2Uojq4J/DL1/FfOy29E8npah2JOjDCSQplXGRzzBpdDsFL7d4vY/o+GPUPMteBqhO
+         nBOrGoDWpQidHhhi+7g/r3xbZIh0HjShuIBbSXeg7pkU6DZzX3DsyYJIix6VzOz63Uux
+         /jnw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=GYHuVIP6GgKiV8pq72YZYIzEYPUG1BqlKYDAQm1Vocs=;
+        b=k4ZyqKtyysVdvphJRTHfr/XPAES2N2qCtCmr8uOOCeEC7/PNevu4U+yU60eDMbttXE
+         Ne2wIEfsgbk/LY2QlUgpPKwExsj+wFO4MYpCqUY9p7bXB6sgiGvtyuOocln2sKdQIPOG
+         FIATm/22/EdnMZrPYgwYU2elTwdIlHgIVCnSy1AisRo/PnMjIGBScIijNBlEWmW//IpO
+         v7FVEBcNiTm0tbBdi2TQdbOWXDh9FfraFuMKIK3en/Hmbf8bmC2sAJD5/AKkq/PaNrvV
+         yqlvvwfxFTxEo1+rKRa7il0MMucfCv6dSxNRGFkIXTsJDWBUTrou1S1BjdZ0avk4mMtt
+         pl5A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=gTGx11IH;
+       spf=pass (google.com: domain of heather@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=heather@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f6-20020a19dc46000000b0048a439b4e18sor441221lfj.0.2022.07.21.07.38.43
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Thu, 21 Jul 2022 07:38:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of heather@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a19:7017:0:b0:486:5af9:5c2b with SMTP id
+ h23-20020a197017000000b004865af95c2bmr21020098lfc.283.1658414322750; Thu, 21
+ Jul 2022 07:38:42 -0700 (PDT)
+MIME-Version: 1.0
+From: Heather Beavers <heather@pineapple.co>
+Date: Thu, 21 Jul 2022 09:38:32 -0500
+Message-ID: <CAF2Q8bbkxHSum6c5xFQ3-27-MDGbNQChFLcO2jLU1zYQXOSzAQ@mail.gmail.com>
+Subject: Change of Address for Pineapple and Subsidiaries
+To: All <all@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000099311805e451acbb"
+X-Original-Sender: heather@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=gTGx11IH;       spf=pass (google.com: domain of heather@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=heather@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--00000000000099311805e451acbb
+Content-Type: text/plain; charset="UTF-8"
+
+Good morning everyone!
+This email is to inform everyone of the change of address for Pineapple and
+the subsidiaries. They all now have the same physical mailing address
+listed below. Please note that no other forms of communication have been
+changed, only the physical mailing address. If you have any questions or
+concerns regarding this change, please let me know and I'll do what I can
+to assist.
+
+13423 Blanco Rd PMB 8024
+San Antonio, TX 78216
+
+
+Thank you and have a great Thursday!
+*Heather Beavers*
+Executive Assistant | pineapple.co
+
+[image: Photo]
+
+E: heather@pineapple.co
+
+A: 57 w 57th St., 3rd Floor, New York, NY 10001
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--00000000000099311805e451acbb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Good morning everyone!<div>This email is to inform everyon=
+e of the change of address for Pineapple and the subsidiaries. They all now=
+ have the same physical=C2=A0mailing address listed below. Please note that=
+ no other forms of communication have been changed, only the physical maili=
+ng address. If you have any questions=C2=A0or concerns regarding this chang=
+e, please=C2=A0let me know and I&#39;ll do what I can to=C2=A0assist.=C2=A0=
+</div><div><br></div><div>13423 Blanco Rd PMB 8024=C2=A0</div><div>San Anto=
+nio, TX 78216<br><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=
+=3D"gmail_signature">=20
+
+
+<div>
+
+<table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500p=
+x" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id #05385f" width=3D"500"><span><br></span>
+			<span><br></span><span>Thank=C2=A0you and have a great Thursday!<br></sp=
+an>
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Heather Beavers</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Executive Assistan=
+t<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">E:</span>=
+=20
+			<a href=3D"mailto:heather@pineapple.co" style=3D"text-decoration:none;fo=
+nt-size:9pt;color:#101010" target=3D"_blank">heather@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">A:</span>=
+ 			 		=09
+					<span style=3D"font-size:9pt;color:#101010">57 w 57th St., 3rd Floor</=
+span><span style=3D"font-size:9pt;color:#101010">, </span>		=09
+					<span style=3D"font-size:9pt;color:#101010">New York, NY 10001</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+
+--00000000000099311805e451acbb--

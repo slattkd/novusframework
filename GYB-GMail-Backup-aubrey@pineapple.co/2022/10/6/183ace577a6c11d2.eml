@@ -1,0 +1,443 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:b08c:0:0:0:0 with SMTP id x12csp122285ejy;
+        Thu, 6 Oct 2022 03:44:25 -0700 (PDT)
+X-Received: by 2002:a17:906:9be4:b0:78d:1d0d:9741 with SMTP id de36-20020a1709069be400b0078d1d0d9741mr3438743ejc.342.1665053064525;
+        Thu, 06 Oct 2022 03:44:24 -0700 (PDT)
+X-Received: by 2002:a17:906:9be4:b0:78d:1d0d:9741 with SMTP id de36-20020a1709069be400b0078d1d0d9741mr3438685ejc.342.1665053063116;
+        Thu, 06 Oct 2022 03:44:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665053063; cv=none;
+        d=google.com; s=arc-20160816;
+        b=D2LlMJSbkAWS+2x0W+RUxBVBo3z6nmachnDc8nQiU3PvuhEtDkefajRVwbYlZralZV
+         t2PjWuDoZrT/agCij0lcYV40/ZQiIB47MXB6o38JdDFzoFPgKdA9gzzRs9wituuQIVD1
+         heVCVoeZKU2kK/cupLAGlTbtj+CO/4IdkOHvFHHHYga0PAVM8MAS2N+B0+tvxSZkIPNC
+         VWUlOdpmPWL0CRu/VGC19pe0GR2y1SpwoHganrwr3EZFvxHyaZFYmytHRXutq6YGtlfz
+         1dngaGlrHmZKfJNzWwIGj0/J5PTYw4zl0TGF8+MrADMQU1jY9n4NkJNWXZzKPQK6DKz+
+         Ia2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=6XjUFxYF18fCooRXIZV1CcYMHQU31rHUsFdhNPtMT6M=;
+        b=NFcinsz+NA7bIB/l6MBdeuW3kcGPGHdaf/vVfdr/F5uOCMMx5YjR7DOQzYh4DI72y5
+         ajvCsAHDFbhx9TopjdK/ypAhjQBiNgkEWXkolQz5BkJMUE2YvNkb6u2ba84CTHCcy9eV
+         mx7g6HWifh6OKo/9wAHggli0Oej5JtgD5DEkFuBovniD+URBlgyya7IEqZaxfl8bAfYG
+         sYzKDtMpKOP+AaiGBZTUeVj2db7oJ0NLP3/hf9g0CJzzVIDBlDo1EDIk6bLad6RdOeit
+         Jh+v8ybIC8ri/msR9tOFJbn8X2aQ5gX4TB1n9ilrYvXd1hS/NFgrdF4RU/7pkXXRkeUb
+         xIkg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@seductiongurus-com.20210112.gappssmtp.com header.s=20210112 header.b=eVPKuVVb;
+       spf=pass (google.com: domain of andrew@seductiongurus.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrew@seductiongurus.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=seductiongurus.com
+Return-Path: <andrew@seductiongurus.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k1-20020a170906054100b00783bc6cc5d8sor7272696eja.21.2022.10.06.03.44.22
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 06 Oct 2022 03:44:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andrew@seductiongurus.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@seductiongurus-com.20210112.gappssmtp.com header.s=20210112 header.b=eVPKuVVb;
+       spf=pass (google.com: domain of andrew@seductiongurus.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrew@seductiongurus.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=seductiongurus.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=seductiongurus-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=6XjUFxYF18fCooRXIZV1CcYMHQU31rHUsFdhNPtMT6M=;
+        b=eVPKuVVb/u6GJ/FN2mdeXZeEs0PbnFjnsloM7zN2fFSemFrmy/s/5ePnom4qjzf0LH
+         TTFfP7ufgvmM7F1AvMmi/zC0o49+9eQZ5Zft3uoptcUbNYFCvRJhRgY9yRjFc2NNRBSL
+         XvKCHFNtqdWhRhU0p9660lq8LqdDt+/3IgXw7i0pDXbXZhlXkSBqsJumv7yTcVutlBbQ
+         qWImLeeDuVqKmGCOMobHRNcaFWBYB+rQkj3qwJuSyf1U1qtL/epKtvv8jAYnOma60Jqb
+         jF1uDC/Di5TzaXKc+IX13pqjeNtK1eUyziCB9GR6m+91iIxyHjbFRfw77ScpqhxiT+Xe
+         7Zzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6XjUFxYF18fCooRXIZV1CcYMHQU31rHUsFdhNPtMT6M=;
+        b=i7CWRp/KYpNKGmUUPWCBX4Fd4A/D5xlXKwfsa+1fFx40gsRZxLhBY/niq8QznPgGhw
+         j3RkOY3jgZ7rjUZFr2v18K2v51pe+aYJy+kg1KxzCahlpDeugmWteJUyuaiii8JKhuLA
+         Q5PcFSbGJY26HsPVlj5vrArSYUGce7rUd7lxQ0M3pg6S+DGRYEgsjLLs2AGjsRtWaFaW
+         seLhPUdyov6jl0a5cH3RTnYLv5SWziANsYmZYae+/O1dVPWVNXRgI7YWZ5+jnO15rCHq
+         UtZiL4XU9zVJximuMgq3+fG6WktU8uuAPWqdDpfBxglWrF3ITgUA6rywV/ctftU+9HTF
+         jwwQ==
+X-Gm-Message-State: ACrzQf0jj/lA/tuireXDB6iBNgqcozOi8u1sNJR6b2HUc1Aru34PrSh1
+	UL22oMTjvgNc7EVZpZmxo73HdBTisp1fMxvXurx0uP5S8hCNDg==
+X-Google-Smtp-Source: AMsMyM5pQdj0U/7NadcsHLbafEQFS8ISF7VxCCOZtgfdv29iuZiiTr8GsfBGIdqTGIQmUcfUMKafU5voGDxRExBQMdI=
+X-Received: by 2002:a17:907:3e06:b0:733:693:600e with SMTP id
+ hp6-20020a1709073e0600b007330693600emr3344468ejc.410.1665053061956; Thu, 06
+ Oct 2022 03:44:21 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP-zq_AeKCWyNeRG4OPvhMGCfOThGiu8vW2MQzfw4J4EeA@mail.gmail.com>
+ <CAEFX3DusPSZMUoDoBxL=XpAxvHQwdhHbDF+9HbyoRMUmf8fY1A@mail.gmail.com>
+ <CAEFX3Du+2+4yqTubWFQ8CPDS5dN61JqbXpfvjev2oKG1VkZNRQ@mail.gmail.com>
+ <CAHbmDP_iJ99pEOqB-VprQoAAatGRVVyBfpEnwr1EjtQdHpReBg@mail.gmail.com> <CAEFX3DshfprXsc7npaeysabNRjc4f9BK+bBoZZRNMQkUQtD-LA@mail.gmail.com>
+In-Reply-To: <CAEFX3DshfprXsc7npaeysabNRjc4f9BK+bBoZZRNMQkUQtD-LA@mail.gmail.com>
+From: Andrew Baker <andrew@seductiongurus.com>
+Date: Thu, 6 Oct 2022 11:44:11 +0100
+Message-ID: <CAFBCTYukhsTjgemcHncDa8J4Ugx+MU4pgdhZZFqLAAqxookT+Q@mail.gmail.com>
+Subject: Re: Enrich Calculations - September 2022
+To: Mark Bauman <mark@mediareps.com>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Sabrina Magana <Sabrina@mediareps.com>
+Content-Type: multipart/alternative; boundary="0000000000004a60d405ea5b6031"
+
+--0000000000004a60d405ea5b6031
+Content-Type: text/plain; charset="UTF-8"
+
+I've combined your sheet with a new one.
+
+Also added our numbers to this column <https://d.pr/i/Y1JoIb> since we have
+been receiving sales into our Sticky account (from July).
+
+To confirm Aubrey, this includes all front-end and subscription products?
+
+https://docs.google.com/spreadsheets/d/11drSSTajyN5vRFr771gcMReNIPwRxErqK1wLRFWvUBQ/edit?usp=sharing
+
+On Thu, Oct 6, 2022 at 8:30 AM Mark Bauman <mark@mediareps.com> wrote:
+
+> Ok, thanks.
+> I can check with Brett on that, I think he had assigned someone else.
+> So sounds like we need to combine this with our sticky stats Andrew to get
+> the reporting to Enrich.
+>
+> Kind Regards,
+>
+> Mark Bauman
+> President at Media Reps
+> Phone: +1858.337.4014 // Skype: mark media (live:c3bfd17d1c210863)
+>
+> Visit Website <http://www.mediareps.com> // Contact us
+> <http://www.mediareps.com/> // Follow us on Twitter
+> <http://twitter.com/mediareps>
+>
+> Proud to release the 1st ever Ad Block Prevention system tied to an Ad
+> Platform. Signup to ReviveAds.com to revive the revenue that ad block
+> users are stealing from you.
+> CONFIDENTIALITY NOTICE: This email transmission, and any documents, files
+> or previous email messages attached are intended only for the person(s) or
+> entity to which it is specifically addressed and may contain confidential
+> information that is legally privileged. Any review, re-transmission,
+> dissemination or other use of, or taking of any action in reliance upon,
+> this information by persons or entities other than the intended recipient
+> is prohibited. If you received this in error, please contact the sender and
+> destroy the original transmission and its attachments without copying or
+> saving in any manner.
+>
+>
+>
+> On Wed, Oct 5, 2022 at 7:05 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+>
+>> Mark,
+>>
+>> Yes, that is correct-- the sales are from Sticky, and when I inquired I
+>> was told that the bank accounts have been changed so those rebills are all
+>> going to Media Rep's bank accounts.
+>>
+>> Regarding your first question, this is not something I'm familiar with.
+>> Perhaps you could elaborate more on what you're looking for, or provide who
+>> you spoke with at Pineapple about this sales issue so I can follow up?
+>>
+>> Thanks,
+>> Aubrey
+>>
+>> On Tue, Oct 4, 2022 at 5:50 PM Mark Bauman <mark@mediareps.com> wrote:
+>>
+>>> This is the Sticky report correct?
+>>> But we should be receiving these funds in our MID.
+>>>
+>>> Kind Regards,
+>>>
+>>> Mark Bauman
+>>> President at Media Reps
+>>> Phone: +1858.337.4014 // Skype: mark media (live:c3bfd17d1c210863)
+>>>
+>>> Visit Website <http://www.mediareps.com> // Contact us
+>>> <http://www.mediareps.com/> // Follow us on Twitter
+>>> <http://twitter.com/mediareps>
+>>>
+>>> Proud to release the 1st ever Ad Block Prevention system tied to an Ad
+>>> Platform. Signup to ReviveAds.com to revive the revenue that ad block
+>>> users are stealing from you.
+>>> CONFIDENTIALITY NOTICE: This email transmission, and any documents,
+>>> files or previous email messages attached are intended only for the
+>>> person(s) or entity to which it is specifically addressed and may contain
+>>> confidential information that is legally privileged. Any review,
+>>> re-transmission, dissemination or other use of, or taking of any action in
+>>> reliance upon, this information by persons or entities other than the
+>>> intended recipient is prohibited. If you received this in error, please
+>>> contact the sender and destroy the original transmission and its
+>>> attachments without copying or saving in any manner.
+>>>
+>>>
+>>>
+>>> On Tue, Oct 4, 2022 at 3:48 PM Mark Bauman <mark@mediareps.com> wrote:
+>>>
+>>>> Thanks Aubrey,
+>>>> Can you check on the full accounting we're waiting for on why sales are
+>>>> in half?
+>>>> Or who's handling that?
+>>>>
+>>>> Kind Regards,
+>>>>
+>>>> Mark Bauman
+>>>> President at Media Reps
+>>>> Phone: +1858.337.4014 // Skype: mark media (live:c3bfd17d1c210863)
+>>>>
+>>>> Visit Website <http://www.mediareps.com> // Contact us
+>>>> <http://www.mediareps.com/> // Follow us on Twitter
+>>>> <http://twitter.com/mediareps>
+>>>>
+>>>> Proud to release the 1st ever Ad Block Prevention system tied to an Ad
+>>>> Platform. Signup to ReviveAds.com to revive the revenue that ad block
+>>>> users are stealing from you.
+>>>> CONFIDENTIALITY NOTICE: This email transmission, and any documents,
+>>>> files or previous email messages attached are intended only for the
+>>>> person(s) or entity to which it is specifically addressed and may contain
+>>>> confidential information that is legally privileged. Any review,
+>>>> re-transmission, dissemination or other use of, or taking of any action in
+>>>> reliance upon, this information by persons or entities other than the
+>>>> intended recipient is prohibited. If you received this in error, please
+>>>> contact the sender and destroy the original transmission and its
+>>>> attachments without copying or saving in any manner.
+>>>>
+>>>>
+>>>>
+>>>> On Tue, Oct 4, 2022 at 12:46 PM Aubrey Allen <aubrey@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Hello,
+>>>>>
+>>>>> Please find attached our revenue and profit reporting for Enrich for
+>>>>> the month of September.
+>>>>>
+>>>>> Let me know if you have any questions.
+>>>>> Thank you!
+>>>>> --
+>>>>> *Aubrey Allen*
+>>>>> Data Analytics Technician | pineapple.co
+>>>>>
+>>>>> [image: Photo]
+>>>>>
+>>>>> E: aubrey@pineapple.co
+>>>>>
+>>>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>>>
+>>>>> The content of this email is confidential and intended for the
+>>>>> recipient specified in message only. It is strictly forbidden to share any
+>>>>> part of this message with any third party, without a written consent of the
+>>>>> sender. If you received this message by mistake, please reply to this
+>>>>> message and follow with its deletion, so that we can ensure such a mistake
+>>>>> does not occur in the future.
+>>>>>
+>>>>
+
+--0000000000004a60d405ea5b6031
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I&#39;ve combined your sheet with a new one.<div><br></div=
+><div>Also added our numbers to <a href=3D"https://d.pr/i/Y1JoIb">this colu=
+mn</a> since we have been receiving sales into our Sticky account (from Jul=
+y).<div><br></div><div>To confirm Aubrey, this includes all front-end and s=
+ubscription=C2=A0products?</div><div><br></div><div><a href=3D"https://docs=
+.google.com/spreadsheets/d/11drSSTajyN5vRFr771gcMReNIPwRxErqK1wLRFWvUBQ/edi=
+t?usp=3Dsharing">https://docs.google.com/spreadsheets/d/11drSSTajyN5vRFr771=
+gcMReNIPwRxErqK1wLRFWvUBQ/edit?usp=3Dsharing</a><br></div></div></div><br><=
+div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct=
+ 6, 2022 at 8:30 AM Mark Bauman &lt;<a href=3D"mailto:mark@mediareps.com">m=
+ark@mediareps.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex"><div dir=3D"ltr">Ok, thanks.=C2=A0<div>I can check with Br=
+ett on that, I think he had assigned someone else.</div><div>So sounds like=
+ we need to combine this with our sticky stats Andrew to get the reporting =
+to Enrich.<br clear=3D"all"><div><div dir=3D"ltr"><div dir=3D"ltr"><div><di=
+v dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><br>Kind Regards,=
+<br><br>Mark Bauman<br>President at Media Reps<br>Phone: +1858.337.4014 // =
+Skype: mark media (live:c3bfd17d1c210863)<br><br><a href=3D"http://www.medi=
+areps.com" target=3D"_blank">Visit Website</a> // <a href=3D"http://www.med=
+iareps.com/" target=3D"_blank">Contact us</a> //<a href=3D"http://twitter.c=
+om/mediareps" target=3D"_blank"> Follow us on Twitter</a><br><table width=
+=3D"100%" border=3D"0" align=3D"center" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"color:rgb(0,0,0);font-family:Times;font-size:medium"><tbody><tr><=
+td align=3D"center"><br></td></tr><tr><td height=3D"10"></td></tr><tr><td a=
+lign=3D"center" style=3D"font-family:&quot;Open Sans&quot;,Arial,sans-serif=
+;font-size:13px;color:rgb(51,51,51);line-height:20px">Proud to release the =
+1st ever Ad Block Prevention system tied to an Ad Platform. Signup to <a hr=
+ef=3D"http://ReviveAds.com" target=3D"_blank">ReviveAds.com</a> to revive t=
+he revenue that ad block users are stealing from you.</td></tr></tbody></ta=
+ble>=C2=A0 =C2=A0 =C2=A0 <br>CONFIDENTIALITY NOTICE: This email transmissio=
+n, and any documents, files or previous email messages attached are intende=
+d only for the person(s) or entity to which it is specifically addressed an=
+d may contain confidential information that is legally privileged. Any revi=
+ew, re-transmission, dissemination or other use of, or taking of any action=
+ in reliance upon, this information by persons or entities other than the i=
+ntended recipient is prohibited. If you received this in error, please cont=
+act the sender and destroy the original transmission and its attachments wi=
+thout copying or saving in any manner.<br><br></div></div></div></div></div=
+></div></div></div></div><br></div></div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Wed, Oct 5, 2022 at 7:05 AM Aubrey Al=
+len &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pin=
+eapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"ltr">Mark,<div><br></div><div>Yes, that is correct--=
+ the sales are from Sticky, and when I inquired I was told that the bank ac=
+counts have been changed so those rebills are all going to Media Rep&#39;s =
+bank accounts.</div><div><br></div><div>Regarding your first question, this=
+ is not something I&#39;m familiar with.=C2=A0 Perhaps you could elaborate =
+more on what you&#39;re looking for, or provide who you spoke with at Pinea=
+pple about this sales issue so I can follow up?</div><div><br></div><div>Th=
+anks,</div><div>Aubrey</div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Tue, Oct 4, 2022 at 5:50 PM Mark Bauman &l=
+t;<a href=3D"mailto:mark@mediareps.com" target=3D"_blank">mark@mediareps.co=
+m</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+><div dir=3D"ltr">This is the Sticky report correct?<br>But we should be re=
+ceiving these funds in our MID.<br clear=3D"all"><div><div dir=3D"ltr"><div=
+ dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"l=
+tr"><br>Kind Regards,<br><br>Mark Bauman<br>President at Media Reps<br>Phon=
+e: +1858.337.4014 // Skype: mark media (live:c3bfd17d1c210863)<br><br><a hr=
+ef=3D"http://www.mediareps.com" target=3D"_blank">Visit Website</a> // <a h=
+ref=3D"http://www.mediareps.com/" target=3D"_blank">Contact us</a> //<a hre=
+f=3D"http://twitter.com/mediareps" target=3D"_blank"> Follow us on Twitter<=
+/a><br><table width=3D"100%" border=3D"0" align=3D"center" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"color:rgb(0,0,0);font-family:Times;font-size:m=
+edium"><tbody><tr><td align=3D"center"><br></td></tr><tr><td height=3D"10">=
+</td></tr><tr><td align=3D"center" style=3D"font-family:&quot;Open Sans&quo=
+t;,Arial,sans-serif;font-size:13px;color:rgb(51,51,51);line-height:20px">Pr=
+oud to release the 1st ever Ad Block Prevention system tied to an Ad Platfo=
+rm. Signup to <a href=3D"http://ReviveAds.com" target=3D"_blank">ReviveAds.=
+com</a> to revive the revenue that ad block users are stealing from you.</t=
+d></tr></tbody></table>=C2=A0 =C2=A0 =C2=A0 <br>CONFIDENTIALITY NOTICE: Thi=
+s email transmission, and any documents, files or previous email messages a=
+ttached are intended only for the person(s) or entity to which it is specif=
+ically addressed and may contain confidential information that is legally p=
+rivileged. Any review, re-transmission, dissemination or other use of, or t=
+aking of any action in reliance upon, this information by persons or entiti=
+es other than the intended recipient is prohibited. If you received this in=
+ error, please contact the sender and destroy the original transmission and=
+ its attachments without copying or saving in any manner.<br><br></div></di=
+v></div></div></div></div></div></div></div><br></div><br><div class=3D"gma=
+il_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Oct 4, 2022 at 3:48=
+ PM Mark Bauman &lt;<a href=3D"mailto:mark@mediareps.com" target=3D"_blank"=
+>mark@mediareps.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex"><div dir=3D"ltr">Thanks Aubrey,<div>Can you check on the=
+ full accounting we&#39;re waiting for on why sales are in half?<br>Or who&=
+#39;s handling that?<br clear=3D"all"><div><div dir=3D"ltr"><div dir=3D"ltr=
+"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><br>Kin=
+d Regards,<br><br>Mark Bauman<br>President at Media Reps<br>Phone: +1858.33=
+7.4014 // Skype: mark media (live:c3bfd17d1c210863)<br><br><a href=3D"http:=
+//www.mediareps.com" target=3D"_blank">Visit Website</a> // <a href=3D"http=
+://www.mediareps.com/" target=3D"_blank">Contact us</a> //<a href=3D"http:/=
+/twitter.com/mediareps" target=3D"_blank"> Follow us on Twitter</a><br><tab=
+le width=3D"100%" border=3D"0" align=3D"center" cellpadding=3D"0" cellspaci=
+ng=3D"0" style=3D"color:rgb(0,0,0);font-family:Times;font-size:medium"><tbo=
+dy><tr><td align=3D"center"><br></td></tr><tr><td height=3D"10"></td></tr><=
+tr><td align=3D"center" style=3D"font-family:&quot;Open Sans&quot;,Arial,sa=
+ns-serif;font-size:13px;color:rgb(51,51,51);line-height:20px">Proud to rele=
+ase the 1st ever Ad Block Prevention system tied to an Ad Platform. Signup =
+to <a href=3D"http://ReviveAds.com" target=3D"_blank">ReviveAds.com</a> to =
+revive the revenue that ad block users are stealing from you.</td></tr></tb=
+ody></table>=C2=A0 =C2=A0 =C2=A0 <br>CONFIDENTIALITY NOTICE: This email tra=
+nsmission, and any documents, files or previous email messages attached are=
+ intended only for the person(s) or entity to which it is specifically addr=
+essed and may contain confidential information that is legally privileged. =
+Any review, re-transmission, dissemination or other use of, or taking of an=
+y action in reliance upon, this information by persons or entities other th=
+an the intended recipient is prohibited. If you received this in error, ple=
+ase contact the sender and destroy the original transmission and its attach=
+ments without copying or saving in any manner.<br><br></div></div></div></d=
+iv></div></div></div></div></div><br></div></div><br><div class=3D"gmail_qu=
+ote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Oct 4, 2022 at 12:46 PM =
+Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">a=
+ubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex"><div dir=3D"ltr">Hello,<div><br></div><div>Please find at=
+tached our revenue and profit reporting for Enrich for the month of Septemb=
+er.</div><div><br></div><div>Let me know if you have any questions.</div><d=
+iv>Thank you!</div><div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000004a60d405ea5b6031--

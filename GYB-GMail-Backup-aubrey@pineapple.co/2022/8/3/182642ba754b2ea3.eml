@@ -1,0 +1,415 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp433904ejz;
+        Wed, 3 Aug 2022 07:45:58 -0700 (PDT)
+X-Received: by 2002:a17:907:2c4a:b0:730:87fe:2a88 with SMTP id hf10-20020a1709072c4a00b0073087fe2a88mr11120337ejc.313.1659537958529;
+        Wed, 03 Aug 2022 07:45:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659537958; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RKJ9ApEuqGaut+XvXod8hIbOMS5lFjkmjvcfSOvorkpDkN92m2++LbrZ6724oI9NHt
+         K6eYHvvmZYByE6C+OSDpVeChopWfgFCJkXg3Z53uMnHqqYBPw6YOKGu/M5BLJxtt0+ra
+         NpDNfnkqh4P0L8lrRyjMcv+XQC+YtK/qCUy7qFgAbA4LPzhgSkAxPI7HlQYp4cgvPhlw
+         LjzQ8WoLWceyj8S+CPRgq8MjCz4B6uT3AjYm0Y0fCrijpQdgve1YhchMIUjSpEDIAAJb
+         EIpAcCG2rQ+xsWAvoKnGt70PjJNh+hhXAlN20KZWHTLE5CBlPx2pqGuWkda+KKFv1dz4
+         KWkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=eONB5kZisQZsMe//u9y9VNQJ0HCwtSnc+1ZS3dAmMEY=;
+        b=f9LrapS22yyxbjyYuBVzcz81qrQsxNOB3OBrztCNFWkhHg2ORMH4Rl2DZBPmnIc6rS
+         936Qd/ms/TiekxNzOmbTUiw90q/MZoQbfFIf1xT5hvBJol7WTvLZQwE3ITTHyb+I/YaK
+         xbISQl3uM930MwTFfkE7gmxPa4sGINaZv9+a+e4q1NPcYw7cHIARZ1zEbZ3BLd/CZbSF
+         TrvYCbSPKTcKN22JW7gbV+MrzZrQLIisQRPbGfs1s/xtHTJIG3InfTCEqkHFKEBKMyuE
+         QfSXC5x4HmKXopMImXwWvkmkw14D3e/UJHgF0o+7kMt+40eEBp9oTsdJg+ZiH9FWtfeJ
+         Pm4w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=LMJ86gnc;
+       spf=pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrea@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <andrea@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q6-20020a1709064cc600b007262ae20eb2sor6428038ejt.7.2022.08.03.07.45.58
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 03 Aug 2022 07:45:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=LMJ86gnc;
+       spf=pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrea@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=eONB5kZisQZsMe//u9y9VNQJ0HCwtSnc+1ZS3dAmMEY=;
+        b=LMJ86gncW8NfTxtbGInwzKheEKkFWjulVLtMOKfOGQyesJWkgtDA2ABmjizzYOxgBc
+         jAoZSmNCEPa9nHmQoUj85lyYeWrjGIhqxznniilyheqbngLaDimmFazd+ZxcUgUj//ad
+         Mvzg/LM9mMr4tVujNVjKc7v0qqnLIL8ZzJQHWoPrQxmIrTUbpN4RWcUwSvz+/WUti8qd
+         4W5/Kod81yd1l8Wkka+fMNVeuoTRCr5qz2pvu8AoGfn70zw59IOGVoRmmtet2apkvqsE
+         I82VNyxUg2tHBOCnLxYYWXfDhKD/wXl1jPYhzUvzhWigR7El/v9EKrF0TDeSTfSsfN6s
+         ynQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=eONB5kZisQZsMe//u9y9VNQJ0HCwtSnc+1ZS3dAmMEY=;
+        b=ej/EuK5yjJhm2MQeitlqCHMTpiTv6yo5PPOVXfklwg0vRgPGSxleKYwRSs7fx+DKB+
+         HFz2Z3TFPjbbM1/ylLE2/t3WPcGcr4YVyRY8YtrsUb1Y9k3zTLBdNjP/L+CHXQUwruDa
+         ZiLTpBiQytMQefn2p3g5rWWpZ+3r3NyJaRhOxR7cvDqoboEpAQMRiz43buXEYpHTPuSr
+         8VA1MgcEMrXfrxCUitJ6SRB1dUuR9PnHqiHMBSyXnlWRz3Wiz0wQCm2IvL1T4kKJLioC
+         ofDKCOFPtIjRUdII2iSAXnq3URLpaBdAkcEonGjxi/1DfZQsT4qoWI0L8Ixa2XlTYM8R
+         8n5w==
+X-Gm-Message-State: ACgBeo3tWOcEn/csRVtGsgpTdb721snA+QGwUhd99dvYHAP1LljGQ69q
+	ovgUI6k9cdYOLZPk/RDwVGAK2tzNTRtX+i5HlkRdgve0SIhq9g==
+X-Google-Smtp-Source: AA6agR7eF0ZYab4kbz24h0o90LA9ID7L3AfTE1eU2/2IxQsa96tpwdVC33+hYlo+V6TxwnUsB2kTZz12sPAz5WI8CwU=
+X-Received: by 2002:a17:907:2be5:b0:730:82bf:93c8 with SMTP id
+ gv37-20020a1709072be500b0073082bf93c8mr8680399ejc.686.1659537957864; Wed, 03
+ Aug 2022 07:45:57 -0700 (PDT)
+MIME-Version: 1.0
+References: <2e8fe767-c1ed-4961-b100-a2f4aad8fa76@docs-share.google.com>
+ <0000000000005b3e5405e4543668@google.com> <CA+ceVcV4VGa2LjWU19nPuG_UNomUvEv32DMkX-TuYXUKfCABMA@mail.gmail.com>
+ <CAHbmDP8tzpPos2fCaJ1Z8rzo9f-7PFmi8YVH4-vvqFhGdYprog@mail.gmail.com>
+In-Reply-To: <CAHbmDP8tzpPos2fCaJ1Z8rzo9f-7PFmi8YVH4-vvqFhGdYprog@mail.gmail.com>
+From: Andrea Abramowski <andrea@pineapple.co>
+Date: Wed, 3 Aug 2022 10:45:46 -0400
+Message-ID: <CA+ceVcU8fAHjz=7AQhnXgcKyVjTu=riZcDTzeA88pBBY_EHRkA@mail.gmail.com>
+Subject: Re: Spreadsheet shared with you: "example of fran repport"
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Megan Harnett <megan@pineapple.co>, Kerry Scott <kerry@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000787d3605e5574ae4"
+
+--000000000000787d3605e5574ae4
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey,
+
+I'm sorry if I missed an email here, but did you get a chance to run those
+reports? Thanks!!
+
+*Andrea Abramowski, CPA*
+Controller | pineapple.co
+
+[image: Photo]
+
+E: andrea@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+
+On Wed, Jul 27, 2022 at 4:12 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Andrea,
+>
+> I can definitely do that, I'll send Gene an email.
+>
+> Thanks,
+> Aubrey
+>
+> On Wed, Jul 27, 2022 at 1:01 PM Andrea Abramowski <andrea@pineapple.co>
+> wrote:
+>
+>> Hey Aubrey,
+>>
+>> Gene would like to see Fran's (or Second Marsh) sales per month since
+>> January 2021 - are you able to help with those reports? Also, I KNOW I owe
+>> an email & I'm so sorry!
+>>
+>>
+>>
+>> *Andrea Abramowski, CPA*
+>> Controller | pineapple.co
+>>
+>> [image: Photo]
+>>
+>> E: andrea@pineapple.co
+>>
+>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>
+>> The content of this email is confidential and intended for the recipient
+>> specified in message only. It is strictly forbidden to share any part of
+>> this message with any third party, without a written consent of the sender.
+>> If you received this message by mistake, please reply to this message and
+>> follow with its deletion, so that we can ensure such a mistake does not
+>> occur in the future.
+>>
+>>
+>> ---------- Forwarded message ---------
+>> From: Gene Naftulyev (via Google Sheets) <
+>> drive-shares-dm-noreply@google.com>
+>> Date: Thu, Jul 21, 2022 at 1:40 PM
+>> Subject: Spreadsheet shared with you: "example of fran repport"
+>> To: <andrea@pineapple.co>
+>>
+>>
+>> Gene Naftulyev shared a spreadsheet
+>> [image: Unknown profile photo]
+>> Gene Naftulyev (gene@pineapple.co) has invited you to *edit* the
+>> following spreadsheet:
+>> example of fran repport
+>>
+>> <https://docs.google.com/spreadsheets/d/1H_TmL_Cs7JSE98-xtJ8rVrbSqQpZQvQbLx62lQCFV1k/edit?usp=sharing_eil_m&ts=62d98f87>
+>>
+>> Open
+>> <https://docs.google.com/spreadsheets/d/1H_TmL_Cs7JSE98-xtJ8rVrbSqQpZQvQbLx62lQCFV1k/edit?usp=sharing_eip_m&ts=62d98f87>
+>> Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA
+>> You have received this email because gene@pineapple.co shared a
+>> spreadsheet with you from Google Sheets. [image: Logo for Google Sheets]
+>> <https://workspace.google.com/>
+>>
+>
+
+--000000000000787d3605e5574ae4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Aubrey,=C2=A0<div><br></div><div>I&#39;m sorry if I mi=
+ssed an email here, but did you get a chance to run those reports? Thanks!!=
+</div><div><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_signature=
+" data-smartmail=3D"gmail_signature">=20
+
+
+<div>
+
+<table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500p=
+x" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id #05385f" width=3D"500">
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Controller<span> |=
+ </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width:90px;height:auto;border:0" width=3D"90" border=3D"0" src=3D"h=
+ttps://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt=
+6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:#0538=
+5f;font-weight:bold"></span> <span style=3D"font-size:9pt;color:#101010"></=
+span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:#0538=
+5f;font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" style=
+=3D"text-decoration:none;font-size:9pt;color:#101010" target=3D"_blank">and=
+rea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+#05385f;font-weight:bold">A:</span> 			 			<span style=3D"font-size:9pt;col=
+or:#101010">13423 Blanco Rd PMB 8024</span><span style=3D"font-size:9pt;col=
+or:#101010">, </span>			<span style=3D"font-size:9pt;color:#101010">San Ant=
+onio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Wed, Jul 27, 2022 at 4:12 PM Aubrey Allen &lt;<a=
+ href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br>=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi=
+ Andrea,<div><br></div><div>I can definitely do that, I&#39;ll send Gene an=
+ email.</div><div><br></div><div>Thanks,</div><div>Aubrey</div></div><br><d=
+iv class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul =
+27, 2022 at 1:01 PM Andrea Abramowski &lt;<a href=3D"mailto:andrea@pineappl=
+e.co" target=3D"_blank">andrea@pineapple.co</a>&gt; wrote:<br></div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div>Hey Aubrey=
+,=C2=A0</div><div><br></div><div>Gene would like to see Fran&#39;s (or Seco=
+nd Marsh) sales per month since January 2021 - are you able to help with th=
+ose reports? Also, I KNOW I owe an email &amp; I&#39;m so sorry!</div><div>=
+<br></div><div><br></div><br clear=3D"all"><div><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Controller<sp=
+an> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">andrea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
+gmail_attr">---------- Forwarded message ---------<br>From: <strong class=
+=3D"gmail_sendername" dir=3D"auto">Gene Naftulyev (via Google Sheets)</stro=
+ng> <span dir=3D"auto">&lt;<a href=3D"mailto:drive-shares-dm-noreply@google=
+.com" target=3D"_blank">drive-shares-dm-noreply@google.com</a>&gt;</span><b=
+r>Date: Thu, Jul 21, 2022 at 1:40 PM<br>Subject: Spreadsheet shared with yo=
+u: &quot;example of fran repport&quot;<br>To:  &lt;<a href=3D"mailto:andrea=
+@pineapple.co" target=3D"_blank">andrea@pineapple.co</a>&gt;<br></div><br><=
+br><div><table style=3D"border-collapse:collapse;width:100%;background-colo=
+r:white;text-align:center" role=3D"presentation"><tbody><tr><td style=3D"pa=
+dding:24px 0px 16px"><table style=3D"border-collapse:collapse;font-family:R=
+oboto,Arial,Helvetica,sans-serif;word-break:break-word;display:inline-block=
+;width:90%;max-width:700px;min-width:280px;text-align:left" role=3D"present=
+ation"><tbody><tr><td style=3D"padding:0px"><table style=3D"width:100%;bord=
+er:1px solid rgb(218,220,224);border-radius:8px;border-spacing:0px;table-la=
+yout:fixed;border-collapse:separate" role=3D"presentation"><tbody><tr><td s=
+tyle=3D"padding:4.5%" dir=3D"ltr"><div style=3D"margin-bottom:32px;font-fam=
+ily:&quot;Google Sans&quot;,Roboto,Arial,Helvetica,sans-serif;font-style:no=
+rmal;font-size:28px;line-height:36px;color:rgb(60,64,67)">Gene Naftulyev sh=
+ared a spreadsheet</div><table style=3D"border-collapse:collapse;font-famil=
+y:Roboto,Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;color:r=
+gb(32,33,36);letter-spacing:0.1px;table-layout:fixed;width:100%" role=3D"pr=
+esentation"><tbody><tr><td style=3D"padding:0px;vertical-align:top;width:50=
+px"><div><img style=3D"border-radius: 50%; display: block;" width=3D"50" he=
+ight=3D"50" src=3D"https://ssl.gstatic.com/s2/profiles/images/silhouette64.=
+png" alt=3D"Unknown profile photo"></div></td><td style=3D"padding:0px 0px =
+0px 12px;vertical-align:top"><div style=3D"padding-top:12px">Gene Naftulyev=
+ (<a href=3D"mailto:gene@pineapple.co" style=3D"color:inherit;text-decorati=
+on:none" target=3D"_blank">gene@pineapple.co</a>) has invited you to <b>edi=
+t</b> the following spreadsheet:</div></td></tr></tbody></table><table styl=
+e=3D"border-spacing:0px 4px;table-layout:fixed;width:100%" role=3D"presenta=
+tion"><tbody><tr style=3D"height:28px"></tr><tr><td style=3D"padding:0px"><=
+a href=3D"https://docs.google.com/spreadsheets/d/1H_TmL_Cs7JSE98-xtJ8rVrbSq=
+QpZQvQbLx62lQCFV1k/edit?usp=3Dsharing_eil_m&amp;ts=3D62d98f87" style=3D"col=
+or:rgb(60,64,67);display:inline-block;max-width:100%;text-decoration:none;v=
+ertical-align:top;border:1px solid rgb(218,220,224);border-radius:16px;whit=
+e-space:nowrap" target=3D"_blank"><div style=3D"line-height:18px;overflow:h=
+idden;text-overflow:ellipsis;padding:6px 12px"><span style=3D"display:inlin=
+e-block;vertical-align:top;min-width:26px;width:26px"><img src=3D"https://s=
+sl.gstatic.com/docs/doclist/images/mediatype/icon_1_spreadsheet_x64.png" wi=
+dth=3D"18" height=3D"18" style=3D"vertical-align: top;" role=3D"presentatio=
+n"></span><span style=3D"font:500 14px/18px &quot;Google Sans&quot;,Roboto,=
+Arial,Helvetica,sans-serif;display:inline;letter-spacing:0.2px">example of =
+fran repport</span></div></a></td></tr></tbody></table><table style=3D"bord=
+er-collapse:collapse" role=3D"presentation"><tbody><tr style=3D"height:32px=
+"><td></td></tr></tbody></table><div><a href=3D"https://docs.google.com/spr=
+eadsheets/d/1H_TmL_Cs7JSE98-xtJ8rVrbSqQpZQvQbLx62lQCFV1k/edit?usp=3Dsharing=
+_eip_m&amp;ts=3D62d98f87" role=3D"button" style=3D"padding:0px 24px;font:50=
+0 14px/36px &quot;Google Sans&quot;,Roboto,Arial,Helvetica,sans-serif;borde=
+r:none;border-radius:18px;box-sizing:border-box;display:inline-block;letter=
+-spacing:0.25px;min-height:36px;text-align:center;text-decoration:none;back=
+ground-color:rgb(26,115,232);color:rgb(255,255,255)" target=3D"_blank">Open=
+</a></div></td></tr></tbody></table><table style=3D"border-collapse:collaps=
+e;width:100%" role=3D"presentation"><tbody><tr><td style=3D"padding:24px 4.=
+5%"><table style=3D"border-collapse:collapse;width:100%" dir=3D"ltr"><tbody=
+><tr><td style=3D"padding:0px;font-family:Roboto,Arial,Helvetica,sans-serif=
+;color:rgb(95,99,104);width:100%;font-size:12px;line-height:16px;min-height=
+:40px;letter-spacing:0.3px">Google LLC, 1600 Amphitheatre Parkway, Mountain=
+ View, CA 94043, USA<br> You have received this email because <a href=3D"ma=
+ilto:gene@pineapple.co" style=3D"color:inherit;text-decoration:none" target=
+=3D"_blank">gene@pineapple.co</a> shared a spreadsheet with you from Google=
+ Sheets.</td><td style=3D"padding:0px 0px 0px 20px"><a href=3D"https://work=
+space.google.com/" target=3D"_blank"><img src=3D"https://www.gstatic.com/do=
+cs/documents/share/images/googleworkspace_logo_192x80.png" width=3D"96" hei=
+ght=3D"40" alt=3D"Logo for Google Sheets"></a></td></tr></tbody></table></t=
+d></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>=
+</div></div></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000787d3605e5574ae4--

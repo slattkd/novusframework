@@ -1,0 +1,190 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp3977294ejl;
+        Mon, 9 May 2022 07:27:59 -0700 (PDT)
+X-Received: by 2002:a05:6102:d8a:b0:32d:5f1b:5b67 with SMTP id d10-20020a0561020d8a00b0032d5f1b5b67mr7908597vst.40.1652106479098;
+        Mon, 09 May 2022 07:27:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652106479; cv=none;
+        d=google.com; s=arc-20160816;
+        b=a6eWpi0bN/TK8V1ckOFMeys5NprNKAwjIu7s3zzIkDFf+HEyG8mcjSOj8XrMghUFEJ
+         MoMrliDPs7YmPWpzpNaMZuXSXXru+pV0iqpwPLRTpG02xOYzgxygKZ8IGiLWX454meG+
+         /46wFYYV5opLxOGLj4WtaZKEaD0HP5Wjrtr610RCaCJAcmii3oQ6TLLuwzlixQgz6mbu
+         y8+wL2SlxyRXjr2lztSj7K1WJn7gIwqzXNtCka0/Ctr5tfNkVqwGKqMNxGUEaJktixHZ
+         Kj98eiNQ7Pk8gxluYk5/WbLMwjaMRIMnBhUHnK1Z8Rso41gVoRmRZ2nh+zBGUdtWszHi
+         FqaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=kJwr/HbEmeIzpCxFmjJI1Mnni+Yiv45GJd7+IVvJrV8=;
+        b=AeF2p8K2fjA/6JTWM3L2RLhQ+oOIF6olBVn5f++BDps9/wmcby/5+LKd0rWUvvzEbR
+         wOEdcZ/G0coskoDyMfrwv1Ccjw2RiYcPRwg7YS+StUICmmqhAZIjsR8o/B7cbvYDO5Aa
+         1w+C9JSbFJPz/xI9mS9I5kgmZuira2WaIxWlC7oIG2FW22Oby+AHD6n9iodUrKfo/9+u
+         3CkDVH9QDrrYXaUDbhCS5cxHwN+PWLD72YJdW2gXCJwZ/lzpJwKBf0WJve2rkEg+N2AI
+         XLotKYljAjOZfpLoJbV+HVVCWB3XOmhXc86jDIm+VTs5BcmpkdzrTnJcRWH5+4YYg6DL
+         q5IA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=qteweuGD;
+       spf=pass (google.com: domain of peter@revivalpointllc.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter@revivalpointllc.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <peter@revivalpointllc.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u6-20020a67d986000000b0032ceb34d332sor3705743vsj.30.2022.05.09.07.27.58
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 09 May 2022 07:27:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter@revivalpointllc.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=qteweuGD;
+       spf=pass (google.com: domain of peter@revivalpointllc.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter@revivalpointllc.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=kJwr/HbEmeIzpCxFmjJI1Mnni+Yiv45GJd7+IVvJrV8=;
+        b=qteweuGDq+fC5u3RuGPnV7s5YlviQ+eA5XYH+azApeUJkWZ3JeRUHzwb6fXOq7NAJO
+         AX8cv+IV76famjMSWC69QRW53hXzH5GIvKqZz3gfIRRKA8a5r46KegR0sqLaanbCLgE+
+         D+ZuC8MgVQ8iesykghHQkRPJqBlqkSOo62RQD4OVJfYMOTsHqiqjivEt+RStHIjK8NBn
+         JBzv+nrI6IP8N8juRg85aq8r3yPxl2ySVlKeP43+lO6vM9qsaDdYc9wggf5YVN4aSOmn
+         mR9rJfLjQYBMLQFay/qdana2esl88XQ947XXUAZV9PQZA5T6lP6J0XSb7fDRBOa14Szg
+         tM5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=kJwr/HbEmeIzpCxFmjJI1Mnni+Yiv45GJd7+IVvJrV8=;
+        b=oHYOuPJObECzbeHj0VhLjCALRhESgDng1n5TnHLOKMU6R7n87Hdpggyicq6/l5r1Vs
+         MpNoAbcm9BNtGCPqkg0x6lwWji5g1UerjlQBj542WzfE6azwB7Ugqi4FCe5LhX6gt5jW
+         q7EJY3CW867BXF58Az3JhVY3fGWzkDah2M0hd9J2gfxS/vdxndVsxhlwPy8VNwxoVNzR
+         by2T6KQ9pCicGwgMoTS1IKrdl9KtxiA7OOjiEerMESksOQ9G++x4N3MWvcFjJyDwug1V
+         l9xDSIZ5kcJZGy6X5TZRwk/Lo58lTDB7MN6Lgswd/YPpdTLYD2fbzQgAFuMu1DDvlplo
+         hyVg==
+X-Gm-Message-State: AOAM531fhfCluimTLkJLmGSuSqdZbXcqH8c1O4bkTZo5/w4EVyQ429ZR
+	XOr5tfwlzosLhPdZKxwypKnkRG5Jl/hcPvdRHqxH2Fk=
+X-Google-Smtp-Source: ABdhPJzHksGpyb4TUdlKDS2ENiybCU7pQo3LtZj6E3KsuAlCSiyN+d922LUTmeZerWGoaPfmMw6/BAKfTuros+WI9Ac=
+X-Received: by 2002:a67:d51c:0:b0:32d:121f:bd64 with SMTP id
+ l28-20020a67d51c000000b0032d121fbd64mr8010306vsj.44.1652106478529; Mon, 09
+ May 2022 07:27:58 -0700 (PDT)
+MIME-Version: 1.0
+From: Peter Perez <Peter@pineapple.co>
+Date: Mon, 9 May 2022 10:27:48 -0400
+Message-ID: <CAGqTgsQb-WLHgS6Rn2d10UnEuYLSWWX2gU8HkPncbf7Oc4b55g@mail.gmail.com>
+Subject: Urgent Check Refund (John Bell)
+To: Jeannie Dopson <jeannie@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Sean Chipman <sean@pineapple.co>, 
+	Brooke Whoolery <brooke@pineapple.co>, Corina Norried <corina@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000c8ce7e05de95037d"
+
+--000000000000c8ce7e05de95037d
+Content-Type: text/plain; charset="UTF-8"
+
+Hello Jeannie,
+
+Can we please  issue the following check refund  as soon as possible as the
+customer is threatening to sue:
+
+Verification System says this address does not exist 3 Other Problems
+52460208 $117.00 John Bell H8 Farmhouse Lane Morristown NJ 07960
+JBELL711@YAHOO.COM WPH
+
+This customer was added to the finance check refund sheet back on
+01/03/2022. The customer called today (ticket 1391575) and verified this is
+his correct address and that he also received the product from our company
+using the address above.
+
+The customer also lives at Olde Forge East Apartments  which is located at :
+
+M-19 Farmhouse ln,
+Morristown, NJ, 07960.
+
+Please let me know if you require any additional information.
+
+Thank you,
+
+[image: created with MySignature.io]
+<https://mysignature.io/?utm_source=logo>
+Peter Perez  Manager of Customer Support & Sales
+Pineapple Company
+p:  508.244.9638 <973.964.8212>
+w:  pineapple.co
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+--000000000000c8ce7e05de95037d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello Jeannie,<div><br></div><div>Can we please=C2=A0 issu=
+e the following check refund=C2=A0 as soon as possible as the customer is t=
+hreatening to sue:</div><div><br></div><div><table cellspacing=3D"0" cellpa=
+dding=3D"0" dir=3D"ltr" border=3D"1" style=3D"table-layout:fixed;font-size:=
+10pt;font-family:Arial;width:0px;border-collapse:collapse;border:none"><col=
+group><col width=3D"154"><col width=3D"133"><col width=3D"115"><col width=
+=3D"131"><col width=3D"82"><col width=3D"187"><col width=3D"177"><col width=
+=3D"73"><col width=3D"129"><col width=3D"120"><col width=3D"131"><col width=
+=3D"214"><col width=3D"179"></colgroup><tbody><tr style=3D"height:21px"><td=
+ style=3D"overflow:hidden;padding:2px 3px;vertical-align:middle;text-align:=
+center;border:1px solid rgb(204,204,204)">Verification System says this add=
+ress does not exist</td><td style=3D"overflow:hidden;padding:2px 3px;vertic=
+al-align:middle;text-align:center;border:1px solid rgb(204,204,204)">3 Othe=
+r Problems</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;font-family:Arial;text-align:center;border:1px solid rgb(204,204,204=
+)">52460208</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align=
+:middle;text-align:center;border:1px solid rgb(204,204,204)">$117.00</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align=
+:center;border:1px solid rgb(204,204,204)">John</td><td style=3D"overflow:h=
+idden;padding:2px 3px;vertical-align:bottom;text-align:center;border:1px so=
+lid rgb(204,204,204)">Bell</td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,204)"=
+>H8 Farmhouse Lane</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;text-align:center;border:1px solid rgb(204,204,204)"></td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align=
+:center;border:1px solid rgb(204,204,204)">Morristown</td><td style=3D"over=
+flow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center;border:=
+1px solid rgb(204,204,204)">NJ</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,2=
+04)">07960</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;text-align:center;border:1px solid rgb(204,204,204)"><a href=3D"mail=
+to:JBELL711@YAHOO.COM">JBELL711@YAHOO.COM</a></td><td style=3D"overflow:hid=
+den;padding:2px 3px;vertical-align:middle;text-align:center;border:1px soli=
+d rgb(204,204,204)">WPH</td></tr></tbody></table><div><div dir=3D"ltr" clas=
+s=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><=
+br></div><div dir=3D"ltr">This customer was added to the finance check refu=
+nd sheet back on 01/03/2022. The customer called today (ticket 1391575) and=
+ verified this is his correct address and that he also received the product=
+ from our company using the address above.</div><div dir=3D"ltr"><br></div>=
+<div dir=3D"ltr">The customer also lives at Olde Forge East Apartments=C2=
+=A0 which is located at :</div><div dir=3D"ltr"><br></div><div dir=3D"ltr">=
+M-19 Farmhouse ln,</div><div dir=3D"ltr">Morristown, NJ, 07960.</div><div d=
+ir=3D"ltr"><br></div><div dir=3D"ltr">Please let me know if you require any=
+ additional information.</div><div dir=3D"ltr"><br></div><div dir=3D"ltr">T=
+hank you,</div><div dir=3D"ltr">=C2=A0<br><table style=3D"border-spacing:0p=
+x;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sans-serif;=
+font-size:13px" width=3D"500" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0"><tbody><tr><td style=3D"padding:0px 9px 0px 0px;vertical-align:top" wid=
+th=3D"100" valign=3D"top"><a href=3D"https://mysignature.io/?utm_source=3Dl=
+ogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"created with =
+MySignature.io" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58a=
+e-a95a-4b540c36f8aa.png?time=3D1594774986" style=3D"width:100px;border-radi=
+us:15%" width=3D"100"></a></td><td style=3D"border-left:2px solid rgb(70,20=
+8,255);vertical-align:top;border-top-color:rgb(70,208,255);border-right-col=
+or:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding:0px 0px 0px =
+9px" valign=3D"top"><table style=3D"border-spacing:0px;border-collapse:coll=
+apse;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05p=
+x;color:rgb(0,0,1)" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"><tbody=
+><tr><td><span style=3D"font-stretch:normal;font-size:1.2em;line-height:nor=
+mal;font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">Peter Pere=
+z</span><span style=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0 Manage=
+r of Customer Support &amp; Sales<br></span></td></tr><tr><td style=3D"padd=
+ing:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple=
+ Company</div></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,s=
+ans-serif;color:rgb(70,208,255)">p:=C2=A0</span> 508.244.9638<span><a href=
+=3D"tel:973.964.8212" style=3D"color:rgb(0,0,1);font-family:Verdana,Geneva,=
+sans-serif" target=3D"_blank"></a></span></td></tr><tr><td><span style=3D"f=
+ont-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=
+=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http=
+://pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co=
+</a></span></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans=
+-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-fami=
+ly:Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York, NY </s=
+pan><span style=3D"font-family:Verdana,Geneva,sans-serif"><span style=3D"fo=
+nt-family:Verdana,Geneva,sans-serif">10019=C2=A0</span> <br></span></td></t=
+r></tbody></table></td></tr></tbody></table><div><span style=3D"font-family=
+:Verdana,Geneva,sans-serif"></span></div></div></div></div></div></div>
+
+--000000000000c8ce7e05de95037d--

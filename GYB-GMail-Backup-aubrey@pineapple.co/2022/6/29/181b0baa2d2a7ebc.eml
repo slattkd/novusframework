@@ -1,0 +1,523 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp318395ejc;
+        Wed, 29 Jun 2022 11:30:30 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1a49:b0:2d9:500e:4a06 with SMTP id u9-20020a056e021a4900b002d9500e4a06mr2573400ilv.43.1656527430680;
+        Wed, 29 Jun 2022 11:30:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656527430; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iIH6N12JW/zMrylBfV4l58pAgEqanxCE6qZzHECnsabhyaHQ7QldNk3Ejmtml4p1+P
+         iHFXCyQWGA1kM6EqXLBEXjsklbvZ5Q/CHtc8vz/GZtZs1AuzAuzZSwKbgeRqkgSyJnuO
+         5FowNTYeaDhhct8+6LSxW35h6M6ULNG8QelD2GeNajcfJoiV2G/DynPpjdZf8hfncZgA
+         bH1HQKZUQQw8mf5cHRl9C6LEbZxoy1nn7uwnxLVNL1CRWBhW6yNQ8NRK9B1ScI5IHfns
+         gqdyu2xAquQN5eMBWaup9kcDoKZniDAFRp/kjC8LpCQICWNZ+vTFeaFo1Hg3u8lbUCkR
+         TzlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=vLRe6KjLBF6m32Y980krsijxAQux04fvKmA1uEEOubA=;
+        b=YqpUohuwfyP/xWSCIEat+NzF2OXl3L24+RjYfqvyIC+cX5IoWkri3LXpxpeILIBLSQ
+         OWTRgX4l3Q81Ya5nMxgyzKZNCagfZmtTw0+Fiw5NHa7EyCuowCadBJvcVEgotGsHSaZ5
+         nHSklfcSj/s25RfdFq00XGeTZlNlXuxAP6TomKvmthkcwwpZpFva12j9Lqx4oGlbOOP2
+         Rv8gbzTCYJv2sCUi9/Wm7PqZSdwplGa4XpNJ8fvy/pAzQ3AD3O/HjpJQ7pek1ZPx7GNR
+         Tv8bILJiWJfSOuf2ieMWeJhFYkPypIiZ8ljEk6SQs6Ke9RlBUN/xDHzNEMdD9Tra3YmK
+         L81Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=kdKOxq0H;
+       spf=pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=marco@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <marco@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d3-20020a056e02050300b002ceff45a6a3sor4546756ils.60.2022.06.29.11.30.30
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 29 Jun 2022 11:30:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=kdKOxq0H;
+       spf=pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=marco@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=vLRe6KjLBF6m32Y980krsijxAQux04fvKmA1uEEOubA=;
+        b=kdKOxq0HtNHmAx/MoqRLTl5BoPHL72ojiXE2c3Imdd5NIPCI7h+CnLd7W6PM80EG03
+         +AwNIyUYD0TffoGvIKz/XE4NWolZlj8huiNnR0+xqyYJYuLvl8eFnRhnIuN1jnmImZIZ
+         ublWd1Cnz97RGf6ksQlDTuKcZmr73v1KP62+uBRrI+Ovd5bK/UFqfJC+Pm0zjum5G1VQ
+         A3TFeyrBmWhcXSodx2siNBfebcbpEsQMq0A+Sgwr2D6yanGtl6moCDZnk2jsU2t+hoZi
+         5RhGdAjprVU90vhTxBrO9n47YA+bjGPef/nJJ4eTi1loMXPXWPJKJVettKFI2XPy44lw
+         M3LQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=vLRe6KjLBF6m32Y980krsijxAQux04fvKmA1uEEOubA=;
+        b=68EQDiSy08HcF3hxJpg1St3r8iJEckvhAsSj/dNWdpjBNCwu+VD09aWGdHMKL8sm5l
+         lYrdqho8xS/+MD49F0KMBtsV/RFAO2S49bqxZ93dHWb2hzYXVcCNUMlIZoJfrilGSsLC
+         JvTtJxKrYoKt4TIYRhc9ifHadYK1YYMCgSGdwD7a9BPLHVmIHrqGFzLBzMDXAFon0McQ
+         IQMuo+cmZl8g0gi6C4tJ9ovkeSTgHiUwU/WYG2Qgc/sPEZ5Sn5Yakqz3z8Zl/EOSDfvA
+         ns+hbnX+26bdVAiAtACRuhKiBYQdcKGfz6q8yvvRmoiwju/X5xRzFmyg5bFVGKLJkgNO
+         0tyQ==
+X-Gm-Message-State: AJIora/ekGqUOQASyRxx+6VPXsUms72QqjUBxNll/7tGUKnIKIo95Tsl
+	FOSDsx/8bx+FQbDYmDVZLXjpmyZQuxx5G7dKSpINcnSImlfcVw==
+X-Google-Smtp-Source: AGRyM1v4yelEcJrLS5wmORwODD5zIbVkcl9NOgI48TLPr38BGjxI6bhIBzSy65vL9W9huu1ytS9bwxTMjlpyGIaNu9Y=
+X-Received: by 2002:a05:6e02:168e:b0:2da:a9f0:c1aa with SMTP id
+ f14-20020a056e02168e00b002daa9f0c1aamr2697553ila.151.1656527429973; Wed, 29
+ Jun 2022 11:30:29 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAAcEqJcdRfquT-O=miekfZQVaAF+BMaUYkiwBm7YdcALjuy+nQ@mail.gmail.com>
+ <CAHbmDP-31rGKgbOxZ-u_ZC=s1Uv9H_iHtSGPuNfLTjuK0DEN8w@mail.gmail.com>
+ <CAAcEqJeYtsfpC3zhboSEkSauETC3YavoSSN84Oxm+JVfddU0Og@mail.gmail.com>
+ <CAHbmDP8Hm2XXFh0VJ_EyupD=YVNSSpNW2f_S95mxhjGLyfWHqA@mail.gmail.com>
+ <CAAcEqJeQ82xGn-YmMsPL8XJ8gExDYbTY8-m2EtGT4F-NmCUyag@mail.gmail.com> <CAHbmDP9QR5HQMcAKUpgC1mCDtv3HjAPx9FFVUNEi0Juwd71NLA@mail.gmail.com>
+In-Reply-To: <CAHbmDP9QR5HQMcAKUpgC1mCDtv3HjAPx9FFVUNEi0Juwd71NLA@mail.gmail.com>
+From: Marco Shimazaki <marco@pineapple.co>
+Date: Wed, 29 Jun 2022 14:30:18 -0400
+Message-ID: <CAAcEqJeYcr0p9DNW7twrtWtP7R2EUZiduwMjHohO-BTND-kjzg@mail.gmail.com>
+Subject: Re: Fran Payment Calculation for Product - Elixir of Eros - Gotham Club
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000006540d05e29a59ba"
+
+--00000000000006540d05e29a59ba
+Content-Type: text/plain; charset="UTF-8"
+
+No worries I'll take a look hold off on any additionals for now.
+
+On Wed, Jun 29, 2022 at 2:27 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> No need to be sorry-- certainly not your fault!
+>
+> I've attached a spreadsheet with as much pertinent information as I can
+> glean from the Gotham Enrich Profit Calculator routine and its
+> deliverables.  You'll see that (according to the way the routine is
+> calculating profit with the new product categorizations), these specific
+> products are returning profits that are in the red, thus the payout is also
+> negative.  The columns in the bottom table are representative of those
+> respective values for the lifetime of the contract from 5/1/20-5/31/22,
+> although it appears that Info Products were not introduced until 10/2020.
+>
+> I apologize that this spreadsheet does not look like what you've
+> requested, but many of those specifics, including quantity of sales, are
+> not part of the deliverables of this particular routine.  I believe I will
+> be able to find these using other methods, like the Weekly Sales dashboard
+> routine, but that will take me some additional time to get to work in that
+> capacity and yield proper results.
+>
+> Please let me know how best to proceed!  I'm sorry my answer isn't as
+> straight-forward as I'd like it to be-- I promise I'm not trying to be
+> obtuse here.
+>
+> On Wed, Jun 29, 2022 at 12:23 PM Marco Shimazaki <marco@pineapple.co>
+> wrote:
+>
+>> No worries sorry for the headache.
+>>
+>> So just looking for the accurate so actual sales each month and what is
+>> supposed to be paid solely for that sub category (Info Products - Enrich)
+>>
+>> So I believe it would be the following breakouts:
+>> Qty Day 0 Gross Revenue Day 0 Net Revenue After Expenses Day 0 Net
+>> Revenue After Expenses & Affiliate Commissions Gross Revenue Total Net
+>> Revenue Total Net Revenue after Affiliate Commissions TOTAL Net Factor Fran
+>> Payment
+>> 58.5%
+>> Hope that make sense basically trying to give the new buyer the accurate
+>> log of previous payments so they can continue them going forward.
+>>
+>> *Again this is only for Digital Product since that's the brand being
+>> sold.*
+>>
+>> On Wed, Jun 29, 2022 at 1:04 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+>>
+>>> Are you specifically looking for how much Fran was paid out for these
+>>> products over March, April, & May, or are you looking for actual sales of
+>>> these particular products?
+>>>
+>>> The reason that I ask, is because the trouble with the Payout numbers
+>>> specifically is that this past month we had some issues with the KNIME
+>>> routine that required further investigation/manipulation.  The sweeping
+>>> changes in Product Categories on Sticky revealed some errors in the way
+>>> that Enrich profits have been calculated in the past.  Long story short, we
+>>> realized that at times, we have been mis-attributing some Info Products to
+>>> include more than those 3 specific Fran products.  As such, the payout
+>>> returns are in the negative for the last few months (indicating that we
+>>> have "over-paid" our share on this funnel in the past).  This is a problem
+>>> that I've discussed with Brooke and Gene, so they are aware of the
+>>> situation.
+>>>
+>>> I'd be happy to provide you with more of the information, I just wanted
+>>> to get a better idea of what you were looking for specifically before I
+>>> open this can of worms on you!
+>>>
+>>> On Wed, Jun 29, 2022 at 11:54 AM Marco Shimazaki <marco@pineapple.co>
+>>> wrote:
+>>>
+>>>> Do we have the report for a few months possibly last 3 months (March /
+>>>> April / May) just for Enrich Info Products (Elixir of Eros) (The Pursuit
+>>>> Institute) (Sexual Obsession Switch)
+>>>>
+>>>> We are looking to provide that previous data to the new owner.
+>>>>
+>>>>
+>>>> On Wed, Jun 29, 2022 at 12:48 PM Aubrey Allen <aubrey@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Hi Marco!
+>>>>>
+>>>>> That is correct, I've been handling the Enrich payout calculations.
+>>>>> Fran's payments are calculated as 41.5% of the Net Profit for all
+>>>>> products/categories, including Info Products.  When we calculate Fran's
+>>>>> monthly payout, Elixir of Eros is combined into an "Enrich Info Products"
+>>>>> funnel along with The Pursuit Institute and Sexual Obsession Switch.
+>>>>>
+>>>>> Please let me know if I can assist in any other way, or if you need
+>>>>> specific info on payouts for this funnel or product!
+>>>>>
+>>>>> Best,
+>>>>>
+>>>>>
+>>>>> On Wed, Jun 29, 2022 at 11:17 AM Marco Shimazaki <marco@pineapple.co>
+>>>>> wrote:
+>>>>>
+>>>>>> Hey Aubrey,
+>>>>>>
+>>>>>> I am looking for the formula to calculate Fran's payments for his
+>>>>>> product sales. I believe you handle this?
+>>>>>>
+>>>>>> Not sure if it changes by-product, but we are focused on Elixir of
+>>>>>> Eros (Digital Product) that was under Gotham Club.
+>>>>>>
+>>>>>> Thanks in advance for your help.
+>>>>>>
+>>>>>>
+>>>>>> --
+>>>>>> [image: https://mysignature.io/?utm_source=logo]
+>>>>>> <https://mysignature.io/?utm_source=logo>
+>>>>>> Marco Shimazaki Email Marketing Manager
+>>>>>>
+>>>>>> Pineapple Products
+>>>>>> s:  sbu.marco.shimazaki
+>>>>>> w:  pineapple.co
+>>>>>> a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+>>>>>>
+>>>>>
+>>>>>
+>>>>> --
+>>>>> Aubrey Allen
+>>>>> Data Analytics Technician
+>>>>> Pineapple Products, Inc.
+>>>>>
+>>>>
+>>>>
+>>>> --
+>>>> [image: https://mysignature.io/?utm_source=logo]
+>>>> <https://mysignature.io/?utm_source=logo>
+>>>> Marco Shimazaki Email Marketing Manager
+>>>>
+>>>> Pineapple Products
+>>>> s:  sbu.marco.shimazaki
+>>>> w:  pineapple.co
+>>>> a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+>>>>
+>>>
+>>
+>> --
+>> [image: https://mysignature.io/?utm_source=logo]
+>> <https://mysignature.io/?utm_source=logo>
+>> Marco Shimazaki Email Marketing Manager
+>>
+>> Pineapple Products
+>> s:  sbu.marco.shimazaki
+>> w:  pineapple.co
+>> a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+>>
+>
+
+-- 
+[image: https://mysignature.io/?utm_source=logo]
+<https://mysignature.io/?utm_source=logo>
+Marco Shimazaki Email Marketing Manager
+
+Pineapple Products
+s:  sbu.marco.shimazaki
+w:  pineapple.co
+a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+
+--00000000000006540d05e29a59ba
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">No worries I&#39;ll take a look hold off on any additional=
+s for now.</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gm=
+ail_attr">On Wed, Jun 29, 2022 at 2:27 PM Aubrey Allen &lt;<a href=3D"mailt=
+o:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">No need to be so=
+rry-- certainly not your fault!<div><br></div><div>I&#39;ve attached a spre=
+adsheet=C2=A0with as much pertinent information as I can glean from the Got=
+ham Enrich Profit Calculator routine and its deliverables.=C2=A0 You&#39;ll=
+ see that (according to the way the routine is calculating=C2=A0profit with=
+ the new product categorizations), these specific products are returning pr=
+ofits that are in the red, thus the payout is also negative.=C2=A0 The colu=
+mns in the bottom table are representative of those respective values for t=
+he lifetime of the contract from 5/1/20-5/31/22, although it appears that I=
+nfo Products were not introduced until 10/2020.</div><div><br></div><div>I =
+apologize that this spreadsheet does not look like what you&#39;ve requeste=
+d, but many of those specifics, including quantity of sales, are not part o=
+f the deliverables of this particular routine.=C2=A0 I believe I will be ab=
+le to find these using other methods, like the Weekly Sales dashboard routi=
+ne, but that will take me some additional time to get to work in that capac=
+ity and yield proper results.</div><div><br></div><div>Please let me know h=
+ow best to proceed!=C2=A0 I&#39;m sorry my answer isn&#39;t as straight-for=
+ward as I&#39;d like it to be-- I promise I&#39;m=C2=A0not trying to be obt=
+use here.=C2=A0</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, Jun 29, 2022 at 12:23 PM Marco Shimazaki &lt;<=
+a href=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pineapple.co</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><d=
+iv dir=3D"ltr">No worries sorry for the headache.<div><br></div><div>So jus=
+t looking for the accurate so actual sales each month and what is supposed =
+to be paid solely for that sub category (Info Products - Enrich)</div><div>=
+<br></div><div>So I believe it would be the following breakouts:</div><div>=
+<table cellspacing=3D"0" cellpadding=3D"0" dir=3D"ltr" border=3D"1" style=
+=3D"table-layout:fixed;font-size:10pt;font-family:Arial;width:0px;border-co=
+llapse:collapse;border:none"><colgroup><col width=3D"100"><col width=3D"100=
+"><col width=3D"100"><col width=3D"100"><col width=3D"100"><col width=3D"10=
+0"><col width=3D"100"><col width=3D"100"><col width=3D"100"></colgroup><tbo=
+dy><tr style=3D"height:21px"><td style=3D"border:1px solid rgb(0,0,0);overf=
+low:hidden;padding:2px 3px;vertical-align:bottom;font-family:Calibri;font-s=
+ize:11pt;font-weight:bold;text-align:center">Qty</td><td style=3D"border-wi=
+dth:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rg=
+b(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom;font-f=
+amily:Calibri;font-size:11pt;font-weight:bold;text-align:center">Day 0 Gros=
+s Revenue</td><td style=3D"border-width:1px;border-style:solid;border-color=
+:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:=
+2px 3px;vertical-align:bottom;font-family:Calibri;font-size:11pt;font-weigh=
+t:bold;text-align:center">Day 0 Net Revenue After Expenses</td><td style=3D=
+"border-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb=
+(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bot=
+tom;font-family:Calibri;font-size:11pt;font-weight:bold;text-align:center">=
+Day 0 Net Revenue After Expenses &amp; Affiliate Commissions</td><td style=
+=3D"border-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) =
+rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;font-family:Calibri;font-size:11pt;font-weight:bold;text-align:cente=
+r">Gross Revenue Total</td><td style=3D"border-width:1px;border-style:solid=
+;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hi=
+dden;padding:2px 3px;vertical-align:bottom;font-family:Calibri;font-size:11=
+pt;font-weight:bold;text-align:center">Net Revenue Total</td><td style=3D"b=
+order-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0=
+,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:botto=
+m;font-family:Calibri;font-size:11pt;font-weight:bold;text-align:center">Ne=
+t Revenue after Affiliate Commissions TOTAL</td><td style=3D"border-width:1=
+px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204=
+,204,204);overflow:hidden;padding:2px 3px;vertical-align:middle;font-family=
+:Calibri;font-size:11pt;font-weight:bold;text-align:center">Net Factor</td>=
+<td style=3D"border-width:1px;border-style:solid;border-color:rgb(0,0,0) rg=
+b(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertic=
+al-align:middle;font-family:Calibri;font-size:11pt;font-weight:bold;text-al=
+ign:center">Fran Payment</td></tr><tr style=3D"height:21px"><td style=3D"bo=
+rder-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) =
+rgb(0,0,0);overflow:hidden;padding:2px 3px;vertical-align:bottom"></td><td =
+style=3D"border-width:1px;border-style:solid;border-color:rgb(204,204,204) =
+rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vert=
+ical-align:bottom"></td><td style=3D"border-width:1px;border-style:solid;bo=
+rder-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow=
+:hidden;padding:2px 3px;vertical-align:bottom"></td><td style=3D"border-wid=
+th:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,=
+0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom">=
+</td><td style=3D"border-width:1px;border-style:solid;border-color:rgb(204,=
+204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom"></td><td style=3D"border-width:1px;border-style=
+:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204)=
+;overflow:hidden;padding:2px 3px;vertical-align:bottom"></td><td style=3D"b=
+order-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0)=
+ rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align=
+:bottom"></td><td style=3D"border-width:1px;border-style:solid;border-color=
+:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;pa=
+dding:2px 3px;vertical-align:middle;font-family:Calibri;font-size:11pt;text=
+-align:center">58.5%</td><td style=3D"border-width:1px;border-style:solid;b=
+order-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom"></td></tr></tbody></table><=
+br></div><div>Hope that make sense basically trying to give the new buyer t=
+he accurate log of previous payments so they can continue them going forwar=
+d.=C2=A0</div><div><br></div><div><b>Again this is only for Digital Product=
+ since that&#39;s the brand being sold.</b></div></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 29, 2022 at 1:=
+04 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_bl=
+ank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex"><div dir=3D"ltr">Are you specifically looking for h=
+ow much Fran was paid out for these products over March, April, &amp; May, =
+or are you looking for actual sales of these particular products?<div><br><=
+/div><div>The reason that I ask, is because the trouble with the Payout num=
+bers specifically is that this past month we had some issues with the KNIME=
+ routine that required further investigation/manipulation.=C2=A0 The sweepi=
+ng changes in Product Categories on Sticky revealed some errors in the way =
+that Enrich profits have been calculated in the past.=C2=A0 Long story shor=
+t, we realized that at times, we have been mis-attributing some Info Produc=
+ts to include more than those 3 specific Fran products.=C2=A0 As such, the =
+payout returns are in the negative for the last few months (indicating that=
+ we have &quot;over-paid&quot; our share on this funnel in the past).=C2=A0=
+ This is a problem that I&#39;ve discussed with Brooke and Gene, so they ar=
+e aware of the situation.</div><div><br></div><div>I&#39;d be happy to prov=
+ide you with more of the information, I just wanted to get a better idea of=
+ what you were looking for specifically=C2=A0before I open this can of worm=
+s on you!</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Wed, Jun 29, 2022 at 11:54 AM Marco Shimazaki &lt;<a hre=
+f=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pineapple.co</a>&gt=
+; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div di=
+r=3D"ltr">Do we have the report for a few months possibly last 3 months (Ma=
+rch / April / May) just for=C2=A0Enrich Info Products (Elixir of Eros) (The=
+ Pursuit Institute) (Sexual Obsession Switch)<div><br></div><div>We are loo=
+king to provide that previous data to the new owner.<br><div><br></div></di=
+v></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Wed, Jun 29, 2022 at 12:48 PM Aubrey Allen &lt;<a href=3D"mailto:aubre=
+y@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Ma=
+rco!<div><br></div><div>That is correct, I&#39;ve been handling=C2=A0the En=
+rich payout calculations.=C2=A0 Fran&#39;s payments are calculated as 41.5%=
+ of the Net Profit for all products/categories, including Info Products.=C2=
+=A0 When we calculate Fran&#39;s monthly payout, Elixir of Eros is combined=
+ into an &quot;Enrich Info Products&quot; funnel along with=C2=A0The Pursui=
+t Institute and Sexual Obsession Switch.</div><div><br></div><div>Please le=
+t me know if I can assist in any other way, or if you need specific info on=
+ payouts for this funnel or product!</div><div><br></div><div>Best,</div><d=
+iv><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
+"gmail_attr">On Wed, Jun 29, 2022 at 11:17 AM Marco Shimazaki &lt;<a href=
+=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pineapple.co</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr">Hey Aubrey,<div><br></div><div>I am looking for the formula to cal=
+culate Fran&#39;s payments for his product sales. I believe you handle this=
+?</div><div><br></div><div>Not sure if it changes by-product, but we are fo=
+cused on Elixir of Eros (Digital Product) that was under Gotham Club.</div>=
+<div><br></div><div>Thanks in advance for your help.</div><div><br clear=3D=
+"all"><div><br></div>-- <br><div dir=3D"ltr"><div dir=3D"ltr"><table cellsp=
+acing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size=
+:13px;border-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);font-=
+family:Lato,sans-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=
+=3D"padding:0px 9px 0px 0px;vertical-align:top"><a href=3D"https://mysignat=
+ure.io/?utm_source=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><im=
+g alt=3D"https://mysignature.io/?utm_source=3Dlogo" width=3D"100" src=3D"ht=
+tps://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?t=
+ime=3D1594774986" style=3D"width: 100px; border-radius: 15%;"></a></td><td =
+valign=3D"top" style=3D"border-left:2px solid rgb(70,208,255);vertical-alig=
+n:top;border-top-color:rgb(70,208,255);border-right-color:rgb(70,208,255);b=
+order-bottom-color:rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspac=
+ing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-spacing:0px;border=
+-collapse:collapse;line-height:1.4;font-family:Verdana,Geneva,sans-serif;fo=
+nt-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0ff" fa=
+ce=3D"Verdana, Geneva, sans-serif"><span style=3D"font-size:13.26px">Marco =
+Shimazaki Email Marketing Manager</span></font></td></tr><tr><td style=3D"p=
+adding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineap=
+ple Products</div></td></tr><tr><td><span style=3D"font-family:Verdana,Gene=
+va,sans-serif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.shimaza=
+ki</td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;co=
+lor:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdan=
+a,Geneva,sans-serif"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,=
+0,1)" target=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span styl=
+e=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0<=
+/span>=C2=A0<span><span style=3D"font-size:8.5pt;font-family:Verdana;backgr=
+ound-color:transparent;vertical-align:baseline;white-space:pre-wrap">600 Br=
+oadway Ste 200 #1460 Albany, NY 12207</span></span><span style=3D"font-fami=
+ly:Verdana,Geneva,sans-serif">=C2=A0</span></td></tr></tbody></table></td><=
+/tr></tbody></table></div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr">Aubrey Allen<div>Data Analytics Technician</div><div>Pine=
+apple Products, Inc.</div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" =
+border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:col=
+lapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=
+=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top=
+"><a href=3D"https://mysignature.io/?utm_source=3Dlogo" style=3D"color:rgb(=
+0,0,0)" target=3D"_blank"><img alt=3D"https://mysignature.io/?utm_source=3D=
+logo" width=3D"100" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f=
+-58ae-a95a-4b540c36f8aa.png?time=3D1594774986" style=3D"width: 100px; borde=
+r-radius: 15%;"></a></td><td valign=3D"top" style=3D"border-left:2px solid =
+rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,208,255);border-=
+right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding:0px=
+ 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=
+=3D"border-spacing:0px;border-collapse:collapse;line-height:1.4;font-family=
+:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><=
+td><font color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif"><span style=
+=3D"font-size:13.26px">Marco Shimazaki Email Marketing Manager</span></font=
+></td></tr><tr><td style=3D"padding:5px 0px"><div style=3D"font-family:Verd=
+ana,Geneva,sans-serif">Pineapple Products</div></td></tr><tr><td><span styl=
+e=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0<=
+/span>=C2=A0sbu.marco.shimazaki</td></tr><tr><td><span style=3D"font-family=
+:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<spa=
+n style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://pineapp=
+le.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a></span=
+></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;col=
+or:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span><span style=3D"font-size:8.5=
+pt;font-family:Verdana;background-color:transparent;vertical-align:baseline=
+;white-space:pre-wrap">600 Broadway Ste 200 #1460 Albany, NY 12207</span></=
+span><span style=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0</span></t=
+d></tr></tbody></table></td></tr></tbody></table></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" =
+border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:col=
+lapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=
+=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top=
+"><a href=3D"https://mysignature.io/?utm_source=3Dlogo" style=3D"color:rgb(=
+0,0,0)" target=3D"_blank"><img alt=3D"https://mysignature.io/?utm_source=3D=
+logo" width=3D"100" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f=
+-58ae-a95a-4b540c36f8aa.png?time=3D1594774986" style=3D"width: 100px; borde=
+r-radius: 15%;"></a></td><td valign=3D"top" style=3D"border-left:2px solid =
+rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,208,255);border-=
+right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding:0px=
+ 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=
+=3D"border-spacing:0px;border-collapse:collapse;line-height:1.4;font-family=
+:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><=
+td><font color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif"><span style=
+=3D"font-size:13.26px">Marco Shimazaki Email Marketing Manager</span></font=
+></td></tr><tr><td style=3D"padding:5px 0px"><div style=3D"font-family:Verd=
+ana,Geneva,sans-serif">Pineapple Products</div></td></tr><tr><td><span styl=
+e=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0<=
+/span>=C2=A0sbu.marco.shimazaki</td></tr><tr><td><span style=3D"font-family=
+:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<spa=
+n style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://pineapp=
+le.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a></span=
+></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;col=
+or:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span><span style=3D"font-size:8.5=
+pt;font-family:Verdana;background-color:transparent;vertical-align:baseline=
+;white-space:pre-wrap">600 Broadway Ste 200 #1460 Albany, NY 12207</span></=
+span><span style=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0</span></t=
+d></tr></tbody></table></td></tr></tbody></table></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><table cellspacing=3D"0" width=
+=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spac=
+ing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sans-=
+serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px 9px=
+ 0px 0px;vertical-align:top"><a href=3D"https://mysignature.io/?utm_source=
+=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"https://m=
+ysignature.io/?utm_source=3Dlogo" width=3D"100" src=3D"https://img.mysignat=
+ure.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1594774986" =
+style=3D"width: 100px; border-radius: 15%;"></a></td><td valign=3D"top" sty=
+le=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-c=
+olor:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color=
+:rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse=
+;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;co=
+lor:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0ff" face=3D"Verdana, Gen=
+eva, sans-serif"><span style=3D"font-size:13.26px">Marco Shimazaki Email Ma=
+rketing Manager</span></font></td></tr><tr><td style=3D"padding:5px 0px"><d=
+iv style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Products</div>=
+</td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;colo=
+r:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.shimazaki</td></tr><tr><t=
+d><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255=
+)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-seri=
+f"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_b=
+lank">pineapple.co</a></span></td></tr><tr><td><span style=3D"font-family:V=
+erdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span>=
+<span style=3D"font-size:8.5pt;font-family:Verdana;background-color:transpa=
+rent;vertical-align:baseline;white-space:pre-wrap">600 Broadway Ste 200 #14=
+60 Albany, NY 12207</span></span><span style=3D"font-family:Verdana,Geneva,=
+sans-serif">=C2=A0</span></td></tr></tbody></table></td></tr></tbody></tabl=
+e></div></div>
+
+--00000000000006540d05e29a59ba--

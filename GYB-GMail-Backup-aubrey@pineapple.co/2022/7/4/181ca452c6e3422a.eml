@@ -1,0 +1,186 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp2019571ejq;
+        Mon, 4 Jul 2022 10:32:20 -0700 (PDT)
+X-Received: by 2002:a05:6870:41c9:b0:102:820:ac9e with SMTP id z9-20020a05687041c900b001020820ac9emr18746599oac.167.1656955940092;
+        Mon, 04 Jul 2022 10:32:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656955940; cv=none;
+        d=google.com; s=arc-20160816;
+        b=io/sfbDUxQmmo4d3YL43CJRhVerXmA/JMqtcuJrRO87/H179LT9ijnqmj1t0HRpM2U
+         nY+Ndq2BKZdKJegOeyVcmM59GfammnnxXcxMmaViQ2vTOB8pwNSjtny7+H8p8fxbbGRG
+         UH9TS8gECgMqNhzQFHpLM0EggHMqyjqvxaGvC4nWMIkPC99AkKU/tUk9qZihmGK0xXCC
+         T4HGI4wWEPAYPP8iIwKnmxLb0mtHpswz9OKiPWRpSc8sKxTBX1POKJeMgSFvOaFBnf91
+         cQ8j/x6T6Gt5Jj1GJQ8k0Xnu00+68In7oZv95FPu2Te/J3iMJb3vMeJ6+yTe5SQQdokh
+         Hf8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=wFrriRLAdBcDOzf5mysYDRsEePlhEpJxDVf/H1g/9Ag=;
+        b=p4jVJF+LO9HdKQJZZMEYA/v2JLrUo5FjK1hm5K5mQ8jW50eiOjj/o8ywQZtD8c+8Mz
+         nLERiC1ZA0FFiYGcrMPHqa5H6ftRFes89b5p6ysiw1li4PuUkvjrllJYvLS8DByBgB7r
+         aBSwLUJwREOfXCBuvKVoJKlNWKoWhhFYtg208VZ44lq5YBxicwF/AzBO1wIacKXzRVUX
+         s7MRmgaRYSwKlO2xLrDPh12pHN5SIpX8JhzlAzFZxRCWHv9SMk7/sI+R2FNMWfMmKJXn
+         u0DQZK0s3e8dOZ3vybcpVz/lSJCSB/hvswbmq6gIYfQWlk8VMP9eND3LqF94o4mrFXHr
+         6Ydg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=p6ojB46g;
+       spf=pass (google.com: domain of jarren@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=jarren@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <jarren@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n17-20020a4ad411000000b00425ce1f5661sor4041222oos.7.2022.07.04.10.32.19
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 04 Jul 2022 10:32:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarren@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=p6ojB46g;
+       spf=pass (google.com: domain of jarren@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=jarren@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=wFrriRLAdBcDOzf5mysYDRsEePlhEpJxDVf/H1g/9Ag=;
+        b=p6ojB46gJvOSJ/bazQGbdJIqLM6BHTL85z1btUAh6EQjc3RtCQUteeAIr4U7Oc6e5/
+         tuOXarKnTWfefavtVRJXbAtX8Dw3xXykQ1wMuPZzS8C0uGCgDfgzNEIifpPkQUVDBDss
+         oSU4A8JdnyGt6B2cZ+6rDcxppocQMMs+dtoMh3WIC6wKJFMTj8VF+n7FXc7ac2sH3u96
+         LRII6zUUzYqlYMF3TYpGpu5FKwQH7FZfWZiWNm1Ex1TxpLl/6LowVYzftM4OiRoeozX3
+         o5YUW/U/NqHpKbpdKtR64LUzH2poqrtsxXHbNcevP8BUmdLNw6k1LeeXKwhvChVb9WQs
+         5x7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=wFrriRLAdBcDOzf5mysYDRsEePlhEpJxDVf/H1g/9Ag=;
+        b=dxsYtrXP9K8y0JlJVDkzLChH8J6jtug8w6AIiE7d3VGEnfnguTRJHt+KRM4wmvURoA
+         RFyOgmo6HICEQkTK2EZzvnHxyC2MK/6/QLRB/+1P593AVyCjALFfdlf8ygXABV/54aHE
+         5pruhdUIx6ftFmCgTnzdQsK5+sJmiXy6dqgUF9Bxtpo5JbE7uQquSSfvS9/PW0RCdPHV
+         +OH/aRQSyGm6fXW/iUZyzAeJcXJKRzJubYmKzaWGzKPk74iSIKjmQyb6/WLM9vxARAdT
+         O2q3kKjt2N/cBF9XyoJX9hs2yr3/+gIRLZQqlP4U/qrZ09p9ffwTByN2TyJmlgmvKUvu
+         LSSg==
+X-Gm-Message-State: AJIora8uwK7OXnasNY8dwCLCMfw/6UQb4mt6i0xJrVZtV3FdUNEGhKBG
+	IBcGS2K1fgm5S+chk6GHwQ6qPtWWQI30BFv9xnXvKvs=
+X-Google-Smtp-Source: AGRyM1sVSw30KHFXtANcP8oniHGCeNVmquVH85zuH5O6pWBUYt5sRij1gfdWmvxbnpInPb+FpWJwZexBg5DHYL13hHk=
+X-Received: by 2002:a05:6820:168d:b0:425:ad1c:7151 with SMTP id
+ bc13-20020a056820168d00b00425ad1c7151mr12431679oob.69.1656955939309; Mon, 04
+ Jul 2022 10:32:19 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_T=opqxX1_JNjr_DEUz4sX7cwivM7=AtnwxDrP2O9hArg@mail.gmail.com>
+ <CAHjQFwaPeYs2aEJ+ikqsoPg+51zF-n9mqKwc6uAvK=SLY=m=jQ@mail.gmail.com> <CALCR5_RPXW+fT1QFSN7xFdy4Q-uxbeXuideiC6wLUvGDvfB3Zw@mail.gmail.com>
+In-Reply-To: <CALCR5_RPXW+fT1QFSN7xFdy4Q-uxbeXuideiC6wLUvGDvfB3Zw@mail.gmail.com>
+From: Jarren Scheller <jarren@pineapple.co>
+Date: Mon, 4 Jul 2022 11:32:08 -0600
+Message-ID: <CAHjQFwagtrpSqBZY=yRJ_RGf7S6Yf5SaR-YG9kCcrEueLPT4TQ@mail.gmail.com>
+Subject: Re: Gathering daily spend data?
+To: Brett Allcorn <brett@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>, 
+	Jack Nalbandyan <jack@pineapple.co>, Mike McBrien <mike@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000002bde9205e2fe1e84"
+
+--0000000000002bde9205e2fe1e84
+Content-Type: text/plain; charset="UTF-8"
+
+Let me look into it and get back to you.
+Google should be straightforward I would think.
+I am not sure about Facebook though.
+
+On Mon, Jul 4, 2022 at 11:15 AM Brett Allcorn <brett@pineapple.co> wrote:
+
+> Nope - super straightforward.
+>
+> And idea the best way for us to get this data historically from Facebook
+> and Google?
+>
+> If not, I can task Jack with that.
+>
+> On Mon, Jul 4, 2022 at 8:08 PM Jarren Scheller <jarren@pineapple.co>
+> wrote:
+>
+>> Hi!
+>> If we want to track this at the very least at a daily level, then I would
+>> request that we get everything daily that we can.
+>> Moving forward, as things get busier and whatnot, I don't think it's far
+>> off to have all data coming in "live" so at any point anyone that needs the
+>> data would have it as up to date as possible.
+>> If we can get it historically that would be ideal at a daily level as
+>> well, but I do know with some platforms comes hesitations.
+>> The sooner we can get it and start to digest what is there and what is
+>> good/bad, the better.
+>> This might be something that deserves a little bit deeper conversation
+>> once we have the data.
+>>
+>> Hope I didn't make that too confusing!  :)
+>> -Jarren
+>>
+>> On Mon, Jul 4, 2022 at 9:52 AM Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>>> Hey Jarren, right now I think we've only gathered weekly spend data from
+>>> advertising platforms.
+>>>
+>>> The problem with this is if we want to have daily, monthly, quarterly or
+>>> annual reports created, we won't be able to do that accurately with just
+>>> weekly data.
+>>>
+>>> I think to have the best flexibility we will need daily spend on every
+>>> platform.
+>>>
+>>> What do you think?
+>>>
+>>> Should we make an effort to gather this historical data and setup a
+>>> system to gather it daily?
+>>>
+>>> Also - perhaps even additional data points like what campaigns that
+>>> money was spent on could be useful if it's available.
+>>>
+>>
+
+--0000000000002bde9205e2fe1e84
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Let me look into it and get back to you.<div>Google should=
+ be straightforward I would think.</div><div>I am not sure about Facebook t=
+hough.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
+gmail_attr">On Mon, Jul 4, 2022 at 11:15 AM Brett Allcorn &lt;<a href=3D"ma=
+ilto:brett@pineapple.co">brett@pineapple.co</a>&gt; wrote:<br></div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex"><div dir=3D"auto">Nope - super s=
+traightforward.</div><div dir=3D"auto"><br></div><div dir=3D"auto">And idea=
+ the best way for us to get this data historically from Facebook and Google=
+?</div><div dir=3D"auto"><br></div><div dir=3D"auto">If not, I can task Jac=
+k with that.</div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
+s=3D"gmail_attr">On Mon, Jul 4, 2022 at 8:08 PM Jarren Scheller &lt;<a href=
+=3D"mailto:jarren@pineapple.co" target=3D"_blank">jarren@pineapple.co</a>&g=
+t; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div d=
+ir=3D"ltr">Hi!<div>If we want to track this at the very least at a daily le=
+vel, then I would request=C2=A0that we get everything daily that we can.</d=
+iv><div>Moving forward, as things get busier and whatnot, I don&#39;t think=
+ it&#39;s far off to have all data coming in &quot;live&quot; so at any poi=
+nt anyone that needs the data would have it as up to date as possible.</div=
+><div>If we can get it historically that would be ideal at a daily level as=
+ well, but I do know with some platforms comes hesitations.</div><div>The s=
+ooner we can get it and start to digest what is there and what is good/bad,=
+ the better.</div><div>This might be something that deserves a little bit d=
+eeper conversation once we have the data.</div><div><br></div><div>Hope I d=
+idn&#39;t make that too confusing!=C2=A0 :)</div></div><div dir=3D"ltr"><di=
+v>-Jarren</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Mon, Jul 4, 2022 at 9:52 AM Brett Allcorn &lt;<a href=3D=
+"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D=
+"ltr">Hey Jarren, right now I think we&#39;ve only gathered weekly spend da=
+ta from advertising platforms.<div><br>The problem with this is if we want =
+to have daily, monthly, quarterly or annual reports created, we won&#39;t b=
+e able to do that accurately with just weekly data.</div><div><br>I think t=
+o have the best flexibility we will need daily spend on every platform.</di=
+v><div><br></div><div>What do you think?</div><div><br></div><div>Should we=
+ make an effort to gather this historical data and setup a system to gather=
+ it daily?</div><div><br></div><div>Also - perhaps even additional data poi=
+nts like what campaigns that money was spent on could be useful if it&#39;s=
+ available.</div></div>
+</blockquote></div>
+</blockquote></div></div>
+</blockquote></div>
+
+--0000000000002bde9205e2fe1e84--

@@ -1,0 +1,256 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp939342ejz;
+        Tue, 26 Jul 2022 11:12:33 -0700 (PDT)
+X-Received: by 2002:a81:1c0e:0:b0:31c:c207:c5ab with SMTP id c14-20020a811c0e000000b0031cc207c5abmr14932375ywc.182.1658859152908;
+        Tue, 26 Jul 2022 11:12:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658859152; cv=none;
+        d=google.com; s=arc-20160816;
+        b=e6Mni0IpaZiK4+gg0z57+Ee6fTq7rzGawAgZ0HJFKFcBldxE8e2rUtbSjnSEdSczfF
+         ssyP2sOv2RJNBJYGbUIv8iSWatiwlNfszX2PkUmnJOkXSP2stBQjiPXUstaxai0R0JCE
+         m0zm8rftMEnf7Z8o/8Nl4xZS6TXPonb5amv0UkDcVajNUAVu8MSJyRqiqnikyKa8hY3W
+         SJhs/MCm8XaAkbw0EVF+d70DQg5ce81ANdzgk1uHsvE1v63u2pxG9ES6xNdjJLpRzV6v
+         zNPwc0N3l2v91pPzHWsx/faW6TS5uhf5psBv0iDPu5iOwIkSEVdyztvDs+2kVz/34VZQ
+         i0uA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=vhfRhorCJu9nDU1nsuUXyboReLk0ti9PCqiF8QRRkJY=;
+        b=qs/tBL2uXD3N6IsCQrSq0u5O9Hk4uOnAp69lBGsYn3rXhfMbGrvikP+g81c46ikU9n
+         N2BVP7/gFDslkdwIPEwnlhdZ8eu19sRcwvt0FgFQPtWfMAcxQFInP9Pb3oR8QlLTr9zf
+         EdjFU98VjxR0052/MTlf6YyMAt7IlpRpJ6uZ/WVhr2o5rwGrgA0qNd3Mj6lKjrrdPapu
+         M17mbZJI0rPCh00L2Pn7moGz4naRN9zT4f7hTlHYKtuyAjHwQabe1Rnwj1m/iJ0HNhdk
+         EDl5H/VbU85xBn8M8AOI7El7JX69gmhPRoaeM2UZmgONJw1tgFzlXm8KfSCXTCOxyK+H
+         h6gQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=euYfA0ez;
+       spf=pass (google.com: domain of jkarlinsky@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jkarlinsky@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jkarlinsky@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 16-20020a811110000000b0031e58fd5a15sor4865847ywr.79.2022.07.26.11.12.32
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 26 Jul 2022 11:12:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jkarlinsky@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=euYfA0ez;
+       spf=pass (google.com: domain of jkarlinsky@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jkarlinsky@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=vhfRhorCJu9nDU1nsuUXyboReLk0ti9PCqiF8QRRkJY=;
+        b=euYfA0ez6NYtrbFVWBi84ejI8144CMTBuf7E9+pk8n4FEwjanPRxqpKkhfZjiEnHOm
+         5uXVMd7OtU9LK6r2qmBdYycXKuEAj0Bv8FB+9aLgxJVXQWjEos0+NORs2d15lyd2WAJv
+         jJpxmQoN0Y4whP6UZ23UryX530umtmfvplFXxzygoXTmTaJSqfw4Smsjr62jlWW4iQ8W
+         JKVLE1Nv+5ULP3V62Cir6oK1rT3SvmswheXrHP1nWxmwTZv22r1nNkaT3YsZn5UVSWYc
+         s3wR3WwjSpgeQmPShlJDdm9EFuBxacb/mi1GkcQRaATMEVhhiROc+Ux1vZYucbvsqnSE
+         TImg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=vhfRhorCJu9nDU1nsuUXyboReLk0ti9PCqiF8QRRkJY=;
+        b=BsRwy04r31O7JfzHCj4xboZD3C2ZYbYgmWhLrxcAxJ/bGeUb2UEHPJYooDH6gn7zfj
+         eV6ebICuxp/Y0vSytROO93ao9sRrqNhfmb8ZSCCS63KKALLtjbHcjQyXPFZuhI3Z7tM6
+         35tDuHJQobion+yxYkf2+fTsZjKZ4AUn/TcalsVs+XgFu3God96c3Dq4L5zBA69abT5D
+         A8zb3EXZGAEI8qjI+uL+/9Z2bu/17oxK/cERO/dEJscpdnbN+sLuuiE8DSSpBnpJwF1r
+         Ea7H/XI2B8PWDa44SJkM6VZLPkQ9OeY/JBCT771zCp5i7b379tP6XUin9UdRdror/z14
+         OroQ==
+X-Gm-Message-State: AJIora8q0vvTTRnQdERYUTjBQKQugOMgF6JVW+s6sWtTMME0BrwZDNJG
+	p0ovYQYI0qdCPDB0nry+8nile9v6l8ynUw3Tmi+avx8xAHE=
+X-Google-Smtp-Source: AGRyM1sCf4na829t35yfhqr20umJlUu4SeHloaF7ayRj9G/RpopnF233hYeunXLjkKvbLnqNpY7+yODDf7eXFlJAI/M=
+X-Received: by 2002:a81:1c0e:0:b0:31c:c207:c5ab with SMTP id
+ c14-20020a811c0e000000b0031cc207c5abmr14932330ywc.182.1658859152149; Tue, 26
+ Jul 2022 11:12:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAOa9CawjKhNc5vt5mJ3AxzvFmFamDxcZxMQn39oVTkSdVx563Q@mail.gmail.com>
+ <CAHbmDP_QzhUpdH5iVnju3yniOVXzhi0z76Q=H1SoOsxHQWCgWg@mail.gmail.com> <CAOa9CawiFCD_mv99DYQMaNdsNmxVEqpaEPa08q5AXFHaRpMK3A@mail.gmail.com>
+In-Reply-To: <CAOa9CawiFCD_mv99DYQMaNdsNmxVEqpaEPa08q5AXFHaRpMK3A@mail.gmail.com>
+From: Joel Karlinsky <jkarlinsky@gmail.com>
+Date: Tue, 26 Jul 2022 14:12:21 -0400
+Message-ID: <CAOa9Cayu9NYbmbzD3K63gLwzz9odJGwjeNNeKu4FzU3nf5rgjQ@mail.gmail.com>
+Subject: Re: Quick Request
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000007f139c05e4b93e79"
+
+--0000000000007f139c05e4b93e79
+Content-Type: text/plain; charset="UTF-8"
+
+https://meet.google.com/psh-nasn-nns
+
+On Mon, Jul 25, 2022 at 12:31 PM Joel Karlinsky <jkarlinsky@gmail.com>
+wrote:
+
+> Certainly! Let's talk at 1 pm CDT tomorrow. Will send over invite
+> momentarily.
+>
+> On Mon, Jul 25, 2022 at 11:56 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+>
+>> Hi Joel,
+>>
+>> Of course!  Mondays are a bit busy for me but I definitely have time to
+>> chat tomorrow.  Does some time between 1 and 3 pm (Central time) work for
+>> you?
+>>
+>> If Tuesday is no good I am available during the same window on Wednesday
+>> as well.
+>>
+>> Thanks,
+>> Aubrey
+>>
+>> On Mon, Jul 25, 2022 at 9:50 AM Joel Karlinsky <jkarlinsky@gmail.com>
+>> wrote:
+>>
+>>> Hi Aubrey,
+>>>
+>>> Thanks for all the time you've spent reviewing the numbers and adjusting
+>>> to ensure the correct payments are being processed. From what I can tell it
+>>> was no small task.
+>>>
+>>> Fran has asked me to get a bit in the weeds here and make sure we're all
+>>> on the same page, particularly in reference to the funnel revenue
+>>> calculations. Is there a time in the next 2 days we could chat for a few
+>>> minutes? I'm fairly open on my meeting schedule so I'll be happy to adjust
+>>> to your schedule.
+>>>
+>>> Cheers,
+>>> Joel K.
+>>>
+>>>
+>>> From: Aubrey Allen <aubrey@pineapple.co>
+>>> Sent: Friday, July 22, 2022 11:26 AM
+>>> To: bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+>>> Cc: Brett Allcorn <brett@pineapple.co>
+>>> Subject: Re: Enrich Marketing Reported Sales
+>>>
+>>> Hi Bob,
+>>>
+>>> Thank you so much for your patience while I worked through this.
+>>>
+>>> I've attached a revised report with corrected Gross Revenue numbers for
+>>> our Enrich Products through June of 2022.   For ease of comparison, I have
+>>> also included the February 2022 report that you referenced in your previous
+>>> email to Brett.
+>>>
+>>> In a nutshell, the issue we were having with this report stemmed from
+>>> the KNIME routine we use to calculate these sales numbers.  We recently did
+>>> an overhaul of our Products and the naming conventions we use for their
+>>> Categories in Sticky.  These changes revealed the miscategorization of some
+>>> of our Enrich Products, so those sales were not being properly captured by
+>>> our routine.  The re-categorization was being done during the month of May,
+>>> which is why this issue cropped up at that time.
+>>>
+>>> The issue that we were having with miscategorized products was two-fold:
+>>> 1. In the most recent reports that you were sent, we were missing an
+>>> Enrich product in the Info Products Funnel.  This is why the Gross Revenue
+>>> numbers were so much lower than the report you received in months prior.
+>>> That has been corrected, and you will see that the Gross Revenue for the
+>>> Info Products Funnel has been restored to its previous values.
+>>> 2. Upon doing further research to ensure products were being properly
+>>> categorized, I discovered that there were times in the past that non-Enrich
+>>> Supernatural Man products were being erroneously included in the Enrich
+>>> Montezuma funnel.  This means that the corrected Gross Revenue values that
+>>> I've sent you are indeed lower for that funnel than they were in our
+>>> end-of-February report.  Our Product re-categorization project had actually
+>>> fixed this issue before I was able to recognize it as such.
+>>>
+>>> Additionally, you will notice a new funnel for Enrich Genetic Peak,
+>>> which is a new Enrich product that had not been incorporated into the KNIME
+>>> routine previously.
+>>>
+>>> I sincerely apologize for the confusion that this has caused.  I am
+>>> still working on ensuring that the routine is properly calculating Profit
+>>> and therefore our monthly Enrich Payout.  My goals are to: 1. See exactly
+>>> where we may have overpaid in the past, and 2. Ensure that the
+>>> underestimated calculations from the past couple months are corrected and
+>>> paid out accordingly.  I am hoping to have this resolved in the next week.
+>>>
+>>> Please don't hesitate to let me know if you have any questions or need
+>>> any further explanation.
+>>> Thank you,
+>>> Aubrey
+>>>
+>>
+
+--0000000000007f139c05e4b93e79
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><a href=3D"https://meet.google.com/psh-nasn-nns">https://m=
+eet.google.com/psh-nasn-nns</a><br></div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 25, 2022 at 12:31 PM Joel Ka=
+rlinsky &lt;<a href=3D"mailto:jkarlinsky@gmail.com">jkarlinsky@gmail.com</a=
+>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
+ 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><di=
+v dir=3D"ltr">Certainly! Let&#39;s=C2=A0talk at 1 pm CDT tomorrow. Will sen=
+d over invite momentarily.=C2=A0</div><br><div class=3D"gmail_quote"><div d=
+ir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 25, 2022 at 11:56 AM Aubrey All=
+en &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pine=
+apple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
+ft:1ex"><div dir=3D"ltr">Hi Joel,<div><br></div><div>Of course!=C2=A0 Monda=
+ys are a bit busy for me but I definitely have time to chat tomorrow.=C2=A0=
+ Does some time between 1 and 3 pm (Central time) work for you?</div><div><=
+br></div><div>If Tuesday is no good I am available during the same window o=
+n Wednesday as well.</div><div><br></div><div>Thanks,</div><div>Aubrey</div=
+></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr"=
+>On Mon, Jul 25, 2022 at 9:50 AM Joel Karlinsky &lt;<a href=3D"mailto:jkarl=
+insky@gmail.com" target=3D"_blank">jkarlinsky@gmail.com</a>&gt; wrote:<br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi =
+Aubrey,<div><br></div><div>Thanks for all the time you&#39;ve spent reviewi=
+ng the numbers and adjusting to ensure the correct payments are being proce=
+ssed. From what I can tell it was no small task.</div><div><br></div><div>F=
+ran has asked me to get a bit in the weeds here and make sure we&#39;re all=
+ on the same page, particularly in reference to the funnel revenue calculat=
+ions. Is there a time in the next 2 days we could chat for a few minutes? I=
+&#39;m fairly open on my meeting schedule so I&#39;ll be happy to adjust to=
+ your schedule.</div><div><br></div><div>Cheers,</div><div>Joel K.</div><di=
+v><br></div><div><br></div><div>From: Aubrey Allen &lt;<a href=3D"mailto:au=
+brey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>&gt;<br>Sent: F=
+riday, July 22, 2022 11:26 AM<br>To: bob <a href=3D"http://rkgconsultinginc=
+.com" target=3D"_blank">rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@=
+rkgconsultinginc.com" target=3D"_blank">bob@rkgconsultinginc.com</a>&gt;<br=
+>Cc: Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_bla=
+nk">brett@pineapple.co</a>&gt;<br>Subject: Re: Enrich Marketing Reported Sa=
+les<br>=C2=A0<br>Hi Bob,<br><br>Thank you so much for your patience while I=
+ worked through this.<br><br>I&#39;ve attached a revised report with correc=
+ted Gross Revenue numbers for our Enrich Products through June of 2022. =C2=
+=A0 For ease of comparison, I have also included the February 2022 report t=
+hat you referenced in your previous email to Brett.<br><br>In a nutshell, t=
+he issue we were having with this report stemmed from the KNIME routine we =
+use to calculate these sales numbers.=C2=A0 We recently did an overhaul of =
+our Products and the naming conventions we use for their Categories in Stic=
+ky.=C2=A0 These changes revealed the miscategorization of some of our Enric=
+h Products, so those sales were not being properly captured by our routine.=
+=C2=A0 The re-categorization was being done during the month of May, which =
+is why this issue cropped up at that time.<br><br>The issue that we were ha=
+ving with miscategorized products was two-fold:<br>1. In the most recent re=
+ports that you were sent, we were missing an Enrich product in the Info Pro=
+ducts Funnel.=C2=A0 This is why the Gross Revenue numbers were so much lowe=
+r than the report you received in months prior.=C2=A0 That has been correct=
+ed, and you will see that the Gross Revenue for the Info Products Funnel ha=
+s been restored to its previous values. <br>2. Upon doing further research =
+to ensure products were being properly categorized, I discovered that there=
+ were times in the past that non-Enrich Supernatural Man products were bein=
+g erroneously included in the Enrich Montezuma funnel.=C2=A0 This means tha=
+t the corrected Gross Revenue values that I&#39;ve sent you are indeed lowe=
+r for that funnel than they were in our end-of-February report.=C2=A0 Our P=
+roduct re-categorization project had actually fixed this issue before I was=
+ able to recognize it as such.<br><br>Additionally, you will notice a new f=
+unnel for Enrich Genetic Peak, which is a new Enrich product that had not b=
+een incorporated into the KNIME routine previously.<br><br>I sincerely apol=
+ogize for the confusion that this has caused.=C2=A0 I am still working on e=
+nsuring that the routine is properly calculating Profit and therefore our m=
+onthly Enrich Payout.=C2=A0 My goals are to: 1. See exactly where we may ha=
+ve overpaid in the past, and 2. Ensure that the underestimated calculations=
+ from the past couple months are corrected and paid out accordingly.=C2=A0 =
+I am hoping to have this resolved in the next week.<br><br>Please don&#39;t=
+ hesitate to let me know if you have any questions or need any further expl=
+anation. <br>Thank you,<br>Aubrey=C2=A0<br></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000007f139c05e4b93e79--

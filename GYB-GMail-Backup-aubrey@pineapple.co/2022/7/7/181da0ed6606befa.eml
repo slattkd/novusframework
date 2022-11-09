@@ -1,0 +1,176 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp4351149ejq;
+        Thu, 7 Jul 2022 12:06:54 -0700 (PDT)
+X-Received: by 2002:a05:6402:11d2:b0:437:a02:5c79 with SMTP id j18-20020a05640211d200b004370a025c79mr63410350edw.400.1657220814368;
+        Thu, 07 Jul 2022 12:06:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657220814; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rXbN/+/AkFXE62bjdTU/HuuhGnsx2DOeMY62cMCYCYQaYkOYPP9zwMuDr3EpLwxo4j
+         EWTe+htIboqY6A3ZligyyXVSlncH32ly//OvOUKIOHP1l/yiF7lR8s+nksW7Zc1/uxgz
+         U3pfmGDo6shFNsibRh2lcy1alWSNUByhj6hVtgZ1SIiY2SFhaevr8pf//hzIABfBKit4
+         8xQuWNXt4VFXn9u0rjkuV8sLyV17oGt0+HyD/BUChGNRsCIe9uhKkDUJ0Ixvtv5cdmqI
+         9Hd8Qe30DkT+anR4aYyYpzAJeCKuNklSRVif5skI66jze4WKlneZSBCkpoNVMvW38L07
+         H4aQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=h/vtaOerce+W2mOipr+S5z80Q2TPb/GISSNUOVHSv2U=;
+        b=LBatOAfV6HTwUm6zMITPzK1Il4Ox+7nX89H3pt4Ra5GS+Br95ghgGCU6KaGC9GtO83
+         AuM93jpgHH3q6iRpTwMr+S3hSpdmRL3VbOq2FnBnjRb/L/TxuWWqtZ3MefwEfgYKsWmF
+         ERPHrz0kZ1j+IUTaU0i7HtQKJGsESSc7pwKD1WNrnuu7ZT4Glg78Jlg7a79LiKa/D76L
+         /MlSQ1NRvpMS/o6N8B7bHbj/fYkQPTnQy43mnwfXwbl/Ld5sQ0lANS1OnJY24sKzuGTn
+         EOJTa1vW+FNGV6DdlhhyQWrVFq3TfgEkUOt/H8bSSAXlYZvoSfIvd1a1c0MV8MT/6jtI
+         ABNQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=2hgxGVZ1;
+       spf=pass (google.com: domain of megan@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=megan@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <megan@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m2-20020a1709066d0200b00722d9ceeddasor13888084ejr.23.2022.07.07.12.06.54
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 07 Jul 2022 12:06:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of megan@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=2hgxGVZ1;
+       spf=pass (google.com: domain of megan@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=megan@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=h/vtaOerce+W2mOipr+S5z80Q2TPb/GISSNUOVHSv2U=;
+        b=2hgxGVZ1fLREA+l/ZlXYbul4kOYWlmSgaz/m9OiLfqOqusAtX7ZghlArnOfLKONSdI
+         jBvZlZ+FRmfkSLVRbAPaWTMG07bhoSZIPGSxSHj3mDFzz3cVtYLrsTmf+s7kkgZoB19V
+         iyDwXohP08f8lbSSFe1p+MGyTrAuMff3vgIpqmqUYBYXuf5Jo6w9f8/SPszoUqZB8yia
+         OxH0n6/c3y2GBGaXGY/CFleYPAjf5EEjxmBdijX6rGcB6Cb+fb5f8NkacaUiNT87e7NR
+         Un5z0TwWnvKrPaCu1Twgk9xKphZoZGe1Db+Th9yZi6wJ/Mwt2O7hjRT83MprsT5URII/
+         qx8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=h/vtaOerce+W2mOipr+S5z80Q2TPb/GISSNUOVHSv2U=;
+        b=2zUSi8TXY/V7ZXos2qydZ2BSv57NkzOD7AM8yGUygi98Dv9BeqSJV5KfF1kH1nH+qG
+         Lm2+UCPm3jTXUNBWf43OEExf9aYghFYR6fBm65yeXx23FAfqEEquODdECyT30rPHsho4
+         tP0JKBNcxgGw08tEdhOWoK5H/ZWC+eF5ifK7ZCDowenEw20Vue14X3GkuEqBWxPxU4Kv
+         bsXZvJbLidMiGxnSJ0JSHNdwAXhHNl3NinYLgS271+mX9jEGHFbk2LCk5s7am74YZY+I
+         n/pJGmV6GBdJC2CB7OWzRRMXRjE45plTjP8u/uqzcxONwSPnSM5GR3nVQqIxsGsAJM7a
+         k8LQ==
+X-Gm-Message-State: AJIora9M2DiVFWTNYlPSxkTJdVDB3nCFqpq3rU85djbMOg2FVGLf2xVi
+	xs6EfW3yzcNyKHUo5W/+eTDTp8yZbBQ8bfv1VQJCy7prYjWuOg==
+X-Google-Smtp-Source: AGRyM1sqDr2pggwQHYvcAnYcZWbVSWGnZgkD7HrzOYTh4+pMZRslGuMvViyE4HLn05mwqHBKsykrv5ZzcswXNFLMGK8=
+X-Received: by 2002:a17:906:5a51:b0:72a:f56f:61de with SMTP id
+ my17-20020a1709065a5100b0072af56f61demr11053870ejc.382.1657220813706; Thu, 07
+ Jul 2022 12:06:53 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP8g7UWOD0av7FokUSO7J+++-KF7Np8Dejq_UZHhjdPs9A@mail.gmail.com>
+In-Reply-To: <CAHbmDP8g7UWOD0av7FokUSO7J+++-KF7Np8Dejq_UZHhjdPs9A@mail.gmail.com>
+From: Megan Harnett <megan@pineapple.co>
+Date: Thu, 7 Jul 2022 15:06:43 -0400
+Message-ID: <CAKfB8m2m9wLmJwjs_XhRivzzcX2nkbF+p+Re-DN=uDkC0gWA_g@mail.gmail.com>
+Subject: Re: Andres' & Doug's Commissions 6/13-6/19
+To: Aubrey Allen <aubrey@pineapple.co>, Kerry Scott <kerry@pineapple.co>
+Cc: Andrea Abramowski <andrea@pineapple.co>, Sean Chipman <sean@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000ea770e05e33bc94f"
+
+--000000000000ea770e05e33bc94f
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Aubrey,
+
+I am adding Kerry Scott to this email as she is covering for me on vacation
+next week. But going forward can you add her as well so we always have a
+backup or make sure everyone gets the information.
+
+Thanks,
+Megan
+
+On Mon, Jun 20, 2022 at 11:50 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hello!
+>
+> Hope everyone had a nice weekend! Please be advised that Andres'
+> <https://docs.google.com/spreadsheets/d/1G4ix1nlpQOchuzJYrawERfT84331qdA2UfqT-CwJ5c0/edit?usp=sharing>
+>  & Doug's
+> <https://docs.google.com/spreadsheets/d/1VCUm1pfXl-08L4_BtDKC426AWFLZvJol6l79MFWlMQ0/edit?usp=sharing> Commissions
+> are up to date for last week.
+>
+> Thank you!
+>
+> --
+> Aubrey Allen
+> Data Analytics Technician
+> Pineapple Products, Inc.
+>
+
+
+-- 
+-
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Megan Harnett   Bookkeeper
+
+Pineapple Company
+s:  megan@pinepple.co
+w:
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+--000000000000ea770e05e33bc94f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi=C2=A0Aubrey,<div><br></div><div>I am adding Kerry Scott=
+ to this email as she is covering for me on vacation next week. But going f=
+orward can you add her as well so we always have a backup or make sure ever=
+yone gets the information.</div><div><br></div><div>Thanks,</div><div>Megan=
+</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
+attr">On Mon, Jun 20, 2022 at 11:50 AM Aubrey Allen &lt;<a href=3D"mailto:a=
+ubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
+lid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hello!=C2=A0=C2=A0<=
+div><br></div><div>Hope everyone had a nice weekend! Please be advised that=
+=C2=A0<a href=3D"https://docs.google.com/spreadsheets/d/1G4ix1nlpQOchuzJYra=
+wERfT84331qdA2UfqT-CwJ5c0/edit?usp=3Dsharing" target=3D"_blank">Andres&#39;=
+</a>=C2=A0&amp;=C2=A0<a href=3D"https://docs.google.com/spreadsheets/d/1VCU=
+m1pfXl-08L4_BtDKC426AWFLZvJol6l79MFWlMQ0/edit?usp=3Dsharing" target=3D"_bla=
+nk">Doug&#39;s</a>=C2=A0Commissions are up to date for last week.</div><div=
+><br></div><div>Thank you!</div><div><br></div>-- <br><div dir=3D"ltr"><div=
+ dir=3D"ltr">Aubrey Allen<div>Data Analytics Technician</div><div>Pineapple=
+ Products, Inc.</div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><span style=3D"color:rgb(136,13=
+6,136)">-</span><br style=3D"color:rgb(136,136,136)"><div dir=3D"ltr" style=
+=3D"color:rgb(136,136,136)"><div dir=3D"ltr"><div style=3D"font-family:Verd=
+ana,Geneva,sans-serif"><table width=3D"500" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-colla=
+pse:collapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><t=
+d width=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-al=
+ign:top"><a href=3D"http://s3.amazonaws.com/pineapple.co/pineappleco.gif" s=
+tyle=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"created with MySign=
+ature.io" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a=
+-4b540c36f8aa.png?time=3D1595444125" width=3D"100" style=3D"width: 100px; b=
+order-radius: 15%;"></a></td><td valign=3D"top" style=3D"border-left:2px so=
+lid rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,208,255);bor=
+der-right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding=
+:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" s=
+tyle=3D"border-spacing:0px;border-collapse:collapse;line-height:1.4;font-fa=
+mily:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><=
+tr><td><font face=3D"Verdana, Geneva, sans-serif" color=3D"#46d0ff"><span s=
+tyle=3D"font-size:13.26px">Megan Harnett</span></font>=C2=A0<span style=3D"=
+font-family:Verdana,Geneva,sans-serif">=C2=A0 Bookkeeper</span></td></tr><t=
+r><td style=3D"padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sa=
+ns-serif">Pineapple Company</div></td></tr><tr><td><span style=3D"font-fami=
+ly:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0<a=
+ href=3D"mailto:megan@pinepple.co" target=3D"_blank">megan@pinepple.co</a><=
+/td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color=
+:rgb(70,208,255)">w:=C2=A0</span><span style=3D"font-family:Verdana,Geneva,=
+sans-serif"></span></td></tr><tr><td><span style=3D"font-family:Verdana,Gen=
+eva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"f=
+ont-family:Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York=
+, NY 10019=C2=A0</span></td></tr></tbody></table></td></tr></tbody></table>=
+<br></div><div><span style=3D"font-family:Verdana,Geneva,sans-serif"></span=
+></div></div></div></div></div>
+
+--000000000000ea770e05e33bc94f--

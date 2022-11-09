@@ -69,6 +69,8 @@ $site['logo'] = '/images/claritynaturals_logo_horizontal.png';
 $site['imgpath'] = '//s3.amazonaws.com/5gmale/';
 $site['contactlink'] = 'mailto:help@5gmale.com';
 
+$site['orderComplete'] = 'thank-you';
+
 /*
 $limelight_api_username     = '5gmale-funnel';
 $limelight_api_password     = 'MAzpqTRAXa4Dvk';
@@ -77,7 +79,7 @@ $limelight_api_instance     = 'gdc.sticky.io';
 
 // Company Variables
 $company['name'] = 'Supernatural Man LLC';
-$company['email'] = 'support@claritynaturalsstore.com';
+$company['email'] = 'support@5gmale.com';
 $company['phone'] = '(855) 665-0715';
 $company['address1'] = '5136 W Clifton St';
 $company['address2'] = '';

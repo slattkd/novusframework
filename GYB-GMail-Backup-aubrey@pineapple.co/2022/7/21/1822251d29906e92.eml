@@ -1,0 +1,429 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:1613:0:0:0:0 with SMTP id m19csp2293459ejd;
+        Thu, 21 Jul 2022 12:52:44 -0700 (PDT)
+X-Received: by 2002:a63:494a:0:b0:41a:56e8:62e2 with SMTP id y10-20020a63494a000000b0041a56e862e2mr993pgk.586.1658433164293;
+        Thu, 21 Jul 2022 12:52:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658433164; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iI1huqnT0hPl7ofCYG8RdVqWyVMGTw6QTKmmS2kDaiYDcEQSliIwnWX4SJzNNHSwDm
+         pGHr8C+H4QSISVfsY4L20XYra0lcbcsG9YkI0fCKw2JEsuggpGI+Ax9nz8QeoLGrBrrp
+         s18v59IOYSOk9lx98q1O1pboY4pTK0NFpA+OoTmj+Atu1f0i6Vo3c17ROV5tdhzMtFnA
+         KJIz+YuslOQHtB0gl/6gljuNypmalju/sQDO9j++z/B/cZhxnI+EI1yTOqoLY5osbfDa
+         9euJq7KRGwEmRU69xYwajG0fjhtI/WvwbSmTxKg4UwvPJghQN1d1TgTutMOYoe0yVnxK
+         zQAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=yytt8LFs85NIPitxD0U9ZmViw5vMS+hsGaGuJXEFkRw=;
+        b=wVKxR7CGopMS1g2mbyZnM4sesAZ858pN0GHprYyu9F3RZkpH/9rc4XczjZdOZKI2yH
+         ixXZCQ+Ew2alq8bh1dA9pUobWMl/1sroZ/CUf7rie5K14BSy+ReLMJjrBGJSrEtmgIgX
+         iZtwz7TEi9VTEFYOG1J1/7uXo6Fid+386S0gHhF8ni/Y6xBu7UjehzIPsZoWCCPJLagb
+         APnpApo+19ClAEQYClhjOoG4mOMNozDSwP+K0jE3CxeRBINExLfsyBEsik2w1IlKXyrC
+         NxdZTpj+32sjPOGI4iO4JVnCHWAlaPzNd4ktOUWI6BBsdo9QlNPgx+XW7lywud/AqkvJ
+         /cbg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=tiYuilrS;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g18-20020a170902c99200b0016bf101b2aesor1237051plc.62.2022.07.21.12.52.44
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 21 Jul 2022 12:52:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=tiYuilrS;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=yytt8LFs85NIPitxD0U9ZmViw5vMS+hsGaGuJXEFkRw=;
+        b=tiYuilrSsiOIojaQxcLiyWNmVzJJ24XnAPuvZc+KJS1XLJbWnjZr4keQWQkyPncBMP
+         yQPLkLoRncmfiIUAhJ/CQKLZJb5Fc9JZ8ouGIdmHJVVvbT5nI/+u+PquKc+e/Cm+mEyz
+         NG1h0kx9DLkYnp1QTXutc1w44vCB5+yt875D08EHOXDrjCDMdizPUo7Vvke3+kPKmDBT
+         +uMcfXLHL5Q2tKXoqoFFJksZmsM16zA7QKdGLhcv3G1SjzoFeuhaztArOhnihueJPZh0
+         Lwi10ji9Ow7e+fVUb0Lip63S2qcupiwZD3tXinFDk5mD63WXq4Bdhhxye4xnuJFTGmj0
+         ZtJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=yytt8LFs85NIPitxD0U9ZmViw5vMS+hsGaGuJXEFkRw=;
+        b=emj/j+XtfXf9iC6S50crQUcDN3u4cWIoeIyQi822w1bAZXcfFw1kFrlYcmBtReItMQ
+         dm6LMQm4b6ONOrYsnu05MislBpsabFfv3VfTQ5kB9aM1UFhIVYMAJ2pmwh8gX6T00Jqm
+         /JdxDlOHce7+4mN2fhUagYJRu2uCLFptZyhawDzT5wb/vpoXxW/zvxZwNJ0hGtRy4qvw
+         glZstf6xYA0gjiQip/8jELr+PBf6NaG90tR9ILuYt8YpWfqalcJ2easfxsdZmgPlESBV
+         untI+FmpcsTdhtLwNfMuVpHiAv0kG3S5PyOMeYTDXuGPnJ792OkLUhPAQMhrYVPOZJfs
+         4EVw==
+X-Gm-Message-State: AJIora+c4R2qL9P2unoYadkyIZ03l6C9E8KmXdZ0enGYPz2s6uH6sAaD
+	P0FhkhrURt2EZGfNqHx4fzHEeVyhDIW0az9VdU2TF8w95gASBKYW
+X-Google-Smtp-Source: AGRyM1sJuYekaqDDqyVjRUXh0ebWI9DUa5+afScUPxrkkpO/C1AsTF6m/EdP250vWjLycDK5pWqKMZK3rhOoRwmB6iw=
+X-Received: by 2002:a17:902:760f:b0:16c:ae59:c9b2 with SMTP id
+ k15-20020a170902760f00b0016cae59c9b2mr39767740pll.0.1658433163342; Thu, 21
+ Jul 2022 12:52:43 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP_4pTJOkNVnTbpw72=L5L-GrRCbkEe1GSJDhfM9zNmZ3A@mail.gmail.com>
+ <CALCR5_R8obmyaUpfT10HtUtesYXNqjit4rgBV7fCsiPAsQsR_g@mail.gmail.com> <CAHbmDP8MRdcY_Bip2_4Y9=cZJ1x-rNhr3-AdeE3uPHOX=gLHrg@mail.gmail.com>
+In-Reply-To: <CAHbmDP8MRdcY_Bip2_4Y9=cZJ1x-rNhr3-AdeE3uPHOX=gLHrg@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Thu, 21 Jul 2022 15:52:32 -0400
+Message-ID: <CALCR5_RPbP53_LzovDdi25AoTLsUhHuA35PhMOvxe2+h5fBTfw@mail.gmail.com>
+Subject: Re: Enrich Profit Calculations Results
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000095cc7a05e4560fc4"
+
+--00000000000095cc7a05e4560fc4
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey, really appreciate you keeping the deadline for Bob, I think he
+will appreciate that too.
+
+I think for now, it's fine to share your findings with him tomorrow and let
+him know the next steps you'll be taking.
+
+I guess those next steps are:
+
+1) Figure out overpayments from past
+
+2) Figure out undercalculations from recent calculations
+
+Yeah?
+
+On Thu, Jul 21, 2022 at 3:00 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Brett,
+>
+> My main takeaway here is that I have an answer to Bob's question, as well
+> as revised Gross Revenue numbers to provide him with.  I thought it was
+> important to try to explain that there was a reason for why the Gross
+> Revenue for the Enrich Montezuma funnel was inaccurate historically.  I had
+> given him a deadline of responding by tomorrow, so I was trying to hold
+> true to that.
+>
+> 1. I can say that we did overpay Enrich, though I still need to do more
+> work in order to determine exactly how much each month.  I realized after
+> the re-run that there were further adjustments that needed to be made, as
+> Profit was not being calculated properly in the KNIME routine.  This change
+> is apart from the ones that I had to do with Brooke to make sure Products
+> were properly categorized, and affects the Enrich Payout, not the Gross
+> Revenue values.
+>
+> 2. I was explaining why the data from KNIME didn't make sense, only
+> insofar as to explain why additional changes need to be made.  I understand
+> where the routine is going wrong and I am already working on fixing it and
+> re-running the routine.
+>
+> Going forward, I won't break things down to this extent unless you ask me
+> to.  Please know that I am currently working on finding exact answers to
+> the last questions you posed.
+>
+> If you want me to wait to reply to Bob regarding Gross Revenue numbers
+> until I've completely worked out the monthly Payout numbers, I will send
+> him a revised deadline.
+>
+> Thanks,
+> Aubrey
+>
+> On Thu, Jul 21, 2022 at 1:30 PM Brett Allcorn <brett@pineapple.co> wrote:
+>
+>> #1 - Ok so did we overpay them? If so, how much in total? And were we
+>> undercalculating payments recently? If so, what were the old numbers vs the
+>> correct numbers?
+>>
+>> #2 - Getting pretty confused here. The fact that the say the data from
+>> Knime "does not make sense" is concerning, but I'm unable to make any
+>> conclusions from anything you write after this.
+>>
+>> I don't really want to get in the weeds and go through this point by
+>> point unless you're totally lost and have no other way to figure things out.
+>>
+>> I also ideally wouldn't want to go through spreadsheet data.
+>>
+>> This is where I think there's an opportunity to a) understand the
+>> business better and b) do more analysis and reporting on that analysis by
+>> basically boiling everything down to concrete takeaways I'd want to know
+>> based on what matters to the business.
+>>
+>> So I'd want to know:
+>>
+>> - Were we overpaying or underpaying before?
+>>
+>> - If we were overpaying, by how much?
+>>
+>> - If underpaying, by how much?
+>>
+>> - Are we overpaying or underpaying now since Brooke's product
+>> reclassification?
+>>
+>> - If we were overpaying, by how much?
+>>
+>> - If underpaying, by how much?
+>>
+>> On Thu, Jul 21, 2022 at 2:01 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+>>
+>>> Hi Brett,
+>>>
+>>> Thanks for your patience while I worked this out-- this project has been
+>>> quite a doozy but I'm proud to say I finally have it figured out.  I'm
+>>> going to try to keep this as brief as possible so that you can come back
+>>> with questions as needed.  I'd also be happy to find time to meet if it
+>>> would be helpful to talk through it.
+>>>
+>>> *1. Regarding Gross Revenue: *
+>>> Bob was correct that we were not properly accounting for Gross Revenue.
+>>> I discovered that the issue related to the re-organizing of our products in
+>>> Sticky and was two-fold: First, there were some Enrich Info Products that *were
+>>> not* being included in the funnel* after* the Product Category changes
+>>> were made.  This was our error and is why the Gross Revenue appeared to be
+>>> so much lower than it should be.  Second, there were some SNM-Enrich
+>>> products that *were *being included in the funnel *before* the Product
+>>> Category changes were made.  So in this case, the Gross Revenue for the
+>>> Enrich Montezuma funnel *is *lower and* should be*.  This was a
+>>> categorization mistake that I can verify happened in 2020 and 2021.
+>>> You can review this information on the first tab of the attachment.
+>>>
+>>> *2. Regarding Monthly Payouts to Enrich:*
+>>> I do not believe this is part of what Bob is asking for, but is critical
+>>> in determining whether we've overpaid Enrich in the past.  This data can be
+>>> found on the second tab of the attachment.
+>>> Upon rerunning the chain in full, the routine resulted in Enrich Payout
+>>> values that were at times *higher* than they were before.  This does
+>>> not make sense for 2 reasons: First, the Total Gross Revenue was lower for
+>>> Enrich Montezuma, so it would follow that the profit (and the 41.5% profit
+>>> share due to Enrich) should also be lower.  Second, it would make sense
+>>> that things like Refunds and Chargebacks have increased since the original
+>>> time the routine was run, so again, profit should be lower.
+>>> Here is where point 3 comes into play.
+>>>
+>>> 3. *Regarding the "Cost Breakdown", i.e. How is this routine
+>>> calculating profit?:*
+>>> You can find this data on the third tab of the attachment.  You'll
+>>> notice that "Shipping Loss" (in column G)-- one of the expenses taken from
+>>> Revenue in order to get to Profit-- for the original run is more than 10x
+>>> what it was on the rerun.  I discovered that this is because the KNIME
+>>> routine also uses Product Categories in order to define shipping costs.
+>>> I'll need to make adjustments here and to re-run the routine yet again so
+>>> that I can properly capture what our Payout should have been each month.
+>>> This will obviously require more time unfortunately.
+>>> Regardless, the calculated payout is on average less than the $50k we
+>>> are required to pay each month, and is likely substantially lower
+>>> considering the routine was not properly accounting for shipping costs.
+>>>
+>>>
+>>> I'll look forward to hearing from you before I try to convey this to Bob.
+>>>
+>>> --
+>>> *Aubrey Allen*
+>>> Data Analytics Technician | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: aubrey@pineapple.co
+>>>
+>>> A: 57 w 57th St., 3rd Floor, New York, NY 10001
+>>>
+>>> The content of this email is confidential and intended for the recipient
+>>> specified in message only. It is strictly forbidden to share any part of
+>>> this message with any third party, without a written consent of the sender.
+>>> If you received this message by mistake, please reply to this message and
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>
+
+--00000000000095cc7a05e4560fc4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Aubrey, really appreciate you keeping the deadline for=
+ Bob, I think he will appreciate=C2=A0that too.<div><br></div><div>I think =
+for now, it&#39;s fine to share your findings with him tomorrow and let him=
+ know the next steps you&#39;ll be taking.</div><div><br></div><div>I guess=
+ those next steps are:</div><div><br></div><div>1) Figure out overpayments =
+from past</div><div><br></div><div>2) Figure out undercalculations from rec=
+ent calculations</div><div><br></div><div>Yeah?</div></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 21, 2022=
+ at 3:00 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@=
+pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex"><div dir=3D"ltr">Brett,<div><br></div><div>My main takeaway her=
+e is that I have an answer to Bob&#39;s question, as well as revised Gross =
+Revenue numbers to provide him with.=C2=A0 I thought it was important to tr=
+y to explain that there was a reason for why the Gross Revenue for the Enri=
+ch Montezuma funnel was inaccurate historically.=C2=A0 I had given him a de=
+adline of responding by tomorrow, so I was trying to hold true to that.</di=
+v><div><br></div><div>1. I can say that we did overpay Enrich, though I sti=
+ll need to do more work in order to determine exactly how much each month.=
+=C2=A0 I realized after the re-run that there were further adjustments that=
+ needed to be made, as Profit was not being calculated properly in the KNIM=
+E routine.=C2=A0 This change is apart from the ones that I had to do with B=
+rooke to make sure Products were properly categorized, and affects the Enri=
+ch Payout, not the=C2=A0Gross Revenue values.</div><div><br></div><div>2. I=
+ was explaining=C2=A0why the data from KNIME didn&#39;t make sense, only in=
+sofar as to explain why additional changes need to be made.=C2=A0 I underst=
+and where the routine is going wrong and I am already working on fixing it =
+and re-running the routine.</div><div><br></div><div>Going forward, I won&#=
+39;t break things down to this extent unless you ask me to.=C2=A0 Please kn=
+ow that I am currently working on finding exact answers to the last questio=
+ns you posed.</div><div><br></div><div>If you want me to wait to reply to B=
+ob regarding Gross Revenue numbers until I&#39;ve completely worked out the=
+ monthly Payout numbers, I will send him a revised deadline.</div><div><br>=
+</div><div>Thanks,</div><div>Aubrey</div></div><br><div class=3D"gmail_quot=
+e"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 21, 2022 at 1:30 PM Br=
+ett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank">bre=
+tt@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex"><div dir=3D"ltr">#1 - Ok so did we overpay them? If so, how =
+much in total? And were we undercalculating payments recently? If so, what =
+were the old numbers vs the correct numbers?<div><br></div><div>#2 - Gettin=
+g pretty confused here. The fact that the say the data from Knime &quot;doe=
+s not make sense&quot; is concerning, but I&#39;m unable to make any conclu=
+sions from anything you write after this.</div><div><br></div><div>I don&#3=
+9;t really want to get in the weeds and go through this point by point unle=
+ss you&#39;re totally lost and have no other way to figure things out.</div=
+><div><br></div><div>I also ideally wouldn&#39;t want to go through spreads=
+heet data.</div><div><br></div><div>This is where I think there&#39;s an op=
+portunity to a) understand the business better and b) do more analysis and =
+reporting on that analysis by basically boiling everything down to concrete=
+ takeaways I&#39;d want to know based on what matters to the business.</div=
+><div><br></div><div>So I&#39;d want to know:</div><div><br></div><div>- We=
+re we overpaying or underpaying before?</div><div><br></div><div>- If we we=
+re overpaying, by how much?</div><div><br></div><div>- If underpaying, by h=
+ow much?</div><div><br></div><div>- Are we overpaying or underpaying now si=
+nce Brooke&#39;s product reclassification?</div><div><br></div><div><div>- =
+If we were overpaying, by how much?</div><div><br></div><div>- If underpayi=
+ng, by how much?</div></div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Thu, Jul 21, 2022 at 2:01 PM Aubrey Allen =
+&lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapp=
+le.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex"><div dir=3D"ltr">Hi Brett,<div><br></div><div>Thanks for your patience=
+ while I worked this out-- this project has been quite a doozy but I&#39;m =
+proud to say I finally have it figured out.=C2=A0 I&#39;m going to try to k=
+eep this as brief as possible so that you can come back with questions as n=
+eeded.=C2=A0 I&#39;d also be happy to find time to meet if it would be help=
+ful=C2=A0to talk through it.</div><div><br></div><div><b>1. Regarding Gross=
+ Revenue:=C2=A0</b></div><div>Bob was correct that we were not properly acc=
+ounting for Gross Revenue.=C2=A0 I discovered that the issue related to the=
+ re-organizing of our products in Sticky and was two-fold: First, there wer=
+e some Enrich Info Products that <b>were not</b> being included in the funn=
+el<i> after</i> the Product Category changes were made.=C2=A0 This was our =
+error and is why the Gross Revenue appeared to be so much lower than it sho=
+uld be.=C2=A0 Second, there were some SNM-Enrich products that <b>were </b>=
+being included in the funnel <i>before</i> the Product Category changes wer=
+e made.=C2=A0 So in this case, the Gross Revenue for the Enrich Montezuma f=
+unnel <i>is </i>lower and<i> should be</i>.=C2=A0 This was a categorization=
+ mistake that I can verify happened in 2020 and 2021.=C2=A0</div><div>You c=
+an review this information on the first tab of the attachment.</div><div><b=
+r></div><div><b>2. Regarding Monthly Payouts to Enrich:</b></div><div>I do =
+not believe this is part of what Bob is asking for, but is critical in dete=
+rmining whether we&#39;ve overpaid Enrich in the past.=C2=A0 This data can =
+be found on the second tab of the attachment.</div><div>Upon rerunning the =
+chain in full, the routine resulted in Enrich Payout values that were at ti=
+mes <i>higher</i> than they were before.=C2=A0 This does not make sense for=
+ 2 reasons: First, the Total Gross Revenue was lower for Enrich Montezuma, =
+so it would follow that the profit (and the 41.5% profit share due to Enric=
+h) should also be lower.=C2=A0 Second, it would make sense that things like=
+ Refunds and Chargebacks have increased since the original time the routine=
+ was run, so again, profit should be lower.</div><div>Here is where point 3=
+ comes into play.</div><div><br></div><div>3. <b>Regarding the &quot;Cost B=
+reakdown&quot;, i.e. How is this routine calculating profit?:</b></div><div=
+>You can find this data on the third tab of the attachment.=C2=A0 You&#39;l=
+l notice that &quot;Shipping Loss&quot; (in column G)-- one of the expenses=
+ taken from Revenue in order to get to Profit-- for the original run is mor=
+e than 10x what it was on the rerun.=C2=A0 I discovered that this is becaus=
+e the KNIME routine also uses Product Categories in order to define shippin=
+g costs.=C2=A0 I&#39;ll need to make adjustments here and to re-run the rou=
+tine yet again so that I can properly capture what our Payout should have b=
+een each month.=C2=A0 This will obviously require more time unfortunately.<=
+/div><div>Regardless, the calculated=C2=A0payout is on average less than th=
+e $50k we are required to pay each month, and is likely substantially lower=
+ considering the routine was not properly accounting for shipping costs.</d=
+iv><div><br></div><div><br></div><div>I&#39;ll look forward to hearing from=
+ you before I try to convey this to Bob.<br clear=3D"all"><div><br></div>--=
+ <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">57 w 57th St., 3rd Floor</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">New York, NY 10001</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--00000000000095cc7a05e4560fc4--

@@ -1,0 +1,436 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:9acb:0:0:0:0 with SMTP id ah11csp39325ejc;
+        Wed, 10 Aug 2022 11:22:24 -0700 (PDT)
+X-Received: by 2002:a67:d614:0:b0:382:dda6:5fc with SMTP id n20-20020a67d614000000b00382dda605fcmr12327126vsj.62.1660155743981;
+        Wed, 10 Aug 2022 11:22:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660155743; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rJoFcg1HkSbCC4OcVPqxrz9ZCwNCVXTNT5YsW7fD6P4p/I6YJlKVUtM0opscoakoyh
+         4BkCASMiQNIJTbGm7CypiBTkww1VyoftFCf1NWD+bRD+unjEu7LhyFf6wYszFRn1TZ3/
+         Gx34/BE3jiJI4Lb5TAIuMFIHii1KjuOHXR6J0GFNqmyJUgjH+1TWKTUeCcG7kCRYKlgg
+         AdJEPmr3uMU66Y6RNwA0O6XN8gsV9QjYW62zPK3R8PuYOXkNfc0Q6xvL/ZELlOXBIBDC
+         LmXMr8ieworzpCohPyWTUvLhA3eyEnkcZh2COU4T7pzZT0s2hEUGGSZYn8qLeRS9WlIN
+         WEZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=jBDzG5YKZJSSQRy5M9XVnA9Kt93K9wUuGc5ybFOXbB8=;
+        b=bFmn7BBYMW6vb3MfLyAs6+Wrpf3oZU5op6/tvfvvI8/NOMQgjFBclJI1cK4wEtqxqF
+         QhBYTRUmtsmgEFwLfipUmn1CPGd4Ryvx5nll693yJOpoA+Z2m+WEZhdhBAz0nrERWabE
+         PDsjQq97zLu0V993Jfq3z0+2z8Ls9k46d9d1vb1Cf9ILwa9NZ6BqHir/8dlJkcPPwl/a
+         NkgwcAvrBjdegesemJxvgPUZF8VHesOMvyoF2xVV3Z26DEMNB0Uo+tzlyQa2qdHaM52a
+         8cysp2LzClGDnJIVS2LZjJk3GBdEzCG2Vx3a1S3HX3h4pRVwFFqLgh/2/1PYBjyJvZid
+         ptZA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=aGooTPEq;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w9-20020ab07289000000b00382dbcf1a50sor4407287uao.3.2022.08.10.11.22.23
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 10 Aug 2022 11:22:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=aGooTPEq;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=jBDzG5YKZJSSQRy5M9XVnA9Kt93K9wUuGc5ybFOXbB8=;
+        b=aGooTPEqAe7UQvL15mo9N9MzIto87rPeZVOnj4abRX3jLoE7z5g7YlrEhcCHhTTolJ
+         hYQnLr+ffVdu3M73+HE8GyQBD66KWjnwK+WR7wJSdvUY0sWBGKl2AlRSnya+96NJsNgA
+         IehB8fgwts8rmoE/RlqecIMeZgCMvHghAVclvaPpbhhxM7yt0OmzeoZk/O5Ba1ASR6IW
+         O9EO+8/pUd0MbD3cn/0rXMxEWjur+qZKkzqKDQHtdqXwy1qNfN9MCdO1rT9A6ACuR9Sv
+         G464EwQiAZhBJhav1N7S1fqYBJlF33/vBBOxaI4n2xoJolk6IN2xTeAAg6+Gcu2C+e5n
+         AkEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=jBDzG5YKZJSSQRy5M9XVnA9Kt93K9wUuGc5ybFOXbB8=;
+        b=Zvna8Zm8i7Sve93lAEhZZuPT2S9/P4ouaSBracZ1x5PLaacs7Ptrg7HqFXu8gSrREF
+         UtKRHhofBBBMbG2Yn1safTrmQjXT1DdegroTO4/GN49Ww99UZ2SSNBpnUOtCm9WRTs8x
+         2nlJNJQecAcOKac/GRzVdawMuRM+TOCFq86ngDIEy1i8ht+/BRb679bJYGKhmDRMlern
+         wRK1omoTiGoqCjg/IXaaVX4nOBEudGfk/GljUvxUM/N6Fsp1jI4/lJd5uWKbz/2o9/J8
+         uGR1aIPCTwFfVHlEhsI3kRIl8TikMMZCv8o1NDHNjWw4X+kJ8YzRFi7kiirW5uL3hzTi
+         HXAw==
+X-Gm-Message-State: ACgBeo31J+rhdC6fVo2gmBSdAJpWdoduyYSLP8CVZ/tF7ANenMnkx+GL
+	xjAj0b2KuhESfkxnkTyBrlOny3JIlfT7bDIskoQsj4yuyshUng==
+X-Google-Smtp-Source: AA6agR4ArXs1xuZkMUisuhOMPBmBBO6NUIcPL9df7ht7qdeCjrdoMMG3YnO9e6g3Sr0RyRPdW4pWWMcZ1VhFeFmQAV4=
+X-Received: by 2002:ab0:6894:0:b0:384:d360:14b7 with SMTP id
+ t20-20020ab06894000000b00384d36014b7mr11995629uar.84.1660155743314; Wed, 10
+ Aug 2022 11:22:23 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAH69s1q9SBfEBvHz3=T--tW0KpbB9pcAWZPf8Utk8+z0Wh5EKA@mail.gmail.com>
+ <CAHbmDP_b4uB4Dvt+=EYFL+mXWf5iF+3WkZ9dZgedPYGsZfbQPA@mail.gmail.com>
+ <CAH69s1oYsPPOTho4pLyALhtKXS=8JfGr0NsnHzeWG990+QT25A@mail.gmail.com> <CANNA0skJzm0o8ZHFRLxQ0acn+tc_0Q0DhhRZkG8SHdqHv6WPEQ@mail.gmail.com>
+In-Reply-To: <CANNA0skJzm0o8ZHFRLxQ0acn+tc_0Q0DhhRZkG8SHdqHv6WPEQ@mail.gmail.com>
+From: Brooke Whoolery <brooke@pineapple.co>
+Date: Wed, 10 Aug 2022 13:21:48 -0500
+Message-ID: <CAH69s1pbk3LZw-VLjOxPKA1PUAV+iXLfn2H5TT9+fHPXOL7nuw@mail.gmail.com>
+Subject: Re: Sales Team AFFID's & Commissions
+To: Robert <robert@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Carlos Bowden <carlos@pineapple.co>, 
+	Peter Perez <Peter@pineapple.co>, Mike McBrien <mike@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000005a3de505e5e72169"
+
+--0000000000005a3de505e5e72169
+Content-Type: text/plain; charset="UTF-8"
+
+I appreciate you checking on this as I was apparently a day late and a
+dollar short, lol. Thanks, everyone!!
+
+Outie 5000,
+-
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Brooke Whoolery  Director of Operations
+
+Pineapple Company
+p: 724.984.6740
+w:  pineapple.co
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+
+On Wed, Aug 10, 2022 at 1:12 PM Robert <robert@pineapple.co> wrote:
+
+> Hey Brooke
+>
+> Audrey is correct, this was discussed yesterday as I had the same
+> concerns. After reviewing Aubrey's report and comparing it to the agent's
+> sales sheets. All orders/payouts are accounted for.
+>
+> I appreciate you checking in on this!
+>
+>
+> On Wed, Aug 10, 2022 at 11:41 AM Brooke Whoolery <brooke@pineapple.co>
+> wrote:
+>
+>> OK, thank you!
+>>
+>> Outie 5000,
+>> -
+>> [image: created with MySignature.io]
+>> <http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+>> Brooke Whoolery  Director of Operations
+>>
+>> Pineapple Company
+>> p: 724.984.6740
+>> w:  pineapple.co
+>> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>>
+>>
+>> On Wed, Aug 10, 2022 at 10:35 AM Aubrey Allen <aubrey@pineapple.co>
+>> wrote:
+>>
+>>> Hi Brooke,
+>>>
+>>> You are correct that we use their AFFIDs to track phone sales and find
+>>> their commission.
+>>>
+>>> I was on a call with Robert yesterday and he brought up this issue as
+>>> well.  He and I both double-checked my weekly Phone Sales Commission report
+>>> from Monday and found the same results, so it would appear that their sales
+>>> and commission were captured properly.
+>>>
+>>> I confirmed my findings by getting a new Sticky export for the
+>>> week (yesterday after the issue had been resolved), and manually checking
+>>> their commission against their overall sales.  I believe Robert then
+>>> cross-referenced my findings against the sales agents' own records of their
+>>> sales.  I've cc'ed him here so that he can confirm.
+>>>
+>>> Happy to take another look if we have concerns this still may be
+>>> incorrect!
+>>> Thanks!
+>>> Aubrey
+>>>
+>>> On Wed, Aug 10, 2022 at 10:21 AM Brooke Whoolery <brooke@pineapple.co>
+>>> wrote:
+>>>
+>>>> Hello,
+>>>>
+>>>> I was informed recently that the AFFID's for the sales team were not
+>>>> being recorded in Sticky for a few days due to an issue with the Pineapple
+>>>> Sales Portal. I believe this is currently how we are paying out commissions
+>>>> to the sales team.
+>>>>
+>>>> Mike had mentioned we were able to confirm sales made by the sales team
+>>>> by IP address. I'm getting all of us on an email together to make sure
+>>>> sales team commissions are not affected by this issue.
+>>>>
+>>>> What can I do to help and make sure we account for their sales? Thank
+>>>> you in advance!
+>>>>
+>>>>
+>>>>
+>>>> *Brooke Whoolery*
+>>>> Director of Operations | pineapple.co
+>>>>
+>>>> [image: Photo]
+>>>>
+>>>> E: brooke@pineapple.co
+>>>>
+>>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>>
+>>>> The content of this email is confidential and intended for the
+>>>> recipient specified in message only. It is strictly forbidden to share any
+>>>> part of this message with any third party, without a written consent of the
+>>>> sender. If you received this message by mistake, please reply to this
+>>>> message and follow with its deletion, so that we can ensure such a mistake
+>>>> does not occur in the future.
+>>>>
+>>>
+>
+> --
+> [image: created with MySignature.io]
+> <https://mysignature.io/?utm_source=logo>
+> Robert Martin   Sales Ops Manager
+>
+> Pineapple Company
+> p:  2 <973.964.8212>07.653.1005
+> w:  pineapple.co
+> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>
+
+--0000000000005a3de505e5e72169
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I appreciate you checking on this as I was apparently a da=
+y late and a dollar short, lol. Thanks, everyone!!<div><br clear=3D"all"><d=
+iv><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signa=
+ture"><div dir=3D"ltr"><div>Outie 5000,=C2=A0</div>-<table cellspacing=3D"0=
+" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;bord=
+er-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lat=
+o,sans-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:=
+0px 9px 0px 0px;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pine=
+apple.co/pineappleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img=
+ alt=3D"created with MySignature.io" width=3D"100" src=3D"https://img.mysig=
+nature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D159544412=
+5" style=3D"width:100px;border-radius:15%"></a></td><td valign=3D"top" styl=
+e=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-co=
+lor:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color:=
+rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;=
+line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;col=
+or:rgb(0,0,1)"><tbody><tr><td><span style=3D"font-stretch:normal;font-size:=
+1.2em;line-height:normal;font-family:Verdana,Geneva,sans-serif;color:rgb(70=
+,208,255)">Brooke Whoolery</span><span style=3D"font-family:Verdana,Geneva,=
+sans-serif">=C2=A0 Director of Operations</span></td></tr><tr><td style=3D"=
+padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pinea=
+pple Company</div></td></tr><tr><td><font color=3D"#46d0ff" face=3D"Verdana=
+, Geneva, sans-serif">p: </font><font face=3D"Verdana, Geneva, sans-serif" =
+color=3D"#000000">724.984.6740</font></td></tr><tr><td><span style=3D"font-=
+family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=
+=A0<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://=
+pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a=
+></span></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-se=
+rif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-family:=
+Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10019=
+=C2=A0</span></td></tr></tbody></table></td></tr></tbody></table><table cel=
+lspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-s=
+ize:13px;border-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);fo=
+nt-family:Lato,sans-serif"></table></div></div></div><br></div></div><br><d=
+iv class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug =
+10, 2022 at 1:12 PM Robert &lt;<a href=3D"mailto:robert@pineapple.co">rober=
+t@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex"><div dir=3D"ltr">Hey Brooke<br><div><br></div><div>Audrey is =
+correct, this was discussed yesterday as I had the same concerns. After rev=
+iewing Aubrey&#39;s report and comparing it to the agent&#39;s sales sheets=
+. All orders/payouts are accounted for.</div><div><br></div><div>I apprecia=
+te you checking in on this!</div><div><br></div></div><br><div class=3D"gma=
+il_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 10, 2022 at 11:=
+41 AM Brooke Whoolery &lt;<a href=3D"mailto:brooke@pineapple.co" target=3D"=
+_blank">brooke@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex"><div dir=3D"ltr">OK, thank you!=C2=A0<div><br cl=
+ear=3D"all"><div><div dir=3D"ltr"><div dir=3D"ltr"><div>Outie 5000,=C2=A0</=
+div>-<table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" =
+style=3D"font-size:13px;border-spacing:0px;border-collapse:collapse;color:r=
+gb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=3D"100" vali=
+gn=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top"><a href=3D"=
+http://s3.amazonaws.com/pineapple.co/pineappleco.gif" style=3D"color:rgb(0,=
+0,0)" target=3D"_blank"><img alt=3D"created with MySignature.io" width=3D"1=
+00" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540=
+c36f8aa.png?time=3D1595444125" style=3D"width: 100px; border-radius: 15%;">=
+</a></td><td valign=3D"top" style=3D"border-left:2px solid rgb(70,208,255);=
+vertical-align:top;border-top-color:rgb(70,208,255);border-right-color:rgb(=
+70,208,255);border-bottom-color:rgb(70,208,255);padding:0px 0px 0px 9px"><t=
+able cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-spaci=
+ng:0px;border-collapse:collapse;line-height:1.4;font-family:Verdana,Geneva,=
+sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><span style=
+=3D"font-stretch:normal;font-size:1.2em;line-height:normal;font-family:Verd=
+ana,Geneva,sans-serif;color:rgb(70,208,255)">Brooke Whoolery</span><span st=
+yle=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0 Director of Operations=
+</span></td></tr><tr><td style=3D"padding:5px 0px"><div style=3D"font-famil=
+y:Verdana,Geneva,sans-serif">Pineapple Company</div></td></tr><tr><td><font=
+ color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif">p: </font><font fac=
+e=3D"Verdana, Geneva, sans-serif" color=3D"#000000">724.984.6740</font></td=
+></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rg=
+b(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Gene=
+va,sans-serif"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" =
+target=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span style=3D"f=
+ont-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=
+=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-serif">57 w 57th Stree=
+t, 3rd Floor, New York, NY 10019=C2=A0</span></td></tr></tbody></table></td=
+></tr></tbody></table><table cellspacing=3D"0" width=3D"500" cellpadding=3D=
+"0" border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse=
+:collapse;color:rgb(97,97,97);font-family:Lato,sans-serif"></table></div></=
+div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" c=
+lass=3D"gmail_attr">On Wed, Aug 10, 2022 at 10:35 AM Aubrey Allen &lt;<a hr=
+ef=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div=
+ dir=3D"ltr">Hi Brooke,<div><br></div><div>You are correct that we use thei=
+r AFFIDs to track phone sales and find their commission.=C2=A0=C2=A0</div><=
+div><br></div><div>I was on a call with Robert yesterday and he brought up =
+this issue as well.=C2=A0 He and I both double-checked my weekly Phone Sale=
+s Commission report from Monday and found the same results, so it would app=
+ear that their sales and commission were captured properly.=C2=A0=C2=A0</di=
+v><div><br></div><div>I confirmed my findings by getting a new Sticky expor=
+t for the week=C2=A0(yesterday after the issue had been resolved), and manu=
+ally checking their commission against their overall sales.=C2=A0 I believe=
+ Robert then cross-referenced my findings against the sales agents&#39; own=
+ records of their sales.=C2=A0 I&#39;ve cc&#39;ed=C2=A0him here so that he =
+can confirm.</div><div><br></div><div>Happy to take another look if we have=
+ concerns this still may be incorrect!</div><div>Thanks!</div><div>Aubrey</=
+div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_at=
+tr">On Wed, Aug 10, 2022 at 10:21 AM Brooke Whoolery &lt;<a href=3D"mailto:=
+brooke@pineapple.co" target=3D"_blank">brooke@pineapple.co</a>&gt; wrote:<b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex=
+;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">=
+Hello,=C2=A0<div><br></div><div>I was informed recently that the AFFID&#39;=
+s for the sales team were not being recorded in Sticky for a few days due t=
+o an issue with the Pineapple Sales Portal. I believe this is currently how=
+ we are paying out commissions to the sales team.=C2=A0</div><div><br></div=
+><div>Mike had mentioned we were able to confirm sales made by the sales te=
+am by IP address. I&#39;m getting all of us on an email together to make su=
+re sales team commissions are not affected by this issue.=C2=A0</div><div><=
+br></div><div>What can I do to help and make sure we account for their sale=
+s? Thank you in advance!=C2=A0</div><div><div><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brooke Whoolery</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Director of O=
+perations<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>
+			<a href=3D"mailto:brooke@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brooke@pineapple.co</a></=
+p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+
+
+
+
+
+
+            </p>
+        <p></p></td>
+    </tr>
+
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+</div></div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" =
+border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:col=
+lapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=
+=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top=
+"><a href=3D"https://mysignature.io/?utm_source=3Dlogo" style=3D"color:rgb(=
+0,0,0)" target=3D"_blank"><img alt=3D"created with MySignature.io" width=3D=
+"100" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b5=
+40c36f8aa.png?time=3D1594774986" style=3D"width: 100px; border-radius: 15%;=
+"></a></td><td valign=3D"top" style=3D"border-left:2px solid rgb(70,208,255=
+);vertical-align:top;border-top-color:rgb(70,208,255);border-right-color:rg=
+b(70,208,255);border-bottom-color:rgb(70,208,255);padding:0px 0px 0px 9px">=
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-spa=
+cing:0px;border-collapse:collapse;line-height:1.4;font-family:Verdana,Genev=
+a,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><span style=
+=3D"font-stretch:normal;font-size:1.2em;line-height:normal;font-family:Verd=
+ana,Geneva,sans-serif;color:rgb(70,208,255)">Robert Martin</span>=C2=A0<spa=
+n style=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0=C2=A0Sales Ops Man=
+ager</span></td></tr><tr><td style=3D"padding:5px 0px"><div style=3D"font-f=
+amily:Verdana,Geneva,sans-serif">Pineapple Company</div></td></tr><tr><td><=
+span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">=
+p:=C2=A0</span>=C2=A0<span><a href=3D"tel:973.964.8212" style=3D"color:rgb(=
+0,0,1);font-family:Verdana,Geneva,sans-serif" target=3D"_blank">2</a>07.653=
+.1005</span></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,san=
+s-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-fam=
+ily:Verdana,Geneva,sans-serif"><a href=3D"http://pineapple.co/" style=3D"co=
+lor:rgb(0,0,1)" target=3D"_blank">pineapple.co</a></span></td></tr><tr><td>=
+<span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)"=
+>a:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-serif"=
+>57 w 57th Street, 3rd Floor, New York, NY 10019</span></td></tr></tbody></=
+table></td></tr></tbody></table></div></div>
+</blockquote></div>
+
+--0000000000005a3de505e5e72169--

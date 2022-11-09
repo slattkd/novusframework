@@ -1,0 +1,221 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp516235ejb;
+        Fri, 15 Jul 2022 12:27:29 -0700 (PDT)
+X-Received: by 2002:a05:622a:130d:b0:31e:dff1:9d96 with SMTP id v13-20020a05622a130d00b0031edff19d96mr2314251qtk.415.1657913249403;
+        Fri, 15 Jul 2022 12:27:29 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1657913249; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=bBb+/quhEI+71W2Ig78MvYHP0yuM5iY8vbB/lXV9sGKPjhQAui3YQAMj97b8H4mRbA
+         5jvk04FJ+rmLs9J6lw+uOvTqh/7jle6NGYTYVwruv3Xw5VwDIMAhtNT2xsCc69QjToTc
+         B8XCZ4LGMgiUqGc20MV5FCeLRLIa529cJT94kCVw1z6OzvsKfqGx+blcHVSuo8NQVmTg
+         M8nwYv+XxzaKbvyfttw5dydUuxPQ2fk6izY6ujgEpgwGGm9gfLrMVDG0evcXW8VOcMBN
+         ifEzZmbeODX7h5puhwZ59j4PVL1Z0HQm3AXonst7qgVGMPZl9WiH8H8u66tUs4AxeML0
+         zjVg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=b54zWepySweKvWZSiXTYvAu2cZEfaUrCAiLp30y1Tm4=;
+        b=c6veJK9N540UpoqjH3NjbpQkuj+XjMkaNmzmL0N+3FuQGV9F+0n3d8MeC/9hUhqu7S
+         3DvyHAkuiZ2NOaRSyyq68TrCO4WsF8yvfgugu25BcdUn0afOH/0sR6IGfRWK9uUnSVne
+         tfnT16fu01DjF56B4fXSLUMPscN+F9hhxDxJkjDYqCG1P5bdUyPMafJxqW0dml3VTjWn
+         bw/k8gDBuk675LmNUevNA/B20nbZmFqhPtLgpHOUpWDpLURXpifNiOdrzfiHlw3BR4Wn
+         g5SNq9+OOx6VpIh7ahbwS+JaKSLCj31X5blRWke8Ns5oisDtxDJSg0CaE6ueI3zA16UT
+         hX0w==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=GAYxME+9;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcvm3emc7ugbbfp7y2lamgqeg2vopqy@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCVM3EMC7UGBBFP7Y2LAMGQEG2VOPQY@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBCVM3EMC7UGBBFP7Y2LAMGQEG2VOPQY@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id q3-20020ad45743000000b0047042712b17sor3419736qvx.5.2022.07.15.12.27.29
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 15 Jul 2022 12:27:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbcvm3emc7ugbbfp7y2lamgqeg2vopqy@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=GAYxME+9;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcvm3emc7ugbbfp7y2lamgqeg2vopqy@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCVM3EMC7UGBBFP7Y2LAMGQEG2VOPQY@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1657913249; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=MerfM4fVTrk/7cOU4muAhICVMdwRAeX5NzArqPII2OCMlDUpbivO8abx9AInsXFquw
+         8TrUmJnacK0BZP1PheSCsy7gyoCPpF6gxDgvFVJtPGF1AbmTfu0ZNaEUVi1EyFlBlgWm
+         JcckFEQu6p+tjltZeDBvlzSw379CAuQFj2A2jCueAhKuU8FpjX+pZMGhmlX/QkdFrrCZ
+         s57qyx6SboAI9MJW3SLLSIXeZv2YcYIyRqD62bfeLQEqo+BKqrCf7uJIxQZaJYGHVYH7
+         S5Ktir+LwOIZRncAk+kWshOvFJtpB3iQZwTQFGQDHDL9ODtgmY6kP4cAaX3bmYAKikXJ
+         hWcg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=b54zWepySweKvWZSiXTYvAu2cZEfaUrCAiLp30y1Tm4=;
+        b=WZeMO82oRoasl5lzDd9RPDI9sYnGQhdojj3IpjKVvCvJFGvXNBtkghWTWtL++zP1mI
+         8ndAAa3N3DaW33+c2mtsFoc7aww1v776/2V7kMcxze3TQrUNpyaPLj/Z5aioqn+n3Y9c
+         J0MQyyDYkngs4XhCFnjHl+eInjWvUXfdg+LzETINgjMgIp5vhL5Si30V0P67dHl7K3/n
+         6/xWYyRJDyq7W5ztK2qDIKOTkJMTBTqWgp6P7dAv6p/kywom4+YiV5EcQUHT3TsOnSUX
+         tJLmzPRTHp6JNdb3C6armFI7O+TcvfRz5PAl7ealuKoZveF29Fn1Ribhrn+MPfsbqDer
+         dtcw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=wqMwFEql;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-unsubscribe;
+        bh=b54zWepySweKvWZSiXTYvAu2cZEfaUrCAiLp30y1Tm4=;
+        b=GAYxME+9P1wgriV3BZgK0p2hO8HAoGYsy4c0vSxqd6lCItkXlRGBOhf58ZIyhKTB8n
+         SFyqIfvBwfNJC4mM/OrM9aVNzXRXnPMaEFC80HlGj1S5zmohwvP+hHG126BTFG+A289r
+         pQIEam4QWsqU0Hsx1GLg2torsUckrv5rrUkuHdr60To7n+R3wjj+XOcVb5gv5Il4kcm6
+         bfuK0TWA3UwO6IxLygXGx2fNjUtc9psDpNes0AThEg6kSx4ldTAY9RlWKsElyw0dzIW1
+         Pa04V/+92nHJlyxcZ96q1Zr92TVgd1M5D3GkTYPRbbVmNqhq8qFyr2fMchMclfr8KqK6
+         67mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-unsubscribe;
+        bh=b54zWepySweKvWZSiXTYvAu2cZEfaUrCAiLp30y1Tm4=;
+        b=lEgHunlYUdKQZKucIr3AA+FjbWQKLPUIE/PKoylfl8CpS/lejczssflMdt6pcWrO3z
+         uIdRpszh4KgAQpYFWFlLXsdP54Ip+nk2wLCNxBVzhVKmfaLOdvzo9uv3Ob7dzDlv1o4A
+         VGpcutClgLnqzuRxUJxcq4zTwCY+E3rJxYJ5blQhiC4uWpQHAEJAkoieBq9Qagh3sSw9
+         YQ6eZl6ZxO/JMsobch5BQZHN+/rlGf2z2mMpJHUwxdlQkuDEPrh6P57vXQgACfuJ65ad
+         d+q9/IlKnGmuq7PN3rR89kg5qm8gp6aBxdqoYwCo/8pAdBIubK99bOcE0K56e0Ddra1U
+         0X0w==
+X-Gm-Message-State: AJIora+a9nyHcy9Z5EjJ89FYNF1C4rauex4ztrVHeUWKulUEpKbv38Gp
+	0Iw/0M0/0H4zjtaQALhX+Xgk/Jgs
+X-Google-Smtp-Source: AGRyM1v8Lg/8BtbkLHdw3ZYbpYbSb2z1gcvrWieNRjzZ/7HbzIlAsRnwdb4J1Rbmt6LMcmhITOE55g==
+X-Received: by 2002:a17:902:d651:b0:16b:f55e:c626 with SMTP id y17-20020a170902d65100b0016bf55ec626mr15428537plh.78.1657913238140;
+        Fri, 15 Jul 2022 12:27:18 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a17:902:ce82:b0:16c:9b:f1b3 with SMTP id f2-20020a170902ce8200b0016c009bf1b3ls7609422plg.5.gmail;
+ Fri, 15 Jul 2022 12:27:17 -0700 (PDT)
+X-Received: by 2002:a17:902:eb8e:b0:16c:5764:7dc0 with SMTP id q14-20020a170902eb8e00b0016c57647dc0mr15587702plg.63.1657913237208;
+        Fri, 15 Jul 2022 12:27:17 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a17:90a:55cc:b0:1ef:b044:8bd7 with SMTP id
+ o12-20020a17090a55cc00b001efb0448bd7ls703037pjm.0.-pod-canary-gmail; Fri, 15
+ Jul 2022 12:27:16 -0700 (PDT)
+X-Received: by 2002:a17:902:7c04:b0:16c:2e00:395a with SMTP id x4-20020a1709027c0400b0016c2e00395amr15270750pll.123.1657913236379;
+        Fri, 15 Jul 2022 12:27:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657913236; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NEfdc79lghAR0rbvt23QNdivcSl1Wu8xC8XhHY9c8JQeEJacx/jTXXSMjQNehSqaHE
+         GBidpKicxxk9vppjeztT1Nv4pOFapx8s6cEocyF0jYDbViSwCBZDAuJ+WgPeazscRyh4
+         TvkTuMBgPT7SfFfD0ymeMWSxjO/OzXrm9HU2TppBBWnw2755F5s9cfzy7kdRRHaH/R26
+         c1m4jDu6rEW8scd5qUp2ggSfeF4JeO7Jrjl/ZO6ohLOeXCVjgoZrPTgDydAHDfeGxNc0
+         LAe6vofBYKCWStowa0wEB/kNfNt6K6VEa/xeESC5RMVnX1nDoto3kL2AHZT6/zQqdsuR
+         VKxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=b54zWepySweKvWZSiXTYvAu2cZEfaUrCAiLp30y1Tm4=;
+        b=XMYfTzN7VApB7AKgmN8MgLsU4YPut/n8Wxatt9qeu5iO0yHI6CXb4DMWCHZY1FCNBt
+         ni+kdSB75PfQiIwwJev275XGGBOUzSy6MIZu1n0CSQIgKIYcNYjUIs27qlp0pmdeA529
+         dZBAqsGfQ58ern2mR2fCZnnXUQB+2/wYK2OHESuzNJCZ5hXl5JnAxG0tRhhtnaiSCIY3
+         +wLlDsXYKvXge52Zk7I//gmkuCvNvewIahgwpB2KMWjjGPSijd1o5EXWWZ1BdTtxj9c0
+         mZao2cATdZcBM4Y0gIMkbiQk2Ny5tupAgOMQnZM/0GG4iQFuM/cH3BrCYhJMHucFsSJO
+         St/w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=wqMwFEql;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t14-20020a17090a3e4e00b001ef7f4b072csor3712156pjm.33.2022.07.15.12.27.16
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Fri, 15 Jul 2022 12:27:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a17:90b:4f81:b0:1ef:acca:2d6b with SMTP id
+ qe1-20020a17090b4f8100b001efacca2d6bmr16966868pjb.243.1657913235750; Fri, 15
+ Jul 2022 12:27:15 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Fri, 15 Jul 2022 15:27:04 -0400
+Message-ID: <CALCR5_R-o_Zr_RCYhdJ-Y386u47zQNcMNs+UR6naKd3W6BwJKg@mail.gmail.com>
+Subject: Company Wide Efficiency Survey - Due Tuesday EOD
+To: All <all@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000007c567a05e3dd0158"
+X-Original-Sender: brett@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=wqMwFEql;       spf=pass (google.com: domain of brett@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--0000000000007c567a05e3dd0158
+Content-Type: text/plain; charset="UTF-8"
+
+Hey - can you please fill this short survey out by next *Tuesday, 7PM ET?*
+
+LINK: https://survey.zohopublic.com/zs/vJCzvG
+
+This is the survey I mentioned in my presentation yesterday.
+
+The goal here is to find inefficiencies in the company so we can fix them.
+
+The goal here is *absolutely not* to blame any person for these issues.
+
+Most of the time, everyone in the company wants an inefficiency gone and it
+is no one's fault that the inefficiency exists.
+
+For example, maybe you could do what you do faster if you were able to get
+something you need to complete that task from someone faster.
+
+So we can all work together to help you achieve your goals by knowing what
+holds you back and what might allow you to move faster.
+
+Lastly, I'll add, this survey can either be ANONYMOUS or you can put your
+name.
+
+It's your choice.
+
+It is very important to me that everyone feels safe being honest here.
+
+If you do put your name, it will be helpful to me, because I can reach out
+to you with clarifying questions to better understand a given situation.
+
+Either way, thank you for filling this out and helping the company improve!
+
+--0000000000007c567a05e3dd0158
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey - can you please fill this short survey out by next <b=
+>Tuesday, 7PM ET?</b><div><br></div><div>LINK: <a href=3D"https://survey.zo=
+hopublic.com/zs/vJCzvG">https://survey.zohopublic.com/zs/vJCzvG</a></div><d=
+iv><br></div><div>This is the survey I mentioned in my presentation yesterd=
+ay.</div><div><br></div><div>The goal here is to find inefficiencies in the=
+ company so we can fix them.</div><div><br></div><div>The goal here is <b><=
+i>absolutely not</i></b> to blame any person for these issues.</div><div><b=
+r></div><div>Most of the time, everyone in the company wants an inefficienc=
+y gone and it is no one&#39;s fault that the inefficiency exists.</div><div=
+><br></div><div>For example, maybe you could do what you do faster if you w=
+ere able to get something you need to complete that task from someone faste=
+r.</div><div><br></div><div>So we can all work together to help you achieve=
+ your goals by knowing what holds you back and what might allow you to move=
+ faster.</div><div><br></div><div>Lastly, I&#39;ll add, this survey can eit=
+her be ANONYMOUS or you can put your name.</div><div><br>It&#39;s your choi=
+ce.</div><div><br></div><div>It is very important to me that everyone feels=
+ safe being honest here.</div><div><br></div><div>If you do put your name, =
+it will be helpful to me, because I can reach out to you with clarifying qu=
+estions to better understand a given situation.</div><div><br></div><div>Ei=
+ther way, thank you for filling this out and helping the company improve!</=
+div><div><br></div><div><br></div></div>
+
+--0000000000007c567a05e3dd0158--

@@ -1,0 +1,319 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp492900ejb;
+        Fri, 15 Jul 2022 11:45:48 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sQ+PCesxb7Ejsa9YYkEHJJhFS4haOWH7fNLOXYfgxGN67hIbvc+x5aEFP/eDUJZDIk52sP
+X-Received: by 2002:a17:907:7f9e:b0:72e:d375:431 with SMTP id qk30-20020a1709077f9e00b0072ed3750431mr11205701ejc.580.1657910748498;
+        Fri, 15 Jul 2022 11:45:48 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1657910748; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=nVElS2GfqbPA2Kg7z5OVgbJb4CxlZhNsDG08ByoBEe2Gm1bSTerexkc2ZdC3LrGyuF
+         FP1yWywlq8aGRqeoItXV8Rsi9oUhn/1DBGRyOEo+zVVvMaGG8hYr2JAI+Lghacbqhw13
+         ifzg7Apn8LudcNOisA67OXXSekoTaK9D2KHNiucZHbUsXxJEMUwu4RRJwiAvVsCs8ju3
+         ggRc+/MoHS+900z3FkY+l8XPbqOWQCG1cb3Qi+Lyz8VZqMO5/QagemMHUKVV3FBL+9S8
+         PhaYIcnlGrgBd+RlwOVy4RZV9+XyvS75LP3Pc7dkk8VVoHCCAFjId+olwRKKFmQwolGT
+         ylYQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:suggested_attachment_session_id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=KdN9D2ZnoUgOcJlASxXzDAWpHCw0f/WiXeuKFTBA56c=;
+        b=KPJ5uWFmTCnSSiMLbJO3AmbkuUkqnvrsKA7SKCuYU0snSxHKa+6nTvYOohSHtHN90e
+         3o46gegmup/dV6Q971Uo1JaBmvQ3Ir7RCcqdRQjMxdYr5EzdgKxpEDP7/Z3+KVXAfX22
+         lb7sMBWQsImDnrID/RfXpEALlPL8wYB7sGBxAL3OmMOTzI2g1k0OJXGhjX8JLpz83cLe
+         I8RBS10Vbv9fcsPdtAsy/LI1gi9oo/LV7vThv17KNlc+9zYrWyx8vQJFA0Hp16veCoA4
+         CIy7YUQ0n7hJhiX9/mqSkd0gj4IBUjoFcJ4G9LxOVoYlcIG6i8hJPpjj07rmfO1kKZb0
+         uYlg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=rkgconsultinginc.com dkim=pass dkdomain=rkgconsultinginc.com dmarc=pass fromdomain=rkgconsultinginc.com);
+       spf=pass (google.com: domain of bob@rkgconsultinginc.com designates 40.107.220.55 as permitted sender) smtp.mailfrom=bob@rkgconsultinginc.com
+Return-Path: <bob@rkgconsultinginc.com>
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on2055.outbound.protection.outlook.com. [40.107.220.55])
+        by mx.google.com with ESMTPS id dm14-20020a05640222ce00b0043a992a782dsi5847064edb.450.2022.07.15.11.45.47
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Jul 2022 11:45:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bob@rkgconsultinginc.com designates 40.107.220.55 as permitted sender) client-ip=40.107.220.55;
+Authentication-Results: mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=rkgconsultinginc.com dkim=pass dkdomain=rkgconsultinginc.com dmarc=pass fromdomain=rkgconsultinginc.com);
+       spf=pass (google.com: domain of bob@rkgconsultinginc.com designates 40.107.220.55 as permitted sender) smtp.mailfrom=bob@rkgconsultinginc.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eDRCBIFxUy8ixxafteyTDYkmaWItwEfqlxzkx4Ayzj7OcxNJLExKbjBFWHqK4h7Jk3ooYuKmYVGtJ/cp8fdBweF68G08J+T8wXTxdBnd+iajoOaRjDSXjput7yU47yvzzEwZsB7AiWHH5PpgvC8kl5pVoQk9WWWpFmWlbTh3wNsICU4rZRW74SlT9cn6ViqRYHwDJu1iN77SUCjVkjKU1rPQH/hXz6qeoBuEBmHiY4B1SteMxY6adVEZWbJa8dJx1CYvQyvfSpGTWhtMeHmvaigQcyzcmgwzZreGf2FBnpxi0qDdkPS6LzILZEmsVEoWZfk8sWn3/OIJbeUaGIl04g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KdN9D2ZnoUgOcJlASxXzDAWpHCw0f/WiXeuKFTBA56c=;
+ b=Orfytzy8o3FCQqqUNOhbr+r44bO/94ZTBEgDcoQuJqqzfVwEkUNlNxRhRMPu20uVaOnihIDwWYQFNlGbu/wO1MWy+fgJ13bkfOYhNi+geu54y4R6+CXm8ILKjfBABdE8U3c9NGH+hwffA0eKHCMi85dsV6aJkLL98mIp21mOLovVaAu15lwEk1LoMUeZzfKrYNCkV9ZRbLHvFu4uwfa34FUSMA1560PaVAidB9WEaCDS9HVVo0m10JbkpeVRuOAqfKhztkQRSxftL1TVBlHscoWUidy4OlEcCUTAPYSDu7B4UfGxXmU8CV6ulBfTFgdBrkqDAXtfmjW6rlP3a2LPnQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=rkgconsultinginc.com; dmarc=pass action=none
+ header.from=rkgconsultinginc.com; dkim=pass header.d=rkgconsultinginc.com;
+ arc=none
+Received: from MW2PR12MB2362.namprd12.prod.outlook.com (2603:10b6:907:e::26)
+ by BL0PR12MB2385.namprd12.prod.outlook.com (2603:10b6:207:4d::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.25; Fri, 15 Jul
+ 2022 18:45:45 +0000
+Received: from MW2PR12MB2362.namprd12.prod.outlook.com
+ ([fe80::c8ae:f23a:a332:b47e]) by MW2PR12MB2362.namprd12.prod.outlook.com
+ ([fe80::c8ae:f23a:a332:b47e%7]) with mapi id 15.20.5417.025; Fri, 15 Jul 2022
+ 18:45:45 +0000
+From: bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+To: Aubrey Allen <aubrey@pineapple.co>
+CC: Brett Allcorn <brett@pineapple.co>
+Subject: Re: Enrich Marketing Reported Sales
+Thread-Topic: Enrich Marketing Reported Sales
+Thread-Index: AQHYmFDVwl/QXF0Kh0iCOMn2YXOLwa1/xVsQ
+Date: Fri, 15 Jul 2022 18:45:45 +0000
+Message-ID:
+ <MW2PR12MB236279A35375464BC21C985BDC8B9@MW2PR12MB2362.namprd12.prod.outlook.com>
+References:
+ <CAHbmDP8TDf6dX4rBTBjVzvxs35mvwUg5HajkOmn_A3W1NsZWiw@mail.gmail.com>
+In-Reply-To:
+ <CAHbmDP8TDf6dX4rBTBjVzvxs35mvwUg5HajkOmn_A3W1NsZWiw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+suggested_attachment_session_id: a5fe7730-f730-5028-1a4d-b831f5f50b22
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=rkgconsultinginc.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: d20f4d73-04d5-4209-c2e0-08da66923a37
+x-ms-traffictypediagnostic: BL0PR12MB2385:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ XBQoiWP0yiYNBP6PO8er51b/HAENBcjBJ51QZ8X/y2wfLR5VGMkm6hjT9zq8GBcX/Fz/W0yLti9iDpYdenqDL57x1WsjS66UwsqCNrSDrpB31k54BcIP06qsa/XJ+b5OyJjX54htcU53kFPBWaQVy+8B++Gax+79092uVVMwPXL0jg2aiAmnHbigNwRNDsUIZbNIue7y9Rud7xf0fM2dVXacJGd+Ah3Q7Both9ZlZUlCTjQ46boNyUmCGu6qp3FTf5W460z36hegS6wYfFwlYT8/MnrCZE6sG3MnKb4PdMpa1N9+7UkXZCG8G1iuHRfaetny+/d3TamlaitS/BWIWUmxwe8aw+DB0TkLG6t6cZpvQSRH6xuQ0raN4LqrI2Yl2VkNEb+xP+c7JLNGwWCOE82ZhAd2qVo4C8ujssRVo62WWPHlVmOqdvykjYpevYuk6x0HhDOffHXPuMMTfDR6BAzfYUzwD2Zg3xuZHE0MbHSdZ/jDXX6EMOvkq5LPsKkA6qR2Wkb7dY50GEAeP3HJlho+vhlJ4vQz5tFIKaFne8a9fsLzNRFXp6haQme6eo+axRhqgMI/TnXjMTzhbt5vMVPiLzhd/mfsQ0FIEGNIIY0swHmknhWcslBCFoqIqM5dR8IIuL3xCIMK0T2NuYgkyiD+ClIx2z5XZHUMDK4MQLBSEY9WuxNgByQN3PZghFvxe9WAcc59NdYgWqiMO/lN48bHxnKtloGKLbQnemaTi8rr4aoPsCZ4IcP0S4Y59p3Tc6JzPUPCvrVfjnT1RKHzDvp1dIgFr3PzHWCr0R7vq6Lm6TK5oFRSWyiGpzbQT0291t/boOl9++InCf01Uqo9qFsJo5JnwISsVlkluxHxj7GiUyGjtoG2V8I+AK0pkwh6cbTy9/09w+JcYN8PFTcoXg==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MW2PR12MB2362.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(136003)(366004)(396003)(376002)(346002)(39830400003)(38100700002)(83380400001)(55016003)(86362001)(186003)(40140700001)(166002)(19627405001)(76116006)(71200400001)(4326008)(316002)(66556008)(66476007)(7066003)(45080400002)(66946007)(8676002)(66446008)(6916009)(91956017)(122000001)(26005)(478600001)(52536014)(64756008)(5660300002)(9686003)(53546011)(33656002)(8936002)(6506007)(41300700001)(38070700005)(7696005)(2906002)(450100002)(3480700007);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?us-ascii?Q?OHyr7U/8Df8ph4o5C7nC3Zkj+6CRNh7lmUzqCjbqp+kES57HZHbsy25hpR0+?=
+ =?us-ascii?Q?9rkvhpLF9lUkyKeV4gqv23wo5CkZ6qEZXX0DtIWP/2+fxiwaCVTdaZOjh2mb?=
+ =?us-ascii?Q?KiZHIsPjdh4LEO61xu/LyOLNX83jPaToYrPP05Gi6gX55w750iQT9FTiALJx?=
+ =?us-ascii?Q?vCksgNh/uB44fdaOBfq50qHzh+iNi2ELE12G6rwJGBVd0LkuaHAu7cGJ9hzZ?=
+ =?us-ascii?Q?SBnuvcwmqFkQQWwUuWc//ZK75y3lvZUfjirrGLFPCD2+YcfVBY/TCKBou6on?=
+ =?us-ascii?Q?nv2Roj1rDlj/oFKNJBkGKNoxIllv5RQIGR+1jAwmfYtWWh7856WJ5LhQ+8Ze?=
+ =?us-ascii?Q?3oaIMLyeJ3UyzCfHeO3ndjauyLLkanaMxvzqiHgPoRUfSx/GNG972PdZE8e6?=
+ =?us-ascii?Q?AhjGZ5Uy+gjWkF8pkgk/zhUe7Tm78EpInbgeiZxNxx3u5uMNHq0xo3vPbwNY?=
+ =?us-ascii?Q?0VfuS5XnF32V+xAgsmztUUOn7buv0QkdyxR8IRxmZYa45CehdP/R2vCvMGW9?=
+ =?us-ascii?Q?laV4oTAfOY6LbUNLpVSysa/1MRI6G+2B/tRprb4fZE/bE2NOZvkdgm/yxymt?=
+ =?us-ascii?Q?BuNtI7XZs3U+fv+naP4ZxaR3z4TkKZCKIUjIChnygUIRperbQXhaPDFsMadZ?=
+ =?us-ascii?Q?vebzifSj1OYF7iDMq3DMd4RrLVslOZ5meDUEcyIUVhgqPydPaEr/J6SZWNZF?=
+ =?us-ascii?Q?enR7WR9o7pV+BG7EuTDnmi1LQ0ygari2jPLtmSMUoxlTYZXxMPFtJ/E8PR/b?=
+ =?us-ascii?Q?qUhMDYL2jCAPMwHCJ8naugLNVwRQf2POAmivHRZHYMeyiJ0ffftZtfV2SdYe?=
+ =?us-ascii?Q?20cnlc55n8zzUD0mA1+S4zHsHKY5LHJMxw51s/ZqqoYw8G0dj0VZM7DRe8wt?=
+ =?us-ascii?Q?cbjxiGV4l9NDU019koxx3aQHOBO3m2XGJSyyDKhQo6BZHz6Te3aqCKHiefZU?=
+ =?us-ascii?Q?nhuZyse35v4HdJ89QPu6PTKYxH2cbBy3MEqbl0FHrP6q1aeBAPAOIRpg8+DZ?=
+ =?us-ascii?Q?6CFm1safuS0NtVAdXFgtshfEgGm8xWpmA2oGUW9MsDuvdaQWy+tkYaZ09Heg?=
+ =?us-ascii?Q?XqcJYGBUtZjaVf3czdSWsiGYSDfX8TmDE1K+3DFeW/HRVYILCefQ+VRX3UDk?=
+ =?us-ascii?Q?wdnK/vpt9x/Y31rIEp7VKuSSAaRTXHwBjZVA0xZL97ZWXeumfJ1uPSeKx7t7?=
+ =?us-ascii?Q?JYu91EkUy3i2sPyD4RSClnOIoHpp8Zd1ec4n8rukAvQF37zcj+9lzLK6URtx?=
+ =?us-ascii?Q?RzjP6RqPbJFafqYXyMRT04vAc7goUh9NJYwwChZ86dIvafCwmW++qdjoOIEz?=
+ =?us-ascii?Q?Yhoi3RSOVCHLkSkXjaDxnIyEs70zxaIQi6q/6vWGYDwxCsda+y4BYdcvdBDo?=
+ =?us-ascii?Q?R/pHId5uGtvIFecUiQfVGZeKnyrxgV9VU/FrN5zG31dda20Bh5Ry9v9GDIqf?=
+ =?us-ascii?Q?QlqRp/WwcKkafyqgUqWbuyWD68vkvSWJh5JeWy7fx2uYC5vQgEcALuuv8Q47?=
+ =?us-ascii?Q?gbb3HjrWetBuT4IiPZIVshk47Xj8Dx/WZAYuxOFYfCYmUckwi6qVRuFJ735+?=
+ =?us-ascii?Q?wBmQCb1pajsBO/5siAM87PsGUz1yr/jI0Vm1VTk5?=
+Content-Type: multipart/alternative;
+	boundary="_000_MW2PR12MB236279A35375464BC21C985BDC8B9MW2PR12MB2362namp_"
+MIME-Version: 1.0
+X-OriginatorOrg: rkgconsultinginc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW2PR12MB2362.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d20f4d73-04d5-4209-c2e0-08da66923a37
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jul 2022 18:45:45.4181
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 828f9fc8-73cf-44ab-a482-927409ae5ec3
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: l/5wmH271mETb+c+Tg199HawXWEFmSXq33NZAHDReNNY5Rdmav6X/2cfB4BFQLojNRx0HKAdFDez7hC2eyF0/CUxspU7jRVj5C/TZiqcwGo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR12MB2385
+
+--_000_MW2PR12MB236279A35375464BC21C985BDC8B9MW2PR12MB2362namp_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Aubrey,
+
+Thanks for the report on timing. I appreciate it, and look forward to heari=
+ng what you find.
+
+Bob
+
+Robert S. Greisman
+RKG consulting group, inc.
+BUSINESS GROWTH ADVISORS
+business growth | fractional CFO | M & A advisory
+
+Phone: 847-902-0258 Website<http://www.rkgconsultinginc.com/> | LinkedIn<ht=
+tps://www.linkedin.com/in/bobgreisman/>
+
+IMPORTANT: The contents of this email and any attachments are confidential.=
+ They are intended for the named recipient(s) only. If you have received th=
+is email by mistake, please notify the sender immediately and do not disclo=
+se the contents to anyone or make copies thereof.
+________________________________
+From: Aubrey Allen <aubrey@pineapple.co>
+Sent: Friday, July 15, 2022 8:42 AM
+To: bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+Cc: Brett Allcorn <brett@pineapple.co>
+Subject: Enrich Marketing Reported Sales
+
+Good morning Bob,
+
+I am reaching out about your inquiry with Andrea & Brett regarding our repo=
+rted sales for our Enrich Profits.  I wanted you to know that I am currentl=
+y looking into this, but I'll need more time to complete my research so tha=
+t I can be sure the information I am providing you with is accurate.
+
+It is my goal to get back to you no later than a week from today (next Frid=
+ay, 7/22), although please know that if I can I will get it to you sooner. =
+ I just want to make sure this gets the attention it deserves.
+
+Thank you!
+
+--
+Aubrey Allen
+Data Analytics Technician
+Pineapple Products, Inc.
+
+--_000_MW2PR12MB236279A35375464BC21C985BDC8B9MW2PR12MB2362namp_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Aubrey,</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Thanks for the report on timing. I appreciate it, and look forward to heari=
+ng what you find.</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Bob</div>
+<div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);"><br>
+</div>
+<div id=3D"Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255, 255, 255)"><span style=3D"margin:0px;background-color:bl=
+ack"><span style=3D"margin:0px;color:navy"><span style=3D"margin:0px;font-s=
+ize:8pt"><span style=3D"margin:0px;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>&nbsp;</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;background-color:rgb(153, 51, 0)"><span style=3D"=
+margin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:w=
+hite"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS&nbsp;=
+</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;background-color:rgb(153, 51, 0)"><span style=3D"=
+margin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:w=
+hite"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;c=
+olor:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:=
+0px;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;, courier"><sp=
+an style=3D"margin:0px;font-family:&quot;arial black&quot;, &quot;avant gar=
+de&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;, co=
+urier"><span style=3D"margin:0px;font-family:verdana, geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>&nbsp;</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" target=3D"_blank" rel=3D"noopener noreferrer" data-aut=
+h=3D"NotApplicable" title=3D"Website" data-linkindex=3D"0" style=3D"margin:=
+0px">Website</a></strong><span>&nbsp;</span>|<strong><a href=3D"https://www=
+.linkedin.com/in/bobgreisman/" target=3D"_blank" rel=3D"noopener noreferrer=
+" data-auth=3D"NotApplicable" title=3D"LinkedIn" data-linkindex=3D"1" style=
+=3D"margin:0px"><span>&nbsp;</span>LinkedIn</a></strong></span></span></div=
+>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+&nbsp;</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255, 255, 255)"><span style=3D"margin:0px;font-family:&quot;courie=
+r new&quot;, courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: T=
+he contents of this email and any attachments are
+ confidential. They are intended for the named recipient(s) only. If you ha=
+ve received this email by mistake, please notify the sender immediately and=
+ do not disclose the contents to anyone or make copies thereof.</span></spa=
+n></span></div>
+</div>
+</div>
+<div id=3D"appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Aubrey Allen &lt;aubr=
+ey@pineapple.co&gt;<br>
+<b>Sent:</b> Friday, July 15, 2022 8:42 AM<br>
+<b>To:</b> bob rkgconsultinginc.com &lt;bob@rkgconsultinginc.com&gt;<br>
+<b>Cc:</b> Brett Allcorn &lt;brett@pineapple.co&gt;<br>
+<b>Subject:</b> Enrich Marketing Reported Sales</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div dir=3D"ltr">Good morning&nbsp;Bob,&nbsp;<br clear=3D"all">
+<div><br>
+</div>
+<div>I am reaching out about your inquiry with Andrea &amp; Brett regarding=
+ our reported sales for our Enrich Profits.&nbsp; I wanted you to know that=
+ I am currently looking into this, but I'll need more time to complete my r=
+esearch so that I can be sure the information
+ I am providing you with is accurate.</div>
+<div><br>
+</div>
+<div>It is my goal to get back to you no later than a week from today (next=
+ Friday, 7/22), although please know that if I can I will get it to you soo=
+ner.&nbsp; I just want to make sure this gets the attention it deserves.</d=
+iv>
+<div><br>
+</div>
+<div>Thank you!</div>
+<div><br>
+</div>
+-- <br>
+<div dir=3D"ltr" class=3D"x_gmail_signature">
+<div dir=3D"ltr">Aubrey Allen
+<div>Data Analytics Technician</div>
+<div>Pineapple Products, Inc.</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_MW2PR12MB236279A35375464BC21C985BDC8B9MW2PR12MB2362namp_--

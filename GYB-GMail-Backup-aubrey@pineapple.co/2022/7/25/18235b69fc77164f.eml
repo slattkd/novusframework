@@ -1,0 +1,280 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp296486ejz;
+        Mon, 25 Jul 2022 07:15:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t/0QdvawhRozySMwYQyKw0yL+ChMvEvjUuujuSQul6q4mKpk+dDgtpa7/BYraWWEG788rP
+X-Received: by 2002:a05:620a:14ae:b0:6b5:d345:a3fe with SMTP id x14-20020a05620a14ae00b006b5d345a3femr8949783qkj.425.1658758536929;
+        Mon, 25 Jul 2022 07:15:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658758536; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VPJFFC/VRoQUYMEIrIN96f88ArwMhcpENrzBcN5myWy4lLtn1k3TV1Zq8vgDQ+J4Lr
+         2TxBxgajK4Oz6eSfNO/B8lgNV/hdUsIDx+DrjKeD5ZvPLUJslzx6gh/PtITJcacbtree
+         gte9hsde3RBjnTS8Dsjse7HXUiCShkAEpI0gis/Xn9NWBMGaCpmGcGp6OEK6mamA6zQe
+         H/nEDC80VmSz5UAbg2NxW5iGONooZDEBFIF93wSBfKQoT97eeFeWlubV9WHGix7iFEWD
+         DVHMqGfCAtIHlgUMWdmMw3nmBFztGe0nlqiVbtP+drTFPKKXBSiNmrcO2q49xMm/91b4
+         J9xw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:mime-version:subject:references:in-reply-to:message-id
+         :from:date:dkim-signature;
+        bh=6IujlVONi3PUihnPPO/pt0xV+vsogYgSrmuL0r6XUDk=;
+        b=IqwsTKhx8J5ONdxqg7rGM1h919Fhggvw2+dBPOUI3jb7VLq4pRuR2DGgwAmbWZsh+X
+         2SJCrm7MaSKgNiShl87wuEOQa1O6XORd1kTl2zWfTeugdR+yDI47ZcA/fBSsgXnpdU7G
+         JFTsZ7K+ZTLsYbKR/Kavpz7qrgszSFZ79dWWT480DfTJKQ1L4sLqCDWX4s23ubWpLlm1
+         Ly27hG5oqf1daPJonEePL+x4JCwS08AF4JVcwwV5aceSjno0/zQ/33DMOdGLJMmYdA3T
+         /zqickNbJF5xip5JxZEW7xrJ3ooTgLpm5n5yFKST3N7hgKbMVmhyEiUmquRPMEgPJcjk
+         vOJg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=h84poeQq;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from o2.mail.teamwork.com (o2.mail.teamwork.com. [167.89.90.81])
+        by mx.google.com with ESMTPS id q1-20020ad45ca1000000b00470a903ac32si8671509qvh.118.2022.07.25.07.15.36
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 25 Jul 2022 07:15:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) client-ip=167.89.90.81;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=h84poeQq;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:in-reply-to:references:subject:mime-version:content-type:
+	reply-to:to:cc;
+	s=m1; bh=6IujlVONi3PUihnPPO/pt0xV+vsogYgSrmuL0r6XUDk=;
+	b=h84poeQqIxOFLLr9MyMV4p9Q/GYghjX15fky7cH4j4X1a2kjpHx8+9cNrIAk8njsewcP
+	fE4TymPZq2T+EKhrxItubFc6Yy9LqU+AAR4e/qm8r96mSdRnk4tm/l5G0xHRU+1dol1YYM
+	tnAJq/TZiG2XX2eULNFJ2uaKpHE6lzY4E=
+Received: by filterdrecv-54db7457cd-rh5bj with SMTP id filterdrecv-54db7457cd-rh5bj-1-62DEA588-B7
+        2022-07-25 14:15:36.431039775 +0000 UTC m=+324642.816067305
+Received: from USAPPSERVER06 (unknown)
+	by geopod-ismtpd-6-6 (SG) with ESMTP
+	id FHPuBDr8R0682YYPTWuJYA
+	for <aubrey@pineapple.co>;
+	Mon, 25 Jul 2022 14:15:36.283 +0000 (UTC)
+Date: Mon, 25 Jul 2022 14:15:36 +0000 (UTC)
+From: "Teamwork Bot (Pineapple Products)" <application@teamwork.com>
+Message-ID: <tw.30.167269.8@replies.teamwork.com>
+In-Reply-To: <thread.921738.30.410850.task@replies.teamwork.com>
+References: <thread.921738.30.410850.task@replies.teamwork.com>
+Subject: (Data Analytics & Reporting) - New task: Form Submission: Data
+ Analytics Request (Inbox)
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_30605_29976590.1658758535999"
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-MC-Tags: webserver6
+Reply-To: Pineapple Products <tw.30.167269.8@replies.teamwork.com>
+X-SG-EID: 
+ =?us-ascii?Q?tLe3c=2FDFjIjV7eUsb1D6GgAsL7zML3fTX+VlJADxVfgKc8yROBrXZNDGGSImWn?=
+ =?us-ascii?Q?Zb=2Fnma4r1g0SaiELqQEmHQVfUrYGQpNS0vKtRsT?=
+ =?us-ascii?Q?9CPWwst3a8DhCbevb4sn5ogc3RkLsvePg5slb6Y?=
+ =?us-ascii?Q?79Hr9DwPFxSj61JuPkM2mZu=2FKXud4F=2FCEk+X5p2?=
+ =?us-ascii?Q?ZT7tbDp3ankj73gE4jUH=2FDlyKI5sp+Nuy+5vooi?=
+ =?us-ascii?Q?e+6zD0t2HAh+EDKraXz7bDoatKjnOtt9TziBwo=2F?=
+ =?us-ascii?Q?2ig5DBbhUZlL3f1axDdoeQiJ5X1H=2FlaBgOftt0=2F?=
+ =?us-ascii?Q?Rkc=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJox7Dz6VF2YSa9nYWReO?=
+ =?us-ascii?Q?uXL5CSK8P+L8lX2MpDr2DlbijBrTwkVmFN+lt7v?=
+ =?us-ascii?Q?DoqbxJt65SoGbVyX4O7cEk93qkqWwD9DWYPmjmw?=
+ =?us-ascii?Q?uEeXNorDGZYGBRsfG9NcfUaaCph0ayelcqtXCl9?=
+ =?us-ascii?Q?JO0CklbrppGbvro3AH8fA5kOrZYEqN=2Frm=2FK1vVZ?=
+ =?us-ascii?Q?246ZhdQeWv6hyksrgrzAkb0Dg=2F61bTK3V7A66X?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+------=_Part_30605_29976590.1658758535999
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Teamwork Bot has assigned a task to you and 16 other people.
+
+Form
+Submission: Data Analytics Request =E2=80=94 View
+Please descripobehvanjks;lvdn.:
+fdasjkl;fd
+Email:
+mike@pineapple.co
+Name:
+fjdkasl;jfdskl;
+multi:
+
+option2
+(#410850)Task Details
+Due Date: Not set
+Assigned To: Anyone
+Assigned By:
+Teamwork Bot
+Priority: Not set
+Task List: Inbox
+View Task: Form
+Submission: Data Analytics Request
+Project Details
+Project: Data Analytics
+&amp; Reporting
+Company: Pineapple Products
+
+Copied To: Aimee Latuszek,
+Allen King, Aubrey Allen, Bonnie Wilson, Brooke Whoolery, Dane Slatten,
+Derek Madden, Gene Natftulyev, Heather Beavers, Ivy Cea, Jarren Scheller,
+Kirsten Woods, Marco Shimazaki, Mike McBrien, Olivia Patterson, Shawna
+McCartney, Sheena McLean
+
+------=_Part_30605_29976590.1658758535999
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+
+			<html>
+				<head>
+					<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+					<meta name=3D"viewport" content=3D"width=3D350px, user-scalable=3Dyes"=
+>
+					<style>
+						body {
+							margin:0px;
+						}
+						body,td,th,p{
+							font-family:Tahoma, Arial, Helvetica, sans-serif;
+							font-size:12px;
+							text-align:left;
+						}
+						h3{
+							padding:0;
+							margin:10px 0 5px 0;
+							color:#000000;
+							font-family : arial,sans-serif;
+							font-size: 1.4em;
+							font-weight:bold;
+						}
+						pre {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						pre code {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						blockquote {
+							border-left: 4px solid #DDDDDD;
+							padding: 0 15px;
+							color: #777777;
+							margin-left:10px;
+						}
+
+						blockquote p {
+							font-size:14px !important;
+							color: #777777;
+						}
+
+						span.atwho-inserted {
+							-webkit-text-size-adjust: 100%;
+							-webkit-tap-highlight-color: rgba(0,0,0,0);
+							text-rendering: optimizeLegibility;
+							text-align: left;
+							font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif=
+;
+							line-height: 1.7;
+							word-break: break-word;
+							overflow-wrap: break-word;
+							-webkit-user-modify: read-only;
+							box-sizing: border-box;
+							-webkit-user-select: auto !important;
+							display: inline-block;
+							border: none;
+							font-size: 13px;
+							color: #3f4650;
+							padding: 1px 6px;
+							border-radius: 10px;
+							background-color: #e1e7ef;
+							font-weight: normal;
+							cursor: default;
+							outline: none;
+						}
+
+						a {
+							word-break:break-all;
+						}
+						table td img { max-width:100%; }
+						html { -webkit-text-size-adjust: none; }
+						@media only screen and (max-device-width:480px) {
+							body { width: 350px !important; padding:5px !important;	}
+							table[class=3D"wrapper"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] table { width:300px !important; max-width:3=
+00px !important;}
+							table td[class=3D"dateTime"] { display:none !important; }
+							table td img { max-width:340px!important; }
+							p[class=3D"dateTimeMobile"] { font-family:'Lucida Grande', 'Lucida S=
+ans', Arial, sans-serif; color:#9E9E9E !important; font-size:11px !importan=
+t; line-height:22px !important; margin-bottom:22px !important; margin:0; }
+							h3 span[class=3D"note"], h3 span[class=3D"fwd"] { padding:0 !importa=
+nt; background-color:#ffffff !important; }
+						}
+					</style>
+				</head>
+				<body style=3D"-webkit-text-size-adjust:none;">
+
+					=3D=3D=3D=3D=3D WRITE YOUR REPLY ABOVE THIS LINE =3D=3D=3D=3D=3D<div s=
+tyle=3D"padding:5px 0 10px 10px;clear:both;"><img src=3D"http://assets1.tea=
+mworkpm.net/tko/public/assets/brand/email/teamwork_primary.png" width=3D"20=
+0"  style=3D"width:100%;max-width:200px;" border=3D"0"></div><div class=3D"=
+mailWrap" style=3D"overflow:hidden;padding:10px;font-family:arial;font-size=
+:12px;"> <table width=3D"100%" cellpadding=3D0 cellspacing=3D0><tr><td><h3>=
+Teamwork Bot has assigned a task to you and 16 other people.</h3></td></tr>=
+</table><div style=3D"border:1px solid #AAA;border-radius:4px;padding:5px 1=
+0px;margin-bottom:20px;overflow:hidden;"><p style=3D"font-size:14px;"><stro=
+ng>Form Submission: Data Analytics Request</strong> &mdash; <a href=3D"http=
+s://pineappleproducts.teamwork.com/tasks/410850">View</a></p><p style=3D"fo=
+nt-size:12px;color:#333"><p><strong>Please descripobehvanjks;lvdn.:</strong=
+><br>fdasjkl;fd</p>
+<p><strong>Email:</strong><br><a href=3D"mailto:mike@pineapple.co" target=
+=3D"_blank" title=3D"">mike@pineapple.co</a></p>
+<p><strong>Name:</strong><br>fjdkasl;jfdskl;</p>
+<p><strong>multi:</strong></p>
+<ul>
+<li>option2</li>
+</ul>
+</p> </div> <div style=3D"border:1px solid #999;border-left:10px solid #999=
+;padding:10px;color:#555;"><span style=3D"float:right;color:#888;">(#410850=
+)</span><h3 style=3D"margin:0;padding:0;color:#333;">Task Details</h3><p><s=
+trong>Due Date:</strong> Not set</p><p><strong>Assigned To:</strong> Anyone=
+</p><p><strong>Assigned By:</strong> Teamwork Bot</p><p><strong>Priority:</=
+strong> Not set</p><p><strong>Task List:</strong> <a href=3D"https://pineap=
+pleproducts.teamwork.com/tasklists/70073">Inbox</a></p><p><strong>View Task=
+:</strong> <a href=3D"https://pineappleproducts.teamwork.com/tasks/410850">=
+Form Submission: Data Analytics Request</a></p><h3 style=3D"margin:0;paddin=
+g:0;color:#333;">Project Details</h3><p><strong>Project:</strong> <a href=
+=3D"https://pineappleproducts.teamwork.com/projects/23790">Data Analytics &=
+amp; Reporting</a></p><p><strong>Company:</strong> Pineapple Products</p></=
+div> <div style=3D"margin-top:10px;color:#999;font-size:12px;">Copied To: A=
+imee Latuszek, Allen King, Aubrey Allen, Bonnie Wilson, Brooke Whoolery, Da=
+ne Slatten, Derek Madden, Gene Natftulyev, Heather Beavers, Ivy Cea, Jarren=
+ Scheller, Kirsten Woods, Marco Shimazaki, Mike McBrien, Olivia Patterson, =
+Shawna McCartney, Sheena McLean</div> <div style=3D"margin-top:10px;"><a st=
+yle=3D"color:#888888;" href=3D"https://pineappleproducts.teamwork.com/forgo=
+t_password">P.S. Just in case: You can reset your password by clicking here=
+</a></div><div style=3D"display:none;font-color:white;font-size:1px">Reply =
+to: tw.30.167269.8@replies.teamwork.com</div>=20
+						<div itemscope itemtype=3D"http://schema.org/EmailMessage">
+						  <div itemprop=3D"potentialAction" itemscope itemtype=3D"http://sche=
+ma.org/ViewAction">
+						    <link itemprop=3D"target" href=3D"https://pineappleproducts.teamw=
+ork.com/tasks/410850"/>
+						    <meta itemprop=3D"name" content=3D"View task"/>
+						  </div>
+						  <meta itemprop=3D"description" content=3D"View task on Teamwork"/>
+						</div>
+				=09
+				</body>
+			</html>
+	=09=
+
+------=_Part_30605_29976590.1658758535999--

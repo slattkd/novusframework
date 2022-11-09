@@ -1,0 +1,342 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:1613:0:0:0:0 with SMTP id m19csp2282801ejd;
+        Thu, 21 Jul 2022 12:05:35 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1utDBhrkxoMdVt2oylsZjaOLH1cMaq+H4OCe4Q852WfE8LWJc4tZUPrchLK0181wrFUepke
+X-Received: by 2002:a05:6808:d1:b0:33a:9794:8ed6 with SMTP id t17-20020a05680800d100b0033a97948ed6mr5347714oic.54.1658430335168;
+        Thu, 21 Jul 2022 12:05:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658430335; cv=none;
+        d=google.com; s=arc-20160816;
+        b=d5kMgySOSk7HV2Y5C/3C34I+NzwtHAxi9bSyzzKnVNIxUIm7Pw9MEJ8ZLAGdze5Ufx
+         RpraF4SyrAC3lpVi/qAmYLDlqNqY4FywICSshGaWKYstiWk7XsB4mfTGra1zk7EX9Aqq
+         4u6KqoP+8tUaCKy71uXQRKY54I50hLXsJS+aPXhgORKKlFMauAAEhcGaBEoPuqPfaB1F
+         p440fpcYmCJjmTXMHX3ytlgpDhIxgo+34iu5rbf5gilnaAeypZWtkbj1h+ferk5zrZsj
+         uuleFkPg1yn/DTqw1A2tFPHfudSLxGggjYPUh45oCtN1LzkKTQeWy/6viKjSeXSiv2BU
+         EIGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:mime-version:subject:references:in-reply-to:message-id
+         :from:date:dkim-signature;
+        bh=Rf5cpA+s1MxkbhgzOk5Te8NHmzKP6jaZDKPjkA/+Q1o=;
+        b=bjbQ6Jw8BF8ecKd0TSFobak8uhIlfz31V6VqMVP9ibw3hifRK17QJ8QPxURxi8YAHX
+         8uUG2n+Kb0u9Ljbk8hDhnnK4KRYGjK4Xe8OGboDpxIYoH7DctMxX+qb1LeXYEDtOW73m
+         tnnulDh6mEzkMrr2vAg1Cs54Ie267WIn9GJEAjvXG4rdfydL+Xr/7X3DC7yIbSXf5c52
+         ojwVvLUv3EQJGVMPA1XAgADDJh6hWwsN0gyIIdqa7zB4bOyPtrhhsOp9MpAJGef1M0fO
+         h7P/+tx7S3aVqni687/mmgpWqgnpBjOP95PHLx2cEk4OSr8rzJFs5/+r1q1sTs7jRIrl
+         owNQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=gbZi5vkf;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from o2.mail.teamwork.com (o2.mail.teamwork.com. [167.89.90.81])
+        by mx.google.com with ESMTPS id d30-20020a9d2921000000b0061cc2915caesi2275154otb.10.2022.07.21.12.05.33
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 21 Jul 2022 12:05:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) client-ip=167.89.90.81;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=gbZi5vkf;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:in-reply-to:references:subject:mime-version:content-type:
+	reply-to:to:cc;
+	s=m1; bh=Rf5cpA+s1MxkbhgzOk5Te8NHmzKP6jaZDKPjkA/+Q1o=;
+	b=gbZi5vkfWQob1Yc4OzSqJE64uiCSeeCf320gvl5H/LU5wZk66NVWcS51XQ0gB2ydwSpK
+	a+/h/lWTffFURefVA6fZFBEnV3lPVLrtSSu6VYeiOTGRNy0sZ6MCf2SynY05gbRmrmdnMR
+	U+qB0liJJ5ZgXF6p4MK9DvNAw2iSiswR4=
+Received: by filterdrecv-5b65fd6fc6-klklj with SMTP id filterdrecv-5b65fd6fc6-klklj-1-62D9A37C-78
+        2022-07-21 19:05:32.462837139 +0000 UTC m=+8485.244171002
+Received: from USAPPSERVER05 (unknown)
+	by geopod-ismtpd-1-4 (SG) with ESMTP
+	id d9P-jpqTRiKPbPmqXYMydA
+	for <aubrey@pineapple.co>;
+	Thu, 21 Jul 2022 19:05:32.343 +0000 (UTC)
+Date: Thu, 21 Jul 2022 19:05:32 +0000 (UTC)
+From: "Olivia Patterson (Pineapple Products)" <application@teamwork.com>
+Message-ID: <tw.30.163659.121@replies.teamwork.com>
+In-Reply-To: <thread.921738.30.404931.task@replies.teamwork.com>
+References: <thread.921738.30.404931.task@replies.teamwork.com>
+Subject: (Revival Point Amazon) - Task edited: Amazon Testing Report
+ (Operations List (Brooke))
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_351879_1045992264.1658430332132"
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-MC-Tags: webserver5
+Reply-To: Pineapple Products <tw.30.163659.121@replies.teamwork.com>
+X-SG-EID: 
+ =?us-ascii?Q?37gcqt6IlUdKvNLsWBJO2ACSGs+G0nfAQaBTjKmGRe=2FZybc2R+7oJDSYFqpEfr?=
+ =?us-ascii?Q?63ZlbLzzZQsculPkj7TbpkmHrMHj9YqyYlw30ds?=
+ =?us-ascii?Q?c5hwnDVvCyGMQwtBF=2F2hu5K0kGy+UEJgsERZ=2FsJ?=
+ =?us-ascii?Q?Tx+KxSXtNxdNQsnJ3UFjFT1=2FE=2FSlfJNpxnyXfE5?=
+ =?us-ascii?Q?XXcU=2Fx0rAnX2sBcNU=2FXD9ZmMYDDW6uOL6DJN+xL?=
+ =?us-ascii?Q?WxipuAxWE56RU88KLopCPE6PHmllHp44HaDKjpn?=
+ =?us-ascii?Q?TgrFiByEUT7sxh8aVxjxLAn0pm5vOoZBkXkksII?= =?us-ascii?Q?xRA=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJox7Dz6VF2YSa9nYWReO?=
+ =?us-ascii?Q?uXL5CSK8P+L8lX2MpDr2DlbijBrTwkVmFN+lt7v?=
+ =?us-ascii?Q?DoqbxJixPmJfieGW463f8E6eVzdpoGflID1=2FSxn?=
+ =?us-ascii?Q?KMKlKsDW=2FtFpn64g6lHsR4gR5BVyoE+pfv+JQvz?=
+ =?us-ascii?Q?elgN08ARxTNfjzoi6I6wLYUFGqVKkLxdkHeRSVM?=
+ =?us-ascii?Q?7HLxdsb1zzIZOCmHF5oOvrfopIgC5GRgUtjlhA?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+------=_Part_351879_1045992264.1658430332132
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Olivia Patterson has edited a task assigned to anyone.
+
+Amazon Testing
+Report =E2=80=94 View
+Amazon is requesting testing reports:
+Food Safety -
+Supplements
+=EE=A3=BD
+We require you to submit the following document(s):
+
+A
+Certificate of Analysis (COA) issued by an ISO/IEC 17025 accredited lab
+OR
+A Certificate of Analysis (COA) issued by an in-house laboratory AND
+valid Good Manufacturing Practices Certificate
+OR
+
+Evidence of
+Product/ASIN enrollment or participation in a third-party quality
+certification program
+Product packaging and label images
+Certificate of
+Analysis
+
+Task Changes
+
+Parent task changed
+
+Tags changed
+
+Column changed
+Person responsible changed
+
+Start Date changed
+
+Due Date changed
+
+Change
+followers changed
+
+Comment followers changed
+
+(#404931)Task Details
+Start
+Date: 07/21/2022
+Due Date: 07/25/2022
+Assigned To: Anyone
+Assigned By:
+Emily Freiday
+Priority: Not set
+Tags: Amazon Dept: Marketing (ALL)
+Task
+List: Operations List (Brooke)
+View Task: Amazon Testing Report
+Project
+Details
+Project: Revival Point Amazon
+Company: Revival Point Labs
+
+Copied
+To: Abigail Dewire, Aimee Latuszek, Allen King, Amber Glenn, Andrea
+Abramowski, Aubrey Allen, Bonnie Wilson, Brett Allcorn, Brooke Whoolery,
+Colin Chung, DJ Gelner, Dane Slatten, Derek Madden, Edwin Campos, Emily
+Freiday, Gene Natftulyev, Grace Needler, Heather Beavers, Ivy Cea, Jack
+Nalbandyan, Jarren Scheller, Jason Aaberg, John Belkewitch, John J.
+Leaver, Kendal LaFleur, Kim Boisvert, Kirsten Woods, Marco Shimazaki,
+Maria Lindley, Mike McBrien, Sam Wilder, Sean Grigsby, Shawna McCartney,
+Sheena McLean, Stacy Schanks, Taylor Piccolo, Tessa Bender
+
+------=_Part_351879_1045992264.1658430332132
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+			<html>
+				<head>
+					<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+					<meta name=3D"viewport" content=3D"width=3D350px, user-scalable=3Dyes"=
+>
+					<style>
+						body {
+							margin:0px;
+						}
+						body,td,th,p{
+							font-family:Tahoma, Arial, Helvetica, sans-serif;
+							font-size:12px;
+							text-align:left;
+						}
+						h3{
+							padding:0;
+							margin:10px 0 5px 0;
+							color:#000000;
+							font-family : arial,sans-serif;
+							font-size: 1.4em;
+							font-weight:bold;
+						}
+						pre {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						pre code {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						blockquote {
+							border-left: 4px solid #DDDDDD;
+							padding: 0 15px;
+							color: #777777;
+							margin-left:10px;
+						}
+
+						blockquote p {
+							font-size:14px !important;
+							color: #777777;
+						}
+
+						span.atwho-inserted {
+							-webkit-text-size-adjust: 100%;
+							-webkit-tap-highlight-color: rgba(0,0,0,0);
+							text-rendering: optimizeLegibility;
+							text-align: left;
+							font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif=
+;
+							line-height: 1.7;
+							word-break: break-word;
+							overflow-wrap: break-word;
+							-webkit-user-modify: read-only;
+							box-sizing: border-box;
+							-webkit-user-select: auto !important;
+							display: inline-block;
+							border: none;
+							font-size: 13px;
+							color: #3f4650;
+							padding: 1px 6px;
+							border-radius: 10px;
+							background-color: #e1e7ef;
+							font-weight: normal;
+							cursor: default;
+							outline: none;
+						}
+
+						a {
+							word-break:break-all;
+						}
+						table td img { max-width:100%; }
+						html { -webkit-text-size-adjust: none; }
+						@media only screen and (max-device-width:480px) {
+							body { width: 350px !important; padding:5px !important;	}
+							table[class=3D"wrapper"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] table { width:300px !important; max-width:3=
+00px !important;}
+							table td[class=3D"dateTime"] { display:none !important; }
+							table td img { max-width:340px!important; }
+							p[class=3D"dateTimeMobile"] { font-family:'Lucida Grande', 'Lucida S=
+ans', Arial, sans-serif; color:#9E9E9E !important; font-size:11px !importan=
+t; line-height:22px !important; margin-bottom:22px !important; margin:0; }
+							h3 span[class=3D"note"], h3 span[class=3D"fwd"] { padding:0 !importa=
+nt; background-color:#ffffff !important; }
+						}
+					</style>
+				</head>
+				<body style=3D"-webkit-text-size-adjust:none;">
+
+					=3D=3D=3D=3D=3D WRITE YOUR REPLY ABOVE THIS LINE =3D=3D=3D=3D=3D<div s=
+tyle=3D"padding:5px 0 10px 10px;clear:both;"><img src=3D"http://assets1.tea=
+mworkpm.net/tko/public/assets/brand/email/teamwork_primary.png" width=3D"20=
+0"  style=3D"width:100%;max-width:200px;" border=3D"0"></div><div class=3D"=
+mailWrap" style=3D"overflow:hidden;padding:10px;font-family:arial;font-size=
+:12px;"> <table width=3D"100%" cellpadding=3D0 cellspacing=3D0><tr><td><h3>=
+Olivia Patterson has edited a task assigned to anyone.</h3></td></tr></tabl=
+e><div style=3D"font-size:14px;border:1px solid #AAA;border-radius:4px;padd=
+ing:5px;margin-bottom:20px;overflow:hidden;"><div style=3D"padding:0 10px 0=
+ 10px;"><p style=3D"font-size:14px;"><strong>Amazon Testing Report</strong>=
+ &mdash; <a href=3D"https://pineappleproducts.teamwork.com/tasks/404931">Vi=
+ew</a></p><p style=3D"font-size:12px;color:#333"><p>Amazon is requesting te=
+sting reports:</p>
+<p>Food Safety - Supplements<br>=EE=A3=BD<br>We require you to submit the f=
+ollowing document(s):</p>
+<ol>
+<li>A Certificate of Analysis (COA) issued by an ISO/IEC 17025 accredited l=
+ab<br>OR</li>
+<li>A Certificate of Analysis (COA) issued by an in-house laboratory AND va=
+lid Good Manufacturing Practices Certificate<br>OR</li>
+<li>Evidence of Product/ASIN enrollment or participation in a third-party q=
+uality certification program<br>Product packaging and label images<br>Certi=
+ficate of Analysis</li>
+</ol>
+</p> </div> </div> <div style=3D"border:1px solid #999;border-left:10px sol=
+id #999;padding:10px;color:#555;margin-bottom:20px"> <h3 style=3D"margin:0;=
+padding:0;color:#333;">Task Changes</h3> <ul><li>Parent task changed</li><l=
+i>Tags changed</li><li>Column changed</li><li>Person responsible changed</l=
+i><li>Start Date changed</li><li>Due Date changed</li><li>Change followers =
+changed</li><li>Comment followers changed</li></ul> </div> <div style=3D"bo=
+rder:1px solid #999;border-left:10px solid #999;padding:10px;color:#555;"><=
+span style=3D"float:right;color:#888;">(#404931)</span><h3 style=3D"margin:=
+0;padding:0;color:#333;">Task Details</h3><p><strong>Start Date:</strong> 0=
+7/21/2022</p><p><strong>Due Date:</strong> 07/25/2022</p><p><strong>Assigne=
+d To:</strong> Anyone</p><p><strong>Assigned By:</strong> Emily Freiday</p>=
+<p><strong>Priority:</strong> Not set</p><p><strong>Tags:</strong>=20
+				<span class=3D"tagHolder" style=3D"display:inline-block;margin-left:3px=
+;">
+			=09
+					<span style=3D"display:inline-block;margin-right:2px;border-radius:3px=
+;background-color:#9e6957;color:#fff;padding:1px 5px;font-size:11px;">Amazo=
+n</span>
+			=09
+					<span style=3D"display:inline-block;margin-right:2px;border-radius:3px=
+;background-color:#9b7cdb;color:#fff;padding:1px 5px;font-size:11px;">Dept:=
+ Marketing (ALL)</span>
+			=09
+				</span>
+			</p><p><strong>Task List:</strong> <a href=3D"https://pineappleproducts.=
+teamwork.com/tasklists/68380">Operations List (Brooke)</a></p><p><strong>Vi=
+ew Task:</strong> <a href=3D"https://pineappleproducts.teamwork.com/tasks/4=
+04931">Amazon Testing Report</a></p><h3 style=3D"margin:0;padding:0;color:#=
+333;">Project Details</h3><p><strong>Project:</strong> <a href=3D"https://p=
+ineappleproducts.teamwork.com/projects/30078">Revival Point Amazon</a></p><=
+p><strong>Company:</strong> Revival Point Labs</p></div> <div style=3D"marg=
+in-top:10px;color:#999;font-size:12px;">Copied To: Abigail Dewire, Aimee La=
+tuszek, Allen King, Amber Glenn, Andrea Abramowski, Aubrey Allen, Bonnie Wi=
+lson, Brett Allcorn, Brooke Whoolery, Colin Chung, DJ Gelner, Dane Slatten,=
+ Derek Madden, Edwin Campos, Emily Freiday, Gene Natftulyev, Grace Needler,=
+ Heather Beavers, Ivy Cea, Jack Nalbandyan, Jarren Scheller, Jason Aaberg, =
+John Belkewitch, John J. Leaver, Kendal LaFleur, Kim Boisvert, Kirsten Wood=
+s, Marco Shimazaki, Maria Lindley, Mike McBrien, Sam Wilder, Sean Grigsby, =
+Shawna McCartney, Sheena McLean, Stacy Schanks, Taylor Piccolo, Tessa Bende=
+r</div> <div style=3D"margin-top:10px;"><a style=3D"color:#888888;" href=3D=
+"https://pineappleproducts.teamwork.com/forgot_password">P.S. Just in case:=
+ You can reset your password by clicking here</a></div><div style=3D"displa=
+y:none;font-color:white;font-size:1px">Reply to: tw.30.163659.121@replies.t=
+eamwork.com</div>=20
+						<div itemscope itemtype=3D"http://schema.org/EmailMessage">
+						  <div itemprop=3D"potentialAction" itemscope itemtype=3D"http://sche=
+ma.org/ViewAction">
+						    <link itemprop=3D"target" href=3D"https://pineappleproducts.teamw=
+ork.com/tasks/404931"/>
+						    <meta itemprop=3D"name" content=3D"View task"/>
+						  </div>
+						  <meta itemprop=3D"description" content=3D"View task on Teamwork"/>
+						</div>
+				=09
+				</body>
+			</html>
+	=09=
+
+------=_Part_351879_1045992264.1658430332132--

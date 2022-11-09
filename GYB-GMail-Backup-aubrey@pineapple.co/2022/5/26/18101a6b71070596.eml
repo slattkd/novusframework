@@ -1,0 +1,228 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp573966ejl;
+        Thu, 26 May 2022 11:35:12 -0700 (PDT)
+X-Received: by 2002:a17:902:d716:b0:15f:179c:9817 with SMTP id w22-20020a170902d71600b0015f179c9817mr38674300ply.150.1653590112119;
+        Thu, 26 May 2022 11:35:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653590112; cv=none;
+        d=google.com; s=arc-20160816;
+        b=c0D7Y2YiA2whOBkWKYs5lI4asu6g6gkMtaKyP8WPbVEaXfLvrlMSVkmM6isDMhBAZs
+         GAbEaXP0MqKTFoCj3AxJhXGJ0o5wNjHbaa7vPIFpWfMQFRYqam6vPkRNm+5K134t6ih/
+         oOfdYTf8B64pgCmiTzEMQfv9Ze923pJj/JTraRJ/UJcE3i4goObUqpZe6oQfOeZk/k91
+         ZaVtKRokqkZsO5AOhdp3gDt6ZsSkZh/QloZ4PZNna56xIcDT3nYiW2llCa0H4FJCnbC8
+         FGWlMdngDVuHWsG8rOwXBRtkZK/HPuH1jss9+W6Hxm/E0VEjQLZvDATIuUd8f5Yp8bLG
+         ruyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=WeiKFlNEsBUKrqkcRlvk0v2Kwjc+56IO5jycNUx5nYw=;
+        b=ETterITfD/hdEXVv3cQoSkPCaOvJjNUO5Ld5Yzu26K1e3E8dugDqmG+schSixNW7yV
+         7ZPFRI3kA7PuqKrMhkNged7a8R6hhEoRqOm0FSXr+cKtMb0fQlMqyc65PG5nRedF/J6s
+         3TP97ZDVZIrYGHyFwB3uOx3+51IkunXENy5c1aQHNONZKpy0T5l7TWPRTQBn+KOlrMbP
+         dSNfDTnlqAMdjOyHIHPp9FyXS5yjfIyIvN0XvtfSANCKbHoPdkY8N+ZLq53s4GuzpfLm
+         NzZNUmMpR+UbQITSZ5vMcUFhiZoyX8xaf7zSBulFXK3WftjbCipzD1xnGcPhc2TTji/I
+         9exA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=w1od3aRW;
+       spf=pass (google.com: domain of megan@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=megan@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <megan@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u6-20020a17090a6a8600b001e0bba5bc40sor1003964pjj.19.2022.05.26.11.35.11
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 26 May 2022 11:35:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of megan@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=w1od3aRW;
+       spf=pass (google.com: domain of megan@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=megan@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=WeiKFlNEsBUKrqkcRlvk0v2Kwjc+56IO5jycNUx5nYw=;
+        b=w1od3aRWJNQfqEkOzS/Jf3tqboFCjpHMoyTU6AiD00n2++0Tk9+YTyEN7XP4qjhfjz
+         Xe9Xbbt2q3VRH5czoh++yNqgifASiXHz8M9bFIdhLPvwghZFRppYOYycSn0z6T4XgYyB
+         UseesT+hymTWZXcbqx/+cRkj8xJSrKkEBzGLxzGg/bLaDVUTw2u3JBHFgvlbW91rEKnr
+         58Q/AqBT/bC+QzKUyDrl/HlsBaS6UGQ5mbdjH6lBydxTiFDgBhDB8v13n2XaQk4DbGCQ
+         VjIHyWGqHUFsiZzFySYa1HD1CdwrD3k6uxX6t1VWaVKaZBOxwpkHwC3BM/vdxFBTY4EN
+         jSnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=WeiKFlNEsBUKrqkcRlvk0v2Kwjc+56IO5jycNUx5nYw=;
+        b=FJjYIWSGR/IpjNDMY3fWfMy3/sXKuKYZy4A65YayM58QzkR7pm244PcRt7apV5x+4q
+         gEwzl76Z6C04pWUqMnmNmZ41lROXIwy7MBIUx7CtKBOcTXWF7VHmTfG4j3ojIoL0CpZX
+         9lBEzOiQT3olGvKc1zQm5mhDML16vORhkO/pfaq12N0Pf2kQ3J3ySeIsuS1/L3fPBMZ9
+         kCbda8RLGoLile1M3aLJ7fZxgVw7O4qO0zeZiGbl9VIjDUJOB8SAUQnIOl/4W4I/iLuI
+         yfKfgNQ5m7/wK8fhmQYJ3ffmdiznevxHX5SkyC9z2dvBVbffv30MQp9w+k6bcR5r9+aA
+         LQFw==
+X-Gm-Message-State: AOAM530WZEXttpzsYJr5cPOIUcx6MpGAfIUSIvqQmkkcz0/Gr46h/Y8S
+	aKsRN0UG0+qRYa+TOCJshfLrpkeBlaJv0TjR357BN00A
+X-Google-Smtp-Source: ABdhPJzu9koamf+VTZ8aNVZtAf6LW/EfmwpqGhKlVTuimKqn4e35t3CXdXZmrOCo5Of2ype6I50iCMIUHkcmToW6Dsw=
+X-Received: by 2002:a17:90a:d3c7:b0:1e0:d55e:35eb with SMTP id
+ d7-20020a17090ad3c700b001e0d55e35ebmr3997218pjw.105.1653590111606; Thu, 26
+ May 2022 11:35:11 -0700 (PDT)
+MIME-Version: 1.0
+References: <CANNA0snQFO+hTZr-Jcb6K4QoNqAB2aTADKAtsQx43H6PE7SPmw@mail.gmail.com>
+ <CA+ceVcWogi+6hyP31nJtkK=379__K_uqGe_o3M4hdDRj+hQTYg@mail.gmail.com>
+In-Reply-To: <CA+ceVcWogi+6hyP31nJtkK=379__K_uqGe_o3M4hdDRj+hQTYg@mail.gmail.com>
+From: Megan Harnett <megan@pineapple.co>
+Date: Thu, 26 May 2022 14:35:01 -0400
+Message-ID: <CAKfB8m1n2FDW2uXLQvixswDf47KCXKUKrkz98ac=Z80eSR2mDw@mail.gmail.com>
+Subject: Re: ReNae Nieman Affiliate ID and Commission check
+To: Andrea Abramowski <andrea@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000034f3c105dfee73c6"
+
+--00000000000034f3c105dfee73c6
+Content-Type: text/plain; charset="UTF-8"
+
+This might be something like Tessa or Steph. A consultant that we pay a
+base plus commission not an Employee? MIght want to ask him that.
+
+On Thu, May 26, 2022 at 2:16 PM Andrea Abramowski <andrea@pineapple.co>
+wrote:
+
+> Is this for either of you? Or something we put in payroll, rather than
+> affiliate payments?
+>
+> ---------- Forwarded message ---------
+> From: Robert <robert@pineapple.co>
+> Date: Wed, May 25, 2022 at 11:21 AM
+> Subject: ReNae Nieman Affiliate ID and Commission check
+> To: Andrea Abramowski <andrea@pineapple.co>, Sean Chipman <
+> sean@pineapple.co>
+> Cc: Peter Perez <Peter@pineapple.co>
+>
+>
+> Good morning
+>
+> We recently added ReNae Nieman to our sales/support team, this role
+> includes commission compensation. She has been assigned affiliate id 2190
+> for commission tracking. I am not sure if you are able to add the agent to
+> the commission workflow or not, but I was pointed in your direction.
+>
+> If you need anything else from me please let me know
+>
+> Thanks
+>
+> --
+> [image: created with MySignature.io]
+> <https://mysignature.io/?utm_source=logo>
+> Robert Martin   Sales Ops Manager
+>
+> Pineapple Company
+> p:  2 <973.964.8212>07.653.1005
+> w:  pineapple.co
+> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>
+
+
+-- 
+-
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Megan Harnett   Bookkeeper
+
+Pineapple Company
+s:  megan@pinepple.co
+w:
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+--00000000000034f3c105dfee73c6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">This might be something like Tessa or Steph. A consultant =
+that we pay a base plus commission not an Employee? MIght want to ask him t=
+hat.</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_at=
+tr">On Thu, May 26, 2022 at 2:16 PM Andrea Abramowski &lt;<a href=3D"mailto=
+:andrea@pineapple.co">andrea@pineapple.co</a>&gt; wrote:<br></div><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
+solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Is this for eithe=
+r of you? Or something we put in payroll, rather than affiliate=C2=A0paymen=
+ts?<br><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr"=
+>---------- Forwarded message ---------<br>From: <strong class=3D"gmail_sen=
+dername" dir=3D"auto">Robert</strong> <span dir=3D"auto">&lt;<a href=3D"mai=
+lto:robert@pineapple.co" target=3D"_blank">robert@pineapple.co</a>&gt;</spa=
+n><br>Date: Wed, May 25, 2022 at 11:21 AM<br>Subject: ReNae Nieman Affiliat=
+e ID and Commission check<br>To: Andrea Abramowski &lt;<a href=3D"mailto:an=
+drea@pineapple.co" target=3D"_blank">andrea@pineapple.co</a>&gt;, Sean Chip=
+man &lt;<a href=3D"mailto:sean@pineapple.co" target=3D"_blank">sean@pineapp=
+le.co</a>&gt;<br>Cc: Peter Perez &lt;<a href=3D"mailto:Peter@pineapple.co" =
+target=3D"_blank">Peter@pineapple.co</a>&gt;<br></div><br><br><div dir=3D"l=
+tr">Good morning<div>=C2=A0<br><div>We recently added ReNae Nieman to our s=
+ales/support team, this role includes commission compensation. She has been=
+ assigned affiliate id 2190 for commission tracking. I am not sure if you a=
+re able to add the agent to the commission=C2=A0workflow or not, but I was =
+pointed in your direction.=C2=A0</div><div><br></div><div>If you need anyth=
+ing else from me=C2=A0please let me know</div><div><br></div><div>Thanks</d=
+iv><div><div><br></div>-- <br><div dir=3D"ltr"><div dir=3D"ltr"><table cell=
+spacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-si=
+ze:13px;border-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);fon=
+t-family:Lato,sans-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=
+=3D"padding:0px 9px 0px 0px;vertical-align:top"><a href=3D"https://mysignat=
+ure.io/?utm_source=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><im=
+g alt=3D"created with MySignature.io" width=3D"100" src=3D"https://img.mysi=
+gnature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D15947749=
+86" style=3D"width: 100px; border-radius: 15%;"></a></td><td valign=3D"top"=
+ style=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;border-t=
+op-color:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-c=
+olor:rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:coll=
+apse;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05p=
+x;color:rgb(0,0,1)"><tbody><tr><td><span style=3D"font-stretch:normal;font-=
+size:1.2em;line-height:normal;font-family:Verdana,Geneva,sans-serif;color:r=
+gb(70,208,255)">Robert Martin</span>=C2=A0<span style=3D"font-family:Verdan=
+a,Geneva,sans-serif">=C2=A0=C2=A0Sales Ops Manager</span></td></tr><tr><td =
+style=3D"padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-ser=
+if">Pineapple Company</div></td></tr><tr><td><span style=3D"font-family:Ver=
+dana,Geneva,sans-serif;color:rgb(70,208,255)">p:=C2=A0</span>=C2=A0<span><a=
+ href=3D"tel:973.964.8212" style=3D"color:rgb(0,0,1);font-family:Verdana,Ge=
+neva,sans-serif" target=3D"_blank">2</a>07.653.1005</span></td></tr><tr><td=
+><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)=
+">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-serif=
+"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_bl=
+ank">pineapple.co</a></span></td></tr><tr><td><span style=3D"font-family:Ve=
+rdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span s=
+tyle=3D"font-family:Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor,=
+ New York, NY 10019</span></td></tr></tbody></table></td></tr></tbody></tab=
+le></div></div></div></div></div>
+</div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><span style=3D"color:rgb(136,13=
+6,136)">-</span><br style=3D"color:rgb(136,136,136)"><div dir=3D"ltr" style=
+=3D"color:rgb(136,136,136)"><div dir=3D"ltr"><div style=3D"font-family:Verd=
+ana,Geneva,sans-serif"><table width=3D"500" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-colla=
+pse:collapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><t=
+d width=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-al=
+ign:top"><a href=3D"http://s3.amazonaws.com/pineapple.co/pineappleco.gif" s=
+tyle=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"created with MySign=
+ature.io" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a=
+-4b540c36f8aa.png?time=3D1595444125" width=3D"100" style=3D"width: 100px; b=
+order-radius: 15%;"></a></td><td valign=3D"top" style=3D"border-left:2px so=
+lid rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,208,255);bor=
+der-right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding=
+:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" s=
+tyle=3D"border-spacing:0px;border-collapse:collapse;line-height:1.4;font-fa=
+mily:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><=
+tr><td><font face=3D"Verdana, Geneva, sans-serif" color=3D"#46d0ff"><span s=
+tyle=3D"font-size:13.26px">Megan Harnett</span></font>=C2=A0<span style=3D"=
+font-family:Verdana,Geneva,sans-serif">=C2=A0 Bookkeeper</span></td></tr><t=
+r><td style=3D"padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sa=
+ns-serif">Pineapple Company</div></td></tr><tr><td><span style=3D"font-fami=
+ly:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0<a=
+ href=3D"mailto:megan@pinepple.co" target=3D"_blank">megan@pinepple.co</a><=
+/td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color=
+:rgb(70,208,255)">w:=C2=A0</span><span style=3D"font-family:Verdana,Geneva,=
+sans-serif"></span></td></tr><tr><td><span style=3D"font-family:Verdana,Gen=
+eva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"f=
+ont-family:Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York=
+, NY 10019=C2=A0</span></td></tr></tbody></table></td></tr></tbody></table>=
+<br></div><div><span style=3D"font-family:Verdana,Geneva,sans-serif"></span=
+></div></div></div></div></div>
+
+--00000000000034f3c105dfee73c6--

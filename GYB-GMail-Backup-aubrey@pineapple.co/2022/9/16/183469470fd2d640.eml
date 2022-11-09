@@ -1,0 +1,204 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:4541:0:0:0:0 with SMTP id s1csp1116597ejq;
+        Fri, 16 Sep 2022 06:54:37 -0700 (PDT)
+X-Received: by 2002:a05:6402:5c9:b0:446:fb0:56bb with SMTP id n9-20020a05640205c900b004460fb056bbmr4154013edx.173.1663336477154;
+        Fri, 16 Sep 2022 06:54:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663336477; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VWgJoXQcnjA7bpx/uYQQ0qj3YhijMLD49wTWJDMppNeTzYI2vUwj9BYD4+pifGNyKx
+         RM2SjLUUn1QcWU54+tswMzjFQtjzBa91uXfhFtYO7XuOvHMPnuoyo319jMZUi+jVJo+G
+         Ond2KRjbhVThG6eRMHJE5wnXitDB8MFQW+TOLTf7fNDLRStceADtfaK5Q+gNoO2NsoxJ
+         bqaKagO0ME1GT9IziVwOknru0/H0eOSYMep56ZIg6nWB2Tqa4ZpKjWyA47EFIjMWDbfJ
+         4uF+1tAf+/fbAVjwf3ZiRYH20c2bQ9hIwQ5GWHzb50e3ZMi/1z1Sf8kovBN1NfnI3/L8
+         CgZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=swn0k+BYG5z3o3J+IItQG9IWoDD/FX4OSNc2l2Iu2rM=;
+        b=uuZtoo1JwoSyJQLWc7MIWoYV8At+vI5IVPNOjwBGKFjAXrfAALEJYwRoCkXIksjcKf
+         jnDjMfzQ4UTOrI2jVtzl+qPrc36UACYS8rawMpEL8BVw7taqa2uJ+arD4Xa3MP52Tqgb
+         CMMtCNE76H+MlXAXlzYenWs3E7j1ZqSSBYI6VhU4IONhXa1IlkAyJlGMBLzLDgMSiEdf
+         ABdR/8s8hSUlp1D1WMNr1YBXS4aAksuzCXJw3aDlWtOpANqlmS9LpTliUu9WMKnJeQL1
+         /D6bYxXbOxg7NRshP0zeyoKoxu8VehWtBKWZPoztt9x39n6z3pZZkULYu6dqIgrnl+7Z
+         zJUw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=zZJ3XBa9;
+       spf=pass (google.com: domain of carlos@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=carlos@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <carlos@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id xh1-20020a170906da8100b007809e3ac3fdsor994083ejb.105.2022.09.16.06.54.37
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 16 Sep 2022 06:54:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of carlos@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=zZJ3XBa9;
+       spf=pass (google.com: domain of carlos@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=carlos@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date;
+        bh=swn0k+BYG5z3o3J+IItQG9IWoDD/FX4OSNc2l2Iu2rM=;
+        b=zZJ3XBa9tKP3XW64Q7fJlr317FIHUs9aZ0fjzzha0ahOvd6xaAk6qzkiTSMm58JqwX
+         tPAmO9NUaHxiIVpSmBT3XU3JB6uG1RTyb6chJyPx4CL5sFsYB6QzViJMRPqOF572U76A
+         s8CaxDmJhYf0s8WWrcU/0DW9aQsnrJ/X9IcxJCAOmgB2yucQNOe/R/0nwa7aVHQxHYsN
+         wxCnA9BC/bNxWHH0FW9Q0Cb0BQ6WPErkRTCMVxoUaGro1J9XIiwR9AKUW0bqK5y6mzAG
+         0DtaIaoDIMfxg9pqSiAQjm82i7+qoiJ8jaisPZ5cAwQw54NRWWrK5kx9cHCb5FFTOfXB
+         VZpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date;
+        bh=swn0k+BYG5z3o3J+IItQG9IWoDD/FX4OSNc2l2Iu2rM=;
+        b=MFLW6FrX1BIYqkhxRVR5kpS0JCmbVnCtA8Y7719pjZln1zIf74bvtRBsAucDwf/5xw
+         MtxNmfn0e9z+mLpSz1/KBoKuY9JpTDSnbonuOixLb7uUrM4PIEMthGRf3NJ2WMtTSvKZ
+         K5HtUBd6OTx3yrewBaoOVy1ocSnLC6d2Bpa8AYuHrc/35jXvAI7ZHGMhwB2LlmsJTl8z
+         vGXhayKsmrBjDXY1Q3tlxo3p1THyj3B+LcPK4XPpnbejz3h/8cEoHRDWLQn+c/eLcNmc
+         /v75n2CV64zfe50v6hLYbS6IyTYi4SrqXSni5BKriR4XXdPZO7JqkCQBbGKyVnvb1L7j
+         LN0Q==
+X-Gm-Message-State: ACrzQf36F66eNqElomqD1pSfh8GxyR8CWXojNS/QqQ0VYmX6AcbKw3Tq
+	iJZ36dgK8UNTuEymu+78xm6c3qeZY6bVesTYMVS8OmXVB6gukvz5
+X-Google-Smtp-Source: AMsMyM6Nx9xY9kH3o6jxGvJYoNUdXWwWh/HktUKvRx9Mb0k/FMlXFS/2lNTqFthyYaPXJAwtoKEo8l83NIfOqZWYpE8=
+X-Received: by 2002:a17:906:770d:b0:73c:a08f:593c with SMTP id
+ q13-20020a170906770d00b0073ca08f593cmr3819539ejm.182.1663336476433; Fri, 16
+ Sep 2022 06:54:36 -0700 (PDT)
+MIME-Version: 1.0
+From: Carlos Bowden <carlos@pineapple.co>
+Date: Fri, 16 Sep 2022 08:54:25 -0500
+Message-ID: <CAG9=3yyga448B2o=hH+iQHD+4bQ=8dMiDQ_UGTiFxmpJ8cr5+w@mail.gmail.com>
+Subject: Sales & Profit Report for August
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000d201ac05e8cbb355"
+
+--000000000000d201ac05e8cbb355
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Aubrey,
+
+Is your Sales & Profit Report up to date through August?
+https://docs.google.com/spreadsheets/d/1r3xvwLAamChCJPwhlFza0OnQBOkKWx-luJ8FZaDI7Do/edit#gid=0
+
+If not, can you complete it today?
+
+Thank you for doing this report, it is very valuable.
+
+Carlos
+
+-- 
+
+
+
+*Carlos Bowden*
+Chief Financial Officer | pineapple.co
+
+[image: Photo]
+
+E: carlos@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--000000000000d201ac05e8cbb355
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Aubrey,<div><br></div><div>Is your Sales &amp; Profit R=
+eport up to date through August?</div><div><a href=3D"https://docs.google.c=
+om/spreadsheets/d/1r3xvwLAamChCJPwhlFza0OnQBOkKWx-luJ8FZaDI7Do/edit#gid=3D0=
+">https://docs.google.com/spreadsheets/d/1r3xvwLAamChCJPwhlFza0OnQBOkKWx-lu=
+J8FZaDI7Do/edit#gid=3D0</a></div><div><br></div><div>If not, can you comple=
+te it today?</div><div><br></div><div>Thank you for doing this report, it i=
+s very valuable.</div><div><br></div><div>Carlos<br clear=3D"all"><div><br>=
+</div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"g=
+mail_signature">=20
+
+
+<div>
+
+<table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500p=
+x" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id #05385f" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Carlos Bowden</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Chief Financial Of=
+ficer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">E:</span>
+			<a href=3D"mailto:carlos@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:#101010" target=3D"_blank">carlos@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">
+					<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">A:</span>
+					<span style=3D"font-size:9pt;color:#101010">13423 Blanco Rd PMB 8024</=
+span><span style=3D"font-size:9pt;color:#101010">, </span>
+					<span style=3D"font-size:9pt;color:#101010">San Antonio, TX 78216</spa=
+n>
+            </p>
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+
+
+
+
+
+
+            </p>
+        <p></p></td>
+    </tr>
+
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+</div></div></div>
+
+--000000000000d201ac05e8cbb355--

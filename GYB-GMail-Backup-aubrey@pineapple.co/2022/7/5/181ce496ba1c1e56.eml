@@ -1,0 +1,161 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp2534992ejq;
+        Tue, 5 Jul 2022 05:15:27 -0700 (PDT)
+X-Received: by 2002:a17:903:2c2:b0:168:e323:d471 with SMTP id s2-20020a17090302c200b00168e323d471mr40920561plk.147.1657023327130;
+        Tue, 05 Jul 2022 05:15:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657023327; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hmzTeB86jpIAx/p1Vh0vE0RDVhIcbiY4amN4614kB8Nw7gRZzXZJuF+PCdP7GefBHQ
+         BV6lRvM+08QTi3AHUWA1CN9QFIhFWkVVB1KVz11ooWgPj/eBSSEMLrZz8fuGW9vR0nJx
+         XuwLllY6MiQGbG8cePK6rs1o/Zfd+KY8rpr5gScr0+NDx5ZNX7lOGt4Gcw8BsIgjCx29
+         h2c9NWO5MGuvY2nwYzaOVao9K1TA31/YiGspMKMA4FNaldmVXdV+FHEfww8GpqtSx+En
+         SttOwCgO27fOEO4sLkZ2Lafofb1h5Ku19/saL7hLmIOuI0gjeTiV9Sfa+yyAe3dIHPOB
+         54eg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=eLE9WHr0zeLOaD8PoOuYf7snU6zEol+cP5VpSWMwBYo=;
+        b=TvBTIqI8F86bHGhpG4qUZua1OL/ph777jxddI/NX/19GOd6RWcrE6ZctmRoYwC0Xm4
+         DSpsVKjNsYtkslMr8AywiInJI80kogkJA/nxVrxm7r2Mknrfh5/1eEOKFs9KfQTYdETA
+         Am+zdIMm7rXEx2qjcARqw4UUfI4czB4U3biOR0TmVhhsdQjK0/NiDExHjb4+IxNxSd+C
+         0G+Tj+UVKT9lcqHhGZRP+Q0VYeN4f4BEAHI3o7g3oV0SrLll7W6tXZ3Ha32igyG73TBx
+         8diONHiC7qpNoxCf3/rgolSqiggXMtLpuQjP4YVZdTYTMZyBd3IDk8Cl3tTPQEgkSS+F
+         DEyg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=FcCd7dfi;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x10-20020aa79aca000000b00525525874bfsor14744239pfp.94.2022.07.05.05.15.26
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 05 Jul 2022 05:15:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=FcCd7dfi;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=eLE9WHr0zeLOaD8PoOuYf7snU6zEol+cP5VpSWMwBYo=;
+        b=FcCd7dfizuR7XkikFuqvl9koWaLY6s2AjlqNrmRYla7Nq0r+kRZXox8SrMyuiedFa3
+         T4Z8mZkOB/Kjt/pgfH5AD6x1M8T318aZ51MvLJF3/L09mklGW40/z1Z0j3/hvOB8M+HU
+         UDlVOEvIIx0mVPe+Ox+oXc68f02EFA9C87IH18HtlGHK2Ld5n9p0i0kkOImRTq2I/zdF
+         xbd5/Oh/MuNDYlg8HhSjdNoDgNj5IONCdZ7a61bop7odszYIvirp4tyeQ8pPZt7sFjeH
+         N2Sh6ann7fs3IQtCGgmEMQdvLltONRbn3omoB1m5Afrbbt3eyGYeCazO10RtpgTrDRLO
+         jeEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=eLE9WHr0zeLOaD8PoOuYf7snU6zEol+cP5VpSWMwBYo=;
+        b=KVc1VCeIJOVqRdxHepVbHg+n1LtCytxVOwbjQgj7cVNeft4UvxD7d2gG+sywDouOWb
+         I3HWBqZ2Qv2s1bk+zQIMAjqTK/0zja5rAYZGW3V5qk5ywa74paQK1kAIFI5pcwiNnmGQ
+         /DDE9/flRqD0PKc+WNi2XX9+v0/ZK/0uJnnG4mD9dba0NB1nzY5BvhGounuBFP0JmbxJ
+         AulIa9QA8LP3KDrwbehh2d2KVHCaq6wx5btNT6ErXMxEUSV6+c1JFpln5i6w7JTaK2nc
+         1BiGl91HEg6YYcTIpJo0UpC0qjeiqfM+wiEor6Xf5nJndfDsahJSE7Wh0a3DEotQdpmV
+         jWsw==
+X-Gm-Message-State: AJIora+lL8HOw3RTpeIIv+fuhsHDRhZH4DSsICge5nRYZal29rZYptNR
+	Adc8/GENJRZijzFlsizeICySTlWdqfdEravDywsLSCyv30xCQsJN9lQ=
+X-Google-Smtp-Source: AGRyM1vp1GIdSM0BGVYGkKsvd03z00Nam/qNji249BVhwsBTC5hc2PspLFdBwsXVzhAQc1uVayz2Ivwz+zIraSVbKE0=
+X-Received: by 2002:a05:6a00:2493:b0:525:a822:d736 with SMTP id
+ c19-20020a056a00249300b00525a822d736mr41407275pfv.51.1657023326228; Tue, 05
+ Jul 2022 05:15:26 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_QVQpcDoArmK07rssgfMeShLachfPU6bHG5K7i6AFqOLQ@mail.gmail.com>
+ <CAPvy5Ocp2WFt-pEhedDCxTQz4ODWEkwAcRP-gVZYn2j7XDp8dA@mail.gmail.com> <CAHbmDP9O-A5p0pAXRAmahMdLHgFqpAG39ZRHWsO0uZBfOEb0rw@mail.gmail.com>
+In-Reply-To: <CAHbmDP9O-A5p0pAXRAmahMdLHgFqpAG39ZRHWsO0uZBfOEb0rw@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Tue, 5 Jul 2022 15:15:13 +0300
+Message-ID: <CALCR5_TGzuJEFFkoW2h_UFMWRs4RnHWpS9ff_Sqo_6kPoN2zBA@mail.gmail.com>
+Subject: Re: Other Important thing - Average Monthly Commission/sale
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Ryan Alarid <ryanalarid@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000beae7a05e30dce08"
+
+--000000000000beae7a05e30dce08
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey are you able to execute my requested report in my initial email
+using data from cake?
+
+Happy to get on a call or answer any questions you have.
+
+On Tue, Jul 5, 2022 at 3:03 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Ryan,
+>
+> I'm in the Central time zone.  Let me know what time might work for you so
+> we can chat further about this!
+>
+> Thanks!
+> Aubrey
+>
+> On Sat, Jul 2, 2022 at 11:33 AM Ryan Alarid <ryanalarid@pineapple.co>
+> wrote:
+>
+>> Aubrey,
+>>
+>> I might need your help with this.
+>>
+>> I will be traveling internationally, so my time zones are changing
+>> depending on the day. What time zone are you in so we can connect?
+>>
+>> Ryan
+>>
+>> On Sat, Jul 2, 2022 at 3:51 AM Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>>> Hey Ryan, I've ccd Abrey if you need help.
+>>>
+>>> I need a report that lists the overall commission paid out to an
+>>> affiliate by month, for the last 12 months.
+>>>
+>>> I want to see if the average cost we're paying out is going up.
+>>>
+>>> Would ideally want this by Wednesday EOD.
+>>>
+>>
+
+--000000000000beae7a05e30dce08
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Hey Aubrey are you able to execute my requested report in=
+ my initial email using data from cake?</div><div dir=3D"auto"><br></div><d=
+iv dir=3D"auto">Happy to get on a call or answer any questions you have.</d=
+iv><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Tue, Jul 5, 2022 at 3:03 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@=
+pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;bo=
+rder-left-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)">=
+<div dir=3D"ltr">Hi Ryan,<div><br></div><div>I&#39;m in the Central time zo=
+ne.=C2=A0 Let me know what time might work for you so we can chat further a=
+bout this!</div><div><br></div><div>Thanks!</div></div><div dir=3D"ltr"><di=
+v>Aubrey</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Sat, Jul 2, 2022 at 11:33 AM Ryan Alarid &lt;<a href=3D"=
+mailto:ryanalarid@pineapple.co" target=3D"_blank">ryanalarid@pineapple.co</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:=
+1ex;border-left-color:rgb(204,204,204)"><div dir=3D"ltr">Aubrey,<div><br></=
+div><div>I might need your help with this.=C2=A0<br><br>I will be traveling=
+ internationally, so my time zones are changing depending on the day. What =
+time zone are you in so we can connect?</div><div><br></div><div>Ryan</div>=
+</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+On Sat, Jul 2, 2022 at 3:51 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pi=
+neapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft-width:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb=
+(204,204,204)"><div dir=3D"ltr">Hey Ryan, I&#39;ve ccd Abrey if you need he=
+lp.<div><br></div><div>I need a report that lists the overall commission pa=
+id out to an affiliate by month, for the last 12 months.</div><div><br></di=
+v><div>I want to see if the average cost we&#39;re paying out is going up.<=
+/div><div><br></div><div>Would ideally want this by Wednesday EOD.</div></d=
+iv>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div></div>
+
+--000000000000beae7a05e30dce08--

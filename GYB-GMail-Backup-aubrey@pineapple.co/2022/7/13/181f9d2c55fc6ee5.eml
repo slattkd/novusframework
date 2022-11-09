@@ -1,0 +1,1984 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp645632ejb;
+        Wed, 13 Jul 2022 16:09:09 -0700 (PDT)
+X-Received: by 2002:a05:6a00:8cf:b0:522:93a6:46e9 with SMTP id s15-20020a056a0008cf00b0052293a646e9mr5600313pfu.62.1657753749007;
+        Wed, 13 Jul 2022 16:09:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657753749; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GcqGPASZUQ9AegRSOfCoM+661d4tSebBSdr6yxRNweYCPgUG31mO9/MlIQE249JrnM
+         ItLAnpw5ZoTkMHqHiJc7OI9ZUSw207KlnknTq4MiXlI5ERWKUgtLCGvYzvytzLYxoycX
+         1cUmZvTrNg85npMLH5u/UcDH+oxetVMTMabCBtH10qz5xbMJwVOCS1inlaLDRkvfgmJh
+         TnD86isYYSjjHPZREXq9L/ZmmijTn3xPG0BLAeKrLKzF+g7HTndjW9c9lI5AR/yTx7Z5
+         htYmIaEo+52/vQC7Fwe3dhP8H/172uwcUGT26Rq/cVsrDCS2zJaHEl5Zkr9gMRZWNMr6
+         ycLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=JetJSh2R74sysgYaLVK2lM/AD+e0MvMHCAUC9EeQKPU=;
+        b=LvxlUUXZ4cDGCYtNNAskNWxQm8e+eQLm95RYiw+O2w8E0xYI2NM5e5IFGKnP5ukFBw
+         /454h+5xo+qI203cFcmzIC1jeSBx7Z+6h69kKxjb88EMx9nFZeLBp3HjyCpl3ZXxKl9S
+         serkm0PAoR4fI834Qdj1Z2FrtdkITY6id/ksc0MUW0qmoCGkHYqYrLZe7q0fMfe9nzdc
+         EG6k8G8NI1YrhaUv95cgbry+sGFy7qlMZHqHdeYjQRfGS/co28cVgTHmr0su/D2itmlD
+         GVxlwcThHZAgAlZP/noTuWyvWK1tGpKM7uO+UrPBGkXJCdcB1Zcn4ziqvprO7qVhhzAA
+         vR8w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=NdP9boDZ;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n23-20020a635917000000b0040cb7128565sor5637233pgb.63.2022.07.13.16.09.08
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 13 Jul 2022 16:09:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=NdP9boDZ;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=JetJSh2R74sysgYaLVK2lM/AD+e0MvMHCAUC9EeQKPU=;
+        b=NdP9boDZxRC+xTOJSsikrCJqT3YZfIC5RxA/soSKL6AQxe26g2NkC84JizML90kkQX
+         jCtG68NCJGD3ogi9bcs1S6kyF3pTDcJ8XDYoEnq6KQbbBuBrXvY9vVCfZjL6lYxb8WYp
+         sYb1S9EN/stLZLhAkANez+qdfGGWIQImPzAclhcSNJJNWlf4+ETGwkz2TC+TiUKrFu27
+         U4mFCq48dgPuW8FRUrciNW1FzJkroME8KAM8SZoU5/skL+woZufpQyuo1pfM39s3j9WD
+         6ZZGBO3eluCtibA5VJ+/e1FxLHajS1UFd8nkL81BvoEZzl3mnODfcB1dlvmWe4ljQU/c
+         bZpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=JetJSh2R74sysgYaLVK2lM/AD+e0MvMHCAUC9EeQKPU=;
+        b=5JtJleflWx3hp3UfhCpaU6ra4mlWEqcdlweuC6ywBQYmM3SFbywyPSg9uzZoT9P9ib
+         gQD7vrBjFSK//q27w4I6ojCJLzMVPrDVPSQPp0PmVltZeDDj7lJKG7pGDBXt7LO/CN2p
+         xlqIGwS8yvq3bCyHKtRTrZ5Y8mbyNQ7pJRtkz0ngCRKzZ1Jmeyb8orpNdlwXLeWi9/L3
+         YWv5VxKj/lbFD2AeaegejAWDNGaAa2OL9nWSmFXua9mSmc7f8V6NiWz55RJCDTZdrAS3
+         QCg/p800AHnA0xfiDYDnBUfGvnj4jgTlrDrRjzMl/mKNJLMLkWbBkVkzRv7ly2kpA/WG
+         NztQ==
+X-Gm-Message-State: AJIora9/krd9SHnl1KaD1yUsuxWNtrJyLcmHS1J+j8QKzfh9mZj/9p8E
+	578UgoqWhDJwcF1IfZBhFBfSiec79bhDFb7YisaQbc9oJbXiBzMA
+X-Google-Smtp-Source: AGRyM1uFCwAP5uQSj6bN9S7woqX/91pDirD4eA+3HxPmt0PdFkNfkmFzlWsj3LdzkFy5BdVVY6wfyIwwYtQ2G+c2oqI=
+X-Received: by 2002:a63:5366:0:b0:411:415a:5888 with SMTP id
+ t38-20020a635366000000b00411415a5888mr4819431pgl.286.1657753747972; Wed, 13
+ Jul 2022 16:09:07 -0700 (PDT)
+MIME-Version: 1.0
+References: <MW2PR12MB2362FD06A3F82FC305460E51DC839@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <MW2PR12MB236265710107CA2A82DF004DDC829@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <CALCR5_QtsXk8OhfE-GQDq69EwOTXe4AkjKv=PHhe+B4pSEO79g@mail.gmail.com>
+ <CAAs51=_HQ6RRSBhsEcBX4rXDYYaW2_+T=vZTyqjGV-jn-LbF8A@mail.gmail.com>
+ <CALCR5_RggRM6KfO9N8Omg=ODPPmjSDHJE4XVR87YoRNr6FUZZg@mail.gmail.com>
+ <CAAs51=-mjzcAb0cdjTTnigfPjOS4A3s5_z2k9f13wxTiqUcrxQ@mail.gmail.com>
+ <MW2PR12MB2362D627AD30A4DFC461F704DC829@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <CALCR5_Tj4+viKws4L_AgLLy7_o0VwxUWaa7bk+HKeuPvQ-5hUw@mail.gmail.com>
+ <MW2PR12MB236215D4AEB934C6C9BFBF36DC859@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <CALCR5_T9Kqo42AXapSdE29Vi2WwA7xzpOVRHdC3trhndym+SXQ@mail.gmail.com>
+ <DM5PR12MB23596E86D4EC1C3869D7A6E8DC849@DM5PR12MB2359.namprd12.prod.outlook.com>
+ <CALCR5_T9vKjsgAU0HaW2LcagmaxMKtF+8yrGsRKTTjp-PeU40g@mail.gmail.com>
+ <MW2PR12MB23623EBDBA71E6C4A6540826DC879@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <CALCR5_SaGdV66aDf7UEpdvdgz+i9DTsA20N+fxmuPn8nbs1NAg@mail.gmail.com>
+ <CAHbmDP_A2D4U13B8Cm+K0kPMHSPbbFUOT8C9hvAc6U66e6Efgw@mail.gmail.com>
+ <CALCR5_ROO5NjQxEvHzQG8rdf19LYzQGThPmpJxqkPMgpJ0wujw@mail.gmail.com>
+ <CAHbmDP91RNJdYrLQU2QcRzjxnnAqascUaTcwkf+UR-pgaf=dsw@mail.gmail.com>
+ <CALCR5_Sb4k0EfQHKCG+9ixc2+4rjM=ip2QG+gnGfRbnfBMe-BQ@mail.gmail.com> <CAHbmDP-M7Q3124RHYCE+kKrUpxj=ZVaPP5rQtrDLMMMpS20vtQ@mail.gmail.com>
+In-Reply-To: <CAHbmDP-M7Q3124RHYCE+kKrUpxj=ZVaPP5rQtrDLMMMpS20vtQ@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Wed, 13 Jul 2022 19:08:56 -0400
+Message-ID: <CALCR5_SMPmXSt0M1w4GB6nV4VUNq9mdDmTg188-vdb6nZFAmkw@mail.gmail.com>
+Subject: Re: Attached Example of Differences in Reported Sales: High Priority:
+ Call needed with your finance team and Enrich Marketing-Rengel-Second Marsh
+ Consulting finance team
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000004606cc05e3b7df8b"
+
+--0000000000004606cc05e3b7df8b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Oh so did we overpay? Or at least overestimate payments?
+
+If so, please let me know how much.
+
+This is critical info to the business.
+
+On Wed, Jul 13, 2022 at 6:53 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Of course!
+>
+> My summary of the key takeaway is this: Due to our changes in product
+> categories in Sticky, there were some products in the Info Product funnel
+> that were not being properly captured by the KNIME routine in my previous
+> report.  I have fixed that issue but in doing so, revealed that there wer=
+e
+> also some products in the "SNM-Enrich" category that were previously bein=
+g
+> counted as Enrich products but should not have been.
+>
+> That explains the discrepancy with Gross Revenue for those two funnels.
+>
+>
+> On Wed, Jul 13, 2022 at 5:43 PM Brett Allcorn <brett@pineapple.co> wrote:
+>
+>> Can you give me a bit of a summary here?
+>>
+>> Like what's the general message here?
+>>
+>> That there is a mistake in the Knime routines that you need to fix?
+>>
+>> Just want to know what we're basically telling them.
+>>
+>> On Wed, Jul 13, 2022 at 5:09 PM Aubrey Allen <aubrey@pineapple.co> wrote=
+:
+>>
+>>> Hi Brett,
+>>>
+>>> I wanted to send this your way before I shared it with Robert in case
+>>> you had any questions.
+>>>
+>>> When calculating the monthly Enrich Payouts, I employ a KNIME routine
+>>> that Greg trained me to use.  In a nutshell, the routine uses Sticky's
+>>> "Product Category" to lump sales into further subcategories-- first,
+>>> whether they are or are not Enrich (for this routine, we're just lookin=
+g at
+>>> the Enrich products specifically); and second, if they are Enrich, it p=
+uts
+>>> them into 3 funnels, Enrich Montezuma, Enrich Info Products, and Enrich
+>>> Flavo Trim.  This routine worked as it was meant to until we started to
+>>> change our Product Category naming conventions in Sticky a few months a=
+go.
+>>> While the changes to the names are necessary, I don't think Greg foresa=
+w
+>>> the effects this would have on the way this KNIME routine works.  When =
+I
+>>> tried to perform the routine as I had in previous months at the end of =
+May,
+>>> I ran into trouble and could tell that the outputs were not correct.
+>>> Namely, I was getting negative numbers for revenue, and therefore also =
+the
+>>> payout.
+>>>
+>>> With that said, I've been working since then to correct the routine.
+>>> I've met with Brooke several times and she has been an immense help.
+>>> Unfortunately neither Mike nor Jarren are familiar with this
+>>> routine/report, and it will require the most work to replicate on a
+>>> different platform (according to what Greg told me previously).  I was =
+able
+>>> to solve the Product Category naming issue and get things into the righ=
+t
+>>> funnel, and I also added a new funnel/started reporting on Genetic Peak=
+,
+>>> which hadn't been incorporated yet.  However, the Gross Revenue for the
+>>> Enrich Montezuma & Enrich Info Products was coming up as much lower tha=
+n it
+>>> was previously.
+>>>
+>>> At the time, I was unsure of how to resolve this issue entirely, but
+>>> Bob's email gave me an idea of how to check for "historical" data in
+>>> Sticky.  Let me explain this a little further: When the Product Categor=
+y in
+>>> Sticky changed, it changed for all sales, going back to 5/2020.  This s=
+eems
+>>> obvious and makes sense, but when I wanted to see if there were any
+>>> products in what was formerly Product Category "Male Enhancement - SNM =
+-
+>>> SMC", I can't tell, as those have all changed to their new "SNM-Enrich"
+>>> names.  By manually looking through old exports of Sticky data from 202=
+0
+>>> and 2021, which were sent to me by Greg when I first started, I was abl=
+e to
+>>> see that some PIDs were miscategorized either before or after the chang=
+ing
+>>> of our Product Categories.
+>>>
+>>> For example, the reason Info Products' revenue was appearing so much
+>>> lower in May than it had in February, was because PID 469, "The Pursuit
+>>> Institute Rebill", had been placed in the "Gotham - Archived" category,
+>>> rather than the "Info Products - GDC - SMC" category it needed to be in=
+ for
+>>> the KNIME routine to recognize it and put it in its appropriate funnel.
+>>> Therefore it was being excluded from the funnel and its revenue was not
+>>> accounted for.  Now that PID469 has been added back to that category,
+>>> you'll see in the attachment that the monthly Gross Revenue values are =
+back
+>>> to what Bob was referencing.
+>>> In the opposite direction, I found that there were some products that
+>>> were placed in the old "Male Enhancement - SNM - SNMC" category (which
+>>> becomes the Enrich Montezuma funnel in the routine) that are in fact *n=
+ot
+>>> *Enrich products.  For example, there were times in 2020/21 that
+>>> Volumizer and Testosterone Booster were in that category erroneously.
+>>> Moreover, Become Supernatural (specifically PIDs 616 & 617) were being
+>>> attributed as Fran products when in fact they are not.  Gene was able t=
+o
+>>> confirm this for us today and Brooke changed all the products to their
+>>> appropriate category so that I could rerun the routine.
+>>>
+>>> The attachment I have here is a revised monthly Gross Revenue for all 4
+>>> Enrich product funnels.  Genetic Peak and Flavo Trim were being properl=
+y
+>>> accounted for already, but now Info Products has been restored to its
+>>> former total with all of the products properly categorized.  I imagine =
+that
+>>> Bob is most concerned with Info Products specifically, so I'm happy to =
+say
+>>> that issue has been resolved.
+>>> Montezuma's Gross Revenue, however, is indeed slightly lower than it
+>>> once was calculated to be.  As far as I can tell with the data I have
+>>> available, what is attached should be accurate now that those
+>>> miscategorized products have been removed.  While I can't explain exact=
+ly
+>>> how or why they were in the wrong place, I think these issues all just
+>>> speak to the inefficacy of, and potential for error with, KNIME routine=
+s.
+>>> [If you would like me to send you the old Sticky export with the specif=
+ics
+>>> of which PIDs were miscategorized previously as an example, I can do th=
+at.]
+>>>
+>>> If you have any questions or would like to discuss further, let me know=
+.
+>>>
+>>> Thank you!
+>>> Aubrey
+>>>
+>>> On Tue, Jul 12, 2022 at 5:00 PM Brett Allcorn <brett@pineapple.co>
+>>> wrote:
+>>>
+>>>> Sounds good.
+>>>>
+>>>> On Tue, Jul 12, 2022 at 5:55 PM Aubrey Allen <aubrey@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Hi Brett,
+>>>>>
+>>>>> I just wanted to let you know that I've read this thread between you
+>>>>> and Robert and I am conducting further research so that I can adequat=
+ely
+>>>>> answer his questions.  I'll be able to respond tomorrow.
+>>>>>
+>>>>> Thanks!
+>>>>> Aubrey
+>>>>>
+>>>>> On Mon, Jul 11, 2022 at 6:29 AM Brett Allcorn <brett@pineapple.co>
+>>>>> wrote:
+>>>>>
+>>>>>> Aubrey, since you compile these reports perhaps you could comment on
+>>>>>> this for Bob?
+>>>>>>
+>>>>>> My guess is gross sales of $7K through Feburary is correct and that
+>>>>>> $6.5k through May is incorrect.
+>>>>>>
+>>>>>> On Mon, Jul 11, 2022 at 1:27 PM bob rkgconsultinginc.com <
+>>>>>> bob@rkgconsultinginc.com> wrote:
+>>>>>>
+>>>>>>> Brett,
+>>>>>>>
+>>>>>>> The most recent report was sent by* you*. (To date, Mark has not
+>>>>>>> sent a breakdown.)
+>>>>>>>
+>>>>>>> To make it clearer, attached are two breakdowns, both provided by
+>>>>>>> you and lightly edited by me. The first one (file name ends 2022_M0=
+2) shows
+>>>>>>> the gross sales report for all products for each month since May 20=
+22.
+>>>>>>>
+>>>>>>> You will see total sales since May, 2022 of all products are
+>>>>>>> *$7,049,000.*
+>>>>>>>
+>>>>>>> The second report, (file name ends 2002 M05_latest) is the same
+>>>>>>> report as of May 31. At row 23 in columns G, H and I,  I provided t=
+he
+>>>>>>> totals through February. They total *$6,543,000.*
+>>>>>>>
+>>>>>>> So, how come in February sales to-date were $7,049,000 but in May
+>>>>>>> the sales for the same period were only $6,543,000?
+>>>>>>>
+>>>>>>> I understand sales month-over-month may be declining, but how did
+>>>>>>> sales from the past also go down?
+>>>>>>>
+>>>>>>> This suggests a systemic problem with your accounting (at least as
+>>>>>>> it relates to capturing sales,) which then suggests that whatever y=
+ou think
+>>>>>>> current sales are, how do you have any confidence in the numbers?
+>>>>>>>
+>>>>>>> I hope this better helps you understand the concern.
+>>>>>>>
+>>>>>>> Bob
+>>>>>>>
+>>>>>>>
+>>>>>>> Robert S. Greisman
+>>>>>>> *RKG consulting group, inc.*
+>>>>>>> *BUSINESS GROWTH ADVISORS *
+>>>>>>>
+>>>>>>> *business growth | fractional CFO | M & A advisory *
+>>>>>>>
+>>>>>>> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |*=
+ LinkedIn
+>>>>>>> <https://www.linkedin.com/in/bobgreisman/>*
+>>>>>>>
+>>>>>>> IMPORTANT: The contents of this email and any attachments are
+>>>>>>> confidential. They are intended for the named recipient(s) only. If=
+ you
+>>>>>>> have received this email by mistake, please notify the sender immed=
+iately
+>>>>>>> and do not disclose the contents to anyone or make copies thereof.
+>>>>>>> ------------------------------
+>>>>>>> *From:* Brett Allcorn <brett@pineapple.co>
+>>>>>>> *Sent:* Monday, July 11, 2022 5:04 AM
+>>>>>>> *To:* bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+>>>>>>> *Subject:* Re: Attached Example of Differences in Reported Sales:
+>>>>>>> High Priority: Call needed with your finance team and Enrich
+>>>>>>> Marketing-Rengel-Second Marsh Consulting finance team
+>>>>>>>
+>>>>>>> But that most recent breakdown was generated and sent by mark or by
+>>>>>>> us?
+>>>>>>>
+>>>>>>> FYI sales have been dropping quite a bit.
+>>>>>>>
+>>>>>>> On Sun, Jul 10, 2022 at 7:31 PM bob rkgconsultinginc.com <
+>>>>>>> bob@rkgconsultinginc.com> wrote:
+>>>>>>>
+>>>>>>> Brett,
+>>>>>>>
+>>>>>>> You have every month sent a break down of how the revenue share is
+>>>>>>> calculated, and we do review it every month. And that has always be=
+en good.
+>>>>>>>
+>>>>>>> On the most recent break down sent -- in late June for May payment
+>>>>>>> due June 10 -- the sales figures for prior periods were a lot diffe=
+rent
+>>>>>>> (lower) than had been reported before.
+>>>>>>>
+>>>>>>> Those are numbers that should not change. Bad analogy, but the
+>>>>>>> temperature in Chicago yesterday reached a high of 83. That will ne=
+ver
+>>>>>>> change: Yesterday's high temperature will always be the high for th=
+at day.
+>>>>>>> Likewise, sales in Feb 2021 should always be the same in the future=
+.
+>>>>>>>
+>>>>>>> The question is: Why on the most recent breakdown did sales in ever=
+y
+>>>>>>> prior month change by a lot?
+>>>>>>>
+>>>>>>> What would be helpful would be an understanding of where and how yo=
+u
+>>>>>>> capture the sales numbers that go into the monthly breakdown. That =
+would be
+>>>>>>> the starting point to investigate the change.
+>>>>>>>
+>>>>>>> Thanks,
+>>>>>>> Bob
+>>>>>>>
+>>>>>>> Robert S. Greisman
+>>>>>>> *RKG consulting group, inc.*
+>>>>>>> *BUSINESS GROWTH ADVISORS *
+>>>>>>>
+>>>>>>> *business growth | fractional CFO | M & A advisory *
+>>>>>>>
+>>>>>>> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |*=
+ LinkedIn
+>>>>>>> <https://www.linkedin.com/in/bobgreisman/>*
+>>>>>>>
+>>>>>>> IMPORTANT: The contents of this email and any attachments are
+>>>>>>> confidential. They are intended for the named recipient(s) only. If=
+ you
+>>>>>>> have received this email by mistake, please notify the sender immed=
+iately
+>>>>>>> and do not disclose the contents to anyone or make copies thereof.
+>>>>>>> ------------------------------
+>>>>>>> *From:* Brett Allcorn <brett@pineapple.co>
+>>>>>>> *Sent:* Sunday, July 10, 2022 5:03 AM
+>>>>>>>
+>>>>>>> *To:* bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+>>>>>>> *Subject:* Re: Attached Example of Differences in Reported Sales:
+>>>>>>> High Priority: Call needed with your finance team and Enrich
+>>>>>>> Marketing-Rengel-Second Marsh Consulting finance team
+>>>>>>>
+>>>>>>> We can just send you a breakdown of how we calculated payments if
+>>>>>>> you want to review it.
+>>>>>>>
+>>>>>>> As for how Mark is doing it=E2=80=A6 (I assume mark is doing it him=
+self now
+>>>>>>> his own way?), I=E2=80=99m not sure I can really comment on that.
+>>>>>>>
+>>>>>>> I guess it would be up to you guys to audit what mark is doing,
+>>>>>>> assuming I understand the situation correctly.
+>>>>>>>
+>>>>>>> On Sat, Jul 9, 2022 at 5:57 PM bob rkgconsultinginc.com <
+>>>>>>> bob@rkgconsultinginc.com> wrote:
+>>>>>>>
+>>>>>>> Brett,
+>>>>>>>
+>>>>>>> Yes, the immediate question (and likely there will be more question=
+s
+>>>>>>> later -- answers beget  more questions) with some context is:
+>>>>>>>
+>>>>>>>    - Each month we have been provided with a report by you that
+>>>>>>>    shows sales to date by product by month since May, 2020.
+>>>>>>>       - The cumulative total is needed to compute the cumulative
+>>>>>>>       total gross profit, which is needed to determine the current =
+revenue share
+>>>>>>>       payment.
+>>>>>>>    - The most recent report provided shows prior period sales
+>>>>>>>    numbers for the info products and Montezuma product as being muc=
+h lower
+>>>>>>>    than has been shown on reports provided to us in the past.
+>>>>>>>       - For example, sales for info products in Feb 2021 were
+>>>>>>>       reported as $21,578 at the time and on subsequent reports unt=
+il the recent
+>>>>>>>       one, which shows sales for that month of only $7,905, or $13,=
+673 less than
+>>>>>>>       originally and consistently reported.
+>>>>>>>       - In total, all products, all time periods since inception,
+>>>>>>>       showed sales through Feb 2022 of $7,049,435. The most recent =
+report
+>>>>>>>       provided by you shows sales of all products through Feb. 2022=
+ of only
+>>>>>>>       $6,542,032. That is $507,403 less than shown on prior reports=
+.
+>>>>>>>    - With all due respect, the pointed question is: Were the
+>>>>>>>    systems and process to capture sales by product messed up all al=
+ong, and
+>>>>>>>    have now been corrected, or were they proper and accurate all al=
+ong and are
+>>>>>>>    now messed up?
+>>>>>>>       - If the answer is the former, that raises a lot of questions
+>>>>>>>       about the veracity of the cost and expense numbers, and requi=
+res a detailed
+>>>>>>>       explanation of what was so terribly wrong. ($500,000 is not a=
+ minor
+>>>>>>>       adjustment.)
+>>>>>>>       - If the answer is the later, there is something on your end
+>>>>>>>       that needs to be fixed to get accurate sales numbers, somethi=
+ng I hope we
+>>>>>>>       all agree is pretty fundamental to running a business.
+>>>>>>>    - And to be clear, this is not about a decline in sales now,
+>>>>>>>    compared prior periods. This is about a *material* *change *to
+>>>>>>>    numbers that are not supposed to change for prior periods.
+>>>>>>>
+>>>>>>> Hoping this helps explain both the concern and the depth of the
+>>>>>>> concern. Once you appoint the most appropriate person, I have detai=
+led
+>>>>>>> schedules I can share, which of course I am happy to share with you=
+ as
+>>>>>>> well.
+>>>>>>> Bob
+>>>>>>>
+>>>>>>> Robert S. Greisman
+>>>>>>> *RKG consulting group, inc.*
+>>>>>>> *BUSINESS GROWTH ADVISORS *
+>>>>>>>
+>>>>>>> *business growth | fractional CFO | M & A advisory *
+>>>>>>>
+>>>>>>> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |*=
+ LinkedIn
+>>>>>>> <https://www.linkedin.com/in/bobgreisman/>*
+>>>>>>>
+>>>>>>> IMPORTANT: The contents of this email and any attachments are
+>>>>>>> confidential. They are intended for the named recipient(s) only. If=
+ you
+>>>>>>> have received this email by mistake, please notify the sender immed=
+iately
+>>>>>>> and do not disclose the contents to anyone or make copies thereof.
+>>>>>>> ------------------------------
+>>>>>>> *From:* Brett Allcorn <brett@pineapple.co>
+>>>>>>> *Sent:* Saturday, July 9, 2022 1:23 AM
+>>>>>>> *To:* bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+>>>>>>>
+>>>>>>> *Subject:* Re: Attached Example of Differences in Reported Sales:
+>>>>>>> High Priority: Call needed with your finance team and Enrich
+>>>>>>> Marketing-Rengel-Second Marsh Consulting finance team
+>>>>>>>
+>>>>>>> Bob so the ask is sales by product for the last year? Need to get
+>>>>>>> clear on what=E2=80=99s needed to know who can help. There might be=
+ someone who can
+>>>>>>> help now depending on the task.
+>>>>>>>
+>>>>>>> On Sat, Jul 9, 2022 at 2:31 AM bob rkgconsultinginc.com <
+>>>>>>> bob@rkgconsultinginc.com> wrote:
+>>>>>>>
+>>>>>>> Fran,
+>>>>>>>
+>>>>>>> You have that right. The calculation of current revenue share
+>>>>>>> amounts is done on a cumulative basis -- total sales since start mi=
+nus
+>>>>>>> total expenses since start -- to arrive at the gross profit. It has=
+ to be
+>>>>>>> this way because many expenses such as returns and charge-backs occ=
+ur after
+>>>>>>> the period in which the sale occurred. Then the current revenue sha=
+re
+>>>>>>> amount is determined by applying the percentage to the total gross =
+profit
+>>>>>>> since the start, less prior revenue share payments made.
+>>>>>>>
+>>>>>>> All a long way of saying we need the history of sales to compute
+>>>>>>> current payment. And the cumulative sales now being provided are mu=
+ch less
+>>>>>>> than what was provided in the past, which makes no sense. Subject t=
+o
+>>>>>>> further investigation and analysis, the current conclusion is that =
+sales
+>>>>>>> numbers reported in the past were grossly wrong, or the restated nu=
+mbers
+>>>>>>> now being presented are grossly wrong. Neither of those being a goo=
+d
+>>>>>>> conclusion.
+>>>>>>>
+>>>>>>> Without the correct sales history we cannot get to the current
+>>>>>>> revenue share amount from Media Reps. That said, if all agree, I am=
+ fine
+>>>>>>> deferring a call with Andrea until July 26 and will set a time with=
+ her
+>>>>>>> next week.
+>>>>>>>
+>>>>>>> A good weekend to all.
+>>>>>>>
+>>>>>>> Bob
+>>>>>>>
+>>>>>>> Robert S. Greisman
+>>>>>>> *RKG consulting group, inc.*
+>>>>>>> *BUSINESS GROWTH ADVISORS *
+>>>>>>>
+>>>>>>> *business growth | fractional CFO | M & A advisory *
+>>>>>>>
+>>>>>>> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |*=
+ LinkedIn
+>>>>>>> <https://www.linkedin.com/in/bobgreisman/>*
+>>>>>>>
+>>>>>>> IMPORTANT: The contents of this email and any attachments are
+>>>>>>> confidential. They are intended for the named recipient(s) only. If=
+ you
+>>>>>>> have received this email by mistake, please notify the sender immed=
+iately
+>>>>>>> and do not disclose the contents to anyone or make copies thereof.
+>>>>>>> ------------------------------
+>>>>>>> *From:* Fran Rengel <fran@enrichmarketing.com>
+>>>>>>> *Sent:* Friday, July 8, 2022 5:29 PM
+>>>>>>> *To:* Brett Allcorn <brett@pineapple.co>
+>>>>>>> *Cc:* bob rkgconsultinginc.com <bob@rkgconsultinginc.com>; Andrea
+>>>>>>> Abramowski <andrea@pineapple.co>; Joel Karlinsky <
+>>>>>>> jkarlinsky@gmail.com>; Geni Yang <geni@precisionfinancialllc.com>
+>>>>>>> *Subject:* Re: Attached Example of Differences in Reported Sales:
+>>>>>>> High Priority: Call needed with your finance team and Enrich
+>>>>>>> Marketing-Rengel-Second Marsh Consulting finance team
+>>>>>>>
+>>>>>>> Media Reps are the guys that purchased your dating products, and
+>>>>>>> inherited the rev share deal for Elixir of Eros.
+>>>>>>>
+>>>>>>> My understanding is we need the past data to calculate future data
+>>>>>>> and train them how to get the data properly. Bob, I'll let you chim=
+e in /
+>>>>>>> clarify here.
+>>>>>>>
+>>>>>>> On Fri, Jul 8, 2022 at 5:59 PM Brett Allcorn <brett@pineapple.co>
+>>>>>>> wrote:
+>>>>>>>
+>>>>>>> OK yeah, can you help me understand what the data is needed for?
+>>>>>>>
+>>>>>>> I'm not sure who Media Reps is.
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> On Sat, Jul 9, 2022 at 12:53 AM Fran Rengel <
+>>>>>>> fran@enrichmarketing.com> wrote:
+>>>>>>>
+>>>>>>> Hey Brett, that's fine with me.
+>>>>>>>
+>>>>>>> My understanding is that part of the urgency is not because of our
+>>>>>>> Pineapple payments, but also because we can't train Media Reps to p=
+ay us
+>>>>>>> out correctly without the accurate back data (Bob correct me if I'm=
+ wrong -
+>>>>>>> I haven't really dug in and don't completely understand the ins and=
+ outs of
+>>>>>>> the problem). I believe their first payment is coming up in a few
+>>>>>>> days, hence the full-court-press.
+>>>>>>>
+>>>>>>> Bob - can you put something in the calendar with Andrea a little
+>>>>>>> later than this coming week?
+>>>>>>>
+>>>>>>> Thanks guys,
+>>>>>>> Fran
+>>>>>>>
+>>>>>>> On Fri, Jul 8, 2022 at 5:25 PM Brett Allcorn <brett@pineapple.co>
+>>>>>>> wrote:
+>>>>>>>
+>>>>>>> Hey Bob and Fran, I realize this is important and needs to be taken
+>>>>>>> care of.
+>>>>>>>
+>>>>>>> Is it possible I can buy Andrea some time since she's currently
+>>>>>>> working on transitioning responsibilities over from our CFO who's l=
+eaving
+>>>>>>> in the near future?
+>>>>>>>
+>>>>>>> If so, she can get back on this Monday, July 26th.
+>>>>>>>
+>>>>>>> I think payments are still flowing so on the money side you guys
+>>>>>>> should be ok for now?
+>>>>>>>
+>>>>>>> On Fri, Jul 8, 2022 at 2:48 PM bob rkgconsultinginc.com <
+>>>>>>> bob@rkgconsultinginc.com> wrote:
+>>>>>>>
+>>>>>>> Andrea,
+>>>>>>>
+>>>>>>> Further to my email to you of yesterday (below) attached is a
+>>>>>>> worksheet to help you better understand our high priority concern.
+>>>>>>>
+>>>>>>> This is monthly sales from one category of products alone for
+>>>>>>> illustration, the info products. It compares monthly sales from Oct=
+ 2020
+>>>>>>> through Feb 2022 as reported to us in March as part of the revenue =
+share
+>>>>>>> computation to the monthly sales numbers provided to us at the end =
+of June
+>>>>>>> in connection with May revenue share.
+>>>>>>>
+>>>>>>> As you can see the sales through February as previously reported
+>>>>>>> were $461,160 and now you are reporting those sales as $224,081, wh=
+ich is a
+>>>>>>> $249,999 or 54% difference.
+>>>>>>>
+>>>>>>> I share this to highlight our high priority concern: Sales for prio=
+r
+>>>>>>> periods are what they are, and should not change. This kind of diff=
+erences
+>>>>>>> calls into question the functional integrity and reliability of the
+>>>>>>> accounting process being used to account for revenue share payments=
+, and
+>>>>>>> more.
+>>>>>>>
+>>>>>>> Please advise ASAP as to times for a call.
+>>>>>>>
+>>>>>>> Thank you,
+>>>>>>> Bob
+>>>>>>>
+>>>>>>> Robert S. Greisman
+>>>>>>> *RKG consulting group, inc.*
+>>>>>>> *BUSINESS GROWTH ADVISORS *
+>>>>>>>
+>>>>>>> *business growth | fractional CFO | M & A advisory *
+>>>>>>>
+>>>>>>> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |*=
+ LinkedIn
+>>>>>>> <https://www.linkedin.com/in/bobgreisman/>*
+>>>>>>>
+>>>>>>> IMPORTANT: The contents of this email and any attachments are
+>>>>>>> confidential. They are intended for the named recipient(s) only. If=
+ you
+>>>>>>> have received this email by mistake, please notify the sender immed=
+iately
+>>>>>>> and do not disclose the contents to anyone or make copies thereof.
+>>>>>>> ------------------------------
+>>>>>>> *From:* bob rkgconsultinginc.com
+>>>>>>> *Sent:* Thursday, July 7, 2022 3:15 PM
+>>>>>>> *To:* Andrea Abramowski <andrea@pineapple.co>
+>>>>>>> *Cc:* Brett Allcorn <brett@pineapple.co>; Fran Rengel <
+>>>>>>> fran@enrichmarketing.com>; Joel Karlinsky <jkarlinsky@gmail.com>;
+>>>>>>> Geni Yang <geni@precisionfinancialllc.com>
+>>>>>>> *Subject:* High Priority: Call needed with your finance team and
+>>>>>>> Enrich Marketing-Rengel-Second Marsh Consulting finance team
+>>>>>>>
+>>>>>>> Andrea,
+>>>>>>>
+>>>>>>> We have not met or spoken, but we need to.
+>>>>>>>
+>>>>>>> In reviewing the work sent to us in late June by Sean in connection
+>>>>>>> with the determination of the revenue share payment to Second March
+>>>>>>> Consulting, there are significant questions, primarily related to t=
+he fact
+>>>>>>> that prior period numbers for sales and profit share -- which shoul=
+d be
+>>>>>>> "locked" or fixed -- have changed. These changes affect determinati=
+on of
+>>>>>>> current and future profit share numbers.
+>>>>>>>
+>>>>>>> Let's please have a call with the appropriate members of your
+>>>>>>> finance team and members of the Enrich-Rengel team. Here are sugges=
+ted
+>>>>>>> dates/times:
+>>>>>>>
+>>>>>>>    - Tomorrow -- Friday -- anytime from 1 pm ET on.
+>>>>>>>    - Monday, any time before 3 pm ET
+>>>>>>>    - Tuesday any time from 11 am ET - 3:30 pm.
+>>>>>>>
+>>>>>>> As the changes in prior period numbers are material, this is a
+>>>>>>> matter of high priority concern. Again, numbers reported as sales i=
+n prior
+>>>>>>> periods *now* being report as significantly lower requires a
+>>>>>>> fulsome examination and explanation. As I am sure you agree.
+>>>>>>>
+>>>>>>> Please advise as soon as possible as to your availability and I am
+>>>>>>> making the same request of members of our team by way of a copy to =
+them.
+>>>>>>>
+>>>>>>> Thank you.
+>>>>>>> Bob
+>>>>>>>
+>>>>>>>
+>>>>>>> Robert S. Greisman
+>>>>>>> *RKG consulting group, inc.*
+>>>>>>> *BUSINESS GROWTH ADVISORS *
+>>>>>>>
+>>>>>>> *business growth | fractional CFO | M & A advisory *
+>>>>>>>
+>>>>>>> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |*=
+ LinkedIn
+>>>>>>> <https://www.linkedin.com/in/bobgreisman/>*
+>>>>>>>
+>>>>>>> IMPORTANT: The contents of this email and any attachments are
+>>>>>>> confidential. They are intended for the named recipient(s) only. If=
+ you
+>>>>>>> have received this email by mistake, please notify the sender immed=
+iately
+>>>>>>> and do not disclose the contents to anyone or make copies thereof.
+>>>>>>>
+>>>>>>>
+
+--0000000000004606cc05e3b7df8b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Oh so did we overpay? Or at least overestimate payments?<d=
+iv><br>If so, please let me know how much.</div><div><br></div><div>This is=
+ critical info to the business.</div></div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 13, 2022 at 6:53 PM Aubrey=
+ Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@=
+pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex"><div dir=3D"ltr"><div>Of course!=C2=A0</div><div><br></div><div=
+>My summary of the key takeaway is this: Due to our changes in product cate=
+gories in Sticky, there were some products in the Info Product funnel that =
+were not being properly captured by the KNIME routine in my previous report=
+.=C2=A0 I have fixed that issue but in doing so, revealed that there were a=
+lso some products in the &quot;SNM-Enrich&quot; category that were previous=
+ly being counted as Enrich products but should not have been.</div><div><br=
+></div><div></div><div>That explains the discrepancy=C2=A0with Gross Revenu=
+e for those two funnels.</div><div><br></div></div><br><div class=3D"gmail_=
+quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 13, 2022 at 5:43 P=
+M Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank"=
+>brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex"><div dir=3D"ltr">Can you give me a bit of a summary here=
+?<div><br></div><div>Like what&#39;s the general message here?</div><div><b=
+r></div><div>That there is a mistake in the Knime routines that you need to=
+ fix?</div><div><br></div><div>Just want to know what we&#39;re basically t=
+elling them.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" cla=
+ss=3D"gmail_attr">On Wed, Jul 13, 2022 at 5:09 PM Aubrey Allen &lt;<a href=
+=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>&g=
+t; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div d=
+ir=3D"ltr">Hi Brett,<div><br></div><div>I wanted to send this your way befo=
+re I shared it with Robert in case you had any questions.=C2=A0=C2=A0</div>=
+<div><br></div><div>When calculating the monthly Enrich Payouts, I employ a=
+ KNIME routine that Greg trained me to use.=C2=A0 In a nutshell, the routin=
+e uses Sticky&#39;s &quot;Product Category&quot; to lump sales into further=
+ subcategories-- first, whether they are or are not Enrich (for this routin=
+e, we&#39;re just looking at the Enrich products specifically); and second,=
+ if they are Enrich, it puts them into 3 funnels, Enrich Montezuma, Enrich =
+Info Products, and Enrich Flavo Trim.=C2=A0 This routine worked as it was m=
+eant to until we started to change our Product Category naming conventions =
+in Sticky a few months ago.=C2=A0 While the changes to the names are necess=
+ary, I don&#39;t think Greg foresaw the effects this would have on the way =
+this KNIME routine works.=C2=A0 When I tried to perform the routine as I ha=
+d in previous months at the end of May, I ran into trouble and could tell t=
+hat the outputs were not correct.=C2=A0 Namely, I was getting negative numb=
+ers for revenue, and therefore also the payout.</div><div><br>With that sai=
+d, I&#39;ve been working since then to correct the routine.=C2=A0 I&#39;ve =
+met with Brooke several times and she has been an immense help.=C2=A0 Unfor=
+tunately neither Mike nor Jarren are familiar with this routine/report, and=
+ it will require the most work to replicate on a different platform (accord=
+ing to what Greg told me previously).=C2=A0 I was able to solve the Product=
+ Category naming issue and get things into the right funnel, and I also add=
+ed a new funnel/started reporting on Genetic Peak, which hadn&#39;t been in=
+corporated=C2=A0yet.=C2=A0 However, the Gross Revenue for the Enrich Montez=
+uma &amp; Enrich Info Products was coming up as much lower than it was prev=
+iously.</div><div><br></div><div>At the time, I was unsure of how to resolv=
+e this issue entirely, but Bob&#39;s email gave me an idea of how to check =
+for &quot;historical&quot; data in Sticky.=C2=A0 Let me explain this a litt=
+le further: When the Product Category in Sticky changed, it changed for all=
+ sales, going back to 5/2020.=C2=A0 This seems obvious and makes sense, but=
+=C2=A0when I wanted to see if there were any products in what was formerly =
+Product Category &quot;Male Enhancement - SNM - SMC&quot;, I can&#39;t tell=
+, as those have all changed to their new &quot;SNM-Enrich&quot; names.=C2=
+=A0 By manually looking through old exports of Sticky data from 2020 and 20=
+21, which were sent to me by Greg when I first started, I was able to see t=
+hat some PIDs were miscategorized either before or after the changing of ou=
+r Product Categories.<br></div><div><br></div><div>For example, the reason =
+Info Products&#39; revenue was appearing so much lower in May than it had i=
+n February, was because PID 469, &quot;The Pursuit Institute Rebill&quot;, =
+had been placed in the &quot;Gotham - Archived&quot; category, rather than =
+the &quot;Info Products - GDC - SMC&quot; category it needed to be in for t=
+he KNIME routine to recognize it and put it in its appropriate funnel.=C2=
+=A0 Therefore it was being excluded from the funnel and its revenue was not=
+ accounted for.=C2=A0 Now that PID469 has been added back to that category,=
+ you&#39;ll see in the attachment that the monthly Gross Revenue values are=
+ back to what Bob was referencing.=C2=A0=C2=A0</div><div>In the opposite di=
+rection, I found that there were some products that were placed in the old =
+&quot;Male Enhancement - SNM - SNMC&quot; category (which becomes the=C2=A0=
+Enrich Montezuma funnel in the routine) that are in fact <b>not </b>Enrich =
+products.=C2=A0 For example, there were times in 2020/21 that Volumizer and=
+ Testosterone Booster were in that category erroneously.=C2=A0 Moreover, Be=
+come Supernatural (specifically PIDs 616 &amp; 617) were being attributed a=
+s Fran products when in fact they are not.=C2=A0 Gene was able to confirm t=
+his for us today and Brooke changed all the products to their appropriate c=
+ategory so that I could rerun the routine.</div><div><br></div><div>The att=
+achment I have here is a revised monthly Gross Revenue for all 4 Enrich pro=
+duct funnels.=C2=A0 Genetic Peak and Flavo Trim were being properly account=
+ed for already, but now Info Products has been restored to its former total=
+ with all of the products properly categorized.=C2=A0 I imagine that Bob is=
+ most concerned with Info Products specifically, so I&#39;m happy to say th=
+at issue has been resolved.</div><div>Montezuma&#39;s Gross Revenue, howeve=
+r, is indeed slightly lower than it once was calculated to be.=C2=A0 As far=
+ as I can tell with=C2=A0the data I have available, what is attached should=
+ be accurate now that those miscategorized products have been removed.=C2=
+=A0 While I can&#39;t explain exactly how or why they were in the wrong pla=
+ce, I think these issues all just speak to the inefficacy of, and potential=
+ for error with, KNIME routines.=C2=A0 [If you would like me to send you th=
+e old Sticky export with the specifics of which PIDs were miscategorized pr=
+eviously as an example, I can do that.]</div><div><br></div><div>If you hav=
+e any questions or would like to discuss further, let me know.</div><div><b=
+r></div><div>Thank you!</div><div>Aubrey</div></div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jul 12, 2022 at 5:00 =
+PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank=
+">brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex"><div dir=3D"ltr">Sounds good.=C2=A0<br></div><br><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jul 12, =
+2022 at 5:55 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" tar=
+get=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Brett,<div><br></div>=
+<div>I just wanted to let you know that I&#39;ve read this thread between y=
+ou and Robert and I am conducting further research so that I can adequately=
+ answer his questions.=C2=A0 I&#39;ll be able to respond tomorrow.</div><di=
+v><br></div><div>Thanks!</div><div>Aubrey</div></div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 11, 2022 at 6:29=
+ AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blan=
+k">brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div dir=3D"ltr">Aubrey, since you compile these repor=
+ts perhaps you=C2=A0could comment on this for Bob?<div><br></div><div>My gu=
+ess is gross sales of $7K through Feburary is correct and that $6.5k throug=
+h May is incorrect.</div></div><br><div class=3D"gmail_quote"><div dir=3D"l=
+tr" class=3D"gmail_attr">On Mon, Jul 11, 2022 at 1:27 PM bob <a href=3D"htt=
+p://rkgconsultinginc.com" target=3D"_blank">rkgconsultinginc.com</a> &lt;<a=
+ href=3D"mailto:bob@rkgconsultinginc.com" target=3D"_blank">bob@rkgconsulti=
+nginc.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">
+
+
+
+
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+Brett,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+The most recent report was sent by<i> you</i>. (To date, Mark has not sent =
+a breakdown.)</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+To make it clearer, attached are two breakdowns, both provided by you and l=
+ightly edited by me. The first one (file name ends 2022_M02) shows the gros=
+s sales report for all products for each month since May 2022.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+You will see total sales since May, 2022 of all products are=C2=A0<b>$7,049=
+,000.</b></div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+The second report, (file name ends 2002 M05_latest) is the same report as o=
+f May 31. At row 23 in columns G, H and I,=C2=A0 I provided the totals thro=
+ugh February. They total
+<b>$6,543,000.</b></div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+So, how come in February sales to-date were $7,049,000 but in May the sales=
+ for the same period were only $6,543,000?=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+I understand sales month-over-month may be declining, but how did sales fro=
+m the past also go down?=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+This suggests a systemic problem with your accounting (at least as it relat=
+es to capturing sales,) which then suggests that whatever you think current=
+ sales are, how do you have any confidence in the numbers?</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+I hope this better helps you understand the concern.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+Bob</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;background-color:blac=
+k"><span style=3D"margin:0px;color:navy"><span style=3D"margin:0px;font-siz=
+e:8pt"><span style=3D"margin:0px;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>=C2=A0</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS=C2=A0</=
+span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;col=
+or:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:0p=
+x;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>=C2=A0</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" rel=3D"noopener noreferrer" title=3D"Website" style=3D=
+"margin:0px" target=3D"_blank">Website</a></strong><span>=C2=A0</span>|<str=
+ong><a href=3D"https://www.linkedin.com/in/bobgreisman/" rel=3D"noopener no=
+referrer" title=3D"LinkedIn" style=3D"margin:0px" target=3D"_blank"><span>=
+=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: The =
+contents of this email and any attachments are
+ confidential. They are intended for the named recipient(s) only. If you ha=
+ve received this email by mistake, please notify the sender immediately and=
+ do not disclose the contents to anyone or make copies thereof.</span></spa=
+n></span></div>
+</div>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" style=
+=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Brett Allcorn &lt;<a hre=
+f=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt=
+;<br>
+<b>Sent:</b> Monday, July 11, 2022 5:04 AM<br>
+<b>To:</b> bob <a href=3D"http://rkgconsultinginc.com" target=3D"_blank">rk=
+gconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" targ=
+et=3D"_blank">bob@rkgconsultinginc.com</a>&gt;<br>
+<b>Subject:</b> Re: Attached Example of Differences in Reported Sales: High=
+ Priority: Call needed with your finance team and Enrich Marketing-Rengel-S=
+econd Marsh Consulting finance team</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"auto">But that most recent breakdown was generated and sent by =
+mark or by us?</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">FYI sales have been dropping quite a bit.</div>
+<div><br>
+<div>
+<div dir=3D"ltr">On Sun, Jul 10, 2022 at 7:31 PM bob <a href=3D"http://rkgc=
+onsultinginc.com" target=3D"_blank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" ta=
+rget=3D"_blank">bob@rkgconsultinginc.com</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Br=
+ett,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Yo=
+u have every month sent a break down of how the revenue share is calculated=
+, and we do review it every month. And that has always been good.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">On=
+ the most recent break down sent -- in late June for May payment due June 1=
+0 -- the sales figures for prior periods were a lot different (lower) than =
+had been reported before.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+ose are numbers that should not change. Bad analogy, but the temperature in=
+ Chicago yesterday reached a high of 83. That will never change: Yesterday&=
+#39;s high temperature will always be
+ the high for that day. Likewise, sales in Feb 2021 should always be the sa=
+me in the future.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+e question is: Why on the most recent breakdown did sales in every prior mo=
+nth change by a lot?</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Wh=
+at would be helpful would be an understanding of where and how you capture =
+the sales numbers that go into the monthly breakdown. That would be the sta=
+rting point to investigate the change.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+anks,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Bo=
+b</div>
+<div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;font-family:Georgia;b=
+ackground-color:black"><span style=3D"margin:0px;font-family:Georgia;color:=
+navy"><span style=3D"margin:0px;font-size:8pt;font-family:Georgia"><span st=
+yle=3D"margin:0px;font-family:Georgia;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:black"><span=
+ style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=3D"font-=
+family:Georgia"><span style=3D"margin:0px;font-family:Georgia;background-co=
+lor:white"><span style=3D"margin:0px;font-family:Georgia;color:black">RKG<s=
+pan style=3D"font-family:Georgia">=C2=A0</span></span><span style=3D"margin=
+:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0px;font-fami=
+ly:Georgia;color:blue">consulting
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-family:Georgia;color:bla=
+ck">BUSINESS
+ GROWTH ADVISORS=C2=A0</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-size:10pt;font-family:Ge=
+orgia"><span style=3D"margin:0px;font-family:Georgia;color:black"><span sty=
+le=3D"margin:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0=
+px;font-family:Georgia;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;color:black"><span style=3D"m=
+argin:0px;font-size:8pt;font-family:Georgia">Phone: 847-902-0258<span style=
+=3D"font-family:Georgia">=C2=A0</span><strong style=3D"font-family:Georgia"=
+><a href=3D"http://www.rkgconsultinginc.com/" rel=3D"noopener noreferrer" t=
+itle=3D"Website" style=3D"margin:0px;font-family:Georgia" target=3D"_blank"=
+>Website</a></strong><span style=3D"font-family:Georgia">=C2=A0</span>|<str=
+ong style=3D"font-family:Georgia"><a href=3D"https://www.linkedin.com/in/bo=
+bgreisman/" rel=3D"noopener noreferrer" title=3D"LinkedIn" style=3D"margin:=
+0px;font-family:Georgia" target=3D"_blank"><span style=3D"font-family:Georg=
+ia">=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt;font-family:&quo=
+t;courier new&quot;,courier">IMPORTANT: The contents
+ of this email and any attachments are confidential. They are intended for =
+the named recipient(s) only. If you have received this email by mistake, pl=
+ease notify the sender immediately and do not disclose the contents to anyo=
+ne or make copies thereof.</span></span></span></div>
+</div>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111divRplyFwdMsg" dir=3D"ltr"><font face=3D"Cali=
+bri, sans-serif" style=3D"font-size:11pt;font-family:Calibri,sans-serif;col=
+or:rgb(0,0,0)"><b style=3D"font-family:Calibri,sans-serif">From:</b> Brett =
+Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" style=3D"font-family:Cali=
+bri,sans-serif" target=3D"_blank">brett@pineapple.co</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Sunday, July 10, 2022=
+ 5:03 AM</font></div>
+</div>
+<div dir=3D"ltr">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111divRplyFwdMsg" dir=3D"ltr"><font face=3D"Cali=
+bri, sans-serif" style=3D"font-size:11pt;font-family:Calibri,sans-serif;col=
+or:rgb(0,0,0)"><br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> bob <a href=3D"http://r=
+kgconsultinginc.com" style=3D"font-family:Calibri,sans-serif" target=3D"_bl=
+ank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" st=
+yle=3D"font-family:Calibri,sans-serif" target=3D"_blank">bob@rkgconsultingi=
+nc.com</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> Re: Attached Examp=
+le of Differences in Reported Sales: High Priority: Call needed with your f=
+inance team and Enrich Marketing-Rengel-Second Marsh Consulting finance tea=
+m</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"auto">We can just send you a breakdown of how we calculated pay=
+ments if you want to review it.</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">As for how Mark is doing it=E2=80=A6 (I assume mark is do=
+ing it himself now his own way?), I=E2=80=99m not sure I can really comment=
+ on that.</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">I guess it would be up to you guys to audit what mark is =
+doing, assuming I understand the situation=C2=A0correctly.</div>
+<div><br>
+<div>
+<div dir=3D"ltr">On Sat, Jul 9, 2022 at 5:57 PM bob <a href=3D"http://rkgco=
+nsultinginc.com" target=3D"_blank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" ta=
+rget=3D"_blank">bob@rkgconsultinginc.com</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Br=
+ett,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Ye=
+s, the immediate question (and likely there will be more questions later --=
+ answers beget=C2=A0 more questions) with some context is:</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<ul style=3D"font-family:Georgia,serif">
+<li style=3D"font-family:Georgia,serif">Each month we have been provided wi=
+th a report by you that shows sales to date by product by month since May, =
+2020.</li><ul style=3D"list-style-type:circle;font-family:Georgia,serif">
+<li style=3D"font-family:Georgia,serif">The cumulative total is needed to c=
+ompute the cumulative total gross profit, which is needed to determine the =
+current revenue share payment.=C2=A0</li></ul>
+<li style=3D"font-family:Georgia,serif">The most recent report provided sho=
+ws prior period sales numbers for the info products and Montezuma product a=
+s being much lower than has been shown on reports provided to us in the pas=
+t.</li><ul style=3D"list-style-type:circle;font-family:Georgia,serif">
+<li style=3D"font-family:Georgia,serif">For example, sales for info product=
+s in Feb 2021 were reported as $21,578 at the time and on subsequent report=
+s until the recent one, which shows sales for that month of only $7,905, or=
+ $13,673 less than originally and
+ consistently reported.=C2=A0</li><li style=3D"font-family:Georgia,serif">I=
+n total, all products, all time periods since inception, showed sales throu=
+gh Feb 2022 of $7,049,435. The most recent report provided by you shows sal=
+es of all products through Feb. 2022 of only $6,542,032. That is $507,403
+ less than shown on prior reports.=C2=A0</li></ul>
+<li style=3D"font-family:Georgia,serif">With all due respect, the pointed q=
+uestion is: Were the systems and process to capture sales by product messed=
+ up all along, and have now been corrected, or were they proper and accurat=
+e all along and are now messed up?</li><ul style=3D"list-style-type:circle;=
+font-family:Georgia,serif">
+<li style=3D"font-family:Georgia,serif">If the answer is the former, that r=
+aises a lot of questions about the veracity of the cost and expense numbers=
+, and requires a detailed explanation of what was so terribly wrong. ($500,=
+000 is not a minor adjustment.)=C2=A0</li><li style=3D"font-family:Georgia,=
+serif">If the answer is the later, there is something on your end that need=
+s to be fixed to get accurate sales numbers, something I hope we all agree =
+is pretty fundamental to running a business.=C2=A0</li></ul>
+<li style=3D"font-family:Georgia,serif">And to be clear, this is not about =
+a decline in sales now, compared prior periods. This is about a
+<i style=3D"font-family:Georgia,serif">material</i>=C2=A0<i style=3D"font-f=
+amily:Georgia,serif">change
+</i>to numbers that are not supposed to change for prior periods.=C2=A0</li=
+></ul>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Ho=
+ping this helps explain both the concern and the depth of the concern. Once=
+ you appoint the most appropriate person, I have detailed schedules I can s=
+hare, which of course I am happy
+ to share with you as well.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Bo=
+b</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;font-family:Georgia;b=
+ackground-color:black"><span style=3D"margin:0px;font-family:Georgia;color:=
+navy"><span style=3D"margin:0px;font-size:8pt;font-family:Georgia"><span st=
+yle=3D"margin:0px;font-family:Georgia;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:black"><span=
+ style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=3D"font-=
+family:Georgia"><span style=3D"margin:0px;font-family:Georgia;background-co=
+lor:white"><span style=3D"margin:0px;font-family:Georgia;color:black">RKG<s=
+pan style=3D"font-family:Georgia">=C2=A0</span></span><span style=3D"margin=
+:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0px;font-fami=
+ly:Georgia;color:blue">consulting
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-family:Georgia;color:bla=
+ck">BUSINESS
+ GROWTH ADVISORS=C2=A0</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-size:10pt;font-family:Ge=
+orgia"><span style=3D"margin:0px;font-family:Georgia;color:black"><span sty=
+le=3D"margin:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0=
+px;font-family:Georgia;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;color:black"><span style=3D"m=
+argin:0px;font-size:8pt;font-family:Georgia">Phone: 847-902-0258<span style=
+=3D"font-family:Georgia">=C2=A0</span><strong style=3D"font-family:Georgia"=
+><a href=3D"http://www.rkgconsultinginc.com/" rel=3D"noopener noreferrer" t=
+itle=3D"Website" style=3D"margin:0px;font-family:Georgia" target=3D"_blank"=
+>Website</a></strong><span style=3D"font-family:Georgia">=C2=A0</span>|<str=
+ong style=3D"font-family:Georgia"><a href=3D"https://www.linkedin.com/in/bo=
+bgreisman/" rel=3D"noopener noreferrer" title=3D"LinkedIn" style=3D"margin:=
+0px;font-family:Georgia" target=3D"_blank"><span style=3D"font-family:Georg=
+ia">=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt;font-family:&quo=
+t;courier new&quot;,courier">IMPORTANT: The contents
+ of this email and any attachments are confidential. They are intended for =
+the named recipient(s) only. If you have received this email by mistake, pl=
+ease notify the sender immediately and do not disclose the contents to anyo=
+ne or make copies thereof.</span></span></span></div>
+</div>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661divRplyFwdMsg" dir=3D"=
+ltr">
+<font face=3D"Calibri, sans-serif" style=3D"font-size:11pt;font-family:Cali=
+bri,sans-serif;color:rgb(0,0,0)"><b style=3D"font-family:Calibri,sans-serif=
+">From:</b> Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" style=
+=3D"font-family:Calibri,sans-serif" target=3D"_blank">brett@pineapple.co</a=
+>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Saturday, July 9, 202=
+2 1:23 AM<br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> bob <a href=3D"http://r=
+kgconsultinginc.com" style=3D"font-family:Calibri,sans-serif" target=3D"_bl=
+ank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" st=
+yle=3D"font-family:Calibri,sans-serif" target=3D"_blank">bob@rkgconsultingi=
+nc.com</a>&gt;</font></div>
+</div>
+<div dir=3D"ltr">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661divRplyFwdMsg" dir=3D"=
+ltr">
+<font face=3D"Calibri, sans-serif" style=3D"font-size:11pt;font-family:Cali=
+bri,sans-serif;color:rgb(0,0,0)"><br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> Re: Attached Examp=
+le of Differences in Reported Sales: High Priority: Call needed with your f=
+inance team and Enrich Marketing-Rengel-Second Marsh Consulting finance tea=
+m</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"auto">Bob so the ask is sales by product for the last year? Nee=
+d to get clear on what=E2=80=99s needed to know who can help. There might b=
+e someone who can help now depending on the task.</div>
+<div><br>
+<div>
+<div dir=3D"ltr">On Sat, Jul 9, 2022 at 2:31 AM bob <a href=3D"http://rkgco=
+nsultinginc.com" target=3D"_blank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" ta=
+rget=3D"_blank">bob@rkgconsultinginc.com</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Fr=
+an,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Yo=
+u have that right. The calculation of current revenue share amounts is done=
+ on a cumulative basis -- total sales since start minus total expenses sinc=
+e start -- to arrive at the gross
+ profit. It has to be this way because many expenses such as returns and ch=
+arge-backs occur after the period in which the sale occurred. Then the curr=
+ent revenue share amount is determined by applying the percentage to the to=
+tal gross profit since the start,
+ less prior revenue share payments made.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Al=
+l a long way of saying we need the history of sales to compute current paym=
+ent. And the cumulative sales now being provided are much less than what wa=
+s provided in the past, which makes
+ no sense. Subject to further investigation and analysis, the current concl=
+usion is that sales numbers reported in the past were grossly wrong, or the=
+ restated numbers now being presented are grossly wrong. Neither of those b=
+eing a good conclusion.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Wi=
+thout the correct sales history we cannot get to the current revenue share =
+amount from Media Reps. That said, if all agree, I am fine deferring a call=
+ with Andrea until July 26 and will
+ set a time with her next week.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">A =
+good weekend to all.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Bo=
+b</div>
+<div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;font-family:Georgia;b=
+ackground-color:black"><span style=3D"margin:0px;font-family:Georgia;color:=
+navy"><span style=3D"margin:0px;font-size:8pt;font-family:Georgia"><span st=
+yle=3D"margin:0px;font-family:Georgia;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:black"><span=
+ style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=3D"font-=
+family:Georgia"><span style=3D"margin:0px;font-family:Georgia;background-co=
+lor:white"><span style=3D"margin:0px;font-family:Georgia;color:black">RKG<s=
+pan style=3D"font-family:Georgia">=C2=A0</span></span><span style=3D"margin=
+:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0px;font-fami=
+ly:Georgia;color:blue">consulting
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-family:Georgia;color:bla=
+ck">BUSINESS
+ GROWTH ADVISORS=C2=A0</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-size:10pt;font-family:Ge=
+orgia"><span style=3D"margin:0px;font-family:Georgia;color:black"><span sty=
+le=3D"margin:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0=
+px;font-family:Georgia;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;color:black"><span style=3D"m=
+argin:0px;font-size:8pt;font-family:Georgia">Phone: 847-902-0258<span style=
+=3D"font-family:Georgia">=C2=A0</span><strong style=3D"font-family:Georgia"=
+><a href=3D"http://www.rkgconsultinginc.com/" rel=3D"noopener noreferrer" t=
+itle=3D"Website" style=3D"margin:0px;font-family:Georgia" target=3D"_blank"=
+>Website</a></strong><span style=3D"font-family:Georgia">=C2=A0</span>|<str=
+ong style=3D"font-family:Georgia"><a href=3D"https://www.linkedin.com/in/bo=
+bgreisman/" rel=3D"noopener noreferrer" title=3D"LinkedIn" style=3D"margin:=
+0px;font-family:Georgia" target=3D"_blank"><span style=3D"font-family:Georg=
+ia">=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt;font-family:&quo=
+t;courier new&quot;,courier">IMPORTANT: The contents
+ of this email and any attachments are confidential. They are intended for =
+the named recipient(s) only. If you have received this email by mistake, pl=
+ease notify the sender immediately and do not disclose the contents to anyo=
+ne or make copies thereof.</span></span></span></div>
+</div>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70appendonsend">
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70divRplyFwdMsg" dir=3D"ltr">
+<font face=3D"Calibri, sans-serif" style=3D"font-size:11pt;font-family:Cali=
+bri,sans-serif;color:rgb(0,0,0)"><b style=3D"font-family:Calibri,sans-serif=
+">From:</b> Fran Rengel &lt;<a href=3D"mailto:fran@enrichmarketing.com" sty=
+le=3D"font-family:Calibri,sans-serif" target=3D"_blank">fran@enrichmarketin=
+g.com</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Friday, July 8, 2022 =
+5:29 PM<br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> Brett Allcorn &lt;<a hr=
+ef=3D"mailto:brett@pineapple.co" style=3D"font-family:Calibri,sans-serif" t=
+arget=3D"_blank">brett@pineapple.co</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Cc:</b> bob <a href=3D"http://r=
+kgconsultinginc.com" style=3D"font-family:Calibri,sans-serif" target=3D"_bl=
+ank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" st=
+yle=3D"font-family:Calibri,sans-serif" target=3D"_blank">bob@rkgconsultingi=
+nc.com</a>&gt;; Andrea Abramowski &lt;<a href=3D"mailto:andrea@pineapple.co=
+" style=3D"font-family:Calibri,sans-serif" target=3D"_blank">andrea@pineapp=
+le.co</a>&gt;;
+ Joel Karlinsky &lt;<a href=3D"mailto:jkarlinsky@gmail.com" style=3D"font-f=
+amily:Calibri,sans-serif" target=3D"_blank">jkarlinsky@gmail.com</a>&gt;; G=
+eni Yang &lt;<a href=3D"mailto:geni@precisionfinancialllc.com" style=3D"fon=
+t-family:Calibri,sans-serif" target=3D"_blank">geni@precisionfinancialllc.c=
+om</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> Re: Attached Examp=
+le of Differences in Reported Sales: High Priority: Call needed with your f=
+inance team and Enrich Marketing-Rengel-Second Marsh Consulting finance tea=
+m</font>
+<div>=C2=A0</div>
+</div>
+</div>
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr">
+<div>Media Reps are the guys that purchased your dating products,=C2=A0and =
+inherited the rev share deal for Elixir of Eros.<br>
+</div>
+<div><br>
+</div>
+<div>My understanding is we need the past data to calculate future data and=
+ train them how to get the data properly. Bob, I&#39;ll let you chime in / =
+clarify here.</div>
+</div>
+<br>
+<div>
+<div dir=3D"ltr">On Fri, Jul 8, 2022 at 5:59 PM Brett Allcorn &lt;<a href=
+=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt;=
+ wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">OK yeah, can you help me understand what the data is neede=
+d for?
+<div><br>
+I&#39;m not sure who Media Reps is.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<br>
+<div>
+<div dir=3D"ltr">On Sat, Jul 9, 2022 at 12:53 AM Fran Rengel &lt;<a href=3D=
+"mailto:fran@enrichmarketing.com" target=3D"_blank">fran@enrichmarketing.co=
+m</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div dir=3D"ltr">Hey Brett, that&#39;s fine with me.<br>
+<br>
+My understanding is that part of the urgency is not because of our Pineappl=
+e payments, but also because we can&#39;t train Media Reps to pay us out co=
+rrectly without the accurate back data (Bob correct me if I&#39;m wrong - I=
+ haven&#39;t really dug in and don&#39;t completely
+ understand the ins and outs of the problem). I believe their first payment=
+ is coming up in a few days,=C2=A0hence the full-court-press.</div>
+<div dir=3D"ltr"><br>
+</div>
+<div dir=3D"ltr">Bob - can you put something in the calendar with Andrea a =
+little later than this coming week?=C2=A0</div>
+<div dir=3D"ltr"><br>
+</div>
+<div>Thanks guys,</div>
+<div>Fran</div>
+<br>
+<div>
+<div dir=3D"ltr">On Fri, Jul 8, 2022 at 5:25 PM Brett Allcorn &lt;<a href=
+=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt;=
+ wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">Hey Bob and Fran, I realize this is important and needs to=
+ be taken care of.
+<div><br>
+</div>
+<div>Is it possible I can buy Andrea some time since she&#39;s currently wo=
+rking on transitioning responsibilities over from our CFO who&#39;s leaving=
+ in the near future?</div>
+<div><br>
+</div>
+<div>If so, she can get back on this Monday, July 26th.</div>
+<div><br>
+</div>
+<div>I think payments are still flowing so on the money side you guys shoul=
+d be ok for now?</div>
+</div>
+<br>
+<div>
+<div dir=3D"ltr">On Fri, Jul 8, 2022 at 2:48 PM bob <a href=3D"http://rkgco=
+nsultinginc.com" target=3D"_blank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" ta=
+rget=3D"_blank">bob@rkgconsultinginc.com</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">An=
+drea,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Fu=
+rther to my email to you of yesterday (below) attached is a worksheet to he=
+lp you better understand our high priority concern.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+is is monthly sales from one category of products alone for illustration, t=
+he info products. It compares monthly sales from Oct 2020 through Feb 2022 =
+as reported to us in March as part
+ of the revenue share computation to the monthly sales numbers provided to =
+us at the end of June in connection with May revenue share.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">As=
+ you can see the sales through February as previously reported were $461,16=
+0 and now you are reporting those sales as $224,081, which is a $249,999 or=
+ 54% difference.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">I =
+share this to highlight our high priority concern: Sales for prior periods =
+are what they are, and should not change. This kind of differences calls in=
+to question the functional integrity
+ and reliability of the accounting process being used to account for revenu=
+e share payments, and more.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Pl=
+ease advise ASAP as to times for a call.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+ank you,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Bo=
+b</div>
+<div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70x_gmail-m_-4090720379152947717gmail-m_4415245492558681310gmail-m_25009454=
+39795466447gmail-m_4884780094783929946Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;font-family:Georgia;b=
+ackground-color:black"><span style=3D"margin:0px;font-family:Georgia;color:=
+navy"><span style=3D"margin:0px;font-size:8pt;font-family:Georgia"><span st=
+yle=3D"margin:0px;font-family:Georgia;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:black"><span=
+ style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=3D"font-=
+family:Georgia"><span style=3D"margin:0px;font-family:Georgia;background-co=
+lor:white"><span style=3D"margin:0px;font-family:Georgia;color:black">RKG<s=
+pan style=3D"font-family:Georgia">=C2=A0</span></span><span style=3D"margin=
+:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0px;font-fami=
+ly:Georgia;color:blue">consulting
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-family:Georgia;color:bla=
+ck">BUSINESS
+ GROWTH ADVISORS=C2=A0</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-size:10pt;font-family:Ge=
+orgia"><span style=3D"margin:0px;font-family:Georgia;color:black"><span sty=
+le=3D"margin:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0=
+px;font-family:Georgia;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;color:black"><span style=3D"m=
+argin:0px;font-size:8pt;font-family:Georgia">Phone: 847-902-0258<span style=
+=3D"font-family:Georgia">=C2=A0</span><strong style=3D"font-family:Georgia"=
+><a href=3D"http://www.rkgconsultinginc.com/" rel=3D"noopener noreferrer" t=
+itle=3D"Website" style=3D"margin:0px;font-family:Georgia" target=3D"_blank"=
+>Website</a></strong><span style=3D"font-family:Georgia">=C2=A0</span>|<str=
+ong style=3D"font-family:Georgia"><a href=3D"https://www.linkedin.com/in/bo=
+bgreisman/" rel=3D"noopener noreferrer" title=3D"LinkedIn" style=3D"margin:=
+0px;font-family:Georgia" target=3D"_blank"><span style=3D"font-family:Georg=
+ia">=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt;font-family:&quo=
+t;courier new&quot;,courier">IMPORTANT: The contents
+ of this email and any attachments are confidential. They are intended for =
+the named recipient(s) only. If you have received this email by mistake, pl=
+ease notify the sender immediately and do not disclose the contents to anyo=
+ne or make copies thereof.</span></span></span></div>
+</div>
+</div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70x_gmail-m_-4090720379152947717gmail-m_4415245492558681310gmail-m_25009454=
+39795466447gmail-m_4884780094783929946appendonsend">
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70x_gmail-m_-4090720379152947717gmail-m_4415245492558681310gmail-m_25009454=
+39795466447gmail-m_4884780094783929946divRplyFwdMsg" dir=3D"ltr">
+<font face=3D"Calibri, sans-serif" style=3D"font-size:11pt;font-family:Cali=
+bri,sans-serif;color:rgb(0,0,0)"><b style=3D"font-family:Calibri,sans-serif=
+">From:</b> bob
+<a href=3D"http://rkgconsultinginc.com" style=3D"font-family:Calibri,sans-s=
+erif" target=3D"_blank">
+rkgconsultinginc.com</a><br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Thursday, July 7, 202=
+2 3:15 PM<br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> Andrea Abramowski &lt;<=
+a href=3D"mailto:andrea@pineapple.co" style=3D"font-family:Calibri,sans-ser=
+if" target=3D"_blank">andrea@pineapple.co</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Cc:</b> Brett Allcorn &lt;<a hr=
+ef=3D"mailto:brett@pineapple.co" style=3D"font-family:Calibri,sans-serif" t=
+arget=3D"_blank">brett@pineapple.co</a>&gt;; Fran Rengel &lt;<a href=3D"mai=
+lto:fran@enrichmarketing.com" style=3D"font-family:Calibri,sans-serif" targ=
+et=3D"_blank">fran@enrichmarketing.com</a>&gt;;
+ Joel Karlinsky &lt;<a href=3D"mailto:jkarlinsky@gmail.com" style=3D"font-f=
+amily:Calibri,sans-serif" target=3D"_blank">jkarlinsky@gmail.com</a>&gt;; G=
+eni Yang &lt;<a href=3D"mailto:geni@precisionfinancialllc.com" style=3D"fon=
+t-family:Calibri,sans-serif" target=3D"_blank">geni@precisionfinancialllc.c=
+om</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> High Priority: Cal=
+l needed with your finance team and Enrich Marketing-Rengel-Second Marsh Co=
+nsulting finance team</font>
+<div>=C2=A0</div>
+</div>
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">An=
+drea,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">We=
+ have not met or spoken, but we need to.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">In=
+ reviewing the work sent to us in late June by Sean in connection with the =
+determination of the revenue share payment to Second March Consulting, ther=
+e are significant questions, primarily
+ related to the fact that prior period numbers for sales and profit share -=
+- which should be &quot;locked&quot; or fixed -- have changed. These change=
+s affect determination of current and future profit share numbers.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Le=
+t&#39;s please have a call with the appropriate members of your finance tea=
+m and members of the Enrich-Rengel team. Here are suggested dates/times:</d=
+iv>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<ul style=3D"font-family:Georgia,serif">
+<li style=3D"font-family:Georgia,serif">Tomorrow -- Friday -- anytime from =
+1 pm ET on.</li><li style=3D"font-family:Georgia,serif">Monday, any time be=
+fore 3 pm ET</li><li style=3D"font-family:Georgia,serif">Tuesday any time f=
+rom 11 am ET - 3:30 pm.</li></ul>
+<div style=3D"font-family:Georgia,serif">As the changes in prior period num=
+bers are material, this is a matter of high priority concern. Again, number=
+s reported as sales in prior periods
+<i style=3D"font-family:Georgia,serif">now</i> being report as significantl=
+y lower requires a fulsome examination and explanation. As I am sure you ag=
+ree.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif"><br>
+</div>
+<div style=3D"font-family:Georgia,serif">Please advise as soon as possible =
+as to your availability and I am making the same request of members of our =
+team by way of a copy to them.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif"><br>
+</div>
+<div style=3D"font-family:Georgia,serif">Thank you.</div>
+<div style=3D"font-family:Georgia,serif">Bob</div>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div>
+<div id=3D"gmail-m_-4044447728874920899gmail-m_5207213466999021858gmail-m_-=
+8844054503109172523gmail-m_4148387725855624923gmail-m_-8008724178305581557g=
+mail-m_5281811322977331655gmail-m_1451655811063650082gmail-m_-6941222963527=
+675996x_m_-4192879109543501111x_m_1874387078527914661x_m_-85734677053935540=
+70x_gmail-m_-4090720379152947717gmail-m_4415245492558681310gmail-m_25009454=
+39795466447gmail-m_4884780094783929946x_Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;font-family:Georgia;b=
+ackground-color:black"><span style=3D"margin:0px;font-family:Georgia;color:=
+navy"><span style=3D"margin:0px;font-size:8pt;font-family:Georgia"><span st=
+yle=3D"margin:0px;font-family:Georgia;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:black"><span=
+ style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=3D"font-=
+family:Georgia"><span style=3D"margin:0px;font-family:Georgia;background-co=
+lor:white"><span style=3D"margin:0px;font-family:Georgia;color:black">RKG<s=
+pan style=3D"font-family:Georgia">=C2=A0</span></span><span style=3D"margin=
+:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0px;font-fami=
+ly:Georgia;color:blue">consulting
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-family:Georgia;color:bla=
+ck">BUSINESS
+ GROWTH ADVISORS=C2=A0</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;background-color:rgb(153,51,0=
+)"><span style=3D"margin:0px;font-family:Georgia;color:navy"><strong style=
+=3D"font-family:Georgia"><span style=3D"margin:0px;font-family:Georgia;back=
+ground-color:white"><span style=3D"margin:0px;font-size:10pt;font-family:Ge=
+orgia"><span style=3D"margin:0px;font-family:Georgia;color:black"><span sty=
+le=3D"margin:0px;font-size:8pt;font-family:Georgia"><span style=3D"margin:0=
+px;font-family:Georgia;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:Georgia;color:black"><span style=3D"m=
+argin:0px;font-size:8pt;font-family:Georgia">Phone: 847-902-0258<span style=
+=3D"font-family:Georgia">=C2=A0</span><strong style=3D"font-family:Georgia"=
+><a href=3D"http://www.rkgconsultinginc.com/" rel=3D"noopener noreferrer" t=
+itle=3D"Website" style=3D"margin:0px;font-family:Georgia" target=3D"_blank"=
+>Website</a></strong><span style=3D"font-family:Georgia">=C2=A0</span>|<str=
+ong style=3D"font-family:Georgia"><a href=3D"https://www.linkedin.com/in/bo=
+bgreisman/" rel=3D"noopener noreferrer" title=3D"LinkedIn" style=3D"margin:=
+0px;font-family:Georgia" target=3D"_blank"><span style=3D"font-family:Georg=
+ia">=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt;font-family:&quo=
+t;courier new&quot;,courier">IMPORTANT: The contents
+ of this email and any attachments are confidential. They are intended for =
+the named recipient(s) only. If you have received this email by mistake, pl=
+ease notify the sender immediately and do not disclose the contents to anyo=
+ne or make copies thereof.</span></span></span></div>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000004606cc05e3b7df8b--

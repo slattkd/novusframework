@@ -1,0 +1,405 @@
+MIME-Version: 1.0
+Date: Tue, 1 Nov 2022 16:06:46 -0500
+References: <CALCR5_Rsiwbc4wZrbaQV8TQAXANZ0Kp-0MmSd4QiObfONzcttA@mail.gmail.com>
+In-Reply-To: <CALCR5_Rsiwbc4wZrbaQV8TQAXANZ0Kp-0MmSd4QiObfONzcttA@mail.gmail.com>
+Message-ID: <CAHbmDP8SO55PivGXUV0ibWW-UrY7wdt+qTnnnLJwJo-Fahg-=w@mail.gmail.com>
+Subject: Re: Doing more with Knime
+From: Aubrey Allen <aubrey@pineapple.co>
+To: Brett Allcorn <brett@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000002a582005ec6f1a17"
+
+--0000000000002a582005ec6f1a17
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Brett,
+
+For the reports you listed you want me to build out:
+
+   - Do the Weekly sales report & the Affiliate report need to be changed
+   in some way, or are you saying that they are just the highest priority to
+   keep up with as they are now?
+   - I'm working on ALTV and have ALTVs/ALTPs for Jan-September 2022.  I am
+   still working on the historical reporting between 6/2021 and now so that we
+   can track how it's fluctuated over time/help verify the current ALTVs
+   - I will make sure to get with Dimitri so we can discuss Fraud Analysis
+   & Merchant Health reporting further, knowing that those reports are of the
+   utmost importance
+
+In regards to your questions:
+
+   1. I would most appreciate having a second set of eyes to go through the
+   workflows to ensure that the logic is correct, etc.  Like I said, I'm using
+   Ian's workflow but updated to accommodate changes in the company since his
+   departure, but would appreciate having another person to help verify my
+   findings.  If a consultant is the best option for that, then that would be
+   great.
+   2. I have not finished the courses.  I'm about half-way through, but
+   only had about a week to focus on the courses before other priorities took
+   precedent.  I've been spending more of my time building the Q4 dashboard,
+   working on ALTV, and ad hoc reporting for Avalara, in addition to keeping
+   up with my standard reports.
+   3. I now have a second computer available to run KNIME routines on,
+   should that be something that I need to do in the future.
+
+
+Thanks,
+Aubrey
+
+On Tue, Nov 1, 2022 at 11:51 AM Brett Allcorn <brett@pineapple.co> wrote:
+
+> Hey Aubrey, so one thing I've been thinking with Jarren and this new guy
+> we've hired part time (Jean-Francios) is that to set things up with a live,
+> cloud-based system takes a lot of time.
+>
+> Sometimes we need the data faster to understand what's going on.
+>
+> Also Ironside (I think you spoke with them?) recommended we always build
+> out reports in a simpler system like Excel or maybe Knime before bringing
+> it into the cloud.
+>
+> That way we know the calculations are accurate and what steps need to be
+> taken and how we want to display the data.
+>
+> Kind of like... building a car out of clay first before mass production.
+>
+> Anyway, so my thought is you can use knime/excel/sheets to build out the
+> most critical reports we need.
+>
+> *These reports haven't changed. They are:*
+> - Customer lifetime value (gross and net) by product
+> - The weekly sales report
+> - The weekly affiliate report
+> - Fraud analysis report (Dimitri is doing this manually now)
+> - Merchant account health report
+> - One other report Jack requested for his department
+>
+> So I think we should move ahead with these if you have the capacity.
+>
+> If you don't, let's discuss why not and try to find a solution.
+>
+> Also since it seems like you might be using Knime for at least the next
+> 6-12 months, if not longer, there are a few points I want to touch on:
+>
+> 1. Do you want to hire and help or coaching? I appreciate you going
+> through those courses, but at some point, I think coaching will save you a
+> lot of time and help ensure data is accurate by providing a second set of
+> eyes to check work, which is priority #1.
+>
+> 2. Speaking of that, did you finish the course yet?
+>
+> 3. I think we talked about this before, but because Knime runs on your
+> computer, it can be very time consuming to run these reports and it might
+> help to have a faster machine and potentially two computers so you can let
+> a routine run while you do other work.
+>
+> What are your system specs right now?
+>
+> I can help you find them if you're not sure how.
+>
+> I found this thread on the knime forums:
+> https://forum.knime.com/t/system-requirements-knime/14692
+>
+> I also found threads like these to find consultants for help:
+>
+> https://forum.knime.com/t/looking-for-a-freelancer-to-build-us-some-knime-workflows/38788/3
+>
+> https://www.upwork.com/hire/knime-freelancers/
+>
+> Keep in mind, freelancers like this may also be able to teach you more
+> advanced ways to setup routines so they get done faster.
+>
+> All this said, I know these future plans factor into your raise request.
+>
+> I have a lot of thoughts and ideas around that and a few questions.
+>
+> I will be meeting with Amber at 2pm today and I hope to compose my
+> thoughts for you so we can discuss tomorrow.
+>
+>
+>
+> --
+>
+>
+>
+> *Brett Allcorn*
+> Chief Executive Officer | pineapple.co
+>
+> [image: Photo]
+>
+> E: brett@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+
+
+-- 
+*Aubrey Allen*
+Data Analytics Technician | pineapple.co
+
+[image: Photo]
+
+E: aubrey@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--0000000000002a582005ec6f1a17
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Brett,<div></div><div><br></div><div>For the reports yo=
+u listed you want me to build out:</div><div><ul><li>Do the Weekly sales re=
+port &amp; the Affiliate report need to be changed in some way, or are you =
+saying that they are just the highest priority to keep up with as they are =
+now?</li><li>I&#39;m working on ALTV and have ALTVs/ALTPs for Jan-September=
+ 2022.=C2=A0 I am still working on the historical reporting between 6/2021 =
+and now so that we can track how it&#39;s fluctuated over time/help verify =
+the current ALTVs</li><li>I will make sure to get with Dimitri so we can di=
+scuss Fraud Analysis &amp; Merchant Health reporting further, knowing that =
+those reports are of the utmost importance</li></ul><div>In regards to your=
+ questions:</div></div><div><ol><li>I would most appreciate having a second=
+ set of eyes to go through the workflows to ensure that the logic is correc=
+t, etc.=C2=A0 Like I said, I&#39;m using Ian&#39;s workflow but updated to =
+accommodate=C2=A0changes in the company since his departure, but would appr=
+eciate having another person to help verify my findings.=C2=A0 If a consult=
+ant is the best option for that, then that would be great.</li><li>I have n=
+ot finished the courses.=C2=A0 I&#39;m about half-way through, but only had=
+ about a week to focus on the courses before other priorities took preceden=
+t.=C2=A0 I&#39;ve been spending more of my time building the Q4 dashboard, =
+working on ALTV, and ad hoc reporting for Avalara, in addition to keeping u=
+p with my standard reports.</li><li>I now have a second computer available =
+to run KNIME routines on, should that be something that I need to do in the=
+ future.</li></ol><div><br></div></div><div>Thanks,</div><div>Aubrey</div><=
+br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue,=
+ Nov 1, 2022 at 11:51 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineappl=
+e.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hey Aubrey, so o=
+ne thing I&#39;ve been thinking with Jarren and this new guy we&#39;ve hire=
+d part time (Jean-Francios) is that to set things up with a live, cloud-bas=
+ed system takes a lot of time.<div><br></div><div>Sometimes we need the dat=
+a faster to understand what&#39;s going on.</div><div><br></div><div>Also I=
+ronside (I think you spoke with them?) recommended we always build out repo=
+rts in a simpler system like Excel or maybe Knime before bringing it into t=
+he cloud.</div><div><br></div><div>That way we know the calculations are ac=
+curate and what steps need to be taken and how we want to display the data.=
+</div><div><br>Kind of like... building a car out of clay first before mass=
+ production.</div><div><br></div><div>Anyway, so my thought is you can use =
+knime/excel/sheets to build out the most critical reports we need.</div><di=
+v><br></div><div><b>These reports haven&#39;t changed. They are:</b></div><=
+div>- Customer lifetime value (gross and net) by product</div><div>- The we=
+ekly sales report</div><div>- The weekly affiliate report</div><div>- Fraud=
+ analysis=C2=A0report (Dimitri is doing this manually now)</div><div>- Merc=
+hant account health report</div><div>- One other report Jack requested for =
+his department</div><div><br></div><div>So I think we should move ahead wit=
+h these if you have the capacity.</div><div><br></div><div>If you don&#39;t=
+, let&#39;s discuss why not and try to find a solution.</div><div><br></div=
+><div>Also since it seems like you might be using Knime for at least the ne=
+xt 6-12 months, if not longer, there are a few points I want to touch on:</=
+div><div><br></div><div>1. Do you want to hire and help or coaching? I appr=
+eciate you going through those courses, but at some point, I think coaching=
+ will save you a lot of time and help ensure data is accurate by providing =
+a second set of eyes to check work, which is priority #1.</div><div><br></d=
+iv><div>2. Speaking of that, did you finish the course yet?</div><div><br><=
+/div><div>3. I think we talked about this before, but because Knime runs on=
+ your computer, it can be very time consuming to run these reports and it m=
+ight help to have a faster machine and potentially two computers so you can=
+ let a routine run while you do other work.</div><div><br></div><div>What a=
+re your system specs right now?</div><div><br></div><div>I can help you fin=
+d them if you&#39;re not sure how.</div><div><br></div><div>I found this th=
+read on the knime forums:=C2=A0<a href=3D"https://forum.knime.com/t/system-=
+requirements-knime/14692" target=3D"_blank">https://forum.knime.com/t/syste=
+m-requirements-knime/14692</a></div><div><br></div><div>I also found thread=
+s like these to find consultants for help:=C2=A0</div><div><a href=3D"https=
+://forum.knime.com/t/looking-for-a-freelancer-to-build-us-some-knime-workfl=
+ows/38788/3" target=3D"_blank">https://forum.knime.com/t/looking-for-a-free=
+lancer-to-build-us-some-knime-workflows/38788/3</a><br></div><div><br></div=
+><div><a href=3D"https://www.upwork.com/hire/knime-freelancers/" target=3D"=
+_blank">https://www.upwork.com/hire/knime-freelancers/</a><br></div><div><b=
+r></div><div>Keep in mind, freelancers like this may also be able to teach =
+you more advanced ways to setup routines so they get done faster.</div><div=
+><br></div><div>All this said, I know these future plans factor into your r=
+aise request.</div><div><br></div><div>I have a lot of thoughts and ideas a=
+round that and a few questions.</div><div><br></div><div>I will be meeting =
+with Amber at 2pm today and I hope to compose my thoughts for you so we can=
+ discuss tomorrow.</div><div><br></div><div><br></div><div><br></div><div>-=
+- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Executi=
+ve Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0px" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span> 			 		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+>=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width:90px;height:auto;border:0px" width=3D"90" border=3D"0" src=3D=
+"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_Rus=
+Wt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div>
+
+--0000000000002a582005ec6f1a17--

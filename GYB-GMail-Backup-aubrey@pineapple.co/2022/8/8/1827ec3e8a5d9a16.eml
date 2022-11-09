@@ -1,0 +1,266 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:9acb:0:0:0:0 with SMTP id ah11csp1175634ejc;
+        Mon, 8 Aug 2022 11:42:25 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6GAtPEwRfLP3m5VkpGgskI4+gz3lmDhIvTUTjEG42ULPQM9iJoYWa5xSz86T7vQNKvTgn7
+X-Received: by 2002:a65:5941:0:b0:41d:a203:c043 with SMTP id g1-20020a655941000000b0041da203c043mr2450311pgu.483.1659984144827;
+        Mon, 08 Aug 2022 11:42:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659984144; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Rr4NYYJV6bjjeOGBk8aTtHFHIQZNHsAh5F6bzirIkkYQjA3pZz2lL6qFFaOI2v0UJL
+         7cZZtj6uBQcau65VKdrmxV09s8fyaG8YeNxl+vC+Ox7hbY2EL+ctFJEdqAhGTEZBcSiS
+         zFvn7/jzVcvELLayyapykGsKRFw3UKu59Fi3i9soOZ+57S7BdE5FhqOG4Gp3llUufdGJ
+         8A86BsGpGrZSpcYr2/eKNU/iC657F6KauFntUPEUrSxTnSjcPF0pE9c/N7T0VhL85sze
+         fx7MvUMKLOZQdMjN6h87VhpDCQWWug6hdhtoxXzaUdMbA+eXjfftrIKu0ufiTeouvgWF
+         ddOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:mime-version:subject:references:in-reply-to:message-id
+         :from:date:dkim-signature;
+        bh=puJyzheyzm/0x4nXOWcJuo0UvchJv4ggKKOG2AfIRig=;
+        b=MIWtlx5thKYGW+Xu5N3a/4h1KSC/102/hBW+xPNvRaYGmVTf7VwrpVA1OnE0qW1Xid
+         N6931qnDf3Sj31tF03YGHxXzj4h3OveqSTNI6AK/EYGac3T5vNsZ0F//H86ziZDsHYnG
+         vwvBXV3W/9SLv4dQ1iLP2Xi6rrl6iBufcCY/KRYPyIDulp62UyJfjv46FdwG+mzV5p8n
+         qnxihSukB5R98N0j/sXEoM3jUShUTzoYO3VyoRJLunZHGaDgxu1GqTXRd87RWuCBPtgg
+         xh6WDcZhKfLhsg385U3HX4/8MkUWc4TnzVboOHm9MMNbHyYBEUkai5jzPDU1lCdXDlzP
+         vgCQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=or5dc11y;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 198.21.0.156 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from cskrhhwc.outbound-mail.sendgrid.net (cskrhhwc.outbound-mail.sendgrid.net. [198.21.0.156])
+        by mx.google.com with ESMTPS id q9-20020a170902f78900b0016c0569c012si11655553pln.588.2022.08.08.11.42.23
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 08 Aug 2022 11:42:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 198.21.0.156 as permitted sender) client-ip=198.21.0.156;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=or5dc11y;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 198.21.0.156 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:in-reply-to:references:subject:mime-version:content-type:
+	reply-to:to:cc;
+	s=m1; bh=puJyzheyzm/0x4nXOWcJuo0UvchJv4ggKKOG2AfIRig=;
+	b=or5dc11y0vC3ZJhnf7BaCN1LJ0iPoC7Qd/vir2Fq6J0/gqghott6Gs30qmGAWtxVyvpU
+	LeHXdTvX3EjzDQy2YqGGapuVhd2xwnS3WUrNrMYGa5Fakfz5fTFIo/ClZvJs/R2bkf/v2e
+	V7LFOeIUBDZmN4G5WTpFd+n5/m+VAJGSU=
+Received: by filterdrecv-canary-688db84d4d-bwrzd with SMTP id filterdrecv-canary-688db84d4d-bwrzd-1-62F1590E-73
+        2022-08-08 18:42:22.818725735 +0000 UTC m=+1550232.731700989
+Received: from USAPPSERVER08 (unknown)
+	by geopod-ismtpd-2-1 (SG) with ESMTP
+	id YFU09OS1RfWMNB8Oqky0Wg
+	for <aubrey@pineapple.co>;
+	Mon, 08 Aug 2022 18:42:22.646 +0000 (UTC)
+Date: Mon, 08 Aug 2022 18:42:22 +0000 (UTC)
+From: "Taylor Piccolo (Pineapple Products)" <application@teamwork.com>
+Message-ID: <tw.30.194505.756@replies.teamwork.com>
+In-Reply-To: <thread.921738.30.2519.link@replies.teamwork.com>
+References: <thread.921738.30.2519.link@replies.teamwork.com>
+Subject: (amazon.com-Revival Point Amazon) - Link "COA/Testing Reports for
+ Amazon" has been added
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_67121_1853152937.1659984142531"
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-MC-Tags: webserver8
+Reply-To: Pineapple Products <tw.30.194505.756@replies.teamwork.com>
+X-SG-EID: 
+ =?us-ascii?Q?GIiwxtFVkZQJUHwnhRF7rjJcXRv5gGxTU+oKF2DjFfB5h326SGPRJelvD+bgmY?=
+ =?us-ascii?Q?b6hBa0ya4RWrNzonxOpXHESKmhA5UHRFCYXPnsx?=
+ =?us-ascii?Q?OryJpFZ243wPGnWZrhXzB0oVYCtDiESCw3HqXCH?=
+ =?us-ascii?Q?r1AvrTn7Wv6zNNcF2z+WyKzU1E+tZtv4BDPFjwu?=
+ =?us-ascii?Q?MnnyEEexaMSaQlMMH=2FhJG0X0cTLV2TsoIVSRiaq?=
+ =?us-ascii?Q?mZEjeNxiPxKEQf=2FcGj3KfaOgFa8zCh1vzDUcEqc?=
+ =?us-ascii?Q?q5Oo2QkZVyaeSTDN2lSP+oLll7TQG4dnfLDR3fQ?= =?us-ascii?Q?Jss=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJox7Dz6VF2YSa9nYWReO?=
+ =?us-ascii?Q?uXL5CSK8P+L8lX2MpDr2DlbijBrTwkVmFN+lt7v?=
+ =?us-ascii?Q?DoqbxLDPs67kqxDOtFjungHFcA2dxhoyDnOBLIM?=
+ =?us-ascii?Q?NfqMeR2jh=2FpkcIIvquxx2ZCsx65Vk=2FET9a40EMA?=
+ =?us-ascii?Q?w+Ohq6buD222cjw=2F8Fol1APHKdutiy3NTjqAiTn?=
+ =?us-ascii?Q?KKfiis9mPRmeXPZ1lJzjoU+J5y2rBz6inevYz1?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+------=_Part_67121_1853152937.1659984142531
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Taylor Piccolo has added a new link
+COA/Testing Reports for Amazon
+https://drive.google.com/drive/folders/1GZv1cxIhcA-CP5X0EQuXE-EL7YhFEisd
+Link Details
+Name: COA/Testing Reports for Amazon
+Category:
+Project
+Details
+Project: amazon.com-Revival Point Amazon
+Company: Revival Point
+Labs
+
+Copied To: Abigail Dewire, Aimee Latuszek, Allen King, Amber Glenn,
+Andrea Abramowski, Aubrey Allen, Bonnie Wilson, Brett Allcorn, Brooke
+Whoolery, Carla Vallade, Colin Chung, DJ Gelner, Dane Slatten, Derek
+Madden, Edwin Campos, Emily Freiday, Gene Natftulyev, Grace Needler,
+Heather Beavers, Ivy Cea, JJ Leaver, Jack Nalbandyan, Jarren Scheller,
+Jason Aaberg, John Belkewitch, Kendal LaFleur, Kerry Scott, Kim Boisvert,
+Kirsten Woods, Marco Shimazaki, Maria Lindley, Megan Harnett, Mike
+McBrien, Olivia Patterson, Sam Wilder, Sean Grigsby, Shawna McCartney,
+Sheena McLean, Stacy Schanks, Stephanie Sleigh, Tessa Bender
+
+------=_Part_67121_1853152937.1659984142531
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+
+			<html>
+				<head>
+					<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+					<meta name=3D"viewport" content=3D"width=3D350px, user-scalable=3Dyes"=
+>
+					<style>
+						body {
+							margin:0px;
+						}
+						body,td,th,p{
+							font-family:Tahoma, Arial, Helvetica, sans-serif;
+							font-size:12px;
+							text-align:left;
+						}
+						h3{
+							padding:0;
+							margin:10px 0 5px 0;
+							color:#000000;
+							font-family : arial,sans-serif;
+							font-size: 1.4em;
+							font-weight:bold;
+						}
+						pre {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						pre code {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						blockquote {
+							border-left: 4px solid #DDDDDD;
+							padding: 0 15px;
+							color: #777777;
+							margin-left:10px;
+						}
+
+						blockquote p {
+							font-size:14px !important;
+							color: #777777;
+						}
+
+						span.atwho-inserted {
+							-webkit-text-size-adjust: 100%;
+							-webkit-tap-highlight-color: rgba(0,0,0,0);
+							text-rendering: optimizeLegibility;
+							text-align: left;
+							font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif=
+;
+							line-height: 1.7;
+							word-break: break-word;
+							overflow-wrap: break-word;
+							-webkit-user-modify: read-only;
+							box-sizing: border-box;
+							-webkit-user-select: auto !important;
+							display: inline-block;
+							border: none;
+							font-size: 13px;
+							color: #3f4650;
+							padding: 1px 6px;
+							border-radius: 10px;
+							background-color: #e1e7ef;
+							font-weight: normal;
+							cursor: default;
+							outline: none;
+						}
+
+						a {
+							word-break:break-all;
+						}
+						table td img { max-width:100%; }
+						html { -webkit-text-size-adjust: none; }
+						@media only screen and (max-device-width:480px) {
+							body { width: 350px !important; padding:5px !important;	}
+							table[class=3D"wrapper"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] table { width:300px !important; max-width:3=
+00px !important;}
+							table td[class=3D"dateTime"] { display:none !important; }
+							table td img { max-width:340px!important; }
+							p[class=3D"dateTimeMobile"] { font-family:'Lucida Grande', 'Lucida S=
+ans', Arial, sans-serif; color:#9E9E9E !important; font-size:11px !importan=
+t; line-height:22px !important; margin-bottom:22px !important; margin:0; }
+							h3 span[class=3D"note"], h3 span[class=3D"fwd"] { padding:0 !importa=
+nt; background-color:#ffffff !important; }
+						}
+					</style>
+				</head>
+				<body style=3D"-webkit-text-size-adjust:none;">
+
+					=3D=3D=3D=3D=3D WRITE YOUR REPLY ABOVE THIS LINE =3D=3D=3D=3D=3D<div s=
+tyle=3D"padding:5px 0 10px 10px;clear:both;"><img src=3D"http://assets1.tea=
+mworkpm.net/tko/public/assets/brand/email/teamwork_primary.png" width=3D"20=
+0"  style=3D"width:100%;max-width:200px;" border=3D"0"></div><div class=3D"=
+mailWrap" style=3D"overflow:hidden;padding:10px;font-family:arial;font-size=
+:12px;"> <h3>Taylor Piccolo has added a new link</h3>
+					<div style=3D"font-size:14px;border:1px solid #888;padding:10px;margin=
+-bottom:20px">
+						<p style=3D"font-size:14px;"><strong>COA/Testing Reports for Amazon</=
+strong></p>
+					=09
+							<p style=3D"font-size:14px;"><a href=3D"https://drive.google.com/dri=
+ve/folders/1GZv1cxIhcA-CP5X0EQuXE-EL7YhFEisd" target=3D"_blank">https://dri=
+ve.google.com/drive/folders/1GZv1cxIhcA-CP5X0EQuXE-EL7YhFEisd</a></p>
+					=09
+					</div>
+				<div style=3D"border:1px solid #999;border-left:10px solid #999;padding=
+:10px;color:#555;"><h3 style=3D"margin:0;padding:0;color:#333;">Link Detail=
+s</h3><p><strong>Name:</strong> <a href=3D"https://pineappleproducts.teamwo=
+rk.com/links/2519">COA/Testing Reports for Amazon</a></p><p><strong>Categor=
+y:</strong> <a href=3D"https://pineappleproducts.teamwork.com/projects/3007=
+8/links?catId=3D0"></a></p><h3 style=3D"margin:0;padding:0;color:#333;">Pro=
+ject Details</h3><p><strong>Project:</strong> <a href=3D"https://pineapplep=
+roducts.teamwork.com/projects/30078">amazon.com-Revival Point Amazon</a></p=
+><p><strong>Company:</strong> Revival Point Labs</p></div><div style=3D"mar=
+gin-top:10px;color:#999;font-size:12px;">Copied To: Abigail Dewire, Aimee L=
+atuszek, Allen King, Amber Glenn, Andrea Abramowski, Aubrey Allen, Bonnie W=
+ilson, Brett Allcorn, Brooke Whoolery, Carla Vallade, Colin Chung, DJ Gelne=
+r, Dane Slatten, Derek Madden, Edwin Campos, Emily Freiday, Gene Natftulyev=
+, Grace Needler, Heather Beavers, Ivy Cea, JJ Leaver, Jack Nalbandyan, Jarr=
+en Scheller, Jason Aaberg, John Belkewitch, Kendal LaFleur, Kerry Scott, Ki=
+m Boisvert, Kirsten Woods, Marco Shimazaki, Maria Lindley, Megan Harnett, M=
+ike McBrien, Olivia Patterson, Sam Wilder, Sean Grigsby, Shawna McCartney, =
+Sheena McLean, Stacy Schanks, Stephanie Sleigh, Tessa Bender</div> <div sty=
+le=3D"margin-top:10px;"><a style=3D"color:#888888;" href=3D"https://pineapp=
+leproducts.teamwork.com/forgot_password">P.S. Just in case: You can reset y=
+our password by clicking here</a></div><div style=3D"display:none;font-colo=
+r:white;font-size:1px">Reply to: tw.30.194505.756@replies.teamwork.com</div=
+>=20
+						<div itemscope itemtype=3D"http://schema.org/EmailMessage">
+						  <div itemprop=3D"potentialAction" itemscope itemtype=3D"http://sche=
+ma.org/ViewAction">
+						    <link itemprop=3D"target" href=3D"https://pineappleproducts.teamw=
+ork.com/links/2519"/>
+						    <meta itemprop=3D"name" content=3D"View link"/>
+						  </div>
+						  <meta itemprop=3D"description" content=3D"View link on Teamwork"/>
+						</div>
+				=09
+				</body>
+			</html>
+	=09=
+
+------=_Part_67121_1853152937.1659984142531--

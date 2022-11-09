@@ -1,0 +1,322 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp2123311ejq;
+        Mon, 4 Jul 2022 14:32:08 -0700 (PDT)
+X-Received: by 2002:a17:90b:4d8d:b0:1ec:ce0f:790f with SMTP id oj13-20020a17090b4d8d00b001ecce0f790fmr39710423pjb.116.1656970328373;
+        Mon, 04 Jul 2022 14:32:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656970328; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Tp/qymLgOhxtQyxZKCddbUHKXeBCSB6hoD1IBsCmG4+7Lgc4k0HTG3/dekTWXVh3aN
+         zji6WIJ4yFzJLKJyu4zbDwpTpcapK9uts2loCMJhaZxdqa/+2mUe+GDQnEjvKhsv5Xz8
+         C/vLh8EwqILKflbxIMYT9kXkYKqDIbcGJVFZj6mOzdavl44a4Coo66SIqmIq3X8Zpx6S
+         4hiizXxFwzelXvhcD932hl3qg10T/aWEZVqb0Y1zNtlXoWsIAi1kwAHObPjSDUB1O2Lo
+         0lXXwlkO00CK5RKfWIRWCSGfVRWoGaX46FALLo88XYnbdEeHoUmAKD7bez9kcTZHcsib
+         xnjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=tCpU1Re3CRx6N8MGWCF4h1PR49UuaIn4TA0l00i4vJE=;
+        b=Z0GLYlBdj7gaclV9VXTZ/J3VdDIWCCSP4j5rkmf9a9rE5SGMgM3y1WhDlSG2lD+sGW
+         sJRf1wY5Wr6gVOug8klBSqleXrxjKjPuxxFPoTOu9P/kkkLI2fKzQ8uIo0AxkRVElMAJ
+         cFpbam+yog48RJkYiOQQtFifjXiMSMNEjnoZLfEDdodqDgwknUnFsdvTvatCArclw44G
+         2YvtlmyB5mOI80xBfUbNtpBAkzqOwBmQ6KPgC+XIT9h3rup84sFjIP3jv6+PcBC9QF9i
+         3t63CSImSpL14yKkQT+nZqc+0poWj/dj2CU0Vv1I1iaQV7jwHFnspF8Jbmg4WAGfLic0
+         IUYA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=WWPb4Cvn;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o2-20020a170902778200b001640ab15460sor11816905pll.130.2022.07.04.14.32.08
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 04 Jul 2022 14:32:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=WWPb4Cvn;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=tCpU1Re3CRx6N8MGWCF4h1PR49UuaIn4TA0l00i4vJE=;
+        b=WWPb4CvnwtXDMk1S9+aMMoZMJYKShTABif2hlXaRlaj0ltvoKwkiiMEYizzMvxo0sA
+         QwrQU3YHRCdTgLV1g8Qb7JwiUs+IQQmcXtCeAfN4VO40+YYOQQYuJ8D2LCiIy1n2+6OG
+         rL1DmN/WzE8KVgphWu3HjhPa9Csc/hJjgh0jQN0iocLUxCAEmtaLvkBdyrNmpvyr65Lq
+         bDjaq/ENFr7iuauJDKfrwu+aOqQjdomKtS79w0O9R3J3np28mNUY7+vIZ3WHYVA2JSOj
+         0KMpi00O8jGLdxuC45ZRi9P4Yb+3aproW0ZL368cLXR44jnzOEVxb7Qn0VpfaJrl8RgC
+         v4pQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=tCpU1Re3CRx6N8MGWCF4h1PR49UuaIn4TA0l00i4vJE=;
+        b=qeiWFq1ZA3EtqVuufLTPovZtHEnIxK89NwQcbYTzKUgZ/grGKm92T43Nz0o5Oje5HF
+         b6n70jbABVn/r3XCPloj0SfInElaYQLYS5rKewfNPsiF3XuZkuVla/YgUUAITL//294s
+         wXHhVxp53sqCh6MfCqkTlY6sMOREQRLcWkNStyiAbtW7KPcgs6pyfPXG9Ipf1i7ltnO9
+         CM/zUmcY3IiyLlfbt2niZTa9kwDTFApjACyR9ZNEPCo+WdfsUqm43TT+w1Eg7DODWCg2
+         WpwxjNnDQVu/8HvCuF9EOKHaN5HumC+6LNzNJVlt+ymnfPWH51619eTZN5Rr3LQD7lJd
+         VvfQ==
+X-Gm-Message-State: AJIora8OEtpm2oeK9dgInhnIkxR44UhWjZSD7KrOn4GzTx9/mWFf7R39
+	t77IVaObR2b3ahh15gp7hp7H6iGM9FiQiKl3e9a9NO6M
+X-Google-Smtp-Source: AGRyM1tPEqLxphKF7wGFjlRmnAganVrJ5o5VtqqFTZVi6jTixgc+QxNhcy93ctJFGYSxZg5wPMWDK3htL1YJ/Dhnb4s=
+X-Received: by 2002:a17:90b:240b:b0:1ef:8a68:1596 with SMTP id
+ nr11-20020a17090b240b00b001ef8a681596mr7150174pjb.234.1656970327829; Mon, 04
+ Jul 2022 14:32:07 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_T=opqxX1_JNjr_DEUz4sX7cwivM7=AtnwxDrP2O9hArg@mail.gmail.com>
+ <CAHjQFwaPeYs2aEJ+ikqsoPg+51zF-n9mqKwc6uAvK=SLY=m=jQ@mail.gmail.com>
+ <CALCR5_RPXW+fT1QFSN7xFdy4Q-uxbeXuideiC6wLUvGDvfB3Zw@mail.gmail.com>
+ <CAHRmGadzSd8Xu-1NHaNaNK73Q6e-wmX-WETicNFBYH3KBoYoZg@mail.gmail.com>
+ <CALCR5_Rjuja_8yoghR9rH98qYQ_tkOfrqOsD-5uZpoyYJN3dwA@mail.gmail.com> <CAHRmGacWD4kV0h4GSGU3Gz+FBu-LTsZMHBOj1i4-cN0EimmQYg@mail.gmail.com>
+In-Reply-To: <CAHRmGacWD4kV0h4GSGU3Gz+FBu-LTsZMHBOj1i4-cN0EimmQYg@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Tue, 5 Jul 2022 00:31:49 +0300
+Message-ID: <CALCR5_S7OE3THrAMYUwGPrc7k6y794LUN_rgc94Qwf=9=71mwg@mail.gmail.com>
+Subject: Re: Gathering daily spend data?
+To: Jack Nalbandyan <jack@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>, 
+	Jarren Scheller <jarren@pineapple.co>, Mike McBrien <mike@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000cb46ab05e30177b6"
+
+--000000000000cb46ab05e30177b6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ok for those reasons, I think it might be good to get the data from another
+source.
+
+Jarren, maybe you can get Ironside's input?
+
+On Tue, Jul 5, 2022 at 12:24 AM Jack Nalbandyan <jack@pineapple.co> wrote:
+
+> That=E2=80=99s great! I=E2=80=99ve heard great things about Tableau.
+>
+> Voluum has 1 years worth of historical data for Adult PPC, Email, Native,
+> and some Google campaigns (not youtube). We would need to upgrade our
+> Voluum account plan if we want track data from over a year ago.
+>
+> We recently started using Voluum tracking for Facebook so we only have
+> about 3 months of historical data there. For Youtube we thought it was be=
+st
+> to not add Voluum tracking links because we were worried about ad
+> rejections. We can defiantly revisit this now that we=E2=80=99re not havi=
+ng as many
+> compliance issues.
+>
+> Another option would be to cut out Voluum entirely. We may be able to
+> connect Tableau to all ad platforms directly and cut out the middle man.
+> Thoughts?
+>
+>
+>
+>
+> On Mon, Jul 4, 2022 at 1:54 PM Brett Allcorn <brett@pineapple.co> wrote:
+>
+>> Hey Jack, so Jarren has Tableau in use already.
+>>
+>> The question is how we want to pull the advertising data.
+>>
+>> Voluum pulls ad spend directly from all our Google/Facebook accounts?
+>>
+>> And it has historic spending data as well?
+>>
+>> If so, maybe it's an option to connect to Voluum API to get everything a=
+t
+>> once.
+>>
+>> Either way, we've still got ad networks that Voluum is not pulling from
+>> that we need to get Jack access to.
+>>
+>> On Mon, Jul 4, 2022 at 8:58 PM Jack Nalbandyan <jack@pineapple.co> wrote=
+:
+>>
+>>> Hey Jarren,
+>>>
+>>> We=E2=80=99ve been using Voluum to track our daily paid campaign data. =
+Most of
+>>> our campaigns have Voluum tracking links set up, except for Youtube ads=
+.
+>>>
+>>> We use Voluum  to track campaign level spend and click data, but we use
+>>> ALVR to track sales and revenue data. However, ALVR doesn=E2=80=99t hav=
+e campaign
+>>> level sales reporting.
+>>>
+>>> For historical data, I know there are a lot of apps that can be
+>>> integrated with the Facebook and Google ads managers to automatically p=
+ull
+>>> that data.
+>>>
+>>> I=E2=80=99d suggest using a BI tool like Tableau to and connecting it w=
+ith ALVR
+>>> or Sticky (for sales/revenue), Voluum (for spend/clicks on adult ppc,
+>>> email, native) and Ads Managers (for spend/clicks on Facebook, Google,
+>>> Youtube).
+>>>
+>>> Hope that helps.
+>>>
+>>> Jack
+>>>
+>>>
+>>> On Mon, Jul 4, 2022 at 10:15 AM Brett Allcorn <brett@pineapple.co>
+>>> wrote:
+>>>
+>>>> Nope - super straightforward.
+>>>>
+>>>> And idea the best way for us to get this data historically from
+>>>> Facebook and Google?
+>>>>
+>>>> If not, I can task Jack with that.
+>>>>
+>>>> On Mon, Jul 4, 2022 at 8:08 PM Jarren Scheller <jarren@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Hi!
+>>>>> If we want to track this at the very least at a daily level, then I
+>>>>> would request that we get everything daily that we can.
+>>>>> Moving forward, as things get busier and whatnot, I don't think it's
+>>>>> far off to have all data coming in "live" so at any point anyone that=
+ needs
+>>>>> the data would have it as up to date as possible.
+>>>>> If we can get it historically that would be ideal at a daily level as
+>>>>> well, but I do know with some platforms comes hesitations.
+>>>>> The sooner we can get it and start to digest what is there and what i=
+s
+>>>>> good/bad, the better.
+>>>>> This might be something that deserves a little bit deeper conversatio=
+n
+>>>>> once we have the data.
+>>>>>
+>>>>> Hope I didn't make that too confusing!  :)
+>>>>> -Jarren
+>>>>>
+>>>>> On Mon, Jul 4, 2022 at 9:52 AM Brett Allcorn <brett@pineapple.co>
+>>>>> wrote:
+>>>>>
+>>>>>> Hey Jarren, right now I think we've only gathered weekly spend data
+>>>>>> from advertising platforms.
+>>>>>>
+>>>>>> The problem with this is if we want to have daily, monthly, quarterl=
+y
+>>>>>> or annual reports created, we won't be able to do that accurately wi=
+th just
+>>>>>> weekly data.
+>>>>>>
+>>>>>> I think to have the best flexibility we will need daily spend on
+>>>>>> every platform.
+>>>>>>
+>>>>>> What do you think?
+>>>>>>
+>>>>>> Should we make an effort to gather this historical data and setup a
+>>>>>> system to gather it daily?
+>>>>>>
+>>>>>> Also - perhaps even additional data points like what campaigns that
+>>>>>> money was spent on could be useful if it's available.
+>>>>>>
+>>>>>
+
+--000000000000cb46ab05e30177b6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Ok for those reasons, I think it might be good to get the =
+data from another source.<div><br></div><div>Jarren, maybe you can get Iron=
+side&#39;s input?</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr=
+" class=3D"gmail_attr">On Tue, Jul 5, 2022 at 12:24 AM Jack Nalbandyan &lt;=
+<a href=3D"mailto:jack@pineapple.co">jack@pineapple.co</a>&gt; wrote:<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"auto">Tha=
+t=E2=80=99s great! I=E2=80=99ve heard great things about Tableau.</div><div=
+ dir=3D"auto"><br></div><div dir=3D"auto">Voluum has 1 years worth of histo=
+rical data for Adult PPC, Email, Native, and some Google campaigns (not you=
+tube). We would need to upgrade our Voluum account plan if we want track da=
+ta from over a year ago.</div><div dir=3D"auto"><br></div><div dir=3D"auto"=
+>We recently started using Voluum tracking for Facebook so we only have abo=
+ut 3 months of historical data there. For Youtube we thought it was best to=
+ not add Voluum tracking links because we were worried about ad rejections.=
+ We can defiantly revisit this now that we=E2=80=99re not having as many co=
+mpliance issues.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Another=
+ option would be to cut out Voluum entirely. We may be able to connect Tabl=
+eau to all ad platforms directly and cut out the middle man. Thoughts?</div=
+><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto">=
+<br></div><div dir=3D"auto"><br></div><div><div class=3D"gmail_quote"><div =
+dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 4, 2022 at 1:54 PM Brett Allco=
+rn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineap=
+ple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex"><div dir=3D"ltr">Hey Jack, so Jarren has Tableau in use already.<div>=
+<br></div><div>The question is how we want to pull the advertising data.</d=
+iv><div><br></div><div>Voluum pulls ad spend directly from all our Google/F=
+acebook accounts?</div><div><br></div><div>And it has historic spending dat=
+a as well?</div><div><br></div><div>If so, maybe it&#39;s an option to conn=
+ect to Voluum API to get everything at once.</div><div><br></div><div>Eithe=
+r way, we&#39;ve still got ad networks that Voluum is not pulling from that=
+ we need to get Jack access to.</div></div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 4, 2022 at 8:58 PM Jack Na=
+lbandyan &lt;<a href=3D"mailto:jack@pineapple.co" target=3D"_blank">jack@pi=
+neapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"auto">Hey Jarren,</div><div dir=3D"auto"><br></div><=
+div dir=3D"auto">We=E2=80=99ve been using Voluum to track our daily paid ca=
+mpaign data. Most of our campaigns have Voluum tracking links set up, excep=
+t for Youtube ads.=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto"=
+>We use Voluum =C2=A0to track campaign level spend and click data, but we u=
+se ALVR to track sales and revenue data. However, ALVR doesn=E2=80=99t have=
+ campaign level sales reporting.</div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">For historical data, I know there are a lot of apps that can be i=
+ntegrated with the Facebook and Google ads managers to automatically pull t=
+hat data.</div><div dir=3D"auto"><br></div><div dir=3D"auto">I=E2=80=99d su=
+ggest using a BI tool like Tableau to and connecting it with ALVR or Sticky=
+ (for sales/revenue), Voluum (for spend/clicks on adult ppc, email, native)=
+ and Ads Managers (for spend/clicks on Facebook, Google, Youtube).</div><di=
+v dir=3D"auto"><br></div><div dir=3D"auto">Hope that helps.</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">Jack</div><div dir=3D"auto"><br></div=
+><div dir=3D"auto"><br></div><div><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Mon, Jul 4, 2022 at 10:15 AM Brett Allcorn &lt;<=
+a href=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><d=
+iv dir=3D"auto">Nope - super straightforward.</div><div dir=3D"auto"><br></=
+div><div dir=3D"auto">And idea the best way for us to get this data histori=
+cally from Facebook and Google?</div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">If not, I can task Jack with that.</div><div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 4, 2022 at 8:0=
+8 PM Jarren Scheller &lt;<a href=3D"mailto:jarren@pineapple.co" target=3D"_=
+blank">jarren@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex"><div dir=3D"ltr">Hi!<div>If we want to track this=
+ at the very least at a daily level, then I would request=C2=A0that we get =
+everything daily that we can.</div><div>Moving forward, as things get busie=
+r and whatnot, I don&#39;t think it&#39;s far off to have all data coming i=
+n &quot;live&quot; so at any point anyone that needs the data would have it=
+ as up to date as possible.</div><div>If we can get it historically that wo=
+uld be ideal at a daily level as well, but I do know with some platforms co=
+mes hesitations.</div><div>The sooner we can get it and start to digest wha=
+t is there and what is good/bad, the better.</div><div>This might be someth=
+ing that deserves a little bit deeper conversation once we have the data.</=
+div><div><br></div><div>Hope I didn&#39;t make that too confusing!=C2=A0 :)=
+</div></div><div dir=3D"ltr"><div>-Jarren</div></div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 4, 2022 at 9:52 =
+AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank=
+">brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex"><div dir=3D"ltr">Hey Jarren, right now I think we&#39;v=
+e only gathered weekly spend data from advertising platforms.<div><br>The p=
+roblem with this is if we want to have daily, monthly, quarterly or annual =
+reports created, we won&#39;t be able to do that accurately with just weekl=
+y data.</div><div><br>I think to have the best flexibility we will need dai=
+ly spend on every platform.</div><div><br></div><div>What do you think?</di=
+v><div><br></div><div>Should we make an effort to gather this historical da=
+ta and setup a system to gather it daily?</div><div><br></div><div>Also - p=
+erhaps even additional data points like what campaigns that money was spent=
+ on could be useful if it&#39;s available.</div></div>
+</blockquote></div>
+</blockquote></div></div>
+</blockquote></div></div>
+</blockquote></div>
+</blockquote></div></div>
+</blockquote></div>
+
+--000000000000cb46ab05e30177b6--

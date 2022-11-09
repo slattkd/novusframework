@@ -42,13 +42,18 @@ $_SESSION['pageType'] = pathinfo($slug, PATHINFO_FILENAME);
 $_SESSION['last']     = $_SESSION['url'];
 
 
+// Get Users IP for logging
+//$ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR']; : $_SERVER['REMOTE_ADDR']);
+//$_SESSION['ip']     = $ip;
+
 function setSessionVars($encryptedData = null)
 {
     //Check for allowed query string keys, reduces attempts on invalid data.
     $whitelistKeys = [
         'a','o','r','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
         'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
-        'alink','debug','coupon','vwovar','eftid','pid','up','dn','add1','add2','add3',"buy","id","pid","last"];
+        'alink','debug','coupon','vwovar','eftid','pid','up','dn','add1','add2','add3',"buy",
+        "id","pid","last","tid","eftid","next"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
     foreach ($allowedData as $queryString => $value) {
@@ -129,17 +134,18 @@ function setSessionVars($encryptedData = null)
         if ($queryString == 'vwovar') {
             $_SESSION['vwovar'] = $value ?? null;
         }
-        if ($queryString == 'last') {
-            $_SESSION['last'] = $value ?? $_SESSION['url'];
-        }
         if ($queryString == 'up') {
             $_SESSION['up'] = 'https://' . $_SERVER['HTTP_HOST'] . '/up/' . $value ?? 'https://' . $_SERVER['HTTP_HOST'] . '/thankyou/';
         }
-        if ($queryString == 'dn') {
-            $_SESSION['dn'] = 'https://' . $_SERVER['HTTP_HOST'] . '/dn/' . $value ?? null;
+        if ($queryString == 'buy') {
+            $_SESSION['buy'] = $value ?? null;
         }
-
-
+        if ($queryString == 'next') {
+            $_SESSION['next'] = $value ?? null;
+        }
+        if ($queryString == 'last') {
+            $_SESSION['last'] = $value ?? $_SESSION['url'];
+        }
        // $_SESSION[$queryString] = $value
     }
 }

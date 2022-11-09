@@ -1,0 +1,199 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp1537921ejb;
+        Mon, 11 Jul 2022 07:38:49 -0700 (PDT)
+X-Received: by 2002:aca:efd5:0:b0:339:c8bd:6a57 with SMTP id n204-20020acaefd5000000b00339c8bd6a57mr7249309oih.198.1657550328828;
+        Mon, 11 Jul 2022 07:38:48 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1657550328; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=jAycwXAsOSlixh1GGJTKLkArIdzIGwrTs46IXD68rN/5Pptgvtf52brrgrhRluqH/d
+         qPIzEBJhE+3TfisKMtnM1epr7yQrvDmwERCK0LeT0QsfcDJ4T9sxvguEv1VVIIk87zWO
+         6EAtqxDPPxq0h34aPhnlmm1GZP20Bo867WViahEW+2CxOIUlbRRnnT6+SWKBr9ItfnFc
+         9VeiFCxbg5BMQIzgs5cY8+xDAsVqymtJ2RPvzy1V2hs9O54YKI13YFgBy5qqA/T+kKYm
+         q2jiCOngOacNK0JyXYrD5aGlVo04OWbF63rKhg+ixkv0XniKpgcNrmR4ElnHxbiX+CwU
+         d7PQ==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=6S6ldO0aABCom0iFgS9I54z+xNaU4yVG92ii7A6pAfA=;
+        b=WV+XA911irXTMSZ6rGQjuqfO+r/rYivR5SKsGzWNBWy5YhMHBsfw7r59OI7HXTqgmn
+         N2pHwXRd/iLyUgQCsTYbT3pQrfTbhL94ZdphYYoLdB1VlkaGZg4HGAcqUBDc7upaz2dP
+         yJ+peFvd9qjX/Rxf2AHsIv/9UG9UzDgoziopqFmSRL8oYYS1VOVg8y+hQlZwI96qWJJe
+         wCCsE61j9We46DUb8cNry9b0Q2TntkdvdwSfhoPIHkmH9hzpxhmBmEJB/BzjWiN4TRJH
+         iUzy8FRpZKxkDGW3VakO8rKmlA5XTMQZhi04jGLbRCsEl7YgL0ENseI3oEOz31r/Yv5W
+         K66g==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=Hm5SLhIa;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcvm3emc7ugbb3hlwclamgqetwjancy@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCVM3EMC7UGBB3HLWCLAMGQETWJANCY@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBCVM3EMC7UGBB3HLWCLAMGQETWJANCY@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id os19-20020a0568707d1300b0010bfa01ef6bsor1255245oab.10.2022.07.11.07.38.48
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 11 Jul 2022 07:38:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbcvm3emc7ugbb3hlwclamgqetwjancy@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=Hm5SLhIa;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcvm3emc7ugbb3hlwclamgqetwjancy@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCVM3EMC7UGBB3HLWCLAMGQETWJANCY@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1657550328; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=i719V+y1rIl+9jru3Bq8+K6fBoCTIgYWP2kseM99ab5mxu/4KKLuC4fg3ooD9pUVEH
+         ms/fnIDVYAZJq7URb3GAnmytS8tGV3dQeJ4sRYxUZ9Q+9BvUS5IL4gCyVkIY00uOYvoL
+         kduJyOlChCJkwX1ml70JRqbnRUvQMTTeE9T+7NZger3XeHASHzLvqDu2vnCGjI02BnwN
+         5cvE5q2jU/aPPmL4RisK8uSIGLOhSENp54jZA6uE3RCW+XCp6jg4JotInEoo70bgc+DR
+         dD6MctCTe1IeLyjvRIDwfmO0gT8qiJ7yjswap5c+/nOXBNIBTdA3bOC6p4ZxYW3q2S4w
+         mtSQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=6S6ldO0aABCom0iFgS9I54z+xNaU4yVG92ii7A6pAfA=;
+        b=obDx8bFzcT1SrFmZUmczaJdOQQvX0x9DogjwWY8rrCuEkh8CxogswL3hgRsEZdOhk5
+         lQgeASxidBtVRCrwYqmR/4goP21zpTCFGc4j0kLWlCI5D+8tXVN8/JiTt+fHZ5OKlByd
+         LsBClV4ZpQX96ays0VQyHH0SeirNwY/Ezn7LOedl+yWXjNm/pdGyNg0aZ/V14TeExOU4
+         hliG9w2ScJCbHcVALauuvGWD7Ir74GTJ/iYVHJkJye+GvyJbt60dPbOYWnQS2l3PEWa0
+         RQU3xGCKMD2HfPiIoxZ85zHR9jH29+wfjdsYLhslVHhlgwStl2mYSNTKGnnSfSAOg6y/
+         SN7A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=sLHb22lE;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-unsubscribe;
+        bh=6S6ldO0aABCom0iFgS9I54z+xNaU4yVG92ii7A6pAfA=;
+        b=Hm5SLhIawFztsasU1UJYSleU9MGgbkzBmQT36Xf+7O8IHdNgS5nCENto8IptFksW6m
+         1vb6yylGO/qKFkVUYsyVFdKITWlrtG6q+8oMujgPqzbzwrA8bO/gZaNXMT7HQVt//brP
+         mEKa5GHqopFNqRv4BJncsUqN0iJsOF+ikxhrF5Vv0CQyzOZsL2Zudld7wZ6CfZyMzHTx
+         zrFLNaKzns3K/rJSf6EU1BMNCQirb6B6x8ZpAPvH5eDQNhl5G9zQInvGXedTbRsr97s3
+         OKxzOGIFUPK+musxS5ce2XaEE3gjqv+Z4tXuo4q4GY1CJeiwRkk//3boIhcHX0BLJYG4
+         AlSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-unsubscribe;
+        bh=6S6ldO0aABCom0iFgS9I54z+xNaU4yVG92ii7A6pAfA=;
+        b=X/r1IT9WpnxMoepalBirIgye3ZG8KcqyLz1auSGewBxI+ROirZsus8yIxwreQM3nGV
+         QDNXauPKd4uGxerACkD09FcBpkNp+A8Oh4AcK1QOLt4RL0BIVLzyj8oBWq6bdbimtFqW
+         DNTMNxf8IoA8zy3eUzUnW6dFJ+W0Zz3f4eMgMLWPDmKk4QFhznMx86AEVp8KhyY55fhy
+         yyIwff4ZBDzpG30TSpXNak3pvuiQ/vH40a+yvylcOEdZWGqZ7lA9kCmujTDir0XFMaep
+         XK9MIgzHpNVeYCqnO7AU7pc0HF0uTuJrE/wJMa1W7/fN+5V0UFH6cYjOHWZjB03TgOf7
+         l+Vg==
+X-Gm-Message-State: AJIora+zqVd29IAq2k2RGJ0W0Tv3wnrJGLuzizL2f3/nPS9Yip0OGdVt
+	1he4AWWy1eRiRRBbpKRMSEj4cBLW
+X-Google-Smtp-Source: AGRyM1tiDeXe0R1ddKAUoqBC9jyRX9ugytuc/5vtIMsgNJs7IfQ2AQfy/NMC1YyMa4kNMTbff6OewA==
+X-Received: by 2002:a17:90b:388c:b0:1f0:49e:b7d8 with SMTP id mu12-20020a17090b388c00b001f0049eb7d8mr17536371pjb.9.1657550317226;
+        Mon, 11 Jul 2022 07:38:37 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a17:902:f604:b0:168:9a69:49b1 with SMTP id
+ n4-20020a170902f60400b001689a6949b1ls36019728plg.6.gmail; Mon, 11 Jul 2022
+ 07:38:36 -0700 (PDT)
+X-Received: by 2002:a17:90b:893:b0:1ef:8342:e17b with SMTP id bj19-20020a17090b089300b001ef8342e17bmr18106276pjb.159.1657550316262;
+        Mon, 11 Jul 2022 07:38:36 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a63:2a46:0:b0:412:518c:9283 with SMTP id q67-20020a632a46000000b00412518c9283ls7284818pgq.1.gmail;
+ Mon, 11 Jul 2022 07:38:35 -0700 (PDT)
+X-Received: by 2002:a65:6907:0:b0:415:c9c1:eb4f with SMTP id s7-20020a656907000000b00415c9c1eb4fmr12742844pgq.193.1657550315424;
+        Mon, 11 Jul 2022 07:38:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657550315; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rVbT04MTQmvXmwtZlMo5ZhOnvCvjFyl0vUtCgoYPsTHn/fxqlaRWFYo6xqjqUoew02
+         wqE6Pv1yQOEyRP/1mKp1WKy6nTpKpQXqzNei2gOTOPN+PFIi3/iRmOBUmxr3kRzVEFI2
+         pyHPAWvuREQcktdG5BZVeNmXnCaN59rooDZguTYIW+StVJcEfxnPQ/0vMh+DA71sPHzT
+         aZAIb0qXjC4rHWSxl7eakkFe4vh+x9XwCI9gW+KX9XJ9FHZUZivFrJm2ax+vUIG7H+sZ
+         5NDxAnrbG11leXLSDNgmTp6SP8eWdlDPYkQVWOCc81T70FoN7MFMojnCmOlslGfnIwD5
+         vU5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=6S6ldO0aABCom0iFgS9I54z+xNaU4yVG92ii7A6pAfA=;
+        b=urwpdTLMS0vFM+XtmXoB6NOtxxFQbN5hsnWRkuAyBy0lWhI5l6Me2GhhlGe8CuW9a4
+         RwYK2CDgT6CE6Oza7YvpckXviPrTJsfqqmjyBcFDAXaaSF8QCiC2ndVcjCRFcT7wMz5n
+         yLekI1uOMPog4XCMjbRdstOvxOlcfu1SmjudaGgKu4S4vMdq/VAG75oPhcXoggVgCkjc
+         h12ytb9bN+GKWEbSmRurUpWR86osHakWVxihO5CnwU92bognzOSqH6M9dO+bn/1F0sjj
+         jL5J4UTmqasVaEMXAFchvvoJ+DYqbuZt0aFuriaY3KR6EqVXD73E9hFzHpxvAm2C4rOo
+         Xl9w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=sLHb22lE;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id np11-20020a17090b4c4b00b001efb12cdd97sor2086062pjb.18.2022.07.11.07.38.35
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Mon, 11 Jul 2022 07:38:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a17:90b:4f81:b0:1ef:acca:2d6b with SMTP id
+ qe1-20020a17090b4f8100b001efacca2d6bmr17727088pjb.243.1657550314758; Mon, 11
+ Jul 2022 07:38:34 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Mon, 11 Jul 2022 16:38:19 +0200
+Message-ID: <CALCR5_Q3ySMSj5wdgd8hLhe92Hvm6w-cW1XMq8r8WRZNG3Eopw@mail.gmail.com>
+Subject: Please join me for an all-hands meeting Wednesday, 12PM ET
+To: All <all@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000b575ab05e388810b"
+X-Original-Sender: brett@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=sLHb22lE;       spf=pass (google.com: domain of brett@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--000000000000b575ab05e388810b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hey, please join me for an all-hands meeting this Wednesday at 12pm ET for
+45 minutes on Zoom (pineapple.co/zoom).
+
+I=E2=80=99m going to run through some of the company=E2=80=99s cost cutting=
+ actions we=E2=80=99re
+taking to ensure we get through this economic downturn.
+
+There is no reason for alarm, the company revenue is steady and while it=E2=
+=80=99s
+a drop from 2021, it=E2=80=99s stronger than it was in 2020.
+
+I also look at these times as an opportunity to focus on getting lean and
+efficient in ways we might not have been when we were growing more rapidly.
+
+Looking forward to talking to you Wednesday at 12PM ET!
+
+Link: pineapple.co/zoom
+
+--000000000000b575ab05e388810b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey, please join me for an all-hands meeting this Wednesda=
+y at 12pm ET for 45 minutes on Zoom (<a href=3D"http://pineapple.co/zoom">p=
+ineapple.co/zoom</a>).<br><br>I=E2=80=99m going to run through some of the =
+company=E2=80=99s cost cutting actions we=E2=80=99re taking to ensure we ge=
+t through this economic downturn.<br><br>There is no reason for alarm, the =
+company revenue is steady and while it=E2=80=99s a drop from 2021, it=E2=80=
+=99s stronger than it was in 2020.<br><br>I also look at these times as an =
+opportunity to focus on getting lean and efficient in ways we might not hav=
+e been when we were growing more rapidly.<br><br>Looking forward to talking=
+ to you Wednesday at 12PM ET!<br><br>Link: <a href=3D"http://pineapple.co/z=
+oom">pineapple.co/zoom</a><br></div>
+
+--000000000000b575ab05e388810b--

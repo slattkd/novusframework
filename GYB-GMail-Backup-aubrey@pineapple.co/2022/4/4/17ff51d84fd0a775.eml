@@ -1,0 +1,362 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp2580229ejd;
+        Mon, 4 Apr 2022 08:07:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4bdcvFiRx2Z8VTDdHFuTi/D28L8T332ZAzHBS10Z3sqf7ztELuh1PrySWXjytRqyvZ1U9
+X-Received: by 2002:a05:6a00:1f08:b0:4fa:8a47:cf35 with SMTP id be8-20020a056a001f0800b004fa8a47cf35mr493021pfb.22.1649084826813;
+        Mon, 04 Apr 2022 08:07:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649084826; cv=none;
+        d=google.com; s=arc-20160816;
+        b=F9un3xGF3OC4md1PGvkuDBWXXKD4/tZV4LZyYSQsZMkkdD3XM0h0fdoRlDdKCbO7ZH
+         pTYX3MZ5BEurnRuscpgovIJxJ9EEMio3HQFCSq4SbaOtQBPoRK1gMq30+WZCTXXMxRfa
+         M5tVh9sxwjGAYvIiEdHzuQpA13xL9G2GfY5flcvuLZt49HA9sO73e9muP1lEatGcycq0
+         vkFBbbBwc2OuRorqXdY21wGohQFmfGeGIYP/viKqvPD0Q9zyZ47zbv4GCMEoT6AxK/UV
+         HqfS5OK5P/up1c1unEKaZH+shlF2dHeAUT9b1nNk8F2eljwLiA9XAnpfRZb0sciQcdmC
+         /6KQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:subject:from:reply-to:mime-version:date:message-id:to
+         :dkim-signature;
+        bh=e0Vpj95/viOAP8Z/mdDvuxkN9s+EFyjmsE4xn6+CEh0=;
+        b=R4nhcgOG0GkcsAkm4KPbTTjmBdYAm/asZ+ToDLNxzl9bzjukOO5KTvFig1F2mTAsl2
+         ekZmHUxHST/AdqTr1prGKlz1ifOYThWnOGuuZTkFuARJYqPpKx/X0GG03Zz8Llgacmst
+         o4lB/CWSW56rziWQHaJcGih2ZL2d2fehSdyJIFToMDotVB/wLzmmc8ydsu4ZfZXQXMmv
+         9YOLr3ntV6aKJphuf54aNCfuGEcAJU8aw9CyyTSD2GB+hhL4wo0C9uKrByS31zUKcUaY
+         ddXWG4SmaOEq7fkdjYaFXmy8BgHbqOfmserG9u/GeF9+z+NwugUuV5IT8K7Jwc+/1Vko
+         qC0Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.airtable.com header.s=scph0321 header.b=O6phYMm0;
+       spf=pass (google.com: domain of msprvs1=19093usd0thyr=bounces-280172-188@sparkpostmail.com designates 156.70.22.26 as permitted sender) smtp.mailfrom="msprvs1=19093usD0tHYr=bounces-280172-188@sparkpostmail.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=airtable.com
+Return-Path: <msprvs1=19093usD0tHYr=bounces-280172-188@sparkpostmail.com>
+Received: from mta-70-22-26.sparkpostmail.com (mta-70-22-26.sparkpostmail.com. [156.70.22.26])
+        by mx.google.com with ESMTPS id x185-20020a6331c2000000b00398b3711547si10019376pgx.580.2022.04.04.08.07.05
+        for <aubrey@pineapple.co>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 04 Apr 2022 08:07:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=19093usd0thyr=bounces-280172-188@sparkpostmail.com designates 156.70.22.26 as permitted sender) client-ip=156.70.22.26;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.airtable.com header.s=scph0321 header.b=O6phYMm0;
+       spf=pass (google.com: domain of msprvs1=19093usd0thyr=bounces-280172-188@sparkpostmail.com designates 156.70.22.26 as permitted sender) smtp.mailfrom="msprvs1=19093usD0tHYr=bounces-280172-188@sparkpostmail.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=airtable.com
+X-MSFBL: RlUnOceMbnU+hJGvXUGglP1wl5UDijAAhzVQOT1O8eE=|eyJ0ZW5hbnRfaWQiOiJ
+	zcGMiLCJzdWJhY2NvdW50X2lkIjoiMTg4IiwiY3VzdG9tZXJfaWQiOiIyODAxNzI
+	iLCJtZXNzYWdlX2lkIjoiNjIzZDhhMDk0YjYyZmM1YmMxZjQiLCJyIjoiYXVicmV
+	5QHBpbmVhcHBsZS5jbyJ9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mail.airtable.com;
+	s=scph0321; t=1649084810; i=@mail.airtable.com;
+	bh=e0Vpj95/viOAP8Z/mdDvuxkN9s+EFyjmsE4xn6+CEh0=;
+	h=To:Message-ID:Date:Content-Type:From:Subject;
+	b=O6phYMm0HDfqjU0YYTVhtAFQeha4d4DMxHI7kTf3OiWZIZ+2haNL1MV603HB7LEja
+	 E9/o91LPMlwaaygppfDV664x/Thhv/v9VXkB3a7uQwiSSbhYbEROVRKXxkAmUfhJNP
+	 hXBYNQIeDVw2wqdiVVjN4DKFT3HNhjU7b4gxCGvo=
+To: aubrey@pineapple.co
+Message-ID: <1C.4F.01709.A890B426@ad.mta1vrest.cc.prd.sparkpost>
+Date: Mon, 04 Apr 2022 15:06:50 +0000
+Content-Type: multipart/alternative; boundary="_----XEMJSL+KshqlqrRvQhC/7A===_AB/4F-01709-A890B426"
+MIME-Version: 1.0
+Reply-To: support@airtable.com
+X-Campaign-ID: 3902024
+From: "The Airtable Team" <team@mail.airtable.com>
+Subject: =?utf-8?B?W0FjdGlvbiBSZXF1aXJlZF0gVXBkYXRlcyB0byBBaXJ0YWJsZQ==?=
+	=?utf-8?B?4oCZcyBBdHRhY2htZW50cw==?=
+X-Message-ID: 4215a73a0ea3431c9fa89e13b670a613
+X-Feedback-ID: 5315055:3902024:52065:iterable
+Feedback-ID: 5315055:3902024:52065:iterable
+
+--_----XEMJSL+KshqlqrRvQhC/7A===_AB/4F-01709-A890B426
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+<https://airtable.com/> =0A=0A=0A=0AHello Aubrey,=0A=0A=C2=A0=0A=0A On Nove=
+mber 8, 2022, Airtable will improve the security of our attachment =0AURLs =
+by incorporating an expiring links functionality. Once this change takes =
+=0Aplace:=0A=0A * Any attachment URLs obtained via the public API and the C=
+SV export =0Afunctionality will expire after a few hours.=0A *  URLs obtain=
+ed from copying an attachment cell value will open the file to =0Athe attac=
+hment viewer within the product, instead of directly opening the file.=0A *=
+ The links obtained by referring to an attachment field in Formulas will no=
+t =0Achange (for backward compatibility considerations), and will therefore=
+ become =0Ainvalid; the filename obtained in the same way will continue to =
+work as =0Aexpected.=0AWho is impacted=3F =0A=0A=C2=A0=0A=0AUsers who are s=
+toring attachment URLs anywhere directly outside of the =0AAirtable product=
+ for persisting an attachment.=0A=0A=C2=A0=0A=0AWhat is the reason for this=
+ change=3F=0A=0A=C2=A0=0A=0AThis change will make attachment URLs more secu=
+re to use in the Airtable =0Aproduct.=0A=0A=C2=A0=0A=0AWhat do I need to do=
+=3F=0A=0A=C2=A0=0A=0A If you have workflows with attachment URLs that will =
+be impacted, you can =0Abegin migrating them over to comply with the new fu=
+nctionality now by following =0Athe steps inthis help article =0A<https://s=
+upport.airtable.com/hc/en-us/articles/4421131068055>.=C2=A0=0A=0A=C2=A0=0A=
+=0A Additionally, on November 8, 2022 when secure attachment URLs launches,=
+ =0Ayou=E2=80=99ll also have the opportunity to opt out of the migration fo=
+r a 3 month =0Aperiod of time until we fully switch over on February 7, 202=
+3.=0A=0A=C2=A0=0A=0APlease reply directly to this email if you have any que=
+stions.=0A=0A=C2=A0=0A=0ABest,=0A=0A=C2=A0=0A=0AThe Airtable Product Team=
+=0A=0A=0A=0A=0A=0A=0A=0A <https://www.linkedin.com/company/airtable>=C2=A0=
+=C2=A0=C2=A0 <https://twitter.com/airtable>=0A=C2=A0=C2=A0=C2=A0 <https://w=
+ww.youtube.com/channel/UCHH6_KYYWUYaWzD5CPNQ6ng>=C2=A0=C2=A0=C2=A0 =0A<http=
+s://www.instagram.com/airtable/>=C2=A0=C2=A0=C2=A0 <https://www.facebook.co=
+m/airtableapp/>=0A=0AWe're hiring! <https://airtable.com/jobs=3Futm_source=
+=3Dairtable_email>=0A=0ACopyright =C2=A9 2022 Airtable, All rights reserved=
+.=0A=0A Our mailing address is:=0A 799 Market St=0A San Francisco, CA 9410=
+3=0AVisit our help center <https://support.airtable.com/hc/en-us>=0A =C2=A0=
+ =0AThis is a one-time message sent to aubrey@pineapple.co =0A<https://airt=
+able.com//workspace/plans> regarding your Airtable account.
+--_----XEMJSL+KshqlqrRvQhC/7A===_AB/4F-01709-A890B426
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html><html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"u=
+rn:schemas-microsoft-com:office:office" lang=3D"en" style=3D"box-sizing: bo=
+rder-box;"><head><title></title><meta http-equiv=3D"Content-Type" content=
+=3D"text/html; charset=3Dutf-8"><meta name=3D"viewport" content=3D"width=3D=
+device-width,initial-scale=3D1"><!--[if mso]><xml><o:OfficeDocumentSettings=
+><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettin=
+gs></xml><![endif]--><style>*{box-sizing:border-box}body{margin:0;padding:0=
+}a[x-apple-data-detectors]{color:inherit!important;text-decoration:inherit!=
+important}#MessageViewBody a{color:inherit;text-decoration:none}p{line-heig=
+ht:inherit}@media(max-width:520px){.row-content{width:100%!important}.colum=
+n .border{display:none}table{table-layout:fixed!important}.stack .column{wi=
+dth:100%;display:block}}</style></head><body style=3D"box-sizing: border-bo=
+x; background-color: #f9f9f9; margin: 0; padding: 0; -webkit-text-size-adju=
+st: none; text-size-adjust: none;">=0D=0A<div style=3D"color:transparent;vi=
+sibility:hidden;opacity:0;font-size:0px;border:0;max-height:1px;width:1px;m=
+argin:0px;padding:0px;border-width:0px!important;display:none!important;lin=
+e-height:0px!important;"><img border=3D"0" width=3D"1" height=3D"1" src=3D"=
+http://links1.airtable.com/q/pssPNjJsyQjdsM7maRYPsg~~/AARGbAA~/RgRkLY6KPVcD=
+c3BjQgpiPYoJS2L8W8H0UhNhdWJyZXlAcGluZWFwcGxlLmNvWAQAAAC8" alt=3D""/></div>=
+=0D=0A<span style=3D"color:transparent;visibility:hidden;display:none;opaci=
+ty:0;height:0;width:0;font-size:0;"></span><img src=3D"https://links.airtab=
+le.com/e/eo=3F_t=3D1627610c3a6845988951459cbd28d02a&amp;_m=3D4215a73a0ea343=
+1c9fa89e13b670a613&amp;_e=3D7qIyrWKdCJFDSWlp-9F_d3r3hm7YKkqD9t8UhlfuX_yELVr=
+C8jI3vT5inCOh1F2hM-GcZghKm4k2gOpH_SLmksz5_jkBiSOcALgipM7BD7PeY5pyTZNDIa0c1W=
+mOFZMWT6ynW-Cu_Xj3tXNeh2hbf9EPoDO6XuGikOQn2HPV6Ts%3D" style=3D"border:0;wid=
+th:1px;height:1px;border-width:0px!important;display:none!important;line-he=
+ight:0!important;" width=3D"1" height=3D"1"/> <table class=3D"nl-container"=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table=
+-rspace: 0; background-color: #f9f9f9;" bgcolor=3D"#f9f9f9"><tbody style=3D=
+"box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td style=
+=3D"box-sizing: border-box;"><table class=3D"row row-1" align=3D"center" wi=
+dth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rs=
+pace: 0; background-color: #f9f9f9;" bgcolor=3D"#f9f9f9"><tbody style=3D"bo=
+x-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"b=
+ox-sizing: border-box;"><table class=3D"row-content stack" align=3D"center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; bac=
+kground-color: #fff; color: #000; width: 500px;" width=3D"500" bgcolor=3D"#=
+fff"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing: bord=
+er-box;"><td class=3D"column column-1" width=3D"100%" style=3D"box-sizing: =
+border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight: 400; tex=
+t-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; =
+border-top: 0; border-right: 0; border-bottom: 0; border-left: 0;" align=3D=
+"left" valign=3D"top"><table class=3D"image_block" width=3D"100%" border=3D=
+"0" cellpadding=3D"30" cellspacing=3D"0" role=3D"presentation" style=3D"box=
+-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tr style=
+=3D"box-sizing: border-box;"><td style=3D"box-sizing: border-box;"><div ali=
+gn=3D"center" style=3D"box-sizing: border-box; line-height: 10px;"><a href=
+=3D"https://links.airtable.com/u/click=3F_t=3D1627610c3a6845988951459cbd28d=
+02a&_m=3D4215a73a0ea3431c9fa89e13b670a613&_e=3Dnb_omOoFvqFTt11w8bg0A3j5Pvcz=
+DD42g89Iu67iC4iQmUl6wS5Lrm2PCyh-_Le3gDMKk-rI6Gt59uTnwm_-VYN3Wslkb5lBiIMTAdW=
+dF91_ySB_o3YQVl9tknqtiJJWt41t4guTvOQFxbO09ZFEB75uBzpyUjs_lJ6fcm3_6F4oW9PxKa=
+JCh_tJSPNLHIxFu7Uwe6ZSkCJqT7J9IJ5s7FTUKTMsgckl_Tq2US-ZHpy1K9K0Y_O0UAvPGoMNH=
+P0fUyYJ2vIak6wMpI7PZI0fWg%3D%3D" target=3D"_blank" style=3D"box-sizing: bor=
+der-box; outline: none;" tabindex=3D"-1"><img src=3D"https://d15k2d11r6t6rl=
+.cloudfront.net/public/users/Integrators/669d5713-9b6a-46bb-bd7e-c542cff6d=
+d6a/1627610c3a6845988951459cbd28d02a/airtable-logo.png" style=3D"box-sizing=
+: border-box; display: block; height: auto; border: 0; width: 125px; max-wi=
+dth: 100%;" width=3D"125"></a></div></td></tr></table></td></tr></tbody></t=
+able></td></tr></tbody> </table><table class=3D"row row-2" align=3D"center"=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table=
+-rspace: 0; background-color: #f9f9f9;" bgcolor=3D"#f9f9f9"><tbody style=3D=
+"box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td style=
+=3D"box-sizing: border-box;"><table class=3D"row-content stack" align=3D"ce=
+nter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0=
+; background-color: #fff; color: #000; width: 500px;" width=3D"500" bgcolor=
+=3D"#fff"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing:=
+ border-box;"><td class=3D"column column-1" width=3D"100%" style=3D"box-siz=
+ing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight: 400=
+; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: =
+5px; border-top: 0; border-right: 0; border-bottom: 0; border-left: 0;" ali=
+gn=3D"left" valign=3D"top"><table class=3D"text_block" width=3D"100%" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; word-brea=
+k: break-word;"><tr style=3D"box-sizing: border-box;"><td style=3D"box-sizi=
+ng: border-box; padding-bottom: 10px; padding-left: 30px; padding-right: 30=
+px; padding-top: 10px;"><div style=3D"box-sizing: border-box; font-family: =
+sans-serif;"><div class=3D"txtTinyMce-wrapper" style=3D"box-sizing: border-=
+box; font-size: 14px; mso-line-height-alt: 21px; color: #555; line-height: =
+1.5; font-family: Arial,Helvetica Neue,Helvetica,sans-serif;"><p style=3D"b=
+ox-sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; ms=
+o-line-height-alt: 21px; letter-spacing: normal;"><span style=3D"box-sizing=
+: border-box; font-size: 14px;">Hello Aubrey,</span></p><p style=3D"box-siz=
+ing: border-box; line-height: inherit; margin: 0; font-size: 14px; letter-s=
+pacing: normal; mso-line-height-alt: 21px;">&nbsp;</p><p style=3D"box-sizin=
+g: border-box; line-height: inherit; margin: 0; letter-spacing: normal;"> O=
+n November 8, 2022, Airtable will improve the security of our attachment UR=
+Ls by incorporating an expiring links functionality. Once this change takes=
+ place:</p><ul style=3D"box-sizing: border-box; line-height: 1.5; mso-line-=
+height-alt: 21px;"><li aria-level=3D"1" style=3D"box-sizing: border-box;">A=
+ny attachment URLs obtained via the public API and the CSV export functiona=
+lity will expire after a few hours.</li><li aria-level=3D"1" style=3D"box-s=
+izing: border-box;"> URLs obtained from copying an attachment cell value wi=
+ll open the file to the attachment viewer within the product, instead of di=
+rectly opening the file.</li><li aria-level=3D"1" style=3D"box-sizing: bord=
+er-box;">The links obtained by referring to an attachment field in Formulas=
+ will not change (for backward compatibility considerations), and will ther=
+efore become invalid; the filename obtained in the same way will continue t=
+o work as expected.</li></ul><p style=3D"box-sizing: border-box; line-heigh=
+t: inherit; margin: 0; letter-spacing: normal;"><strong style=3D"box-sizing=
+: border-box;">Who is impacted=3F</strong> </p><p style=3D"box-sizing: bord=
+er-box; line-height: inherit; margin: 0; letter-spacing: normal; mso-line-h=
+eight-alt: 21px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height=
+: inherit; margin: 0; letter-spacing: normal;">Users who are storing attach=
+ment URLs anywhere directly outside of the Airtable product for persisting =
+an attachment.</p><p style=3D"box-sizing: border-box; line-height: inherit;=
+ margin: 0; letter-spacing: normal; mso-line-height-alt: 21px;">&nbsp;</p><=
+p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; letter-=
+spacing: normal;"><strong style=3D"box-sizing: border-box;">What is the rea=
+son for this change=3F</strong></p><p style=3D"box-sizing: border-box; line=
+-height: inherit; margin: 0; letter-spacing: normal; mso-line-height-alt: 2=
+1px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: inherit; m=
+argin: 0; letter-spacing: normal;">This change will make attachment URLs mo=
+re secure to use in the Airtable product.</p><p style=3D"box-sizing: border=
+-box; line-height: inherit; margin: 0; letter-spacing: normal; mso-line-hei=
+ght-alt: 21px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: =
+inherit; margin: 0; letter-spacing: normal;"><strong style=3D"box-sizing: b=
+order-box;">What do I need to do=3F</strong></p><p style=3D"box-sizing: bor=
+der-box; line-height: inherit; margin: 0; letter-spacing: normal; mso-line-=
+height-alt: 21px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-heigh=
+t: inherit; margin: 0; letter-spacing: normal;"> If you have workflows with=
+ attachment URLs that will be impacted, you can begin migrating them over t=
+o comply with the new functionality now by following the steps in <a href=
+=3D"https://links.airtable.com/u/click=3F_t=3D1627610c3a6845988951459cbd28d=
+02a&_m=3D4215a73a0ea3431c9fa89e13b670a613&_e=3Dnb_omOoFvqFTt11w8bg0Ayj18uK1=
+EMvjdBg8361Zn88FzXrCgjp26ZuSj7wywAt_e7GWvCb4rNl6hwrKhdxzNfaOpxVa9SFdHubIy3B=
+8F0rYfCO8twtTtm_uZ9yVqO3ZcCofE7TtASAEOG7vIe1fGe7ackfCXyijSu3mnqqbX8-d5B9czs=
+c6zKQpTjRHI_Mv0AUM8p192pbqHNr5d8gYlOh8q4f4IxL3-As0MaO3d7v1gFyOZY7FKnAZ-ueKE=
+F8WXqp7L9YRb6EA1OuOs8SjHVpILGSqIg7xCD-sqjrRbIRK_vwBrRr6rYbZEA0lmZsgyAa1KuVM=
+9PE31Xul4NlWeg%3D%3D" style=3D"box-sizing: border-box; color: #18bfff;">thi=
+s help article</a>.&nbsp;</p><p style=3D"box-sizing: border-box; line-heigh=
+t: inherit; margin: 0; letter-spacing: normal; mso-line-height-alt: 21px;">=
+&nbsp;</p><p style=3D"box-sizing: border-box; line-height: inherit; margin:=
+ 0; letter-spacing: normal;"> Additionally, on November 8, 2022 when secure=
+ attachment URLs launches, you=E2=80=99ll also have the opportunity to opt =
+out of the migration for a 3 month period of time until we fully switch ove=
+r on February 7, 2023.</p><p style=3D"box-sizing: border-box; line-height: =
+inherit; margin: 0; letter-spacing: normal; mso-line-height-alt: 21px;">&nb=
+sp;</p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0;=
+ letter-spacing: normal;">Please reply directly to this email if you have a=
+ny questions.</p><p style=3D"box-sizing: border-box; line-height: inherit; =
+margin: 0; font-size: 14px; letter-spacing: normal; mso-line-height-alt: 21=
+px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: inherit; ma=
+rgin: 0; letter-spacing: normal;">Best,</p><p style=3D"box-sizing: border-b=
+ox; line-height: inherit; margin: 0; font-size: 14px; letter-spacing: norma=
+l; mso-line-height-alt: 21px;">&nbsp;</p><p style=3D"box-sizing: border-box=
+; line-height: inherit; margin: 0; letter-spacing: normal;">The Airtable Pr=
+oduct Team</p></div></div></td></tr></table></td></tr></tbody></table></td>=
+</tr></tbody></table><table class=3D"row row-3" align=3D"center" width=3D"1=
+00%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;=
+ background-position: top center; background-repeat: repeat;"><tbody style=
+=3D"box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td styl=
+e=3D"box-sizing: border-box;"><table class=3D"row-content" align=3D"center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; bac=
+kground-color: #fff; color: #000; width: 500px;" width=3D"500" bgcolor=3D"#=
+fff"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing: bord=
+er-box;"><td class=3D"column column-1" width=3D"100%" style=3D"box-sizing: =
+border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight: 400; tex=
+t-align: left; vertical-align: top; background-color: #fff; border-bottom: =
+0 dotted transparent; border-left: 0 dotted transparent; border-right: 0 do=
+tted transparent; border-top: 0 dotted transparent; padding-top: 5px; paddi=
+ng-bottom: 5px;" align=3D"left" valign=3D"top" bgcolor=3D"#fff"><table clas=
+s=3D"html_block" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-lsp=
+ace: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-box;"><td sty=
+le=3D"box-sizing: border-box;"><div style=3D"box-sizing: border-box; font-f=
+amily: Arial,Helvetica Neue,Helvetica,sans-serif; text-align: center;" alig=
+n=3D"center"></div></td></tr></table><table class=3D"text_block" width=3D"1=
+00%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;=
+ word-break: break-word;"><tr style=3D"box-sizing: border-box;"><td style=
+=3D"box-sizing: border-box; padding-bottom: 20px; padding-left: 30px; paddi=
+ng-right: 30px; padding-top: 10px;"><div style=3D"box-sizing: border-box; f=
+ont-family: sans-serif;"><div class=3D"txtTinyMce-wrapper" style=3D"box-siz=
+ing: border-box; font-size: 12px; mso-line-height-alt: 14.399999999999999px=
+; color: #555; line-height: 1.2; font-family: Arial,Helvetica Neue,Helvetic=
+a,sans-serif;"><p style=3D"box-sizing: border-box; line-height: inherit; ma=
+rgin: 0;"><p><a target=3D"_blank" title=3D"Airtable on LinkedIn" href=3D"ht=
+tps://links.airtable.com/u/click=3F_t=3D1627610c3a6845988951459cbd28d02a&_m=
+=3D4215a73a0ea3431c9fa89e13b670a613&_e=3Dnb_omOoFvqFTt11w8bg0A0pUww78gIl5D6=
+Y6o4eSXm1uvqMYJg1jBhoizMg951XlPEkGs5brFlmu2k7c5nxDZHHhhPrTbBml_uJB-j9gnw8Ap=
+qxCjRW_SVjTNJObz-7W10M7l1zfudKpIsxAPVseQzpGpk8fcVA5xx4S40HgKarFHxMxq6vv3qyp=
+3ahmx1ryVln5EGi2nJsRaTBIo94x5drv0YU2CW3z3Tpr7hWuQZar9ZnAoREk_hqw99VIqZD9NbX=
+y5tGzNL7UqhN9pzGHUS4ne2E2ZrbFx1HLDS4SMs3c74qVNf1I8iWfGG5bOR4V"><img alt=3D"=
+" style=3D"width: 28px; height: 28px;" src=3D"https://pages.airtable.com/rs=
+/458-JHQ-131/images/footer_linkedin_28x28.png"/></a>&nbsp;&nbsp;&nbsp;<a ta=
+rget=3D"_blank" title=3D"Airtable on Twitter" href=3D"https://links.airtabl=
+e.com/u/click=3F_t=3D1627610c3a6845988951459cbd28d02a&_m=3D4215a73a0ea3431c=
+9fa89e13b670a613&_e=3Dnb_omOoFvqFTt11w8bg0A58AUGWKMgnTe55mBQ4u3G8hSWhFEBc_w=
+0R1cM4hbg1fqW-83-1tKoDAJ0lSz1GjT6EqY8yPoyRRCy7bKDm9jdxuHF6O5iP5pUrGrTw1LS6h=
+V4zXugjOU3ZtgS8kVKFrlLwNTXJsQHUhtFssZAYnlkmoHSip3GPQKu0zwy57caqPBj8WY6EWiEc=
+b4TXrIye2aAOR6LnOGZZKYMuhEFaBWtH3YFrAt7OCIQMhbGmcJPsVfd_lDI167AZlwhfMdJ8SwW=
+Y4Src9Le9paXf82l3ncUI%3D"><img alt=3D"" style=3D"width: 28px; height: 28px;=
+" src=3D"https://pages.airtable.com/rs/458-JHQ-131/images/footer_twitter_28=
+x28.png"/></a>&nbsp;&nbsp;&nbsp;<a target=3D"_blank" title=3D"Airtable on Y=
+outube" href=3D"https://links.airtable.com/u/click=3F_t=3D1627610c3a6845988=
+951459cbd28d02a&_m=3D4215a73a0ea3431c9fa89e13b670a613&_e=3Dnb_omOoFvqFTt11w=
+8bg0A4hliirYeyPBOr-WqQ_CKv2PUaTQtBVzOdYm8xuq8gNafx5JpSuOX1beIDtKVsBHJgnk4mx=
+Z3ZrezvTS4mSDHWEEFpboErjr0at-5hQE0syJnyo_ls09-TEg9RmyXM73WY2-w0QsY1sFTLIe3B=
+2Sak-uufB2LQgRfvznJqlOoCPEsV8aTFWWyk9CWVq0o0-XShXL8kYOFAUSduDab18QJU4wTlRgQ=
+v70vqZioVZ3qZ3uCXbW5GIC3tEEZVywWg9iRqlTgCy3RYIYkKHZLty1toSKF3ScSpm5W0f33icG=
+qWIXWKtKeeIKQasa3hWu2iE6XQ%3D%3D"><img alt=3D"" style=3D"width: 28px; heigh=
+t: 28px;" src=3D"https://pages.airtable.com/rs/458-JHQ-131/images/footer_yo=
+utube_28x28.png"/></a>&nbsp;&nbsp;&nbsp;<a target=3D"_blank" title=3D"Airta=
+ble on Instagram" href=3D"https://links.airtable.com/u/click=3F_t=3D1627610=
+c3a6845988951459cbd28d02a&_m=3D4215a73a0ea3431c9fa89e13b670a613&_e=3Dnb_omO=
+oFvqFTt11w8bg0A_cADm7SsbOhGCne7U8G_tNTWAWdVJP1pTxNQI5V7kTsfGPIaJg8ezORJHJQL=
+mFCep-Ke4XRMHza2e4qXF2mrjWm5jut6YLOZFnaqc15NMsbWT7X5XJm56B2iMRNvy9MKAczBxfE=
+5Tn5l2bmxFyC34AFwColblZWEuY_6OitKllvUwg2PmHj4TOlA0K98_m5TE6penU3krj4G35uozn=
+hqCTveXj7i6-vaaVE1Rbn_5GfIYjLvrKu1YfVZzCGy5apBzsI1AFEmf9VhCb8kklIlU0%3D"><i=
+mg alt=3D"" style=3D"width: 28px; height: 28px;" src=3D"https://pages.airta=
+ble.com/rs/458-JHQ-131/images/footer_instagram_28x28.png"/></a>&nbsp;&nbsp;=
+&nbsp;<a target=3D"_blank" title=3D"Airtable on Facebook" href=3D"https://l=
+inks.airtable.com/u/click=3F_t=3D1627610c3a6845988951459cbd28d02a&_m=3D4215=
+a73a0ea3431c9fa89e13b670a613&_e=3Dnb_omOoFvqFTt11w8bg0A6xAh8dPZq0PsKCG72NlG=
+mGHvDgvpHQkoFjvVHDT7PxQfNJLAJ8X_RgGsxra3pXWlqcCzN7Y6cnL5tcnY6EW3e1bqGLUqjTD=
+PoYpadROZDeoJtPQyBAgCTCnc-FQ6dFEydBgo5psFfcNeHw0_bLnaRff78T5iqhgPnlz-detGOO=
+-nbqo5IPx333GjPHblQwsdFNYwvv9KljYTalqhDqf5u5Y6f46pCLGxLq7gKnOYRyFp5ahBdLSCj=
+4_rVaXw_hLOz1_ldW1PaDU_KhP37Oztb4%3D"><img alt=3D"" style=3D"width: 28px; h=
+eight: 28px;" src=3D"https://pages.airtable.com/rs/458-JHQ-131/images/foote=
+r_facebook_28x28.png"/></a><br/> <br/> <a style=3D"color: #2d7ff9; text-dec=
+oration: none; font-size: 12px; fill: #2d7ff9; border-color: #2d7ff9; font-=
+weight: 700;" target=3D"_blank" href=3D"https://links.airtable.com/u/click=
+=3F_t=3D1627610c3a6845988951459cbd28d02a&_m=3D4215a73a0ea3431c9fa89e13b670a=
+613&_e=3Dnb_omOoFvqFTt11w8bg0A9vXoi0McPxF67ETFkkMqgGTXk_NHX5iAQAyBztNNKrRww=
+gJ9EDaS5wjhLNua8IkGz6y-H9iveXeovBjKmBODdoPnAHw_6-CnOFpjvQvX1hbduXfuJGMpvmMJ=
+RBqFfh33pxr_HRVEc61I5wBs35Hfvb3S-IGbg75kJUh8FcIftWcei3uKKwMxUbYMy7V5cysu_2k=
+IZQvFa-22lU8gwJYrttsYCkBpm-jqy2Fj9dKRcUAsEIRWylsyF-93pq_iYcX9Seau492NUilMYn=
+V4u4tstL7jEjnlZzTXbKM0bgP0xvd">We're hiring!</a></p> <p style=3D" color: #b=
+7b7b7;">Copyright =C2=A9 2022 Airtable, All rights reserved.<br/> <br/> Our=
+ mailing address is:<br/> 799 Market St<br/> San Francisco, CA 94103</p> <a=
+ style=3D"font-size: 12px; color: #b7b7b7; text-decoration: underline; font=
+-weight: 300;" target=3D"_top" href=3D"https://links.airtable.com/u/click=
+=3F_t=3D1627610c3a6845988951459cbd28d02a&_m=3D4215a73a0ea3431c9fa89e13b670a=
+613&_e=3Dnb_omOoFvqFTt11w8bg0Ayj18uK1EMvjdBg8361Zn884FD4Sj5pmz6O2aun8Rf9fae=
+6noMg8dwzV-b4aQUoPTvtyaZKxZfeqDrDpibjbr3Q1MEZJNKnRprsvvsTlb7gzyunV_eNzCX9ev=
+gFe01G0MFSATKrGCEEpC_kv4xO9AkFM232rWPnjH6dzMzhWruacqtmlAb9ZD7pcsAYTjyQjOmyC=
+mUnrf1m5fQasqxotDuUYLw-qi2yksg2wvX_kmhCJ4EdCw-7KjsZH5tPcZJGxtt28DrtYrQ5c7Nx=
+iai9J9YA%3D">Visit our help center</a><br/> &nbsp; <p style=3D"font-size: 1=
+2px; line-height: 18px; color: #b7b7b7; font-weight: 300;">This is a one-ti=
+me message sent to <a style=3D"font-size: 12px; color: #b7b7b7; text-decora=
+tion: none; font-weight: 300;" target=3D"_top" href=3D"https://airtable.com=
+//workspace/plans">aubrey@pineapple.co</a> regarding your Airtable account.=
+</p></p></div></div></td></tr></table></td></tr></tbody></table></td></tr><=
+/tbody></table></td></tr></tbody></table><!-- End -->=0D=0A<img border=3D"0=
+" width=3D"1" height=3D"1" alt=3D"" src=3D"http://links1.airtable.com/q/Hsl=
+f9-C669cD0sEuR5GaJQ~~/AARGbAA~/RgRkLY6KPlcDc3BjQgpiPYoJS2L8W8H0UhNhdWJyZXlA=
+cGluZWFwcGxlLmNvWAQAAAC8">=0D=0A</body></html>
+--_----XEMJSL+KshqlqrRvQhC/7A===_AB/4F-01709-A890B426--
+

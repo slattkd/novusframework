@@ -1,0 +1,132 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp402520ejz;
+        Thu, 28 Jul 2022 09:46:22 -0700 (PDT)
+X-Received: by 2002:a17:907:60d1:b0:72f:42a0:f3f9 with SMTP id hv17-20020a17090760d100b0072f42a0f3f9mr21769584ejc.727.1659026781881;
+        Thu, 28 Jul 2022 09:46:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659026781; cv=none;
+        d=google.com; s=arc-20160816;
+        b=pGHIN/U116rBQsWETKPrl8daL1vZPwbG+pT7T6g6foxgqncr2zknnTCi8/yXhdC9vI
+         d8iWjyGR+v/RcczzkVbZFSaQvsC9sMNM+2/ww+WT+Cm52Kz35YsdtzuKrBAgrqY8ftCk
+         QglGuO0kQAtMd2jIUxCDeRgAPZcSD5DhPJhp21H/T47s3CDqBinUP1DGSpObU1FcPqzC
+         rRZDJhERX8f002oWJkqtuPwGhzQvnOK7yL87OFEdYE9Q7bpVBG5kCsDoS48/pu+bO1V/
+         aMzUemGHvCcf2TCgOwQz8j6HRzfapkxdWyqOaaB0eRn8dcTrVSdHEABRnM0rata4epJc
+         emMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=auto-submitted:precedence:content-disposition
+         :content-transfer-encoding:mime-version:subject:message-id:date:from
+         :to:dkim-signature;
+        bh=HlletNKQDZO8p9IYfnZpbygBZjaVnWRhfhov1YpCNqM=;
+        b=JTIX5wLMZOEdGFEca/Ujgoq/HzlMC7S2PZJiVJG2x9jOIax0aX+78cYENDC4AN/LBV
+         0Jjt1owu2XdJrsjjfi+9TF+oDzjA9SIl7lIfq8c6Riow+KAcNaGGZ5az9xS7ewn/3Efh
+         2iH8NEVt5UdpXot0JVtz1s9lKSj25qgcG52Dt9Uur3XdxWmKDvGGCyfylowCeaLNP1xP
+         AXOTMQNOCGDUTp8f7VBmVSKvCoyh11b1mRupB5Z/VXvNsRfh/liOZtbigQNyxWgSIl1J
+         uqk3AuqdaRbuep9AW5jvRi/mJsXPslHGr0+wDWUdItGsz0tAwKBw9DpVQJ2QkIiwMdG/
+         F4jg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="KhTh/MP3";
+       spf=pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrea@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <andrea@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l24-20020a056402231800b0043cc4f630e8sor888987eda.50.2022.07.28.09.46.21
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 28 Jul 2022 09:46:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="KhTh/MP3";
+       spf=pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrea@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=HlletNKQDZO8p9IYfnZpbygBZjaVnWRhfhov1YpCNqM=;
+        b=KhTh/MP3ITkRax8zK0G4i7MbQBlzg1/NH4FysIrFlV2cFdy6zJSdMWct4AZDIn52f0
+         GmPkkWYXUQB0sRQ+OponjNHu5MOJWJolmheuBVOit7T9uSncfYUloMJKXkxWLI9QtMNx
+         dZwcPtDJp6HQ9ZPM31CJQyyo0GLmDQYe3PVCIctrlVmT4G6Jkkal/UV0sqwl/g06QObu
+         nzXxhNSmYaVQVL0XHoCXiCErRP0Pe94JDFsjLN85jPESVFt7j0QjiwT5VgBrkoxa6Svx
+         dQYefspR7kiqyeTS+vVLr022hlV+PHg2IGLcME3CkZkBNErhMkBuQEZKLMnnPL6BcZBN
+         h92Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=HlletNKQDZO8p9IYfnZpbygBZjaVnWRhfhov1YpCNqM=;
+        b=xI5faiD+O+/kGdkaLQTmssf8DY0PhX2nft9GiCINjuUwOpggxmAESSMOTkr6W3/vEZ
+         jzs5lHQdCfJtfENhkiQEac5sy6hfUP2pnvevz2dNgwTnf268RxxDcIzRE4mN9Tz4eDaO
+         pELF1N6u3ot8farHiPox8c4bMYf8GSegXXepsK8AbBAdLGGUcOLHcqgdn+gU6TCdQFUG
+         YUvc03eZt40tPXTzdwB8B8jd8PJYygiXqG9utnCenBY3AX/w5m7drbljtekv3mM8A1D6
+         i0roXRrHxjdr4DZRCTewQMBh7grP89PKYGz6UpXTflvIjhCWCqvFBYnT42xEOJk9LuF1
+         wASQ==
+X-Gm-Message-State: AJIora+KGeleBVg4RsBl+HkPJbdrSLkNtNgNMrGCQEO1rpBe+Hgjn4ae
+	cN9tFZbfSnaDAGw+0VGPwm9P6V7oXUuX9fdY0QaoJNhvU7D6fOTTpMmvkk4Ogmh5aus=
+X-Google-Smtp-Source: AGRyM1sDU/GXjV8zUfoexZvHoDm61wKo78rXlfksFpvBMfdq35QDjeGJWOgdqpS5RZ3HRtQLJgLHxRaHCIIJUkIqBJwyCCVkuBOrEkd3pFgB
+X-Received: by 2002:a05:6402:35c4:b0:43b:fee5:2653 with SMTP id z4-20020a05640235c400b0043bfee52653mr20686379edc.415.1659026781590;
+        Thu, 28 Jul 2022 09:46:21 -0700 (PDT)
+To: aubrey@pineapple.co
+From: "Andrea Abramowski" <andrea@pineapple.co>
+Date: Thu, 28 Jul 2022 09:46:21 -0700
+Message-ID: <CA+ceVcUvWLqzO15TAT2dTHhJ0hP_=0wNKJRoyK0dU3w3wfbAjA@mail.gmail.com>
+Subject: OOO Re: Mid and End of Month Profit Reports for Brett
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+Precedence: bulk
+X-Autoreply: yes
+Auto-Submitted: auto-replied
+
+<div dir="ltr">I will be out of the office until Monday, August 1. Please direct questions to <a href="mailto:megan@pineapple.co" target="_blank">megan@pineapple.co</a> or <a href="mailto:kerry@pineapple.co" target="_blank">kerry@pineapple.co</a>. I will respond to your emails on Monday. Have a fantastic weekend!</div><br/><br/>-- <br/> 
+
+
+<div>
+
+<table style="FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500px" cellspacing="0" cellpadding="0" border="0">
+  <tbody>
+    <tr>
+        <td colspan="2" style="padding-bottom:4px;border-bottom:1px solid #05385f" width="500">
+            <span style="FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style="font-size:10pt;color:#05385f">Controller<span> | </span></span>
+            <span>
+                <a href="http://pineapple.co" rel="noopener" style="font-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold" target="_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top:12px" width="120">
+            <p style="padding:0px;margin:0px">	<img alt="Photo" style="max-width:90px;height:auto;border:0" width="90" border="0" src="https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw" data-os="https://drive.google.com/uc?export=view&amp;id=1JKyCmOXfbe_BWQKy2gwMMqfas5UHeGhm">
+            </p>
+        </td>
+        <td style="padding-top:15px">
+            <p style="line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-top:0px;margin-top:0px"><span style="font-size:9pt;color:#05385f;font-weight:bold"></span> <span style="font-size:9pt;color:#101010"></span></p>
+            
+            <p style="line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-top:0px;margin-top:0px"><span style="font-size:9pt;color:#05385f;font-weight:bold">E:</span> <a href="mailto:andrea@pineapple.co" style="text-decoration:none;font-size:9pt;color:#101010" target="_blank">andrea@pineapple.co</a></p>
+            		<p style="line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-top:0px;margin-top:0px">			<span style="font-size:9pt;color:#05385f;font-weight:bold">A:</span> 			 			<span style="font-size:9pt;color:#101010">13423 Blanco Rd PMB 8024</span><span style="font-size:9pt;color:#101010">, </span>			<span style="font-size:9pt;color:#101010">San Antonio, TX 78216</span>
+            </p>		
+            <p style="margin-bottom:0px;padding-bottom:0px;padding-top:5px;margin-top:5px">
+                
+                
+                
+                
+                
+                		
+            </p>
+        </td>
+    </tr>
+    
+    <tr>
+        <td colspan="2" style="padding-top:10px">
+            <p style="font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FAMILY:Verdana,sans-serif">The content of this email is confidential and intended for the recipient specified in message only. It is strictly forbidden to share any part of this message with any third party, without a written consent of the sender. If you received this message by mistake, please reply to this message and follow with its deletion, so that we can ensure such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+ 
+</div>
+  <br/>

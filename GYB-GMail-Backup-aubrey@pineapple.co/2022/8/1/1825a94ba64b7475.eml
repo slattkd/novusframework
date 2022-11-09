@@ -1,0 +1,777 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp2758469ejz;
+        Mon, 1 Aug 2022 11:04:32 -0700 (PDT)
+X-Received: by 2002:a5b:3ca:0:b0:676:e468:2879 with SMTP id t10-20020a5b03ca000000b00676e4682879mr7709677ybp.239.1659377072741;
+        Mon, 01 Aug 2022 11:04:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659377072; cv=none;
+        d=google.com; s=arc-20160816;
+        b=O+M44piYs7NiZJdBDjmZI9CHgPwK8YHObb/TTgFBkf+/aZ4JeiSGIg4DLhXvXo0XDq
+         CtEVvT7C2pV5N6WMg9tMSJJ+C60daNtvRAeX+5kFMuX7CL977yevdqEoYURo39ugUdRo
+         jLL14XjwYvqtXTcY7EaaJz6eSTYm1b2d8RiVJXvJ2CBE/gk8pUM6kV5vQimbHKH5jAdQ
+         nhb3TZjnNy/MmM6a97qHMl0KFzdG/nWbCIUPQMCCd1frdcMvTavdJiCgUlTD2BpDsz4i
+         CNUBpeUAflaUWdOrRvAqj7RxUJpKpmnyqyyRHa2zkWvpv/kuJ4l3rXDrtKdK6koJwLjC
+         H0dg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=XHlA8SjqP2KKSD2lkBMTHg6KP1iul3MTXy7ifsEzLz8=;
+        b=n++4A6woRVx0i19KIe6hKeXEDZtVrI39nDJfdtpxF4L0cER8x1/Pa4Z8dTCueZlh/l
+         RLRZXy3GfNPqV7WHbLZctODhEODT/Gv9S63bp9cq3nmyPJ92P2qniL5b7UaH6z3sOPUi
+         JGYoTX3nr6RvKfQ8G+CSszB3b9axo7dRzq5LAgxIz+g9hWHUsXMpQDPPTGq9MMmrnTWf
+         g3r5TZUER4j0n887qoHMeMiuBTDfHEP5y7SM+MbZxR3A0otgHuL2dHHZSgqPubtNSb6n
+         zEnYaX742iNIw1iCIiJMCCvET7q044nViarvO9bXbNm8xQzNBIjE1VPX4xUwFGZDvUi1
+         PG6Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sticky-io.20210112.gappssmtp.com header.s=20210112 header.b=cphFOy6R;
+       spf=pass (google.com: domain of dpanos@sticky.io designates 209.85.220.41 as permitted sender) smtp.mailfrom=dpanos@sticky.io;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=sticky.io
+Return-Path: <dpanos@sticky.io>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y63-20020a0def42000000b0031f425c34b1sor3489037ywe.93.2022.08.01.11.04.32
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 01 Aug 2022 11:04:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dpanos@sticky.io designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@sticky-io.20210112.gappssmtp.com header.s=20210112 header.b=cphFOy6R;
+       spf=pass (google.com: domain of dpanos@sticky.io designates 209.85.220.41 as permitted sender) smtp.mailfrom=dpanos@sticky.io;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=sticky.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=sticky-io.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=XHlA8SjqP2KKSD2lkBMTHg6KP1iul3MTXy7ifsEzLz8=;
+        b=cphFOy6R7fN++g4i2JWzHj6mVwqAJsP4W/N/fZyKOZ2iZFHj5gbikaPx51z2dJqdHP
+         ssc5NYWUnU1Rv8JXXV2vOv2HTJk/Khi9PGd1V7u7azPwjnomJnaziRe3EwLvRJNmm/yd
+         BeKA6S/+0Gyy1uW4E3r230rIeLBRXVvIsmeNkCDH8jrqots+vscVIRrSvfrzDUuRYCfJ
+         44N1zXqL/ITxlSEwdER7qF3DPbUZUDPQycA62ciFHvYzmONFC320IIGrNkuGfhjwHuEQ
+         OlL+0Wk/WUQ7Q8LeteOzC+HDtHQkQ0ABfCGJM8Q7BuAmR1LMFxPZi53wEcUW5aszY3pc
+         PYkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=XHlA8SjqP2KKSD2lkBMTHg6KP1iul3MTXy7ifsEzLz8=;
+        b=yd2LKCFgi3qMD/Al8hATSXQaoMGG5fWFtISgTphWjC+OnB0LzvlM4SfPg7AMV1dP/u
+         uz5YY3WMj5AIg8MppMsVYVujm1ysUCmeLvBy3mATF4ZtL6EdMvKQHxAlkvITnccCwVLN
+         JwTCXPOk+63FouYVwev0YBH770E7AbwNWcbrHiewcQ+Dmr+MxQOa4Dm7uegE9wMK18u9
+         JEWccsZU++a1gXQ8epkTZsWz/GHgvB+2Fsqpe3j/W8Hw0sWOBXpFo0PrLjuQPrTzj6d0
+         artIj0yCsMkcuiUUQzZo2eXtXASdeTukGv4h9yLCFGMAg7NxViDWsGj+H+Ts7CCKzUW4
+         e+hw==
+X-Gm-Message-State: ACgBeo22HQXgN7+3UbFlOXQNxsUe0TZ6QDrtldLPSIlOq6Lmk2xFQn3Q
+	ziRFhIUfMzxU8p5P7ke32O91U3NjnCP+h8hw9cTBdQ==
+X-Google-Smtp-Source: AA6agR5mjS1Aw4ZzGLudHcrHC1Nnfp86gqhprvpGVQRL3uha3UxMYznfFhNqM3/HT63Z7j3Ss5mV+W0FcQCR8XM56uo=
+X-Received: by 2002:a81:8681:0:b0:31f:55f1:3f9d with SMTP id
+ w123-20020a818681000000b0031f55f13f9dmr13977036ywf.331.1659377072140; Mon, 01
+ Aug 2022 11:04:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_QtDhbKbukYQONV+P0Z9r4G5=2O-R9vRgnp5kCgu9zULA@mail.gmail.com>
+ <7BF6BCF6-B8C5-4B49-908C-889E4230D04A@sticky.io> <CALCR5_Q=Xp+UaizF-6G6wLqB-_h8chcBw2mHNmCiwtBq==9BnQ@mail.gmail.com>
+ <ccc6b08c5d73a721ee8ed00c4faea0dd@mail.gmail.com> <CAAHZi9x5zAFNWaYnJKbtnmihJQh1E3-J2GR3Z5sZGT_spznynw@mail.gmail.com>
+In-Reply-To: <CAAHZi9x5zAFNWaYnJKbtnmihJQh1E3-J2GR3Z5sZGT_spznynw@mail.gmail.com>
+From: "Dane from sticky.io" <dpanos@sticky.io>
+Date: Mon, 1 Aug 2022 14:04:22 -0400
+Message-ID: <CAEugT5MQNQgcRhhaHjGo84iCbG9smfRbvfCiQgkKw1ddPCZ=mg@mail.gmail.com>
+Subject: Re: Details from our call
+To: Mike McBrien <mike@pineapple.co>
+Cc: Barry Blumenfield <bblumenfield@sticky.io>, Brett Allcorn <brett@pineapple.co>, 
+	Jaime Dumala <jdumala@sticky.io>, Brooke Whoolery <brooke@pineapple.co>, 
+	Aubrey Allen <aubrey@pineapple.co>, Jarren Scheller <jarren@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000ef082705e531d485"
+
+--000000000000ef082705e531d485
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hey Mike,
+
+I hope you and the team had a great weekend!
+
+How is Tuesday at 3 pm est work for the team to go over a demo of the DNVB
+platform?
+
+Let me know if this works for you and send me the emails that need to be
+included on your end for the invite.
+
+Best,
+
+
+
+*Dane Panos*
+
+Client Success Manager
+
+dpanos@sticky.io <email@sticky.io>
+
+
+
+
+On Thu, Jul 28, 2022 at 1:28 PM Mike McBrien <mike@pineapple.co> wrote:
+
+> Hey Barry,
+>
+> My team had a great discussion of the upgrade processes and have
+> informally decided we will likely go the "option A route" where the accou=
+nt
+> is upgraded and we add new campaigns to support the new features.
+>
+> Before we officially opt into the process our team would like to have a
+> Sticky Demo reviewing the new features, how the upgrade process will happ=
+en
+> and more importantly open the floor for any questions our team will have
+> that will affect our everyday operations in Sticky as well as our data
+> reporting and analytics structures.
+>
+> Can we schedule a call with your team to do this demo?  anytime
+> Mon-Wednesday nest week should be great for us.
+>
+> Thank you!
+>
+> On Fri, Jul 22, 2022 at 12:51 PM Barry Blumenfield <bblumenfield@sticky.i=
+o>
+> wrote:
+>
+>> Hi all,
+>>
+>>
+>>
+>> Following up on yesterday=E2=80=99s call, we discussed that there are tw=
+o options
+>> for migrating the Pineapple sticky instance from Legacy to DNVB:
+>>
+>>    1. Switch instance to DNVB but do not modify existing Campaigns, so
+>>    they can continue to function in Legacy mode with no changes required=
+ by
+>>    Pineapple for those campaigns. You can add new Campaigns which are DN=
+VB
+>>    enabled. This means you would be running variable versions of some AP=
+I=E2=80=99s
+>>    due to the two different types of Campaigns, but eliminates the need =
+to
+>>    modify all of your web pages.
+>>
+>>
+>>
+>>    1. Convert existing Campaigns to DNVB, auto-create Offers and Billing
+>>    Models as needed for those Campaigns and orders, convert all active o=
+rders
+>>    as necessary to be DNVB compatible (add Billing Model and Offers). Th=
+is
+>>    would allow you to continue using the same Campaigns, but all website=
+s
+>>    would need to be modified to utilize the proper APIs. This is a much =
+bigger
+>>    job on the sticky side due to the need to create all of the required =
+Offers
+>>    and Billing Models and then perform conversion and validation for all
+>>    existing Orders.
+>>
+>>
+>>
+>> Mike will research internally and get back to us.
+>>
+>>
+>>
+>> Please let us know if we can provide any further information.
+>>
+>>
+>> Thank you.
+>>
+>>
+>>
+>> -Barry
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>> *From:* Brett Allcorn <brett@pineapple.co>
+>> *Sent:* Wednesday, July 20, 2022 4:02 PM
+>> *To:* Barry Blumenfield <bblumenfield@sticky.io>
+>> *Cc:* Jaime Dumala <jdumala@sticky.io>; Mike McBrien <mike@pineapple.co>=
+;
+>> Jeffrey Sotomayor <jsotomayor@sticky.io>
+>> *Subject:* Re: Details from our call
+>>
+>>
+>>
+>> This call is just about upgrading to the new Sticky?
+>>
+>>
+>>
+>> If so, then Mike can handle this call as I have a conflict and don't wan=
+t
+>> to delay you guys.
+>>
+>>
+>>
+>> On Wed, Jul 20, 2022 at 2:55 PM Barry Blumenfield <bblumenfield@sticky.i=
+o>
+>> wrote:
+>>
+>> Hi Brett. Dane just sent an invite for 1pm EST tomorrow.
+>>
+>>
+>>
+>> Barry
+>>
+>>
+>> On Jul 20, 2022, at 2:27 PM, Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>> =EF=BB=BF
+>>
+>> Barry please, can you let me know?!
+>>
+>>
+>>
+>> On Tue, Jul 19, 2022 at 4:06 PM Brett Allcorn <brett@pineapple.co> wrote=
+:
+>>
+>> Can you offer dates/times to reschedule?
+>>
+>>
+>>
+>> On Tue, Jul 19, 2022 at 4:04 PM Barry Blumenfield <bblumenfield@sticky.i=
+o>
+>> wrote:
+>>
+>> Hi all. Hoping you get this message. My internet just went out and cell
+>> service is horrible today so I may not be able to join the meeting (or s=
+end
+>> this email).
+>>
+>>
+>>
+>> My apologies if I=E2=80=99m not able to attend. This is pretty unusual f=
+or me.
+>>
+>>
+>>
+>> Barry
+>>
+>>
+>> On Jul 18, 2022, at 3:48 PM, Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>> =EF=BB=BF
+>>
+>> Hey Barry, Jeff has basically flat out ignored all incoming emails from
+>> me and people in my company for two weeks now.
+>>
+>>
+>>
+>> I'm not counting on Jeff to do anything and I honestly would just prefer
+>> not to work with him at all at this point.
+>>
+>>
+>>
+>> Do you mind scheduling this meeting with me directly?
+>>
+>>
+>>
+>> On Mon, Jul 18, 2022 at 2:46 PM Barry Blumenfield <bblumenfield@sticky.i=
+o>
+>> wrote:
+>>
+>> Hi Brett.
+>>
+>>
+>>
+>> Jeff has access to my calendar and will coordinate the meeting as per
+>> Jaime=E2=80=99s request. He also needs to be involved in that discussion=
+ and I can
+>> see that his calendar is fuller than mine=E2=80=A6
+>>
+>>
+>>
+>> -Barry
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>> *From:* Brett Allcorn <brett@pineapple.co>
+>> *Sent:* Monday, July 18, 2022 2:10 PM
+>> *To:* Jaime Dumala <jdumala@sticky.io>; Mike McBrien <mike@pineapple.co>
+>> *Cc:* Barry Blumenfield <bblumenfield@sticky.io>; Jeffrey Sotomayor <
+>> jsotomayor@sticky.io>
+>> *Subject:* Re: Details from our call
+>>
+>>
+>>
+>> Thanks. The company name now is actually Pineapple Products.
+>>
+>>
+>>
+>> Gotham has been sold to a new owner.
+>>
+>>
+>>
+>> Sounds like we might need to do some housekeeping as far as company name
+>> and contact info.
+>>
+>>
+>>
+>> Barry - when are you free to chat?
+>>
+>>
+>>
+>> CCing @Mike McBrien <mike@pineapple.co> our head of dev here too
+>>
+>>
+>>
+>> On Mon, Jul 18, 2022 at 2:07 PM Jaime Dumala <jdumala@sticky.io> wrote:
+>>
+>> Hi Brett,
+>>
+>>
+>>
+>> Thank you for this context - - I recalled this from our call and did
+>> start the conversation internally on your desire to explore a migration
+>> from Legacy to DNVB.
+>>
+>>
+>>
+>> The first step will be to set up a call between your team and our
+>> Solutions Architect, Barry Blumenfield. Barry will ask you some explorat=
+ory
+>> questions to help us better understand and further define what you are
+>> looking to accomplish, how you are using the platform today, and any
+>> considerations/impacts that would occur in making the switch (e.g. API
+>> connections). From there he will help to determine the best course of
+>> action.
+>>
+>>
+>>
+>> @Barry Blumenfield <bblumenfield@sticky.io> I'd like to introduce you to
+>> Brett Allcorn from *Gotham Club.* They are considering the switch from
+>> legacy to DNVB and would like to connect for further discussion around h=
+ow
+>> the switch could benefit/potentially impact their business.
+>>
+>>
+>>
+>> @Jeffrey Sotomayor <jsotomayor@sticky.io> Please schedule a call at
+>> Brett's earliest convenience to include Barry and I so we can continue t=
+he
+>> discussion.
+>>
+>>
+>>
+>> Thanks everyone. Look forward to connecting.
+>>
+>>
+>>
+>> Best,
+>>
+>> Jaime
+>>
+>>
+>>
+>> <https://www.sticky.io/>
+>>
+>>
+>>
+>> *Jaime Dumala*
+>>
+>> Director, Client Success
+>>
+>> jdumala@sticky.io
+>>
+>> Cell: 860.428.0661
+>>
+>> <https://www.linkedin.com/company/sticky-io>
+>> <https://twitter.com/sticky_io> <https://www.facebook.com/sticky.io>
+>> <https://www.instagram.com/getsticky.io/>
+>>
+>>
+>>
+>>
+>>
+>> On Mon, Jul 18, 2022 at 1:52 PM Brett Allcorn <brett@pineapple.co> wrote=
+:
+>>
+>> Also we were talking about the upgrade to new Sticky.
+>>
+>>
+>>
+>> Mike our dev said he recalls that if we upgrade, as soon as we use some
+>> sort of new feature, it'll automatically upgrade a product or account to
+>> the new version.
+>>
+>>
+>>
+>> It was something he was a little worried about since we won't want the
+>> old APIs to suddenly stop working and the entire company to go dead for
+>> some period of time.
+>>
+>>
+>>
+>> A solution Mike and I both thought was a good idea was to start a new
+>> Sticky instance and test one of our product funnels on the new Sticky an=
+d
+>> then slowly move everything over.
+>>
+>>
+>>
+>> Then at that point, we could either migrate the rent of the
+>> information/rebills to the new instance or just wait for the rebills to =
+end
+>> and download the data and close the old account.
+>>
+>>
+>>
+>> But since you've probably already done this upgrade with tons of other
+>> customers, I figure he might be confused about something.
+>>
+>>
+>>
+>> I'm sure you don't put customers in a situation where the old API would
+>> just cut off.
+>>
+>>
+>>
+>> Perhaps a call to clarify everything is in order.
+>>
+>>
+
+--000000000000ef082705e531d485
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Mike,<div><br></div><div>I hope you and the team had a=
+ great weekend!=C2=A0</div><div><br></div><div>How is Tuesday at 3 pm est w=
+ork for the team to go over a demo of the DNVB platform?=C2=A0</div><div><b=
+r></div><div>Let me know if this works for you and send me the emails that =
+need to be included on your end for the invite.</div><div><br></div><div>Be=
+st,</div><div><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_signat=
+ure" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><br></div><di=
+v><table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing:0px;bo=
+rder-collapse:collapse;color:rgb(68,68,68);width:525px;font-size:11pt;font-=
+family:Verdana,sans-serif"><tbody><tr><td width=3D"125" valign=3D"top" rows=
+pan=3D"6" style=3D"font-family:Verdana,sans-serif;padding:0px 10px 0px 0px;=
+border-right:1px solid rgb(60,180,229);width:125px;vertical-align:top"><div=
+ style=3D"text-align:right"><img src=3D"https://docs.google.com/uc?export=
+=3Ddownload&amp;id=3D1d1zVaUPMqg8-6-e3dC40JJO8XiaiDrUD&amp;revid=3D0B5PWy_d=
+KDNNMcnEySHluOTN2ektpU3M3bVZYYmFkaUN3YkJjPQ" width=3D"200" height=3D"68"><b=
+r></div></td><td style=3D"padding:0px 0px 0px 10px"><table cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;ba=
+ckground-color:transparent"><tbody><tr><td valign=3D"top" style=3D"font-fam=
+ily:Verdana,sans-serif;padding:0px 0px 5px 10px;width:400px;vertical-align:=
+top"><span style=3D"font-size:9pt;font-family:&quot;Source Sans Pro&quot;,s=
+ans-serif;color:rgb(74,79,84);background-color:transparent;vertical-align:b=
+aseline;white-space:pre-wrap"><span style=3D"font-size:9pt;background-color=
+:transparent;vertical-align:baseline"><p dir=3D"ltr" style=3D"line-height:1=
+.38;margin-top:0pt;margin-bottom:0pt"><b>Dane Panos</b></p><p dir=3D"ltr" s=
+tyle=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"f=
+ont-size:9pt;background-color:transparent;vertical-align:baseline">Client S=
+uccess Manager</span></p><div><span style=3D"font-size:9pt;background-color=
+:transparent;vertical-align:baseline"><p dir=3D"ltr" style=3D"line-height:1=
+.38;margin-top:0pt;margin-bottom:0pt"><a href=3D"mailto:email@sticky.io" st=
+yle=3D"background-color:transparent;font-size:9pt;color:rgb(17,85,204)" tar=
+get=3D"_blank">dpanos@sticky.io</a><br></p><div></div></span></div></span><=
+/span></td></tr><tr><td valign=3D"top" style=3D"font-family:Verdana,sans-se=
+rif;padding:5px 0px 5px 10px;font-size:10pt;vertical-align:top;line-height:=
+17px"><img src=3D"https://lh3.googleusercontent.com/gR60vUxGk1Nco2GSR3F6Xao=
+DWnQ3H1wz3Gerrrj-2llnknXo89E4pabQ2CjGtfUbc5Chq2UgiHRihHQGTv4vLD082RwXAY-21r=
+EnibTPRLHkuG-5JQQ8P5ZLEsGwTdBB3btnX4cK" width=3D"28" height=3D"28" style=3D=
+"margin-left:0px;margin-top:0px"><img src=3D"https://lh4.googleusercontent.=
+com/hirpydDhHylGldUI6s1-A0C1bXFAG0Szk6Ozo6PdN24BTMFj7GHi5VTaQQx4iDh-rRb4QBL=
+n0WvebUgoYlbMSGV24hAHe3HO2yN75weKuRtDzKhfVAxg7enGviUs9h9t06m8pyqV" width=3D=
+"28" height=3D"28" style=3D"color:rgb(74,79,84);font-family:&quot;Source Sa=
+ns Pro&quot;,sans-serif;font-size:10.6667px;white-space:pre-wrap;margin-lef=
+t:0px;margin-top:0px"><img src=3D"https://lh3.googleusercontent.com/TS4rIK8=
+VBgmpG7wkziHgokywwJiPTopQCPI6jcb7mP5KQNnyD73k65Q9XHSQ0yccHgb-r_axpbSeIZTiSQ=
+jWWjy_CYqJuZQ-7yi-Wo1W_THhodxl-JBPuSlGc315ZeeaIWXY18K-" width=3D"27" height=
+=3D"27" style=3D"font-size:10pt;background-color:transparent;margin-left:0p=
+x;margin-top:0px"><span style=3D"font-size:10pt;background-color:transparen=
+t"><span style=3D"font-size:8pt;font-family:&quot;Source Sans Pro&quot;,san=
+s-serif;color:rgb(74,79,84);background-color:transparent;vertical-align:bas=
+eline;white-space:pre-wrap"><span style=3D"border:none;display:inline-block=
+;overflow:hidden;width:27px;height:27px"><img src=3D"https://lh5.googleuser=
+content.com/BRGYYc4i5GaMv2ULKfqfzXaaZrVsrJ8ckdTl4mWlpHbqjUqWUwWmaXy5RqBMH_E=
+JzTlmJxpeZsONepC0oo0Bte8QsdQeqPYP-O5HOJc1ktuVQ42mdWhDtj1OnjOjr2d3sYGJtANC" =
+width=3D"27" height=3D"27" style=3D"margin-left:0px;margin-top:0px"></span>=
+</span></span></td></tr></tbody></table></td></tr></tbody></table></div><di=
+v><br></div><div><br></div><div></div><div><div><div dir=3D"ltr"><div dir=
+=3D"ltr"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-spacing=
+:0px;border-collapse:collapse;color:rgb(68,68,68);width:525px;font-size:11p=
+t;font-family:Verdana,sans-serif"><tbody></tbody></table></div></div></div>=
+</div></div></div></div><br></div></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 28, 2022 at 1:28 PM Mike McBr=
+ien &lt;<a href=3D"mailto:mike@pineapple.co">mike@pineapple.co</a>&gt; wrot=
+e:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"l=
+tr">Hey Barry,=C2=A0<div><br>My team had a great discussion of the upgrade =
+processes=C2=A0and have informally decided we will likely go the &quot;opti=
+on=C2=A0A route&quot; where the account is upgraded and we add new campaign=
+s to support the new features.</div><div><br></div><div>Before we officiall=
+y=C2=A0opt into the process our team would like to have a Sticky Demo revie=
+wing the new features, how the upgrade process will happen and more importa=
+ntly open the floor for any questions our team will have that will affect o=
+ur everyday operations in Sticky as well as our data reporting and analytic=
+s structures.<br><br>Can we schedule a call with your team to do this demo?=
+=C2=A0 anytime Mon-Wednesday nest week should be great for us.<br><br>Thank=
+ you!</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Fri, Jul 22, 2022 at 12:51 PM Barry Blumenfield &lt;<a href=
+=3D"mailto:bblumenfield@sticky.io" target=3D"_blank">bblumenfield@sticky.io=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+<div lang=3D"EN-US"><div><p class=3D"MsoNormal">Hi all, </p><p class=3D"Mso=
+Normal">=C2=A0</p><p class=3D"MsoNormal">Following up on yesterday=E2=80=99=
+s call, we discussed that there are two options for migrating the Pineapple=
+ sticky instance from Legacy to DNVB:</p><ol style=3D"margin-top:0in" start=
+=3D"1" type=3D"1"><li style=3D"margin-left:0in">Switch instance to DNVB but=
+ do not modify existing Campaigns, so they can continue to function in Lega=
+cy mode with no changes required by Pineapple for those campaigns. You can =
+add new Campaigns which are DNVB enabled. This means you would be running v=
+ariable versions of some API=E2=80=99s due to the two different types of Ca=
+mpaigns, but eliminates the need to modify all of your web pages.</li></ol>=
+<p class=3D"MsoNormal">=C2=A0</p><ol style=3D"margin-top:0in" start=3D"2" t=
+ype=3D"1"><li style=3D"margin-left:0in">Convert existing Campaigns to DNVB,=
+ auto-create Offers and Billing Models as needed for those Campaigns and or=
+ders, convert all active orders as necessary to be DNVB compatible (add Bil=
+ling Model and Offers). This would allow you to continue using the same Cam=
+paigns, but all websites would need to be modified to utilize the proper AP=
+Is. This is a much bigger job on the sticky side due to the need to create =
+all of the required Offers and Billing Models and then perform conversion a=
+nd validation for all existing Orders.</li></ol><p>=C2=A0</p><p class=3D"Ms=
+oNormal">Mike will research internally and get back to us. </p><p class=3D"=
+MsoNormal">=C2=A0</p><p class=3D"MsoNormal">Please let us know if we can pr=
+ovide any further information.</p><p class=3D"MsoNormal"><br>Thank you.</p>=
+<p class=3D"MsoNormal">=C2=A0</p><p class=3D"MsoNormal">-Barry</p><p>=C2=A0=
+</p><p class=3D"MsoNormal">=C2=A0</p><p class=3D"MsoNormal">=C2=A0</p><div =
+style=3D"border-right:none;border-bottom:none;border-left:none;border-top:1=
+pt solid rgb(225,225,225);padding:3pt 0in 0in"><p class=3D"MsoNormal"><b>Fr=
+om:</b> Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_=
+blank">brett@pineapple.co</a>&gt; <br><b>Sent:</b> Wednesday, July 20, 2022=
+ 4:02 PM<br><b>To:</b> Barry Blumenfield &lt;<a href=3D"mailto:bblumenfield=
+@sticky.io" target=3D"_blank">bblumenfield@sticky.io</a>&gt;<br><b>Cc:</b> =
+Jaime Dumala &lt;<a href=3D"mailto:jdumala@sticky.io" target=3D"_blank">jdu=
+mala@sticky.io</a>&gt;; Mike McBrien &lt;<a href=3D"mailto:mike@pineapple.c=
+o" target=3D"_blank">mike@pineapple.co</a>&gt;; Jeffrey Sotomayor &lt;<a hr=
+ef=3D"mailto:jsotomayor@sticky.io" target=3D"_blank">jsotomayor@sticky.io</=
+a>&gt;<br><b>Subject:</b> Re: Details from our call</p></div><p class=3D"Ms=
+oNormal">=C2=A0</p><div><p class=3D"MsoNormal">This call is just about upgr=
+ading to the new Sticky?</p><div><p class=3D"MsoNormal">=C2=A0</p></div><di=
+v><p class=3D"MsoNormal">If so, then Mike can handle this call as I have a =
+conflict and don&#39;t want to delay you guys.</p></div></div><p class=3D"M=
+soNormal">=C2=A0</p><div><div><p class=3D"MsoNormal">On Wed, Jul 20, 2022 a=
+t 2:55 PM Barry Blumenfield &lt;<a href=3D"mailto:bblumenfield@sticky.io" t=
+arget=3D"_blank">bblumenfield@sticky.io</a>&gt; wrote:</p></div><blockquote=
+ style=3D"border-top:none;border-right:none;border-bottom:none;border-left:=
+1pt solid rgb(204,204,204);padding:0in 0in 0in 6pt;margin-left:4.8pt;margin=
+-right:0in"><div><div><p class=3D"MsoNormal">Hi Brett. Dane just sent an in=
+vite for 1pm EST tomorrow.=C2=A0</p></div><div><p class=3D"MsoNormal">=C2=
+=A0</p></div><div><p class=3D"MsoNormal">Barry</p></div><div><p class=3D"Ms=
+oNormal" style=3D"margin-bottom:12pt"><br>On Jul 20, 2022, at 2:27 PM, Bret=
+t Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank">brett=
+@pineapple.co</a>&gt; wrote:</p></div><div><p class=3D"MsoNormal">=EF=BB=BF=
+</p><div><p class=3D"MsoNormal">Barry please, can you let me know?!</p></di=
+v><p class=3D"MsoNormal">=C2=A0</p><div><div><p class=3D"MsoNormal">On Tue,=
+ Jul 19, 2022 at 4:06 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineappl=
+e.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:</p></div><blockqu=
+ote style=3D"border-top:none;border-right:none;border-bottom:none;border-le=
+ft:1pt solid rgb(204,204,204);padding:0in 0in 0in 6pt;margin-left:4.8pt;mar=
+gin-right:0in"><div><p class=3D"MsoNormal">Can you offer dates/times to res=
+chedule?</p></div><p class=3D"MsoNormal">=C2=A0</p><div><div><p class=3D"Ms=
+oNormal">On Tue, Jul 19, 2022 at 4:04 PM Barry Blumenfield &lt;<a href=3D"m=
+ailto:bblumenfield@sticky.io" target=3D"_blank">bblumenfield@sticky.io</a>&=
+gt; wrote:</p></div><blockquote style=3D"border-top:none;border-right:none;=
+border-bottom:none;border-left:1pt solid rgb(204,204,204);padding:0in 0in 0=
+in 6pt;margin-left:4.8pt;margin-right:0in"><div><div><p class=3D"MsoNormal"=
+>Hi all. Hoping you get this message. My internet just went out and cell se=
+rvice is horrible today so I may not be able to join the meeting (or send t=
+his email).=C2=A0</p></div><div><p class=3D"MsoNormal">=C2=A0</p></div><div=
+><p class=3D"MsoNormal">My apologies if I=E2=80=99m not able to attend. Thi=
+s is pretty unusual for me.=C2=A0</p></div><div><p class=3D"MsoNormal">=C2=
+=A0</p></div><div><p class=3D"MsoNormal">Barry</p></div><div><p class=3D"Ms=
+oNormal" style=3D"margin-bottom:12pt"><br>On Jul 18, 2022, at 3:48 PM, Bret=
+t Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank">brett=
+@pineapple.co</a>&gt; wrote:</p></div><div><p class=3D"MsoNormal">=EF=BB=BF=
+</p><div><p class=3D"MsoNormal">Hey Barry, Jeff has basically flat out igno=
+red all incoming emails from me and people in my company for two=C2=A0weeks=
+ now.</p><div><p class=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoNo=
+rmal">I&#39;m not counting on Jeff to do anything and I honestly would just=
+ prefer not to work with him at all at this point.</p></div><div><p class=
+=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoNormal">Do you mind sche=
+duling this meeting with me directly?</p></div></div><p class=3D"MsoNormal"=
+>=C2=A0</p><div><div><p class=3D"MsoNormal">On Mon, Jul 18, 2022 at 2:46 PM=
+ Barry Blumenfield &lt;<a href=3D"mailto:bblumenfield@sticky.io" target=3D"=
+_blank">bblumenfield@sticky.io</a>&gt; wrote:</p></div><blockquote style=3D=
+"border-top:none;border-right:none;border-bottom:none;border-left:1pt solid=
+ rgb(204,204,204);padding:0in 0in 0in 6pt;margin-left:4.8pt;margin-right:0i=
+n"><div><div><p class=3D"MsoNormal">Hi Brett.</p><p class=3D"MsoNormal">=C2=
+=A0</p><p class=3D"MsoNormal">Jeff has access to my calendar and will coord=
+inate the meeting as per Jaime=E2=80=99s request. He also needs to be invol=
+ved in that discussion and I can see that his calendar is fuller than mine=
+=E2=80=A6</p><p class=3D"MsoNormal">=C2=A0</p><p class=3D"MsoNormal">-Barry=
+</p><p class=3D"MsoNormal">=C2=A0</p><p class=3D"MsoNormal">=C2=A0</p><p cl=
+ass=3D"MsoNormal">=C2=A0</p><div style=3D"border-right:none;border-bottom:n=
+one;border-left:none;border-top:1pt solid rgb(225,225,225);padding:3pt 0in =
+0in"><p class=3D"MsoNormal"><b>From:</b> Brett Allcorn &lt;<a href=3D"mailt=
+o:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; <br><b>S=
+ent:</b> Monday, July 18, 2022 2:10 PM<br><b>To:</b> Jaime Dumala &lt;<a hr=
+ef=3D"mailto:jdumala@sticky.io" target=3D"_blank">jdumala@sticky.io</a>&gt;=
+; Mike McBrien &lt;<a href=3D"mailto:mike@pineapple.co" target=3D"_blank">m=
+ike@pineapple.co</a>&gt;<br><b>Cc:</b> Barry Blumenfield &lt;<a href=3D"mai=
+lto:bblumenfield@sticky.io" target=3D"_blank">bblumenfield@sticky.io</a>&gt=
+;; Jeffrey Sotomayor &lt;<a href=3D"mailto:jsotomayor@sticky.io" target=3D"=
+_blank">jsotomayor@sticky.io</a>&gt;<br><b>Subject:</b> Re: Details from ou=
+r call</p></div><p class=3D"MsoNormal">=C2=A0</p><div><p class=3D"MsoNormal=
+">Thanks. The company name now is actually Pineapple Products.</p><div><p c=
+lass=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoNormal">Gotham has b=
+een sold to a new owner.</p></div><div><p class=3D"MsoNormal">=C2=A0</p></d=
+iv><div><p class=3D"MsoNormal">Sounds like we might need to do some houseke=
+eping as far as company name and contact info.</p></div><div><p class=3D"Ms=
+oNormal">=C2=A0</p></div><div><p class=3D"MsoNormal">Barry - when are you f=
+ree to chat?</p></div><div><p class=3D"MsoNormal">=C2=A0</p></div><div><p c=
+lass=3D"MsoNormal">CCing=C2=A0<a href=3D"mailto:mike@pineapple.co" target=
+=3D"_blank">@Mike McBrien</a>=C2=A0our head of dev here too</p></div></div>=
+<p class=3D"MsoNormal">=C2=A0</p><div><div><p class=3D"MsoNormal">On Mon, J=
+ul 18, 2022 at 2:07 PM Jaime Dumala &lt;<a href=3D"mailto:jdumala@sticky.io=
+" target=3D"_blank">jdumala@sticky.io</a>&gt; wrote:</p></div><blockquote s=
+tyle=3D"border-top:none;border-right:none;border-bottom:none;border-left:1p=
+t solid rgb(204,204,204);padding:0in 0in 0in 6pt;margin:5pt 0in 5pt 4.8pt">=
+<div><div><div><p class=3D"MsoNormal"><span style=3D"font-size:12pt;font-fa=
+mily:Tahoma,sans-serif;color:rgb(68,68,68)">Hi Brett,=C2=A0</span></p></div=
+><div><p class=3D"MsoNormal"><span style=3D"font-size:12pt;font-family:Taho=
+ma,sans-serif;color:rgb(68,68,68)">=C2=A0</span></p></div><div><p class=3D"=
+MsoNormal"><span style=3D"font-size:12pt;font-family:Tahoma,sans-serif;colo=
+r:rgb(68,68,68)">Thank you for this context - - I recalled this from our ca=
+ll and did start the conversation internally on your desire to explore a mi=
+gration from Legacy to DNVB.</span></p></div><div><p class=3D"MsoNormal"><s=
+pan style=3D"font-size:12pt;font-family:Tahoma,sans-serif;color:rgb(68,68,6=
+8)">=C2=A0</span></p></div><div><p class=3D"MsoNormal"><span style=3D"font-=
+size:12pt;font-family:Tahoma,sans-serif;color:rgb(68,68,68)">The first step=
+ will be to set up a call between your team and our Solutions Architect, Ba=
+rry Blumenfield. Barry will ask you some=C2=A0exploratory questions to help=
+ us better understand and further define what you are looking to accomplish=
+, how you are using the platform today, and any considerations/impacts that=
+ would occur in making the switch (e.g. API connections). From there he wil=
+l help to determine the best course of action.=C2=A0</span></p></div><div><=
+p class=3D"MsoNormal"><span style=3D"font-size:12pt;font-family:Tahoma,sans=
+-serif;color:rgb(68,68,68)">=C2=A0</span></p></div><div><p class=3D"MsoNorm=
+al"><span style=3D"font-size:12pt;font-family:Tahoma,sans-serif;color:rgb(6=
+8,68,68)"><a href=3D"mailto:bblumenfield@sticky.io" target=3D"_blank">@Barr=
+y Blumenfield</a>=C2=A0I&#39;d like to introduce you to Brett Allcorn from =
+<b>Gotham Club.</b> They are considering the switch from legacy to DNVB and=
+ would like to connect for further=C2=A0discussion around how the switch co=
+uld benefit/potentially impact their business.=C2=A0</span></p></div><div><=
+p class=3D"MsoNormal"><span style=3D"font-size:12pt;font-family:Tahoma,sans=
+-serif;color:rgb(68,68,68)">=C2=A0</span></p></div><div><p class=3D"MsoNorm=
+al"><span style=3D"font-size:12pt;font-family:Tahoma,sans-serif;color:rgb(6=
+8,68,68)"><a href=3D"mailto:jsotomayor@sticky.io" target=3D"_blank">@Jeffre=
+y Sotomayor</a>=C2=A0Please schedule a call at Brett&#39;s earliest conveni=
+ence to include Barry and I so we can continue the discussion.=C2=A0</span>=
+</p></div><div><p class=3D"MsoNormal"><span style=3D"font-size:12pt;font-fa=
+mily:Tahoma,sans-serif;color:rgb(68,68,68)">=C2=A0</span></p></div><div><p =
+class=3D"MsoNormal"><span style=3D"font-size:12pt;font-family:Tahoma,sans-s=
+erif;color:rgb(68,68,68)">Thanks everyone. Look forward to connecting.=C2=
+=A0</span></p></div><div><p class=3D"MsoNormal"><span style=3D"font-size:12=
+pt;font-family:Tahoma,sans-serif;color:rgb(68,68,68)">=C2=A0</span></p></di=
+v><div><p class=3D"MsoNormal"><span style=3D"font-size:12pt;font-family:Tah=
+oma,sans-serif;color:rgb(68,68,68)">Best,=C2=A0</span></p></div><div><p cla=
+ss=3D"MsoNormal"><span style=3D"font-size:12pt;font-family:Tahoma,sans-seri=
+f;color:rgb(68,68,68)">Jaime</span></p></div><div><p class=3D"MsoNormal"><s=
+pan style=3D"font-size:12pt;font-family:Tahoma,sans-serif;color:rgb(68,68,6=
+8)">=C2=A0</span></p></div><div><div><div><table border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" width=3D"525" style=3D"width:393.75pt;border-colla=
+pse:collapse;border-spacing:0px"><tbody><tr><td width=3D"125" rowspan=3D"2"=
+ valign=3D"top" style=3D"width:93.75pt;border-top:none;border-bottom:none;b=
+order-left:none;border-right:1pt solid rgb(60,180,229);padding:0in 7.5pt 0i=
+n 0in"><p class=3D"MsoNormal" align=3D"right" style=3D"text-align:right"><a=
+ href=3D"https://www.sticky.io/" target=3D"_blank"><span style=3D"font-fami=
+ly:Verdana,sans-serif;color:rgb(17,85,204);text-decoration:none"><img borde=
+r=3D"0" width=3D"200" height=3D"70" style=3D"width: 2.0833in; height: 0.729=
+1in;" id=3D"gmail-m_-233215647818834462gmail-m_4516557448827074385_x0000_i1=
+029" src=3D"https://drive.google.com/uc?id=3D1IYReqyUgA2cKUJHZooTfyezxVfM2v=
+V5a&amp;export=3Ddownload"></span></a></p></td><td style=3D"padding:0in 0in=
+ 0in 7.5pt"><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=
+=3D"border-collapse:collapse;border-spacing:0px"><tbody><tr><td width=3D"40=
+0" valign=3D"top" style=3D"width:300pt;padding:0in 0in 3.75pt 7.5pt"></td><=
+/tr></tbody></table><p class=3D"MsoNormal"><span style=3D"font-family:Verda=
+na,sans-serif;color:rgb(68,68,68)">=C2=A0</span></p><table border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0" style=3D"border-collapse:collapse;border-s=
+pacing:0px"><tbody><tr><td width=3D"400" valign=3D"top" style=3D"width:300p=
+t;padding:0in 0in 3.75pt 7.5pt"><p style=3D"margin:0in;white-space:pre-wrap=
+"><b><span style=3D"font-size:9pt;font-family:&quot;Source Sans Pro&quot;,s=
+ans-serif;color:rgb(74,79,84)">Jaime Dumala</span></b></p><p style=3D"margi=
+n:0in;white-space:pre-wrap"><span style=3D"font-size:9pt;font-family:&quot;=
+Source Sans Pro&quot;,sans-serif;color:rgb(74,79,84)">Director, Client Succ=
+ess</span></p><div><p style=3D"margin:0in"><span style=3D"font-size:9pt;fon=
+t-family:&quot;Source Sans Pro&quot;,sans-serif;color:rgb(17,85,204)"><a hr=
+ef=3D"mailto:jdumala@sticky.io" target=3D"_blank">jdumala@sticky.io</a> </s=
+pan></p><p style=3D"margin:0in"><span style=3D"font-size:9pt;font-family:&q=
+uot;Source Sans Pro&quot;,sans-serif;color:rgb(17,85,204)">Cell: </span><sp=
+an style=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(102,102,10=
+2)">860.428.0661</span></p></div></td></tr><tr><td valign=3D"top" style=3D"=
+padding:3.75pt 0in 3.75pt 7.5pt"><p class=3D"MsoNormal" style=3D"line-heigh=
+t:12.75pt"><a href=3D"https://www.linkedin.com/company/sticky-io" target=3D=
+"_blank"><span style=3D"font-size:10pt;font-family:Verdana,sans-serif;color=
+:rgb(17,85,204);text-decoration:none"><img border=3D"0" width=3D"28" height=
+=3D"28" style=3D"width: 0.2916in; height: 0.2916in;" id=3D"gmail-m_-2332156=
+47818834462gmail-m_4516557448827074385_x0000_i1028" src=3D"https://lh3.goog=
+leusercontent.com/gR60vUxGk1Nco2GSR3F6XaoDWnQ3H1wz3Gerrrj-2llnknXo89E4pabQ2=
+CjGtfUbc5Chq2UgiHRihHQGTv4vLD082RwXAY-21rEnibTPRLHkuG-5JQQ8P5ZLEsGwTdBB3btn=
+X4cK"></span></a><a href=3D"https://twitter.com/sticky_io" target=3D"_blank=
+"><span style=3D"font-size:10pt;font-family:Verdana,sans-serif;color:rgb(17=
+,85,204);text-decoration:none"><img border=3D"0" width=3D"28" height=3D"28"=
+ style=3D"width: 0.2916in; height: 0.2916in;" id=3D"gmail-m_-23321564781883=
+4462gmail-m_4516557448827074385_x0000_i1027" src=3D"https://lh4.googleuserc=
+ontent.com/hirpydDhHylGldUI6s1-A0C1bXFAG0Szk6Ozo6PdN24BTMFj7GHi5VTaQQx4iDh-=
+rRb4QBLn0WvebUgoYlbMSGV24hAHe3HO2yN75weKuRtDzKhfVAxg7enGviUs9h9t06m8pyqV"><=
+/span></a><a href=3D"https://www.facebook.com/sticky.io" target=3D"_blank">=
+<span style=3D"font-size:10pt;font-family:Verdana,sans-serif;color:rgb(17,8=
+5,204);text-decoration:none"><img border=3D"0" width=3D"27" height=3D"27" s=
+tyle=3D"width: 0.2847in; height: 0.2847in;" id=3D"gmail-m_-2332156478188344=
+62gmail-m_4516557448827074385_x0000_i1026" src=3D"https://lh3.googleusercon=
+tent.com/TS4rIK8VBgmpG7wkziHgokywwJiPTopQCPI6jcb7mP5KQNnyD73k65Q9XHSQ0yccHg=
+b-r_axpbSeIZTiSQjWWjy_CYqJuZQ-7yi-Wo1W_THhodxl-JBPuSlGc315ZeeaIWXY18K-"></s=
+pan></a><a href=3D"https://www.instagram.com/getsticky.io/" target=3D"_blan=
+k"><span style=3D"font-size:8pt;font-family:&quot;Source Sans Pro&quot;,san=
+s-serif;color:rgb(17,85,204);border:1pt none windowtext;padding:0in;text-de=
+coration:none"><img border=3D"0" width=3D"27" height=3D"27" style=3D"width:=
+ 0.2847in; height: 0.2847in;" id=3D"gmail-m_-233215647818834462gmail-m_4516=
+557448827074385_x0000_i1025" src=3D"https://lh5.googleusercontent.com/BRGYY=
+c4i5GaMv2ULKfqfzXaaZrVsrJ8ckdTl4mWlpHbqjUqWUwWmaXy5RqBMH_EJzTlmJxpeZsONepC0=
+oo0Bte8QsdQeqPYP-O5HOJc1ktuVQ42mdWhDtj1OnjOjr2d3sYGJtANC"></span></a></p></=
+td></tr></tbody></table></td></tr><tr><td style=3D"padding:0in"></td></tr><=
+/tbody></table></div></div></div><p class=3D"MsoNormal">=C2=A0</p></div><p =
+class=3D"MsoNormal">=C2=A0</p><div><div><p class=3D"MsoNormal">On Mon, Jul =
+18, 2022 at 1:52 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co"=
+ target=3D"_blank">brett@pineapple.co</a>&gt; wrote:</p></div><blockquote s=
+tyle=3D"border-top:none;border-right:none;border-bottom:none;border-left:1p=
+t solid rgb(204,204,204);padding:0in 0in 0in 6pt;margin:5pt 0in 5pt 4.8pt">=
+<div><p class=3D"MsoNormal">Also we were talking about the upgrade to new S=
+ticky.</p><div><p class=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoN=
+ormal">Mike our dev said he recalls that if we upgrade, as soon as we use s=
+ome sort of new feature, it&#39;ll automatically upgrade a product or accou=
+nt to the new version.</p></div><div><p class=3D"MsoNormal">=C2=A0</p></div=
+><div><p class=3D"MsoNormal">It was something=C2=A0he was a little worried =
+about since we won&#39;t want the old APIs to suddenly stop working and the=
+ entire company to go dead for some period of time.</p></div><div><p class=
+=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoNormal">A solution Mike =
+and I both thought was a good idea was to start a new Sticky instance and t=
+est one of our product funnels on the new Sticky and then slowly move every=
+thing over.</p></div><div><p class=3D"MsoNormal">=C2=A0</p></div><div><p cl=
+ass=3D"MsoNormal">Then at that point, we could either migrate the rent of t=
+he information/rebills to the new instance or just wait for the rebills to =
+end and download the data and close the old account.</p></div><div><p class=
+=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoNormal">But since you&#3=
+9;ve probably already done this upgrade with tons of other customers, I fig=
+ure he might be confused about something.</p></div><div><p class=3D"MsoNorm=
+al">=C2=A0</p></div><div><p class=3D"MsoNormal">I&#39;m sure you don&#39;t =
+put customers in a situation where the old API would just cut off.</p></div=
+><div><p class=3D"MsoNormal">=C2=A0</p></div><div><p class=3D"MsoNormal">Pe=
+rhaps a call to clarify everything is in order.</p></div></div></blockquote=
+></div></div></blockquote></div></div></div></blockquote></div></div></div>=
+</blockquote></div></blockquote></div></div></div></blockquote></div></div>=
+</div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000ef082705e531d485--

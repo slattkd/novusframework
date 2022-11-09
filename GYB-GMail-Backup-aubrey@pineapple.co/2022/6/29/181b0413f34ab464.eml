@@ -1,0 +1,137 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp255487ejc;
+        Wed, 29 Jun 2022 09:17:55 -0700 (PDT)
+X-Received: by 2002:a02:ca46:0:b0:339:cbfc:8272 with SMTP id i6-20020a02ca46000000b00339cbfc8272mr2329424jal.135.1656519475036;
+        Wed, 29 Jun 2022 09:17:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656519475; cv=none;
+        d=google.com; s=arc-20160816;
+        b=w0h7t0juoJ16EfaOzajCVlN1HyqGFmQBBijOktkEDEKIHTeBRvJZZvO45m68e7Iz0E
+         PcoMqmZTSJkxFrGjPRuoFO0w/sulK2WPbZCYLr8w6eFNzEjvzNVy4efk/Yc10iCSRVtC
+         ZpA6P3u9L0FRhvIVw7tL0VCzdvNI8ajzrOsOuYoc0EZhHcJlL2BoxYrB3CbeDGpqXuYA
+         33b5L27j9YpvjjylPD4Tqx3yjrxxSqOnvqSffpekhkRS6TmFbY+1jxsWgIAg3zMtdUd3
+         fl9XISYMB74Vh8/zLnIbGT2bSQXZuLPP2EF4TNntjZUA6WGBu3AMGQTNgCxEHO1+YV5Z
+         e67w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=xvLuVVH4OFjOljBjO7247OvRQrO5OmS2RMphANcORVM=;
+        b=T/hXRiN1MR7eX/Ks/z7B8XGyOHio0cVHsecZkEbRueqWpAAqgvFr6Rp2Xl5Blpzba+
+         fe3RRquJu5qHUuGicB+CoiRzMfnR48Oow9iCFbOnO4efrYubZXq0sHpsv/9XenewkyQ2
+         A9n8BbcbxBXrHRr2CZVBDGoL81AaftTmRCASHcMZB3y/JRzHBKRYZT/ixPDDp4thPC2x
+         bRJCan4ZiyqOwYhHD7gBwakXoYg4K77AC2P34TahRCrGT/kDwZZx1/hd8oPdjYDaspWD
+         MqTpD7I6v8C6BFGnl+5397xYHkt4aO15lZdmuyfrh5aEMlRyr+PBg2becWKIKaRzvE8z
+         bcAA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=OGdhSKnS;
+       spf=pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=marco@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <marco@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id r15-20020a02c84f000000b0033c94702fe7sor3063870jao.54.2022.06.29.09.17.54
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 29 Jun 2022 09:17:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=OGdhSKnS;
+       spf=pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=marco@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=xvLuVVH4OFjOljBjO7247OvRQrO5OmS2RMphANcORVM=;
+        b=OGdhSKnSgoGwkbozMUS1FCadHWNTVwJbz9St/EwmlCS0iSg3JCAZcIpv6F3zfB73NB
+         d2y1rz6BvlPwwxOswhehGItXTtz7UHLuKJuJT3m+K2O2E6VSX3dih7ioHG2S1PZ+foHh
+         esiJAQySaMIVUpn7FOSBEHZGFFEW+gpcRCGJvR++dbxtmXPDcn0bzIptK28uBh1SBwtW
+         uAwrQ34Cwo7Fn89M5j0TyssVRTntrMibpoYzG1xAHKcxL0xDi+6U5s4YWsiYrfV9v0F5
+         n/AH6Q0kanqecrKeCqCsWpm6ytGy3AbqiL/+2xvJU0FMZ2da1f/+TGcXLqWUGTJo0CVZ
+         pQBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=xvLuVVH4OFjOljBjO7247OvRQrO5OmS2RMphANcORVM=;
+        b=VHW4EaeKUn38DvYZPMZs4Hf9g1aioEHCNuGo6SwcL4BMSY2MMfi3DV4DCswG1aXg5Y
+         IzcZokoyjYDaJfowZc8oe6aFjDX76V6KgO+Znxy/rCCQAeOSJei8hzR9PLOuDSf+qBY6
+         qWCQAiLN6q1aTJr4Hg5oqXpmaOoPFIMj6N5AIm3sKBGokziWfblYiTsEmW4Lx8WWaNG7
+         9Li36qTDngvsHegvmq1LgvhlEUPN/3hiAqyptC4chjd5PfrzQmeS/CclnYaysXvWKaNi
+         2vsZ5SqLLULo9hj3TEDYqp5E4slH+Zy2FzguzVc/9Gqb1vB5KN09ki1mNkgLGI2XwP6r
+         9rCA==
+X-Gm-Message-State: AJIora/RbbCmAzWVj96CxrbldPNPotAN3qY76nhCrtr7VqJ+b6n/ytH7
+	SZ6Fn7JXfNPrjVcDRMwhzytyxM6naT0+j+1bD1wmBVJlhdECTw==
+X-Google-Smtp-Source: AGRyM1sI/VGt0h5YECWwrIoJ3Svi6OWUkXHiEqX0cE4hYcYn3KyS4rcIG1z0aJsbRXk+005OCUs7sn7R8VAp2SRcbXQ=
+X-Received: by 2002:a05:6638:1444:b0:33c:83bb:7cbc with SMTP id
+ l4-20020a056638144400b0033c83bb7cbcmr2466227jad.187.1656519474019; Wed, 29
+ Jun 2022 09:17:54 -0700 (PDT)
+MIME-Version: 1.0
+From: Marco Shimazaki <marco@pineapple.co>
+Date: Wed, 29 Jun 2022 12:17:42 -0400
+Message-ID: <CAAcEqJcdRfquT-O=miekfZQVaAF+BMaUYkiwBm7YdcALjuy+nQ@mail.gmail.com>
+Subject: Fran Payment Calculation for Product - Elixir of Eros - Gotham Club
+To: aubrey@pineapple.co
+Content-Type: multipart/alternative; boundary="000000000000d0173305e2987ea0"
+
+--000000000000d0173305e2987ea0
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey,
+
+I am looking for the formula to calculate Fran's payments for his product
+sales. I believe you handle this?
+
+Not sure if it changes by-product, but we are focused on Elixir of Eros
+(Digital Product) that was under Gotham Club.
+
+Thanks in advance for your help.
+
+
+-- 
+[image: https://mysignature.io/?utm_source=logo]
+<https://mysignature.io/?utm_source=logo>
+Marco Shimazaki Email Marketing Manager
+
+Pineapple Products
+s:  sbu.marco.shimazaki
+w:  pineapple.co
+a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+
+--000000000000d0173305e2987ea0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Aubrey,<div><br></div><div>I am looking for the formul=
+a to calculate Fran&#39;s payments for his product sales. I believe you han=
+dle this?</div><div><br></div><div>Not sure if it changes by-product, but w=
+e are focused on Elixir of Eros (Digital Product) that was under Gotham Clu=
+b.</div><div><br></div><div>Thanks in advance for your help.</div><div><br =
+clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr" class=3D"gmail_signatu=
+re" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><table cellspacing=
+=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px=
+;border-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);font-famil=
+y:Lato,sans-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"pad=
+ding:0px 9px 0px 0px;vertical-align:top"><a href=3D"https://mysignature.io/=
+?utm_source=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=
+=3D"https://mysignature.io/?utm_source=3Dlogo" width=3D"100" src=3D"https:/=
+/img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=
+=3D1594774986" style=3D"width:100px;border-radius:15%"></a></td><td valign=
+=3D"top" style=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;=
+border-top-color:rgb(70,208,255);border-right-color:rgb(70,208,255);border-=
+bottom-color:rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" style=3D"border-spacing:0px;border-colla=
+pse:collapse;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-siz=
+e:11.05px;color:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0ff" face=3D"=
+Verdana, Geneva, sans-serif"><span style=3D"font-size:13.26px">Marco Shimaz=
+aki Email Marketing Manager</span></font></td></tr><tr><td style=3D"padding=
+:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Pr=
+oducts</div></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,san=
+s-serif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.shimazaki</td=
+></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rg=
+b(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Gene=
+va,sans-serif"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" =
+target=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span style=3D"f=
+ont-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=
+=C2=A0<span><span style=3D"font-size:8.5pt;font-family:Verdana;background-c=
+olor:transparent;vertical-align:baseline;white-space:pre-wrap">600 Broadway=
+ Ste 200 #1460 Albany, NY 12207</span></span><span style=3D"font-family:Ver=
+dana,Geneva,sans-serif">=C2=A0</span></td></tr></tbody></table></td></tr></=
+tbody></table></div></div></div></div>
+
+--000000000000d0173305e2987ea0--

@@ -1,0 +1,267 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp539178ejz;
+        Wed, 3 Aug 2022 10:50:31 -0700 (PDT)
+X-Received: by 2002:a81:998c:0:b0:326:5dab:df3f with SMTP id q134-20020a81998c000000b003265dabdf3fmr9486115ywg.126.1659549031552;
+        Wed, 03 Aug 2022 10:50:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659549031; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ufGtP0Cdu8u0cLAQdojlyCKFo9NKEbKSuWcuXD0DF3ZLbHovq25k7hIhwgu+IvThs6
+         9pzIBTycYQhgCJjjD0diA1+hDY6JVnb2RtS/R+zMKy8E7LYrkzJsmxRmkPB3TFf0I6gr
+         9OOFnZ84SFuuJIdNFPI75L8SuSD/b6/wcFyE8cLFfcN6rD0/+dof+wpAM2IpynFBuXa8
+         HdGifYJV1a31JBXvn4Q3ZHXdsZEzy9NUMHr+uxU9F9mkifK2gZ56Pe+ssfLM3+RKyU7W
+         Yhszy6OKsa8lT73bZLF8vitBn0PsLXtiYR4/c8azPOhEmC84xDk7OdFdnmJfzLNLwj7r
+         0EtA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=3atB+vqQ/XO8F0obGdx6CyWimMra+c+9LMaasYDYmYI=;
+        b=vTYWf9Imgc8I4wEW9YT5mo0QzBTsVijLiXCPujUF70Q/RI5PDH/5zV8TGAY9T/EhjT
+         RnK2XMZ1clnY+h5b1RB7e9MO21WLf7M+YmH5cFkP4jPjxBmSWno6NHMB4nenJ65PHsT+
+         aW+t/TTbaWePHxLzvH8p0gqVmGxGnAJC3gyFFcc0aGiX/Um+72a7KlrAeYilNrBYFGGR
+         l8KkOmjQ7/7ux9ozusKScv6If3tBzM5w4Tyq6Ifb30fkuBMfPz/zZZehic9bqr2YvMfa
+         n+nLZYxezLeJd4WCcIMtNlTlJwqHqpSSAaW+piM9BwEbSJqu7eI7x9L/tXZIDHe9LEnr
+         WVjw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=ouJBbEG+;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <kerry@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g66-20020a25db45000000b006775a82b7a5sor3615870ybf.164.2022.08.03.10.50.31
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 03 Aug 2022 10:50:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=ouJBbEG+;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc;
+        bh=3atB+vqQ/XO8F0obGdx6CyWimMra+c+9LMaasYDYmYI=;
+        b=ouJBbEG+Oc8dNAyIfykzIrn1uWfAxC89JNK0nZMyNwmYPyiWwGrHBC8YvDONbBEfjy
+         ULOrICi/inUh4iYiHA2AD5tL+IoEbNWr+z7h5AVLk1TX8cWPR5YJditM6Z03HOqBNS2J
+         Y6uyR3EAfmdSGLCWY4vpjRc5WCJT2Eoo53DJyc6G2Pn2gXn+/KQjhp8FItfsAu0CTL6m
+         KVRklptqibDEMJhqktQgl+R1tEsvboIs5xAZKqRKW/mv5CocxJ7v510X7vr6Eo4HC3b3
+         vy8vntQBVMqOlTFjGtHHtxLMrHukcJuOiNnOst7pes/uSPT5F8l609c1ytKJMCXrbz3W
+         E0AQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc;
+        bh=3atB+vqQ/XO8F0obGdx6CyWimMra+c+9LMaasYDYmYI=;
+        b=HTMLjDeUIZErcuF+g4wyMj9rI77kphhN4dX/0ChcgNnMLnXja0wI73HsTQhpIHer3k
+         LysyFclJTo3D+xkqNHuT9R/BxoGLuigF+q9bKS79kGoghipe48f+OGLTRVCx9Mqkp+HL
+         o1aCF1FrGD/O2lGR5AtV1QYxnyDmWZpcahaDzDgxgnJpwkwCTNBZ8jiBWR94eyeEnq3a
+         u2C+kffUvrinxwUcIUTj/KgkflM3hW6xuqimpeBb8p5qosdJWYNZSR1MqONDiBcErK7c
+         VAKa3G+g/EjZeQHBpxXvPav8AW+qDaQz+2pQsiUEYPCI5WO65rfkq7KA/FykGksLFnxP
+         Sfmg==
+X-Gm-Message-State: ACgBeo2PFvXTo9MQtQduV0lxA7bpqVqiWXnfiMlaxja6o1fAv+yPlyzO
+	Hq7cyUfcmijYMFIMEwQK2D1Kpkxzpd9gNa0AzdLkK8A7gYfAAw==
+X-Google-Smtp-Source: AA6agR4Etvk+t+cPrrECqgYyq033jJbbdJPH5j/EmpcoNPEdLpArmeJM5Ld+54RYfqMmtv5UnU1HGnUGDPx8wxhVtsg=
+X-Received: by 2002:a25:424f:0:b0:671:816f:6979 with SMTP id
+ p76-20020a25424f000000b00671816f6979mr20165071yba.26.1659549030800; Wed, 03
+ Aug 2022 10:50:30 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP_sHR_92m4afZ_ppUC1rK3PNrYwjbW3Q7e-UjeJQpZzWQ@mail.gmail.com>
+ <CAJ8r_h0nbHm51Jk-XskovgsL1aTfX4Ap74EJA-8C-E_sNGYY8g@mail.gmail.com> <CAHbmDP8FFQ=NzHAw-D01vgq2y7Sf3ycCsjtA4VStbabtO1E6jg@mail.gmail.com>
+In-Reply-To: <CAHbmDP8FFQ=NzHAw-D01vgq2y7Sf3ycCsjtA4VStbabtO1E6jg@mail.gmail.com>
+From: Kerry Scott <kerry@pineapple.co>
+Date: Wed, 3 Aug 2022 10:50:20 -0700
+Message-ID: <CAJ8r_h3BgskKFcpV-tb7RvJviUXV0PTUpMCee8FkNvB-9kj-rw@mail.gmail.com>
+Subject: Re: July Report
+To: Aubrey Allen <aubrey@pineapple.co>, Andrea Abramowski <andrea@pineapple.co>, 
+	Megan Harnett <megan@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000077f9c905e559de7d"
+
+--00000000000077f9c905e559de7d
+Content-Type: text/plain; charset="UTF-8"
+
+As requested, it is incorrect and not completed due to bank statements not
+being ready yet (8/4/22 all bank statements will be ready).  But here is
+what is currently in Quickbooks.
+Also note - QB's is not in real time there is about a 24 hour delay on all
+transactions.
+
+ COGS_Affiliates_Shipping_Fees.xlsx
+<https://drive.google.com/file/d/1kRztSsYtd4mYlBsU1O9nKVj7DvXLIvd2/view?usp=drive_web>
+
+
+On Tue, Aug 2, 2022 at 9:57 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Understood.  Thanks for letting me know!
+>
+> On Tue, Aug 2, 2022 at 11:56 AM Kerry Scott <kerry@pineapple.co> wrote:
+>
+>> Not yet - we do not have the entire month of July completed yet and most
+>> likely will not till about the 10th due to bank statements,
+>> reconciliations, and Quickbooks.
+>> I am currently in the process of downloading all bank statements and
+>> credit card statements to make sure all transactions on in for the month of
+>> July.
+>>
+>> On Tue, Aug 2, 2022 at 9:54 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+>>
+>>> Hi Kerry,
+>>>
+>>> Would it be possible for you to send me the
+>>> "COGS_Affiliates_Shipping_Fees" report from Quickbooks for the whole month
+>>> of July?
+>>>
+>>> Thanks in advance! Have a great day!
+>>>
+>>> --
+>>> *Aubrey Allen*
+>>> Data Analytics Technician | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: aubrey@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipient
+>>> specified in message only. It is strictly forbidden to share any part of
+>>> this message with any third party, without a written consent of the sender.
+>>> If you received this message by mistake, please reply to this message and
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>
+
+--00000000000077f9c905e559de7d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,sa=
+ns-serif">As requested, it is incorrect and not completed due to bank state=
+ments not being ready yet (8/4/22 all bank statements will be ready).=C2=A0=
+ But here is what is currently in Quickbooks.</div><div class=3D"gmail_defa=
+ult" style=3D"font-family:arial,sans-serif">Also note - QB&#39;s is not in =
+real time there is about a 24 hour delay on all transactions.</div><div cla=
+ss=3D"gmail_default" style=3D"font-family:arial,sans-serif"><br><div class=
+=3D"gmail_chip gmail_drive_chip" style=3D"width:396px;height:18px;max-heigh=
+t:18px;background-color:#f5f5f5;padding:5px;color:#222;font-family:arial;fo=
+nt-style:normal;font-weight:bold;font-size:13px;border:1px solid #ddd;line-=
+height:1"><a href=3D"https://drive.google.com/file/d/1kRztSsYtd4mYlBsU1O9nK=
+Vj7DvXLIvd2/view?usp=3Ddrive_web" target=3D"_blank" style=3D"display:inline=
+-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-decor=
+ation:none;padding:1px 0px;border:none;width:100%" aria-label=3D"COGS_Affil=
+iates_Shipping_Fees.xlsx"><img style=3D"vertical-align: bottom; border: non=
+e;" src=3D"https://drive-thirdparty.googleusercontent.com/16/type/applicati=
+on/vnd.openxmlformats-officedocument.spreadsheetml.sheet">=C2=A0<span dir=
+=3D"ltr" style=3D"color:#15c;text-decoration:none;vertical-align:bottom">CO=
+GS_Affiliates_Shipping_Fees.xlsx</span></a></div><br></div></div><br><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Aug 2, 2=
+022 at 9:57 AM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" targ=
+et=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;bo=
+rder-left-style:solid;border-left-color:rgb(204,204,204);padding-left:1ex">=
+<div dir=3D"ltr">Understood.=C2=A0 Thanks for letting me know!</div><br><di=
+v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Aug 2=
+, 2022 at 11:56 AM Kerry Scott &lt;<a href=3D"mailto:kerry@pineapple.co" ta=
+rget=3D"_blank">kerry@pineapple.co</a>&gt; wrote:<br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;b=
+order-left-style:solid;border-left-color:rgb(204,204,204);padding-left:1ex"=
+><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,s=
+ans-serif">Not yet - we do not have the entire month of July completed yet =
+and most likely will not till about the 10th due to bank statements, reconc=
+iliations, and Quickbooks.</div><div class=3D"gmail_default" style=3D"font-=
+family:arial,sans-serif">I am currently in the process of downloading all b=
+ank statements and credit card statements=C2=A0to make sure all transaction=
+s on in for the month of July.</div></div><br><div class=3D"gmail_quote"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">On Tue, Aug 2, 2022 at 9:54 AM Aubrey A=
+llen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pi=
+neapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;=
+border-left-color:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Ke=
+rry,<div><br></div><div>Would it be possible for you to send me the &quot;C=
+OGS_Affiliates_Shipping_Fees&quot; report from Quickbooks for the whole mon=
+th of July?</div><div><br></div><div>Thanks in advance! Have a great day!</=
+div><div><div><br></div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom-width:1=
+px;border-bottom-style:solid;border-bottom-color:rgb(5,56,95)" width=3D"500=
+">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--00000000000077f9c905e559de7d--

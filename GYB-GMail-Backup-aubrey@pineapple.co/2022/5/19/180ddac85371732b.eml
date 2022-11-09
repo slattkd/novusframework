@@ -1,0 +1,448 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp1220602ejl;
+        Thu, 19 May 2022 11:55:13 -0700 (PDT)
+X-Received: by 2002:a9d:4b14:0:b0:605:d4b1:a0a0 with SMTP id q20-20020a9d4b14000000b00605d4b1a0a0mr2640832otf.134.1652986512703;
+        Thu, 19 May 2022 11:55:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652986512; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j8pC4Ly8LPbQZ+moIf9wEbkEBEDTrUdQ2yeytckZ9PfJtqBLe8rTsMotKoXZ3Mi5RS
+         fMnxkmph0AXRsyH8nd1yYpHQzuMuvZWjNHA8+dQcjsV2TCaBKjko7ji0TXcPFhoezRvk
+         NLDnFus7B2172ymJuwFrsKXHofMqk7SSy9vlbSuAVH8GQujW8YweW+gR+1RaNbnZ60My
+         085EOeE6QcfLIsHykzhgFxkLVWqrXg+eUt9cwDaoW1ExsGHJSBIs+v+3kaUTcpKWnTae
+         N5o/1vWGqLQEEXsKag1R8OnMnu1Qtd6w3kDc49HjXwxULG/3FDeEHSuoskX3PmJjOQKS
+         HNIA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:date:message-id:sender:reply-to:mime-version
+         :dkim-signature:dkim-signature;
+        bh=ElA0gDMB9H6phBQIVx4SdD5xxepzf7olC/eDcBNTf5w=;
+        b=nYNPttL9ycwKd0T77vBaZKyfuLQak+W6M65Qv61ISjvlaGXnqND1cC3QlINs7M+y3T
+         FncYbUVmOiMEVUV7nt/uBKKY8YkzKtrVu/B8BPtwJh9NTGgF6gsUYrrQIdIrk15v3kyY
+         ncYZtV2j5vzfWGbcpnKLVr6IA0e9FstnsoDvlCpAr2Ngu0l1cxt4hqUnPYWxKgtV2aIP
+         6FeCHbuUKJ6FkSgBih28gS+7omQqx1YRSUCEIqL940Bzpd4CE9U5/wP+E2EpUL6bxZAK
+         qbxzOyFj05g4HXLBpWzg/gVR4DI4VKSOKg1zEFXiI3XH7ZKHBjT9ZIz3L8oEZoHu4n1s
+         yNsg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=ONoAqokl;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=rpZeT643;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.73 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <mike@pineapple.co>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id li26-20020a056871421a00b000f1f3c7178fsor19056oab.103.2022.05.19.11.55.12
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 19 May 2022 11:55:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mike@pineapple.co designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=ONoAqokl;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=rpZeT643;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.73 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=mime-version:reply-to:sender:message-id:date:subject:from:to;
+        bh=ElA0gDMB9H6phBQIVx4SdD5xxepzf7olC/eDcBNTf5w=;
+        b=ONoAqokl1A6LdX0qKI9y90IosAhk1SIgbQo/1PmIwuWREnVhpFvvLfHleuOBsrPJTD
+         Lc+93zvJ25kBMNhMCM6Zk2dr1jEY2XdOM97RVeS9id3QhkW8yzKEwuayk8k13TPEv1rf
+         KxBYLVGwO+7wxDjH1GuM3SxGMPqlIioJC94aNcDyaI4fknrPPdDpp42WYpR1s9zc0YZK
+         AVPD2QPGXKp5mAa8+f6c+aoAWaX/p3RemFN9hXn0N4N/vzn4e6WQkHRE0CnXbXZM7Pyp
+         DDHTNDDBkxZJ7AJ5PI+fM4I+3CCM3WutbsZqoKWRHQBrTZujIa1I9Jh+n6fdZmEByU0W
+         z/vQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:reply-to:sender:message-id:date:subject:from:to;
+        bh=ElA0gDMB9H6phBQIVx4SdD5xxepzf7olC/eDcBNTf5w=;
+        b=rpZeT643MshNAQ3+TfkQVq/8D7Ee1rADdGq6eMRzop6BNSHEC31KNITCm6VS/QW6W7
+         sleXO95LAz+Y/78xRdIhLcQoRbUBWIWTrNO69N6T6wmKd2ULmln75pZqVofm0ghD90SD
+         UtKUo+Q8ouJSTghSq914PDcQltLNfl06aggFKs2ERGjTKPojRhnvzgLnYdrGL2ncBEUK
+         VSyuuKfoeSVH3mTT85WNnHRJ5D+Zbw2KOwJ2FvvK4+hSLf3Dw+UZ2UttYUEEA0k2LheR
+         8fPK2dRX9d0dGcD6NtRFhQLwmpqhOHdYFyZmn12fuhRS2HiM9E6BWpZTGHNRe+OD7YFG
+         r9hA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:reply-to:sender:message-id:date
+         :subject:from:to;
+        bh=ElA0gDMB9H6phBQIVx4SdD5xxepzf7olC/eDcBNTf5w=;
+        b=F9x3OfBg31OJ7JlBH8n5gw5B4/e7voD53oS1S3ZQKxVceGVY0is46SdSL9GaoQT/Xr
+         iv5b8wDgNCIIwL1sZGzJUhbZpMtYhSFeRlcAn8M+FOfKHC+CJNtkTm7i4QktYNs79YKC
+         aMVzMtLfUZg08+6UJXDeyZImcBL2fbOgzoAcEaYeHTuF1Fhc7HP9e4PGUWWg0bG8fUKJ
+         lfdSv0/oBIvr0Ic7E/3YpV+3gjfEG/PZ+iImSNkfIaEbWPcRuFG05cV4qc1AnXX5hmmD
+         bZJxAh6eYhgXPB6Tpe3sj0twHU/6TNEI21TXrkZc6oyYhH9TnRGquwO3ncbsfHQRBFKo
+         uo0g==
+X-Gm-Message-State: AOAM533QbFNYiQ9Q9uRAGLhBpQkelYEjMD9665v5zjVJPDwD35GdV2hJ
+	sUiUOCqKzrY5uUV3qBGpxFxq6SghQAbjKIuUyi9c9kRjZg==
+X-Google-Smtp-Source: ABdhPJxHcVtrvZn+6RfgdaS+qC1HMcJOYn2fcwTk/MYgItbTLldptcXa2nhnsASHl8SqkPziHW+9N+WqSouleF74Ck1E
+MIME-Version: 1.0
+X-Received: by 2002:a05:6870:c38e:b0:ed:f230:1494 with SMTP id
+ g14-20020a056870c38e00b000edf2301494mr4041576oao.36.1652986512237; Thu, 19
+ May 2022 11:55:12 -0700 (PDT)
+Reply-To: Mike McBrien <mike@pineapple.co>
+Sender: Google Calendar <calendar-notification@google.com>
+Message-ID: <000000000000e17fac05df61e95a@google.com>
+Date: Thu, 19 May 2022 18:55:12 +0000
+Subject: Invitation: DevOps Team Weekly - Slack Call @ Weekly from 9am to
+ 9:30am on Friday (CDT) (aubrey@pineapple.co)
+From: Mike McBrien <mike@pineapple.co>
+To: aubrey@pineapple.co, sheena@pineapple.co, ivy@pineapple.co, 
+	derek@pineapple.co, dane@pineapple.co, jarren@pineapple.co
+Content-Type: multipart/mixed; boundary="000000000000e17f9305df61e959"
+
+--000000000000e17f9305df61e959
+Content-Type: multipart/alternative; boundary="000000000000e17f9205df61e957"
+
+--000000000000e17f9205df61e957
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+WW91IGhhdmUgYmVlbiBpbnZpdGVkIHRvIHRoZSBmb2xsb3dpbmcgZXZlbnQuDQoNClRpdGxlOiBE
+ZXZPcHMgVGVhbSBXZWVrbHkgLSBTbGFjayBDYWxsDQpXZWVrbHkgbWVldGluZ3MgdG8gZGlzY3Vz
+cyB3aW5zLCBpc3N1ZXMsIGFuZCB1cGNvbWluZyBwcm9qZWN0cy4gV2Ugd2lsbCAgDQpsZWF2ZSBh
+IGxpdHRsZSB0aW1lIGluIHRoZSBlbmQgZm9yIHNvbWUgIndhdGVyIGNvb2xlciIgdGFsay4NCldo
+ZW46IFdlZWtseSBmcm9tIDlhbSB0byA5OjMwYW0gb24gRnJpZGF5IENlbnRyYWwgVGltZSAtIENo
+aWNhZ28NCg0KSm9pbmluZyBpbmZvOiBKb2luIHdpdGggR29vZ2xlIE1lZXQNCmh0dHBzOi8vbWVl
+dC5nb29nbGUuY29tL294aS1odXN3LXd2eD9ocz0yMjQNCg0KSm9pbiBieSBwaG9uZQ0KKFVTKSAr
+MSA5MjktMjc3LTY0MjIgKFBJTjogOTQ2NjgzMDY0KQ0KDQpNb3JlIHBob25lIG51bWJlcnM6IGh0
+dHBzOi8vdGVsLm1lZXQvb3hpLWh1c3ctd3Z4P3Bpbj0yOTAyODU4MDEwNzM3JmhzPTANCg0KQ2Fs
+ZW5kYXI6IGF1YnJleUBwaW5lYXBwbGUuY28NCldobzoNCiAgICAgKiBNaWtlIE1jQnJpZW4gLSBv
+cmdhbml6ZXINCiAgICAgKiBzaGVlbmFAcGluZWFwcGxlLmNvDQogICAgICogaXZ5QHBpbmVhcHBs
+ZS5jbw0KICAgICAqIGRlcmVrQHBpbmVhcHBsZS5jbw0KICAgICAqIGRhbmVAcGluZWFwcGxlLmNv
+DQogICAgICogamFycmVuQHBpbmVhcHBsZS5jbw0KICAgICAqIGF1YnJleUBwaW5lYXBwbGUuY28N
+Cg0KRXZlbnQgZGV0YWlsczogIA0KaHR0cHM6Ly9jYWxlbmRhci5nb29nbGUuY29tL2NhbGVuZGFy
+L2V2ZW50P2FjdGlvbj1WSUVXJmVpZD1ObU00ZG5JM05tOXZNSEprWjIxb01EQmhZV0kzZEhOdU5X
+MWZVakl3TWpJd05USXdWREUwTURBd01DQmhkV0p5WlhsQWNHbHVaV0Z3Y0d4bExtTnYmdG9rPU1U
+Y2piV2xyWlVCd2FXNWxZWEJ3YkdVdVkyODNZVEk1WXpkak5HUmhOV0UxTm1ZeU5EUTBZVE0yTmpS
+aU9XRm1aV1l4WlRaaE1qUmlZekpsJmN0ej1BbWVyaWNhJTJGQ2hpY2FnbyZobD1lbiZlcz0xDQoN
+Ckludml0YXRpb24gZnJvbSBHb29nbGUgQ2FsZW5kYXI6IGh0dHBzOi8vY2FsZW5kYXIuZ29vZ2xl
+LmNvbS9jYWxlbmRhci8NCg0KWW91IGFyZSByZWNlaXZpbmcgdGhpcyBlbWFpbCBhdCB0aGUgYWNj
+b3VudCBhdWJyZXlAcGluZWFwcGxlLmNvIGJlY2F1c2UgeW91ICANCmFyZSBzdWJzY3JpYmVkIGZv
+ciBpbnZpdGF0aW9ucyBvbiBjYWxlbmRhciBhdWJyZXlAcGluZWFwcGxlLmNvLg0KDQpUbyBzdG9w
+IHJlY2VpdmluZyB0aGVzZSBlbWFpbHMsIHBsZWFzZSBsb2cgaW4gdG8gIA0KaHR0cHM6Ly9jYWxl
+bmRhci5nb29nbGUuY29tL2NhbGVuZGFyLyBhbmQgY2hhbmdlIHlvdXIgbm90aWZpY2F0aW9uIHNl
+dHRpbmdzICANCmZvciB0aGlzIGNhbGVuZGFyLg0KDQpGb3J3YXJkaW5nIHRoaXMgaW52aXRhdGlv
+biBjb3VsZCBhbGxvdyBhbnkgcmVjaXBpZW50IHRvIHNlbmQgYSByZXNwb25zZSB0byAgDQp0aGUg
+b3JnYW5pemVyIGFuZCBiZSBhZGRlZCB0byB0aGUgZ3Vlc3QgbGlzdCwgb3IgaW52aXRlIG90aGVy
+cyByZWdhcmRsZXNzICANCm9mIHRoZWlyIG93biBpbnZpdGF0aW9uIHN0YXR1cywgb3IgdG8gbW9k
+aWZ5IHlvdXIgUlNWUC4gTGVhcm4gbW9yZSBhdCAgDQpodHRwczovL3N1cHBvcnQuZ29vZ2xlLmNv
+bS9jYWxlbmRhci9hbnN3ZXIvMzcxMzUjZm9yd2FyZGluZw0K
+--000000000000e17f9205df61e957
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<span itemscope itemtype=3D"http://schema.org/InformAction"><span style=3D"=
+display:none" itemprop=3D"about" itemscope itemtype=3D"http://schema.org/Pe=
+rson"><meta itemprop=3D"description" content=3D"Invitation from Mike McBrie=
+n"/></span><span itemprop=3D"object" itemscope itemtype=3D"http://schema.or=
+g/Event"><div style=3D""><table cellspacing=3D"0" cellpadding=3D"8" border=
+=3D"0" summary=3D"" style=3D"width:100%;font-family:Arial,Sans-serif;border=
+:1px Solid #ccc;border-width:1px 2px 2px 1px;background-color:#fff;"><tr><t=
+d><meta itemprop=3D"eventStatus" content=3D"http://schema.org/EventSchedule=
+d"/><h4 style=3D"padding:6px 10px;margin:0 0 4px 0;font-family:Arial,Sans-s=
+erif;font-size:13px;line-height:1.4;border:1px Solid #d9f2db;background:#d9=
+f2db;color:#222;font-weight:normal"><strong>You have been invited to the fo=
+llowing event.</strong></h4><div style=3D"padding:2px"><span itemprop=3D"pu=
+blisher" itemscope itemtype=3D"http://schema.org/Organization"><meta itempr=
+op=3D"name" content=3D"Google Calendar"/></span><meta itemprop=3D"eventId/g=
+oogleCalendar" content=3D"6c8vr76oo0rdgmh00aab7tsn5m_R20220520T140000"/><h3=
+ style=3D"padding:0 0 6px 0;margin:0;font-family:Arial,Sans-serif;font-size=
+:16px;font-weight:bold;color:#222"><span itemprop=3D"name">DevOps Team Week=
+ly - Slack Call</span></h3><table style=3D"display:inline-table" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" summary=3D"Event details"><tr><td st=
+yle=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;col=
+or:#888;white-space:nowrap" valign=3D"top"><div><i style=3D"font-style:norm=
+al">When</i></div></td><td style=3D"padding-bottom:10px;font-family:Arial,S=
+ans-serif;font-size:13px;color:#222" valign=3D"top"><time itemprop=3D"start=
+Date" datetime=3D"20220520T140000Z"></time><time itemprop=3D"endDate" datet=
+ime=3D"20220520T143000Z"></time>Weekly from 9am to 9:30am on Friday <span s=
+tyle=3D"color:#888">Central Time - Chicago</span></td></tr><tr><td style=3D=
+"padding:0 1em 4px 0;font-family:Arial,Sans-serif;font-size:13px;color:#888=
+;white-space:nowrap" valign=3D"top"><div><i style=3D"font-style:normal">Joi=
+ning info</i></div></td><td style=3D"padding-bottom:4px;font-family:Arial,S=
+ans-serif;font-size:13px;color:#222" valign=3D"top">Join with Google Meet</=
+td></tr><tr><td style=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;=
+font-size:13px;color:#888;white-space:nowrap"></td><td style=3D"padding-bot=
+tom:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222" valign=3D"=
+top"><span itemprop=3D"potentialaction" itemscope itemtype=3D"http://schema=
+.org/JoinAction"><span itemprop=3D"name" content=3D"meet.google.com/oxi-hus=
+w-wvx"><span itemprop=3D"target" itemscope itemtype=3D"http://schema.org/En=
+tryPoint"><span itemprop=3D"url" content=3D"https://meet.google.com/oxi-hus=
+w-wvx?hs=3D224"><span itemprop=3D"httpMethod" content=3D"GET"><a href=3D"ht=
+tps://meet.google.com/oxi-husw-wvx?hs=3D224" style=3D"color:#20c;white-spac=
+e:nowrap" target=3D"_blank">meet.google.com/oxi-husw-wvx</a></span></span><=
+/span></span></span> </td></tr><tr><td style=3D"padding:0 1em 10px 0;font-f=
+amily:Arial,Sans-serif;font-size:13px;color:#888;white-space:nowrap"></td><=
+td style=3D"padding-bottom:10px;font-family:Arial,Sans-serif;font-size:13px=
+;color:#222" valign=3D"top"></td></tr><td style=3D"padding:0 1em 4px 0;font=
+-family:Arial,Sans-serif;font-size:13px;color:#888;white-space:nowrap"></td=
+><td style=3D"padding-bottom:4px;font-family:Arial,Sans-serif;font-size:13p=
+x;color:#222" valign=3D"top">Join by phone</td><tr><td style=3D"padding:0 1=
+em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color:#888;white-spac=
+e:nowrap"></td><td style=3D"padding-bottom:10px;font-family:Arial,Sans-seri=
+f;font-size:13px;color:#222" valign=3D"top"><span style=3D"color:#888">(US)=
+ </span><a href=3D"tel:+1-929-277-6422%3B946683064%23" style=3D"color:#20c;=
+white-space:nowrap" target=3D"_blank">+1 929-277-6422</a> <span style=3D"co=
+lor:#888">(PIN: 946683064)</span></td></tr><tr><td style=3D"padding:0 1em 1=
+0px 0;font-family:Arial,Sans-serif;font-size:13px;color:#888;white-space:no=
+wrap"></td><td style=3D"padding-bottom:10px;font-family:Arial,Sans-serif;fo=
+nt-size:13px;color:#222" valign=3D"top"></td></tr><tr><td style=3D"padding:=
+0 1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color:#888;white-s=
+pace:nowrap"></td><td style=3D"padding-bottom:10px;font-family:Arial,Sans-s=
+erif;font-size:13px;color:#222" valign=3D"top"><a href=3D"https://tel.meet/=
+oxi-husw-wvx?pin=3D2902858010737&amp;hs=3D0" style=3D"color:#20c;white-spac=
+e:nowrap" target=3D"_blank">More phone numbers</a></td></tr><tr><td style=
+=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color:=
+#888;white-space:nowrap" valign=3D"top"><div><i style=3D"font-style:normal"=
+>Calendar</i></div></td><td style=3D"padding-bottom:10px;font-family:Arial,=
+Sans-serif;font-size:13px;color:#222" valign=3D"top">aubrey@pineapple.co</t=
+d></tr><tr><td style=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;f=
+ont-size:13px;color:#888;white-space:nowrap" valign=3D"top"><div><i style=
+=3D"font-style:normal">Who</i></div></td><td style=3D"padding-bottom:10px;f=
+ont-family:Arial,Sans-serif;font-size:13px;color:#222" valign=3D"top"><tabl=
+e cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"padding-right:10px;f=
+ont-family:Arial,Sans-serif;font-size:13px;color:#222"><span style=3D"font-=
+family:Courier New,monospace">&#x2022;</span></td><td style=3D"padding-righ=
+t:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><div><div st=
+yle=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" itemscope itemtype=
+=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate"=
+>Mike McBrien</span><meta itemprop=3D"email" content=3D"mike@pineapple.co"/=
+></span><span itemprop=3D"organizer" itemscope itemtype=3D"http://schema.or=
+g/Person"><meta itemprop=3D"name" content=3D"Mike McBrien"/><meta itemprop=
+=3D"email" content=3D"mike@pineapple.co"/></span><span style=3D"font-size:1=
+1px;color:#888"> - organizer</span></div></div></td></tr><tr><td style=3D"p=
+adding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><=
+span style=3D"font-family:Courier New,monospace">&#x2022;</span></td><td st=
+yle=3D"padding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color=
+:#222"><div><div style=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" i=
+temscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" clas=
+s=3D"notranslate">sheena@pineapple.co</span><meta itemprop=3D"email" conten=
+t=3D"sheena@pineapple.co"/></span></div></div></td></tr><tr><td style=3D"pa=
+dding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><s=
+pan style=3D"font-family:Courier New,monospace">&#x2022;</span></td><td sty=
+le=3D"padding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color:=
+#222"><div><div style=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" it=
+emscope itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=
+=3D"notranslate">ivy@pineapple.co</span><meta itemprop=3D"email" content=3D=
+"ivy@pineapple.co"/></span></div></div></td></tr><tr><td style=3D"padding-r=
+ight:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><span sty=
+le=3D"font-family:Courier New,monospace">&#x2022;</span></td><td style=3D"p=
+adding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><=
+div><div style=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" itemscope=
+ itemtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"not=
+ranslate">derek@pineapple.co</span><meta itemprop=3D"email" content=3D"dere=
+k@pineapple.co"/></span></div></div></td></tr><tr><td style=3D"padding-righ=
+t:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><span style=
+=3D"font-family:Courier New,monospace">&#x2022;</span></td><td style=3D"pad=
+ding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><di=
+v><div style=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" itemscope i=
+temtype=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notra=
+nslate">dane@pineapple.co</span><meta itemprop=3D"email" content=3D"dane@pi=
+neapple.co"/></span></div></div></td></tr><tr><td style=3D"padding-right:10=
+px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><span style=3D"f=
+ont-family:Courier New,monospace">&#x2022;</span></td><td style=3D"padding-=
+right:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><div><di=
+v style=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" itemscope itemty=
+pe=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslat=
+e">jarren@pineapple.co</span><meta itemprop=3D"email" content=3D"jarren@pin=
+eapple.co"/></span></div></div></td></tr><tr><td style=3D"padding-right:10p=
+x;font-family:Arial,Sans-serif;font-size:13px;color:#222"><span style=3D"fo=
+nt-family:Courier New,monospace">&#x2022;</span></td><td style=3D"padding-r=
+ight:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222"><div><div=
+ style=3D"margin:0 0 0.3em 0"><span itemprop=3D"attendee" itemscope itemtyp=
+e=3D"http://schema.org/Person"><span itemprop=3D"name" class=3D"notranslate=
+">aubrey@pineapple.co</span><meta itemprop=3D"email" content=3D"aubrey@pine=
+apple.co"/></span></div></div></td></tr></table></td></tr></table><div styl=
+e=3D"float:right;font-weight:bold;font-size:13px"> <a href=3D"https://calen=
+dar.google.com/calendar/event?action=3DVIEW&amp;eid=3DNmM4dnI3Nm9vMHJkZ21oM=
+DBhYWI3dHNuNW1fUjIwMjIwNTIwVDE0MDAwMCBhdWJyZXlAcGluZWFwcGxlLmNv&amp;tok=3DM=
+TcjbWlrZUBwaW5lYXBwbGUuY283YTI5YzdjNGRhNWE1NmYyNDQ0YTM2NjRiOWFmZWYxZTZhMjRi=
+YzJl&amp;ctz=3DAmerica%2FChicago&amp;hl=3Den&amp;es=3D1" style=3D"color:#20=
+c;white-space:nowrap" itemprop=3D"url">more details &raquo;</a><br></div><d=
+iv style=3D"padding-bottom:15px;font-family:Arial,Sans-serif;font-size:13px=
+;color:#222;white-space:pre-wrap!important;white-space:-moz-pre-wrap!import=
+ant;white-space:-pre-wrap!important;white-space:-o-pre-wrap!important;white=
+-space:pre;word-wrap:break-word"><span>Weekly meetings to discuss wins, iss=
+ues, and upcoming projects. We will leave a little time in the end for some=
+ "water cooler" talk.</span><meta itemprop=3D"description" content=3D"Weekl=
+y meetings to discuss wins, issues, and upcoming projects. We will leave a =
+little time in the end for some &quot;water cooler&quot; talk."/></div></di=
+v><p style=3D"color:#222;font-size:13px;margin:0"><span style=3D"color:#888=
+">Going (aubrey@pineapple.co)?&nbsp;&nbsp;&nbsp;</span><wbr>All events in t=
+his series:&nbsp;&nbsp;&nbsp;<strong><span itemprop=3D"potentialaction" ite=
+mscope itemtype=3D"http://schema.org/RsvpAction"><meta itemprop=3D"attendan=
+ce" content=3D"http://schema.org/RsvpAttendance/Yes"/><span itemprop=3D"han=
+dler" itemscope itemtype=3D"http://schema.org/HttpActionHandler"><link item=
+prop=3D"method" href=3D"http://schema.org/HttpRequestMethod/GET"/><a href=
+=3D"https://calendar.google.com/calendar/event?action=3DRESPOND&amp;eid=3DN=
+mM4dnI3Nm9vMHJkZ21oMDBhYWI3dHNuNW1fUjIwMjIwNTIwVDE0MDAwMCBhdWJyZXlAcGluZWFw=
+cGxlLmNv&amp;rst=3D1&amp;tok=3DMTcjbWlrZUBwaW5lYXBwbGUuY283YTI5YzdjNGRhNWE1=
+NmYyNDQ0YTM2NjRiOWFmZWYxZTZhMjRiYzJl&amp;ctz=3DAmerica%2FChicago&amp;hl=3De=
+n&amp;es=3D1" style=3D"color:#20c;white-space:nowrap" itemprop=3D"url">Yes<=
+/a></span></span><span style=3D"margin:0 0.4em;font-weight:normal"> - </spa=
+n><span itemprop=3D"potentialaction" itemscope itemtype=3D"http://schema.or=
+g/RsvpAction"><meta itemprop=3D"attendance" content=3D"http://schema.org/Rs=
+vpAttendance/Maybe"/><span itemprop=3D"handler" itemscope itemtype=3D"http:=
+//schema.org/HttpActionHandler"><link itemprop=3D"method" href=3D"http://sc=
+hema.org/HttpRequestMethod/GET"/><a href=3D"https://calendar.google.com/cal=
+endar/event?action=3DRESPOND&amp;eid=3DNmM4dnI3Nm9vMHJkZ21oMDBhYWI3dHNuNW1f=
+UjIwMjIwNTIwVDE0MDAwMCBhdWJyZXlAcGluZWFwcGxlLmNv&amp;rst=3D3&amp;tok=3DMTcj=
+bWlrZUBwaW5lYXBwbGUuY283YTI5YzdjNGRhNWE1NmYyNDQ0YTM2NjRiOWFmZWYxZTZhMjRiYzJ=
+l&amp;ctz=3DAmerica%2FChicago&amp;hl=3Den&amp;es=3D1" style=3D"color:#20c;w=
+hite-space:nowrap" itemprop=3D"url">Maybe</a></span></span><span style=3D"m=
+argin:0 0.4em;font-weight:normal"> - </span><span itemprop=3D"potentialacti=
+on" itemscope itemtype=3D"http://schema.org/RsvpAction"><meta itemprop=3D"a=
+ttendance" content=3D"http://schema.org/RsvpAttendance/No"/><span itemprop=
+=3D"handler" itemscope itemtype=3D"http://schema.org/HttpActionHandler"><li=
+nk itemprop=3D"method" href=3D"http://schema.org/HttpRequestMethod/GET"/><a=
+ href=3D"https://calendar.google.com/calendar/event?action=3DRESPOND&amp;ei=
+d=3DNmM4dnI3Nm9vMHJkZ21oMDBhYWI3dHNuNW1fUjIwMjIwNTIwVDE0MDAwMCBhdWJyZXlAcGl=
+uZWFwcGxlLmNv&amp;rst=3D2&amp;tok=3DMTcjbWlrZUBwaW5lYXBwbGUuY283YTI5YzdjNGR=
+hNWE1NmYyNDQ0YTM2NjRiOWFmZWYxZTZhMjRiYzJl&amp;ctz=3DAmerica%2FChicago&amp;h=
+l=3Den&amp;es=3D1" style=3D"color:#20c;white-space:nowrap" itemprop=3D"url"=
+>No</a></span></span></strong>&nbsp;&nbsp;&nbsp;&nbsp;<wbr><a href=3D"https=
+://calendar.google.com/calendar/event?action=3DVIEW&amp;eid=3DNmM4dnI3Nm9vM=
+HJkZ21oMDBhYWI3dHNuNW1fUjIwMjIwNTIwVDE0MDAwMCBhdWJyZXlAcGluZWFwcGxlLmNv&amp=
+;tok=3DMTcjbWlrZUBwaW5lYXBwbGUuY283YTI5YzdjNGRhNWE1NmYyNDQ0YTM2NjRiOWFmZWYx=
+ZTZhMjRiYzJl&amp;ctz=3DAmerica%2FChicago&amp;hl=3Den&amp;es=3D1" style=3D"c=
+olor:#20c;white-space:nowrap" itemprop=3D"url">more options &raquo;</a></p>=
+</td></tr><tr><td style=3D"background-color:#f6f6f6;color:#888;border-top:1=
+px Solid #ccc;font-family:Arial,Sans-serif;font-size:11px"><p>Invitation fr=
+om <a href=3D"https://calendar.google.com/calendar/" target=3D"_blank" styl=
+e=3D"">Google Calendar</a></p><p>You are receiving this email at the accoun=
+t aubrey@pineapple.co because you are subscribed for invitations on calenda=
+r aubrey@pineapple.co.</p><p>To stop receiving these emails, please log in =
+to https://calendar.google.com/calendar/ and change your notification setti=
+ngs for this calendar.</p><p>Forwarding this invitation could allow any rec=
+ipient to send a response to the organizer and be added to the guest list, =
+or invite others regardless of their own invitation status, or to modify yo=
+ur RSVP. <a href=3D"https://support.google.com/calendar/answer/37135#forwar=
+ding">Learn More</a>.</p></td></tr></table></div></span></span>
+--000000000000e17f9205df61e957
+Content-Type: text/calendar; charset="UTF-8"; method=REQUEST
+Content-Transfer-Encoding: 7bit
+
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20220520T100000
+DTEND;TZID=America/New_York:20220520T103000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+DTSTAMP:20220519T185512Z
+ORGANIZER;CN=Mike McBrien:mailto:mike@pineapple.co
+UID:6c8vr76oo0rdgmh00aab7tsn5m_R20220520T140000@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=sheena@pineapple.co;X-NUM-GUESTS=0:mailto:sheena@pineapple.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=ivy@pineapple.co;X-NUM-GUESTS=0:mailto:ivy@pineapple.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Mike McBrien;X-NUM-GUESTS=0:mailto:mike@pineapple.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=derek@pineapple.co;X-NUM-GUESTS=0:mailto:derek@pineapple.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=dane@pineapple.co;X-NUM-GUESTS=0:mailto:dane@pineapple.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=jarren@pineapple.co;X-NUM-GUESTS=0:mailto:jarren@pineapple.co
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=aubrey@pineapple.co;X-NUM-GUESTS=0:mailto:aubrey@pineapple.co
+X-GOOGLE-CONFERENCE:https://meet.google.com/oxi-husw-wvx
+X-MICROSOFT-CDO-OWNERAPPTID:1774813738
+CREATED:20211118T133640Z
+DESCRIPTION:Weekly meetings to discuss wins\, issues\, and upcoming project
+ s. We will leave a little time in the end for some "water cooler" talk.\n\n
+ -::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~::~:~::-\nDo not edit this section of the description.\n\nThis event ha
+ s a video call.\nJoin: https://meet.google.com/oxi-husw-wvx\n(US) +1 929-27
+ 7-6422 PIN: 946683064#\nView more phone numbers: https://tel.meet/oxi-husw-
+ wvx?pin=2902858010737&hs=7\n\nView your event at https://calendar.google.co
+ m/calendar/event?action=VIEW&eid=NmM4dnI3Nm9vMHJkZ21oMDBhYWI3dHNuNW1fUjIwMj
+ IwNTIwVDE0MDAwMCBhdWJyZXlAcGluZWFwcGxlLmNv&tok=MTcjbWlrZUBwaW5lYXBwbGUuY283
+ YTI5YzdjNGRhNWE1NmYyNDQ0YTM2NjRiOWFmZWYxZTZhMjRiYzJl&ctz=America%2FChicago&
+ hl=en&es=1.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20220519T185217Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:DevOps Team Weekly - Slack Call
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
+
+--000000000000e17f9205df61e957--
+--000000000000e17f9305df61e959
+Content-Type: application/ics; name="invite.ics"
+Content-Disposition: attachment; filename="invite.ics"
+Content-Transfer-Encoding: base64
+
+QkVHSU46VkNBTEVOREFSDQpQUk9ESUQ6LS8vR29vZ2xlIEluYy8vR29vZ2xlIENhbGVuZGFyIDcw
+LjkwNTQvL0VODQpWRVJTSU9OOjIuMA0KQ0FMU0NBTEU6R1JFR09SSUFODQpNRVRIT0Q6UkVRVUVT
+VA0KQkVHSU46VlRJTUVaT05FDQpUWklEOkFtZXJpY2EvTmV3X1lvcmsNClgtTElDLUxPQ0FUSU9O
+OkFtZXJpY2EvTmV3X1lvcmsNCkJFR0lOOkRBWUxJR0hUDQpUWk9GRlNFVEZST006LTA1MDANClRa
+T0ZGU0VUVE86LTA0MDANClRaTkFNRTpFRFQNCkRUU1RBUlQ6MTk3MDAzMDhUMDIwMDAwDQpSUlVM
+RTpGUkVRPVlFQVJMWTtCWU1PTlRIPTM7QllEQVk9MlNVDQpFTkQ6REFZTElHSFQNCkJFR0lOOlNU
+QU5EQVJEDQpUWk9GRlNFVEZST006LTA0MDANClRaT0ZGU0VUVE86LTA1MDANClRaTkFNRTpFU1QN
+CkRUU1RBUlQ6MTk3MDExMDFUMDIwMDAwDQpSUlVMRTpGUkVRPVlFQVJMWTtCWU1PTlRIPTExO0JZ
+REFZPTFTVQ0KRU5EOlNUQU5EQVJEDQpFTkQ6VlRJTUVaT05FDQpCRUdJTjpWRVZFTlQNCkRUU1RB
+UlQ7VFpJRD1BbWVyaWNhL05ld19Zb3JrOjIwMjIwNTIwVDEwMDAwMA0KRFRFTkQ7VFpJRD1BbWVy
+aWNhL05ld19Zb3JrOjIwMjIwNTIwVDEwMzAwMA0KUlJVTEU6RlJFUT1XRUVLTFk7QllEQVk9RlIN
+CkRUU1RBTVA6MjAyMjA1MTlUMTg1NTEyWg0KT1JHQU5JWkVSO0NOPU1pa2UgTWNCcmllbjptYWls
+dG86bWlrZUBwaW5lYXBwbGUuY28NClVJRDo2Yzh2cjc2b28wcmRnbWgwMGFhYjd0c241bV9SMjAy
+MjA1MjBUMTQwMDAwQGdvb2dsZS5jb20NCkFUVEVOREVFO0NVVFlQRT1JTkRJVklEVUFMO1JPTEU9
+UkVRLVBBUlRJQ0lQQU5UO1BBUlRTVEFUPUFDQ0VQVEVEO1JTVlA9VFJVRQ0KIDtDTj1zaGVlbmFA
+cGluZWFwcGxlLmNvO1gtTlVNLUdVRVNUUz0wOm1haWx0bzpzaGVlbmFAcGluZWFwcGxlLmNvDQpB
+VFRFTkRFRTtDVVRZUEU9SU5ESVZJRFVBTDtST0xFPVJFUS1QQVJUSUNJUEFOVDtQQVJUU1RBVD1B
+Q0NFUFRFRDtSU1ZQPVRSVUUNCiA7Q049aXZ5QHBpbmVhcHBsZS5jbztYLU5VTS1HVUVTVFM9MDpt
+YWlsdG86aXZ5QHBpbmVhcHBsZS5jbw0KQVRURU5ERUU7Q1VUWVBFPUlORElWSURVQUw7Uk9MRT1S
+RVEtUEFSVElDSVBBTlQ7UEFSVFNUQVQ9QUNDRVBURUQ7UlNWUD1UUlVFDQogO0NOPU1pa2UgTWNC
+cmllbjtYLU5VTS1HVUVTVFM9MDptYWlsdG86bWlrZUBwaW5lYXBwbGUuY28NCkFUVEVOREVFO0NV
+VFlQRT1JTkRJVklEVUFMO1JPTEU9UkVRLVBBUlRJQ0lQQU5UO1BBUlRTVEFUPUFDQ0VQVEVEO1JT
+VlA9VFJVRQ0KIDtDTj1kZXJla0BwaW5lYXBwbGUuY287WC1OVU0tR1VFU1RTPTA6bWFpbHRvOmRl
+cmVrQHBpbmVhcHBsZS5jbw0KQVRURU5ERUU7Q1VUWVBFPUlORElWSURVQUw7Uk9MRT1SRVEtUEFS
+VElDSVBBTlQ7UEFSVFNUQVQ9QUNDRVBURUQ7UlNWUD1UUlVFDQogO0NOPWRhbmVAcGluZWFwcGxl
+LmNvO1gtTlVNLUdVRVNUUz0wOm1haWx0bzpkYW5lQHBpbmVhcHBsZS5jbw0KQVRURU5ERUU7Q1VU
+WVBFPUlORElWSURVQUw7Uk9MRT1SRVEtUEFSVElDSVBBTlQ7UEFSVFNUQVQ9QUNDRVBURUQ7UlNW
+UD1UUlVFDQogO0NOPWphcnJlbkBwaW5lYXBwbGUuY287WC1OVU0tR1VFU1RTPTA6bWFpbHRvOmph
+cnJlbkBwaW5lYXBwbGUuY28NCkFUVEVOREVFO0NVVFlQRT1JTkRJVklEVUFMO1JPTEU9UkVRLVBB
+UlRJQ0lQQU5UO1BBUlRTVEFUPU5FRURTLUFDVElPTjtSU1ZQPQ0KIFRSVUU7Q049YXVicmV5QHBp
+bmVhcHBsZS5jbztYLU5VTS1HVUVTVFM9MDptYWlsdG86YXVicmV5QHBpbmVhcHBsZS5jbw0KWC1H
+T09HTEUtQ09ORkVSRU5DRTpodHRwczovL21lZXQuZ29vZ2xlLmNvbS9veGktaHVzdy13dngNClgt
+TUlDUk9TT0ZULUNETy1PV05FUkFQUFRJRDoxNzc0ODEzNzM4DQpDUkVBVEVEOjIwMjExMTE4VDEz
+MzY0MFoNCkRFU0NSSVBUSU9OOldlZWtseSBtZWV0aW5ncyB0byBkaXNjdXNzIHdpbnNcLCBpc3N1
+ZXNcLCBhbmQgdXBjb21pbmcgcHJvamVjdA0KIHMuIFdlIHdpbGwgbGVhdmUgYSBsaXR0bGUgdGlt
+ZSBpbiB0aGUgZW5kIGZvciBzb21lICJ3YXRlciBjb29sZXIiIHRhbGsuXG5cbg0KIC06On46fjo6
+fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+
+On46fjp+On46fg0KIDp+On46On46fjo6LVxuRG8gbm90IGVkaXQgdGhpcyBzZWN0aW9uIG9mIHRo
+ZSBkZXNjcmlwdGlvbi5cblxuVGhpcyBldmVudCBoYQ0KIHMgYSB2aWRlbyBjYWxsLlxuSm9pbjog
+aHR0cHM6Ly9tZWV0Lmdvb2dsZS5jb20vb3hpLWh1c3ctd3Z4XG4oVVMpICsxIDkyOS0yNw0KIDct
+NjQyMiBQSU46IDk0NjY4MzA2NCNcblZpZXcgbW9yZSBwaG9uZSBudW1iZXJzOiBodHRwczovL3Rl
+bC5tZWV0L294aS1odXN3LQ0KIHd2eD9waW49MjkwMjg1ODAxMDczNyZocz03XG5cblZpZXcgeW91
+ciBldmVudCBhdCBodHRwczovL2NhbGVuZGFyLmdvb2dsZS5jbw0KIG0vY2FsZW5kYXIvZXZlbnQ/
+YWN0aW9uPVZJRVcmZWlkPU5tTTRkbkkzTm05dk1ISmtaMjFvTURCaFlXSTNkSE51TlcxZlVqSXdN
+ag0KIEl3TlRJd1ZERTBNREF3TUNCaGRXSnlaWGxBY0dsdVpXRndjR3hsTG1OdiZ0b2s9TVRjamJX
+bHJaVUJ3YVc1bFlYQndiR1V1WTI4Mw0KIFlUSTVZemRqTkdSaE5XRTFObVl5TkRRMFlUTTJOalJp
+T1dGbVpXWXhaVFpoTWpSaVl6SmwmY3R6PUFtZXJpY2ElMkZDaGljYWdvJg0KIGhsPWVuJmVzPTEu
+XG4tOjp+On46On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+
+On46fjp+Og0KIH46fjp+On46fjp+On46fjp+Ojp+On46Oi0NCkxBU1QtTU9ESUZJRUQ6MjAyMjA1
+MTlUMTg1MjE3Wg0KTE9DQVRJT046DQpTRVFVRU5DRTowDQpTVEFUVVM6Q09ORklSTUVEDQpTVU1N
+QVJZOkRldk9wcyBUZWFtIFdlZWtseSAtIFNsYWNrIENhbGwNClRSQU5TUDpPUEFRVUUNCkVORDpW
+RVZFTlQNCkVORDpWQ0FMRU5EQVINCg==
+--000000000000e17f9305df61e959--

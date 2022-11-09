@@ -1,0 +1,124 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp4916210ejl;
+        Tue, 10 May 2022 13:13:53 -0700 (PDT)
+X-Received: by 2002:a05:6512:33c3:b0:473:d099:919 with SMTP id d3-20020a05651233c300b00473d0990919mr18368671lfg.430.1652213633154;
+        Tue, 10 May 2022 13:13:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652213633; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eEQjtdPUYXC5ebIQPhv8TnzjWJ03YBHYndz+B4iKCp+IkrL5wIx53ID1DWySg/t8JM
+         uNPuQvTQ1KuyoIDdmzYDjU/hDRL/8Fq0S8Dr6H36RNlziFrZ4U4ofFQNbYYD25C/xOVN
+         7Gc5RwZ6Y4cZ98ui0nAeTwGgOBXU+FiKkHodBhg6IletAnEI/kMEUUuI4RfM5JXG1DXa
+         P2zav8dwRV/aANvhYfpxor/OW9r8i9mWJdtnlBv9pTRBb6x2xXwYa0bW9lCQ4ZJzxokY
+         RTqD8Xc2hdxKb72PWiZQEqOu0IOAN/7eXCELnJrsTwtEXI/spjwVsRW8/o/TxBznoJ63
+         RKlw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=TKNV04fhijHG6T0hqTQAgE6HqluVQk5TUMpw4ZXkg2E=;
+        b=ncd+9eZIvetgc2dme9QePHDWPAsHGHaduODGW2vWfdzTnY/TwhohOPGnWksjeaQrN+
+         2ozvysxNVgS7SGoyUEXzBHMmIQmFU+sbN1xGrIYmqwW9XmahgSVwDyMLfVl0sZh6kUXE
+         ugVVyoexp+eTfqHDtVv+F2rIaN3TtSRQJuxJeaUPtGxB0onHkGk7F+P9kUnwrbjPfxAJ
+         jIBECjB+X5Pl0GBl2V4CosZ/0sEy3BOl0QIVGsxiLg8+x5jFEECX3Gtmbmatb/UphKrL
+         5TPfZQkz+s2hzvTSYCqdJ0R3xFJV9ps1seVl8iywy+I/M4siJ7mpxGPoN+7MlrPNICKa
+         FAeQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="e/gUim/q";
+       spf=pass (google.com: domain of jeannie@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=jeannie@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <jeannie@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x4-20020a19e004000000b00474400e65c4sor185346lfg.96.2022.05.10.13.13.53
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 10 May 2022 13:13:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jeannie@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="e/gUim/q";
+       spf=pass (google.com: domain of jeannie@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=jeannie@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=TKNV04fhijHG6T0hqTQAgE6HqluVQk5TUMpw4ZXkg2E=;
+        b=e/gUim/q3xGfgnhF4HIP4MZMSiF4hqrEx7VeK70fOQ4X3Ui8CWz0uJHcPjq9QWE7Yg
+         v6tpbTxkXb8fNi4hc/u4AF67og++EIaoqkwyhDDZP7r4EUyrm+RWh6qaTLKbxUdXDTUn
+         SNVvZU4CIcpsUb22dU2LjJa7ev0Ga3HC+VvmmVyo2SuQrKbgbtgKUtIUDlb/PMsocPhS
+         WRZzb+MJKPr8yzoikIVJTYj6f8Vpb8gdN2c1tRAtrrctBF1VX5j2qQBiAwalSjhnEhjq
+         l4PPyZKG4QaEmY0pVRknhgdE758vHTafBPP58QditalkqhogEtcfejQfpgDaAYD9mqlc
+         8n9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=TKNV04fhijHG6T0hqTQAgE6HqluVQk5TUMpw4ZXkg2E=;
+        b=j8Yo0oYFAhf7ro4eBPGqz1g5A5BnRdQi2Hs3Htt8+eGMXUJJPrhIdXAxWhCtddp940
+         o6r7s6M0INEvkunUxXwzDye7AMuZWjSWqsggAx5UlhHpKonZ/scyzsSal+pg4QiMeIRk
+         pG7ucA+9QQ55VeT1wQyOT2DoV32VMuGmmSCQ7k4l6RTqFEwQrgMjREGPIEiS/cJYccSm
+         kZ04CKB4q6JisWJNk87VZlVaHcbOkPuEe/8Xa0lNBuoPZ+RHwpRh5TzsiKwuGLs6JC1d
+         loktQR5DFrk2dWC8n/vnPpZzmPDBNUqBRUcXB0pVGhRf4mqpeZaL5zJAeNrl3V1Un7PF
+         kXhQ==
+X-Gm-Message-State: AOAM530VsdaUTMALiaeF2mbnKp2Vs+gX5UF2BoSINlg479DbCGbaRa4Y
+	wsUF1wDhBJddDepQxHAxRRQ75CCZLSCudkoq2mxZq50KokamGg==
+X-Google-Smtp-Source: ABdhPJxBJke+AN3V7haQwJ/u1AE/cSYZRriS9sXIv+m1P7Wd0n9IRhwv0trEQ5WnSsKMrZCSe7CBMeN/WCMxKhw74Kk=
+X-Received: by 2002:a05:6512:3204:b0:472:4792:e29c with SMTP id
+ d4-20020a056512320400b004724792e29cmr17248425lfe.553.1652213632484; Tue, 10
+ May 2022 13:13:52 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP-4euQHZ-o-zBnrAVHP5vrNpZPm2zOKgJnp9+GgS3O7UA@mail.gmail.com>
+In-Reply-To: <CAHbmDP-4euQHZ-o-zBnrAVHP5vrNpZPm2zOKgJnp9+GgS3O7UA@mail.gmail.com>
+From: Jeannie Dopson <jeannie@pineapple.co>
+Date: Tue, 10 May 2022 15:13:00 -0500
+Message-ID: <CANY9w2jArDVKuvaYQ6YK5FntRSeK-dfXJ_OmMzrcQzzDgR7whQ@mail.gmail.com>
+Subject: Re: Phone Sales Commission
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Sean Chipman <sean@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000a85f0705deadf606"
+
+--000000000000a85f0705deadf606
+Content-Type: text/plain; charset="UTF-8"
+
+Please add andrea@pineapple.co in the future
+
+On Mon, May 2, 2022 at 1:12 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Good afternoon!
+>
+> Phone Sales Commissions
+> <https://docs.google.com/spreadsheets/d/1VCUm1pfXl-08L4_BtDKC426AWFLZvJol6l79MFWlMQ0/edit?usp=sharing>
+> are complete for 4/24-5/1, as well as for 4/16-5/1.
+>
+> Andres Commissions
+> <https://docs.google.com/spreadsheets/d/1G4ix1nlpQOchuzJYrawERfT84331qdA2UfqT-CwJ5c0/edit?usp=sharing>
+> are complete for 4/24-5/1.
+>
+>
+>
+> --
+> Aubrey Allen
+> Data Analytics Technician
+> Pineapple Products, Inc.
+>
+
+--000000000000a85f0705deadf606
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Please add <a href=3D"mailto:andrea@pineapple.co">andrea@p=
+ineapple.co</a> in the future<br></div><br><div class=3D"gmail_quote"><div =
+dir=3D"ltr" class=3D"gmail_attr">On Mon, May 2, 2022 at 1:12 PM Aubrey Alle=
+n &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D=
+"ltr"><div>Good afternoon!<br></div><div><br></div><div><a href=3D"https://=
+docs.google.com/spreadsheets/d/1VCUm1pfXl-08L4_BtDKC426AWFLZvJol6l79MFWlMQ0=
+/edit?usp=3Dsharing" target=3D"_blank">Phone Sales Commissions</a> are comp=
+lete for 4/24-5/1,=C2=A0as well as for 4/16-5/1.</div><div><br></div><div><=
+a href=3D"https://docs.google.com/spreadsheets/d/1G4ix1nlpQOchuzJYrawERfT84=
+331qdA2UfqT-CwJ5c0/edit?usp=3Dsharing" target=3D"_blank">Andres Commissions=
+</a> are complete for 4/24-5/1.</div><div><br></div><div><br></div><div><br=
+></div>-- <br><div dir=3D"ltr"><div dir=3D"ltr">Aubrey Allen<div>Data Analy=
+tics Technician</div><div>Pineapple Products, Inc.</div></div></div></div>
+</blockquote></div>
+
+--000000000000a85f0705deadf606--

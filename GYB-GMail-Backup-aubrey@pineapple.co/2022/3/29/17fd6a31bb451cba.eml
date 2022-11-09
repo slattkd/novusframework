@@ -1,0 +1,325 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp498672ejd;
+        Tue, 29 Mar 2022 10:04:50 -0700 (PDT)
+X-Received: by 2002:ac5:ce10:0:b0:343:282:c08d with SMTP id j16-20020ac5ce10000000b003430282c08dmr11607010vki.24.1648573487850;
+        Tue, 29 Mar 2022 10:04:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648573487; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Knq5QlOwSMepaBTeFF3ittQQREqGbiy/PyqfpBv5YNZu8IGOj9p3pnHe5moRNF5JUZ
+         eHNTHi8dBIT6IoSRufvPpcNflUSlnqe/g4cxKos/1w6TuWevKNKCye/0WSy/3/+d4rET
+         4fpcBvM2eWlh9zcxfkt9SrWVOpjkcmpeUOvrIEzw6BBTH6t/nYG7AMPYjiw2x/JP95T/
+         gkLWw/BZpfcZuYtgkq17MHA+Q+UNdEpdA0EY6xWR1eJwAj8Rs12pjIM1wX8mlXGqduaw
+         5qcTSWdoFwLK74yNqwDCCvKNKUcMZ7LWcvHMKMuykENiyLxhqJHFHQmeaRYgHbk0DXFF
+         rhSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ywRPrBm6Ci8ZjDUs7Fc2sk+fLbDxiaOAN9Jl7c3xdqI=;
+        b=W2TQmM0b9Z6Wt+rPUuQuRWHsvoDhahDxFVrNWe/2OzderJGKsbb2CBdMRom8lhqBds
+         CW7daAyhpF/TT01uSZwK+0t0uVlEQy/9mzhFURpawXDSNLOkDbxM/ire1jshU7EzOc0B
+         q9k3cv9tZu5PU8+mXigCBQFiUkTUSqCf7CYt1KG0hCJd8xEgtekQIfJ7HtuCVBchpRsB
+         Mer+Fx/uO5wLOvKd2vxv5h+DkCBXUvtY+4RrlWRPv1kTbZKSp7p55v2dH+LLEtE+p0zd
+         4UBvIoo8Rz8SsBIjPQxSXVxePD7TgvXFTF4+txxyxp7RaoFChxRtSfpuQddez04Lw8pj
+         GSsg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=HdWmVV3U;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <greg@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id j4-20020ac5ce04000000b0033eab982962sor3598216vki.59.2022.03.29.10.04.47
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 29 Mar 2022 10:04:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=HdWmVV3U;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ywRPrBm6Ci8ZjDUs7Fc2sk+fLbDxiaOAN9Jl7c3xdqI=;
+        b=HdWmVV3U6+BXJ2mGqKJg1e9+uuwjugGC83II9vKg0pFCDuznsRx9yLqxP4bTOJ+jVy
+         AF5UiWCKBDkJyGwATirhb+5msYbA+00uWZEmJ7rMyE3YTRUuu1qXnMl4XluqZenPt02p
+         fM4E0C6LU0Pl78LwIRy15zJZtnQbl0NAlJz+k0MqWLqG2tXlL2ax65K+TDcydNMchiw9
+         X1hpyXuwBzpr5cxoi1/q5MjP3rcIBNby+Iqik74haFduXLt47dykqamCa7JvqaHeDjKU
+         29hkRvKv2fwXVEJqDa108ot5nHyI82bEhcg2nJXATwwpebjDurAL+8NOnuBwoCJJDW+I
+         gCsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ywRPrBm6Ci8ZjDUs7Fc2sk+fLbDxiaOAN9Jl7c3xdqI=;
+        b=wdDZLOa1TCawy8qJLzMR+Zqu72xVjTghRZOratNtzfPoovqXjkMU/0g3/HfSbibXV5
+         JX2sJY/+DJO2YvKASVKBJ4Kc2IC4rfbFGB/SJHosnmO+9aWVE7gI8VvtZjTv55FKLh2j
+         //6LZCAbrJC/A4JU1Q6OoTcYUDvmF3sAMQQluNKxkQpZudo7VBrHrx4VJGXGj6un+5dv
+         wDPv/NFyrAclPHmwi/wigObnGkQRNYIfJlarZo3tIDUE5kvDVApe2hbi/pG/Nn7YyiDv
+         y3s5zYrUD8I844NOUoz7GKg1Y8MxPWsa9ONRp6IlL4qz1Jw2Le2Xfs1drr3OTPfcChFn
+         Ne2A==
+X-Gm-Message-State: AOAM5336qnxgqCcg5i+RPyIUHGeEjWrCiPeC7QtCTbHq/35/KhmWoxRk
+	o7v0p3Hs7+VFPbh/trMELdDZA4vKx1c/FgFmb7fiHEH1
+X-Google-Smtp-Source: ABdhPJwtKhAad8z4bqtfMynh13x5yKywJzbnM4fYO1rCuWAIhu55EVICWLEpl5OA1OtU323TVQFhPaSXodEOpL8Ozro=
+X-Received: by 2002:a1f:c604:0:b0:339:578b:471d with SMTP id
+ w4-20020a1fc604000000b00339578b471dmr18544503vkf.7.1648573487014; Tue, 29 Mar
+ 2022 10:04:47 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAEMKF0ggKs7wzormUWnmPW7SQhAMFQJ959_OLCeDr2Aiiba37w@mail.gmail.com>
+ <CAEZ8TWVYK4Lgh6XhcKXLnqALu5fYN1Xa94LXC6b3KyXm1zekYw@mail.gmail.com> <CAOqcTXBQoVqcCckKGr1AL8piL=dzU3vNAh1fz3qN4+E4XYSJBg@mail.gmail.com>
+In-Reply-To: <CAOqcTXBQoVqcCckKGr1AL8piL=dzU3vNAh1fz3qN4+E4XYSJBg@mail.gmail.com>
+From: Greg Davis <greg@pineapple.co>
+Date: Tue, 29 Mar 2022 13:00:00 -0400
+Message-ID: <CAEZ8TWUu_05KD45QP4_qtPf1JC7g3+nOMxFwD3mgWvekxMEbSA@mail.gmail.com>
+Subject: Re: MZS Report
+To: Stephanie Sleigh <stephanie@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Jeannie Dopson <jeannie@pineapple.co>, 
+	Jennifer LaPointe <jennifer@pineapple.co>, Sean Chipman <sean@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000014794405db5e6d4a"
+
+--00000000000014794405db5e6d4a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+The previous report was called Stephanie=E2=80=99s MZS reporting
+
+I had sent that report to you before in excel when you described what you
+were looking for.
+
+Though it isn=E2=80=99t clear who needs what report for what. This is why I
+developed the Google sheet for all reports that the Data Analytics team
+creates.
+
+If we need to chance anything can we change it there and we can respond.
+
+As far as your sales, the Weekly affiliate report has those and may be a
+source.
+
+Let me know how we can help.
+
+Thanks,
+Greg
+
+On Tue, Mar 29, 2022 at 11:45 AM Stephanie Sleigh <stephanie@pineapple.co>
+wrote:
+
+>
+> Ok so that report Aubrey sent yesterday titled =E2=80=9CStephanie=E2=80=
+=99s Sales=E2=80=9D are not
+> actually my sales but the report that is meant for Jen.
+>
+> I hadn=E2=80=99t forwarded it to her as I was awaiting an answer.
+>
+>
+> On Tue, Mar 29, 2022 at 11:39 AM Greg Davis <greg@pineapple.co> wrote:
+>
+>> Jennifer:
+>>
+>> It is now a google sheet, which allows it to be live.  I am
+>> copying Aubrey on your contact details, and she can invite you to the
+>> sheet. Stephanie was copied on the link yesterday.
+>>
+>> I am excited we got this to a better place, and excited that Aubrey will
+>> be doing this for you and is fully onboarded on this sheet.
+>>
+>> Regards,
+>> Greg
+>>
+>>
+>> On Tue, Mar 29, 2022 at 8:54 AM Jennifer LaPointe <jennifer@pineapple.co=
+>
+>> wrote:
+>>
+>>> Good morning - Would you please send me the updated numbers from last
+>>> week?
+>>>
+>>> Thank you,
+>>>
+>>> Jen
+>>>
+>>
+>>>
+>>> --
+>>> [image: created with MySignature.io]
+>>> <http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+>>> Jen LaPointe
+>>> Asst. Affiliate Manager
+>>>
+>>> Pineapple Company
+>>> s:  j <fitness.gal2@hotmail.ca>_lapointe1
+>>> w: pineapple.co
+>>> a:  57 w 57th Street, 3rd Floor, New York, NY 10001
+>>> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+Yo=
+rk,+NY+10001?entry=3Dgmail&source=3Dg>
+>>>
+>>>
+>> --
+> [image: created with MySignature.io]
+> <https://mysignature.io/?utm_source=3Dlogo>
+> Stephanie Sleigh
+> Affiliate Manager
+>
+> Pineapple Company
+>
+> calendly.com/stephanie-pineappleco
+> p:  905.373.6367
+> s:  fitness.gal2@hotmail.ca
+> w: pineapple.co
+> a:  57 w 57th Street, 3rd Floor, New York, NY 10001
+> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+York=
+,+NY+10001?entry=3Dgmail&source=3Dg>
+>
+>
+
+--00000000000014794405db5e6d4a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">The previous report was called Stephanie=E2=80=99s MZS re=
+porting</div><div dir=3D"auto"><br></div><div dir=3D"auto">I had sent that =
+report to you before in excel when you described what you were looking for.=
+</div><div dir=3D"auto"><br></div><div dir=3D"auto">Though it isn=E2=80=99t=
+ clear who needs what report for what. This is why I developed the Google s=
+heet for all reports that the Data Analytics team creates.=C2=A0</div><div =
+dir=3D"auto"><br></div><div dir=3D"auto">If we need to chance anything can =
+we change it there and we can respond.</div><div dir=3D"auto"><br></div><di=
+v dir=3D"auto">As far as your sales, the Weekly affiliate report has those =
+and may be a source.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Let=
+ me know how we can help.</div><div dir=3D"auto"><br></div><div dir=3D"auto=
+">Thanks,</div><div dir=3D"auto">Greg</div><div dir=3D"auto"><br></div><div=
+><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, M=
+ar 29, 2022 at 11:45 AM Stephanie Sleigh &lt;<a href=3D"mailto:stephanie@pi=
+neapple.co">stephanie@pineapple.co</a>&gt; wrote:<br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;b=
+order-left-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)"=
+><div><div><br></div><div dir=3D"auto">Ok so that report Aubrey sent yester=
+day titled =E2=80=9CStephanie=E2=80=99s Sales=E2=80=9D are not actually my =
+sales but the report that is meant for Jen.<br><div class=3D"gmail_quote"><=
+/div></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">I hadn=E2=80=
+=99t forwarded it to her as I was awaiting an answer.=C2=A0</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto"><br></div><div><div dir=3D"auto"><div=
+ class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 29=
+, 2022 at 11:39 AM Greg Davis &lt;<a href=3D"mailto:greg@pineapple.co" targ=
+et=3D"_blank">greg@pineapple.co</a>&gt; wrote:<br></div></div></div></div><=
+div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left=
+-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)"><div dir=
+=3D"ltr">Jennifer:<div><br></div><div>It is now a google sheet, which allow=
+s it to be live.=C2=A0 I am copying=C2=A0Aubrey on your contact details, an=
+d she can invite you to the sheet. Stephanie was copied on the link yesterd=
+ay.</div><div><br></div><div>I am excited we got this to a better place, an=
+d excited that Aubrey will be doing this for you and is fully onboarded on =
+this sheet.</div><div><br>Regards,</div><div>Greg</div><div><br></div></div=
+><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tu=
+e, Mar 29, 2022 at 8:54 AM Jennifer LaPointe &lt;<a href=3D"mailto:jennifer=
+@pineapple.co" target=3D"_blank">jennifer@pineapple.co</a>&gt; wrote:<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left-width:1px;border-left-style:solid;padding-left:1ex;border-left-col=
+or:rgb(204,204,204)"><div dir=3D"ltr">Good morning - Would you please send =
+me the updated numbers from last week?<div><br></div><div>Thank you,</div><=
+div><br></div><div>Jen</div></div></blockquote></div><div class=3D"gmail_qu=
+ote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left-width:1px;border-left-style:solid;padding-left:1ex;border-left-co=
+lor:rgb(204,204,204)"><div dir=3D"ltr"><div><br clear=3D"all"><div><br></di=
+v>-- <br><div dir=3D"ltr"><div dir=3D"ltr"><table cellspacing=3D"0" width=
+=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spac=
+ing:0px;border-collapse:collapse;font-family:Lato,sans-serif;color:rgb(97,9=
+7,97)"><tbody style=3D"font-family:Lato,sans-serif"><tr style=3D"font-famil=
+y:Lato,sans-serif"><td width=3D"100" valign=3D"top" style=3D"padding:0px 9p=
+x 0px 0px;vertical-align:top;font-family:Lato,sans-serif"><a href=3D"http:/=
+/s3.amazonaws.com/pineapple.co/pineappleco.gif" style=3D"font-family:Lato,s=
+ans-serif;color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"created with MySi=
+gnature.io" width=3D"100" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b=
+3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" style=3D"width: 100px;=
+ border-top-left-radius: 15%; border-top-right-radius: 15%; border-bottom-r=
+ight-radius: 15%; border-bottom-left-radius: 15%; font-family: Lato, sans-s=
+erif;"></a></td><td valign=3D"top" style=3D"border-left-width:2px;border-le=
+ft-style:solid;vertical-align:top;padding:0px 0px 0px 9px;font-family:Lato,=
+sans-serif;border-color:rgb(70,208,255)"><table cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;=
+line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;col=
+or:rgb(0,0,1)"><tbody style=3D"font-family:Verdana,Geneva,sans-serif"><tr s=
+tyle=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"font-family:Ver=
+dana,Geneva,sans-serif"><span style=3D"font-stretch:normal;font-size:1.2em;=
+line-height:normal;font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,2=
+55)">Jen LaPointe</span>=C2=A0<span style=3D"font-family:Verdana,Geneva,san=
+s-serif">=C2=A0=C2=A0<br>Asst. Affiliate Manager</span></td></tr><tr style=
+=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"padding:5px 0px;fon=
+t-family:Verdana,Geneva,sans-serif"><div style=3D"font-family:Verdana,Genev=
+a,sans-serif">Pineapple Company</div></td></tr><tr style=3D"font-family:Ver=
+dana,Geneva,sans-serif"><td style=3D"font-family:Verdana,Geneva,sans-serif"=
+></td></tr><tr style=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D=
+"font-family:Verdana,Geneva,sans-serif"><font face=3D"Verdana, Geneva, sans=
+-serif" style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255=
+)">s:=C2=A0=C2=A0</font><a href=3D"mailto:fitness.gal2@hotmail.ca" target=
+=3D"_blank" style=3D"font-family:Verdana,Geneva,sans-serif"><font style=3D"=
+font-family:Verdana,Geneva,sans-serif;color:rgb(0,0,0)">j</font></a>_lapoin=
+te1<font face=3D"Verdana, Geneva, sans-serif" style=3D"font-family:Verdana,=
+Geneva,sans-serif;color:rgb(70,208,255)"><br>w:=C2=A0</font><span style=3D"=
+font-family:Verdana,Geneva,sans-serif"><a href=3D"http://pineapple.co/" sty=
+le=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(0,0,1)" target=3D"_bl=
+ank">pineapple.co</a><br></span><span style=3D"font-family:Verdana,Geneva,s=
+ans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-f=
+amily:Verdana,Geneva,sans-serif"><a href=3D"https://www.google.com/maps/sea=
+rch/57+w+57th+Street,+3rd+Floor,+New+York,+NY+10001?entry=3Dgmail&amp;sourc=
+e=3Dg" target=3D"_blank" style=3D"font-family:Verdana,Geneva,sans-serif">57=
+ w 57th Street, 3rd Floor, New York, NY 10001</a>=C2=A0</span><span style=
+=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0</span></td></tr></tbody><=
+/table></td></tr></tbody></table></div></div></div></div>
+</blockquote></div>
+</blockquote></div></div></div><div><div dir=3D"auto"><div class=3D"gmail_q=
+uote"></div></div>
+</div>-- <br><div dir=3D"ltr" data-smartmail=3D"gmail_signature"><div dir=
+=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D=
+"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:collapse;fon=
+t-family:Lato,sans-serif;color:rgb(97,97,97)"><tbody style=3D"font-family:L=
+ato,sans-serif"><tr style=3D"font-family:Lato,sans-serif"><td width=3D"100"=
+ valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top;font-fa=
+mily:Lato,sans-serif"><a href=3D"https://mysignature.io/?utm_source=3Dlogo"=
+ style=3D"font-family:Lato,sans-serif;color:rgb(0,0,0)" target=3D"_blank"><=
+img alt=3D"created with MySignature.io" width=3D"100" src=3D"https://img.my=
+signature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D159477=
+4986" style=3D"width: 100px; border-top-left-radius: 15%; border-top-right-=
+radius: 15%; border-bottom-right-radius: 15%; border-bottom-left-radius: 15=
+%; font-family: Lato, sans-serif;"></a></td><td valign=3D"top" style=3D"bor=
+der-left-width:2px;border-left-style:solid;vertical-align:top;padding:0px 0=
+px 0px 9px;font-family:Lato,sans-serif;border-color:rgb(70,208,255)"><table=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-spacing:0=
+px;border-collapse:collapse;line-height:1.4;font-family:Verdana,Geneva,sans=
+-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody style=3D"font-family:Verd=
+ana,Geneva,sans-serif"><tr style=3D"font-family:Verdana,Geneva,sans-serif">=
+<td style=3D"font-family:Verdana,Geneva,sans-serif"><span style=3D"font-fam=
+ily:Verdana,Geneva,sans-serif"><font style=3D"font-family:Verdana,Geneva,sa=
+ns-serif;color:rgb(70,208,255)"><span style=3D"font-size:13.26px;font-famil=
+y:Verdana,Geneva,sans-serif">Stephanie Sleigh</span></font>=C2=A0<br>Affili=
+ate Manager</span></td></tr><tr style=3D"font-family:Verdana,Geneva,sans-se=
+rif"><td style=3D"padding:5px 0px;font-family:Verdana,Geneva,sans-serif"><d=
+iv style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Company</div><=
+div style=3D"font-family:Verdana,Geneva,sans-serif"><p style=3D"margin:0px;=
+font-stretch:normal;font-size:13px;line-height:normal;font-family:&quot;Hel=
+vetica Neue&quot;;color:rgb(220,161,13)"><a href=3D"https://calendly.com/st=
+ephanie-pineappleco" target=3D"_blank" style=3D"font-family:&quot;Helvetica=
+ Neue&quot;">calendly.com/stephanie-pineappleco</a></p></div></td></tr><tr =
+style=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"font-family:Ve=
+rdana,Geneva,sans-serif"><span style=3D"font-family:Verdana,Geneva,sans-ser=
+if;color:rgb(70,208,255)">p:=C2=A0</span>=C2=A0905.373.6367<br></td></tr><t=
+r style=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"font-family:=
+Verdana,Geneva,sans-serif"><font face=3D"Verdana, Geneva, sans-serif" style=
+=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0=
+=C2=A0</font><a href=3D"mailto:fitness.gal2@hotmail.ca" target=3D"_blank" s=
+tyle=3D"font-family:Verdana,Geneva,sans-serif">fitness.gal2@hotmail.ca</a><=
+font face=3D"Verdana, Geneva, sans-serif" style=3D"font-family:Verdana,Gene=
+va,sans-serif;color:rgb(70,208,255)"><br>w:=C2=A0</font><span style=3D"font=
+-family:Verdana,Geneva,sans-serif"><a href=3D"http://pineapple.co/" style=
+=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(0,0,1)" target=3D"_blan=
+k">pineapple.co</a></span></td></tr><tr style=3D"font-family:Verdana,Geneva=
+,sans-serif"><td style=3D"font-family:Verdana,Geneva,sans-serif"><span styl=
+e=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0<=
+/span>=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=
+=3D"https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+Yor=
+k,+NY+10001?entry=3Dgmail&amp;source=3Dg" style=3D"font-family:Verdana,Gene=
+va,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10001</a>=C2=A0</s=
+pan></td></tr></tbody></table></td></tr></tbody></table></div></div></block=
+quote></div></div>
+
+--00000000000014794405db5e6d4a--

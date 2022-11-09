@@ -1,0 +1,242 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp437093ejd;
+        Tue, 29 Mar 2022 08:44:56 -0700 (PDT)
+X-Received: by 2002:ab0:59aa:0:b0:355:962a:a664 with SMTP id g39-20020ab059aa000000b00355962aa664mr16693647uad.111.1648568692651;
+        Tue, 29 Mar 2022 08:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648568692; cv=none;
+        d=google.com; s=arc-20160816;
+        b=W+jpbup0tzoJWjIiu9ll2zLL3zdoCeVrCIJPewWq5JdyWBFa8mwh7SV3ueXUCeK/1h
+         YSKCOHM6C+ipKmjYzqWc1DmfUUWbL+z882npz/oY/FKOvofIgcW/zTK//TnbCRJHFGXW
+         6r+5YI4Ih/XgAdJbyY8PV4kpEyjnn+2zZonN4mKf0fTrTyw0GbQEWqhpZMXX6Wp6mg4U
+         V4TgH7q7A1h/G+WCU7GiiRioZq9gouf/mXLQMQROt820/JkaMEcxgtCqu1eLcwB2in3X
+         EwLYd/JC00dBkKyEo7EX7IL0TyFdTlTwc9FE8JRxlzzbQ5/TDdjzkt4eogS+vuCRRPN7
+         umow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ySPEPVmaxiHqSDS5tNyNCDjZcB1cBMvTZ2hpmoJnyu8=;
+        b=voemXKsDDMxFdC3HalLxS5WAIv4TsHC/KrrfbXezYHI96D1RtUIHyEj85lxpP9Nd0a
+         Q5ZfiFgrOJwRdQ1cUkcWSxfS3/jIMLWIOBBSV3GXutnRLQVpT8aTUCUp1mHkUBbQHsi9
+         VmQbpNPmLCyJRJ6y0oZm2MkzMfxqatxtYScApJ8vT7llkrrPwyk1KcfJJe/R05CXsemg
+         v3vqWFbB0fXNuGQ1zfWniYQTu1ZMU2D4LPURXmGRlxSw0fbE48+qDKdf1TjHVth6gb+L
+         5kswHqdUp3UprJKZMMohFWRx78mwFkNaFnLcoFAIna+nvMyHFLrNi89luRUNQ1OK0cXx
+         8saw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=JHW0ZHjg;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <greg@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u14-20020a056102374e00b003255c2a474csor1028791vst.37.2022.03.29.08.44.52
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 29 Mar 2022 08:44:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=JHW0ZHjg;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ySPEPVmaxiHqSDS5tNyNCDjZcB1cBMvTZ2hpmoJnyu8=;
+        b=JHW0ZHjgsb9Z9DDmzrBHF4O3GU/6gEr3WpLo752gyqpTGn8uHBeGRJO/HrZvICKVyw
+         UUedKUqRSkakMuhtTVim/IVC+VdhWcYR5/NIcHDX9xoEWGKPsHCRkKdt3b6pW7Z4eTju
+         6+pnvuNO+qTx0zRpVOX5F9CBqP5gpyJZ+hbsermmN59ybVhgBSys3ZuxPUffRPFiknnZ
+         C9iLli3fG+a/9QdZbpw+xuWdeEWdJOLqwLwRZsX7R522JHvDQdchgLZC6sx5xX3if+Cs
+         xtfMGyBYjmJewW/MrTV0MQS/zzoJi8kVn0yeeApRgl9CdFNFLxpQfJBKHEptZCK+OrZq
+         QWVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ySPEPVmaxiHqSDS5tNyNCDjZcB1cBMvTZ2hpmoJnyu8=;
+        b=zje9TAwXt7gdBf48QF7aVQopnGp/L+xpjVRDoI7Bx5GUy/Zrn7fcu/SWgKD1HvhVF6
+         qLvGntFKonzbfgm4qdbI50T80JEBbMUcLd+n8SQWur4ZEM7esFyn6+yo0MS9jR/i0b97
+         3B9AVz06L6wxC2CUCIXyq01kNhikMIQgu67/SO149XYAc633l04QUFRUymmh58Nk4d+O
+         uDYhBDF20t3HePO9+mxL1BdsIrs0RuC822jt0XTpqTHKXkLnoJXip3knhQP6QrI7DJHy
+         9XyXJdcyUUw2uaj22LGt3+BUEbXrKYfO6u9Wcn4gqlalr4Ib5Hpz84cTpM3/NvFwSYQ6
+         DPZw==
+X-Gm-Message-State: AOAM532XgdrV8euOEi2gy4sl2sTl2+jvvz9gTKzQNTmhFRupVuOViLmJ
+	vzxeBCX79BUjfc5zSihk3MbpKMIqhwa1LYfCq01E1CEk
+X-Google-Smtp-Source: ABdhPJzQ9MQKYaCKsP7a+A8oT6C4LiTpclW3J2mooo5jc/px+sq+K+Csy/RJKbJJaZKp8p07Ob5ewYVHkDRTGk5Oo98=
+X-Received: by 2002:a05:6102:cc9:b0:325:8757:bbc5 with SMTP id
+ g9-20020a0561020cc900b003258757bbc5mr10841752vst.45.1648568692197; Tue, 29
+ Mar 2022 08:44:52 -0700 (PDT)
+MIME-Version: 1.0
+References: <ca30612b-aed8-4cae-95ea-d97aed71f948@docs-share.google.com>
+ <00000000000029e60c05db4d554b@google.com> <CAOqcTXDbiE9gDxQN0MEduNd=8+E-dK_RN6XroaHcfh-cyGhOWg@mail.gmail.com>
+In-Reply-To: <CAOqcTXDbiE9gDxQN0MEduNd=8+E-dK_RN6XroaHcfh-cyGhOWg@mail.gmail.com>
+From: Greg Davis <greg@pineapple.co>
+Date: Tue, 29 Mar 2022 11:44:15 -0400
+Message-ID: <CAEZ8TWX8TNU4+FBFf0PtH+TB-tqRah3QBrAW5+WNjuROMPpKFw@mail.gmail.com>
+Subject: Re: Spreadsheet shared with you: "Stephanie Sales Reporting"
+To: Stephanie Sleigh <stephanie@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>, 
+	Jennifer LaPointe <jennifer@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Jeannie Dopson <jeannie@pineapple.co>, 
+	Sean Chipman <sean@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000049636305db5d4f62"
+
+--00000000000049636305db5d4f62
+Content-Type: text/plain; charset="UTF-8"
+
+This is the same data that I did last time.
+
+As far as the source, we are using an existing Knime routine, and it
+filters by:
+1) Remove, Tests and Declines, and Only Billing Cycle 0.
+2) For MZS, Product Category is Male Enhancement - SNM - SMC, which means
+MZS but also, I believe Brazlian Wood and other products. Brooke can
+confirm.
+3) For Flavotrim and Release switch advanced, they are first filtered by
+Product Group: Wellness RPT - SMC (which means I think with LINE 2 and LINE
+3, you get all Fran Products - except Info Products), after which this data
+is Grouped By Product Name and Product SKU.
+
+When then enter the data into the sheet, from the two parts, where we have
+to add a few numbers for the LINE 3 data, and we show the math in the sheet.
+
+Thanks,
+Greg
+
+
+On Mon, Mar 28, 2022 at 4:46 PM Stephanie Sleigh <stephanie@pineapple.co>
+wrote:
+
+> Hey Aubrey,
+>
+> Nice to e-meet you.
+>
+> These are just for Frans offers? Not all offers?
+>
+> Or are these ALL the sales for these products, used for the report that
+> Jen does for Brett weekly?
+>
+>
+>
+> On Mon, Mar 28, 2022 at 4:41 PM Aubrey Allen (via Google Sheets) <
+> drive-shares-dm-noreply@google.com> wrote:
+>
+>> aubrey@pineapple.co shared a spreadsheet
+>> [image: Unknown profile photo]
+>> aubrey@pineapple.co has invited you to *edit* the following spreadsheet:
+>> Hello all--
+>>
+>> Please find attached a new Google Doc to track Stephanie's Sales. Going
+>> forward, I will update this spreadsheet each week (like the Phone Sales
+>> Commissions sheet), so that we have a living document to reference.
+>>
+>> Thank you!
+>> Aubrey
+>> Stephanie Sales Reporting
+>>
+>> <https://docs.google.com/spreadsheets/d/1Fiv8evZCgKG2dWwmf0ibbHw5WspjDBliUKV8mFMZSaU/edit?usp=sharing_eil_m&ts=62421d67>
+>>
+>> Open
+>> <https://docs.google.com/spreadsheets/d/1Fiv8evZCgKG2dWwmf0ibbHw5WspjDBliUKV8mFMZSaU/edit?usp=sharing_eip_m&ts=62421d67>
+>> Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA
+>> You have received this email because aubrey@pineapple.co shared a
+>> spreadsheet with you from Google Sheets. [image: Logo for Google Sheets]
+>> <https://workspace.google.com/>
+>>
+>
+
+--00000000000049636305db5d4f62
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">This is the same data that I did last time.<div><br></div>=
+<div>As far as the source, we are using an existing Knime routine, and it f=
+ilters by:</div><div>1) Remove, Tests and Declines, and Only Billing Cycle =
+0.</div><div>2) For MZS, Product Category is=C2=A0Male Enhancement - SNM - =
+SMC, which means MZS but also, I believe Brazlian=C2=A0Wood and other produ=
+cts. Brooke can confirm.</div><div>3) For Flavotrim and Release switch=C2=
+=A0advanced, they are first filtered by Product Group:=C2=A0Wellness RPT - =
+SMC (which means I think with LINE 2 and LINE 3, you get all Fran Products =
+- except Info Products), after which=C2=A0this data is Grouped By Product N=
+ame and Product SKU.</div><div><br></div><div>When then enter the data into=
+ the sheet, from the two parts, where we have to add a few numbers for the =
+LINE 3 data, and we show the math in the sheet.</div><div><br></div><div>Th=
+anks,</div><div>Greg</div><div><br></div></div><br><div class=3D"gmail_quot=
+e"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 28, 2022 at 4:46 PM St=
+ephanie Sleigh &lt;<a href=3D"mailto:stephanie@pineapple.co">stephanie@pine=
+apple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
+ft:1ex"><div dir=3D"ltr">Hey Aubrey,<div><br></div><div>Nice to e-meet you.=
+=C2=A0</div><div><br></div><div>These are just for Frans offers? Not all of=
+fers?=C2=A0</div><div><br></div><div>Or are these ALL the sales for these p=
+roducts, used for the report that Jen does for Brett weekly?=C2=A0</div><di=
+v><br></div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D=
+"ltr" class=3D"gmail_attr">On Mon, Mar 28, 2022 at 4:41 PM Aubrey Allen (vi=
+a Google Sheets) &lt;<a href=3D"mailto:drive-shares-dm-noreply@google.com" =
+target=3D"_blank">drive-shares-dm-noreply@google.com</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex"><div><table style=3D"bo=
+rder-collapse:collapse;width:100%;background-color:white;text-align:center"=
+ role=3D"presentation"><tbody><tr><td style=3D"padding:24px 0px 16px"><tabl=
+e style=3D"border-collapse:collapse;font-family:Roboto,Arial,Helvetica,sans=
+-serif;word-break:break-word;display:inline-block;width:90%;max-width:700px=
+;min-width:280px;text-align:left" role=3D"presentation"><tbody><tr><td styl=
+e=3D"padding:0px"><table style=3D"width:100%;border:1px solid rgb(218,220,2=
+24);border-radius:8px;border-spacing:0px;table-layout:fixed;border-collapse=
+:separate" role=3D"presentation"><tbody><tr><td style=3D"padding:4.5%" dir=
+=3D"ltr"><div style=3D"margin-bottom:32px;font-family:&quot;Google Sans&quo=
+t;,Roboto,Arial,Helvetica,sans-serif;font-style:normal;font-size:28px;line-=
+height:36px;color:rgb(60,64,67)"><a href=3D"mailto:aubrey@pineapple.co" sty=
+le=3D"color:inherit;text-decoration:none" target=3D"_blank">aubrey@pineappl=
+e.co</a> shared a spreadsheet</div><table style=3D"border-collapse:collapse=
+;font-family:Roboto,Arial,Helvetica,sans-serif;font-size:16px;line-height:2=
+4px;color:rgb(32,33,36);letter-spacing:0.1px;table-layout:fixed;width:100%"=
+ role=3D"presentation"><tbody><tr><td style=3D"padding:0px;vertical-align:t=
+op;width:50px"><div><img style=3D"border-radius: 50%; display: block;" widt=
+h=3D"50" height=3D"50" src=3D"https://ssl.gstatic.com/s2/profiles/images/si=
+lhouette64.png" alt=3D"Unknown profile photo"></div></td><td style=3D"paddi=
+ng:0px 0px 0px 12px;vertical-align:top"><div style=3D"padding-top:12px"><a =
+href=3D"mailto:aubrey@pineapple.co" style=3D"color:inherit;text-decoration:=
+none" target=3D"_blank">aubrey@pineapple.co</a> has invited you to <b>edit<=
+/b> the following spreadsheet:</div><div style=3D"margin-top:24px;color:rgb=
+(95,99,104)">Hello all--<br><br>Please find attached a new Google Doc to tr=
+ack Stephanie&#39;s Sales.  Going forward, I will update this spreadsheet e=
+ach week (like the Phone Sales Commissions sheet), so that we have a living=
+ document to reference.<br><br>Thank you!<br>Aubrey</div></td></tr></tbody>=
+</table><table style=3D"border-spacing:0px 4px;table-layout:fixed;width:100=
+%" role=3D"presentation"><tbody><tr style=3D"height:28px"></tr><tr><td styl=
+e=3D"padding:0px"><a href=3D"https://docs.google.com/spreadsheets/d/1Fiv8ev=
+ZCgKG2dWwmf0ibbHw5WspjDBliUKV8mFMZSaU/edit?usp=3Dsharing_eil_m&amp;ts=3D624=
+21d67" style=3D"color:rgb(60,64,67);display:inline-block;max-width:100%;tex=
+t-decoration:none;vertical-align:top;border:1px solid rgb(218,220,224);bord=
+er-radius:16px;white-space:nowrap" target=3D"_blank"><div style=3D"line-hei=
+ght:18px;overflow:hidden;text-overflow:ellipsis;padding:6px 12px"><span sty=
+le=3D"display:inline-block;vertical-align:top;min-width:26px;width:26px"><i=
+mg src=3D"https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_spre=
+adsheet_x64.png" width=3D"18" height=3D"18" style=3D"vertical-align: top;" =
+role=3D"presentation"></span><span style=3D"font:500 14px/18px &quot;Google=
+ Sans&quot;,Roboto,Arial,Helvetica,sans-serif;display:inline;letter-spacing=
+:0.2px">Stephanie Sales Reporting</span></div></a></td></tr></tbody></table=
+><table style=3D"border-collapse:collapse" role=3D"presentation"><tbody><tr=
+ style=3D"height:32px"><td></td></tr></tbody></table><div><a href=3D"https:=
+//docs.google.com/spreadsheets/d/1Fiv8evZCgKG2dWwmf0ibbHw5WspjDBliUKV8mFMZS=
+aU/edit?usp=3Dsharing_eip_m&amp;ts=3D62421d67" role=3D"button" style=3D"pad=
+ding:0px 24px;font:500 14px/36px &quot;Google Sans&quot;,Roboto,Arial,Helve=
+tica,sans-serif;border:none;border-radius:18px;box-sizing:border-box;displa=
+y:inline-block;letter-spacing:0.25px;min-height:36px;text-align:center;text=
+-decoration:none;background-color:rgb(26,115,232);color:rgb(255,255,255)" t=
+arget=3D"_blank">Open</a></div></td></tr></tbody></table><table style=3D"bo=
+rder-collapse:collapse;width:100%" role=3D"presentation"><tbody><tr><td sty=
+le=3D"padding:24px 4.5%"><table style=3D"border-collapse:collapse;width:100=
+%" dir=3D"ltr"><tbody><tr><td style=3D"padding:0px;font-family:Roboto,Arial=
+,Helvetica,sans-serif;color:rgb(95,99,104);width:100%;font-size:12px;line-h=
+eight:16px;min-height:40px;letter-spacing:0.3px">Google LLC, 1600 Amphithea=
+tre Parkway, Mountain View, CA 94043, USA<br> You have received this email =
+because <a href=3D"mailto:aubrey@pineapple.co" style=3D"color:inherit;text-=
+decoration:none" target=3D"_blank">aubrey@pineapple.co</a> shared a spreads=
+heet with you from Google Sheets.</td><td style=3D"padding:0px 0px 0px 20px=
+"><a href=3D"https://workspace.google.com/" target=3D"_blank"><img src=3D"h=
+ttps://www.gstatic.com/docs/documents/share/images/googleworkspace_logo_192=
+x80.png" width=3D"96" height=3D"40" alt=3D"Logo for Google Sheets"></a></td=
+></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><=
+/td></tr></tbody></table></div></blockquote></div>
+</blockquote></div>
+
+--00000000000049636305db5d4f62--

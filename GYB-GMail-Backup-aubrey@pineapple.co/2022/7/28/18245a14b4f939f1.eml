@@ -1,0 +1,557 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp392493ejz;
+        Thu, 28 Jul 2022 09:26:14 -0700 (PDT)
+X-Received: by 2002:a25:bd83:0:b0:670:fc70:67f3 with SMTP id f3-20020a25bd83000000b00670fc7067f3mr20925561ybh.244.1659025574636;
+        Thu, 28 Jul 2022 09:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659025574; cv=none;
+        d=google.com; s=arc-20160816;
+        b=O3caAMnCeV+rNwPNfbgLlY9OMrdOTRfquL2WU3q6CgM6jCZGYY3I9VKGPA8KKJmJ/l
+         G0S0h1X7HVHlIItytOm9v+fAMH/clvkkEYPACOWme0XG9RpQr1XeaF3GVV6cPIElEViZ
+         HkeOSLn5kZouzuHe+8IiXcnamsEJwbyYJMYl8Crz79I6INCD0Y1HvKd8gxusJmCP/doY
+         QCzfCZPMOfg+xwr3p/QO5s3IMjCgdTFsvA/iLO9QhwvFk/Mk67F+AzL+OGqSdBlGB8E+
+         mg+xX10fH8+j0sAbq6Kh0aQzxoPwVYQ1x6IfWKztWol6o4QUMlFX6oofnLsCSZx6gtmQ
+         D4iw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=8bQ4J5FfQKBf+E/gUgBGFNxvfzjXMkNAzkhIYb5fgQk=;
+        b=jEZeZUKjBDPoZLkVsQGe+e5YG7WIoyNQvgCjO569/n/lwpK9VweKSkwaj8AZ282Jc1
+         PSQddTczTI5yF0Tt+z2P4hDQv9OrhoKGlah/4gu8hFOINoRFOk1xc/LPhYCs0kqWEdij
+         yWspT3OyqhHK5SRKdheMAAfudwt//2CK5k8B2s5e5Tq4F5OVENVoPLTwh39h1UGiTNHe
+         ywv24qE5lvG0UUqKG4pNabpEJwQMPUxbFYxNdYXxhzIvYrFJikj+i4K40tu90G11Q17x
+         sA2LIrNwpZ6LHtP3kMF1UTNx3/h8oRZFHbOEQ6hXb8kJDjL5gVVxah3M7UF9vA87IEl+
+         rfbA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=aDX3LhMq;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <kerry@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b67-20020a25e446000000b0066c8290715dsor539113ybh.82.2022.07.28.09.26.14
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 28 Jul 2022 09:26:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=aDX3LhMq;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=8bQ4J5FfQKBf+E/gUgBGFNxvfzjXMkNAzkhIYb5fgQk=;
+        b=aDX3LhMq2vEPO7fNws6R3AvjEsjjRdFg0zpPMf7bqkKd8xgykU+sH49s6kaETNbvlq
+         RRh7/v0CqvgcQB5GvB7y1iShpfQILs8PclwM3ONjjvXLOIAT5srhzsOxU7qzBCpaKsbw
+         Y/v5SrT0uOeJ36+olS6TLvUJkk2Wt6hQp81o8zOSRYC8CGE3iXucJGiSihemJEtt54Nq
+         IaeqskX4kKMIjpJQWHxB6mFXUjugmmgkh6D8vWPQrv/iIz7XLFn4yiTY2RmI2Z1x63Hl
+         PN/jzYq6uQ0P6bfIdC3NBLn2UUeCLWay4c267OF+CNon7zhiiR6p0Ehv0HdI6xyISbEx
+         VLRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=8bQ4J5FfQKBf+E/gUgBGFNxvfzjXMkNAzkhIYb5fgQk=;
+        b=woVcwQ+lW9cpZh8641DmuZuC1R8RLHo8w7G0ZneIDEcP2C3QvtY8mb+f6cENkLxbO9
+         VBwOVXSobIDviaa8p+o/CdKeG+x/7fScgjFEmGZM5ckpALnTBWz5VErYIJx8i/5kOoFD
+         lyaz7uSQLx76dkhL80uX5Orf2GPp7iYVfpUxXWQAsTTrqgSTPDW3+gFYTOwYAh52XvHv
+         qjn/Dg0PyvDTYAmTVlAkaqljT9WBl5ldlmXnKpdW8QabRxVwFR+RuQBSmBMNzbm+ze8S
+         8Eqv6WXMXCFEKrJl9/OUG2DpcblW+DnrCcbNYKgucfMcMRh1Z4wnmNm3NzhxklWm2J3G
+         F6LA==
+X-Gm-Message-State: AJIora+goTOZvKbMv0s1YJk5xH51Kn8oIt2ksMLVxqYN6modTW3KJ07Y
+	gNJRmkg+NShOPl8d6QxAa6E3VWLgbNT5C6Uz8qs1v4THDbcoaQ==
+X-Google-Smtp-Source: AGRyM1sOR1ehjHdObFa5XhDPKUoCEbaM8tv7y5GxaP1H35yWHlaDGPl+5Qu2vj4/5Q8z3ue4J2BZgBX5qx9csNsaGXU=
+X-Received: by 2002:a25:4153:0:b0:671:823f:600a with SMTP id
+ o80-20020a254153000000b00671823f600amr6462115yba.528.1659025573830; Thu, 28
+ Jul 2022 09:26:13 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP9z77DuXNz916OCUGmSScBQtOS2h1eM8OhUqUUiZy_fxw@mail.gmail.com>
+ <CA+ceVcXYK1R0MW2v6xewq1m95NcY-WO0iBEfnvuw-QzneD-kxA@mail.gmail.com>
+ <CAJ8r_h1UctC4uwrEPSpGapDdiN6_zvY7tsEU1gY=Lm2i0Zym7g@mail.gmail.com>
+ <CAJ8r_h0Q72_BX26ocSF_H3sAeQjbg9cf98NSDxMJf4pwiLw1Xg@mail.gmail.com>
+ <CA+ceVcVq=ERRzXoUiN8Zm1hGAFi=s8Re6LKXCTCwm9UV+EkSoA@mail.gmail.com>
+ <CAJ8r_h2CQH1cEW_8Ta9_-oUhaaGpQBz_se0PN-+e0RuF7Pmyvg@mail.gmail.com> <CAHbmDP8Va_RVrUPYWrwA=--a3+4Mdr3eqpjCiVDt0=oOXhyv8w@mail.gmail.com>
+In-Reply-To: <CAHbmDP8Va_RVrUPYWrwA=--a3+4Mdr3eqpjCiVDt0=oOXhyv8w@mail.gmail.com>
+From: Kerry Scott <kerry@pineapple.co>
+Date: Thu, 28 Jul 2022 09:26:02 -0700
+Message-ID: <CAJ8r_h37V8kPQHuYbxWsgxTjOHz+N_PkjSy3sLFhEdYAT2ZQZQ@mail.gmail.com>
+Subject: Re: Mid and End of Month Profit Reports for Brett
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Megan Harnett <megan@pineapple.co>, Andrea Abramowski <andrea@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000000077e205e4dffe0d"
+
+--0000000000000077e205e4dffe0d
+Content-Type: text/plain; charset="UTF-8"
+
+Ok, great... That report I gave you was only for Pineapple Products, I will
+get you the same affiliate report for the other companies and then work on
+the other reports too.
+
+On Thu, Jul 28, 2022 at 8:12 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Kerry,
+>
+> Thanks for taking the time to look into this for me.  This is precisely
+> the kind of documentation that I'm looking for.
+>
+> If you have any other resources you could provide at your convenience
+> regarding my other questions I would greatly appreciate it!
+>
+> Thank you!
+> Aubrey
+>
+> On Wed, Jul 27, 2022 at 4:20 PM Kerry Scott <kerry@pineapple.co> wrote:
+>
+>> Before I turn this into a bigger project I am hoping this is a part of
+>> what you are looking for.  My answers are in blue.
+>> Affiliate expenses?  Are these considered part of the above employee
+>> expenses (No), these are expensed to Pineapple how much we payout.  How
+>> are these paid? These are paid through bill.com
+>> Spreadsheet attached goes over the Affiliate expenses from 07/01/22 -
+>> 07/15/22 if this what you are looking for then I know how to proceed with
+>> the rest.
+>>
+>> On Wed, Jul 27, 2022 at 11:09 AM Andrea Abramowski <andrea@pineapple.co>
+>> wrote:
+>>
+>>> I've told Brett that. He can do with it what he wants
+>>>
+>>>
+>>> *Andrea Abramowski, CPA*
+>>> Controller | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: andrea@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipient
+>>> specified in message only. It is strictly forbidden to share any part of
+>>> this message with any third party, without a written consent of the sender.
+>>> If you received this message by mistake, please reply to this message and
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>>
+>>> On Wed, Jul 27, 2022 at 2:07 PM Kerry Scott <kerry@pineapple.co> wrote:
+>>>
+>>>> Plus our mid month will not be acuract right now due to bank feeds not
+>>>> working properly.
+>>>>
+>>>> On Wed, Jul 27, 2022 at 11:06 AM Kerry Scott <kerry@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> So basically looking for a PNL mid month?  That is really all this
+>>>>> information here?
+>>>>>
+>>>>> On Wed, Jul 27, 2022 at 11:03 AM Andrea Abramowski <
+>>>>> andrea@pineapple.co> wrote:
+>>>>>
+>>>>>> Hey Megan & Kerry,
+>>>>>>
+>>>>>> Can you guys help Aubrey? Unfortunately, I've only scanned the email,
+>>>>>> so.....
+>>>>>>
+>>>>>> On Fri, Jul 15, 2022 at 3:31 PM Aubrey Allen <aubrey@pineapple.co>
+>>>>>> wrote:
+>>>>>>
+>>>>>>> Hi Andrea!
+>>>>>>>
+>>>>>>> I hope you are looking forward to a nice weekend!  I had Brett
+>>>>>>> request a new report from me, and I could use your help in finding data on
+>>>>>>> some of our expenses.  I've attached Brett's correspondence below so that
+>>>>>>> you have some context.  He would like me to be able to have a quicker,
+>>>>>>> though perhaps slightly less accurate, Sales & Profit report that we could
+>>>>>>> compare to your monthly "close."
+>>>>>>>
+>>>>>>> I am able to use Sticky to find Gross Revenue, as well as
+>>>>>>> chargebacks, voids, refunds, declines, etc., so I know how to get Brett a
+>>>>>>> Net Revenue Total *without* *expenses*.  What I could use your help
+>>>>>>> with is defining & locating all of our expenses so that I can incorporate
+>>>>>>> them in my report.
+>>>>>>>      -What are our employee expenses and how are they calculated?
+>>>>>>> (I know I provide y'all with some commission information, but obviously
+>>>>>>> there's more to it than that.)
+>>>>>>>      -Affiliate expenses?  Are these considered part of the above
+>>>>>>> employee expenses, or something else?  How are these paid?
+>>>>>>>      -How is the Finance department calculating things like COGS,
+>>>>>>> Shipping Costs, and Processing Fees?  I have some methods for this in the
+>>>>>>> Data department, but would be curious to know how or whether our methods
+>>>>>>> differ.
+>>>>>>>      -Credit Card expenses?  This is something Brett mentioned but I
+>>>>>>> could use more explanation about what expenses those cover specifically.
+>>>>>>>     -Any additional expenses I may not be considering.
+>>>>>>>
+>>>>>>> I realize this is a big ask with a lot of details.  Currently, I can
+>>>>>>> find some of this information in disparate places but am not always sure of
+>>>>>>> its accuracy.  If it would be easier I'd be happy to schedule a time for us
+>>>>>>> to meet to discuss further.  Just let me know what works best for you!
+>>>>>>>
+>>>>>>> Thank you so much in advance!  I would really appreciate your help
+>>>>>>> and insight as I try to navigate this new report.
+>>>>>>>
+>>>>>>> --
+>>>>>>> Aubrey Allen
+>>>>>>> Data Analytics Technician
+>>>>>>> Pineapple Products, Inc.
+>>>>>>> Brett Allcorn
+>>>>>>> Jul 14, 2022, 1:00 PM (1 day ago)
+>>>>>>> to me
+>>>>>>> Hey Aubrey, to improve the company and help us navigate the economic
+>>>>>>> downturn, I'd like to find a way to evaluate where the company is at on the
+>>>>>>> 1st of the month and the 15th.
+>>>>>>>
+>>>>>>> *The issue is: *the finance department does something called a
+>>>>>>> "close" in which they need about two weeks to get all the financial data in
+>>>>>>> order and ensure its accurate before presenting it to me.
+>>>>>>>
+>>>>>>> And so the data I'm getting is DANGEROUSLY delayed.
+>>>>>>>
+>>>>>>> Solutions:
+>>>>>>>
+>>>>>>> 1) So obviously you can keep getting me the sales per month on the
+>>>>>>> first of every month. But I'd also recommend you get me that data on the
+>>>>>>> 15th as well.
+>>>>>>>
+>>>>>>> 2) The data will be more useful if we can get as many of our
+>>>>>>> expenses into those reports as soon as possible.
+>>>>>>> - We can get refunds, chargebacks from Sticky
+>>>>>>> - We can get acquisition costs from the advertising platforms
+>>>>>>> - Employee expenses should be fairly predictable and repetitive (can
+>>>>>>> get data from finance)
+>>>>>>> - The rest of the expenses are paid every Monday, so finance should
+>>>>>>> be able to provide that
+>>>>>>> - The last thing is credit cards, if we pay those 2x weekly, then
+>>>>>>> you should be able to get the totals of those payments weekly
+>>>>>>> - There might be other expenses? I would confirm w Andrea
+>>>>>>>
+>>>>>>> Lastly we can compare your preliminary report w Andrea's "close"
+>>>>>>> report and see how off they are and why.
+>>>>>>>
+>>>>>>> But ultimately I'd want to get it within about 5% of difference for
+>>>>>>> the preliminary.
+>>>>>>>
+>>>>>>> Preliminary will be slightly less accurate and MUCH faster.
+>>>>>>>
+>>>>>>> "Close" report will be highly accurately, very slow.
+>>>>>>>
+>>>>>>> Does this make sense?
+>>>>>>>
+>>>>>>>
+
+--0000000000000077e205e4dffe0d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,sa=
+ns-serif">Ok, great... That report I gave you was only for Pineapple Produc=
+ts, I will get you the same affiliate=C2=A0report for the other companies a=
+nd then work on the other reports too.</div></div><br><div class=3D"gmail_q=
+uote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 28, 2022 at 8:12 AM=
+ Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.c=
+o</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;border-lef=
+t-color:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Kerry,<div><=
+br></div><div>Thanks for taking the time to look into this for me.=C2=A0 Th=
+is is precisely the kind of documentation that I&#39;m looking for.</div><d=
+iv><br></div><div>If you have any other resources you could provide at your=
+ convenience regarding my other questions I would greatly appreciate it!</d=
+iv><div><br></div><div>Thank you!</div><div>Aubrey</div></div><br><div clas=
+s=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 27, 202=
+2 at 4:20 PM Kerry Scott &lt;<a href=3D"mailto:kerry@pineapple.co" target=
+=3D"_blank">kerry@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;borde=
+r-left-style:solid;border-left-color:rgb(204,204,204);padding-left:1ex"><di=
+v dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,sans-=
+serif">Before I turn this into a bigger project I am hoping this is a part =
+of what you are looking for.=C2=A0 My answers are in blue.</div><div class=
+=3D"gmail_default" style=3D"font-family:arial,sans-serif"><span style=3D"fo=
+nt-family:Arial,Helvetica,sans-serif">Affiliate expenses?=C2=A0 Are these c=
+onsidered part of the above employee expenses <font color=3D"#073763">(No),=
+ these are expensed to Pineapple how much we payout.</font> =C2=A0How are t=
+hese paid? <font color=3D"#073763">These are paid through <a href=3D"http:/=
+/bill.com" target=3D"_blank">bill.com</a></font></span><br></div><div class=
+=3D"gmail_default" style=3D"font-family:arial,sans-serif">Spreadsheet attac=
+hed goes over the Affiliate expenses from 07/01/22 - 07/15/22 if this what =
+you are looking for then I know how to proceed with the rest.</div></div><b=
+r><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, =
+Jul 27, 2022 at 11:09 AM Andrea Abramowski &lt;<a href=3D"mailto:andrea@pin=
+eapple.co" target=3D"_blank">andrea@pineapple.co</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft-width:1px;border-left-style:solid;border-left-color:rgb(204,204,204);pad=
+ding-left:1ex"><div dir=3D"ltr">I&#39;ve told Brett that. He can do with it=
+ what he wants<div><br></div><div><br clear=3D"all"><div><div dir=3D"ltr">=
+=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom-width:1=
+px;border-bottom-style:solid;border-bottom-color:rgb(5,56,95)" width=3D"500=
+">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Controller<sp=
+an> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">andrea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Wed, Jul 27, 2022 at 2:07 PM Kerry Scott &lt;<a =
+href=3D"mailto:kerry@pineapple.co" target=3D"_blank">kerry@pineapple.co</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;border-left-col=
+or:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_=
+default" style=3D"font-family:arial,sans-serif">Plus our mid month will not=
+ be acuract right now due to bank feeds not working properly.</div></div><b=
+r><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, =
+Jul 27, 2022 at 11:06 AM Kerry Scott &lt;<a href=3D"mailto:kerry@pineapple.=
+co" target=3D"_blank">kerry@pineapple.co</a>&gt; wrote:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width=
+:1px;border-left-style:solid;border-left-color:rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:a=
+rial,sans-serif">So basically looking for a PNL mid month?=C2=A0 That is re=
+ally all this information here?</div></div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 27, 2022 at 11:03 AM Andre=
+a Abramowski &lt;<a href=3D"mailto:andrea@pineapple.co" target=3D"_blank">a=
+ndrea@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style=
+:solid;border-left-color:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr=
+">Hey Megan &amp; Kerry,=C2=A0<div><br></div><div>Can you guys help Aubrey?=
+ Unfortunately, I&#39;ve only scanned the email, so.....</div></div><br><di=
+v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jul 1=
+5, 2022 at 3:31 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" =
+target=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1p=
+x;border-left-style:solid;border-left-color:rgb(204,204,204);padding-left:1=
+ex"><div dir=3D"ltr">Hi Andrea!<div><br></div><div>I hope you are looking f=
+orward to a nice weekend!=C2=A0 I had Brett request a new report from me, a=
+nd I could use your help in finding data on some of our expenses.=C2=A0 I&#=
+39;ve attached Brett&#39;s correspondence below so that you have some conte=
+xt.=C2=A0 He would like me to be able to have a quicker, though perhaps sli=
+ghtly less accurate, Sales &amp; Profit report that we could compare to you=
+r monthly &quot;close.&quot;</div><div><br></div><div>I am able to use Stic=
+ky to find Gross Revenue, as well as chargebacks, voids, refunds, declines,=
+ etc., so I know how to get Brett a Net Revenue Total <i>without</i>=C2=A0<=
+i>expenses</i>.=C2=A0 What I could use your help with is defining &amp; loc=
+ating all of our expenses so that I can incorporate them in my report.=C2=
+=A0=C2=A0</div><div>=C2=A0 =C2=A0 =C2=A0-What are our employee expenses and=
+ how are they calculated?=C2=A0 (I know I provide y&#39;all with some commi=
+ssion information, but obviously there&#39;s more to it than that.)</div><d=
+iv>=C2=A0 =C2=A0 =C2=A0-Affiliate expenses?=C2=A0 Are these considered part=
+ of the above employee expenses, or something else?=C2=A0 How are these pai=
+d?</div><div>=C2=A0 =C2=A0 =C2=A0-How is the Finance department calculating=
+ things like COGS, Shipping Costs, and Processing Fees?=C2=A0 I have some m=
+ethods for this in the Data department, but would be curious to know how or=
+ whether our methods differ.</div><div>=C2=A0 =C2=A0 =C2=A0-Credit Card exp=
+enses?=C2=A0 This is something Brett mentioned but I could use more explana=
+tion about what expenses those cover specifically.</div><div>=C2=A0 =C2=A0 =
+-Any additional expenses I may not be considering.</div><div><br></div><div=
+>I realize this is a big ask with a lot of details.=C2=A0 Currently, I can =
+find some of this information in disparate places but am not always sure of=
+ its accuracy.=C2=A0 If it would be easier I&#39;d be happy to schedule a t=
+ime for us to meet to discuss further.=C2=A0 Just let me know what works be=
+st for you!</div><div><br></div><div>Thank you so much in advance!=C2=A0 I =
+would really appreciate your help and insight as I try to navigate this new=
+ report.</div><div><br></div><div>--<br><div dir=3D"ltr"><div dir=3D"ltr">A=
+ubrey Allen<div>Data Analytics Technician</div><div>Pineapple Products, Inc=
+.</div></div></div></div><div><div style=3D"font-size:0.875rem;padding:20px=
+ 0px 0px;font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif"><table =
+cellpadding=3D"0" style=3D"border-collapse:collapse;margin-top:0px;width:au=
+to;font-size:0.875rem;letter-spacing:0.2px;display:block"><tbody style=3D"d=
+isplay:block"><tr style=3D"height:auto;display:flex"><td style=3D"white-spa=
+ce:nowrap;padding:0px;vertical-align:top;width:867.844px;line-height:20px;d=
+isplay:block;max-height:20px"><table cellpadding=3D"0" style=3D"border-coll=
+apse:collapse;table-layout:fixed;width:867.844px"><tbody><tr><td style=3D"d=
+isplay:flex"><h3 style=3D"overflow:hidden;font-size:0.75rem;font-weight:inh=
+erit;margin:inherit;text-overflow:ellipsis;letter-spacing:0.3px;color:rgb(9=
+5,99,104);line-height:20px"><span role=3D"gridcell"><span name=3D"Brett All=
+corn" style=3D"color:rgb(32,33,36);font-size:0.875rem;font-weight:bold;disp=
+lay:inline;vertical-align:top;letter-spacing:0.2px;line-height:20px"><span =
+style=3D"vertical-align:top">Brett Allcorn</span></span></span></h3></td></=
+tr></tbody></table></td><td style=3D"text-align:right;white-space:nowrap;ve=
+rtical-align:top;display:block;max-height:20px"><div style=3D"padding:0px;d=
+isplay:flex"><span id=3D"gmail-m_-5223880127551845370gmail-m_32993097959709=
+36665gmail-m_1960538650942394530gmail-m_-3229498589964314981gmail-m_-595595=
+093644355305gmail-m_330413088264068026gmail-m_7687679113337766564gmail-m_-4=
+274963557402302624gmail-m_2074857781876896353gmail-:2vn" title=3D"Jul 14, 2=
+022, 1:00 PM" alt=3D"Jul 14, 2022, 1:00 PM" role=3D"gridcell" style=3D"vert=
+ical-align:top;margin:0px;font-size:0.75rem;letter-spacing:0.3px;color:rgb(=
+95,99,104);display:block;line-height:20px">Jul 14, 2022, 1:00 PM (1 day ago=
+)</span><div aria-label=3D"Not starred" title=3D"Not starred" role=3D"check=
+box" aria-checked=3D"false" style=3D"display:inline-block;height:20px;margi=
+n-left:20px;outline:0px"><span style=3D"display:inline-flex;height:20px;tex=
+t-align:center;width:20px;padding:0px;margin:0px;border:none;outline:none">=
+</span></div></div></td><td style=3D"text-align:right;white-space:nowrap;ve=
+rtical-align:top;display:flex"></td><td rowspan=3D"2" style=3D"text-align:r=
+ight;white-space:nowrap;vertical-align:top;display:block;max-height:20px"><=
+div role=3D"button" aria-label=3D"Reply" style=3D"display:inline-flex;borde=
+r-radius:2px 0px 0px 2px;font-size:0.875rem;text-align:center;margin:0px 0p=
+x 0px 20px;height:20px;line-height:18px;min-width:0px;outline:none;padding:=
+0px;background-color:transparent;color:rgb(68,68,68);border:none"><img role=
+=3D"button" src=3D"https://mail.google.com/mail/u/0/images/cleardot.gif" al=
+t=3D"" style=3D"background-image: url(&quot;https://ci4.googleusercontent.c=
+om/proxy/TCwXu1isPZcPvl3kJIyXpCmhX7cU-H38qDIoi6OjZandOwQNQdUtHA8lIf-XLqxpXW=
+OEwym0pAdxq-cLUMKBKNUbWQ8Kvnt12HTO5u91BT04-Rlsj8YeSVPazlI0LU9qVjk=3Ds0-d-e1=
+-ft#https://www.gstatic.com/images/icons/material/system_gm/2x/reply_black_=
+20dp.png&quot;); background-size: 20px; height: 20px; margin: 0px; vertical=
+-align: middle; width: 20px; opacity: 0.71; display: inline-block; padding:=
+ 0px; background-position: 50% 50%;"></div><div id=3D"gmail-m_-522388012755=
+1845370gmail-m_3299309795970936665gmail-m_1960538650942394530gmail-m_-32294=
+98589964314981gmail-m_-595595093644355305gmail-m_330413088264068026gmail-m_=
+7687679113337766564gmail-m_-4274963557402302624gmail-m_2074857781876896353g=
+mail-:2vv" role=3D"button" aria-expanded=3D"false" aria-haspopup=3D"true" a=
+ria-label=3D"More" style=3D"display:inline-flex;border-radius:0px 2px 2px 0=
+px;font-size:0.875rem;text-align:center;margin:0px 0px 0px 20px;height:20px=
+;line-height:18px;min-width:0px;outline:none;padding:0px;background-color:t=
+ransparent;color:rgb(68,68,68);border:none"><img role=3D"menu" src=3D"https=
+://mail.google.com/mail/u/0/images/cleardot.gif" alt=3D"" style=3D"backgrou=
+nd-image: url(&quot;https://ci3.googleusercontent.com/proxy/z-Y_BHd-R28kL8W=
+ap0GlmYmc8rt-9levqgnolvd_NFDlGsIw2bzDGD3M0xqiQeq7Pp4Z8_tI9Rm5Tb0kWSINVVOg89=
+Rs2DpluJeZEY3YaZYy2nMua4DkM24EX_I8kWxLsxv2IPV_=3Ds0-d-e1-ft#https://www.gst=
+atic.com/images/icons/material/system_gm/2x/more_vert_black_20dp.png&quot;)=
+; background-size: 20px; height: 20px; width: 20px; margin: 0px; vertical-a=
+lign: middle; opacity: 0.71; display: inline-block; padding: 0px; backgroun=
+d-position: 50% 50%;"></div></td></tr><tr style=3D"height:auto;display:flex=
+"><td colspan=3D"3"><table cellpadding=3D"0" style=3D"border-collapse:colla=
+pse;table-layout:fixed;white-space:nowrap;width:1175px"><tbody><tr><td styl=
+e=3D"overflow:visible;text-overflow:ellipsis;display:flex;line-height:20px"=
+><div style=3D"overflow:hidden;max-width:92%;display:inline-block"><span st=
+yle=3D"vertical-align:top;color:rgb(95,99,104);font-size:0.75rem;letter-spa=
+cing:0.3px;line-height:20px">to=C2=A0<span name=3D"me" style=3D"vertical-al=
+ign:top">me</span></span></div><div id=3D"gmail-m_-5223880127551845370gmail=
+-m_3299309795970936665gmail-m_1960538650942394530gmail-m_-32294985899643149=
+81gmail-m_-595595093644355305gmail-m_330413088264068026gmail-m_768767911333=
+7766564gmail-m_-4274963557402302624gmail-m_2074857781876896353gmail-:2z1" a=
+ria-haspopup=3D"true" role=3D"button" aria-label=3D"Show details" style=3D"=
+display:inline-flex;margin-left:4px;vertical-align:top;border:none;outline:=
+none"><img src=3D"https://mail.google.com/mail/u/0/images/cleardot.gif" alt=
+=3D"" style=3D"background-image: url(&quot;https://ci6.googleusercontent.co=
+m/proxy/BJuLi1pdSuXlptCkICPLIHLeVbm4czRchUvNtY2K9OONpuRXMIlSWZwTSOwJD16n5dn=
+4krDIjJWUN5XKIFx1ZnYv8ar0aMA7TesprxAt5mw7ew1XuimFnJrdNN03XZsLCrPiL76GcaqpOR=
+S5=3Ds0-d-e1-ft#https://www.gstatic.com/images/icons/material/system_gm/2x/=
+arrow_drop_down_black_20dp.png&quot;); background-size: 20px; padding: 0px;=
+ vertical-align: baseline; height: 20px; width: 20px; border: none; margin:=
+ 0px 0px 0px auto; display: flex; opacity: 0.71; background-position: 50% 5=
+0%;"></div></td></tr></tbody></table></td></tr></tbody></table></div><div i=
+d=3D"gmail-m_-5223880127551845370gmail-m_3299309795970936665gmail-m_1960538=
+650942394530gmail-m_-3229498589964314981gmail-m_-595595093644355305gmail-m_=
+330413088264068026gmail-m_7687679113337766564gmail-m_-4274963557402302624gm=
+ail-m_2074857781876896353gmail-:2vk" style=3D"font-family:Roboto,RobotoDraf=
+t,Helvetica,Arial,sans-serif;font-size:medium"><div></div><div></div><div><=
+/div><div></div></div><div style=3D"font-family:Roboto,RobotoDraft,Helvetic=
+a,Arial,sans-serif;font-size:medium"><div></div><div id=3D"gmail-m_-5223880=
+127551845370gmail-m_3299309795970936665gmail-m_1960538650942394530gmail-m_-=
+3229498589964314981gmail-m_-595595093644355305gmail-m_330413088264068026gma=
+il-m_7687679113337766564gmail-m_-4274963557402302624gmail-m_207485778187689=
+6353gmail-:2z4"></div><div id=3D"gmail-m_-5223880127551845370gmail-m_329930=
+9795970936665gmail-m_1960538650942394530gmail-m_-3229498589964314981gmail-m=
+_-595595093644355305gmail-m_330413088264068026gmail-m_7687679113337766564gm=
+ail-m_-4274963557402302624gmail-m_2074857781876896353gmail-:2vl" style=3D"d=
+irection:ltr;margin:8px 0px 0px;padding:0px;font-size:0.875rem"><div id=3D"=
+gmail-m_-5223880127551845370gmail-m_3299309795970936665gmail-m_196053865094=
+2394530gmail-m_-3229498589964314981gmail-m_-595595093644355305gmail-m_33041=
+3088264068026gmail-m_7687679113337766564gmail-m_-4274963557402302624gmail-m=
+_2074857781876896353gmail-:2z5" style=3D"font-variant-numeric:normal;font-v=
+ariant-east-asian:normal;font-stretch:normal;font-size:small;line-height:1.=
+5;font-family:Arial,Helvetica,sans-serif;overflow:hidden"><div dir=3D"ltr">=
+Hey Aubrey, to improve=C2=A0the company and help us navigate the economic d=
+ownturn, I&#39;d like to find a way to evaluate where the company is at on =
+the 1st of the month and the 15th.<div><br></div><div><b>The issue is:=C2=
+=A0</b>the finance department does something called a &quot;close&quot; in =
+which they need about two weeks to get all the financial data in order and =
+ensure its accurate before presenting it to me.</div><div><br></div><div>An=
+d so the data I&#39;m getting is DANGEROUSLY delayed.</div><div><br></div><=
+div>Solutions:</div><div><br></div><div>1) So obviously you can keep gettin=
+g me the sales per month on the first of every month. But I&#39;d also reco=
+mmend you get me that data on the 15th as well.<br></div><div><br></div><di=
+v>2) The data will be more useful if we can get as many of our expenses int=
+o those reports as soon as possible.=C2=A0</div><div>- We can get refunds, =
+chargebacks from Sticky</div><div>- We can get acquisition costs from the a=
+dvertising platforms</div><div>- Employee expenses should be fairly predict=
+able and repetitive (can get data from finance)</div><div>- The rest of the=
+ expenses are paid every Monday, so finance should be able to provide that<=
+/div><div>- The last thing is credit cards, if we pay those 2x weekly, then=
+ you should be able to get the totals of those payments weekly</div><div>- =
+There might be other expenses? I would confirm w Andrea</div><div><br></div=
+><div>Lastly we can compare your preliminary report w Andrea&#39;s &quot;cl=
+ose&quot; report and see how off they are and why.</div><div><br></div><div=
+>But ultimately I&#39;d want to get it within about 5% of difference for th=
+e preliminary.</div><div><br></div><div>Preliminary will be slightly less a=
+ccurate and MUCH faster.</div><div><br></div><div>&quot;Close&quot; report =
+will be highly accurately, very slow.</div><div><br></div><div>Does this ma=
+ke sense?<br></div></div></div></div></div><div><br></div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000000077e205e4dffe0d--

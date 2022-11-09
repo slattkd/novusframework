@@ -1,0 +1,227 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp500445ejz;
+        Wed, 3 Aug 2022 09:38:03 -0700 (PDT)
+X-Received: by 2002:adf:e187:0:b0:220:6d97:b670 with SMTP id az7-20020adfe187000000b002206d97b670mr6255492wrb.63.1659544683494;
+        Wed, 03 Aug 2022 09:38:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659544683; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Yv+A1NF0Dxd99smCe/oA0WpleGH3fHxV4dHaOw0djBIrztUjppAbgEQIRwE/H6D5PJ
+         6w0hTzp4TIbQXsL9gMe7KpMGFdTjX54hrI5CzEwxxIN/je94RhhPRjb8dr/iw/TLs882
+         95duGED/NLBi6wTfFQERXPz8dkQnUM40FQrKAHbSEpJTxiko/biJHQA4jIc1ryJI7d9u
+         o9Y02Vr9AT/9Q/VKI+7CHHSFZ6KybPwdT9gbOwpe5sxecMVqg6dxocu+hefGnm0z/RmC
+         I9M+j0FwxMEpYSxY5REiCF8s6KFT/dfpIciP0Xd3aTylpV2z9J6yMCk3EFjvH+zlXAJq
+         Ig2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=IG//AQHWkzDosNMTkRMdakafco//QloVRnkvXin7KXk=;
+        b=jP3yn0276LCsunDahhk/sLpQN6CFx7/GupW9dPljUUWPcoYwWQycOR6+JWy7QVlTvx
+         GOemT7euOaItnk9+1jo8mbVLITl6fMWpJcr4tiB5d8xJcBC/p0umuAs3WAcv6jpgzR6T
+         IkldDSXBav2xMSfiAU9/OkRUyfiFAcI+Waf99qCNUrFifTc+ozGQpsNbrUVpfDeVj+oN
+         NAruv/ZTvchEGpxzj/XKAz3Sm2FurLAXaCJfr08cBBk0oD2cjDBsP2VK4fH/x3taRlew
+         cT1nEJ7GM3ZAP0KjszYQP97eZ5nQ1fQ1ZocKT94zYsq/hNlGGomgiBg+cZcNiTodnyBs
+         4F6g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=QaugEgSp;
+       spf=pass (google.com: domain of amber@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <amber@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a9-20020a056000188900b0021d6b02d07esor8231985wri.1.2022.08.03.09.38.03
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 03 Aug 2022 09:38:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amber@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=QaugEgSp;
+       spf=pass (google.com: domain of amber@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=IG//AQHWkzDosNMTkRMdakafco//QloVRnkvXin7KXk=;
+        b=QaugEgSpRe3dtzw/TvwoZfuEJOF95d/qAWgRDSQXsX4l7e2/ckZ2qK9ebq0K4w51Sc
+         69RMh3gN6lW/JpcEMDO+ZtOllY6Vg1g/yhHGt2JgELB1Qc4m5CP0uRd9slqMTKK6rBAu
+         Yz5bgW/wbQc+Q0BeeiOeHCenyBG2Xx5wEIKMCrjQWRK9QphBYtrprAkvDFiEIS4Dy+hO
+         dWbqSwX0OUAayJCezFVGY9dlrL4QCBI2dcs9/QTLWCntEG+vbB/b26r6GP7OMoARxQTS
+         HJNTPvIq2r7feqrvFlKnQjfW7JCw5ZvG7j1hKq183F92o9HF2CumzSra7dkuIP5hWrPc
+         VLZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=IG//AQHWkzDosNMTkRMdakafco//QloVRnkvXin7KXk=;
+        b=UdwYIKrcEG4PXSdJdoFjSByoiMP5eQ1jKh5DCbP3/BNovm0R2mTFXBRahkITT30xx+
+         ulahz7rE9Boj9vnhxSYlYVhYl94SXAw2J4WIJzw7Y5cWaQk3zSNTXRQkyYvWca6e02+Z
+         +0sMOMx2yFVEc8fSj5oGEsFhQsB1lYPbfQP2qKDkVlE0HM+J4L/4NYDaEyetMiSgP2I/
+         unoVpQQd4vNNGFQc/tUu1LSOc+mi9ceJ7cI1/BVx43YJ4uRKn/i3zH4hTzWbPvVRuB9M
+         ujlEMcxZ/LwU3g9p8o6mk7547SdGTMsecXsS0WfI+UIHrSRYbawWPZcdC93C8NRma36B
+         Az8Q==
+X-Gm-Message-State: ACgBeo2Wydk3oK0KG8D3YhSQ6E3hAwv/QmgZF3J4ZxzUFhMvvg73nHPZ
+	4HgYEZ9W6N4Ni8hNbuYYpocXP1o/XdTIjOpwwakpAC8JPPV1LA==
+X-Google-Smtp-Source: AA6agR614vlDMJxiRnULnWjjR74mpZP46/pNcc1IGksQ8g/G3s8VL5v0qfEBwmxq8+qKS4Iqg1hehoSolRbVmatU5vc=
+X-Received: by 2002:a5d:52cb:0:b0:21a:3cc5:f5f4 with SMTP id
+ r11-20020a5d52cb000000b0021a3cc5f5f4mr17112245wrv.367.1659544683155; Wed, 03
+ Aug 2022 09:38:03 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAJsXUXA510KSZ_VckSqGYz=BQ41E8RtYHjexV=O9f9ZrimkRyQ@mail.gmail.com>
+ <CAHbmDP9LjKkOvqcFgYiAuTmneM764kgnuharkuPa_U45p=ahBQ@mail.gmail.com>
+In-Reply-To: <CAHbmDP9LjKkOvqcFgYiAuTmneM764kgnuharkuPa_U45p=ahBQ@mail.gmail.com>
+From: Amber Glenn <amber@pineapple.co>
+Date: Wed, 3 Aug 2022 12:37:52 -0400
+Message-ID: <CAJsXUXBT66M7ifv06WNJ2X34ubCfEATxd_n1D-iCWDp5+bWPqw@mail.gmail.com>
+Subject: Re: Offer Letters
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000005429fc05e558db8c"
+
+--0000000000005429fc05e558db8c
+Content-Type: text/plain; charset="UTF-8"
+
+Awesome! Thank you ma'am!
+
+On Wed, Aug 3, 2022 at 12:35 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Amber,
+>
+> Here is a copy of my signed Offer Letter.
+>
+> Thanks!
+> Aubrey
+>
+> On Wed, Aug 3, 2022 at 11:33 AM Amber Glenn <amber@pineapple.co> wrote:
+>
+>> Hi Team -
+>>
+>> I've been doing audits of employee documents and cannot seem to locate
+>> your employment agreement. Before redoing, I wanted to check and see if you
+>> may have the signed and completed version of your offer letter (a copy
+>> should have been sent to you upon completion). If not, totally OK - just
+>> wanted to try this first.
+>>
+>> Thanks so much!
+>> *Amber Glenn*
+>> Human Resources Manager | pineapple.co
+>>
+>> [image: Photo]
+>>
+>> T: 512-698-9198
+>>
+>> E: amber@pineapple.co
+>>
+>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>
+>> The content of this email is confidential and intended for the recipient
+>> specified in message only. It is strictly forbidden to share any part of
+>> this message with any third party, without a written consent of the sender.
+>> If you received this message by mistake, please reply to this message and
+>> follow with its deletion, so that we can ensure such a mistake does not
+>> occur in the future.
+>>
+>
+
+--0000000000005429fc05e558db8c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Awesome! Thank you ma&#39;am!</div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 3, 2022 at 12:35 =
+PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple=
+.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;border-l=
+eft-color:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Amber,<div=
+><br></div><div>Here is a copy of my signed Offer Letter.</div><div><br></d=
+iv><div>Thanks!</div><div>Aubrey</div></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 3, 2022 at 11:33 AM Amber=
+ Glenn &lt;<a href=3D"mailto:amber@pineapple.co" target=3D"_blank">amber@pi=
+neapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;=
+border-left-color:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Te=
+am -=C2=A0<div><br></div><div>I&#39;ve been doing audits of employee docume=
+nts and cannot seem to locate your employment agreement. Before redoing, I =
+wanted to check and see if you may have the signed and completed version of=
+ your offer letter (a copy should=C2=A0have been sent to you upon completio=
+n). If not, totally OK - just wanted to try this first.</div><div><br></div=
+><div>Thanks so much!<br clear=3D"all"><div><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom-width:1=
+px;border-bottom-style:solid;border-bottom-color:rgb(5,56,95)" width=3D"500=
+">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Amber Glenn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Human Resourc=
+es Manager<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">T:</span> <span style=3D"font-size:9pt;color:rgb(=
+16,16,16)">512-698-9198</span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:amber@pineapple.co" s=
+tyle=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"_=
+blank">amber@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000005429fc05e558db8c--

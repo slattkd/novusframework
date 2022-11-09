@@ -1,0 +1,225 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a92:c705:0:0:0:0:0 with SMTP id a5csp4916434ilp;
+        Wed, 10 Aug 2022 08:38:45 -0700 (PDT)
+X-Received: by 2002:a05:600c:1989:b0:3a3:461a:ad4f with SMTP id t9-20020a05600c198900b003a3461aad4fmr2959058wmq.110.1660145925117;
+        Wed, 10 Aug 2022 08:38:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660145925; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wJKzHJ92DbMPM+d4FhZbZKtOhhJfLo0uK7vgw1+lOBxFX8cpZHNXPrOL/lgIWBKasz
+         BZqykXfjZTsroyFIY8ZMN9niEf08p8iFbVe25DLwhz4wVhxSnGXBrjuFMYlXnbnJrGap
+         9iICGnlGgzopethEJTDh8Qm4ZwLIAqrTw7vsDn+MDmeotInvbrk8Te/j9/AYYP6SXGSa
+         F3AVSh9jW4+rskdJXyE3iJwk2jtdeFmtOCAP8p1uTcfMgDgiWMg4fcEu1dUhCZCgNM2M
+         D3hX0K2xkFFkA+lhpp5dBGmwNJkIaMPkDVUy9Dq5kPDa0ILMUbO85czKugkqjs3jawBW
+         Vwxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=h/B59wKtCemedKxOLjdiD4xDE7D6WfKr8lOCmDjqM9w=;
+        b=aIgM4RXVK6mbBDrrv5WzueCsOe0Svlge/Oh/1nmDwqpa8kxJtXEsm2z4NR/G5zsqzW
+         ZPfGliEAZ9atY9OoyaaGiC6AksSjBFyAuuhZUh9g4NAy4UIinZ4KlpdxaIFjxTmAtZ5q
+         U3E1f0XMFwxzgjBJromh4r1fTItan1YLkUQ1yQkfTL7pwWC6vE3u9obQOqPN62OuxUqb
+         rIzblxISH620KNcp0SoHG90kgi91hV2h9376DM8OhqmTPs9Bku9T0JFj0MK330viWSf3
+         3RS/dkaGMqYo1o69Y4h0S/8E20x8CuvnzaJEJJpWZb9rXZd9laQ8fAkjnnCKg0pk5zVK
+         U2eQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=RK7U0lvl;
+       spf=pass (google.com: domain of taylor@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=taylor@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <taylor@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i5-20020a1c3b05000000b003a53a62ccf8sor601587wma.10.2022.08.10.08.38.44
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 10 Aug 2022 08:38:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of taylor@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=RK7U0lvl;
+       spf=pass (google.com: domain of taylor@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=taylor@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc;
+        bh=h/B59wKtCemedKxOLjdiD4xDE7D6WfKr8lOCmDjqM9w=;
+        b=RK7U0lvlWZKnbs5/C4EUOkI33gBwqDIVrPZEMXqkHx8n5dqE8XDdeVFPd1OmX7o/7j
+         Yg/F/+elgHgkl7wBY9ALLp1juF3L3zU2LNkPNjI+GtQC3Hpur4x9VdRvVDN9LVs8L/Lt
+         CzJIqp+CAsWNJ1pgy85GvC2XVX/Q/vB5WrtDvSh1c/TSfzU+7IyWivN0RBLGd4XUjOWq
+         +v43DWdw+y604HW32i8SQZ4LrAbU8+PoT7nqR90KhvOEib8tUOAE6Xsz/QC+aXca5hbH
+         tpxGEToS+YUipEnTbzd/zHdRvGXD0QQqECCuV/UBnes3ccmb64JxAOURKNvLMBFyl6pj
+         gBDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc;
+        bh=h/B59wKtCemedKxOLjdiD4xDE7D6WfKr8lOCmDjqM9w=;
+        b=ANph+JhsEmx8jBW3M98faCP+0H3LYSYKSi7Iyo//snXoHY/6IcCoztqlpvhw9hES23
+         K5AG9DuK8aO5VYi7XAz9ORzGeIJtTYTKN0ubhxhn5Ibwj8ZbY1iv6z+Qckgf3LrurHLl
+         xet5eB42PYlT2Ma+/+1RIQEdlu/sJF2xJvhbi3cPmQCfnCbvsoKTzufUnkpMKgLNHtKe
+         J+TpvABWFtaR6AinrLrh3vU3ZWeomCSpwq44IsF5pDnHGg0hLAyX+2VoMEQwEZKmLv8z
+         eugi9k1tzaFOlxc6dSvV/R2drX7LZYJu5boM3iXhpcsN4CQwAOWRmaE1ZLj0YnrSbr3n
+         gppw==
+X-Gm-Message-State: ACgBeo36W1UUtMbdx8OaqWXhjln9OOAEPJrjeAfip2P+sS2KMxM/zTgL
+	0RrNTnK0aXm9baY5pOkqcPgNczzSzEiH9gUbc2bjBodk
+X-Google-Smtp-Source: AA6agR6XxKCj5HEUx9gPjanL1McCIOUh41L65n0uCr9EEKDWGGKqKeOIn1yGUHZL8hN2BIzEDak/PvtAPZMlmsn4ybU=
+X-Received: by 2002:a17:907:2706:b0:730:95df:66ec with SMTP id
+ w6-20020a170907270600b0073095df66ecmr21334547ejk.260.1660145924583; Wed, 10
+ Aug 2022 08:38:44 -0700 (PDT)
+MIME-Version: 1.0
+From: Taylor Piccolo <taylor@pineapple.co>
+Date: Wed, 10 Aug 2022 11:38:33 -0400
+Message-ID: <CAENz_14jB268h-9jDHvJxxQ3gAXvtMw01196g75KQ52RW1jgGA@mail.gmail.com>
+Subject: API Connection Scope
+To: Brooke Whoolery <brooke@pineapple.co>, Jarren Scheller <jarren@pineapple.co>, 
+	Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000001c4cce05e5e4d8f2"
+
+--0000000000001c4cce05e5e4d8f2
+Content-Type: text/plain; charset="UTF-8"
+
+Good morning everyone!
+
+Hope you're all doing well! Attached is the current scope for the API
+Connection to our Fulfillment System. Please take a look, and let me know
+if you have any questions or require any additional information or
+specifics!
+
+Thank you!
+
+
+ API Connection Scope
+<https://docs.google.com/document/d/1Tx9ZydbeCnvxGQKYOkmqC8Of15tkYPAzffE_Y5WW8rE/edit?usp=drive_web>
+
+
+-- 
+
+
+
+*Taylor Piccolo*
+Supply Chain & Inventory Manager | pineapple.co
+
+[image: Photo]
+
+E: taylor@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--0000000000001c4cce05e5e4d8f2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif">Good morning everyone!</div><div class=3D"gmail_default" sty=
+le=3D"font-family:times new roman,serif"><br></div><div class=3D"gmail_defa=
+ult" style=3D"font-family:times new roman,serif">Hope you&#39;re all doing =
+well! Attached is the current scope for the API Connection to our Fulfillme=
+nt System. Please take a look, and let me know if you=C2=A0have any questio=
+ns or require any=C2=A0additional information or specifics!=C2=A0</div><div=
+ class=3D"gmail_default" style=3D"font-family:times new roman,serif"><br></=
+div><div class=3D"gmail_default" style=3D"font-family:times new roman,serif=
+">Thank you!</div><div class=3D"gmail_default" style=3D"font-family:times n=
+ew roman,serif"><br></div><div class=3D"gmail_default" style=3D"font-family=
+:times new roman,serif"><br><div class=3D"gmail_chip gmail_drive_chip" styl=
+e=3D"width:396px;height:18px;max-height:18px;background-color:#f5f5f5;paddi=
+ng:5px;color:#222;font-family:arial;font-style:normal;font-weight:bold;font=
+-size:13px;border:1px solid #ddd;line-height:1"><a href=3D"https://docs.goo=
+gle.com/document/d/1Tx9ZydbeCnvxGQKYOkmqC8Of15tkYPAzffE_Y5WW8rE/edit?usp=3D=
+drive_web" target=3D"_blank" style=3D"display:inline-block;overflow:hidden;=
+text-overflow:ellipsis;white-space:nowrap;text-decoration:none;padding:1px =
+0px;border:none;width:100%" aria-label=3D"API Connection Scope"><img style=
+=3D"vertical-align: bottom; border: none;" src=3D"https://drive-thirdparty.=
+googleusercontent.com/16/type/application/vnd.google-apps.document">=C2=A0<=
+span dir=3D"ltr" style=3D"color:#15c;text-decoration:none;vertical-align:bo=
+ttom">API Connection Scope</span></a></div><br></div><div><br></div>-- <br>=
+<div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signatur=
+e">=20
+
+
+<div>
+
+<table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500p=
+x" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id #05385f" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Taylor Piccolo</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Supply Chain &amp;=
+ Inventory Manager<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">E:</span>=
+=20
+			<a href=3D"mailto:taylor@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:#101010" target=3D"_blank">taylor@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">A:</span>=
+ 			 		=09
+					<span style=3D"font-size:9pt;color:#101010">13423 Blanco Rd PMB 8024</=
+span><span style=3D"font-size:9pt;color:#101010">, </span>		=09
+					<span style=3D"font-size:9pt;color:#101010">San Antonio, TX 78216</spa=
+n>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div>
+
+--0000000000001c4cce05e5e4d8f2--

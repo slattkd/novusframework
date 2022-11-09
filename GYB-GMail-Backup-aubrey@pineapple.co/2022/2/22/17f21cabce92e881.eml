@@ -1,0 +1,63 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:cb86:0:0:0:0 with SMTP id mf6csp3686386ejb;
+        Tue, 22 Feb 2022 06:16:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy7y9XgdaNZnj03J2QDtVU1ywI2aPSYJR17A6sOi0dimVJdn8eeyCypB58xFhrKKSbnodNZ
+X-Received: by 2002:a17:90b:4cc6:b0:1bc:210d:b6fa with SMTP id nd6-20020a17090b4cc600b001bc210db6famr4387583pjb.104.1645539409289;
+        Tue, 22 Feb 2022 06:16:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645539409; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UyuzQhcWVJZFoUOLT0HFUVa5qJDr4uhgw0r+n9YEenM1S4VA1deutZXB1krx+xJiIe
+         hUDCNK43FV6E9dNr+8TqpTdLQpcCJub2w5dV6mDDXNQv0kUuAFzjx2CPVKYUfcZWC+7s
+         toOpOTy4CyCduAMwUjTVGGCvzSSsfQosut4HQoUJsGVvdPowz0yRHEeeY52pKQ6NW7Kh
+         khdSSENYaB6etXjQSPQh9Hqf5vMFLlFWZx0YG4iW0UBtvt+Isjv8lrpGrFVLq5Ek2XTJ
+         AAVTW2ON9eg0tsE1sjQCTKI2XAjZML4Xk4E8u+K5+nyZO0iZYAh/d9kI8iofbvhrh2zT
+         M+Jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:message-id:content-transfer-encoding:mime-version:from:subject
+         :to;
+        bh=5xOr2kc5syPewz0nD9LP5Wh5Er4Wf7/+ZcGimdwAFSI=;
+        b=l5xZBblTqTpH6LWmTJgKgmNTeKhAH4MFE/xIwsnu2f2X4BB7Z4E/pAGcaV5/fm5y1R
+         PlXstJZHbsDQ0unIvQrUGl8xPWWBWDpeZgzp3wEcBnm/xERj3a7OLedeJfNOkl0ttZYn
+         OA5BJq2Ru6uFjWSkYzFoEf3FmTaMJgnuWjugaFRh6YCDQn5crwdgiSz4UNUUfb5UlW9w
+         xNHBfAO7nXKYGXe0oba6IvEZXgFDtC7WQU7BqMnODXuvl7d/4MTw+sOaLybyg1uxgSaD
+         Z5dIc5+1dIeexXLGgcAOgN/hCek4i5t4mIFPLywXMhyd3gnI/rao7yFPK6d7SPDmLQ4s
+         PD3A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of www-data@kount.net designates 208.75.115.254 as permitted sender) smtp.mailfrom=www-data@kount.net;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kount.com
+Return-Path: <www-data@kount.net>
+Received: from mx01.core03.kount.net (gn1-core03.kount.net. [208.75.115.254])
+        by mx.google.com with ESMTPS id l19si12897725pfc.89.2022.02.22.06.16.49
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Feb 2022 06:16:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of www-data@kount.net designates 208.75.115.254 as permitted sender) client-ip=208.75.115.254;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of www-data@kount.net designates 208.75.115.254 as permitted sender) smtp.mailfrom=www-data@kount.net;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kount.com
+Received: from jobs03.prod04.kount.net (jobs03.prod04.kount.net [10.2.36.22])
+	by mx01.core03.kount.net (Postfix) with ESMTP id 8C0BF7FC40
+	for <aubrey@pineapple.co>; Tue, 22 Feb 2022 06:16:48 -0800 (PST)
+Received: by jobs03.prod04.kount.net (Postfix, from userid 33)
+	id 81C045FD41; Tue, 22 Feb 2022 06:16:48 -0800 (PST)
+To: aubrey@pineapple.co
+Subject: New Kount AWC account created for you
+From: noreply@kount.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: BASE64
+Message-Id: <20220222141648.81C045FD41@jobs03.prod04.kount.net>
+Date: Tue, 22 Feb 2022 06:16:48 -0800 (PST)
+
+QW4gYWNjb3VudCBvbiB0aGUgS291bnQgQVdDIGhhcyBiZWVuIGNyZWF0ZWQgZm9yIHlvdS4gWW91
+IHdpbGwgbm90IGJlIGFibGUgdG8gbG9naW4gdW50aWwgeW91IGFjdGl2YXRlIHlvdXIgYWNjb3Vu
+dC4gR28gdG8gdGhlIGZvbGxvd2luZyB1cmwgdG8gY3JlYXRlIGEgcGFzc3dvcmQgYW5kIGFjdGl2
+YXRlIHlvdXIgYWNjb3VudDoKCmh0dHBzOi8vcG9ydGFsLmtvdW50Lm5ldC9wcm9maWxlL2FjdGl2
+YXRlLmh0bWw/az01OEYwNzBENjFBRUIyRjZFNEJGNEI3RTE2QUU4REY0NzBVREhDRzVGUVhNSkta
+RTVGNEUyNzVEQjlDRlc0Vk1ISzdOVjNYNTZZTVZMVjFUTDUxSlFLV0swV0kzNjFJTTBWWTRETkEz
+M0gwRVRYWE01Mk9ERkpXNzZHR1NWNUlZS0JRTzcyTkZEUk9CN0tXV1BXNkNCNEtYMDVOWUlKUkVJ
+SFRTUEJSOEwxRURUSlVNMkRVVlpUTUI2NERIQjRKTFo2U09MRVYwT0JGVUU0OVQ4OEs4MTNGRkNW
+WVI1MEtBWldSM05GREhFMEczTkxVNTNORjJZUFExVEg0RzQ1MEVYCgpUaGlzIGxpbmsgaXMgdmFs
+aWQgZm9yIG9uZSB3ZWVrLiBJZiB5b3UgaGF2ZSBub3QgYWN0aXZhdGVkIHlvdXIgcGFzc3dvcmQg
+d2l0aGluIHRoZSB3ZWVrLCB5b3Ugd2lsbCBuZWVkIHRvIHVzZSB0aGUgJ0xvc3QgUGFzc3dvcmQn
+IGxpbmsgdG8gYWN0aXZhdGUgeW91ciBhY2NvdW50LgoKVGhhbmsgeW91Lgo=

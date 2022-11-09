@@ -1,0 +1,336 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:ad88:0:0:0:0 with SMTP id la8csp1683592ejb;
+        Mon, 22 Aug 2022 09:51:47 -0700 (PDT)
+X-Received: by 2002:a05:6214:20a5:b0:485:aa1e:1479 with SMTP id 5-20020a05621420a500b00485aa1e1479mr16527248qvd.126.1661187106915;
+        Mon, 22 Aug 2022 09:51:46 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1661187106; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=HMtyEVosPiI47YxtZwhPG7uInf2dD2R7nD67ZCWBIf2gVBjIPslRlIYEpl4w5qz84T
+         gK8mn6Sly/eCTUSz7LSyPMWIA2DJ2eeeZJvcPFLoxVoTRCNTr1OcHFqoLyhZAaBFEK4T
+         +ews7mBC0QRg7/kTYAF8dCDZqBy9Q/FWVP7v6lD5I0z+Q+dxErUskkWYbHmlL54KwZtz
+         HdIaXKlcjkCoPUe4avPIQ9rrql922nGywJZfAmERGOj6t2wbzP6afK+c7k6ypJZ7dBMH
+         B5bzD7/C5+d7I4T0f9c/J0FbXbjRlxcg9GiSVyKycSXxiOw5WS5/J4YfCUJ4UCXLKVQI
+         ocDw==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=6EPQ6hvoEuY4q9QKsOFb76d7T6QuMCiNNFIF7ESwVEQ=;
+        b=GUx9ZxjLjsFFcaL0LMoOULPxLHvnJetXau8inYkI5gmlz66AmoGnQWDhp28P2G/P+r
+         9ebp9BvdFNLCTj3pjzhGnbaOIEUBQflnMhDI7xAwmoMjB78+48jWEgMGhQSu2YuHFTA7
+         FOxxOFw03SuGLU04BCQg2uACNwtOc5Cs8PKC3X71bdClpGyS6/090ZraVakyMp0nBs2b
+         9rJffDa6uki04eFemNupPcR63yHDgWTWpdCtJIONO3H8jk4AIfX5bsO4FjNhG7IBYlKv
+         NWmuL+Dv9ML/M5BvwA8sOF+xRsAhIIkH5GJohCCbpHxm5xaequA4+BT/fAJ/Elq6G8fd
+         +6vw==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=jVyaxMCk;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbdf2vv6ysijrbfxir2mamgqelz2s2pq@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBDF2VV6YSIJRBFXIR2MAMGQELZ2S2PQ@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBDF2VV6YSIJRBFXIR2MAMGQELZ2S2PQ@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id gd5-20020a05622a5c0500b00342fb773006sor8201227qtb.61.2022.08.22.09.51.45
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 22 Aug 2022 09:51:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbdf2vv6ysijrbfxir2mamgqelz2s2pq@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=jVyaxMCk;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbdf2vv6ysijrbfxir2mamgqelz2s2pq@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBDF2VV6YSIJRBFXIR2MAMGQELZ2S2PQ@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1661187105; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=ffNX47ONuo/lBm5XyEJFpP+xviRfcJZfVPIiAsYh3UG/proT5EoNvZeYsQDEw9oJ7T
+         ucE+JRwiQw1H5a/ZDY8CeAEty02aGIJAfjSkS94nyZP71wIyndwYxQqe1vKW5lisRqQ4
+         uSHtP6lEBLfHlG2xHrLFay1LZxQOpU5NbGCP+/xzND7msqg21aGEWSR8TtwldpZcqutm
+         9HSnOrWWX5MJAmr4uXDA54TS/dSy7CCtVrdycWZFHYgbQ+moNTo0+N+MTgEYcv68Ccsm
+         13sZUS9A7KQMK+coUUe3obRQEwFYGHbyC6zd7iskXOhJjVY3YzGWVwI8A+o2cIMNJUf6
+         XEDA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=6EPQ6hvoEuY4q9QKsOFb76d7T6QuMCiNNFIF7ESwVEQ=;
+        b=uZh0qO/pVujcwtGymMtwSSl+R5bSnVS8Olb8HcsPn6uza5Hm2qTedJFg72/Ml+X1rk
+         V4G5KQ0i2/kMYk6RHMVyph0NOi9yZvQOjSq/KbBLBkG0LzH2B2/1rVdPIny/K2Tdix5X
+         ajh17NBvdsCuRF4Ek12WoC0Us5bsb9Y80hoYJWCT00W9lFZzC6ec7G0ASWzJBTL6R1BQ
+         nso5zskNd6XNnaCYX7pcn7+PdA3O36fy0YdmgFpWToPr1GP5/EvcLUGZcFjrz81Meq4N
+         TshmgnJjsCoDScembm2kQXjt7pzeWBk1+6/rgdc9rSKJO27x0tCzgR7DdLelvjDX4nJ0
+         d5eQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=xX8u66c3;
+       spf=pass (google.com: domain of kendal@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kendal@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:x-original-authentication-results
+         :x-original-sender:to:subject:message-id:date:from:mime-version:from
+         :to:cc;
+        bh=6EPQ6hvoEuY4q9QKsOFb76d7T6QuMCiNNFIF7ESwVEQ=;
+        b=jVyaxMCkS2OOD88ESWEkne3NYhf8m46d0H3vrRSU99O9JzW87gzoFSqHkwk8/Losmm
+         ALJpmYRXABBpK2HW8uv02Jb5eYMQTQ6K1nk6R0O3ReFtQJ6GKz+h5gEfG8PSNDmYmpKB
+         zOiFuuSOSq/V9fMjSPRkpOJRIV9j3Tyk+BPgD1ZRpcGa0nufEjFdHfo4de3bhEbSu/CG
+         dzRntnqoem5tty0oyOdXfCewPHPLXlhFXB/dlmRcw0D75MhiaqL5M5aaBO89JHGGZGc8
+         pGOkctPqbnNEHSD8oMspTevgjtD18p3pIVZWrvop1wgDFLgiVSlkYHXIMqCS8MJ0Hshm
+         av2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=list-unsubscribe:list-archive:list-help:list-post
+         :x-spam-checked-in-group:list-id:mailing-list:precedence
+         :x-original-authentication-results:x-original-sender:to:subject
+         :message-id:date:from:mime-version:x-gm-message-state:from:to:cc;
+        bh=6EPQ6hvoEuY4q9QKsOFb76d7T6QuMCiNNFIF7ESwVEQ=;
+        b=tIpNf9KJYyKbI5Q5GeSmLFAP5FSk1uvXbxnhDcCi5PRSXIWdhG/70YP9oXuZg9uXVh
+         wVXA8c0YnurNkG0QZiQ15Lo3As6XG5fYsOQ/WSIYeu1h/mAus+qISeGA174OCs3dqi/F
+         GQBtv2amhcqJ/ELBMREvAGNPqccTmX45BsYrAkxaj40MjdCWb6ryWcznyMWcpjLt8QPC
+         1GJjhG1groirCwdW9svLQ2sCQhiQMe+tEvMuhrjjhK+FUeSpSGfJlqvkWTZKlokYpbZ6
+         24L41GH3yfMybWra2d9YuWrY8f/DZHyThh2r1KFXZfOiFUQc2L0ERNj1FPlTiKRyE/yB
+         WLIg==
+X-Gm-Message-State: ACgBeo2WuEofvBS6r/vffESftanGrBXbce/oRsrJYMxWlgy/RvBXB8QI
+	8FpWaBDzOhnEhkBpKJmz8vFcYbaB
+X-Google-Smtp-Source: AA6agR6gKhoerW9s01sRTOKrj/ejPF6R1TNsB9FXshIzrS3rd8l4R/J1Fqdw51MI2sdtiTn2qPLGFg==
+X-Received: by 2002:a02:cccd:0:b0:346:e38b:1c5e with SMTP id k13-20020a02cccd000000b00346e38b1c5emr9613633jaq.47.1661187095366;
+        Mon, 22 Aug 2022 09:51:35 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a05:6e02:1114:b0:2e8:f9d9:532e with SMTP id
+ u20-20020a056e02111400b002e8f9d9532els1017992ilk.8.-pod-prod-gmail; Mon, 22
+ Aug 2022 09:51:34 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1c44:b0:2e5:a7c2:aa9 with SMTP id d4-20020a056e021c4400b002e5a7c20aa9mr10303277ilg.27.1661187094641;
+        Mon, 22 Aug 2022 09:51:34 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a05:6e02:1087:b0:2e6:51ae:282a with SMTP id
+ r7-20020a056e02108700b002e651ae282als2307166ilj.4.-pod-prod-gmail; Mon, 22
+ Aug 2022 09:51:34 -0700 (PDT)
+X-Received: by 2002:a92:ca0f:0:b0:2de:30d:a2b8 with SMTP id j15-20020a92ca0f000000b002de030da2b8mr10548667ils.15.1661187093932;
+        Mon, 22 Aug 2022 09:51:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661187093; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ip9PY5SfX6sgeQWHvUS1Ge4gDLr95T+pmR08sFSfHVG8aYU94ixf9FOaG1pyRKC2rE
+         7w10vBgeKxg40f4Wfm78dHklMQro6SipM0DqJWoZJHYFRx10wsTSFM09glXsMbqv+bUp
+         rzyZJOzACZM97tqsxhgVKt1TNDda6Ga/hs26RzzyMcFxotuQd6OQ3Ngtx4J0M9Q6J/Ak
+         6QNmJlkDCkNFXo8EyoAKsECTHotH1vhOe+Su3QAh1GO5ZWSO27ZQFyb3tcBC3rD+bpUL
+         CmtvTDHe0upxpMKFFe/K8H8O7QjGWKpbf0eGcotDv22wxhJ9fNl25Om7AMpxnH7sHNTu
+         r1jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=6EPQ6hvoEuY4q9QKsOFb76d7T6QuMCiNNFIF7ESwVEQ=;
+        b=rpsgCQwgO8PtwIxNzFkbQwuhkebSfK4fS1dJfqf05V5zFJFNIf5n7HvmX0oJoq9qHT
+         IkEURwzbXvz4ucJHYgeKRezDr7HphkD0J1O6RDxt4he7aXk2Vu8rXqVBxJmc2i2ME0yN
+         X25yhEzWKqmGp3l7LhgnOKMqmijlzN4kWv/+JoGFHzFYh9bD+2DnxPaXMUKzs44V935q
+         xQOg0gAfqDaOZMpis9+u1fgEtwuwbni42sdBzuv8S4fiYNJiUaewRc/i4KxF+btbptxv
+         ssr27SzRmBMeWDPRlN6CKzZteI0EqD/2367V+shGpcUCIbVqp1EFS5ugdNW3mj0Doci/
+         jjPg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=xX8u66c3;
+       spf=pass (google.com: domain of kendal@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kendal@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z17-20020a056e02089100b002de8cbafb43sor3153407ils.77.2022.08.22.09.51.33
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Mon, 22 Aug 2022 09:51:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kendal@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a05:6e02:2162:b0:2e5:d70a:3af5 with SMTP id
+ s2-20020a056e02216200b002e5d70a3af5mr10236777ilv.3.1661187093443; Mon, 22 Aug
+ 2022 09:51:33 -0700 (PDT)
+MIME-Version: 1.0
+From: Kendal LaFleur <kendal@pineapple.co>
+Date: Mon, 22 Aug 2022 11:51:19 -0500
+Message-ID: <CADyF036BTG9q5L2f-vLSOX-oK5QAwSGQ1Ci7Y8aEkLfoOFKhVA@mail.gmail.com>
+Subject: The Big Product Brainstorm of 2022 is LIVE!
+To: All <all@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000009c52ba05e6d74287"
+X-Original-Sender: kendal@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=xX8u66c3;       spf=pass (google.com: domain of kendal@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=kendal@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--0000000000009c52ba05e6d74287
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+*TODAY IS THE DAY!* *Our product idea brainstorm is officially open for
+submissions! *
+
+Please use the Google form here
+<https://docs.google.com/forms/d/e/1FAIpQLSeSYBF97hjLroRZXWM3D3yZP3ueOLc2ek=
+CTSlMO5cTsppzK6w/viewform?usp=3Dsf_link>
+and submit your ideas by end of day on *8/29*!
+
+I would love to know all the details of your product idea. If you=E2=80=99r=
+e still
+unsure about your idea, then I would submit it anyway! Feel free to share
+additional thoughts and inspiration behind the idea too! It would be great
+to get as many specifics as possible. Also, don=E2=80=99t sweat it if your =
+idea
+isn=E2=80=99t fully developed yet! Even early-stage, unpolished ideas can l=
+ead
+somewhere great.
+
+
+Please note that the answer fields on the Google form allow an unlimited
+number of words. The fields will expand as you type, or you can copy and
+paste your text from elsewhere. If you want to submit multiple ideas,
+please use a separate form submission for each one.
+
+I truly value the time and effort you=E2=80=99re putting into this brainsto=
+rm! I
+can=E2=80=99t wait to read your ideas. As always, feel free to reach out to=
+ me any
+time with questions!
+
+Have a great week!
+
+
+*Kendal LaFleur*
+Product Development Manager | pineapple.co
+
+[image: Photo]
+
+E: kendal@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--0000000000009c52ba05e6d74287
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><span id=3D"gmail-docs-internal-guid-2bec600d-7fff-0365-34=
+fd-2a2e3e203202" style=3D"color:rgb(0,0,0)"><font face=3D"arial, sans-serif=
+"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+"><span style=3D"font-variant-ligatures:normal;font-variant-east-asian:norm=
+al;vertical-align:baseline;white-space:pre-wrap"><b>TODAY IS THE DAY!</b> <=
+b>Our product idea brainstorm is officially open for submissions!=C2=A0</b>=
+</span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;marg=
+in-bottom:0pt"><span style=3D"font-variant-ligatures:normal;font-variant-ea=
+st-asian:normal;vertical-align:baseline;white-space:pre-wrap">Please use th=
+e Google form <a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSeSYBF97h=
+jLroRZXWM3D3yZP3ueOLc2ekCTSlMO5cTsppzK6w/viewform?usp=3Dsf_link">here</a> a=
+nd submit your ideas by end of day on <b>8/29</b>!</span></p><br><p dir=3D"=
+ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span styl=
+e=3D"font-variant-ligatures:normal;font-variant-east-asian:normal;vertical-=
+align:baseline;white-space:pre-wrap">I would love to know all the details o=
+f your product idea. If you=E2=80=99re still unsure about your idea, then I=
+ would submit it anyway! Feel free to share additional thoughts and inspira=
+tion behind the idea too! It would be great to get as many specifics as pos=
+sible. Also, don=E2=80=99t sweat it if your idea isn=E2=80=99t fully develo=
+ped yet! Even early-stage, unpolished ideas can lead somewhere great.=C2=A0=
+</span></p><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-b=
+ottom:0pt"><span style=3D"font-variant-ligatures:normal;font-variant-east-a=
+sian:normal;vertical-align:baseline;white-space:pre-wrap"><br></span></p><p=
+ style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D=
+"font-variant-ligatures:normal;font-variant-east-asian:normal;vertical-alig=
+n:baseline;white-space:pre-wrap">Please note that the answer fields on the =
+Google form allow an unlimited number of words. The fields will expand as y=
+ou type, or you can copy and paste your text from elsewhere. If you want to=
+ submit multiple ideas, please use a separate form submission for each one.=
+ </span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;mar=
+gin-bottom:0pt"><span style=3D"font-variant-ligatures:normal;font-variant-e=
+ast-asian:normal;vertical-align:baseline;white-space:pre-wrap">I truly valu=
+e the time and effort you=E2=80=99re putting into this brainstorm! I can=E2=
+=80=99t wait to read your ideas. As always, feel free to reach out to me an=
+y time with questions!</span></p></font></span><div><font face=3D"arial, sa=
+ns-serif"><br></font></div><font face=3D"arial, sans-serif">Have a great we=
+ek!</font><br class=3D"gmail-Apple-interchange-newline" style=3D"color:rgb(=
+0,0,0)"><div><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"g=
+mail_signature"><div><table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#=
+05385f;max-width:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"><t=
+body><tr><td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px so=
+lid #05385f" width=3D"500"><span><font color=3D"#000000" face=3D"Arial, Hel=
+vetica, sans-serif"><span style=3D"caret-color: rgb(0, 0, 0);"><br></span><=
+/font><br></span>
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Kendal LaFleur</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Product Developmen=
+t Manager<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">E:</span>=
+=20
+			<a href=3D"mailto:kendal@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:#101010" target=3D"_blank">kendal@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">A:</span>=
+ 			 		=09
+					<span style=3D"font-size:9pt;color:#101010">13423 Blanco Rd PMB 8024</=
+span><span style=3D"font-size:9pt;color:#101010">, </span>		=09
+					<span style=3D"font-size:9pt;color:#101010">San Antonio, TX 78216</spa=
+n>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+
+--0000000000009c52ba05e6d74287--

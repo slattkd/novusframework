@@ -1,0 +1,294 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:4541:0:0:0:0 with SMTP id s1csp439773ejq;
+        Thu, 22 Sep 2022 10:51:20 -0700 (PDT)
+X-Received: by 2002:a5d:64eb:0:b0:22b:fe0:98e2 with SMTP id g11-20020a5d64eb000000b0022b0fe098e2mr2835310wri.178.1663869080195;
+        Thu, 22 Sep 2022 10:51:20 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1663869080; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=q2n/aelxwzZC9hK48PwL4TXH5egjqnzIx0prNt/dHzZHgh/37z/57ufnymmL5tim2s
+         W6pMyF3CMOjjLijzO0MM6pLHVpzb+pYy0xKJdFg/JqDJqbuYxYPwI+NlLPNVTHU3wbMw
+         PXYodN5cA+VLQCVbokgEvdlAcTkMxz3rAWiHJbEzUtg3n7/um+L1psdBc58XUxW5o9yw
+         IUQX/bLzjPgtRSRrgKDYFLxLf3PFp7vUCUTGZss1l6TCV1PnU8Al6vKsSmTtuCzeiE5x
+         FdGChSqpwQVL/cXTW18feSo0cvaMxCyWmgs2yFHtF81g52pEJdqwFl6IPV2bZNIy7+TL
+         XpMw==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=LX1vJN4vNnCuwcgNecBFhtcKcJZbNqOTNLrUilZqrLk=;
+        b=SM12E+v8egGKJfcCQdANyo5HcNAW8Yeur5PwP0UR4TwmV2ZR1U/EaHzLxSXi/rW5lr
+         FmKDlKS35fwZmVh+D33rHKGyy1hJHCElFp1oCV9UC8D9PM54A0ln30cR1/SrfNKIRPE8
+         fTDLeYGE7TttDYWmIeP7IHWqFpArUfPCIfW71n7T+Ynet+eBkHFvVrrQ/p+keZsF6XRm
+         NjWF3O4ltAi7cofnWnsah6+dvmy/r5GDSOrUx3bMXZr50ckaBL640OnheWdGPowk25pK
+         gfRBGCICg6q9KDM3O6q7atPoJAktgCdQdWozm98b9xsFk/pvRXqrFwSNqMrxYQJJkzeC
+         v8rA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=2zNZwik5;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbdc676no2mhrbc6bwkmqmgqebrtuc3a@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBDC676NO2MHRBC6BWKMQMGQEBRTUC3A@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBDC676NO2MHRBC6BWKMQMGQEBRTUC3A@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id c14-20020a05600c0ace00b003a53a62ccf8sor68604wmr.10.2022.09.22.10.51.19
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 22 Sep 2022 10:51:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbdc676no2mhrbc6bwkmqmgqebrtuc3a@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=2zNZwik5;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbdc676no2mhrbc6bwkmqmgqebrtuc3a@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBDC676NO2MHRBC6BWKMQMGQEBRTUC3A@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1663869079; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=S9Au4voL1zimaRlUvXavgtclgB/jtfCj00NnjGX836RvggMYQkkqYgB8UOaxxgt8NM
+         +wYA8KLtoSBySYwPkvYms8huAwjN8fJ+LZ9SJjnyhEeLJf6hUNS1+qw2C5kQagKUQdR6
+         m/QzFQjPnTJ2Xpe5pwBapVKJ+5VUMy2IJSkazys03tzQ5on73zwQCZX3aWh4lrghJOvv
+         8ZNQTCHl7qhG8Aglha2j/hOXvujXmo63Gu5Bms2Lxsq9GQ83QjgAHSQhpzXl4ryMXfmP
+         eF/5a8lskckoZVqnfVjpkrjbgE05WiZKNcbHTGNPYEbwqWDqNuOOc/sbgcpKDkY+K4kd
+         ThPw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=LX1vJN4vNnCuwcgNecBFhtcKcJZbNqOTNLrUilZqrLk=;
+        b=jVxDCBJUUgvHfhdNhecu1Rj4XrlebAGodIUOI+wN1l5Nsy36zvVOXDF0//2jCzPB7P
+         I9DU4P3zqq0NEQl7a47KNKPeWzlhzrRUDgDYgd1jSakiqBpkNnbbymgYjXFgLzNYJSi5
+         niLX2mAgjsXNPYxKJqrRwRPtTQSEn7yYG3og1keN6A7To+BpXmge+ENMuuVsM6ROqAp3
+         AWwpXTnJvmQOxnPPtCB5O+plkF+bEoo1p7N2JDLktEu9Q9CQAzdck25bIVbgyV2nkigg
+         YAjwpTDgdDlrwdyyjmb6H6eUVMaDoT5IsC87XgN22r1t7NjEIEAVkagLCPC5CqWOn3Nv
+         j0pA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=vkHMeeSQ;
+       spf=pass (google.com: domain of kirsten@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kirsten@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:x-original-authentication-results
+         :x-original-sender:to:subject:message-id:date:from:mime-version:from
+         :to:cc:subject:date;
+        bh=LX1vJN4vNnCuwcgNecBFhtcKcJZbNqOTNLrUilZqrLk=;
+        b=2zNZwik5JCrnlZMayjQb8ZL+hrtlk4a9R+xvjlUo6IUSusjqXHa+xguW0TSK7z9RLO
+         I5aLeUlDO1UfURgPaF9mRGR/aAadp+Mw7ENfOAKfZfsTxRjcrU0BIEYCK5/Bdg7WsZec
+         o9YkYBrmhtsqz+FCQ2cUrndQWuyOheTK2kuAcp2Y1kBFQl0i3WXlOmuPhl3G8P4k0CUw
+         QYYhJdFtoYtRFaHwusQ4S4ph3UuFN/CbXTk0LFhDWrIMCqr/XBOHxmC1O+HDFlJB4zqs
+         YefmUw3B8dzx4K7YckapyUFvSnYy7rtnJiLQgqhDY28RwNXQoUaPKQmVsY/Uwv81aFbt
+         zq5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=list-unsubscribe:list-archive:list-help:list-post
+         :x-spam-checked-in-group:list-id:mailing-list:precedence
+         :x-original-authentication-results:x-original-sender:to:subject
+         :message-id:date:from:mime-version:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=LX1vJN4vNnCuwcgNecBFhtcKcJZbNqOTNLrUilZqrLk=;
+        b=of3kPYuuy6Ks/5d9FeuKdEe4inW+18HlGwU/gzInj/4SPu9aDmvAPEdzwBYXfc3ija
+         YGFns4ilh3KCAfvYFUBirAB0D8iP2xXvECUWAsGNgaoxs/2BEydzKLQWa8xDRdvI4TwI
+         ejSBMUWLpVl7WmvEEqsHkMr42DogwgtFT40vYU2dgeIN2KqFTqyYnyoJVyVVhFgG81HZ
+         kuufwQhU0p0sPiyd84sDhGq2z6WdYyYQgwWE+7tNNnyWi1mLzJLssZc1RuDOqDvw5sMo
+         jBxqm689EwR8Zjw9LFV889GKb9mWApxweSYnolyg89p8fPy6MGLe6Jexxj9LWgXrwCBY
+         1Q9w==
+X-Gm-Message-State: ACrzQf3olro8uN1N0sAKdIErk8GGfP1Z+NdNcq7WUdATPLc3dO5nX399
+	1/3z+Y2lUVZsv5Bv9QJkXUNj6eIw
+X-Google-Smtp-Source: AMsMyM5OXTq0xnnaHh+aQ9riNPgC1iX/gy4ELdk90LXz68qRq/TmJb98PzIC80u3OOeNijHkuMqOtA==
+X-Received: by 2002:a1c:4b03:0:b0:3b4:74d3:b4c5 with SMTP id y3-20020a1c4b03000000b003b474d3b4c5mr3236848wma.96.1663869069218;
+        Thu, 22 Sep 2022 10:51:09 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a5d:490a:0:b0:225:6559:3374 with SMTP id x10-20020a5d490a000000b0022565593374ls1769144wrq.2.-pod-prod-gmail;
+ Thu, 22 Sep 2022 10:51:08 -0700 (PDT)
+X-Received: by 2002:a05:6000:1204:b0:22b:3359:4112 with SMTP id e4-20020a056000120400b0022b33594112mr2704732wrx.700.1663869067883;
+        Thu, 22 Sep 2022 10:51:07 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:adf:d20c:0:b0:228:ddd7:f40e with SMTP id j12-20020adfd20c000000b00228ddd7f40els1770619wrh.3.-pod-prod-gmail;
+ Thu, 22 Sep 2022 10:51:06 -0700 (PDT)
+X-Received: by 2002:a05:6000:1882:b0:22a:f7a2:736a with SMTP id a2-20020a056000188200b0022af7a2736amr2787231wri.691.1663869066636;
+        Thu, 22 Sep 2022 10:51:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663869066; cv=none;
+        d=google.com; s=arc-20160816;
+        b=pkPTZPxapvPAgo8O8z2Oy8MIY/g1p4l/A0j57bu5oQV5/P4hHn81Mt3/Ve7KunYbhO
+         o7lH5I/dCvVqCD7BVgiXbwq73tf/cPlF+g/aXAtg+bo+iKJZLO6Wvgww0ARSOfqnQfm+
+         5uEsXiCbL8kcWvpvMxwlDuhQN9oNIJBLAIJLz4z0IbRgvpXgajh7ZwxkR5TLqOET5imk
+         zj6celuYmVuQPg8mLCFDEx2UdHMpg8bZDbNnzSMRNKI/uQHjRK3DXvg6mmmwRlabOp0Z
+         QHxCfdW6jo62DBlHmaT3dKRAXkQwLlbOz76L/6W2ubHYjOUQEVBITwTzKCijNdhYKgKu
+         fyaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=LX1vJN4vNnCuwcgNecBFhtcKcJZbNqOTNLrUilZqrLk=;
+        b=dUyJ4GbRTqdzi87z/ciCQZNYm/ukJ5k1LeSQpnnFOzOE2uuoxwuiTvETvA5bY2in6N
+         EteQt61zklgSQ+meRiZt1HU+hfRD1SXTykny54js7juYMfOxubrhFD3iaKDEusiuMTBp
+         GPwp1yGW0exZ8ptJEt0zGfN9z53rIJGNTFWEKV+AfSBtu4Y6fM+xDJMI2WVv0YQDi8PT
+         FmujUDQWZM2gCkU3t9g7NTloDexharM3hSHJrybN1Ytu9aAYF8SlsFkr5lOCzF+FgMZb
+         Fl/1wc1/jim2zayqMx3KqzO8+DMpXbdx7akMRbADMETOPP5tkOxGz3eCn+SOSjZ5PtjU
+         c7Bg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=vkHMeeSQ;
+       spf=pass (google.com: domain of kirsten@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kirsten@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a12-20020adfbc4c000000b0022afd6a4cb3sor3607524wrh.55.2022.09.22.10.51.06
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Thu, 22 Sep 2022 10:51:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kirsten@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:adf:eec3:0:b0:22a:d159:456c with SMTP id
+ a3-20020adfeec3000000b0022ad159456cmr2732494wrp.463.1663869066112; Thu, 22
+ Sep 2022 10:51:06 -0700 (PDT)
+MIME-Version: 1.0
+From: Kirsten Woods <kirsten@pineapple.co>
+Date: Thu, 22 Sep 2022 11:50:55 -0600
+Message-ID: <CAF+qxELQ4pyhJrLd16gCA6Uy3UtZxdbYF03JjO_C9R_ofP=ruA@mail.gmail.com>
+Subject: Teamwork Software: New "Requesting Deliverables" Process
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000a38d4305e947b409"
+Bcc: all@pineapple.co
+X-Original-Sender: kirsten@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=vkHMeeSQ;       spf=pass (google.com: domain of kirsten@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=kirsten@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--000000000000a38d4305e947b409
+Content-Type: text/plain; charset="UTF-8"
+
+Team,
+
+Many of you are aware we recently rolled out Teamwork as our new Project
+Management software tool.  We are starting to use Teamwork to help us track
+deliverables for our existing, live products, what we are referring to as
+"Sustaining Products" within Teamwork.  As part of this transition, we
+would like to introduce the team to our new "Request Forms" built out in
+Teamwork for our Copy, DevOps, Graphic Design and Video teams.  The new
+request forms will be used for any type of request, support or deliverable
+needed from the aforementioned departments.  A few examples might include:
+
+   - Copy script needed for a new test video
+   - DevOps support to make a change to a website
+   - Graphic Design support to create graphic content for a campaign push
+   - Video editing support to put together a custom video for a product
+   upsell
+
+*Moving forward, we would like to ask ALL teams to use the below request
+forms for any work needed from Copy, DevOps, Graphic Design and Video
+teams.*  As soon as a new request is submitted by the team, details will
+feed into Teamwork, and flow through a process that will allow the teams
+more visibility into timelines, ultimately helping us better track towards
+deliverable requirements.  *The form links are included below:*
+
+*Copy*: https://pineappleproducts.teamwork.com/p/forms/8jzE9VPuEymoBrjjwZVZ
+*DevOps*: https://pineappleproducts.teamwork.com/p/forms/LMEEjpCp4oVNwWVZxx2
+*Graphic Design*:
+https://pineappleproducts.teamwork.com/p/forms/zzAB87mfo2ebvG5MQ38b
+*Video*: https://pineappleproducts.teamwork.com/p/forms/EEb3ljxi9BpzxkaJNrPJ
+
+We have worked directly with key teams and individuals in the rollout of
+this process, the intent of this email is to communicate changes to the
+larger team and ensure all teams are using this process moving
+forward.  *Please
+reach out to me directly if there are any questions* related to this new
+process, and thank you in advance for your support!
+
+Kind regards,
+
+Kirsten
+-- 
+*Kirsten Woods*
+Sr. Project Manager | pineapple.co
+
+[image: Photo]
+
+E: kirsten@pineapple.co <jason@pineapple.co>
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--000000000000a38d4305e947b409
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Team,</div><div><br></div><div>Many of you are aware =
+we recently rolled out Teamwork as our new Project Management software tool=
+.=C2=A0 We are starting to use Teamwork to help us track deliverables for=
+=C2=A0our existing, live products, what we are referring to as &quot;Sustai=
+ning Products&quot; within Teamwork.=C2=A0 As part of this transition, we w=
+ould like to introduce the team to our new &quot;Request Forms&quot; built =
+out in Teamwork for our Copy, DevOps, Graphic Design and Video teams.=C2=A0=
+ The new request forms will be used for any type of request, support or del=
+iverable needed from the aforementioned departments.=C2=A0 A few examples m=
+ight include:<br></div><div><ul><li>Copy script needed for a new test video=
+</li><li>DevOps support to make a change to a website</li><li>Graphic Desig=
+n support to create graphic content for a campaign push</li><li>Video editi=
+ng support to put together a custom=C2=A0video for a product upsell</li></u=
+l></div><div><b style=3D"text-decoration-line:underline"><font color=3D"#ff=
+00ff">Moving forward, we would like to ask ALL teams to use the below reque=
+st forms for any work needed from Copy, DevOps, Graphic Design and Video te=
+ams.</font></b>=C2=A0 As soon as a new request is submitted by the team, de=
+tails will feed into Teamwork, and flow through a process that will allow t=
+he teams more visibility into timelines, ultimately helping us better track=
+ towards deliverable requirements.=C2=A0 <i><u>The form links are included =
+below:</u></i><br></div><br clear=3D"all"><div><div><b>Copy</b>:=C2=A0<a hr=
+ef=3D"https://pineappleproducts.teamwork.com/p/forms/8jzE9VPuEymoBrjjwZVZ" =
+target=3D"_blank"><font size=3D"1">https://pineappleproducts.teamwork.com/p=
+/forms/8jzE9VPuEymoBrjjwZVZ</font></a></div><div><b>DevOps</b>:=C2=A0<a hre=
+f=3D"https://pineappleproducts.teamwork.com/p/forms/LMEEjpCp4oVNwWVZxx2" ta=
+rget=3D"_blank"><font size=3D"1">https://pineappleproducts.teamwork.com/p/f=
+orms/LMEEjpCp4oVNwWVZxx2</font></a></div></div><div><b>Graphic Design</b>:=
+=C2=A0<a href=3D"https://pineappleproducts.teamwork.com/p/forms/zzAB87mfo2e=
+bvG5MQ38b" target=3D"_blank"><font size=3D"1">https://pineappleproducts.tea=
+mwork.com/p/forms/zzAB87mfo2ebvG5MQ38b</font></a></div><div><b>Video</b>:<f=
+ont size=3D"1">=C2=A0<a href=3D"https://pineappleproducts.teamwork.com/p/fo=
+rms/EEb3ljxi9BpzxkaJNrPJ" target=3D"_blank">https://pineappleproducts.teamw=
+ork.com/p/forms/EEb3ljxi9BpzxkaJNrPJ</a></font></div><div><br></div><div>We=
+ have worked directly with key teams and individuals in the rollout of this=
+ process, the intent of this email is to communicate changes to the larger =
+team and ensure all teams are using this process moving forward.=C2=A0 <b><=
+u>Please reach out to me directly if there are any questions</u></b> relate=
+d to this new process, and thank you in advance for your support!</div><div=
+><br></div><div>Kind regards,</div><div><br></div><div>Kirsten</div>-- <br>=
+<div dir=3D"ltr" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><span =
+style=3D"font-size:18pt;color:rgb(2,112,196);font-family:Verdana,sans-serif=
+"><b>Kirsten Woods</b></span><br><span style=3D"font-size:10pt;color:rgb(5,=
+56,95)">Sr. Project Manager=C2=A0|=C2=A0</span><a href=3D"http://pineapple.=
+co/" rel=3D"noopener" style=3D"font-size:10pt;font-weight:bold;color:rgb(2,=
+112,196)!important" target=3D"_blank">pineapple.co</a><p style=3D"padding:0=
+px;margin:0px"><img alt=3D"Photo" src=3D"https://ci3.googleusercontent.com/=
+mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyX=
+uEpRH7B4b1qYw" width=3D"90" border=3D"0" style=3D"max-width:90px;height:aut=
+o;border:0px"></p><p style=3D"line-height:12px;padding-bottom:2px;margin-bo=
+ttom:0px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color=
+:rgb(5,56,95);font-weight:bold">E:</span>=C2=A0kirsten<a href=3D"mailto:jas=
+on@pineapple.co" style=3D"color:rgb(16,16,16);font-size:9pt" target=3D"_bla=
+nk">@pineapple.co</a><br></p><p style=3D"line-height:12px;padding-bottom:2p=
+x;margin-bottom:0px;padding-top:0px;margin-top:0px"><span style=3D"font-siz=
+e:9pt;color:rgb(5,56,95);font-weight:bold">A:</span>=C2=A0<span style=3D"fo=
+nt-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=
+=3D"font-size:9pt;color:rgb(16,16,16)">,=C2=A0</span><span style=3D"font-si=
+ze:9pt;color:rgb(16,16,16)">San Antonio, TX 78216</span></p><p style=3D"mar=
+gin-bottom:0px;padding-bottom:0px;padding-top:5px;margin-top:5px"></p><p st=
+yle=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149);font-family:Ver=
+dana,sans-serif">The content of this email is confidential and intended for=
+ the recipient specified in message only. It is strictly forbidden to share=
+ any part of this message with any third party, without a written consent o=
+f the sender. If you received this message by mistake, please reply to this=
+ message and follow with its deletion, so that we can ensure such a mistake=
+ does not occur in the future.</p></div></div></div>
+
+--000000000000a38d4305e947b409--

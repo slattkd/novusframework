@@ -1,0 +1,218 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:cb86:0:0:0:0 with SMTP id mf6csp3744425ejb;
+        Tue, 22 Feb 2022 07:41:57 -0800 (PST)
+X-Received: by 2002:a05:6602:24c8:b0:639:a42e:6da0 with SMTP id h8-20020a05660224c800b00639a42e6da0mr19314493ioe.26.1645544517562;
+        Tue, 22 Feb 2022 07:41:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645544517; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ixHBWvYdmLM8NUEFV6K5Gyk9O5GIASdqnCBXxJdlwAqOyUzsfKCpGnR3/dNdxlmal5
+         FOYD83GxIpcXwsDq9uBKdewYWDcLcH3y4o1vH/i74hWAX6s2BGfV3mlJyVnwx4qbg1/o
+         cRRGJFz5jhf8wESIBUeWt1riwGyPb28tACBRAwzQ0d/picaeAXgAf6PxI3zPp7txNFk3
+         L8fNWnmyLvgnX9oD1AMaoHRbnIA4ym57gW/TK0vRG4Xgw2RaYhcy1jh8Q7Y4zFSQZ3lu
+         frguVyPs9DRqlnUMRRoNcvDBS67BfH6w8785lG6yNAG696AzGP9wtKULAiDdjKhfurE6
+         IJmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=WRuXfSwQ/i+iuFEGJfwipUAzafT0HWJ87YU9KsnT+c0=;
+        b=HNkN5zE8CgOZPagcI0xqLxgXXQ6Fu5gFq4s8r0Q4ZJH5pFA87iwKqH7QBPz7dKaq4F
+         g5cZm/3xsM/7V2JPaPjlI72UdfQLJMmhqB194ApzNUo/PnVz5eBuN7v/OaFGbIf7WPxX
+         svR5jcq+UIw0E1if4jyzJMruX8Q0BrbXvWpl2os08CsKlSHDm72Lx1/cJ6g9pCuuQNj3
+         xMEPc4U/AEhOshHapzeVomxYf2o1V7oFfYdQoXxk52nPnzm4x51OqZAiWYj+xQh84DnD
+         RA9br6zbqSln5ZRqODfTGLNbSFnl3Q97rNjclAajNGNtkzGsk0gy/d+ubVzzm1npYwXK
+         QDpg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=NPT7IET5;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <mike@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t5sor4290997ilf.5.2022.02.22.07.41.57
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 22 Feb 2022 07:41:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=NPT7IET5;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=WRuXfSwQ/i+iuFEGJfwipUAzafT0HWJ87YU9KsnT+c0=;
+        b=NPT7IET5EzC8ThbBP1BstRvRDfIwwlzJqoX7f5nQfynw88wA2vnVn9R/Fu3mz7DK5T
+         VCQ95z4ZbhFMPKIer2s7sj5xzDMkUF9C/5lqlXra4X1+8KPYafAj6YIHomEfHs6gfWdL
+         WDW5WLuqUvZIJo2irTROli9mKPqnxef4ZkVDhTEiEv+Fi/m1dwmTAkPpr+z9wqMss3QZ
+         is1WMSXNRQ/JLAN7SWaTPnvRzKyKI2CFL8apvyrnGXmopkZDHkZbi5KF7mBq5J2kN3EM
+         LwUy7NxZzVpT8Mv0vmAW52UWJ8UosQhTeHmU8HFmhAmg2fE/yx24xos/YiHrnRwjWj+T
+         1vCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=WRuXfSwQ/i+iuFEGJfwipUAzafT0HWJ87YU9KsnT+c0=;
+        b=UoFVLfRBzzN8c2ietem6Tn9l/aNxBhuuYrIXn1XlayDdyyhrx7NoDIvPmgW0pJCHLR
+         gdsOQ8aF6n/Os5LftGBzmSVLRUuoV+QNVRvDxmXqXA7eJVvMWhR5G9NCu8X9ImmwSwfr
+         R7c68tX9ZNFA2IVaGUechzOADSlTivDFVmnFhc5SoTssE/9iISqoU6GYEKZc1lIZTMXc
+         Qkg/UB90fvDBvt1w48suv3+7vOmCr4ITFEQdNj27YTZVJkCC+RELhQTwOjj+W1EPlqRw
+         HOXZl67ZC5Uw3qDGBu0wIsu8GJ82Wgg+DSuRdnWkslMSi34MabBVkx50zLRahxBaFiHg
+         D5qQ==
+X-Gm-Message-State: AOAM532friDAhgf19T7L+z0/kNijG6YN5U/QrU92AHEuHq7dSzJlia1a
+	ljM3PsfvmOP3SVKo2AMbsgowPzwjvFMMcoUXB8SgrJDYUZKkVQ==
+X-Google-Smtp-Source: ABdhPJwAuJ1y252QGZ1oEdgV3NufpGj204BR34eDisxCb6kFlHT+mgoEergmhXl5jLFRUaa9J8FafBydFHPQ0ES7V3E=
+X-Received: by 2002:a92:7513:0:b0:2b9:5b61:e376 with SMTP id
+ q19-20020a927513000000b002b95b61e376mr20974105ilc.193.1645544516592; Tue, 22
+ Feb 2022 07:41:56 -0800 (PST)
+MIME-Version: 1.0
+References: <2053952274.927.1642623256833@34.230.155.161> <CAEZ8TWVjRgqvzBQSSJrw_GUtW5LnyQtJkhqXKF6TfTAKW8cuWg@mail.gmail.com>
+ <CAAHZi9zhbW9rs8Cw4nKvsPd=+9BkhZd_aSu5dt6=YOM-KCK0_w@mail.gmail.com> <CAHbmDP9mn7Fkt2knZUHLo4H9SQf=bMpJ1S5_=DWGxZ0fvg_GPA@mail.gmail.com>
+In-Reply-To: <CAHbmDP9mn7Fkt2knZUHLo4H9SQf=bMpJ1S5_=DWGxZ0fvg_GPA@mail.gmail.com>
+From: Mike McBrien <mike@pineapple.co>
+Date: Tue, 22 Feb 2022 10:41:46 -0500
+Message-ID: <CAAHZi9wJSWR72HjhOXzDG5o=rP5JRM7LJhRjvuRpo74Baeoimw@mail.gmail.com>
+Subject: Re: [ACTION REQUIRED] Important Message for Chargeback Hero Clients
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000005fc93205d89d3026"
+
+--0000000000005fc93205d89d3026
+Content-Type: text/plain; charset="UTF-8"
+
+Fantastic!
+
+On Tue, Feb 22, 2022 at 10:32 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Good morning,
+>
+> Thanks, Mike!  No issues and I'm all set up with Kount and Cake.  I
+> appreciate it!
+>
+> Best,
+> Aubrey
+>
+> On Tue, Feb 22, 2022 at 8:21 AM Mike McBrien <mike@pineapple.co> wrote:
+>
+>> Good day!
+>>
+>>
+>>    1. CBH user account creation is maintained by CBH and the request has
+>>    been sent.
+>>    2. I created a new Kount account and you Aubrey should have an email
+>>    with password options.
+>>    3. Aubrey should also have an email waiting for Cake as well.
+>>
+>> Let me know if you have any issues, ill let you know about CBH as soon as
+>> they get back.
+>>
+>> -MIke
+>>
+>> On Tue, Feb 22, 2022 at 9:00 AM Greg Davis <greg@pineapple.co> wrote:
+>>
+>>> Mike:
+>>>
+>>> Can you please get Aubrey Allen setup on Chargeback hero, Cake and Kount.
+>>>
+>>> Thanks,
+>>> Greg
+>>>
+>>>
+>>> ---------- Forwarded message ---------
+>>> From: <secure@chargebackhero.com>
+>>> Date: Wed, Jan 19, 2022 at 3:14 PM
+>>> Subject: [ACTION REQUIRED] Important Message for Chargeback Hero Clients
+>>> To: <greg@pineapple.co>
+>>>
+>>>
+>>> Hello and welcome to the Chargeback Hero platform.
+>>>
+>>> Please use the welcome link and username provided below to set your
+>>> password for our portal.
+>>>
+>>> Welcome Link:
+>>> https://chargebackhero.com/cbms/reset-password.html?token=116894&username=Greg_Pineapple
+>>> Username: Greg_Pineapple
+>>>
+>>> You can use the following link to bookmark and access the portal once
+>>> you have created your password.
+>>>
+>>> Portal: https://chargebackhero.com/cbms/login.html
+>>>
+>>> If you have any trouble setting your password or accessing your account,
+>>> please reach out to your account rep or support@chargebackhero.com for
+>>> assistance.
+>>>
+>>> We're looking forward to assisting you in optimizing and maintaining
+>>> healthy accounts.
+>>> Thank you,
+>>>
+>>> Chargeback Hero Team
+>>>
+>>
+
+--0000000000005fc93205d89d3026
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Fantastic!</div><br><div class=3D"gmail_quote"><div dir=3D=
+"ltr" class=3D"gmail_attr">On Tue, Feb 22, 2022 at 10:32 AM Aubrey Allen &l=
+t;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr=
+">Good morning,<div><br></div><div>Thanks, Mike!=C2=A0 No issues and I&#39;=
+m all set up with Kount and Cake.=C2=A0 I appreciate it!</div><div><br></di=
+v><div>Best,</div><div>Aubrey</div></div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 22, 2022 at 8:21 AM Mike McB=
+rien &lt;<a href=3D"mailto:mike@pineapple.co" target=3D"_blank">mike@pineap=
+ple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex"><div dir=3D"ltr">Good day!<br><br><ol><li>CBH user account creation i=
+s maintained by CBH and the request has been sent.</li><li>I created a new =
+Kount account and you Aubrey should have an email with password options.<br=
+></li><li>Aubrey should=C2=A0also have an email waiting for Cake as well.<b=
+r></li></ol><div>Let me know if you have any issues, ill let you know about=
+ CBH as soon as they get back.<br><br>-MIke</div></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 22, 2022 at 9:=
+00 AM Greg Davis &lt;<a href=3D"mailto:greg@pineapple.co" target=3D"_blank"=
+>greg@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex"><div dir=3D"ltr">Mike:<div><br>Can you please get Aubrey =
+Allen setup on Chargeback hero, Cake and Kount.</div><div><br>Thanks,</div>=
+<div>Greg</div><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" cla=
+ss=3D"gmail_attr">---------- Forwarded message ---------<br>From: <span dir=
+=3D"auto">&lt;<a href=3D"mailto:secure@chargebackhero.com" target=3D"_blank=
+">secure@chargebackhero.com</a>&gt;</span><br>Date: Wed, Jan 19, 2022 at 3:=
+14 PM<br>Subject: [ACTION REQUIRED] Important Message for Chargeback Hero C=
+lients<br>To:  &lt;<a href=3D"mailto:greg@pineapple.co" target=3D"_blank">g=
+reg@pineapple.co</a>&gt;<br></div><br><br>Hello and welcome to the Chargeba=
+ck Hero platform. <br>
+<br>
+Please use the welcome link and username provided below to set your passwor=
+d for our portal.<br>
+<br>
+Welcome Link: <a href=3D"https://chargebackhero.com/cbms/reset-password.htm=
+l?token=3D116894&amp;username=3DGreg_Pineapple" rel=3D"noreferrer" target=
+=3D"_blank">https://chargebackhero.com/cbms/reset-password.html?token=3D116=
+894&amp;username=3DGreg_Pineapple</a><br>
+Username: Greg_Pineapple<br>
+<br>
+You can use the following link to bookmark and access the portal once you h=
+ave created your password.<br>
+<br>
+Portal: <a href=3D"https://chargebackhero.com/cbms/login.html" rel=3D"noref=
+errer" target=3D"_blank">https://chargebackhero.com/cbms/login.html</a><br>
+<br>
+If you have any trouble setting your password or accessing your account, pl=
+ease reach out to your account rep or <a href=3D"mailto:support@chargebackh=
+ero.com" target=3D"_blank">support@chargebackhero.com</a> for assistance. <=
+br>
+<br>
+We&#39;re looking forward to assisting you in optimizing and maintaining he=
+althy accounts. <br>
+Thank you,<br>
+<br>
+Chargeback Hero Team<br>
+</div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000005fc93205d89d3026--

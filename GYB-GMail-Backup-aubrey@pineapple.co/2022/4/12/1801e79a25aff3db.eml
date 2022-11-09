@@ -1,0 +1,137 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp2514158ejd;
+        Tue, 12 Apr 2022 08:52:10 -0700 (PDT)
+X-Received: by 2002:a05:6808:30a5:b0:2da:4dd3:a02d with SMTP id bl37-20020a05680830a500b002da4dd3a02dmr2092446oib.251.1649778729747;
+        Tue, 12 Apr 2022 08:52:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649778729; cv=none;
+        d=google.com; s=arc-20160816;
+        b=foYFvbo20Stxu5joyMoCRnqcRZM8jslQOf86ZeZwJhIES5zZubuRQAbkKbKkDD0Fch
+         bILbJgtA4r0FRwbl5FamiOw4fZg9l7x5gSUD7g5BzzPmXY7gdz8qeFxOwJS9Ea09+gGh
+         7rcBZFTaJdjk5f17wyhoHGKsVE+F5xb37GAFKQQo7QC16XM4fyfVLF5YGZoWNe5w8DGd
+         UcMElGkJg8ZfSnp0mDIRQDmn/mvFPPfm6+5av3J8f4yoSl81rZOHZyYcUeQb79UipTFl
+         JZwLNhU4G/+Kko7kPORINgdHM13eIoIMAvsVfAJeR87cqd44B5Ih7Ml0aYCEE32fGjke
+         O25w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:in-reply-to:cc:references:message-id:date:subject:mime-version
+         :from:content-transfer-encoding:dkim-signature;
+        bh=y5VXWEcfck28MKj9UzlyEvx0TaAtVG/BWluRnecCeTA=;
+        b=VcmDrs3kb1E1N1RnyVBtWUp+dGY6uGBrGh0AZAoqzOYExODJzr5W+V9mIFJtV0eMVP
+         hTN7/ow+SxLcgC8XBArDJ/8rkkW5olt0DKr9ydL/b3TiN6BtbEy6jGLUTVXl4UkSVBBa
+         0jW7GRgxGjHfrOx8H0u3Y1mlpI6PHaPNG5ZSXqIfaDF1O100uYJf2UVWXTyfSpC/cf0g
+         LNyMTqUzPrEfoy9dBdRWgHdznsFmguIr9CwjrlbzKeA5/u0DrVxseMlzaB7SeV9SujuH
+         LL1AtpdYnE2wu6E/79eHilM44lsWalro5G1HfXltYPCbEgG6ScUUKdZofgFYDCqL4axD
+         K1iA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=O+xuw8Xa;
+       spf=pass (google.com: domain of gene@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=gene@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <gene@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id lu17-20020a056871431100b000e204346ee8sor161422oab.67.2022.04.12.08.52.05
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 12 Apr 2022 08:52:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gene@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=O+xuw8Xa;
+       spf=pass (google.com: domain of gene@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=gene@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:from:mime-version:subject:date:message-id
+         :references:cc:in-reply-to:to;
+        bh=y5VXWEcfck28MKj9UzlyEvx0TaAtVG/BWluRnecCeTA=;
+        b=O+xuw8Xai2v+7O8eapemj9FmJyxFR5E45XbnUOXYTdCUN23VMCHrUqYR9RTf5at/nK
+         1q4RG0oPVQqx+58nVdi2ekv1K0wgHuROXAUO9v0NW1Ptq+ySHe7CGTNSodPjtwG+Re0o
+         EnUR6Gq2ZCzZ03pRzIIisDWo24kC53u4YUKmpbL2a5eviBKY3lnZd0ynrxht/H8KLlOf
+         2gShb+s0D+PknCMN0QyJ6UBirkLN4eF5HA5Sk1zXy9aUp2395SEQflIvBepqJCumxZ17
+         yThomQjZkAWscFBukW3p6DY5hhIN7dOwOeoq7r1p621sXI0rq92gnijd54JKu2NCbF5y
+         8crQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:content-transfer-encoding:from:mime-version
+         :subject:date:message-id:references:cc:in-reply-to:to;
+        bh=y5VXWEcfck28MKj9UzlyEvx0TaAtVG/BWluRnecCeTA=;
+        b=FYnD5fTZWkrNf5LKw+72/HvcLlzWQEFU/EETXTV+WZOFYsK38xr4WfH4WUIag2sCNM
+         nB3Nsq3Bf9MoXKpKfh1vZhVMyN72Qw8AyFMnPpHvUCNofKjL2ElpSpchfbama/eTudA4
+         bGEHvzbfrh7Msr4mQ39GKNLpSTQIfP9yNNdf3orUyWLNIQE1B79KpYhgHXW4iglITwpI
+         7sQP7Es7ALru36+Fj419VamZgkqEdUjksDS14Tec621WTqFsSPEY//r2PNF4Fx7C8b7c
+         rkjDpKdFgFPVtv0LtwOaZEFmLZH+P08HP65CRJwiCeco5xJskcFyaDG37GFD0kn0Pw1L
+         O6YA==
+X-Gm-Message-State: AOAM531q+9n3tYYgqk3dhv89xmpiuqDTpkGaQFAmtHqq+5q/vbSTJ3JH
+	4qOQ6v9K+MF0HBkYGBO3ETvd/9w/myK7WQRfs5s=
+X-Google-Smtp-Source: ABdhPJxC2P9/74FAWBUv3/1fgC3C0PveAhQYw+MvLISZ+7o26Kqj/bdbQoLRXehQ1lE9gy0dq76GOQ==
+X-Received: by 2002:a05:6870:b39a:b0:da:b3f:2b6c with SMTP id w26-20020a056870b39a00b000da0b3f2b6cmr2435441oap.267.1649778725639;
+        Tue, 12 Apr 2022 08:52:05 -0700 (PDT)
+Return-Path: <gene@pineapple.co>
+Received: from smtpclient.apple (108-249-99-18.lightspeed.austtx.sbcglobal.net. [108.249.99.18])
+        by smtp.gmail.com with ESMTPSA id p14-20020a056830304e00b005b246b673f2sm13552020otr.71.2022.04.12.08.52.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Apr 2022 08:52:05 -0700 (PDT)
+Content-Type: multipart/alternative; boundary=Apple-Mail-2F4EBE56-FC73-4913-AD01-CF789B2AD810
+Content-Transfer-Encoding: 7bit
+From: Gene Naftulyev <gene@pineapple.co>
+Mime-Version: 1.0 (1.0)
+Subject: Re: Data Alignment Spreadsheet - for Sticky Data and the SQL Database
+Date: Tue, 12 Apr 2022 10:52:04 -0500
+Message-Id: <E113803C-45DE-4F56-891B-D38BD975257A@pineapple.co>
+References: <CALCR5_ToFS77K_Qk3Hr-70-SZBTX7O5yehJ4GWhB3FhRcE9dEw@mail.gmail.com>
+Cc: Greg Davis <greg@pineapple.co>, Aubrey Allen <aubrey@pineapple.co>,
+ Brooke Whoolery <brooke@pineapple.co>,
+ Dimitri Lianoudakis <dimitri@pineapple.co>,
+ Mike McBrien <mike@pineapple.co>
+In-Reply-To: <CALCR5_ToFS77K_Qk3Hr-70-SZBTX7O5yehJ4GWhB3FhRcE9dEw@mail.gmail.com>
+To: Brett Allcorn <brett@pineapple.co>
+X-Mailer: iPhone Mail (19E258)
+
+
+--Apple-Mail-2F4EBE56-FC73-4913-AD01-CF789B2AD810
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Yup. Also Mike and Dimitri are ccd on it all
+
+Gene Naftulyev
+469-777-8444
+
+> On Apr 11, 2022, at 5:36 PM, Brett Allcorn <brett@pineapple.co> wrote:
+>=20
+> =EF=BB=BF
+> @Gene can you catalog Greg=E2=80=99s documentation for the data analyst we=
+ hire?
+>=20
+>> On Mon, Apr 11, 2022 at 6:03 PM Greg Davis <greg@pineapple.co> wrote:
+>> Please find this very important spreadsheet defining the alignment and al=
+l calculations run on all Sticky Data as brought into the SQL database from t=
+he Sticky csv files.
+>>=20
+>> Regards,
+>> Greg
+>>=20
+
+--Apple-Mail-2F4EBE56-FC73-4913-AD01-CF789B2AD810
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charset=3D=
+utf-8"></head><body dir=3D"auto">Yup. Also Mike and Dimitri are ccd on it al=
+l<br><br><div dir=3D"ltr">Gene Naftulyev<div>469-777-8444</div></div><div di=
+r=3D"ltr"><br><blockquote type=3D"cite">On Apr 11, 2022, at 5:36 PM, Brett A=
+llcorn &lt;brett@pineapple.co&gt; wrote:<br><br></blockquote></div><blockquo=
+te type=3D"cite"><div dir=3D"ltr">=EF=BB=BF<div dir=3D"auto">@Gene can you c=
+atalog Greg=E2=80=99s documentation for the data analyst we hire?</div><div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon,=
+ Apr 11, 2022 at 6:03 PM Greg Davis &lt;<a href=3D"mailto:greg@pineapple.co"=
+>greg@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:s=
+olid;padding-left:1ex;border-left-color:rgb(204,204,204)"><div dir=3D"ltr">P=
+lease find this very important spreadsheet defining the alignment&nbsp;and a=
+ll calculations run on all Sticky Data as brought&nbsp;into the SQL database=
+ from the Sticky csv files.<div><br></div><div>Regards,</div><div>Greg</div>=
+<div><br></div></div>
+</blockquote></div></div>
+</div></blockquote></body></html>=
+
+--Apple-Mail-2F4EBE56-FC73-4913-AD01-CF789B2AD810--

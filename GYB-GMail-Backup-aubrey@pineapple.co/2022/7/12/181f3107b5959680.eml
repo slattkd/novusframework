@@ -1,0 +1,127 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp2301712ejb;
+        Tue, 12 Jul 2022 08:39:12 -0700 (PDT)
+X-Received: by 2002:a05:6402:510e:b0:43a:c671:7cd0 with SMTP id m14-20020a056402510e00b0043ac6717cd0mr21553513edd.103.1657640352305;
+        Tue, 12 Jul 2022 08:39:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657640352; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ulniwZA65M3HFmke0SPeszdeOVC7/jSgzWcRKF81Lg52m82d9n+sUzaXiI62D/iIM0
+         d69oL8pyEIc3xUQrodNOVZyJj2QOXJVbVWah8B/+pkSqMdEpokDdiVY+DZ3+mVTfcVEB
+         WTH1NDmfarvLAuNL3FPnNQ78i1D3xPcCCZ5eTBSctVCSo8G2HXc/jsUU9gMupczbFAHf
+         ddBBMHY1heDLupyJY4gsPqzjA+CuQ1xMVNkuYMKbTjOMsYj/AI+NvQUtaR+ijMRn89fw
+         tW07Tz1cCRqBa+5LAiSBV8X0tmSIOd6URgduo9lRlztJaG0++bp6V0Sjbu050suHTvb8
+         xCzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=auto-submitted:precedence:content-disposition
+         :content-transfer-encoding:mime-version:subject:message-id:date:from
+         :to:dkim-signature;
+        bh=g8AyaE9vnI7zWaLaO2IZgON8R/JqnlO0RiGV3d/yJjs=;
+        b=brt1+XPma8aCcKiDK/wzWkoi3ks7ROHg79uINLy9H4rcuyp4m0d+sW1+Mx22dF0XPx
+         i4XIRure0UyYB5Ul9ZNblo6wqwv8ZYbFpD8a9mOQCVkl9dlF4dZUiNi2VCxzQMXM0elo
+         IqRBReZwWBox9+3g+h1nw4En9zhnRuNH+7iZD7t2AF0PeaEmfqeJxx0SW3P+Eepco/2P
+         Q6aa8cwoOSoCqvPvxoaiGsfiBhLSDIZMOdbCLC9F3MYdas5vzSGy3jervPQDTQeMhxPK
+         /4euOCzN6qZVTr+6zQ8jjqHf8CiXP5aE3EV819rbmffjgZZykSRdI+GWd4ESlfrA6abv
+         DjGg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=caJ4F9Eu;
+       spf=pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrea@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <andrea@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p15-20020a170906614f00b00711f5eea732sor2900953ejl.61.2022.07.12.08.39.12
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 12 Jul 2022 08:39:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=caJ4F9Eu;
+       spf=pass (google.com: domain of andrea@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrea@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=g8AyaE9vnI7zWaLaO2IZgON8R/JqnlO0RiGV3d/yJjs=;
+        b=caJ4F9EuntPe1hcRgtoVKQtDOCW7rJ5BKvUE3+ajuvrbWl304boTCA1GOQXbGHr6ud
+         KDasTvFwGSx1lxMguNDB5ijSSDNDhqOu8MBhcWnq6zggUwRLHN/FIooKsw4fCXFOuR0j
+         RzyzrDBPNlxFvMLbhOwO/KaAPkITnRIEfuLrVzcz187rKpcPXkyKpVcL7OWD4yKw9i4n
+         NE1tjgG/BlBD3yErIBl6D8yNfZQXRx8pfRG5R7jE4Vc6KSxengYgzUfuZJf7wD/vHzRp
+         o/raSxh3Np88Fq1xLwZX0NAE2/Z2eKkI2hx4k+OFCPO1m/ex14MglGXGweQmZNsHuC1O
+         qE0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=g8AyaE9vnI7zWaLaO2IZgON8R/JqnlO0RiGV3d/yJjs=;
+        b=lb+D9iOLFDKVuro9RCdQLwGJwVhg+Nw3FtOzFqWZ2xezk6Lkk9J8clk/KFjN1MtGM5
+         Q1Uh7OKDFavQYlOFITbplOX//nQ16UpTwNVh7ifyUzluRmuNfIb3l6ZMuOhh+c1eeGMm
+         BLGLne1zQBeH5xF2S4Z9mpKNJAaVJIAr3y1TR6SKTJ6we9oWkfqEYNG/wRf5wzOHij1f
+         KOf6f/8VAkni9Uik7fOC8wICMiTDAYANusFCidEOOkFr8unS7ZlIWD9DUrsbd3q2o721
+         XiCNtmRtUDAb44dg0VoyPXcrSA/PyooA5J5P4RTjlUkm6sV80xvLAKuuUNkHBg9H0LnI
+         wI/A==
+X-Gm-Message-State: AJIora+GpOFFHwKq1Rz0wMHMI8Os6+4cI2kbeQHOJOnHnEVvWVLWQ7+E
+	TNp7jsLsVy5Rrl4gt7yvXcbifvrAUk4NuKn8y0n2CNmxv9XHsyY6o7TIpjtgiPkZ+mk=
+X-Google-Smtp-Source: AGRyM1v0ucPPDLiglfrV6V1ni7Tj0zn4Z4bOEA1g5CVwklr+lYOL7lP3uIsN+EHNPN2pDh+CZh3yhD+aUB5hdzObScIlcw3UoROx0jdPDdVi
+X-Received: by 2002:a17:907:d05:b0:6f4:3729:8e36 with SMTP id gn5-20020a1709070d0500b006f437298e36mr25103479ejc.475.1657640352088;
+        Tue, 12 Jul 2022 08:39:12 -0700 (PDT)
+To: aubrey@pineapple.co
+From: "Andrea Abramowski" <andrea@pineapple.co>
+Date: Tue, 12 Jul 2022 08:39:11 -0700
+Message-ID: <CA+ceVcXv_ws5Sk2HmgeL8GRdbksHLWbiROHUfL8Fw6FtzNbMEQ@mail.gmail.com>
+Subject: OOO Re: Andres' & Doug's Commission 7/4-7/10
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+Precedence: bulk
+X-Autoreply: yes
+Auto-Submitted: auto-replied
+
+PGRpdiBkaXI9Imx0ciI+SSB3aWxsIG5vdCBiZSBhY3RpdmVseSBjaGVja2luZyBlbWFpbHMgb3Ig
+c2xhY2tzIHRvZGF5LiBQbGVhc2UgZGlyZWN0IHF1ZXN0aW9ucyB0byBLZXJyeS4gSWYgeW91IHJl
+YWxseSBuZWVkIG1lLCB5b3UgY2FuIHRleHQgbWUgYXQgOTE5LTI3MC0yMjM2PC9kaXY+PGJyLz48
+YnIvPi0tIDxici8+PGRpdiBkaXI9Imx0ciI+PHRhYmxlIHdpZHRoPSI1MDAiIGNlbGxzcGFjaW5n
+PSIwIiBjZWxscGFkZGluZz0iMCIgYm9yZGVyPSIwIiBzdHlsZT0iZm9udC1zaXplOjEzcHg7Ym9y
+ZGVyLXNwYWNpbmc6MHB4O2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtjb2xvcjpyZ2IoOTcsOTcs
+OTcpO2ZvbnQtZmFtaWx5OkxhdG8sc2Fucy1zZXJpZiI+PHRib2R5Pjx0cj48dGQgd2lkdGg9IjEw
+MCIgdmFsaWduPSJ0b3AiIHN0eWxlPSJwYWRkaW5nOjBweCA5cHggMHB4IDBweDt2ZXJ0aWNhbC1h
+bGlnbjp0b3AiPjxmb250IHNpemU9IjIiIGNvbG9yPSIjMDAwMDAwIiBmYWNlPSJ2ZXJkYW5hLCBz
+YW5zLXNlcmlmIj5CZXN0LMKgPGJyPjwvZm9udD48YnI+PHRhYmxlIHdpZHRoPSI1MDAiIGNlbGxz
+cGFjaW5nPSIwIiBjZWxscGFkZGluZz0iMCIgYm9yZGVyPSIwIiBzdHlsZT0iYm9yZGVyLXNwYWNp
+bmc6MHB4O2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtmb250LWZhbWlseTpMYXRvLHNhbnMtc2Vy
+aWYiPjx0Ym9keT48dHI+PHRkIHdpZHRoPSIxMDAiIHZhbGlnbj0idG9wIiBzdHlsZT0icGFkZGlu
+ZzowcHggOXB4IDBweCAwcHg7dmVydGljYWwtYWxpZ246dG9wIj48YSBocmVmPSJodHRwOi8vczMu
+YW1hem9uYXdzLmNvbS9waW5lYXBwbGUuY28vcGluZWFwcGxlY28uZ2lmIiBzdHlsZT0iY29sb3I6
+cmdiKDAsMCwwKSIgdGFyZ2V0PSJfYmxhbmsiPjxpbWcgYWx0PSJjcmVhdGVkIHdpdGggTXlTaWdu
+YXR1cmUuaW8iIHNyYz0iaHR0cHM6Ly9jaTYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L05s
+eE40TVF4WE4wcDJUQ084Z214ZVozZm1xMEtDNE1oRVp4MEZqZXZfR2Y4MXVDd0cyTVJnbjJkRzU4
+bUNQV2g4TUlvRzdXa2RMbFVQTjZuTHM3b1ptWVFqWEhTd0xRZlBPNGJ6WmE4UGd3SUxneEd4WTV3
+UkU3QWVZejBJZGx4cWxkemtBdHRtenlzQWt5WWo5Zz1zMC1kLWUxLWZ0I2h0dHBzOi8vaW1nLm15
+c2lnbmF0dXJlLmlvL3AvZS8zL2YvZTNmNmY0YjMtMzQyZi01OGFlLWE5NWEtNGI1NDBjMzZmOGFh
+LnBuZz90aW1lPTE1OTU0NDQxMjUiIHdpZHRoPSIxMDAiIHN0eWxlPSJ3aWR0aDoxMDBweDtib3Jk
+ZXItcmFkaXVzOjE1JSI+PC9hPjwvdGQ+PHRkIHZhbGlnbj0idG9wIiBzdHlsZT0iYm9yZGVyLWxl
+ZnQ6MnB4IHNvbGlkIHJnYig3MCwyMDgsMjU1KTt2ZXJ0aWNhbC1hbGlnbjp0b3A7Ym9yZGVyLXRv
+cC1jb2xvcjpyZ2IoNzAsMjA4LDI1NSk7Ym9yZGVyLXJpZ2h0LWNvbG9yOnJnYig3MCwyMDgsMjU1
+KTtib3JkZXItYm90dG9tLWNvbG9yOnJnYig3MCwyMDgsMjU1KTtwYWRkaW5nOjBweCAwcHggMHB4
+IDlweCI+PHRhYmxlIGNlbGxzcGFjaW5nPSIwIiBjZWxscGFkZGluZz0iMCIgYm9yZGVyPSIwIiBz
+dHlsZT0iYm9yZGVyLXNwYWNpbmc6MHB4O2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtsaW5lLWhl
+aWdodDoxLjQ7Zm9udC1mYW1pbHk6VmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZjtmb250LXNpemU6
+MTEuMDVweDtjb2xvcjpyZ2IoMCwwLDEpIj48dGJvZHk+PHRyPjx0ZD48Zm9udCBmYWNlPSJWZXJk
+YW5hLCBHZW5ldmEsIHNhbnMtc2VyaWYiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTMuMjZweCI+
+PGZvbnQgY29sb3I9IiMwYjUzOTQiPkFuZHJlYSBBYnJhbW93c2tpLCBDUEE8L2ZvbnQ+PGJyPjwv
+c3Bhbj48L2ZvbnQ+PGZvbnQgZmFjZT0iVmVyZGFuYSwgR2VuZXZhLCBzYW5zLXNlcmlmIiBzaXpl
+PSIyIj5Db250cm9sbGVyPC9mb250PjwvdGQ+PC90cj48dHI+PHRkIHN0eWxlPSJwYWRkaW5nOjVw
+eCAwcHgiPjxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OlZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYi
+Pjxmb250IHNpemU9IjIiPlBpbmVhcHBsZSBDb21wYW55PC9mb250PjwvZGl2PjxkaXYgc3R5bGU9
+ImZvbnQtZmFtaWx5OlZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiPjxmb250IHNpemU9IjIiPig5
+MTkpIDI3MC0yMjM2PC9mb250PjwvZGl2PjwvdGQ+PC90cj48dHI+PHRkPjxicj48L3RkPjwvdHI+
+PHRyPjx0ZD48c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6VmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJp
+Zjtjb2xvcjpyZ2IoNzAsMjA4LDI1NSkiPsKgPC9zcGFuPjwvdGQ+PC90cj48L3Rib2R5PjwvdGFi
+bGU+PC90ZD48L3RyPjwvdGJvZHk+PC90YWJsZT48L3RkPjx0ZCB2YWxpZ249InRvcCIgc3R5bGU9
+ImJvcmRlci1sZWZ0OjJweCBzb2xpZCByZ2IoNzAsMjA4LDI1NSk7dmVydGljYWwtYWxpZ246dG9w
+O2JvcmRlci10b3AtY29sb3I6cmdiKDcwLDIwOCwyNTUpO2JvcmRlci1yaWdodC1jb2xvcjpyZ2Io
+NzAsMjA4LDI1NSk7Ym9yZGVyLWJvdHRvbS1jb2xvcjpyZ2IoNzAsMjA4LDI1NSk7cGFkZGluZzow
+cHggMHB4IDBweCA5cHgiPjxicj48L3RkPjwvdHI+PC90Ym9keT48L3RhYmxlPjwvZGl2Pjxici8+
+DQo=

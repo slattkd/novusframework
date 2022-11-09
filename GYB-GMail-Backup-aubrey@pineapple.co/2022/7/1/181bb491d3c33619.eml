@@ -1,0 +1,145 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp956410ejc;
+        Fri, 1 Jul 2022 12:42:20 -0700 (PDT)
+X-Received: by 2002:a67:eb01:0:b0:354:31f8:3853 with SMTP id a1-20020a67eb01000000b0035431f83853mr12187646vso.77.1656704540012;
+        Fri, 01 Jul 2022 12:42:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656704540; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Xx+52jD0M/6Ad98R5RiuDhdSQBvOwHSUYd8Lm6YoSuJqs7FR5zXESFH7zapvi3K5pW
+         Zwcug+pOuQgGXQeXoxx+NHGRz32iwmy2MX7ceJFJLxvKwZ9OOxpzynKPmo+5U7vaus93
+         6rQx7XUJkz2IIBxQw9/M993JdAgkx0X9CB8qzc3K+axizO3QrQoUYVzaGQ1tW0tUlXsJ
+         +NVIIvCx10eiMOwcotc60KtSRAd5Urrv9/fFI7kDca+B6TFahDtPU9C8ZeEm54+AaGa3
+         XGpUcDqMvxxCgvXW5t5g1GddYEDaB7pOcxzbfendVtTcEuXkxdgUL9jLS9vI4BXUnUyG
+         kObQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=auto-submitted:precedence:content-disposition
+         :content-transfer-encoding:mime-version:subject:message-id:date:from
+         :to:dkim-signature;
+        bh=GH/FKyMVojTxloJdP5svXdgZJlIfqIV+OlyXfDk+tjk=;
+        b=owAOGKX8QhSsGzSg3fBDCzkE48NI2TgkJmt2CxAdEFbcDsOuK761pUiJqBjB6bI2p4
+         GO9drSR64d0R/oZeOuCJG4sK0CI6AyMvZqAZOtaPLBhiPVX0ZQZ1bkgC/e+ciwwSRHNQ
+         M+rQK03RPueuWxN6fWeR/DDDaMpefLEN2wA5NRhhl7c3jk32xzhZwmXqJW2FsYVt8tlI
+         HPUArVguGd7xyiZ+z/g+vU1/t/OI/1lqJ1uFSknIeIZLl4bDrErR26FgWIoM0+Xnv0n6
+         ENb2+myJ4qU+FWCGjSUY8plMAbW7+cVoZnqgg3pRg/UFn5KXJ0EjMcRkY5DVCa9gJkO2
+         1Sqg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=56LssGe8;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d12-20020ab0724c000000b00381d851a62dsor2960223uap.27.2022.07.01.12.42.19
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 01 Jul 2022 12:42:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=56LssGe8;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=GH/FKyMVojTxloJdP5svXdgZJlIfqIV+OlyXfDk+tjk=;
+        b=56LssGe8ciWLmGekun6d+oi83tl2Q0zsObAa8m1edmcXLtXkniuiXXb8cJ11AMuyoD
+         AGkhgYqyzF/HZDU31TqvCb67BLACrf53iJqICBESrPxosAm7B/gcMYmp/9LxXpqRKffh
+         uDjZzkL1Hm7XPU0dKF/Ea8B0ZtqpAZVFiCo1nqY8suCfEBuXQMfnTjlZjEKzM5/JMds7
+         Fh6e0Oikvv/tcqLQgBzsnjD+DnB9HmyCW11TIXLkDWIevh/+KOvWoZICZuHoxUwnY8jI
+         Zhf+Is83ucOcg5k4BaORkPQID418W9/d+LT/e2tqt9r6dexSxwkFpHy/BZdCFj1Fh101
+         yFgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=GH/FKyMVojTxloJdP5svXdgZJlIfqIV+OlyXfDk+tjk=;
+        b=BP72AbzpHchBhwfwT2uXnPHzdzdZKcrbSUz0PEbNPnIxTxz9gBaQVnsNmB8GEwj3D+
+         VcbZe6cXa4hIwzTpWlomMFyseHfULtUvS3Tu4ou/3VnFVYoJIuobZRqQNGy0IsObJfsG
+         Ax3bwo0MZpSg0OYg6cFzg0mNyFAGGD+7fT3oDXQe6wKaHCP8yQ3GtZee/ydEHQWTkWyz
+         hvfEyt1Jf3dR821cPLVTKm8zApDivNyTiU7+umAp4iYDpkH+Ne3CRLbNyH+d5BYnyzu/
+         DTSq7N6uhvxtwl3beLFut9MG9cG+8QwcBefk6RkOjIJNoPhadNGa5MH+sDbJsK9BfxDp
+         6SPQ==
+X-Gm-Message-State: AJIora8GbE00pbOGJuk8YqVQ7B6VtJTMCj8Vr+mFHRD2CBesf0ZmWzGJ
+	/UgYG+CmVAbX7qCAowMWByj0YedpyfohKWkD2Z/Bgc6xn5i3FJUmR6xX3ajIcuzokJA=
+X-Google-Smtp-Source: AGRyM1v52xIzO3o7GCPGgD+LZUnGei9Y1e/kcpA6Jz+6nkakbN7Ox2Ez9LkSnCpO+mKIqDHKIjvfoZR8UsVpDDs406WljA8oEae70czybkCW
+X-Received: by 2002:ab0:209a:0:b0:37f:4fc4:8b91 with SMTP id r26-20020ab0209a000000b0037f4fc48b91mr9425587uak.99.1656704539495;
+        Fri, 01 Jul 2022 12:42:19 -0700 (PDT)
+To: aubrey@pineapple.co
+From: "Brooke Whoolery" <brooke@pineapple.co>
+Date: Fri, 1 Jul 2022 12:42:19 -0700
+Message-ID: <CAH69s1ryYm_y6O1nR0KrXrSzYVf2yo+bTbh9oxnGXk-1pG3Y+w@mail.gmail.com>
+Subject: Out of Office Re: Dr. Feuerstein & Dr. Masley, June 2022
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+Precedence: bulk
+X-Autoreply: yes
+Auto-Submitted: auto-replied
+
+PGRpdiBkaXI9Imx0ciI+SGVsbG8swqA8ZGl2Pjxicj48L2Rpdj48ZGl2PkkgYW0gY3VycmVudGx5
+IG91dCBvZiB0aGUgb2ZmaWNlLCByZXR1cm5pbmcgMDcwNS8yMDIyLiBLaW5kbHkgQ0MgbWUgb24g
+YW55IGNvcnJlc3BvbmRlbmNlIHlvdSBzZW5kIHRvIHRoZSBwZW9wbGUgYmVsb3c6PC9kaXY+PGRp
+dj48YnI+PC9kaXY+PGRpdj5JZiB5b3UmIzM5O3JlIGEgbWFudWZhY3R1cmVyIHdpdGggcXVlc3Rp
+b25zIG9yIHRpbWVsaW5lcyBmb3IgcHJvZHVjdGlvbiwgcGxlYXNlIGVtYWlsIDxhIGhyZWY9Im1h
+aWx0bzp0YXlsb3JAcGluZWFwcGxlLmNvIiB0YXJnZXQ9Il9ibGFuayI+dGF5bG9yQHBpbmVhcHBs
+ZS5jbzwvYT48L2Rpdj48ZGl2PklmIHlvdSBhcmUgbG9va2luZyBmb3IgcGF5bWVudCBvZiBhbiBv
+dXRzdGFuZGluZyBpbnZvaWNlLCBwbGVhc2UgZW1haWwgPGEgaHJlZj0ibWFpbHRvOmFwcGF5QHBp
+bmVhcHBsZS5jbyIgdGFyZ2V0PSJfYmxhbmsiPmFwcGF5QHBpbmVhcHBsZS5jbzwvYT4gYW5kIGF0
+dGFjaCB0aGUgb3V0c3RhbmRpbmcgaW52b2ljZTxicj48L2Rpdj48ZGl2PklmIHlvdSBoYXZlIGFu
+eSBxdWVzdGlvbnMgcmVnYXJkaW5nIENTLCBwbGVhc2UgZW1haWzCoDxhIGhyZWY9Im1haWx0bzpw
+ZXRlckBwaW5lYXBwbGUuY28iIHRhcmdldD0iX2JsYW5rIj5wZXRlckBwaW5lYXBwbGUuY288L2E+
+PGJyPjwvZGl2PjxkaXY+SWYgeW91IGhhdmUgYW55IHF1ZXN0aW9ucyByZWdhcmRpbmcgU2FsZXMs
+IHBsZWFzZSBlbWFpbCA8YSBocmVmPSJtYWlsdG86cm9iZXJ0QHBpbmVhcHBsZS5jbyIgdGFyZ2V0
+PSJfYmxhbmsiPnJvYmVydEBwaW5lYXBwbGUuY288L2E+PC9kaXY+PGRpdj5JZiB5b3UgaGF2ZSBh
+bnkgcXVlc3Rpb25zIHJlZ2FyZGluZyBwcm9qZWN0cy90aW1lbGluZXMsIHBsZWFzZSBlbWFpbCA8
+YSBocmVmPSJtYWlsdG86a2lyc3RlbkBwaW5lYXBwbGUuY28iIHRhcmdldD0iX2JsYW5rIj5raXJz
+dGVuQHBpbmVhcHBsZS5jbzwvYT7CoDwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+SSB3aWxsIHJl
+c3BvbmQgdG8gYW55IGVtYWlscyBsYWJlbGVkIGFzIHVyZ2VudCwgYnV0IG90aGVyd2lzZSwgSSYj
+Mzk7bGwgdGFsayB0byB5b3Ugd2hlbiBJJiMzOTttIGJhY2shIFRoYW5rcyHCoDxicj48YnI+PC9k
+aXY+PC9kaXY+PGJyLz48YnIvPi0tIDxici8+PGRpdiBkaXI9Imx0ciI+PGRpdj5PdXRpZSA1MDAw
+LMKgPC9kaXY+LTx0YWJsZSBjZWxsc3BhY2luZz0iMCIgd2lkdGg9IjUwMCIgY2VsbHBhZGRpbmc9
+IjAiIGJvcmRlcj0iMCIgc3R5bGU9ImZvbnQtc2l6ZToxM3B4O2JvcmRlci1zcGFjaW5nOjBweDti
+b3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Y29sb3I6cmdiKDk3LDk3LDk3KTtmb250LWZhbWlseTpM
+YXRvLHNhbnMtc2VyaWYiPjx0Ym9keT48dHI+PHRkIHdpZHRoPSIxMDAiIHZhbGlnbj0idG9wIiBz
+dHlsZT0icGFkZGluZzowcHggOXB4IDBweCAwcHg7dmVydGljYWwtYWxpZ246dG9wIj48YSBocmVm
+PSJodHRwOi8vczMuYW1hem9uYXdzLmNvbS9waW5lYXBwbGUuY28vcGluZWFwcGxlY28uZ2lmIiBz
+dHlsZT0iY29sb3I6cmdiKDAsMCwwKSIgdGFyZ2V0PSJfYmxhbmsiPjxpbWcgYWx0PSJjcmVhdGVk
+IHdpdGggTXlTaWduYXR1cmUuaW8iIHdpZHRoPSIxMDAiIHNyYz0iaHR0cHM6Ly9jaTYuZ29vZ2xl
+dXNlcmNvbnRlbnQuY29tL3Byb3h5L05seE40TVF4WE4wcDJUQ084Z214ZVozZm1xMEtDNE1oRVp4
+MEZqZXZfR2Y4MXVDd0cyTVJnbjJkRzU4bUNQV2g4TUlvRzdXa2RMbFVQTjZuTHM3b1ptWVFqWEhT
+d0xRZlBPNGJ6WmE4UGd3SUxneEd4WTV3UkU3QWVZejBJZGx4cWxkemtBdHRtenlzQWt5WWo5Zz1z
+MC1kLWUxLWZ0I2h0dHBzOi8vaW1nLm15c2lnbmF0dXJlLmlvL3AvZS8zL2YvZTNmNmY0YjMtMzQy
+Zi01OGFlLWE5NWEtNGI1NDBjMzZmOGFhLnBuZz90aW1lPTE1OTU0NDQxMjUiIHN0eWxlPSJ3aWR0
+aDoxMDBweDtib3JkZXItcmFkaXVzOjE1JSI+PC9hPjwvdGQ+PHRkIHZhbGlnbj0idG9wIiBzdHls
+ZT0iYm9yZGVyLWxlZnQ6MnB4IHNvbGlkIHJnYig3MCwyMDgsMjU1KTt2ZXJ0aWNhbC1hbGlnbjp0
+b3A7Ym9yZGVyLXRvcC1jb2xvcjpyZ2IoNzAsMjA4LDI1NSk7Ym9yZGVyLXJpZ2h0LWNvbG9yOnJn
+Yig3MCwyMDgsMjU1KTtib3JkZXItYm90dG9tLWNvbG9yOnJnYig3MCwyMDgsMjU1KTtwYWRkaW5n
+OjBweCAwcHggMHB4IDlweCI+PHRhYmxlIGNlbGxzcGFjaW5nPSIwIiBjZWxscGFkZGluZz0iMCIg
+Ym9yZGVyPSIwIiBzdHlsZT0iYm9yZGVyLXNwYWNpbmc6MHB4O2JvcmRlci1jb2xsYXBzZTpjb2xs
+YXBzZTtsaW5lLWhlaWdodDoxLjQ7Zm9udC1mYW1pbHk6VmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJp
+Zjtmb250LXNpemU6MTEuMDVweDtjb2xvcjpyZ2IoMCwwLDEpIj48dGJvZHk+PHRyPjx0ZD48c3Bh
+biBzdHlsZT0iZm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6MS4yZW07bGluZS1oZWlnaHQ6
+bm9ybWFsO2ZvbnQtZmFtaWx5OlZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWY7Y29sb3I6cmdiKDcw
+LDIwOCwyNTUpIj5Ccm9va2UgV2hvb2xlcnk8L3NwYW4+PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5
+OlZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiPsKgIERpcmVjdG9yIG9mIE9wZXJhdGlvbnM8L3Nw
+YW4+PC90ZD48L3RyPjx0cj48dGQgc3R5bGU9InBhZGRpbmc6NXB4IDBweCI+PGRpdiBzdHlsZT0i
+Zm9udC1mYW1pbHk6VmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiI+UGluZWFwcGxlIENvbXBhbnk8
+L2Rpdj48L3RkPjwvdHI+PHRyPjx0ZD48Zm9udCBjb2xvcj0iIzQ2ZDBmZiIgZmFjZT0iVmVyZGFu
+YSwgR2VuZXZhLCBzYW5zLXNlcmlmIj5wOiA8L2ZvbnQ+PGZvbnQgZmFjZT0iVmVyZGFuYSwgR2Vu
+ZXZhLCBzYW5zLXNlcmlmIiBjb2xvcj0iIzAwMDAwMCI+NzI0Ljk4NC42NzQwPC9mb250PjwvdGQ+
+PC90cj48dHI+PHRkPjxzcGFuIHN0eWxlPSJmb250LWZhbWlseTpWZXJkYW5hLEdlbmV2YSxzYW5z
+LXNlcmlmO2NvbG9yOnJnYig3MCwyMDgsMjU1KSI+dzrCoDwvc3Bhbj7CoDxzcGFuIHN0eWxlPSJm
+b250LWZhbWlseTpWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIj48YSBocmVmPSJodHRwOi8vcGlu
+ZWFwcGxlLmNvLyIgc3R5bGU9ImNvbG9yOnJnYigwLDAsMSkiIHRhcmdldD0iX2JsYW5rIj5waW5l
+YXBwbGUuY288L2E+PC9zcGFuPjwvdGQ+PC90cj48dHI+PHRkPjxzcGFuIHN0eWxlPSJmb250LWZh
+bWlseTpWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmO2NvbG9yOnJnYig3MCwyMDgsMjU1KSI+YTrC
+oDwvc3Bhbj7CoDxzcGFuIHN0eWxlPSJmb250LWZhbWlseTpWZXJkYW5hLEdlbmV2YSxzYW5zLXNl
+cmlmIj41NyB3IDU3dGggU3RyZWV0LCAzcmQgRmxvb3IsIE5ldyBZb3JrLCBOWSAxMDAxOcKgPC9z
+cGFuPjwvdGQ+PC90cj48L3Rib2R5PjwvdGFibGU+PC90ZD48L3RyPjwvdGJvZHk+PC90YWJsZT48
+dGFibGUgY2VsbHNwYWNpbmc9IjAiIHdpZHRoPSI1MDAiIGNlbGxwYWRkaW5nPSIwIiBib3JkZXI9
+IjAiIHN0eWxlPSJmb250LXNpemU6MTNweDtib3JkZXItc3BhY2luZzowcHg7Ym9yZGVyLWNvbGxh
+cHNlOmNvbGxhcHNlO2NvbG9yOnJnYig5Nyw5Nyw5Nyk7Zm9udC1mYW1pbHk6TGF0byxzYW5zLXNl
+cmlmIj48L3RhYmxlPjwvZGl2Pjxici8+DQo=

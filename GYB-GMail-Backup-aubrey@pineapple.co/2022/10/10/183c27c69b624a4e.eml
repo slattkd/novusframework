@@ -1,0 +1,190 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:b08c:0:0:0:0 with SMTP id x12csp2099037ejy;
+        Mon, 10 Oct 2022 08:21:17 -0700 (PDT)
+X-Received: by 2002:a05:6870:f10f:b0:132:a1a5:cdf5 with SMTP id k15-20020a056870f10f00b00132a1a5cdf5mr15447557oac.161.1665415276956;
+        Mon, 10 Oct 2022 08:21:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665415276; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oZ/BPaLHce3dbBBsAi+OsoFTVwaz6zDJ9zBmtg56OJozIl86N72f0zPFjJR17jlI6G
+         38TT2UoSIYC8tVdPev7TA21ESy5U8/k9DipjVopJqq4dKlKTW6BAU8q4Ke2riNGl+lvK
+         vV+6EyQTP9OQxllX5f8nJAElsWSRDMY/0/MSuQjDvkYIzH6efJ2TdLU07nfOBPoZPstQ
+         WtRZnTlVVH7A0WX3CeXeVnSycn4c8T1zy/5P4XawJ2tgwpHQi/4NNo0cOjSB7V/PRCVs
+         5iU5QJT08zrFim4fa2MhsQjJGM8k4fVAZWHgoMAxBM/0GISc9s04Y2BsSfj2Ae4DrVTW
+         QCpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=76SxieKvir+HHnPGnddqfBfYrAJKlQorUTdzsqxDBYY=;
+        b=sG/+iejhQcvXyPEpXbmW/5LXev5YL/mbiFxSEIMPo1i768KW1jI14IobOPq9orQp4I
+         V0i4GF7/J3fuNQbM0scHFZ5JP+jpMGWXA+mmn++cBzvVgmzhG+iSgXfLIz7NGm3s1OUC
+         VynrIiYjRZmXv2nUOCq0/g0yVnJQQzn8OOHh54VbL55FtU6F/YG+4j1TR+TOdRckYs8l
+         +7hlntjZveJeLekRsB6siBXaScfdGt3VysGhqbHJmCsXVb6xDgg/84rItSq3KAsGnwYv
+         UQUKW0eXx5suKxO7cRd038cufy3estuM4AlSL7CPNRowgxq9kS6fKwohziXk1BUWJep5
+         mUhw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=7ujQPkpC;
+       spf=pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=marco@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <marco@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v132-20020acade8a000000b003505ca90b54sor2499816oig.81.2022.10.10.08.21.16
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 10 Oct 2022 08:21:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=7ujQPkpC;
+       spf=pass (google.com: domain of marco@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=marco@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=76SxieKvir+HHnPGnddqfBfYrAJKlQorUTdzsqxDBYY=;
+        b=7ujQPkpCoVlYyCSP3HQYOs3APBrzna4NlZwvVln69QKu+TOIuACIfpj3DJt+Q69paE
+         eNRL4nWfJj2286XeWqV4WEfRrcsBs37uECq3JOTeqh2uamP/kiI+RyPsQqpNV3vKYtGi
+         aRBS1Wrda4vGTIUfqNDiIWRiA7He3CfMve8zhPdiAgkDkprfD4bPV3klAurke1+4Q/uD
+         lwiJLgHY0gZ2g492O7n1BniUB5bNCyoUYt3hdpPav72s8hM8hjrM0J1lLbSuaqXJr4uq
+         irmxy2UHrKeUrCF0QhC/dIF9a3pPfRowpZHNJepiGRBJLG55uP07dx+5bV6RytbgDYTe
+         XWKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=76SxieKvir+HHnPGnddqfBfYrAJKlQorUTdzsqxDBYY=;
+        b=7RGgZc+ImzSFAN7qlxncFPmt1TPqeFJ1jXgpwCBtA783g2/aKKiUDWG+YQCtmetqoB
+         AWoDTkCtUF3RCtNbcmuyCavjov94SyaeaBuNS5jBkn91Rpe+Te0hID274YJjn8Z+lDu4
+         V/XS/HuUob4f1LyMMMX2ylDfrYQph7dRHBtjAVlVsYgc3MNufTgLsKdW1ioj6oAWuODP
+         zV2TdLhI2idJFsvCPYYiiscF0/xmHTxni8F57UZkb/A7aZXr5T5BqFQEwzkYCuOppG8x
+         ZBlLv8RD/gzrm2fyPbzMKu6kQDdC8Vl60Gh90jCMcmwMkPHl9ehrrYfhabuxmkEYOsIn
+         ee3w==
+X-Gm-Message-State: ACrzQf0SatC7epIYe1q0KkedSSH8+pIHg6cspx/x+EB5eAf7VKe2pXk+
+	fmOaSdq5GosYqmpcHecUajdoCMK3cYVfIfZV50QAW+qshorBoGiomfc=
+X-Google-Smtp-Source: AMsMyM6P4l9lCbbbgxBIqJ9SGrKItcIPBAXQienrkSzjPLvk07rPNHSy5GrcbudHo74w4ZhpBExUzhopKvRhRMBu9AI=
+X-Received: by 2002:a05:6808:1446:b0:354:2b4e:6d04 with SMTP id
+ x6-20020a056808144600b003542b4e6d04mr8607280oiv.48.1665415275804; Mon, 10 Oct
+ 2022 08:21:15 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP-Z_wE=BZBCiaLuerBpwUdgXp74Kax+zYU9oxnQ-7xLBA@mail.gmail.com>
+ <CAAcEqJd79vW0SDs+j90iBr+fdk3e4xsh6OsHDXxVAP4LQHDatw@mail.gmail.com> <CAHbmDP9JTsGq4O4438_mdeAXRX=TiFZvO231ndUhDuv+wQLhBQ@mail.gmail.com>
+In-Reply-To: <CAHbmDP9JTsGq4O4438_mdeAXRX=TiFZvO231ndUhDuv+wQLhBQ@mail.gmail.com>
+From: Marco Shimazaki <marco@pineapple.co>
+Date: Mon, 10 Oct 2022 11:21:03 -0400
+Message-ID: <CAAcEqJeW0GcECEoWt6cS=vpbbXO7KuZkCXrgGGH67bSduTXt2g@mail.gmail.com>
+Subject: Re: Email Sales / Q4 Dashboard
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000eb155f05eaafb560"
+
+--000000000000eb155f05eaafb560
+Content-Type: text/plain; charset="UTF-8"
+
+Here would be the full breakdown of everything:
+https://docs.google.com/spreadsheets/d/192-23dlbUwRNGjYjDzlqlSH1X2hpGqU_08sRO3H8phI/edit?usp=sharing
+
+On Mon, Oct 10, 2022 at 9:42 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Got it.  Thank you for the clarification!
+>
+> At the very least, I'll be able to put those sales into the dashboard that
+> Brett is looking for.
+>
+> For the external revenue, I've already explained the lag in reporting to
+> him multiple times.
+>
+> Thanks!
+> Aubrey
+>
+> On Mon, Oct 10, 2022 at 8:31 AM Marco Shimazaki <marco@pineapple.co>
+> wrote:
+>
+>> Those are a portion of the revenue that we would be tracking those come
+>> from automated systems so things like:
+>> === Internal Revenue===
+>> Cart Abandonments
+>> ReOrders
+>> ---
+>> Banners
+>> Our Products
+>> ======================
+>>
+>> what is not included is all our external revenue which comes from a wide
+>> variety of accounts that we pull reports from each individual one in order
+>> to show the revenue generated.
+>>
+>
+
+-- 
+[image: https://mysignature.io/?utm_source=logo]
+<https://mysignature.io/?utm_source=logo>
+Marco Shimazaki Email Marketing Manager
+
+Pineapple Products
+s:  sbu.marco.shimazaki
+w:  pineapple.co
+a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+
+--000000000000eb155f05eaafb560
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Here would be the full breakdown of everything:<div><a hre=
+f=3D"https://docs.google.com/spreadsheets/d/192-23dlbUwRNGjYjDzlqlSH1X2hpGq=
+U_08sRO3H8phI/edit?usp=3Dsharing">https://docs.google.com/spreadsheets/d/19=
+2-23dlbUwRNGjYjDzlqlSH1X2hpGqU_08sRO3H8phI/edit?usp=3Dsharing</a><br></div>=
+</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+On Mon, Oct 10, 2022 at 9:42 AM Aubrey Allen &lt;<a href=3D"mailto:aubrey@p=
+ineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex"><div dir=3D"ltr">Got it.=C2=A0 Thank you f=
+or the clarification!<div><br></div><div>At the very least, I&#39;ll be abl=
+e to put those sales into the dashboard that Brett is looking for.=C2=A0=C2=
+=A0</div><div><br></div><div>For the external revenue, I&#39;ve already exp=
+lained the lag in reporting to him multiple times.</div><div><br></div><div=
+>Thanks!</div><div>Aubrey</div></div><br><div class=3D"gmail_quote"><div di=
+r=3D"ltr" class=3D"gmail_attr">On Mon, Oct 10, 2022 at 8:31 AM Marco Shimaz=
+aki &lt;<a href=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pinea=
+pple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr"><div>Those are a portion of the revenue that we wou=
+ld be tracking those come from automated systems so things like:</div><div>=
+=3D=3D=3D Internal Revenue=3D=3D=3D</div><div>Cart Abandonments</div><div>R=
+eOrders</div><div>---</div><div>Banners</div><div>Our Products</div><div>=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</div><di=
+v><br></div><div>what is not included is all our external revenue which com=
+es from a wide variety of accounts that we pull reports from each individua=
+l=C2=A0one in order to show the revenue generated.</div><div dir=3D"ltr"></=
+div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><table cellspacing=3D"0" width=
+=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spac=
+ing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sans-=
+serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px 9px=
+ 0px 0px;vertical-align:top"><a href=3D"https://mysignature.io/?utm_source=
+=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"https://m=
+ysignature.io/?utm_source=3Dlogo" width=3D"100" src=3D"https://img.mysignat=
+ure.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1594774986" =
+style=3D"width: 100px; border-radius: 15%;"></a></td><td valign=3D"top" sty=
+le=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-c=
+olor:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color=
+:rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse=
+;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;co=
+lor:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0ff" face=3D"Verdana, Gen=
+eva, sans-serif"><span style=3D"font-size:13.26px">Marco Shimazaki Email Ma=
+rketing Manager</span></font></td></tr><tr><td style=3D"padding:5px 0px"><d=
+iv style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Products</div>=
+</td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;colo=
+r:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.shimazaki</td></tr><tr><t=
+d><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255=
+)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-seri=
+f"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_b=
+lank">pineapple.co</a></span></td></tr><tr><td><span style=3D"font-family:V=
+erdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span>=
+<span style=3D"font-size:8.5pt;font-family:Verdana;background-color:transpa=
+rent;vertical-align:baseline;white-space:pre-wrap">600 Broadway Ste 200 #14=
+60 Albany, NY 12207</span></span><span style=3D"font-family:Verdana,Geneva,=
+sans-serif">=C2=A0</span></td></tr></tbody></table></td></tr></tbody></tabl=
+e></div></div>
+
+--000000000000eb155f05eaafb560--

@@ -1,0 +1,222 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp4231001ejq;
+        Thu, 7 Jul 2022 08:56:18 -0700 (PDT)
+X-Received: by 2002:a17:907:2c77:b0:72b:1154:33da with SMTP id ib23-20020a1709072c7700b0072b115433damr3455090ejc.27.1657209378095;
+        Thu, 07 Jul 2022 08:56:18 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1657209378; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=Ml3W1wve01nydprvA85YXWkXsNAypSl1e06koyYcDnd2JkMxDna/L56qDlFPoRHBC9
+         cndi8RxGMgFUoKqIEunDCLJ+LKUjsajDbPzdc8C3Y6DxMBqiacSbnwMzu+mtg0Ik3lR6
+         GQtC5GZRcXMBY98Ww1X+gm5+I1/9+uxErIiGb3XkUbgxsHH+4EZXdt7VH61BbGVOUX28
+         dfJrv4uVIL8iHnXL6txBcwkOVtdRdI5/trClq6HLeZLfZmx7NC3bFOfpJzi3TLWvdLcr
+         g+j2E2R5VRKFQmI543l8xmBo4dp3QHbGv8+1RqakXvFuWOnioCGbaX77A/uxnVq6uYv5
+         ymsw==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=mT2JrWafKZKguBLXhd8O10m0GjL1NZIsnOaF3uVdnQU=;
+        b=sNFpuOB2dqplrXIveQqBiT/cv+l5ekKHbCaeFCiIA82Q6ktBemDYjuPXVlk0+Tvze4
+         JUBqdMLsHWc8ku21lnaPvFIBaHm2nJt616OlBC2X/Y7iQ2ZL7bY1fcBxt4yFqN/EAke/
+         kAfEBXRIpG21St4GOO2wm4xuTacPNk2EHpG1LqjjJdNIc4TJFRG7PQqZ/8n9194nnn7w
+         8MOk+2n2kPZaCbbOIFxTdTXJ9iXNkct04Ka6FhY/DM2sbCgaUFlTJzLSAFoR9XJnVkIX
+         J+GEju83QDMqjniLN1S+eztNpEj6Wlm7IHcuGXESLLKAJCyh0ubj88/PshJzBK3tVWLA
+         eErg==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="h5ndq9m/";
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcy7lkwy5imbbfmetslamgqeufofnmq@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCY7LKWY5IMBBFMETSLAMGQEUFOFNMQ@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBCY7LKWY5IMBBFMETSLAMGQEUFOFNMQ@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id h6-20020a170906260600b0071579acb86esor14512705ejc.72.2022.07.07.08.56.17
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 07 Jul 2022 08:56:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbcy7lkwy5imbbfmetslamgqeufofnmq@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="h5ndq9m/";
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcy7lkwy5imbbfmetslamgqeufofnmq@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCY7LKWY5IMBBFMETSLAMGQEUFOFNMQ@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1657209377; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=FKiG0m1sfnxR7C3kT//6Y65Tev37HvS2bCcKz2C436VNqkQMIoXbnSk2Y44zi/hQUn
+         rOWfcItGJuKM/zUtRbsqSCkiYgoObL69GqKoAZfUxQ8zK2xLtclTrCA42hCzo0AP6LY4
+         hV2ijODADyQPGMtW2JUgIxvCRK5YV3LcsQQ5M0JtGwptvhGz+j2uHqSGQ9Nc9E0uOegr
+         GVgFTzx0KF6F8asf4S5gVJf2E4D/smVmXK9Z/i7P7qVbyRkoPqkHKJRR9V9c3HfAUR6z
+         tqG1VAl0NOIn4kP0uRcST9E/NQ35yXv1VHLsOBbIli3xr13jYoEonaMyJlTxxhPZhjao
+         zx0w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=mT2JrWafKZKguBLXhd8O10m0GjL1NZIsnOaF3uVdnQU=;
+        b=yZPtm1kJm4kcaBLMsX5IqfanIljrq+LmLfJl5FjJ2OyHZoPzCA5MK+lJPFitr90eEv
+         N70NfCt7ZOlXMw9HpMsRvv51O/VJV3e/96Klwms5P8u2SpqpBj6R/8sQovlYU2z5virR
+         lJTTk4YOcPLbJCjWsKUdoKfwWF01W7cWFNoFCizE6VgTWDpoonpAoCn/4ZQ6m972uoSg
+         4R7CXMN5zsZ6HTG4S1L9uYtguaQH2AsOQWbiGwoBAx2x9ZRsHCdmECgMVMnYfSMH3doe
+         I9LFBUH+vd76e7J96t0Tr1u8HN7LLLHj5/ilFiz3YX9K+n2HZ3iMba95vm4GjOsB/t3m
+         dQxA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=bbPkUbhg;
+       spf=pass (google.com: domain of amber@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-unsubscribe;
+        bh=mT2JrWafKZKguBLXhd8O10m0GjL1NZIsnOaF3uVdnQU=;
+        b=h5ndq9m/jNTu/zaqwA5GUzcpOwPGeGTMVCH6MoBGMJEXajGdigx5z1JWhRw04fvjmC
+         5ZuaR8pgCYUAIWod4QYoc4EnTFU6pcGsohgG1OxZQR1fO7qxGsCY3/VQ0CLaYag74LXG
+         MkpMTa3JE9blv7FDmR40zqIaTC7BgZ3BnsCj1AOWCtgIUyYvW43gqrdfb07pA1BI5ofM
+         qUerX3ejt2ToYSlE/GFIvkKGqR60CHxuQwKOc7pEoH645PYvMbEMIbC9pkVQKdPI+0qk
+         eRSyxSaDKKOSvuT4jkkhMAkiDtMtRj/yGKCP0yN+lLUDJpEiQJjeEk92Jo/2Hk1fnkhQ
+         mC0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-unsubscribe;
+        bh=mT2JrWafKZKguBLXhd8O10m0GjL1NZIsnOaF3uVdnQU=;
+        b=dgukFVKJTGsAggfkbuLeMTbtuY1rJLvZ/Z7LDab6x0DX4XvIQjQEjsH1+Ut+SovUlL
+         qcHTaY6paLvbWbWnno9JawaqTPjv0aXXWytDzBGx3M8hWRbwy/+PHzrUlXmzSWbE9RoH
+         hr9YzEK4oOJM4q1r3yD+OCXSlk6V/XQDMee+lq6v3uaGOHzbuJhBO6tarbhSUlnv3Xag
+         4e6mtYmyc72JHSunW1UCS55LzLYClM9gOWuktN1zW3sOH7rhbxWUow4J3uIaS/9WqzaD
+         2Hamdl5dMq2pAZ5rqVlRSEBls/R6ajV097UfnsSciBsY6Yl5EPqlOa7N+4LOrjDuO/td
+         BSNA==
+X-Gm-Message-State: AJIora9RZvBXOXlnatb6N2+kUBr7mwmp23RO3QF6CYaTsjaUFaiMKwzR
+	4t3QgcfS/hxmlNaJfPkyF+hGBKt/
+X-Google-Smtp-Source: AGRyM1v43xC4ttWMhfXJSSLsLmI3UeTItyfAUbTSYuRLZzhQpkGJxLlwKESS04+ESRtEins5WM4JLA==
+X-Received: by 2002:a05:6000:184c:b0:21b:b6ac:8cb6 with SMTP id c12-20020a056000184c00b0021bb6ac8cb6mr43027592wri.154.1657209367290;
+        Thu, 07 Jul 2022 08:56:07 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a5d:47ce:0:b0:21d:339f:dc1 with SMTP id o14-20020a5d47ce000000b0021d339f0dc1ls3044950wrc.0.gmail;
+ Thu, 07 Jul 2022 08:56:06 -0700 (PDT)
+X-Received: by 2002:a05:6000:702:b0:21d:7f65:f1b5 with SMTP id bs2-20020a056000070200b0021d7f65f1b5mr8093028wrb.555.1657209365987;
+        Thu, 07 Jul 2022 08:56:05 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a05:6000:156e:b0:21d:2eb7:c707 with SMTP id
+ 14-20020a056000156e00b0021d2eb7c707ls3042848wrz.3.gmail; Thu, 07 Jul 2022
+ 08:56:04 -0700 (PDT)
+X-Received: by 2002:a5d:4d92:0:b0:21d:6f02:d971 with SMTP id b18-20020a5d4d92000000b0021d6f02d971mr15863272wru.300.1657209364571;
+        Thu, 07 Jul 2022 08:56:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657209364; cv=none;
+        d=google.com; s=arc-20160816;
+        b=k394OSryGfYunK3cRXk4EeocUQZpE1MrAwSt+wRTGs39n2zLDgxIq4aRie7eYy8P3p
+         yIWRib9HtG+GpX8V47obX5cRPMaIF9TMP0B3c1k7bkWSP5JenPnGewFQm/v825DGySjt
+         kR1Y8G/AK8Z3lbqRqT9/PLrWI4xjyq7fUSF5/4+L1mIr8WN+KYyxqcJj+V+O/kt/FPvW
+         gVGWd9EVV3ZoPSfIV0n3g51w2Xn3/EapmmZ7CFq6w9BnATmX0GorIamLGIT/YdqhqRep
+         YjXN9C9Gku3K1H+gnVH/YohVL66vtEJDLROXKSgFHwGyh6g/KWcW5bxgjXU9zj9Ec/vy
+         YpLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=mT2JrWafKZKguBLXhd8O10m0GjL1NZIsnOaF3uVdnQU=;
+        b=waA5U9NfTSXE/K9NOXHUgYyE2zPpqYrXGOW6zRKnLUzakJZqCHySQwUbW5zcEXmtEm
+         zB1nnllOgDX4pkIC0vNf2iBEC0gj/ZxtaxNL1zwu5lrqf6GllYha07dTG/H1eX5Js5rB
+         beuMRd8scyC+o/LeVll7jDAnK6deOTn92Mz5HVm0CO0MfeJ4X4FQjDn3dTyGEee4pCK2
+         2DzJsdqUSiB2s3NFw4iDNibDifrpi3Yi8nVR2hOnSLE+iMjiWCTRNn0XAz0pu2l+R4CD
+         T0Iw10DFcqWnJ9TGJRHh35YxB4nemGPIvBl/TCuZH0dX9jfkVusa2FSpdOWoENHK3cTh
+         ufQg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=bbPkUbhg;
+       spf=pass (google.com: domain of amber@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e15-20020a5d6d0f000000b0021d78c9c5e7sor3276833wrq.2.2022.07.07.08.56.04
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Thu, 07 Jul 2022 08:56:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amber@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a5d:59c7:0:b0:21d:8c8e:3a9d with SMTP id
+ v7-20020a5d59c7000000b0021d8c8e3a9dmr958411wry.332.1657209364315; Thu, 07 Jul
+ 2022 08:56:04 -0700 (PDT)
+MIME-Version: 1.0
+From: Amber Glenn <amber@pineapple.co>
+Date: Thu, 7 Jul 2022 11:55:53 -0400
+Message-ID: <CAJsXUXDGDcMmpOCVEga_gkCrx5WgRv73dcF6vQRcp-vm8FjKBA@mail.gmail.com>
+Subject: Paylocity Employee Portal
+To: Amber Glenn <amber@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000007a9d0605e3391fce"
+Bcc: all@pineapple.co
+X-Original-Sender: amber@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=bbPkUbhg;       spf=pass (google.com: domain of amber@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=amber@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--0000000000007a9d0605e3391fce
+Content-Type: text/plain; charset="UTF-8"
+
+Team - We will have the enrollment email for Paylocity sent to you soon and
+appreciate your patience. We will be sure to give everyone ample time to
+enroll.
+
+Thank you,
+
+[image: created with MySignature.io]
+<https://mysignature.io/?utm_source=logo>
+*Amber N. Glenn, SHRM-CP*
+Human Resources Manager
+Phone:  *512-698-9198*
+Website:  pineapple.co
+Address:
+*57 w 57th Street, 3rd Floor, New York, NY 10001*
+
+--0000000000007a9d0605e3391fce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Team - We will have the enrollment email for Paylocity sen=
+t to you soon and appreciate=C2=A0your patience. We will be sure to give ev=
+eryone ample time to enroll.<div><br></div><div>Thank you,</div><div><br cl=
+ear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=
+=3D"gmail_signature"><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500=
+" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spacing:0px=
+;border-collapse:collapse;font-family:Lato,sans-serif;color:rgb(97,97,97)">=
+<tbody><tr><td width=3D"100" valign=3D"top" style=3D"font-family:Lato,sans-=
+serif;padding:0px 9px 0px 0px;vertical-align:top"><a href=3D"https://mysign=
+ature.io/?utm_source=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><=
+img alt=3D"created with MySignature.io" width=3D"100" src=3D"https://img.my=
+signature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D159477=
+4986" style=3D"width:100px;border-top-left-radius:15%;border-top-right-radi=
+us:15%;border-bottom-right-radius:15%;border-bottom-left-radius:15%"></a></=
+td><td valign=3D"top" style=3D"font-family:Lato,sans-serif;border-left-widt=
+h:2px;border-left-style:solid;vertical-align:top;padding:0px 0px 0px 9px;bo=
+rder-color:rgb(70,208,255)"><table cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;line-height:1=
+.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)=
+"><tbody><tr><td style=3D"font-family:Verdana,Geneva,sans-serif"><span styl=
+e=3D"font-size:11.05px"><b>Amber N. Glenn, SHRM-CP</b></span><br></td></tr>=
+<tr><td style=3D"font-family:Verdana,Geneva,sans-serif;padding:5px 0px">Hum=
+an Resources Manager</td></tr><tr><td style=3D"font-family:Verdana,Geneva,s=
+ans-serif"><span style=3D"color:rgb(70,208,255)">Phone:=C2=A0</span>=C2=A0<=
+u>512-698-9198</u></td></tr><tr><td style=3D"font-family:Verdana,Geneva,san=
+s-serif"><span style=3D"color:rgb(70,208,255)">Website:=C2=A0</span>=C2=A0<=
+a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank=
+">pineapple.co</a></td></tr><tr><td style=3D"font-family:Verdana,Geneva,san=
+s-serif"><span style=3D"color:rgb(70,208,255)">Address:=C2=A0</span>=C2=A0<=
+font color=3D"#000000"><u>57 w 57th Street, 3rd Floor, New York, NY 10001<b=
+r></u></font></td></tr></tbody></table></td></tr></tbody></table><table cel=
+lspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-s=
+ize:13px;border-spacing:0px;border-collapse:collapse;font-family:Lato,sans-=
+serif;color:rgb(97,97,97)"><tbody></tbody></table><table cellspacing=3D"0" =
+width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border=
+-spacing:0px;border-collapse:collapse;font-family:Lato,sans-serif;color:rgb=
+(97,97,97)"><tbody></tbody></table></div></div></div></div></div>
+
+--0000000000007a9d0605e3391fce--

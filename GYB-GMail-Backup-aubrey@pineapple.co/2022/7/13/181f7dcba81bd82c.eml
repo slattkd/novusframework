@@ -1,0 +1,998 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp378447ejb;
+        Wed, 13 Jul 2022 07:00:47 -0700 (PDT)
+X-Received: by 2002:a05:6870:204c:b0:101:6275:67de with SMTP id l12-20020a056870204c00b00101627567demr4677951oad.101.1657720847108;
+        Wed, 13 Jul 2022 07:00:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657720847; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zTPkV/WMhLGaJ3gP1OVfvYHnxrOyXI9+eP6Zpj+QXzHSRPNeIhUSTMhyVhFtmnAEWZ
+         KZ/hPp33BdAMR8YLQJHXmQQZdsqjIaApxKEaXqhMpajWGolex91Bqcvx2E5gZhOF8lRx
+         Sp6u7PYwiTd3Vw99A9cWjjdWA4oYfIX+u5+Czt5jx4jHwxzZX0sQMxKJ7ofES2loZQQ6
+         zW3aesmlL3pe9nKGLpxgYiZs/lczv3mGeqkOH6f73Zxxwg8TLTFdKQxmK+1EXSd0Cajp
+         seAFZ8VubtxcR2RJ5PPd/9Dk9pE4tn4sseULaha44xWlBWpZz8Z93rgus4HZTpf36mUx
+         EftA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=HARZ8h/fnYFMVc0Q9DW5Ctf3r/dFqbX/IfmDf8xaqPU=;
+        b=h1S7lB2BcGtd4UdMeLrZKwS7PjpKLRs/DpCiTAgYYioxChD0vJIme1X6Y/ZgfdtWNd
+         hyAwaJs/XC2+lueOU9vbccjsAmonka2ZYXrCMfnC6zu09L5bpM4vXj7H5J2ugh6CRk4S
+         WmbPf7bDvXznewaSCUHI6VzVajkjuSvWqRiigmXJgZIzf+kPP45dDOJlKrvMgsr97D6i
+         O3kpYTRZ9ydxupqY0xePjmINOAeBBIkNXLqGk8QReGzF0fyW+Z3v+m9sgsVYAj9SiWgC
+         L1IoWB7x/fsnMQyXMWcZIYnZRqAyQGeRjswWCEL+j7EM7YbNWPdb1UUaCNuzVq7suT2d
+         StUg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=CyLupB+i;
+       spf=pass (google.com: domain of george@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=george@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <george@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id cj24-20020a056830641800b0061c40176a47sor1346598otb.25.2022.07.13.07.00.46
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 13 Jul 2022 07:00:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of george@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=CyLupB+i;
+       spf=pass (google.com: domain of george@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=george@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=HARZ8h/fnYFMVc0Q9DW5Ctf3r/dFqbX/IfmDf8xaqPU=;
+        b=CyLupB+iCtWzQ2eXap3FmklbRCSBFqFkf8cLgGaX0g5p1ba2+fEAIsSN6LmBkD39dg
+         7sJ5uNBMKpLBLsyyn9+PxLXbc5hyNEPaCV8Et6EdAo41A+H/cKUCgMpXTcA6a9cCl8tx
+         vswSPvMIWy4ekuqUYEbT7XaGaYz+bQ1swv2xXSop8GVwIQGORGHzpebREWWZjZKiUTXX
+         J8ayZKhW4ZDtWXyk2pvccClmO+q2ZN+X7GG/4Len03iyRmw4D1wXuaBeftEQdS5G19wh
+         wpFs1DTXXn7h39duyWsmvPZ84GekZDzOLVVKOVMstcNEkpM/fV5BiMmT/cWCRVP8aHxa
+         rL2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=HARZ8h/fnYFMVc0Q9DW5Ctf3r/dFqbX/IfmDf8xaqPU=;
+        b=yDFvWYP8B/rfvcP+mggEHWsnFS6l8ggOO+Z3hADm6yK544DoL1MumIX01VcaJdyQlQ
+         olPCKgxR8HjOljxvLOg3KS8UbNS1jaa9z0JNrfVF1mzmM16btxBuvn+vH5W8Zfwl0ccU
+         OOFy5/SZaZVhbFTQg3AoFcoimdGH3hWOy7h8nyzKbPESkqHwEYFojp79HN9k2H6LJ6u8
+         PsQgJYJs/rhFKOCj6A/+ymG7W9Z2kc+wX4ZM7/VPCeLwn49o3fZ3fgDdEavgl1FZukaP
+         9UspbybugtgOlEo8p4lJO8B7s25ySAGHCnpYacOZfFFrBrJVbgSlYPvjckGf0Oi8hOw/
+         c3BA==
+X-Gm-Message-State: AJIora/+cBIyZzrTyUoCWkUQ/6C7fvBm1ExcwLGdp0L+uv0B5BFWmgka
+	PotGEvNhoBM2ZF4MXL5S6n4ycGiu1qecBKRfmqJak1ymtu50omBt
+X-Google-Smtp-Source: AGRyM1vNlQ4seR6SAjQh8Mw5WiHIjG28R2vGkud3j0YF7mDPvqtZXLrNNLcWr4bmv35Ow6dLx0Kdt7MmWMZ14dft9jA=
+X-Received: by 2002:a05:6902:110e:b0:66d:e6dc:5f31 with SMTP id
+ o14-20020a056902110e00b0066de6dc5f31mr3861368ybu.628.1657720836183; Wed, 13
+ Jul 2022 07:00:36 -0700 (PDT)
+MIME-Version: 1.0
+References: <000000000000406b2905e3b02e12@google.com>
+In-Reply-To: <000000000000406b2905e3b02e12@google.com>
+From: George Felactu <george@pineapple.co>
+Date: Wed, 13 Jul 2022 17:00:25 +0300
+Message-ID: <CALyYJ4=q0LkNDK_6waonX3CJpF0SK-TTgcQGfz2KHq32eMhy3A@mail.gmail.com>
+Subject: Re: Updated invitation: All-Hands Meeting @ Thu Jul 14, 2022 8pm -
+ 9pm (EEST) (george@pineapple.co)
+To: Amber Glenn <amber@pineapple.co>
+Cc: All <all@pineapple.co>, Ann Navaro <ann@pineapple.co>, Anna Urbas <anna@pineapple.co>, 
+	Brett Allcorn <brett@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>, 
+	Carren Jimenez <carren@pineapple.co>, Casey Byrne <casey@pineapple.co>, 
+	Charisse De Leon <charisse@pineapple.co>, Corina Norried <corina@pineapple.co>, 
+	Dan Champion <dan@pineapple.co>, "Daryl Sta. Ana" <daryl@pineapple.co>, 
+	Doug smith <doug.smith@5gmale.com>, Elaiza Ferrer <elaiza@pineapple.co>, 
+	Jaybee Bautista <jaybee@pineapple.co>, Jennelyn Lopez <jenny@pineapple.co>, 
+	John Paulo Ladisla <jladisla@pineapple.co>, Kara Byrne <karabyrne@pineapple.co>, 
+	Kevin Hipolito <kevin@pineapple.co>, Lianne Mariano <lianne@pineapple.co>, 
+	Lizza Jane Comia <lizza@pineapple.co>, Luka <luka@pineapple.co>, 
+	Mary Rose Darcen <maryrose@pineapple.co>, MaryAnn Manalaysay <maryann@pineapple.co>, 
+	Michael Miranda <mmiranda@pineapple.co>, Mike McBrien <mike@pineapple.co>, 
+	Noimee Garcia <noimee@pineapple.co>, Peter Perez <peter@revivalpointllc.com>, 
+	ReNae Nieman <renae@pineapple.co>, Robert Martin <robert@revivalpointllc.com>, 
+	Roselyn Nolasco <roselyn@pineapple.co>, Roshynne Deal <roshynne@pineapple.co>, 
+	Rosito Gonzales <rosito@pineapple.co>, Shaun Strom <shaun@pineapple.co>, 
+	Shienna Yambao <shienna@pineapple.co>, Stephanie Rojas <srojas@pineapple.co>, abigail@pineapple.co, 
+	aimee.latuszek@pineapple.co, allen@pineapple.co, andrea@pineapple.co, 
+	andres@pineapple.co, appay@pineapple.co, aubrey@pineapple.co, 
+	audrey worden <audrey@pineapple.co>, bonnie@pineapple.co, carla@pineapple.co, 
+	caroline@pineapple.co, colin@pineapple.co, dane@pineapple.co, 
+	derek@pineapple.co, dimitri@pineapple.co, dj@pineapple.co, 
+	doug@revivalpointllc.com, edwin@pineapple.co, emily@gothamclubmedia.com, 
+	emilyfreiday@pineapple.co, feuerstein@pineapple.co, 
+	franaffiliate@pineapple.co, gene@pineapple.co, grace@pineapple.co, 
+	greg@pineapple.co, heather@pineapple.co, hr1@pineapple.co, ivy@pineapple.co, 
+	jack@pineapple.co, jarren@pineapple.co, jason@pineapple.co, 
+	jeannie@pineapple.co, jeremy@pineapple.co, jobs@pineapple.co, 
+	john.belkewitch@pineapple.co, john.leaver@pineapple.co, jonathan@pineapple.co, 
+	kendal@pineapple.co, kerry@pineapple.co, kim@pineapple.co, 
+	kirsten@pineapple.co, lisa@pineapple.co, marco@pineapple.co, 
+	maria@pineapple.co, megan@pineapple.co, olivia@pineapple.co, 
+	pineapple.co@allusers.d.calendar.google.com, ricardo@pineapple.co, 
+	ricky@pineapple.co, ryanalarid@pineapple.co, sam@pineapple.co, 
+	sean@pineapple.co, seangrigsby@pineapple.co, shawna@pineapple.co, 
+	sheena@pineapple.co, stacy@pineapple.co, stephanie@pineapple.co, 
+	stephen@pineapple.co, support@pineapple.co, taylor@pineapple.co, 
+	tessa@pineapple.co, thomas@pineapple.co
+Content-Type: multipart/alternative; boundary="00000000000093ef0305e3b035b1"
+
+--00000000000093ef0305e3b035b1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+I will be on it! =F0=9F=87=AC=F0=9F=87=B7
+
+On Wed, Jul 13, 2022 at 4:58 PM Amber Glenn <amber@pineapple.co> wrote:
+
+> All-Hands Meeting
+> Hey, please join me for an all-hands meeting this Wednesday at 12pm ET fo=
+r
+> 45 minutes on Zoom (pineapple.co/zoom).I=E2=80=99m going to run through s=
+ome of
+> the company=E2=80=99s cost cutting actions we=E2=80=99re taking to en
+>
+> This event has been updated
+> Changed: time
+>
+> Hey, please join me for an all-hands meeting this Wednesday at 12pm ET fo=
+r
+> 45 minutes on Zoom (pineapple.co/zoom
+> <https://www.google.com/url?q=3Dhttp%3A%2F%2Fpineapple.co%2Fzoom&sa=3DD&u=
+st=3D1658152680000000&usg=3DAOvVaw2OzB7gsejjQYRg9ZKWVqC_>
+> ).
+>
+> I=E2=80=99m going to run through some of the company=E2=80=99s cost cutti=
+ng actions we=E2=80=99re
+> taking to ensure we get through this economic downturn.
+>
+> There is no reason for alarm, the company revenue is steady and while it=
+=E2=80=99s
+> a drop from 2021, it=E2=80=99s stronger than it was in 2020.
+>
+> I also look at these times as an opportunity to focus on getting lean and
+> efficient in ways we might not have been when we were growing more rapidl=
+y.
+>
+> Looking forward to talking to you Wednesday at 12PM ET!
+>
+> Link: pineapple.co/zoom
+> <https://www.google.com/url?q=3Dhttp%3A%2F%2Fpineapple.co%2Fzoom&sa=3DD&u=
+st=3D1658152680000000&usg=3DAOvVaw2OzB7gsejjQYRg9ZKWVqC_>
+>
+> -Brett
+> When
+> CHANGED
+> Thursday Jul 14, 2022 =E2=8B=85 8pm =E2=80=93 9pm (Eastern European Time =
+- Athens)
+> Old: Wednesday Jul 13, 2022 =E2=8B=85 7pm =E2=80=93 8pm (Eastern European=
+ Time - Athens)
+> Guests
+> amber@pineapple.co - organizer
+> john.belkewitch@pineapple.co
+> Kevin Hipolito <kevin@pineapple.co>
+> Roshynne Deal <roshynne@pineapple.co>
+> emily@gothamclubmedia.com
+> Casey Byrne <casey@pineapple.co>
+> Luka <luka@pineapple.co>
+> bonnie@pineapple.co
+> megan@pineapple.co
+> john.leaver@pineapple.co
+> Rosito Gonzales <rosito@pineapple.co>
+> appay@pineapple.co
+> sean@pineapple.co
+> thomas@pineapple.co
+> ivy@pineapple.co
+> MaryAnn Manalaysay <maryann@pineapple.co>
+> grace@pineapple.co
+> andrea@pineapple.co
+> caroline@pineapple.co
+> All <all@pineapple.co>
+> Jaybee Bautista <jaybee@pineapple.co>
+> John Paulo Ladisla <jladisla@pineapple.co>
+> andres@pineapple.co
+> Dan Champion <dan@pineapple.co>
+> olivia@pineapple.co
+> colin@pineapple.co
+> marco@pineapple.co
+> seangrigsby@pineapple.co
+> shawna@pineapple.co
+> dj@pineapple.co
+> Ann Navaro <ann@pineapple.co>
+> sheena@pineapple.co
+> Anna Urbas <anna@pineapple.co>
+> aubrey@pineapple.co
+> kim@pineapple.co
+> carla@pineapple.co
+> kirsten@pineapple.co
+> ricardo@pineapple.co
+> kerry@pineapple.co
+> Jennelyn Lopez <jenny@pineapple.co>
+> Charisse De Leon <charisse@pineapple.co>
+> Carren Jimenez <carren@pineapple.co>
+> Shaun Strom <shaun@pineapple.co>
+> emilyfreiday@pineapple.co
+> franaffiliate@pineapple.co
+> jason@pineapple.co
+> Roselyn Nolasco <roselyn@pineapple.co>
+> edwin@pineapple.co
+> Shienna Yambao <shienna@pineapple.co>
+> jeannie@pineapple.co
+> tessa@pineapple.co
+> george@pineapple.co
+> support@pineapple.co
+> Brett Allcorn <brett@pineapple.co>
+> Mike McBrien <mike@pineapple.co>
+> ricky@pineapple.co
+> taylor@pineapple.co
+> stephen@pineapple.co
+> gene@pineapple.co
+> aimee.latuszek@pineapple.co
+> pineapple.co@allusers.d.calendar.google.com
+> Robert Martin <robert@revivalpointllc.com>
+> jack@pineapple.co
+> dimitri@pineapple.co
+> greg@pineapple.co
+> jeremy@pineapple.co
+> jobs@pineapple.co
+> Mary Rose Darcen <maryrose@pineapple.co>
+> Noimee Garcia <noimee@pineapple.co>
+> Michael Miranda <mmiranda@pineapple.co>
+> stephanie@pineapple.co
+> jarren@pineapple.co
+> Doug smith <doug.smith@5gmale.com>
+> maria@pineapple.co
+> Lizza Jane Comia <lizza@pineapple.co>
+> hr1@pineapple.co
+> sam@pineapple.co
+> Stephanie Rojas <srojas@pineapple.co>
+> abigail@pineapple.co
+> dane@pineapple.co
+> audrey worden <audrey@pineapple.co>
+> kendal@pineapple.co
+> allen@pineapple.co
+> Daryl Sta. Ana <daryl@pineapple.co>
+> Peter Perez <peter@revivalpointllc.com>
+> stacy@pineapple.co
+> ReNae Nieman <renae@pineapple.co>
+> Elaiza Ferrer <elaiza@pineapple.co>
+> feuerstein@pineapple.co
+> Lianne Mariano <lianne@pineapple.co>
+> heather@pineapple.co
+> Brooke Whoolery <brooke@pineapple.co>
+> Corina Norried <corina@pineapple.co>
+> derek@pineapple.co
+> ryanalarid@pineapple.co
+> jonathan@pineapple.co
+> doug@revivalpointllc.com
+> lisa@pineapple.co
+> Kara Byrne <karabyrne@pineapple.co>
+> View all guest info
+> <https://calendar.google.com/calendar/event?action=3DVIEW&eid=3DMnZldGtoM=
+XJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&tok=3DMTgjYW1iZXJAcGl=
+uZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMyZjQyMGRmNA&ctz=3DE=
+urope%2FAthens&hl=3Den&es=3D1>
+> Reply for george@pineapple.co
+> Yes
+> <https://calendar.google.com/calendar/event?action=3DRESPOND&eid=3DMnZldG=
+toMXJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&rst=3D1&tok=3DMTgj=
+YW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMyZjQyMGR=
+mNA&ctz=3DEurope%2FAthens&hl=3Den&es=3D1>
+> No
+> <https://calendar.google.com/calendar/event?action=3DRESPOND&eid=3DMnZldG=
+toMXJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&rst=3D2&tok=3DMTgj=
+YW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMyZjQyMGR=
+mNA&ctz=3DEurope%2FAthens&hl=3Den&es=3D1>
+> Maybe
+> <https://calendar.google.com/calendar/event?action=3DRESPOND&eid=3DMnZldG=
+toMXJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&rst=3D3&tok=3DMTgj=
+YW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMyZjQyMGR=
+mNA&ctz=3DEurope%2FAthens&hl=3Den&es=3D1>
+> More options
+> <https://calendar.google.com/calendar/event?action=3DVIEW&eid=3DMnZldGtoM=
+XJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&tok=3DMTgjYW1iZXJAcGl=
+uZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMyZjQyMGRmNA&ctz=3DE=
+urope%2FAthens&hl=3Den&es=3D1>
+>
+> Invitation from Google Calendar <https://calendar.google.com/calendar/>
+>
+> You are receiving this email because you are subscribed to calendar
+> notifications. To stop receiving these emails, go to Calendar settings
+> <https://calendar.google.com/calendar/r/settings>, select this calendar,
+> and change "Other notifications".
+>
+> Forwarding this invitation could allow any recipient to send a response t=
+o
+> the organizer, be added to the guest list, invite others regardless of
+> their own invitation status, or modify your RSVP. Learn more
+> <https://support.google.com/calendar/answer/37135#forwarding>
+>
+
+--00000000000093ef0305e3b035b1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">I will be on it! =F0=9F=87=AC=F0=9F=87=B7</div><div><br><=
+div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul=
+ 13, 2022 at 4:58 PM Amber Glenn &lt;<a href=3D"mailto:amber@pineapple.co">=
+amber@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><=
+u></u>
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+
+   =20
+ =20
+     =20
+ =20
+     =20
+ =20
+   =20
+ =20
+   =20
+ =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+
+   =20
+  <div class=3D"m_6307817372351420918body"><span><span><span></span><span s=
+tyle=3D"display:none;font-size:1px;color:#fff;line-height:1px;height:0;max-=
+height:0;width:0;max-width:0;opacity:0;overflow:hidden">All-Hands Meeting</=
+span><span aria-hidden=3D"true"></span><div style=3D"display:none;font-size=
+:1px;color:#fff;line-height:1px;height:0;max-height:0;width:0;max-width:0;o=
+pacity:0;overflow:hidden">Hey, please join me for an all-hands meeting this=
+ Wednesday at 12pm ET for 45 minutes on Zoom (<a href=3D"http://pineapple.c=
+o/zoom).I" target=3D"_blank">pineapple.co/zoom).I</a>=E2=80=99m going to ru=
+n through some of the company=E2=80=99s cost cutting actions we=E2=80=99re =
+taking to en</div><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" align=3D"center" style=3D"width:100%" class=3D"m_63078=
+17372351420918body-container"><tbody><tr><td align=3D"left"><div style=3D"h=
+eight:16px" aria-hidden=3D"true"> =C2=A0 </div><table border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center" style=3D=
+"width:100%"><tbody><tr><td style=3D"background-color:#e6f4ea;color:#0d5327=
+;padding:12px 32px;border-radius:8px;font-family:Roboto,sans-serif;font-siz=
+e:14px;line-height:20px;text-align:left" class=3D"m_6307817372351420918info=
+-bar-inner"><span style=3D"font-weight:700">This event has been updated</sp=
+an><br><span style=3D"display:none"></span><div><span style=3D"font-weight:=
+700">Changed:</span> time</div></td></tr></tbody></table><div style=3D"heig=
+ht:12px" aria-hidden=3D"true"> =C2=A0 </div><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center" style=3D"wi=
+dth:100%"><tbody><tr><td style=3D"border:solid 1px #dadce0;border-radius:8p=
+x;direction:rtl;font-size:0;padding:24px 32px;text-align:left;vertical-alig=
+n:top" class=3D"m_6307817372351420918main-container-inner"><div style=3D"fo=
+nt-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-al=
+ign:top;width:100%;overflow:hidden;word-wrap:break-word"><table border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" =
+class=3D"m_6307817372351420918main-column-table-ltr" style=3D"padding-right=
+:32px;padding-left:0;table-layout:fixed"><tbody><tr><td style=3D"padding:0;=
+vertical-align:top"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" width=3D"100%" style=3D"table-layout:fixed"><tbody><=
+tr><td style=3D"font-size:0;padding:0;text-align:left;word-break:break-word=
+;padding-bottom:24px"><div style=3D"font-family:Roboto,sans-serif;font-styl=
+e:normal;font-weight:400;font-size:14px;line-height:20px;letter-spacing:0.2=
+px;color:#3c4043;text-decoration:none" class=3D"m_6307817372351420918primar=
+y-text" role=3D"presentation"><span>Hey, please join me for an all-hands me=
+eting this Wednesday at 12pm ET for 45 minutes on Zoom (<a href=3D"https://=
+www.google.com/url?q=3Dhttp%3A%2F%2Fpineapple.co%2Fzoom&amp;sa=3DD&amp;ust=
+=3D1658152680000000&amp;usg=3DAOvVaw2OzB7gsejjQYRg9ZKWVqC_" target=3D"_blan=
+k">pineapple.co/zoom</a>).<br><br>I=E2=80=99m going to run through some of =
+the company=E2=80=99s cost cutting actions we=E2=80=99re taking to ensure w=
+e get through this economic downturn.<br><br>There is no reason for alarm, =
+the company revenue is steady and while it=E2=80=99s a drop from 2021, it=
+=E2=80=99s stronger than it was in 2020.<br><br>I also look at these times =
+as an opportunity to focus on getting lean and efficient in ways we might n=
+ot have been when we were growing more rapidly.<br><br>Looking forward to t=
+alking to you Wednesday at 12PM ET!<br><br>Link:=C2=A0<a href=3D"https://ww=
+w.google.com/url?q=3Dhttp%3A%2F%2Fpineapple.co%2Fzoom&amp;sa=3DD&amp;ust=3D=
+1658152680000000&amp;usg=3DAOvVaw2OzB7gsejjQYRg9ZKWVqC_" target=3D"_blank">=
+pineapple.co/zoom</a><br><br>-Brett</span></div></td></tr><tr><td style=3D"=
+font-size:0;padding:0;text-align:left;word-break:break-word;padding-bottom:=
+24px"><div style=3D"font-family:Roboto,sans-serif;font-style:normal;font-we=
+ight:400;font-size:14px;line-height:20px;letter-spacing:0.2px;color:#3c4043=
+;text-decoration:none" class=3D"m_6307817372351420918primary-text" role=3D"=
+presentation"><span aria-hidden=3D"true"></span><table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"padding-bottom:=
+4px"><tbody><tr><td><h2 class=3D"m_6307817372351420918primary-text" style=
+=3D"font-size:14px;color:#3c4043;text-decoration:none;font-weight:700;margi=
+n:0;padding:0">When</h2></td><td style=3D"width:8px"></td><td style=3D"padd=
+ing-top:2px;padding-bottom:3px"><div style=3D"background-color:#1e8e3e;bord=
+er-radius:10px;padding:1px 5px;line-height:13px"><span style=3D"color:white=
+;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:upperca=
+se;vertical-align:top">CHANGED</span></div></td></tr></tbody></table><span>=
+Thursday Jul 14, 2022 =E2=8B=85 8pm =E2=80=93 9pm (Eastern European Time - =
+Athens)<br><span style=3D"text-decoration:line-through"><del><span style=3D=
+"display:none;font-size:1px;color:#fff;line-height:1px;height:0;max-height:=
+0;width:0;max-width:0;opacity:0;overflow:hidden;font-size:0;display:block">=
+Old: </span>Wednesday Jul 13, 2022 =E2=8B=85 7pm =E2=80=93 8pm (Eastern Eur=
+opean Time - Athens)</del></span></span></div></td></tr><tr><td style=3D"fo=
+nt-size:0;padding:0;text-align:left;word-break:break-word;padding-bottom:24=
+px"><div style=3D"font-family:Roboto,sans-serif;font-style:normal;font-weig=
+ht:400;font-size:14px;line-height:20px;letter-spacing:0.2px;color:#3c4043;t=
+ext-decoration:none" class=3D"m_6307817372351420918primary-text" role=3D"pr=
+esentation"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"padding-bottom:4px"><tbody><tr><td><h2 class=3D"m_6=
+307817372351420918primary-text" style=3D"font-size:14px;color:#3c4043;text-=
+decoration:none;font-weight:700;margin:0;padding:0">Guests</h2></td></tr></=
+tbody></table><div style=3D"padding-bottom:4px;text-align:left;color:#3c404=
+2"><div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918=
+primary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:n=
+one" href=3D"mailto:amber@pineapple.co" target=3D"_blank">amber@pineapple.c=
+o</a></span></span><span></span><span class=3D"m_6307817372351420918seconda=
+ry-text" style=3D"color:#70757a;text-decoration:none"> - organizer</span></=
+div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235142091=
+8primary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:=
+none" href=3D"mailto:john.belkewitch@pineapple.co" target=3D"_blank">john.b=
+elkewitch@pineapple.co</a></span></span><span class=3D"m_630781737235142091=
+8secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div>=
+<div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918pri=
+mary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none=
+" href=3D"mailto:kevin@pineapple.co" target=3D"_blank">Kevin Hipolito</a></=
+span></span><span class=3D"m_6307817372351420918secondary-text" style=3D"co=
+lor:#70757a;text-decoration:none"></span></div><div><span><span class=3D"no=
+translate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:=
+inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:roshynne@pi=
+neapple.co" target=3D"_blank">Roshynne Deal</a></span></span><span class=3D=
+"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decoratio=
+n:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_6=
+307817372351420918primary-text" style=3D"display:inline-block;color:#3c4043=
+;text-decoration:none" href=3D"mailto:emily@gothamclubmedia.com" target=3D"=
+_blank">emily@gothamclubmedia.com</a></span></span><span class=3D"m_6307817=
+372351420918secondary-text" style=3D"color:#70757a;text-decoration:none"></=
+span></div><div><span><span class=3D"notranslate"><a class=3D"m_63078173723=
+51420918primary-text" style=3D"display:inline-block;color:#3c4043;text-deco=
+ration:none" href=3D"mailto:casey@pineapple.co" target=3D"_blank">Casey Byr=
+ne</a></span></span><span class=3D"m_6307817372351420918secondary-text" sty=
+le=3D"color:#70757a;text-decoration:none"></span></div><div><span><span cla=
+ss=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"=
+display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:luk=
+a@pineapple.co" target=3D"_blank">Luka</a></span></span><span class=3D"m_63=
+07817372351420918secondary-text" style=3D"color:#70757a;text-decoration:non=
+e"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_630781=
+7372351420918primary-text" style=3D"display:inline-block;color:#3c4043;text=
+-decoration:none" href=3D"mailto:bonnie@pineapple.co" target=3D"_blank">bon=
+nie@pineapple.co</a></span></span><span class=3D"m_6307817372351420918secon=
+dary-text" style=3D"color:#70757a;text-decoration:none"></span></div><div><=
+span><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary-t=
+ext" style=3D"display:inline-block;color:#3c4043;text-decoration:none" href=
+=3D"mailto:megan@pineapple.co" target=3D"_blank">megan@pineapple.co</a></sp=
+an></span><span class=3D"m_6307817372351420918secondary-text" style=3D"colo=
+r:#70757a;text-decoration:none"></span></div><div><span><span class=3D"notr=
+anslate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:in=
+line-block;color:#3c4043;text-decoration:none" href=3D"mailto:john.leaver@p=
+ineapple.co" target=3D"_blank">john.leaver@pineapple.co</a></span></span><s=
+pan class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;te=
+xt-decoration:none"></span></div><div><span><span class=3D"notranslate"><a =
+class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;c=
+olor:#3c4043;text-decoration:none" href=3D"mailto:rosito@pineapple.co" targ=
+et=3D"_blank">Rosito Gonzales</a></span></span><span class=3D"m_63078173723=
+51420918secondary-text" style=3D"color:#70757a;text-decoration:none"></span=
+></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235142=
+0918primary-text" style=3D"display:inline-block;color:#3c4043;text-decorati=
+on:none" href=3D"mailto:appay@pineapple.co" target=3D"_blank">appay@pineapp=
+le.co</a></span></span><span class=3D"m_6307817372351420918secondary-text" =
+style=3D"color:#70757a;text-decoration:none"></span></div><div><span><span =
+class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=
+=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto=
+:sean@pineapple.co" target=3D"_blank">sean@pineapple.co</a></span></span><s=
+pan class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;te=
+xt-decoration:none"></span></div><div><span><span class=3D"notranslate"><a =
+class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;c=
+olor:#3c4043;text-decoration:none" href=3D"mailto:thomas@pineapple.co" targ=
+et=3D"_blank">thomas@pineapple.co</a></span></span><span class=3D"m_6307817=
+372351420918secondary-text" style=3D"color:#70757a;text-decoration:none"></=
+span></div><div><span><span class=3D"notranslate"><a class=3D"m_63078173723=
+51420918primary-text" style=3D"display:inline-block;color:#3c4043;text-deco=
+ration:none" href=3D"mailto:ivy@pineapple.co" target=3D"_blank">ivy@pineapp=
+le.co</a></span></span><span class=3D"m_6307817372351420918secondary-text" =
+style=3D"color:#70757a;text-decoration:none"></span></div><div><span><span =
+class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=
+=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto=
+:maryann@pineapple.co" target=3D"_blank">MaryAnn Manalaysay</a></span></spa=
+n><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757=
+a;text-decoration:none"></span></div><div><span><span class=3D"notranslate"=
+><a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-blo=
+ck;color:#3c4043;text-decoration:none" href=3D"mailto:grace@pineapple.co" t=
+arget=3D"_blank">grace@pineapple.co</a></span></span><span class=3D"m_63078=
+17372351420918secondary-text" style=3D"color:#70757a;text-decoration:none">=
+</span></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737=
+2351420918primary-text" style=3D"display:inline-block;color:#3c4043;text-de=
+coration:none" href=3D"mailto:andrea@pineapple.co" target=3D"_blank">andrea=
+@pineapple.co</a></span></span><span class=3D"m_6307817372351420918secondar=
+y-text" style=3D"color:#70757a;text-decoration:none"></span></div><div><spa=
+n><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text=
+" style=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D=
+"mailto:caroline@pineapple.co" target=3D"_blank">caroline@pineapple.co</a><=
+/span></span><span class=3D"m_6307817372351420918secondary-text" style=3D"c=
+olor:#70757a;text-decoration:none"></span></div><div><span><span class=3D"n=
+otranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"display=
+:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:all@pineap=
+ple.co" target=3D"_blank">All</a></span></span><span class=3D"m_63078173723=
+51420918secondary-text" style=3D"color:#70757a;text-decoration:none"></span=
+></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235142=
+0918primary-text" style=3D"display:inline-block;color:#3c4043;text-decorati=
+on:none" href=3D"mailto:jaybee@pineapple.co" target=3D"_blank">Jaybee Bauti=
+sta</a></span></span><span class=3D"m_6307817372351420918secondary-text" st=
+yle=3D"color:#70757a;text-decoration:none"></span></div><div><span><span cl=
+ass=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D=
+"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:jl=
+adisla@pineapple.co" target=3D"_blank">John Paulo Ladisla</a></span></span>=
+<span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;=
+text-decoration:none"></span></div><div><span><span class=3D"notranslate"><=
+a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block=
+;color:#3c4043;text-decoration:none" href=3D"mailto:andres@pineapple.co" ta=
+rget=3D"_blank">andres@pineapple.co</a></span></span><span class=3D"m_63078=
+17372351420918secondary-text" style=3D"color:#70757a;text-decoration:none">=
+</span></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737=
+2351420918primary-text" style=3D"display:inline-block;color:#3c4043;text-de=
+coration:none" href=3D"mailto:dan@pineapple.co" target=3D"_blank">Dan Champ=
+ion</a></span></span><span class=3D"m_6307817372351420918secondary-text" st=
+yle=3D"color:#70757a;text-decoration:none"></span></div><div><span><span cl=
+ass=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D=
+"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:ol=
+ivia@pineapple.co" target=3D"_blank">olivia@pineapple.co</a></span></span><=
+span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;t=
+ext-decoration:none"></span></div><div><span><span class=3D"notranslate"><a=
+ class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;=
+color:#3c4043;text-decoration:none" href=3D"mailto:colin@pineapple.co" targ=
+et=3D"_blank">colin@pineapple.co</a></span></span><span class=3D"m_63078173=
+72351420918secondary-text" style=3D"color:#70757a;text-decoration:none"></s=
+pan></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235=
+1420918primary-text" style=3D"display:inline-block;color:#3c4043;text-decor=
+ation:none" href=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pine=
+apple.co</a></span></span><span class=3D"m_6307817372351420918secondary-tex=
+t" style=3D"color:#70757a;text-decoration:none"></span></div><div><span><sp=
+an class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" sty=
+le=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mail=
+to:seangrigsby@pineapple.co" target=3D"_blank">seangrigsby@pineapple.co</a>=
+</span></span><span class=3D"m_6307817372351420918secondary-text" style=3D"=
+color:#70757a;text-decoration:none"></span></div><div><span><span class=3D"=
+notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"displa=
+y:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:shawna@pi=
+neapple.co" target=3D"_blank">shawna@pineapple.co</a></span></span><span cl=
+ass=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-dec=
+oration:none"></span></div><div><span><span class=3D"notranslate"><a class=
+=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;color:=
+#3c4043;text-decoration:none" href=3D"mailto:dj@pineapple.co" target=3D"_bl=
+ank">dj@pineapple.co</a></span></span><span class=3D"m_6307817372351420918s=
+econdary-text" style=3D"color:#70757a;text-decoration:none"></span></div><d=
+iv><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918prima=
+ry-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none" =
+href=3D"mailto:ann@pineapple.co" target=3D"_blank">Ann Navaro</a></span></s=
+pan><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#707=
+57a;text-decoration:none"></span></div><div><span><span class=3D"notranslat=
+e"><a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-b=
+lock;color:#3c4043;text-decoration:none" href=3D"mailto:sheena@pineapple.co=
+" target=3D"_blank">sheena@pineapple.co</a></span></span><span class=3D"m_6=
+307817372351420918secondary-text" style=3D"color:#70757a;text-decoration:no=
+ne"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63078=
+17372351420918primary-text" style=3D"display:inline-block;color:#3c4043;tex=
+t-decoration:none" href=3D"mailto:anna@pineapple.co" target=3D"_blank">Anna=
+ Urbas</a></span></span><span class=3D"m_6307817372351420918secondary-text"=
+ style=3D"color:#70757a;text-decoration:none"></span></div><div><span><span=
+ class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=
+=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto=
+:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a></span></spa=
+n><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757=
+a;text-decoration:none"></span></div><div><span><span class=3D"notranslate"=
+><a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-blo=
+ck;color:#3c4043;text-decoration:none" href=3D"mailto:kim@pineapple.co" tar=
+get=3D"_blank">kim@pineapple.co</a></span></span><span class=3D"m_630781737=
+2351420918secondary-text" style=3D"color:#70757a;text-decoration:none"></sp=
+an></div><div><span><span class=3D"notranslate"><a class=3D"m_6307817372351=
+420918primary-text" style=3D"display:inline-block;color:#3c4043;text-decora=
+tion:none" href=3D"mailto:carla@pineapple.co" target=3D"_blank">carla@pinea=
+pple.co</a></span></span><span class=3D"m_6307817372351420918secondary-text=
+" style=3D"color:#70757a;text-decoration:none"></span></div><div><span><spa=
+n class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" styl=
+e=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailt=
+o:kirsten@pineapple.co" target=3D"_blank">kirsten@pineapple.co</a></span></=
+span><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70=
+757a;text-decoration:none"></span></div><div><span><span class=3D"notransla=
+te"><a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-=
+block;color:#3c4043;text-decoration:none" href=3D"mailto:ricardo@pineapple.=
+co" target=3D"_blank">ricardo@pineapple.co</a></span></span><span class=3D"=
+m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decoration=
+:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63=
+07817372351420918primary-text" style=3D"display:inline-block;color:#3c4043;=
+text-decoration:none" href=3D"mailto:kerry@pineapple.co" target=3D"_blank">=
+kerry@pineapple.co</a></span></span><span class=3D"m_6307817372351420918sec=
+ondary-text" style=3D"color:#70757a;text-decoration:none"></span></div><div=
+><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary=
+-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none" hr=
+ef=3D"mailto:jenny@pineapple.co" target=3D"_blank">Jennelyn Lopez</a></span=
+></span><span class=3D"m_6307817372351420918secondary-text" style=3D"color:=
+#70757a;text-decoration:none"></span></div><div><span><span class=3D"notran=
+slate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:inli=
+ne-block;color:#3c4043;text-decoration:none" href=3D"mailto:charisse@pineap=
+ple.co" target=3D"_blank">Charisse De Leon</a></span></span><span class=3D"=
+m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decoration=
+:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63=
+07817372351420918primary-text" style=3D"display:inline-block;color:#3c4043;=
+text-decoration:none" href=3D"mailto:carren@pineapple.co" target=3D"_blank"=
+>Carren Jimenez</a></span></span><span class=3D"m_6307817372351420918second=
+ary-text" style=3D"color:#70757a;text-decoration:none"></span></div><div><s=
+pan><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary-te=
+xt" style=3D"display:inline-block;color:#3c4043;text-decoration:none" href=
+=3D"mailto:shaun@pineapple.co" target=3D"_blank">Shaun Strom</a></span></sp=
+an><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#7075=
+7a;text-decoration:none"></span></div><div><span><span class=3D"notranslate=
+"><a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-bl=
+ock;color:#3c4043;text-decoration:none" href=3D"mailto:emilyfreiday@pineapp=
+le.co" target=3D"_blank">emilyfreiday@pineapple.co</a></span></span><span c=
+lass=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-de=
+coration:none"></span></div><div><span><span class=3D"notranslate"><a class=
+=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;color:=
+#3c4043;text-decoration:none" href=3D"mailto:franaffiliate@pineapple.co" ta=
+rget=3D"_blank">franaffiliate@pineapple.co</a></span></span><span class=3D"=
+m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decoration=
+:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63=
+07817372351420918primary-text" style=3D"display:inline-block;color:#3c4043;=
+text-decoration:none" href=3D"mailto:jason@pineapple.co" target=3D"_blank">=
+jason@pineapple.co</a></span></span><span class=3D"m_6307817372351420918sec=
+ondary-text" style=3D"color:#70757a;text-decoration:none"></span></div><div=
+><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary=
+-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none" hr=
+ef=3D"mailto:roselyn@pineapple.co" target=3D"_blank">Roselyn Nolasco</a></s=
+pan></span><span class=3D"m_6307817372351420918secondary-text" style=3D"col=
+or:#70757a;text-decoration:none"></span></div><div><span><span class=3D"not=
+ranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:i=
+nline-block;color:#3c4043;text-decoration:none" href=3D"mailto:edwin@pineap=
+ple.co" target=3D"_blank">edwin@pineapple.co</a></span></span><span class=
+=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decora=
+tion:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"=
+m_6307817372351420918primary-text" style=3D"display:inline-block;color:#3c4=
+043;text-decoration:none" href=3D"mailto:shienna@pineapple.co" target=3D"_b=
+lank">Shienna Yambao</a></span></span><span class=3D"m_6307817372351420918s=
+econdary-text" style=3D"color:#70757a;text-decoration:none"></span></div><d=
+iv><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918prima=
+ry-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none" =
+href=3D"mailto:jeannie@pineapple.co" target=3D"_blank">jeannie@pineapple.co=
+</a></span></span><span class=3D"m_6307817372351420918secondary-text" style=
+=3D"color:#70757a;text-decoration:none"></span></div><div><span><span class=
+=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"di=
+splay:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:tessa=
+@pineapple.co" target=3D"_blank">tessa@pineapple.co</a></span></span><span =
+class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-d=
+ecoration:none"></span></div><div><span><span class=3D"notranslate"><a clas=
+s=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;color=
+:#3c4043;text-decoration:none" href=3D"mailto:george@pineapple.co" target=
+=3D"_blank">george@pineapple.co</a></span></span><span class=3D"m_630781737=
+2351420918secondary-text" style=3D"color:#70757a;text-decoration:none"></sp=
+an></div><div><span><span class=3D"notranslate"><a class=3D"m_6307817372351=
+420918primary-text" style=3D"display:inline-block;color:#3c4043;text-decora=
+tion:none" href=3D"mailto:support@pineapple.co" target=3D"_blank">support@p=
+ineapple.co</a></span></span><span class=3D"m_6307817372351420918secondary-=
+text" style=3D"color:#70757a;text-decoration:none"></span></div><div><span>=
+<span class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" =
+style=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"m=
+ailto:brett@pineapple.co" target=3D"_blank">Brett Allcorn</a></span></span>=
+<span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;=
+text-decoration:none"></span></div><div><span><span class=3D"notranslate"><=
+a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block=
+;color:#3c4043;text-decoration:none" href=3D"mailto:mike@pineapple.co" targ=
+et=3D"_blank">Mike McBrien</a></span></span><span class=3D"m_63078173723514=
+20918secondary-text" style=3D"color:#70757a;text-decoration:none"></span></=
+div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235142091=
+8primary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:=
+none" href=3D"mailto:ricky@pineapple.co" target=3D"_blank">ricky@pineapple.=
+co</a></span></span><span class=3D"m_6307817372351420918secondary-text" sty=
+le=3D"color:#70757a;text-decoration:none"></span></div><div><span><span cla=
+ss=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"=
+display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:tay=
+lor@pineapple.co" target=3D"_blank">taylor@pineapple.co</a></span></span><s=
+pan class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;te=
+xt-decoration:none"></span></div><div><span><span class=3D"notranslate"><a =
+class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;c=
+olor:#3c4043;text-decoration:none" href=3D"mailto:stephen@pineapple.co" tar=
+get=3D"_blank">stephen@pineapple.co</a></span></span><span class=3D"m_63078=
+17372351420918secondary-text" style=3D"color:#70757a;text-decoration:none">=
+</span></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737=
+2351420918primary-text" style=3D"display:inline-block;color:#3c4043;text-de=
+coration:none" href=3D"mailto:gene@pineapple.co" target=3D"_blank">gene@pin=
+eapple.co</a></span></span><span class=3D"m_6307817372351420918secondary-te=
+xt" style=3D"color:#70757a;text-decoration:none"></span></div><div><span><s=
+pan class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" st=
+yle=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mai=
+lto:aimee.latuszek@pineapple.co" target=3D"_blank">aimee.latuszek@pineapple=
+.co</a></span></span><span class=3D"m_6307817372351420918secondary-text" st=
+yle=3D"color:#70757a;text-decoration:none"></span></div><div><span><span cl=
+ass=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D=
+"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:pi=
+neapple.co@allusers.d.calendar.google.com" target=3D"_blank">pineapple.co@a=
+llusers.d.calendar.google.com</a></span></span><span class=3D"m_63078173723=
+51420918secondary-text" style=3D"color:#70757a;text-decoration:none"></span=
+></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235142=
+0918primary-text" style=3D"display:inline-block;color:#3c4043;text-decorati=
+on:none" href=3D"mailto:robert@revivalpointllc.com" target=3D"_blank">Rober=
+t Martin</a></span></span><span class=3D"m_6307817372351420918secondary-tex=
+t" style=3D"color:#70757a;text-decoration:none"></span></div><div><span><sp=
+an class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" sty=
+le=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mail=
+to:jack@pineapple.co" target=3D"_blank">jack@pineapple.co</a></span></span>=
+<span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;=
+text-decoration:none"></span></div><div><span><span class=3D"notranslate"><=
+a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block=
+;color:#3c4043;text-decoration:none" href=3D"mailto:dimitri@pineapple.co" t=
+arget=3D"_blank">dimitri@pineapple.co</a></span></span><span class=3D"m_630=
+7817372351420918secondary-text" style=3D"color:#70757a;text-decoration:none=
+"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_6307817=
+372351420918primary-text" style=3D"display:inline-block;color:#3c4043;text-=
+decoration:none" href=3D"mailto:greg@pineapple.co" target=3D"_blank">greg@p=
+ineapple.co</a></span></span><span class=3D"m_6307817372351420918secondary-=
+text" style=3D"color:#70757a;text-decoration:none"></span></div><div><span>=
+<span class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" =
+style=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"m=
+ailto:jeremy@pineapple.co" target=3D"_blank">jeremy@pineapple.co</a></span>=
+</span><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#=
+70757a;text-decoration:none"></span></div><div><span><span class=3D"notrans=
+late"><a class=3D"m_6307817372351420918primary-text" style=3D"display:inlin=
+e-block;color:#3c4043;text-decoration:none" href=3D"mailto:jobs@pineapple.c=
+o" target=3D"_blank">jobs@pineapple.co</a></span></span><span class=3D"m_63=
+07817372351420918secondary-text" style=3D"color:#70757a;text-decoration:non=
+e"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_630781=
+7372351420918primary-text" style=3D"display:inline-block;color:#3c4043;text=
+-decoration:none" href=3D"mailto:maryrose@pineapple.co" target=3D"_blank">M=
+ary Rose Darcen</a></span></span><span class=3D"m_6307817372351420918second=
+ary-text" style=3D"color:#70757a;text-decoration:none"></span></div><div><s=
+pan><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary-te=
+xt" style=3D"display:inline-block;color:#3c4043;text-decoration:none" href=
+=3D"mailto:noimee@pineapple.co" target=3D"_blank">Noimee Garcia</a></span><=
+/span><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#7=
+0757a;text-decoration:none"></span></div><div><span><span class=3D"notransl=
+ate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:inline=
+-block;color:#3c4043;text-decoration:none" href=3D"mailto:mmiranda@pineappl=
+e.co" target=3D"_blank">Michael Miranda</a></span></span><span class=3D"m_6=
+307817372351420918secondary-text" style=3D"color:#70757a;text-decoration:no=
+ne"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63078=
+17372351420918primary-text" style=3D"display:inline-block;color:#3c4043;tex=
+t-decoration:none" href=3D"mailto:stephanie@pineapple.co" target=3D"_blank"=
+>stephanie@pineapple.co</a></span></span><span class=3D"m_63078173723514209=
+18secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div=
+><div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918pr=
+imary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:non=
+e" href=3D"mailto:jarren@pineapple.co" target=3D"_blank">jarren@pineapple.c=
+o</a></span></span><span class=3D"m_6307817372351420918secondary-text" styl=
+e=3D"color:#70757a;text-decoration:none"></span></div><div><span><span clas=
+s=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"d=
+isplay:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:doug=
+.smith@5gmale.com" target=3D"_blank">Doug smith</a></span></span><span clas=
+s=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decor=
+ation:none"></span></div><div><span><span class=3D"notranslate"><a class=3D=
+"m_6307817372351420918primary-text" style=3D"display:inline-block;color:#3c=
+4043;text-decoration:none" href=3D"mailto:maria@pineapple.co" target=3D"_bl=
+ank">maria@pineapple.co</a></span></span><span class=3D"m_63078173723514209=
+18secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div=
+><div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918pr=
+imary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:non=
+e" href=3D"mailto:lizza@pineapple.co" target=3D"_blank">Lizza Jane Comia</a=
+></span></span><span class=3D"m_6307817372351420918secondary-text" style=3D=
+"color:#70757a;text-decoration:none"></span></div><div><span><span class=3D=
+"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"displ=
+ay:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:hr1@pine=
+apple.co" target=3D"_blank">hr1@pineapple.co</a></span></span><span class=
+=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decora=
+tion:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"=
+m_6307817372351420918primary-text" style=3D"display:inline-block;color:#3c4=
+043;text-decoration:none" href=3D"mailto:sam@pineapple.co" target=3D"_blank=
+">sam@pineapple.co</a></span></span><span class=3D"m_6307817372351420918sec=
+ondary-text" style=3D"color:#70757a;text-decoration:none"></span></div><div=
+><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918primary=
+-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none" hr=
+ef=3D"mailto:srojas@pineapple.co" target=3D"_blank">Stephanie Rojas</a></sp=
+an></span><span class=3D"m_6307817372351420918secondary-text" style=3D"colo=
+r:#70757a;text-decoration:none"></span></div><div><span><span class=3D"notr=
+anslate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:in=
+line-block;color:#3c4043;text-decoration:none" href=3D"mailto:abigail@pinea=
+pple.co" target=3D"_blank">abigail@pineapple.co</a></span></span><span clas=
+s=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decor=
+ation:none"></span></div><div><span><span class=3D"notranslate"><a class=3D=
+"m_6307817372351420918primary-text" style=3D"display:inline-block;color:#3c=
+4043;text-decoration:none" href=3D"mailto:dane@pineapple.co" target=3D"_bla=
+nk">dane@pineapple.co</a></span></span><span class=3D"m_6307817372351420918=
+secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div><=
+div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918prim=
+ary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none"=
+ href=3D"mailto:audrey@pineapple.co" target=3D"_blank">audrey worden</a></s=
+pan></span><span class=3D"m_6307817372351420918secondary-text" style=3D"col=
+or:#70757a;text-decoration:none"></span></div><div><span><span class=3D"not=
+ranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:i=
+nline-block;color:#3c4043;text-decoration:none" href=3D"mailto:kendal@pinea=
+pple.co" target=3D"_blank">kendal@pineapple.co</a></span></span><span class=
+=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decora=
+tion:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"=
+m_6307817372351420918primary-text" style=3D"display:inline-block;color:#3c4=
+043;text-decoration:none" href=3D"mailto:allen@pineapple.co" target=3D"_bla=
+nk">allen@pineapple.co</a></span></span><span class=3D"m_630781737235142091=
+8secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div>=
+<div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918pri=
+mary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none=
+" href=3D"mailto:daryl@pineapple.co" target=3D"_blank">Daryl Sta. Ana</a></=
+span></span><span class=3D"m_6307817372351420918secondary-text" style=3D"co=
+lor:#70757a;text-decoration:none"></span></div><div><span><span class=3D"no=
+translate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:=
+inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:peter@reviv=
+alpointllc.com" target=3D"_blank">Peter Perez</a></span></span><span class=
+=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decora=
+tion:none"></span></div><div><span><span class=3D"notranslate"><a class=3D"=
+m_6307817372351420918primary-text" style=3D"display:inline-block;color:#3c4=
+043;text-decoration:none" href=3D"mailto:stacy@pineapple.co" target=3D"_bla=
+nk">stacy@pineapple.co</a></span></span><span class=3D"m_630781737235142091=
+8secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div>=
+<div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918pri=
+mary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none=
+" href=3D"mailto:renae@pineapple.co" target=3D"_blank">ReNae Nieman</a></sp=
+an></span><span class=3D"m_6307817372351420918secondary-text" style=3D"colo=
+r:#70757a;text-decoration:none"></span></div><div><span><span class=3D"notr=
+anslate"><a class=3D"m_6307817372351420918primary-text" style=3D"display:in=
+line-block;color:#3c4043;text-decoration:none" href=3D"mailto:elaiza@pineap=
+ple.co" target=3D"_blank">Elaiza Ferrer</a></span></span><span class=3D"m_6=
+307817372351420918secondary-text" style=3D"color:#70757a;text-decoration:no=
+ne"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63078=
+17372351420918primary-text" style=3D"display:inline-block;color:#3c4043;tex=
+t-decoration:none" href=3D"mailto:feuerstein@pineapple.co" target=3D"_blank=
+">feuerstein@pineapple.co</a></span></span><span class=3D"m_630781737235142=
+0918secondary-text" style=3D"color:#70757a;text-decoration:none"></span></d=
+iv><div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918=
+primary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:n=
+one" href=3D"mailto:lianne@pineapple.co" target=3D"_blank">Lianne Mariano</=
+a></span></span><span class=3D"m_6307817372351420918secondary-text" style=
+=3D"color:#70757a;text-decoration:none"></span></div><div><span><span class=
+=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"di=
+splay:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:heath=
+er@pineapple.co" target=3D"_blank">heather@pineapple.co</a></span></span><s=
+pan class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;te=
+xt-decoration:none"></span></div><div><span><span class=3D"notranslate"><a =
+class=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;c=
+olor:#3c4043;text-decoration:none" href=3D"mailto:brooke@pineapple.co" targ=
+et=3D"_blank">Brooke Whoolery</a></span></span><span class=3D"m_63078173723=
+51420918secondary-text" style=3D"color:#70757a;text-decoration:none"></span=
+></div><div><span><span class=3D"notranslate"><a class=3D"m_630781737235142=
+0918primary-text" style=3D"display:inline-block;color:#3c4043;text-decorati=
+on:none" href=3D"mailto:corina@pineapple.co" target=3D"_blank">Corina Norri=
+ed</a></span></span><span class=3D"m_6307817372351420918secondary-text" sty=
+le=3D"color:#70757a;text-decoration:none"></span></div><div><span><span cla=
+ss=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" style=3D"=
+display:inline-block;color:#3c4043;text-decoration:none" href=3D"mailto:der=
+ek@pineapple.co" target=3D"_blank">derek@pineapple.co</a></span></span><spa=
+n class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text=
+-decoration:none"></span></div><div><span><span class=3D"notranslate"><a cl=
+ass=3D"m_6307817372351420918primary-text" style=3D"display:inline-block;col=
+or:#3c4043;text-decoration:none" href=3D"mailto:ryanalarid@pineapple.co" ta=
+rget=3D"_blank">ryanalarid@pineapple.co</a></span></span><span class=3D"m_6=
+307817372351420918secondary-text" style=3D"color:#70757a;text-decoration:no=
+ne"></span></div><div><span><span class=3D"notranslate"><a class=3D"m_63078=
+17372351420918primary-text" style=3D"display:inline-block;color:#3c4043;tex=
+t-decoration:none" href=3D"mailto:jonathan@pineapple.co" target=3D"_blank">=
+jonathan@pineapple.co</a></span></span><span class=3D"m_6307817372351420918=
+secondary-text" style=3D"color:#70757a;text-decoration:none"></span></div><=
+div><span><span class=3D"notranslate"><a class=3D"m_6307817372351420918prim=
+ary-text" style=3D"display:inline-block;color:#3c4043;text-decoration:none"=
+ href=3D"mailto:doug@revivalpointllc.com" target=3D"_blank">doug@revivalpoi=
+ntllc.com</a></span></span><span class=3D"m_6307817372351420918secondary-te=
+xt" style=3D"color:#70757a;text-decoration:none"></span></div><div><span><s=
+pan class=3D"notranslate"><a class=3D"m_6307817372351420918primary-text" st=
+yle=3D"display:inline-block;color:#3c4043;text-decoration:none" href=3D"mai=
+lto:lisa@pineapple.co" target=3D"_blank">lisa@pineapple.co</a></span></span=
+><span class=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a=
+;text-decoration:none"></span></div><div><span><span class=3D"notranslate">=
+<a class=3D"m_6307817372351420918primary-text" style=3D"display:inline-bloc=
+k;color:#3c4043;text-decoration:none" href=3D"mailto:karabyrne@pineapple.co=
+" target=3D"_blank">Kara Byrne</a></span></span><span class=3D"m_6307817372=
+351420918secondary-text" style=3D"color:#70757a;text-decoration:none"></spa=
+n></div></div><a href=3D"https://calendar.google.com/calendar/event?action=
+=3DVIEW&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZ=
+S5jbw&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDM=
+zMTI3MmUyMTMyZjQyMGRmNA&amp;ctz=3DEurope%2FAthens&amp;hl=3Den&amp;es=3D1" s=
+tyle=3D"display:inline-block;color:#1a73e8;text-decoration:none;font-weight=
+:700" class=3D"m_6307817372351420918accent-text" target=3D"_blank">View all=
+ guest info</a></div></td></tr><tr><td style=3D"font-size:0;padding:0;text-=
+align:left;word-break:break-word;padding-bottom:0px"><div style=3D"color:#3=
+c4043;text-decoration:none;font-family:Roboto,sans-serif;font-size:14px;lin=
+e-height:20px;text-align:left" class=3D"m_6307817372351420918primary-text">=
+<div><span style=3D"font-weight:700">Reply</span><span class=3D"m_630781737=
+2351420918secondary-text" style=3D"color:#70757a;text-decoration:none"> for=
+ <a class=3D"m_6307817372351420918secondary-text" style=3D"display:inline-b=
+lock;color:#70757a;text-decoration:none" href=3D"mailto:george@pineapple.co=
+" target=3D"_blank">george@pineapple.co</a></span></div></div></td></tr><tr=
+><td style=3D"font-size:0;padding:0;text-align:left;word-break:break-word;p=
+adding-bottom:16px"><div style=3D"font-family:Roboto,sans-serif;font-size:1=
+4px;line-height:20px;text-align:left"><table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:separate"=
+><tbody><tr><td style=3D"padding-top:8px;padding-left:0;padding-right:12px"=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"border:solid 1px #dadce0;border-radius:16px;border-collapse:se=
+parate;font-family:&#39;Google Sans&#39;,Roboto,sans-serif;display:inline-b=
+lock;margin-right:12px;margin-left:0"><tbody><tr><td align=3D"center" role=
+=3D"presentation"><span><span><span style=3D"color:#5f6367"><a href=3D"http=
+s://calendar.google.com/calendar/event?action=3DRESPOND&amp;eid=3DMnZldGtoM=
+XJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&amp;rst=3D1&amp;tok=
+=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMy=
+ZjQyMGRmNA&amp;ctz=3DEurope%2FAthens&amp;hl=3Den&amp;es=3D1" style=3D"font-=
+weight:400;font-family:&#39;Google Sans&#39;,Roboto,sans-serif;color:#5f636=
+8;font-size:14px;line-height:120%;margin:0;text-decoration:none;text-transf=
+orm:none" class=3D"m_6307817372351420918grey-button-text" target=3D"_blank"=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on"><tbody><tr><td align=3D"center" role=3D"presentation" valign=3D"middle"=
+ style=3D"padding:6px 0;padding-left:16px;padding-right:12px;white-space:no=
+wrap"><span class=3D"m_6307817372351420918grey-button-text" style=3D"font-w=
+eight:400;font-family:&#39;Google Sans&#39;,Roboto,sans-serif;color:#5f6368=
+;font-size:14px;line-height:120%;margin:0;text-decoration:none;text-transfo=
+rm:none">Yes</span></td></tr></tbody></table></a></span></span></span></td>=
+<td align=3D"center" role=3D"presentation" style=3D"border-left:solid 1px #=
+dadce0;border-right:solid 1px #dadce0"><span><span><span style=3D"color:#5f=
+6367"><a href=3D"https://calendar.google.com/calendar/event?action=3DRESPON=
+D&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&=
+amp;rst=3D2&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0Z=
+jE4ZDMzMTI3MmUyMTMyZjQyMGRmNA&amp;ctz=3DEurope%2FAthens&amp;hl=3Den&amp;es=
+=3D1" style=3D"font-weight:400;font-family:&#39;Google Sans&#39;,Roboto,san=
+s-serif;color:#5f6368;font-size:14px;line-height:120%;margin:0;text-decorat=
+ion:none;text-transform:none" class=3D"m_6307817372351420918grey-button-tex=
+t" target=3D"_blank"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation"><tbody><tr><td align=3D"center" role=3D"presentatio=
+n" valign=3D"middle" style=3D"padding:6px 12px;white-space:nowrap"><span cl=
+ass=3D"m_6307817372351420918grey-button-text" style=3D"font-weight:400;font=
+-family:&#39;Google Sans&#39;,Roboto,sans-serif;color:#5f6368;font-size:14p=
+x;line-height:120%;margin:0;text-decoration:none;text-transform:none">No</s=
+pan></td></tr></tbody></table></a></span></span></span></td><td align=3D"ce=
+nter" role=3D"presentation"><span><span><span style=3D"color:#5f6367"><a hr=
+ef=3D"https://calendar.google.com/calendar/event?action=3DRESPOND&amp;eid=
+=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQgZ2VvcmdlQHBpbmVhcHBsZS5jbw&amp;rst=
+=3D3&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3OWE0MzIzNWY5M2E0ZjE4ZDMz=
+MTI3MmUyMTMyZjQyMGRmNA&amp;ctz=3DEurope%2FAthens&amp;hl=3Den&amp;es=3D1" st=
+yle=3D"font-weight:400;font-family:&#39;Google Sans&#39;,Roboto,sans-serif;=
+color:#5f6368;font-size:14px;line-height:120%;margin:0;text-decoration:none=
+;text-transform:none" class=3D"m_6307817372351420918grey-button-text" targe=
+t=3D"_blank"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation"><tbody><tr><td align=3D"center" role=3D"presentation" val=
+ign=3D"middle" style=3D"padding:6px 0;padding-left:12px;padding-right:16px;=
+white-space:nowrap"><span class=3D"m_6307817372351420918grey-button-text" s=
+tyle=3D"font-weight:400;font-family:&#39;Google Sans&#39;,Roboto,sans-serif=
+;color:#5f6368;font-size:14px;line-height:120%;margin:0;text-decoration:non=
+e;text-transform:none">Maybe</span></td></tr></tbody></table></a></span></s=
+pan></span></td></tr></tbody></table><a href=3D"https://calendar.google.com=
+/calendar/event?action=3DVIEW&amp;eid=3DMnZldGtoMXJpcnE0dHRkMDlxZWs0ZjZhbnQ=
+gZ2VvcmdlQHBpbmVhcHBsZS5jbw&amp;tok=3DMTgjYW1iZXJAcGluZWFwcGxlLmNvNTVlZGE3O=
+WE0MzIzNWY5M2E0ZjE4ZDMzMTI3MmUyMTMyZjQyMGRmNA&amp;ctz=3DEurope%2FAthens&amp=
+;hl=3Den&amp;es=3D1" style=3D"display:inline-block;font-weight:400;font-fam=
+ily:&#39;Google Sans&#39;,Roboto,sans-serif;color:#5f6368;font-size:14px;li=
+ne-height:120%;margin:0;text-decoration:none;text-transform:none" class=3D"=
+m_6307817372351420918grey-button-text" target=3D"_blank"><table border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"border=
+:solid 1px #dadce0;border-radius:16px;border-collapse:separate;font-family:=
+&#39;Google Sans&#39;,Roboto,sans-serif"><tbody><tr><td align=3D"center" ro=
+le=3D"presentation" style=3D"padding:6px 0;padding-left:16px;padding-right:=
+12px;white-space:nowrap;color:#5f6367"><span class=3D"m_6307817372351420918=
+grey-button-text" style=3D"font-weight:400;font-family:&#39;Google Sans&#39=
+;,Roboto,sans-serif;color:#5f6368;font-size:14px;line-height:120%;margin:0;=
+text-decoration:none;text-transform:none">More options</span></td></tr></tb=
+ody></table></a></td></tr></tbody></table></div></td></tr></tbody></table><=
+/td></tr></tbody></table></div></td></tr></tbody></table><table border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center=
+" style=3D"width:100%"><tbody><tr><td style=3D"font-size:0;padding:0;text-a=
+lign:left;word-break:break-word;padding:4px 12px" align=3D"left"><div class=
+=3D"m_6307817372351420918secondary-text" style=3D"color:#70757a;text-decora=
+tion:none;font-family:Roboto,sans-serif;font-size:12px;line-height:16px;tex=
+t-align:left"><p>Invitation from <a href=3D"https://calendar.google.com/cal=
+endar/" class=3D"m_6307817372351420918accent-text" style=3D"font-family:Rob=
+oto,sans-serif;font-size:12px;line-height:16px;color:#1a73e8;text-decoratio=
+n:none" target=3D"_blank">Google Calendar</a></p><p>You are receiving this =
+email because you are subscribed to calendar notifications. To stop receivi=
+ng these emails, go to <a href=3D"https://calendar.google.com/calendar/r/se=
+ttings" class=3D"m_6307817372351420918accent-text" style=3D"font-family:Rob=
+oto,sans-serif;font-size:12px;line-height:16px;color:#1a73e8;text-decoratio=
+n:none" target=3D"_blank">Calendar settings</a>, select this calendar, and =
+change &quot;Other notifications&quot;.</p><p>Forwarding this invitation co=
+uld allow any recipient to send a response to the organizer, be added to th=
+e guest list, invite others regardless of their own invitation status, or m=
+odify your RSVP. <a class=3D"m_6307817372351420918accent-text" style=3D"fon=
+t-family:Roboto,sans-serif;font-size:12px;line-height:16px;color:#1a73e8;te=
+xt-decoration:none" href=3D"https://support.google.com/calendar/answer/3713=
+5#forwarding" target=3D"_blank">Learn more</a></p></div></td></tr></tbody><=
+/table></td></tr></tbody></table></span></span></div></blockquote></div></d=
+iv>
+
+--00000000000093ef0305e3b035b1--

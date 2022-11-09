@@ -1,0 +1,324 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp801258ejz;
+        Tue, 26 Jul 2022 07:14:22 -0700 (PDT)
+X-Received: by 2002:a05:600c:6005:b0:3a3:7308:69db with SMTP id az5-20020a05600c600500b003a3730869dbmr2558123wmb.91.1658844862182;
+        Tue, 26 Jul 2022 07:14:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658844862; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jmws4rhruy+tgTDwA+xufLUHgOujYedAQjiOXHRIDiPjNOI496cCsTW+lyn5V0HOnB
+         49KTCAOYNOV/+YmPRwbIHq9zspnQH1zxo4+obhW9Hsnd6msWKBEn1PB62dP4razLp3KZ
+         8/Qr+RifLeiDqNOpL0JD56VYhPKX6eVuViOfWnY5ZwosVEVMtT3gJ1g0lTZcDoSKpKOI
+         nZ27qvOOawJJvMtabAzA22CY4khnF43gLAUDZWXdnDdlvIq7IQx5JToEF/IlJMrMf0tT
+         ter3n5miHqVRrJnySCHEPH8ulLFPQF5hCITYrpuZ3OSNxOjK1n3a1sbJiNGeTopTGEOW
+         IwKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=SSXB5HYAOpX9r05Iup/dUjqQKHwdvzLb4s8jzMzncrg=;
+        b=Y2Lc0k2R0t+nYXhFVvKp8bdA5bR181jRMsOv/LbSB2a6BUCinzYWYWz1IXAgEfqm1I
+         zTUtpjAAGY9MVoi6xBdzaWN+jmdvniU30AMcHVb1tpIMR7a0sYTjqMPO/7aOAjYlYMSZ
+         OCRYgGoAcI03zJZDbuKckdLjKFjl5IHrQHvguAvO64KBVLd39BbNNE8yscisl08Z9So4
+         HFXVh3JpuBnzSPqnVo0qgw0DPerwwuyIE+BF2p7Qr37Oda8HYjhWheXatP9b3OKs6a/v
+         dINq1PagTBJhN4VQ41JNh+4pDF80Hyr0TXjWbg1jlVt19KynGTLPN6gQZyHk7BgImi/y
+         BI+w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=5Zr7x0ob;
+       spf=pass (google.com: domain of dimitri@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=dimitri@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <dimitri@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h14-20020adfaa8e000000b0021e481b9af4sor7577390wrc.25.2022.07.26.07.14.22
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 26 Jul 2022 07:14:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dimitri@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=5Zr7x0ob;
+       spf=pass (google.com: domain of dimitri@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=dimitri@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=SSXB5HYAOpX9r05Iup/dUjqQKHwdvzLb4s8jzMzncrg=;
+        b=5Zr7x0obgpX5bzrqk7r/Ldbrt00iWg+hu5ozEB6U+xUd8grArjGpjSn70g8ZT24/8F
+         Fv5s16CHQ5ggM94QzCfQrwgeXePQSCAz7N4cMHRDOI+q6xbVGeTAAUSH8cKrZnug6Yt8
+         VSDH4ThBCeEEKm4KLcpqVuQ0bivB3+M6C7Jrs3KmxrFwY5YO09CMMKEnty/F6FBPs0AJ
+         H/YOhHV8D8KYc2WkeSO5CAYiV6FXKKsauMicEmB4hxhzugrUTvh9Ax23F6wJvcT/ZRJ+
+         G/Seba2rLsSqpdwjK8AejI7OOHRTKry4h5nB6UswccXEEeKtK5czEt49s3vqkFoRsIUa
+         SZKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=SSXB5HYAOpX9r05Iup/dUjqQKHwdvzLb4s8jzMzncrg=;
+        b=CSwtDnpZkJRpomMrgPV+VqduZa8mK7tAoaEDuQ7co8YdhciGUii5WPX2mv3Kk+LVVs
+         avHlW0vw4kg8SINFAQ60AgHyyEJxNvK4/BMvWd8zM3gpFHSL0oh8HJvu/LlTJIAElRV6
+         N4ADVkK9i99aGEswWO0iB/5+BxcVLxMc5rsXcBhcrISuIoDjPgq3TYKnbLDNNTySJnrs
+         y2yrQTgysEQEYIWKI6K1/zWErVNFf4S0hqagxGcH/w23110ka0uSfFatIynDy1hlyRN9
+         0vKOrT1cjfcrGOKeDUXgBhGdDQC06ZaNBh9PFW2xAEi9K2BMj167i78TIMc9rYphXuvI
+         Uu6A==
+X-Gm-Message-State: AJIora+SlRB0wJs2C11h4BYvIsxTpMhAobuSpbgJwjWhZnpCm55CtJBZ
+	nEGEumY71gLLE864wpqEYU3eJa9zi/EKKQ2Ga8ficph3kIq+ND+O
+X-Google-Smtp-Source: AGRyM1tLnffITwUK+VwlYtE6zieV5w7dSTFqrDYBygbgeWASQc0mxe4rGzrYI1jn147pG6T5fUQAXNRQ7DyOQg9OObE=
+X-Received: by 2002:adf:fd42:0:b0:21e:4357:3f38 with SMTP id
+ h2-20020adffd42000000b0021e43573f38mr10783393wrs.620.1658844861596; Tue, 26
+ Jul 2022 07:14:21 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP-_nh=JPwr=LMK2TWGeJ0A-S-FtJ55Tzzxk8S5ix3qbrw@mail.gmail.com>
+In-Reply-To: <CAHbmDP-_nh=JPwr=LMK2TWGeJ0A-S-FtJ55Tzzxk8S5ix3qbrw@mail.gmail.com>
+From: Dimitri Lianoudakis <dimitri@pineapple.co>
+Date: Tue, 26 Jul 2022 10:14:11 -0400
+Message-ID: <CAPz=cDLi0SGCrxFbkr_EnpJD2P9Z2eLck3_txvp1n+RmG=tBAw@mail.gmail.com>
+Subject: Re: Departmental Reporting Needs Audit
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Brooke Whoolery <brooke@pineapple.co>, Taylor Piccolo <taylor@pineapple.co>, 
+	DJ Gelner <dj@pineapple.co>, Marco Shimazaki <marco@pineapple.co>, 
+	Stephanie Sleigh <stephanie@pineapple.co>, Jack Nalbandyan <jack@pineapple.co>, 
+	Robert Martin <robert@pineapple.co>, Brett Allcorn <brett@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000b6a31c05e4b5eab6"
+
+--000000000000b6a31c05e4b5eab6
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey,
+
+Thanks for taking on this initiative. Here are some suggestions I've used
+to organize my reports over the years from running such an exercise. Of
+course, these are simply suggestions :)
+
+Separate the charts/tables from your reports into 2 categories:
+
+1. *Input Metrics* (directly rely on actions taken by someone)
+      - Sales calls made
+      - Blog posts written
+      - New upsell funnel
+
+2. *Output Metrics *(results that you hoped to see from those actions)
+      - Users converted
+      - CTR
+      - Upsell/Downsell Conversion Rate
+
+*Example*. I believe I can *convert more users* (output) if I double my *sales
+calls* (input)
+
+When a dashboard has Input Metrics right at the top, you can see how it;s
+impacting the Output. Having a report only full of output metrics doesn't
+make it actionable since you don;t know what's behind the reason it's
+winning or losing.
+
+That's my 2 cents!
+
+Dimitri
+
+On Tue, Jul 26, 2022 at 9:37 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Good morning!
+>
+> I am reaching out to each of you at Brett's request, in order to better
+> determine what analytical reports you/your department may need that are not
+> currently being done, or are not being done to your satisfaction.
+> This list can include any report that was done previously, that you do
+> currently, or something entirely new that you feel is necessary.
+>
+> *Please respond to this email at your earliest convenience with any
+> reporting needs you see for your department.*  In doing so, please answer
+> the following questions (for each reporting need, if multiple):
+> 1. What is the goal of this report?
+> 2. What will be the frequency of this report? (e.g. daily, monthly,
+> quarterly)
+> 3. Why is this report critical?
+> 4. If you have multiple requests, please indicate which report is of the
+> highest priority and why.
+> 5. Is this report being done by your or your team but takes up a lot of
+> time, or could be done better using automation?
+>
+> I look forward to hearing from y'all soon!  If you have any questions
+> please feel free to reach out via email or on Slack.
+>
+> Best,
+> --
+> *Aubrey Allen*
+> Data Analytics Technician | pineapple.co
+>
+> [image: Photo]
+>
+> E: aubrey@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+>
+
+-- 
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Dimitri Lianoudakis  Risk Manager
+
+Pineapple Company
+p: 514.983.3442
+w:  pineapple.co
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+--000000000000b6a31c05e4b5eab6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Hey=C2=A0Aubrey,<div><br=
+></div><div>Thanks for taking=C2=A0on this initiative. Here are some sugges=
+tions I&#39;ve used to organize my reports over the years from running such=
+ an exercise. Of course, these are simply suggestions :)</div><div><br></di=
+v><div>Separate=C2=A0the charts/tables from your reports into 2 categories:=
+</div><div><br></div><div>1. <b>Input Metrics</b>=C2=A0(directly rely on ac=
+tions taken by someone)</div><div>=C2=A0 =C2=A0 =C2=A0 - Sales calls made</=
+div><div>=C2=A0 =C2=A0 =C2=A0 - Blog posts written</div><div>=C2=A0 =C2=A0 =
+=C2=A0 - New upsell funnel=C2=A0</div><div><br></div><div>2. <b>Output Metr=
+ics=C2=A0</b>(results that you hoped to see from those actions)</div><div>=
+=C2=A0 =C2=A0 =C2=A0 - Users converted</div><div>=C2=A0 =C2=A0 =C2=A0 - CTR=
+</div><div>=C2=A0 =C2=A0 =C2=A0 - Upsell/Downsell Conversion Rate=C2=A0</di=
+v><div><br></div><div><b>Example</b>. I believe=C2=A0I can <u>convert more =
+users</u> (output) if I double my <u>sales calls</u> (input)</div><div><br>=
+</div><div>When a dashboard has Input Metrics right at the=C2=A0top, you ca=
+n see how it;s impacting the Output. Having a report only full of output me=
+trics doesn&#39;t make it actionable since you don;t know what&#39;s behind=
+ the reason it&#39;s winning or losing.</div><div><br></div><div>That&#39;s=
+ my 2 cents!</div><div><br></div><div>Dimitri=C2=A0<br></div></div></div></=
+div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On=
+ Tue, Jul 26, 2022 at 9:37 AM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pin=
+eapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex"><div dir=3D"ltr">Good morning!<div><br></div>=
+<div>I am reaching out to each of you at Brett&#39;s request, in order to b=
+etter determine what analytical reports you/your department may need that a=
+re not currently being done, or are not being done to your satisfaction.=C2=
+=A0=C2=A0</div><div>This list can include any report that was done previous=
+ly, that you do currently, or something entirely new that you feel is neces=
+sary.<br><div><div><div dir=3D"auto"><br></div><div><b>Please respond to th=
+is email at your earliest convenience with any reporting needs you see for =
+your department.</b>=C2=A0 In doing so, please answer the following questio=
+ns (for each reporting=C2=A0need, if multiple):</div><div>1. What is the go=
+al of this report?</div><div>2. What will be the frequency of this report? =
+(e.g. daily, monthly, quarterly)</div><div>3. Why is this report critical?=
+=C2=A0=C2=A0</div><div>4. If you have multiple requests, please indicate wh=
+ich report is of the highest priority and why.<br></div><div>5. Is this rep=
+ort being done by your or your team but takes up a lot of time, or could be=
+ done better using automation?</div><div dir=3D"auto"><br></div></div><div>=
+I look forward to hearing from y&#39;all soon!=C2=A0 If you have any questi=
+ons please feel free to reach out via email or on Slack.</div><div><br></di=
+v><div>Best,</div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table><br>
+
+
+=20
+</div>
+  </div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><table cellspacing=3D"0" width=
+=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spac=
+ing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sans-=
+serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px 9px=
+ 0px 0px;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pineapple.c=
+o/pineappleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D=
+"created with MySignature.io" width=3D"100" src=3D"https://img.mysignature.=
+io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" styl=
+e=3D"width: 100px; border-radius: 15%;"></a></td><td valign=3D"top" style=
+=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-col=
+or:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color:r=
+gb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpaddin=
+g=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;l=
+ine-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;colo=
+r:rgb(0,0,1)"><tbody><tr><td><span style=3D"font-stretch:normal;font-size:1=
+.2em;line-height:normal;font-family:Verdana,Geneva,sans-serif;color:rgb(70,=
+208,255)">Dimitri Lianoudakis</span><span style=3D"font-family:Verdana,Gene=
+va,sans-serif">=C2=A0 Risk Manager</span></td></tr><tr><td style=3D"padding=
+:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Co=
+mpany</div></td></tr><tr><td><font color=3D"#46d0ff" face=3D"Verdana, Genev=
+a, sans-serif">p:=C2=A0</font><font face=3D"Verdana, Geneva, sans-serif" co=
+lor=3D"#000000">514.983.3442</font></td></tr><tr><td><span style=3D"font-fa=
+mily:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0=
+<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://pin=
+eapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a></=
+span></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif=
+;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-family:Ver=
+dana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10019=C2=
+=A0</span></td></tr></tbody></table></td></tr></tbody></table></div></div>
+
+--000000000000b6a31c05e4b5eab6--

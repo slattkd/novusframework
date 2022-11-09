@@ -1,0 +1,527 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:ad88:0:0:0:0 with SMTP id la8csp3532145ejb;
+        Wed, 24 Aug 2022 11:58:38 -0700 (PDT)
+X-Received: by 2002:a05:6214:f01:b0:477:7bdb:a020 with SMTP id gw1-20020a0562140f0100b004777bdba020mr425670qvb.67.1661367518555;
+        Wed, 24 Aug 2022 11:58:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661367518; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tpofTKPGIxNlDmbUPmFuYaSU/z369olkmuRHxOMw4Ip17V4iUVcrUmmeBHGsZrPCGB
+         VsJsxWoGf0tqT0t7pjuJWMuVW4R+KQLOcDeKHmeTmGGGmRiu5PZxrBJKh44zLtHqSl59
+         GeuLLjjViDksL0dNMIIvTCUu4qW23p96OtSth/5kz+58oPI8jsWM8Sx+kGF2dXjAnnPz
+         W7mEkjWJvUZgWQqLBqGTwlreTICAkAQpDnb9do1wIE0F6olE8szlPB0f0MDeAzR6tnXI
+         CTL5n4DJFb/pBMklVCz62mvUGe8FtBTkKvh9HEOSr1TXlpJeM//BlAN158mX8jVjLnwk
+         XLmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=DSsJXDy8Muli7nmkSoRU5iUWhODo8Sspl5gAD6cOtAI=;
+        b=Z+DCEu0+g8ZYboKlheG4RVGWSL7TCV6ubob7lfxKg8Y9agXKWSG47ZGJGWNxTy9wIa
+         2FAOSOmsC1sUYdP87eNZ6VLEjoIAyByM4vPVfn+Ur2rb26wR1Vzv+PGNpEXEnS0mVi+A
+         7y35+o4priSYfBuIjmkrCvLtUxEeb6xtX5rBw74DH+9xoq+aB7hM9tCRBfqpzm4qKkSe
+         ss2c+OAIn8hKjbQCQKrzAErxwtmR0O9zHws6w9MRHvNGt6eckN73lNa/C0tIq2BGO2HH
+         7U4Sjk8vSeNRG/dHrp4JESvpiqUN8FcMqFDnLK+RCIgZmuNr946Frd7MGAjgIbViQfni
+         3JXA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=bFIINdrD;
+       spf=pass (google.com: domain of carlos@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=carlos@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <carlos@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id js8-20020a0562142aa800b00472fb683eeesor12833136qvb.41.2022.08.24.11.58.38
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 24 Aug 2022 11:58:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of carlos@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=bFIINdrD;
+       spf=pass (google.com: domain of carlos@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=carlos@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc;
+        bh=DSsJXDy8Muli7nmkSoRU5iUWhODo8Sspl5gAD6cOtAI=;
+        b=bFIINdrDGFs9JF4TTcMVDTYk2CmthFm68fneR/PpgFPLYy9djVBDUDaXUvB3ZJGsoU
+         XIkuSkRmA+fJUuqqrj6p2Jhw/xErvdiwfJ2MCFlLvNtqVTiOfWH4RtEQyjoL4tMcWGFx
+         AV2yv7psqNouAgVUIu9jWFgAeC9eyh5XpbCj9z1wIQuJDk3C8rZpO4+VdAtb7V2nuR7y
+         +b75N0z81KJU6kdLkJ2RtL8r3Km6djb3tMI6UAQEYWdCSA71aIe5VPUcuq3O7rsBQ7rm
+         8iZgBmcNQo/cr85L5mMXE0QY94HrWSIP+GI0iM+ALf4vdAgl+b3DAj06tVnNDLoY14Nk
+         WQ7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc;
+        bh=DSsJXDy8Muli7nmkSoRU5iUWhODo8Sspl5gAD6cOtAI=;
+        b=TPMNdb2QZBzNElMnP5pmFoD4fKnbga+7gv9RYR6M0J1Zb/hyuuVbtAylff4RF/jWwI
+         9OiJiY6Acs3DE427kUFHGkUl0CsE2NONcFHOkkeN5p9aeJ94zr0iFdOnuspbEft77NZS
+         OWBLW2QqYlwF2yyZyCEUBAPqz7zQIlNYPY0khCEtKJsMkTlxDSIrgQBkA1YM0dLqHBDf
+         l2n3KCiOEWhp6MwDny0o4QoDGQ4vn9rW2qjmVny+aj4y3V0RizxtKt2/5/dAo2u75Yrl
+         /bs/3yr6EzWDTcy9xsfr9tWoIEKXaOikS4RUFaRavmGi+xwwcT3aoLcdjC6H1jUFze8M
+         UX1Q==
+X-Gm-Message-State: ACgBeo1g/HKjvb5DqJcpf30J3WT/WP1MHC3YS9AKnfdNXM02QBSsfDDN
+	aJqeWkr1V0ZcGEDlV3mTWm2uEaGDDNrLKWthSYa3SFea6Y94Kw==
+X-Google-Smtp-Source: AA6agR4sbsaEzgb/dJXTlWWJnwfYRRfRQJa+2PknjoOHOPSGJFY+Ub6U7eNtJiP0RJiSlNwFXwqT4fM1dprU/E8+Hts=
+X-Received: by 2002:a05:6214:f25:b0:496:d0cb:ac8f with SMTP id
+ iw5-20020a0562140f2500b00496d0cbac8fmr452735qvb.54.1661367518064; Wed, 24 Aug
+ 2022 11:58:38 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAG9=3yy959eXfMN9LefxKt94x5O3SoJ8SOaJphgDuaDoHjHnew@mail.gmail.com>
+ <CAHbmDP8ejmi6cv6-A7Vm0MObNk3wt5jVCt20ekvPx8-5Q_z1xQ@mail.gmail.com>
+ <CAG9=3yw3BAfVNrOg-txZwKb+ku=NojR6vj8sBnJbZ_A9G+xk2Q@mail.gmail.com> <CAHbmDP8Ta1T6Ot0WbSLLnkjdvNc16RcePe-fTyj9uQ-E9k259Q@mail.gmail.com>
+In-Reply-To: <CAHbmDP8Ta1T6Ot0WbSLLnkjdvNc16RcePe-fTyj9uQ-E9k259Q@mail.gmail.com>
+From: Carlos Bowden <carlos@pineapple.co>
+Date: Wed, 24 Aug 2022 13:58:27 -0500
+Message-ID: <CAG9=3yzdBTz0kmwo9NVN4MOy8s9-mqZCCD_w6f26A_0bPeZkzA@mail.gmail.com>
+Subject: Re: Data needed for Avalara
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000c1897b05e70144aa"
+
+--000000000000c1897b05e70144aa
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Aubrey,
+
+Thank you for the update!
+
+Carlos
+
+On Wed, Aug 24, 2022 at 1:54 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Carlos,
+>
+> I've been working on compiling this historical data but have run into a
+> bit of a snag regarding the address where each of our orders shipped
+> *from*.
+>
+> This data is not collected in Sticky, and there are 2 possible locations
+> that The Fulfillment Lab could be shipping from (one in FL and one in UT).
+> I've already spoken with Brooke, and she and Taylor are working on getting
+> me fulfillment data from TFL which will include where each order was
+> shipped from by Order ID.  Once I receive this, I'll be able to link that
+> to the rest of the data that we have at our disposal.
+>
+> I'm currently unsure of when I will receive it, but Brooke/Taylor have
+> informed TFL that this is an urgent request.  I'll be sure to keep you
+> updated when I hear back from them.
+>
+> Thank you,
+> Aubrey
+>
+> On Fri, Aug 19, 2022 at 9:56 AM Carlos Bowden <carlos@pineapple.co> wrote:
+>
+>> Thank you Aubrey!
+>>
+>> Keep in mind this is only for Revival Point
+>>
+>> On Fri, Aug 19, 2022 at 9:37 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+>>
+>>> Hi Carlos,
+>>>
+>>> I can get this data for Avalara.  It is a large undertaking, but I
+>>> believe I should be able to get it done before the end of next week.
+>>>
+>>> I've read through the instructions but if I have any questions or issues
+>>> arise I'll be sure to reach out.
+>>>
+>>> Thanks!
+>>> Aubrey
+>>>
+>>> On Fri, Aug 19, 2022 at 8:49 AM Carlos Bowden <carlos@pineapple.co>
+>>> wrote:
+>>>
+>>>> Hi Aubrey,
+>>>>
+>>>> We have hired Avalara to advise us on how we should implement sales tax
+>>>> collection.
+>>>>
+>>>> They have asked for a file of historical sales transactions for *Revival
+>>>> Point *that covers the period 7/1/2017 to present.  See the template
+>>>> in this folder:
+>>>>
+>>>> https://drive.google.com/drive/folders/1sny19_xGyJr_1hnYncJPY5b73oc70NRh?usp=sharing
+>>>>
+>>>>
+>>>> Can you get this by sometime next week?
+>>>>
+>>>> Thanks,
+>>>> Carlos
+>>>> --
+>>>>
+>>>>
+>>>>
+>>>> *Carlos Bowden*
+>>>> Chief Financial Officer | pineapple.co
+>>>>
+>>>> [image: Photo]
+>>>>
+>>>> E: carlos@pineapple.co
+>>>>
+>>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>>
+>>>> The content of this email is confidential and intended for the
+>>>> recipient specified in message only. It is strictly forbidden to share any
+>>>> part of this message with any third party, without a written consent of the
+>>>> sender. If you received this message by mistake, please reply to this
+>>>> message and follow with its deletion, so that we can ensure such a mistake
+>>>> does not occur in the future.
+>>>>
+>>>
+>>
+>> --
+>>
+>>
+>>
+>> *Carlos Bowden*
+>> Chief Financial Officer | pineapple.co
+>>
+>> [image: Photo]
+>>
+>> E: carlos@pineapple.co
+>>
+>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>
+>> The content of this email is confidential and intended for the recipient
+>> specified in message only. It is strictly forbidden to share any part of
+>> this message with any third party, without a written consent of the sender.
+>> If you received this message by mistake, please reply to this message and
+>> follow with its deletion, so that we can ensure such a mistake does not
+>> occur in the future.
+>>
+>
+
+-- 
+
+
+
+*Carlos Bowden*
+Chief Financial Officer | pineapple.co
+
+[image: Photo]
+
+E: carlos@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--000000000000c1897b05e70144aa
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Aubrey,<div><br></div><div>Thank you for the update!</d=
+iv><div><br></div><div>Carlos</div></div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 24, 2022 at 1:54 PM Aubrey A=
+llen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr">Hi Carlos,<div><br></div><div>I&#39;ve been working on compiling t=
+his historical data but have run into a bit of a snag regarding the address=
+ where each of our orders shipped <b>from</b>.</div><div><br></div><div>Thi=
+s data is not collected in Sticky, and there are 2 possible locations that =
+The Fulfillment Lab could be shipping from (one in FL and one in UT).=C2=A0=
+ I&#39;ve already spoken with Brooke, and she and Taylor are working on get=
+ting me fulfillment data from TFL which will include where each order was s=
+hipped from by Order ID.=C2=A0 Once I receive this, I&#39;ll be able to lin=
+k that to the rest of the data that we have at our disposal.=C2=A0</div><di=
+v><br></div><div>I&#39;m currently unsure of when I will receive=C2=A0it, b=
+ut Brooke/Taylor have informed TFL that this is an urgent request.=C2=A0 I&=
+#39;ll be sure to keep you updated when I hear=C2=A0back from them.</div><d=
+iv><br></div><div>Thank you,</div><div>Aubrey</div></div><br><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Aug 19, 2022 at =
+9:56 AM Carlos Bowden &lt;<a href=3D"mailto:carlos@pineapple.co" target=3D"=
+_blank">carlos@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex"><div dir=3D"ltr">Thank you Aubrey!<div><br></div=
+><div>Keep in mind this is only for Revival Point</div></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Aug 19, 2022=
+ at 9:37 AM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=
+=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hi Carlos,<div><br></div>=
+<div>I can get this data for Avalara.=C2=A0 It is a large undertaking, but =
+I believe I should be able to get it done before the end of next week.</div=
+><div><br></div><div>I&#39;ve read through the instructions but if I have a=
+ny questions or issues arise I&#39;ll be sure to=C2=A0reach out.</div><div>=
+<br></div><div>Thanks!</div><div>Aubrey</div></div><br><div class=3D"gmail_=
+quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Aug 19, 2022 at 8:49 A=
+M Carlos Bowden &lt;<a href=3D"mailto:carlos@pineapple.co" target=3D"_blank=
+">carlos@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div dir=3D"ltr">Hi Aubrey,<div><br></div><div>We have=
+ hired Avalara to advise us on how we should implement sales tax collection=
+.</div><div><br></div><div>They have asked for a file of historical sales t=
+ransactions for <b>Revival Point </b>that covers the period 7/1/2017 to pre=
+sent.=C2=A0 See the template in this folder:</div><div><a href=3D"https://d=
+rive.google.com/drive/folders/1sny19_xGyJr_1hnYncJPY5b73oc70NRh?usp=3Dshari=
+ng" target=3D"_blank">https://drive.google.com/drive/folders/1sny19_xGyJr_1=
+hnYncJPY5b73oc70NRh?usp=3Dsharing</a>=C2=A0<br clear=3D"all"><div><br></div=
+><div>Can you get this by sometime next week?</div><div><br></div><div>Than=
+ks,</div><div>Carlos</div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Carlos Bowden</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Financi=
+al Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>
+			<a href=3D"mailto:carlos@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:rgb(16,16,16)" target=3D"_blank">carlos@pineapple.co</a></=
+p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+
+
+
+
+
+
+            </p>
+        <p></p></td>
+    </tr>
+
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+</div></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+>=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Carlos Bowden</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Financi=
+al Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>
+			<a href=3D"mailto:carlos@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:rgb(16,16,16)" target=3D"_blank">carlos@pineapple.co</a></=
+p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+
+
+
+
+
+
+            </p>
+        <p></p></td>
+    </tr>
+
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+</div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Carlos Bowden</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Financi=
+al Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>
+			<a href=3D"mailto:carlos@pineapple.co" style=3D"text-decoration:none;fon=
+t-size:9pt;color:rgb(16,16,16)" target=3D"_blank">carlos@pineapple.co</a></=
+p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+
+
+
+
+
+
+            </p>
+        <p></p></td>
+    </tr>
+
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+</div>
+
+--000000000000c1897b05e70144aa--

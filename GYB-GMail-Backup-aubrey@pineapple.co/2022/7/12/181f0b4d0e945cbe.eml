@@ -1,0 +1,1299 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp1946615ejb;
+        Mon, 11 Jul 2022 21:39:50 -0700 (PDT)
+X-Received: by 2002:a17:903:248:b0:168:ce2f:cbd2 with SMTP id j8-20020a170903024800b00168ce2fcbd2mr22134666plh.63.1657600790593;
+        Mon, 11 Jul 2022 21:39:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657600790; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zTgokYl6vKQb4W45nWg3h8bCp13SL1sL/nZ56vzNf0Tyxc3voYbJgCgo9hOhM7MK87
+         7gX2rSOuY3QwADobqRdpK6+RmMzDkl9XBqhUvAwUXZSu9TmTs/saXyXNg+FnM1O1xVTo
+         IUBIbikxPT3avdaBQwvyeupQ81dPYsvHBaxuphOTA3AEslJ6ySHpzMPbpIbUDvBG1x7B
+         LNP1x18X1nVDcqRTeexg3987HB2T5TXD37OnCnYWiEq2jEkuV44/7s/yAB2A7gkmr2kP
+         IN+5SyvaDdnBzO+Aa5sH/B1a4ZrPGUmK1oFQ/R/xuB2HEfH73Zb05QM5t+4CMpFX5jqa
+         9FBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ci76NVQqVotaGEZiiaKzetlxIv9g0GL0I6Mf9saR4eA=;
+        b=MyYlnYUWHwwhuhV4khBV88yK4Ho8uxSKjFs7dP/U97uiDL+bMXj9InHqWfV38WYwjT
+         JAXwVsftBOUNqdafqqqw2qE1ysbvtwsWsLXrPtO3/Ocu7LJDv3ZR6/vzMOZ5a3XZWd91
+         7RGE9TvSa5LTh9kyeLAeSl15K8+3ZPF5ISKzXofotfjHNGduTDg3d8kG1TtpUpEbw1HK
+         AMars2FartK2bgT3CLwAgPrsBdFHQuQL6RRQy+ETe9WCQ4lgoBvZ8ffEkyx4Sq5rLxKO
+         T6SP+cTX3U6Mz2HTTAxUpvrLX7THUBD6rSPjmVObPQaF/gHmWJIdREswkqBwhwQB4QFK
+         5cwA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=bJmzQiIS;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y3-20020a1709029b8300b001676b0ec6ddsor2887935plp.42.2022.07.11.21.39.49
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 11 Jul 2022 21:39:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=bJmzQiIS;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ci76NVQqVotaGEZiiaKzetlxIv9g0GL0I6Mf9saR4eA=;
+        b=bJmzQiISBe/o6gVA2OzrpShuMeb/us5JJqXZPD7T7xhWh7a+RXXdBQGrUZTlcEuv4x
+         Cz5X2+Ewu55upQQ+4azXxUelWyW188qPp+qWwZq1drluz5FoTE0p3cISBNOPOZ0kksXV
+         RqhYCRdJuijKes0AEiYxAYzZDPBNHEOy8aAXLL4HtiiRodLb7nzYIIewrF9mmbyDlgst
+         Z6PPjEi5MK+msGNpYdhnvuQn/jvrczx3O3/vUMOsUqK9Brym92TCxw5IAbNpM9LW5LfG
+         4Kf+Vie+3sMVOp62v9nd3LebNKqV0kiKNdaM+RPfTUP+snEwEQll8iGideck2yOzEI+q
+         E1YQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ci76NVQqVotaGEZiiaKzetlxIv9g0GL0I6Mf9saR4eA=;
+        b=Xm87P6qRnIYQ+GJ2Jv+2gadKJsDxNACfH4/jZe+7DLYtOEDjcG8+gUwTRn53gZ+dVn
+         JZpDYYOqAokZ6EIF99noxafSyK3qzoRDwNlKPN0e212hZzXp2/lbW9OBYBflTcSTkvwO
+         mf/gNrahP5M9tb7jJpjuEqzxR+a9HvjouOXm1aLWqLTVRoeoHuxqBpmXryzksyD+DE++
+         vN9Y3jKXTGj2Yb1WtHZNBzVNzS7KyTVsLBzjFbcgaKd4F7BK30FlyBjvRo0WBYFH3WmK
+         DM1nW4H7k03RtDRahxaJ1HWOf4lt39OTvLbY7xDFsSZbFpX5aM2pm/B0XUKpMgHFZWHc
+         +iLg==
+X-Gm-Message-State: AJIora+/TvK8ZVbPtVwOrpkTIkRQuiEkC9XfGpGnqOPeeORlR194YlEL
+	n9hpKLDichB+k/YegvBER7AiTv3i8274s2q1kN/fV+Yw4e+MHGNcTtU=
+X-Google-Smtp-Source: AGRyM1syFpc0hH2qe8RJVk5qCYJOFeL8ePB4nlJFtUTu3nMsgoL1eAYfWBLtA90m5hDum63dVIN3femxgnlS/qcrLoQ=
+X-Received: by 2002:a17:902:d2c1:b0:16b:f145:c5b3 with SMTP id
+ n1-20020a170902d2c100b0016bf145c5b3mr21720190plc.4.1657600788725; Mon, 11 Jul
+ 2022 21:39:48 -0700 (PDT)
+MIME-Version: 1.0
+References: <CADDQ+kk_JFhFX-pumiwPZ0uNk5UEriq-LJ1kadfTeBaaSD_2SA@mail.gmail.com>
+ <CAAHdk=mviKgcGL01-GpgeXKwuopyaqgpnKY2u_n1SMBz8-=JBg@mail.gmail.com>
+ <CADDQ+kkU6UKm=omWYG=qeHZku9z=cqz-_g9EWcTMt8ZFmDw87Q@mail.gmail.com>
+ <CALCR5_QEY09mtrywWUCwgpSwqOH-HDau_xECuyXSd8Yz2_zK1A@mail.gmail.com>
+ <CADDQ+knaxfQjzCHCsExH628atg62EuP8oUj2a0d+=VmF+f_TCQ@mail.gmail.com>
+ <CAAHdk=mSfeDegSwbmEHHJNmgd5m-YDa3vymXc8bQ6_x1qMexXw@mail.gmail.com>
+ <CALCR5_S_6eTifs62pzZmBa911XeWZMZzD6sB_3nDJUjDFvHybQ@mail.gmail.com>
+ <CAAHdk==1kmNVGp_bZ9Q=GNmLOeuG=G2yLDr1Q=NX_7nAQHEgYw@mail.gmail.com>
+ <CADDQ+kk9uN+qYPTBY0RPGhG0eYbYpAaDoM+L25q09HOQWqZbVQ@mail.gmail.com> <CADDQ+k=uvRDEiA=yQ38-pmuOgA12kUiYMjA_zJm=BnZqEAi6fQ@mail.gmail.com>
+In-Reply-To: <CADDQ+k=uvRDEiA=yQ38-pmuOgA12kUiYMjA_zJm=BnZqEAi6fQ@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Tue, 12 Jul 2022 06:39:37 +0200
+Message-ID: <CALCR5_TLJHa0Oq_e0B9xawviKV5DdKgZA0dkQ+VhBCmuPvGkaA@mail.gmail.com>
+Subject: Re: Dept Efficiency Daily Update 2
+To: Aubrey Allen <aubrey@pineapple.co>, Shawna McCartney <shawna@pineapple.co>
+Cc: Colin Chung <colin@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000311b2c05e394429a"
+
+--000000000000311b2c05e394429a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Aubrey (ccd)
+
+On Tue, Jul 12, 2022 at 5:52 AM Shawna McCartney <shawna@pineapple.co>
+wrote:
+
+> Hi Brett,
+>
+> Regarding your suggestion, who may I reach out to from the Data
+> department?
+>
+> On Fri, Jul 8, 2022 at 10:22 PM Shawna McCartney <shawna@pineapple.co>
+> wrote:
+>
+>> Yes absolutely. I=E2=80=99ll do the first one for end of July.
+>>
+>> On Fri, Jul 8, 2022 at 10:01 PM, Colin Chung <colin@pineapple.co> wrote:
+>>
+>>> I would add "days" too.
+>>>
+>>> Hours / Days - Person, Project, Type.
+>>> We're already tracking all of this as of a week ago.
+>>>
+>>> Shawna, can you make sure this is a monthly report we do please?
+>>>
+>>>
+>>>
+>>> --
+>>> [image: created with MySignature.io]
+>>> <http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+>>> Colin Y.J. Chung  Director of Copy
+>>>
+>>> Pineapple Company
+>>> p:  604.282.3732
+>>> w:  pineapple.co
+>>> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>>> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+Yo=
+rk,+NY+10019?entry=3Dgmail&source=3Dg>
+>>>
+>>>
+>>>
+>>> On Fri, Jul 8, 2022 at 2:23 PM Brett Allcorn <brett@pineapple.co> wrote=
+:
+>>>
+>>>> Yeah you can be transparent.
+>>>>
+>>>> I like the timeframe.
+>>>>
+>>>> So maybe you and Shawna can set an exact date like October 15th to sto=
+p
+>>>> doing this?
+>>>>
+>>>> In the meantime we can review the data monthly.
+>>>>
+>>>> And I'm happy to help lend you someone from the data department to
+>>>> create the reports.
+>>>>
+>>>> We just need the hours labeled by person, project and type of
+>>>> project... I think?
+>>>>
+>>>> On Fri, Jul 8, 2022 at 6:50 PM Colin Chung <colin@pineapple.co> wrote:
+>>>>
+>>>>> In the long run, yes, we probably shouldn't do this.
+>>>>> I don't expect them to work a full eight hours on creative stuff
+>>>>> either.
+>>>>> If you're comfortable with being open/transparent about it... I can
+>>>>> tell them we only expect two 2-3 hour sprints for writing.
+>>>>> But the other 2 hours can be research, reading, meetings, emails, and
+>>>>> low intensity work.
+>>>>> I'm not 100% comfortable saying that aloud, but at the same time, whe=
+n
+>>>>> I coach freelance copywriters,
+>>>>> I always tell them 4hours of writing/deep work is what's realistic.
+>>>>>
+>>>>> I do agree that you getting this daily is not helpful. But you asked,
+>>>>> and we acceded.
+>>>>> I think going to EOW reports is better. But yeah, ultimately, what we
+>>>>> really want is...
+>>>>> how long did it take on their side hours and days wise?
+>>>>> And if the hours are short, but days are long, where were the delays?
+>>>>> If the hours are long, then where did they get stuck?
+>>>>>
+>>>>> So what I'm saying is, I still want hours tracked for the next three
+>>>>> months.
+>>>>> I also would like your permission to be open transparent with the
+>>>>> writers about this.
+>>>>> Why we're doing this, why we're not "monitoring you", and why we stil=
+l
+>>>>> love them. :)
+>>>>>
+>>>>> So yeah? Can I tell the writers are thought process in a transparent
+>>>>> way?
+>>>>>
+>>>>>
+>>>>>
+>>>>> --
+>>>>> [image: created with MySignature.io]
+>>>>> <http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+>>>>> Colin Y.J. Chung  Director of Copy
+>>>>>
+>>>>> Pineapple Company
+>>>>> p:  604.282.3732
+>>>>> w:  pineapple.co
+>>>>> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>>>>> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+=
+York,+NY+10019?entry=3Dgmail&source=3Dg>
+>>>>>
+>>>>>
+>>>>>
+>>>>> On Fri, Jul 8, 2022 at 5:05 AM Shawna McCartney <shawna@pineapple.co>
+>>>>> wrote:
+>>>>>
+>>>>>> Good Morning!
+>>>>>>
+>>>>>> So I agree with you on just how useful this data will be. I can stil=
+l
+>>>>>> use the daily information provided to us by each writer and compile =
+it for
+>>>>>> a monthly report. In that I can address the question of - How long d=
+id it
+>>>>>> take Maria to write a YouTube Ad vs John - I can also note the facto=
+rs that
+>>>>>> led to each time variance.
+>>>>>>
+>>>>>> I know the writers are creative, creative people tend to not love
+>>>>>> rigidity but Colin would be better able to speak on how they are fee=
+ling as
+>>>>>> I don=E2=80=99t have that intimate interaction with them just yet.
+>>>>>>
+>>>>>> From my POV they willingly and happily send us the daily updates. I
+>>>>>> do know that Kirsten and I will be conducting training with them to =
+teach
+>>>>>> them how to utilize Teamwork and that will do the time logging / tra=
+cking
+>>>>>> for us. So it will just be on me to generate reports based on what t=
+hey=E2=80=99ve
+>>>>>> done so far in the system.
+>>>>>>
+>>>>>> That=E2=80=99s what I think=E2=80=A6
+>>>>>>
+>>>>>>
+>>>>>> On Fri, Jul 8, 2022 at 6:54 AM, Brett Allcorn <brett@pineapple.co>
+>>>>>> wrote:
+>>>>>>
+>>>>>>> So I think this data is going to be more useful monthly.
+>>>>>>>
+>>>>>>> But in order to get use out of it, we need to be able to analyze it
+>>>>>>> by writer and type of project, I think.
+>>>>>>>
+>>>>>>> Because the question I want answered is:
+>>>>>>>
+>>>>>>> Who's spending how much time on each type of project?
+>>>>>>>
+>>>>>>> This will allow us to see and address any inefficiencies.
+>>>>>>>
+>>>>>>> Also I don't think this is something we need to do long term.
+>>>>>>>
+>>>>>>> In fact, it might even be a bad idea... I don't know if the writers
+>>>>>>> might get pissed off here.
+>>>>>>>
+>>>>>>> Like we are expecting them to be doing exactly 8 hours of work ever=
+y
+>>>>>>> day, which might not be realistic.
+>>>>>>>
+>>>>>>> It's a bit like installing screen recording software on peoples
+>>>>>>> computers to make sure they're working.
+>>>>>>>
+>>>>>>> What do you guys think?
+>>>>>>>
+>>>>>>> I don't want to create that type of atmosphere, but I am trying to
+>>>>>>> find inefficiencies.
+>>>>>>>
+>>>>>>> The other way to handle this is with the SCRUM technique I mentione=
+d.
+>>>>>>>
+>>>>>>> We can just meet weekly or monthly about efficiency.
+>>>>>>>
+>>>>>>> Everyone can answer the question: how can you move faster?
+>>>>>>>
+>>>>>>> And they will know we're all making an effort to try to find
+>>>>>>> inefficiencies.
+>>>>>>>
+>>>>>>> Also even if we don't do this time tracking, Colin, I think you can
+>>>>>>> still see how many DAYS each project takes without burdening the wr=
+iters
+>>>>>>> with time tracking.
+>>>>>>>
+>>>>>>> What do you think?
+>>>>>>>
+>>>>>>> And what do the writers think?
+>>>>>>>
+>>>>>>>
+>>>>>>> On Fri, Jul 8, 2022 at 6:36 AM Shawna McCartney <shawna@pineapple.c=
+o>
+>>>>>>> wrote:
+>>>>>>>
+>>>>>>>> Good Night Brett,
+>>>>>>>>
+>>>>>>>> Kindly see the information below.
+>>>>>>>>
+>>>>>>>> May-17/22 Marketing FS Optz. VSL Extra Bennies Kim Kim Write 3 51 =
+2
+>>>>>>>> May-17/22 Copy ALL SOPs Lifts/YT Ads/Preroll John Aug-15/22 John
+>>>>>>>> Write 1 51 1
+>>>>>>>> May-26/22 Brett ALL Training Avatar Doc Sean Jun-3/22 Jul-21/22 Se=
+an
+>>>>>>>> Edit 3 42 0
+>>>>>>>> Apr-18/22 Marketing ND Prerolls 2 Pre-Rolls Edwin May-9/22 Brett
+>>>>>>>> Review 2 80 0
+>>>>>>>> Apr-18/22 Marketing ND Prerolls 2 Pre-Rolls John May-9/22 John
+>>>>>>>> Write 2 80 0
+>>>>>>>> Apr-18/22 Marketing ND Prerolls 2 Pre-Rolls Kim May-9/22 Kim Revie=
+w
+>>>>>>>> 2 80 1
+>>>>>>>> May-31/22 Video FS Amazon Ads Kim Jun-24/22 Brett Review 2 37 2
+>>>>>>>> May-26/22 Amazon Mngr FS Amazon Listings Kim Jul-13/22 Brett Revie=
+w
+>>>>>>>> 2 42 2
+>>>>>>>> May-3/22 Copy EGD FAQ FAQ Maria Maria Review 2 65 0
+>>>>>>>> Jul-5/22 Copy FS FAQ FAQ Maria Maria Write 2 2 0
+>>>>>>>> Jul-5/22 Copy ND Intro Research Dr. Joe Interview Sean Jul-6/22 Se=
+an
+>>>>>>>> Edit 2 2 1
+>>>>>>>> Apr-29/22 EGD ID Split-Test Opps split-test ideas All 69 0
+>>>>>>>> Jun- 14/22 Marketing TSR Upsell rebrand Floraspring as D&E Maria
+>>>>>>>> Jul-13/22 Maria Review 2 23 3
+>>>>>>>> 6/27 Sales Ops 5GM Half Page Print Ad Write an ad for 5G male Edwi=
+n July
+>>>>>>>> 8/22 Sep-1/22 Edwin Review 3 10 2
+>>>>>>>> Jun-27/22 Brett Upsells Pitches for Masley Come up with Reframes
+>>>>>>>> for each product Sean/Kim July 20/22 All Review 1 1 2
+>>>>>>>> Jun-30/22 Video ND YT Ads Convert Email to YT ad Edwin July 8/22 J=
+uly
+>>>>>>>> 15/22 Edwin Write 1 7 2
+>>>>>>>> Jun-30/22 Video ND YT Ads Convert Email to YT ad John July 8/22 Ju=
+ly
+>>>>>>>> 15/22 John Write 1 7 0
+>>>>>>>> Jun-30/22 Video ND YT Ads Convert Email to YT ad Maria July 8/22 J=
+uly
+>>>>>>>> 15/22 Maria Review 1 7 2
+>>>>>>>> Jun-30/22 Video ND YT Ads Convert Email to YT ad John July 8/22 Ju=
+ly
+>>>>>>>> 15/22 John Write 1 7 3
+>>>>>>>> Jun-30/22 Video 5G YT Ads Convert Email to YT ad Edwin July 8/22 J=
+uly
+>>>>>>>> 15/22 Edwin Write 1 7 2
+>>>>>>>> Jun-30/22 Video 5G YT Ads Convert Email to YT ad John July 8/22 Ju=
+ly
+>>>>>>>> 15/22 John Write 1 7 2
+>>>>>>>> Jun-30/22 Video 5G YT Ads Convert Email to YT ad John July 8/22 Ju=
+ly
+>>>>>>>> 15/22 Brett Review 1 7 2
+>>>>>>>> Jun-30/22 Video 5G YT Ads Convert Email to YT ad Maria July 8/22 J=
+uly
+>>>>>>>> 15/22 Maria Write 1 7 0
+>>>>>>>> Jul-5/22 FS FB Inline VSL Retargeting Ads (5) Edwin July 13/22 Jul=
+y
+>>>>>>>> 20/22 Edwin Write 2 2 1.5
+>>>>>>>> Jul-5/22 Video FS Before & After Videos Create more TikTok Ads
+>>>>>>>> Maria July 13/22 July 20/22 Maria Write 1 2 2
+>>>>>>>> Jul-5/22 Copy Upsells Competitor Analysis Analyze Competitor
+>>>>>>>> Upsells/SOP Edwin July 13/22 July 20/22 Edwin Review 2 2 1
+>>>>>>>>
+>>>>>>>> --
+>>>>>>
+>>>>>>
+>>>>>> Shawna McCartney
+>>>>>> Marketing Coordinator
+>>>>>> Pineapple Company
+>>>>>>
+>>>>>> w: 419.274.9549
+>>>>>> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>>>>>> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New=
++York,+NY+10019?entry=3Dgmail&source=3Dg>
+>>>>>>
+>>>>>>
+>>>>> --
+>>
+>>
+>> Shawna McCartney
+>> Marketing Coordinator
+>> Pineapple Company
+>>
+>> w: 419.274.9549
+>> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+Yor=
+k,+NY+10019?entry=3Dgmail&source=3Dg>
+>>
+>>
+>
+
+--000000000000311b2c05e394429a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Aubrey (ccd)</div><div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Tue, Jul 12, 2022 at 5:52 AM Shawna M=
+cCartney &lt;<a href=3D"mailto:shawna@pineapple.co">shawna@pineapple.co</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:1e=
+x;border-left-color:rgb(204,204,204)"><div dir=3D"ltr">Hi Brett,=C2=A0<br><=
+div><br></div><div>Regarding your suggestion, who may I reach out to from t=
+he Data department?=C2=A0</div></div><br><div class=3D"gmail_quote"><div di=
+r=3D"ltr" class=3D"gmail_attr">On Fri, Jul 8, 2022 at 10:22 PM Shawna McCar=
+tney &lt;<a href=3D"mailto:shawna@pineapple.co" target=3D"_blank">shawna@pi=
+neapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;=
+padding-left:1ex;border-left-color:rgb(204,204,204)"><div dir=3D"auto">Yes =
+absolutely. I=E2=80=99ll do the first one for end of July.=C2=A0</div><div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri=
+, Jul 8, 2022 at 10:01 PM, Colin Chung &lt;<a href=3D"mailto:colin@pineappl=
+e.co" target=3D"_blank">colin@pineapple.co</a>&gt; wrote:<br></div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-wid=
+th:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb(204,2=
+04,204)"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-size:s=
+mall">I would add &quot;days&quot; too.</div><div class=3D"gmail_default" s=
+tyle=3D"font-size:small"><br></div><div class=3D"gmail_default" style=3D"fo=
+nt-size:small">Hours / Days - Person, Project, Type.</div><div class=3D"gma=
+il_default" style=3D"font-size:small">We&#39;re already tracking all of thi=
+s as of a week ago.</div><div class=3D"gmail_default" style=3D"font-size:sm=
+all"><br></div><div class=3D"gmail_default" style=3D"font-size:small">Shawn=
+a, can you make sure this is a monthly report we do please?</div></div><div=
+ dir=3D"ltr"><div><div dir=3D"ltr"><div dir=3D"ltr"><div><br></div><div><br=
+></div><div><br></div><div>--</div><div><table cellspacing=3D"0" width=3D"5=
+00" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spacing:0=
+px;border-collapse:collapse;font-family:Lato,sans-serif;color:rgb(97,97,97)=
+"><tbody style=3D"font-family:Lato,sans-serif"><tr style=3D"font-family:Lat=
+o,sans-serif"><td width=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px=
+ 0px;vertical-align:top;font-family:Lato,sans-serif"><a href=3D"http://s3.a=
+mazonaws.com/pineapple.co/pineappleco.gif" style=3D"font-family:Lato,sans-s=
+erif;color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"created with MySignatu=
+re.io" width=3D"100" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342=
+f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" style=3D"width: 100px; bord=
+er-radius: 15%; font-family: Lato, sans-serif;"></a></td><td valign=3D"top"=
+ style=3D"border-left-width:2px;border-left-style:solid;vertical-align:top;=
+padding:0px 0px 0px 9px;font-family:Lato,sans-serif;border-color:rgb(70,208=
+,255)"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"bor=
+der-spacing:0px;border-collapse:collapse;line-height:1.4;font-family:Verdan=
+a,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody style=3D"fon=
+t-family:Verdana,Geneva,sans-serif"><tr style=3D"font-family:Verdana,Geneva=
+,sans-serif"><td style=3D"font-family:Verdana,Geneva,sans-serif"><span styl=
+e=3D"font-stretch:normal;font-size:1.2em;line-height:normal;font-family:Ver=
+dana,Geneva,sans-serif;color:rgb(70,208,255)">Colin Y.J. Chung</span><span =
+style=3D"font-family:Verdana,Geneva,sans-serif">=C2=A0 Director of Copy</sp=
+an></td></tr><tr style=3D"font-family:Verdana,Geneva,sans-serif"><td style=
+=3D"padding:5px 0px;font-family:Verdana,Geneva,sans-serif"><div style=3D"fo=
+nt-family:Verdana,Geneva,sans-serif">Pineapple Company</div></td></tr><tr s=
+tyle=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"font-family:Ver=
+dana,Geneva,sans-serif"><font face=3D"Verdana, Geneva, sans-serif" style=3D=
+"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">p:=C2=A0 </fo=
+nt><font face=3D"Verdana, Geneva, sans-serif" style=3D"font-family:Verdana,=
+Geneva,sans-serif;color:rgb(0,0,0)">604.282.3732</font></td></tr><tr style=
+=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"font-family:Verdana=
+,Geneva,sans-serif"><span style=3D"font-family:Verdana,Geneva,sans-serif;co=
+lor:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdan=
+a,Geneva,sans-serif"><a href=3D"http://pineapple.co/" style=3D"font-family:=
+Verdana,Geneva,sans-serif;color:rgb(0,0,1)" target=3D"_blank">pineapple.co<=
+/a></span></td></tr><tr style=3D"font-family:Verdana,Geneva,sans-serif"><td=
+ style=3D"font-family:Verdana,Geneva,sans-serif"><span style=3D"font-family=
+:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<spa=
+n style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"https://www.go=
+ogle.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+York,+NY+10019?entry=
+=3Dgmail&amp;source=3Dg" target=3D"_blank" style=3D"font-family:Verdana,Gen=
+eva,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10019</a>=C2=A0</=
+span></td></tr></tbody></table></td></tr></tbody></table></div></div></div>=
+</div><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gm=
+ail_attr">On Fri, Jul 8, 2022 at 2:23 PM Brett Allcorn &lt;<a href=3D"mailt=
+o:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex=
+;border-left-width:1px;border-left-style:solid;padding-left:1ex;border-left=
+-color:rgb(204,204,204)"><div dir=3D"ltr">Yeah you can be transparent.<div>=
+<br></div><div>I like the timeframe.</div><div><br></div><div>So maybe you =
+and Shawna can set an exact date like October 15th to stop doing this?</div=
+><div><br></div><div>In the meantime we can review the data monthly.</div><=
+div><br></div><div>And I&#39;m happy to help lend you someone from the data=
+ department=C2=A0to create the reports.</div><div><br></div><div>We just ne=
+ed the hours labeled by person, project and type of project... I think?</di=
+v></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Fri, Jul 8, 2022 at 6:50 PM Colin Chung &lt;<a href=3D"mailto:colin@pi=
+neapple.co" target=3D"_blank">colin@pineapple.co</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft-width:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb=
+(204,204,204)"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-=
+size:small">In the long run, yes, we probably shouldn&#39;t do this.</div><=
+div class=3D"gmail_default" style=3D"font-size:small">I don&#39;t expect th=
+em to work a full eight hours on creative stuff either.</div><div class=3D"=
+gmail_default" style=3D"font-size:small">If you&#39;re comfortable with bei=
+ng open/transparent about it... I can tell them we only expect two 2-3 hour=
+ sprints for writing.</div><div class=3D"gmail_default" style=3D"font-size:=
+small">But the other 2 hours can be research, reading, meetings, emails, an=
+d low intensity work.</div><div class=3D"gmail_default" style=3D"font-size:=
+small">I&#39;m not 100% comfortable saying that aloud, but at the same time=
+, when I coach freelance copywriters,=C2=A0</div><div class=3D"gmail_defaul=
+t" style=3D"font-size:small">I always tell them 4hours of writing/deep work=
+ is what&#39;s realistic.</div><div class=3D"gmail_default" style=3D"font-s=
+ize:small"><br></div><div class=3D"gmail_default" style=3D"font-size:small"=
+>I do agree that you getting this daily is not helpful. But you asked, and =
+we acceded.</div><div class=3D"gmail_default" style=3D"font-size:small">I t=
+hink going to EOW reports is better. But yeah, ultimately, what we really w=
+ant is...=C2=A0</div><div class=3D"gmail_default" style=3D"font-size:small"=
+>how long did it take on their side hours and days wise?</div><div class=3D=
+"gmail_default" style=3D"font-size:small">And if the hours are short, but d=
+ays are long, where were the delays?</div><div class=3D"gmail_default" styl=
+e=3D"font-size:small">If the hours are long, then where did they get stuck?=
+</div><div class=3D"gmail_default" style=3D"font-size:small"><br></div><div=
+ class=3D"gmail_default" style=3D"font-size:small">So what I&#39;m saying i=
+s, I still want hours tracked for the next three months.</div><div class=3D=
+"gmail_default" style=3D"font-size:small">I also would like your permission=
+=C2=A0to be open transparent with the writers about this.</div><div class=
+=3D"gmail_default" style=3D"font-size:small">Why we&#39;re doing this, why =
+we&#39;re not &quot;monitoring you&quot;, and why we still love them. :)</d=
+iv><div class=3D"gmail_default" style=3D"font-size:small"><br></div><div cl=
+ass=3D"gmail_default" style=3D"font-size:small">So yeah? Can I tell the wri=
+ters are thought process in a transparent way?</div><div><div dir=3D"ltr"><=
+div dir=3D"ltr"><div><br></div><div><br></div><div><br></div><div>--</div><=
+div><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" s=
+tyle=3D"font-size:13px;border-spacing:0px;border-collapse:collapse;font-fam=
+ily:Lato,sans-serif;color:rgb(97,97,97)"><tbody style=3D"font-family:Lato,s=
+ans-serif"><tr style=3D"font-family:Lato,sans-serif"><td width=3D"100" vali=
+gn=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top;font-family:=
+Lato,sans-serif"><a href=3D"http://s3.amazonaws.com/pineapple.co/pineapplec=
+o.gif" style=3D"font-family:Lato,sans-serif;color:rgb(0,0,0)" target=3D"_bl=
+ank"><img alt=3D"created with MySignature.io" width=3D"100" src=3D"https://=
+img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D=
+1595444125" style=3D"width: 100px; border-radius: 15%; font-family: Lato, s=
+ans-serif;"></a></td><td valign=3D"top" style=3D"border-left-width:2px;bord=
+er-left-style:solid;vertical-align:top;padding:0px 0px 0px 9px;font-family:=
+Lato,sans-serif;border-color:rgb(70,208,255)"><table cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:coll=
+apse;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05p=
+x;color:rgb(0,0,1)"><tbody style=3D"font-family:Verdana,Geneva,sans-serif">=
+<tr style=3D"font-family:Verdana,Geneva,sans-serif"><td style=3D"font-famil=
+y:Verdana,Geneva,sans-serif"><span style=3D"font-stretch:normal;font-size:1=
+.2em;line-height:normal;font-family:Verdana,Geneva,sans-serif;color:rgb(70,=
+208,255)">Colin Y.J. Chung</span><span style=3D"font-family:Verdana,Geneva,=
+sans-serif">=C2=A0 Director of Copy</span></td></tr><tr style=3D"font-famil=
+y:Verdana,Geneva,sans-serif"><td style=3D"padding:5px 0px;font-family:Verda=
+na,Geneva,sans-serif"><div style=3D"font-family:Verdana,Geneva,sans-serif">=
+Pineapple Company</div></td></tr><tr style=3D"font-family:Verdana,Geneva,sa=
+ns-serif"><td style=3D"font-family:Verdana,Geneva,sans-serif"><font face=3D=
+"Verdana, Geneva, sans-serif" style=3D"font-family:Verdana,Geneva,sans-seri=
+f;color:rgb(70,208,255)">p:=C2=A0 </font><font face=3D"Verdana, Geneva, san=
+s-serif" style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(0,0,0)">6=
+04.282.3732</font></td></tr><tr style=3D"font-family:Verdana,Geneva,sans-se=
+rif"><td style=3D"font-family:Verdana,Geneva,sans-serif"><span style=3D"fon=
+t-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=
+=C2=A0<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http=
+://pineapple.co/" style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(=
+0,0,1)" target=3D"_blank">pineapple.co</a></span></td></tr><tr style=3D"fon=
+t-family:Verdana,Geneva,sans-serif"><td style=3D"font-family:Verdana,Geneva=
+,sans-serif"><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb=
+(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Genev=
+a,sans-serif"><a href=3D"https://www.google.com/maps/search/57+w+57th+Stree=
+t,+3rd+Floor,+New+York,+NY+10019?entry=3Dgmail&amp;source=3Dg" target=3D"_b=
+lank" style=3D"font-family:Verdana,Geneva,sans-serif">57 w 57th Street, 3rd=
+ Floor, New York, NY 10019</a>=C2=A0</span></td></tr></tbody></table></td><=
+/tr></tbody></table></div></div></div></div><br></div><br><div class=3D"gma=
+il_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jul 8, 2022 at 5:05=
+ AM Shawna McCartney &lt;<a href=3D"mailto:shawna@pineapple.co" target=3D"_=
+blank">shawna@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-le=
+ft-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)"><div di=
+r=3D"auto">Good Morning!=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D=
+"auto">So I agree with you on just how useful this data will be. I can stil=
+l use the daily information provided to us by each writer and compile it fo=
+r a monthly report. In that I can address the question of - How long did it=
+ take Maria to write a YouTube Ad vs John - I can also note the factors tha=
+t led to each time variance.=C2=A0</div><div dir=3D"auto"><br></div><div di=
+r=3D"auto">I know the writers are creative, creative people tend to not lov=
+e rigidity but Colin would be better able to speak on how they are feeling =
+as I don=E2=80=99t have that intimate interaction with them just yet.=C2=A0=
+</div><div dir=3D"auto"><br></div><div dir=3D"auto">From my POV they willin=
+gly and happily send us the daily updates. I do know that Kirsten and I wil=
+l be conducting training with them to teach them how to utilize Teamwork an=
+d that will do the time logging / tracking for us. So it will just be on me=
+ to generate reports based on what they=E2=80=99ve done so far in the syste=
+m.=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">That=E2=80=99s =
+what I think=E2=80=A6=C2=A0</div><div dir=3D"auto">=C2=A0</div><div dir=3D"=
+auto"><br></div><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Fri, Jul 8, 2022 at 6:54 AM, Brett Allcorn &lt;<a href=3D"mai=
+lto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left-width:1px;border-left-style:solid;padding-left:1ex;border-le=
+ft-color:rgb(204,204,204)"><div dir=3D"ltr">So I think this data is going t=
+o be more useful monthly.<div><br></div><div>But in order to get use out of=
+ it, we need to be able to analyze it by writer and type of project, I thin=
+k.</div><div><br></div><div>Because the question I want answered is:</div><=
+div><br></div><div>Who&#39;s spending how much time on each type of project=
+?</div><div><br></div><div>This will allow us to see and address any ineffi=
+ciencies.</div><div><br></div><div>Also I don&#39;t think this is something=
+ we need to do long term.</div><div><br></div><div>In fact, it might even b=
+e a bad idea... I don&#39;t know if the writers might get pissed off here.<=
+/div><div><br></div><div>Like we are expecting them to be doing exactly 8 h=
+ours of work every day, which might not be realistic.</div><div><br></div><=
+div>It&#39;s a bit like installing screen recording software on peoples com=
+puters to make sure they&#39;re working.</div><div><br></div><div>What do y=
+ou guys think?</div><div><br></div><div>I don&#39;t want to create that typ=
+e of atmosphere, but I am trying to find inefficiencies.</div><div><br></di=
+v><div>The other way to handle this is with the SCRUM technique I mentioned=
+.</div><div><br></div><div>We can just meet weekly or monthly about efficie=
+ncy.</div><div><br></div><div>Everyone can answer the question: how can you=
+ move faster?</div><div><br></div><div>And they will know we&#39;re all mak=
+ing an effort to try to find inefficiencies.</div><div><br></div><div>Also =
+even if we don&#39;t do this time tracking, Colin, I think you can still se=
+e how many DAYS each project takes without burdening the writers with time =
+tracking.</div><div><br></div><div>What do you think?</div><div><br></div><=
+div>And what do the writers think?</div><div><br></div></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jul 8, 2022 =
+at 6:36 AM Shawna McCartney &lt;<a href=3D"mailto:shawna@pineapple.co" targ=
+et=3D"_blank">shawna@pineapple.co</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;bo=
+rder-left-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)">=
+<div dir=3D"ltr"><div dir=3D"ltr">Good Night Brett,=C2=A0<br></div><div dir=
+=3D"ltr"><br></div><div>Kindly see the information below.=C2=A0</div><div><=
+br></div><div><table cellspacing=3D"0" cellpadding=3D"0" dir=3D"ltr" border=
+=3D"1" style=3D"table-layout:fixed;font-size:10pt;font-family:Arial;width:0=
+px;border-collapse:collapse;border:none"><colgroup style=3D"font-family:Ari=
+al"><col width=3D"100" style=3D"font-family:Arial"><col width=3D"100" style=
+=3D"font-family:Arial"><col width=3D"100" style=3D"font-family:Arial"><col =
+width=3D"165" style=3D"font-family:Arial"><col width=3D"268" style=3D"font-=
+family:Arial"><col width=3D"100" style=3D"font-family:Arial"><col width=3D"=
+100" style=3D"font-family:Arial"><col width=3D"100" style=3D"font-family:Ar=
+ial"><col width=3D"100" style=3D"font-family:Arial"><col width=3D"100" styl=
+e=3D"font-family:Arial"><col width=3D"100" style=3D"font-family:Arial"><col=
+ width=3D"100" style=3D"font-family:Arial"><col width=3D"100" style=3D"font=
+-family:Arial"></colgroup><tbody style=3D"font-family:Arial"><tr style=3D"h=
+eight:21px;font-family:Arial"><td style=3D"border-width:3px 1px 1px;border-=
+style:solid;overflow:hidden;padding:2px 3px;vertical-align:bottom;text-alig=
+n:right;font-family:Arial;border-color:rgb(0,0,0) rgb(204,204,204) rgb(204,=
+204,204)">May-17/22</td><td style=3D"border-width:3px 1px 1px;border-style:=
+solid;overflow:hidden;padding:2px 3px;vertical-align:bottom;font-family:Ari=
+al;border-color:rgb(0,0,0) rgb(204,204,204) rgb(204,204,204)">Marketing</td=
+><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:=
+1px solid rgb(204,204,204);font-family:Arial">FS</td><td style=3D"overflow:=
+hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,2=
+04);font-family:Arial">Optz. VSL</td><td style=3D"overflow:hidden;padding:2=
+px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:=
+Arial">Extra Bennies</td><td style=3D"border-width:3px 1px 1px;border-style=
+:solid;overflow:hidden;padding:2px 3px;vertical-align:bottom;font-family:Ar=
+ial;border-color:rgb(0,0,0) rgb(204,204,204) rgb(204,204,204)">Kim</td><td =
+style=3D"border-width:3px 1px 1px;border-style:solid;overflow:hidden;paddin=
+g:2px 3px;vertical-align:bottom;font-family:Arial;border-color:rgb(0,0,0) r=
+gb(204,204,204) rgb(204,204,204)"></td><td style=3D"border-width:3px 1px 1p=
+x;border-style:solid;overflow:hidden;padding:2px 3px;vertical-align:bottom;=
+font-family:Arial;border-color:rgb(0,0,0) rgb(204,204,204) rgb(204,204,204)=
+"></td><td style=3D"border-width:3px 1px 1px;border-style:solid;overflow:hi=
+dden;padding:2px 3px;vertical-align:bottom;font-family:Arial;border-color:r=
+gb(0,0,0) rgb(204,204,204) rgb(204,204,204)"></td><td style=3D"border-width=
+:3px 1px 1px;border-style:solid;overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;font-family:Arial;background-color:rgb(217,210,233);border-color=
+:rgb(0,0,0) rgb(204,204,204) rgb(204,204,204)">Kim Write</td><td style=3D"b=
+order-width:3px 1px 1px;border-style:solid;overflow:hidden;padding:2px 3px;=
+vertical-align:bottom;text-align:center;font-family:Arial;border-color:rgb(=
+0,0,0) rgb(204,204,204) rgb(204,204,204)">3</td><td style=3D"border-width:1=
+px;border-style:solid;overflow:hidden;padding:2px 3px;vertical-align:bottom=
+;text-align:center;font-family:Arial;border-color:rgb(0,0,0) rgb(204,204,20=
+4) rgb(204,204,204)">51</td><td style=3D"border-width:1px;border-style:soli=
+d;overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;fo=
+nt-family:Arial;border-color:rgb(0,0,0) rgb(204,204,204) rgb(204,204,204)">=
+2</td></tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px =
+solid rgb(204,204,204);font-family:Arial">May-17/22</td><td style=3D"overfl=
+ow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,20=
+4,204);font-family:Arial">Copy</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Ar=
+ial">ALL</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bo=
+ttom;border:1px solid rgb(204,204,204);font-family:Arial">SOPs</td><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid=
+ rgb(204,204,204);font-family:Arial">Lifts/YT Ads/Preroll</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(=
+204,204,204);font-family:Arial">John</td><td style=3D"overflow:hidden;paddi=
+ng:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fam=
+ily:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align=
+:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:Aria=
+l">Aug-15/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-alig=
+n:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid=
+ rgb(204,204,204);font-family:Arial;background-color:rgb(217,210,233)">John=
+ Write</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bott=
+om;text-align:center;border:1px solid rgb(204,204,204);font-family:Arial">1=
+</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;tex=
+t-align:center;border:1px solid rgb(204,204,204);font-family:Arial">51</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-ali=
+gn:right;border:1px solid rgb(204,204,204);font-family:Arial">1</td></tr><t=
+r style=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204=
+,204,204);font-family:Arial">May-26/22</td><td style=3D"overflow:hidden;pad=
+ding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-f=
+amily:Arial">Brett</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">ALL</td=
+><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:=
+1px solid rgb(204,204,204);font-family:Arial">Training</td><td style=3D"ove=
+rflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204=
+,204,204);font-family:Arial">Avatar Doc</td><td style=3D"overflow:hidden;pa=
+dding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-=
+family:Arial">Sean</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-fami=
+ly:Arial">Jun-3/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-fami=
+ly:Arial">Jul-21/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertic=
+al-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><=
+td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1p=
+x solid rgb(204,204,204);font-family:Arial;background-color:rgb(234,209,220=
+)">Sean Edit</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-alig=
+n:bottom;text-align:center;border:1px solid rgb(204,204,204);font-family:Ar=
+ial">3</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bott=
+om;text-align:center;border:1px solid rgb(204,204,204);font-family:Arial">4=
+2</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;te=
+xt-align:right;border:1px solid rgb(204,204,204);font-family:Arial">0</td><=
+/tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid r=
+gb(204,204,204);font-family:Arial">Apr-18/22</td><td style=3D"overflow:hidd=
+en;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);=
+font-family:Arial">Marketing</td><td style=3D"overflow:hidden;padding:2px 3=
+px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Aria=
+l">ND</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:botto=
+m;border:1px solid rgb(204,204,204);font-family:Arial">Prerolls</td><td sty=
+le=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px soli=
+d rgb(204,204,204);font-family:Arial">2 Pre-Rolls</td><td style=3D"overflow=
+:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,=
+204);font-family:Arial">Edwin</td><td style=3D"overflow:hidden;padding:2px =
+3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204=
+);font-family:Arial">May-9/22</td><td style=3D"overflow:hidden;padding:2px =
+3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Ari=
+al"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom=
+;border:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"ove=
+rflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204=
+,204,204);font-family:Arial;background-color:rgb(217,234,211)">Brett Review=
+</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;tex=
+t-align:center;border:1px solid rgb(204,204,204);font-family:Arial">2</td><=
+td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-alig=
+n:center;border:1px solid rgb(204,204,204);font-family:Arial">80</td><td st=
+yle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:rig=
+ht;border:1px solid rgb(204,204,204);font-family:Arial">0</td></tr><tr styl=
+e=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidden;padding:2p=
+x 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,2=
+04);font-family:Arial">Apr-18/22</td><td style=3D"overflow:hidden;padding:2=
+px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:=
+Arial">Marketing</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-=
+align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">ND</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px=
+ solid rgb(204,204,204);font-family:Arial">Prerolls</td><td style=3D"overfl=
+ow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,20=
+4,204);font-family:Arial">2 Pre-Rolls</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">John</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-=
+align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family=
+:Arial">May-9/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-=
+align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td =
+style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px s=
+olid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);fon=
+t-family:Arial;background-color:rgb(217,210,233)">John Write</td><td style=
+=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center=
+;border:1px solid rgb(204,204,204);font-family:Arial">2</td><td style=3D"ov=
+erflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center;borde=
+r:1px solid rgb(204,204,204);font-family:Arial">80</td><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px =
+solid rgb(204,204,204);font-family:Arial">0</td></tr><tr style=3D"height:21=
+px;font-family:Arial"><td style=3D"overflow:hidden;padding:2px 3px;vertical=
+-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-famil=
+y:Arial">Apr-18/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Marketi=
+ng</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;b=
+order:1px solid rgb(204,204,204);font-family:Arial">ND</td><td style=3D"ove=
+rflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204=
+,204,204);font-family:Arial">Prerolls</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">2 Pre-Rolls</td><td style=3D"overflow:hidden;padding:2px 3px;ve=
+rtical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Ki=
+m</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;te=
+xt-align:right;border:1px solid rgb(204,204,204);font-family:Arial">May-9/2=
+2</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bo=
+rder:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overfl=
+ow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,20=
+4,204);font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;=
+background-color:rgb(217,210,233)">Kim Review</td><td style=3D"overflow:hid=
+den;padding:2px 3px;vertical-align:bottom;text-align:center;border:1px soli=
+d rgb(204,204,204);font-family:Arial">2</td><td style=3D"overflow:hidden;pa=
+dding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(=
+204,204,204);font-family:Arial">80</td><td style=3D"overflow:hidden;padding=
+:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,20=
+4,204);font-family:Arial">1</td></tr><tr style=3D"height:21px;font-family:A=
+rial"><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;te=
+xt-align:right;border:1px solid rgb(204,204,204);font-family:Arial">May-31/=
+22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;b=
+order:1px solid rgb(204,204,204);font-family:Arial">Video</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(=
+204,204,204);font-family:Arial">FS</td><td style=3D"overflow:hidden;padding=
+:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-famil=
+y:Arial">Amazon</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-a=
+lign:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Ads</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px=
+ solid rgb(204,204,204);font-family:Arial">Kim</td><td style=3D"overflow:hi=
+dden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204=
+);font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;vert=
+ical-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-f=
+amily:Arial">Jun-24/22</td><td style=3D"overflow:hidden;padding:2px 3px;ver=
+tical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></t=
+d><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border=
+:1px solid rgb(204,204,204);font-family:Arial;background-color:rgb(217,234,=
+211)">Brett Review</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;text-align:center;border:1px solid rgb(204,204,204);font-fam=
+ily:Arial">2</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-alig=
+n:bottom;text-align:center;border:1px solid rgb(204,204,204);font-family:Ar=
+ial">37</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bot=
+tom;text-align:right;border:1px solid rgb(204,204,204);font-family:Arial">2=
+</td></tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"overflow=
+:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px s=
+olid rgb(204,204,204);font-family:Arial">May-26/22</td><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204=
+,204);font-family:Arial">Amazon Mngr</td><td style=3D"overflow:hidden;paddi=
+ng:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fam=
+ily:Arial">FS</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-ali=
+gn:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Amazon</td><=
+td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1p=
+x solid rgb(204,204,204);font-family:Arial">Listings</td><td style=3D"overf=
+low:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,2=
+04,204);font-family:Arial">Kim</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Ar=
+ial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:botto=
+m;text-align:right;border:1px solid rgb(204,204,204);font-family:Arial">Jul=
+-13/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bott=
+om;border:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(2=
+04,204,204);font-family:Arial;background-color:rgb(217,234,211)">Brett Revi=
+ew</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;t=
+ext-align:center;border:1px solid rgb(204,204,204);font-family:Arial">2</td=
+><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-al=
+ign:center;border:1px solid rgb(204,204,204);font-family:Arial">42</td><td =
+style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:r=
+ight;border:1px solid rgb(204,204,204);font-family:Arial">2</td></tr><tr st=
+yle=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidden;padding:=
+2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204=
+,204);font-family:Arial">May-3/22</td><td style=3D"overflow:hidden;padding:=
+2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family=
+:Arial">Copy</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-alig=
+n:bottom;border:1px solid rgb(204,204,204);font-family:Arial">EGD</td><td s=
+tyle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px so=
+lid rgb(204,204,204);font-family:Arial">FAQ</td><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);f=
+ont-family:Arial">FAQ</td><td style=3D"overflow:hidden;padding:2px 3px;vert=
+ical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;color=
+:rgb(0,255,0)">Maria</td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1=
+px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hid=
+den;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204)=
+;font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;backgr=
+ound-color:rgb(217,210,233)">Maria Review</td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rg=
+b(204,204,204);font-family:Arial">2</td><td style=3D"overflow:hidden;paddin=
+g:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(204,=
+204,204);font-family:Arial">65</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,20=
+4);font-family:Arial">0</td></tr><tr style=3D"height:21px;font-family:Arial=
+"><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-a=
+lign:right;border:1px solid rgb(204,204,204);font-family:Arial">Jul-5/22</t=
+d><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border=
+:1px solid rgb(204,204,204);font-family:Arial">Copy</td><td style=3D"overfl=
+ow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,20=
+4,204);font-family:Arial">FS</td><td style=3D"overflow:hidden;padding:2px 3=
+px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Aria=
+l">FAQ</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bott=
+om;border:1px solid rgb(204,204,204);font-family:Arial">FAQ</td><td style=
+=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid =
+rgb(204,204,204);font-family:Arial">Maria</td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);fon=
+t-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-=
+align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td =
+style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px s=
+olid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);fon=
+t-family:Arial;background-color:rgb(217,210,233)">Maria Write</td><td style=
+=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center=
+;border:1px solid rgb(204,204,204);font-family:Arial">2</td><td style=3D"ov=
+erflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center;borde=
+r:1px solid rgb(204,204,204);font-family:Arial">2</td><td style=3D"overflow=
+:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px s=
+olid rgb(204,204,204);font-family:Arial">0</td></tr><tr style=3D"height:21p=
+x;font-family:Arial"><td style=3D"overflow:hidden;padding:2px 3px;vertical-=
+align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family=
+:Arial">Jul-5/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-=
+align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Copy</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1=
+px solid rgb(204,204,204);font-family:Arial">ND</td><td style=3D"overflow:h=
+idden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,20=
+4);font-family:Arial">Intro Research</td><td style=3D"overflow:hidden;paddi=
+ng:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fam=
+ily:Arial">Dr. Joe Interview</td><td style=3D"overflow:hidden;padding:2px 3=
+px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Aria=
+l">Sean</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bot=
+tom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;bord=
+er:1px solid rgb(204,204,204);font-family:Arial">Jul-6/22</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(=
+204,204,204);font-family:Arial"></td><td style=3D"overflow:hidden;padding:2=
+px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:=
+Arial;background-color:rgb(234,209,220)">Sean Edit</td><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;text-align:center;border:1px=
+ solid rgb(204,204,204);font-family:Arial">2</td><td style=3D"overflow:hidd=
+en;padding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid=
+ rgb(204,204,204);font-family:Arial">2</td><td style=3D"overflow:hidden;pad=
+ding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(20=
+4,204,204);font-family:Arial">1</td></tr><tr style=3D"height:21px;font-fami=
+ly:Arial"><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:botto=
+m;font-family:Arial;text-align:right;border:1px solid rgb(204,204,204)">Apr=
+-29/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bott=
+om;border:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(2=
+04,204,204);font-family:Arial">EGD</td><td style=3D"overflow:hidden;padding=
+:2px 3px;vertical-align:bottom;font-family:Arial;border:1px solid rgb(204,2=
+04,204)">ID Split-Test Opps</td><td style=3D"overflow:hidden;padding:2px 3p=
+x;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial=
+">split-test ideas</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">All</td=
+><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:=
+1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hi=
+dden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204=
+);font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;vert=
+ical-align:bottom;text-align:center;border:1px solid rgb(204,204,204);font-=
+family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td st=
+yle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px sol=
+id rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hidden;pa=
+dding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(=
+204,204,204);font-family:Arial">69</td><td style=3D"overflow:hidden;padding=
+:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,20=
+4,204);font-family:Arial">0</td></tr><tr style=3D"height:21px;font-family:A=
+rial"><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;te=
+xt-align:right;border:1px solid rgb(204,204,204);font-family:Arial">Jun- 14=
+/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;=
+border:1px solid rgb(204,204,204);font-family:Arial">Marketing</td><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid=
+ rgb(204,204,204);font-family:Arial">TSR</td><td style=3D"overflow:hidden;p=
+adding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font=
+-family:Arial">Upsell</td><td style=3D"overflow:hidden;padding:2px 3px;vert=
+ical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">rebr=
+and Floraspring as D&amp;E</td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;=
+color:rgb(0,255,0)">Maria </td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"=
+></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;te=
+xt-align:right;border:1px solid rgb(204,204,204);font-family:Arial">Jul-13/=
+22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;b=
+order:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overf=
+low:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,2=
+04,204);font-family:Arial;background-color:rgb(217,210,233)">Maria Review</=
+td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-=
+align:center;border:1px solid rgb(204,204,204);font-family:Arial">2</td><td=
+ style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:=
+center;border:1px solid rgb(204,204,204);font-family:Arial">23</td><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right=
+;border:1px solid rgb(204,204,204);font-family:Arial">3</td></tr><tr style=
+=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,20=
+4);font-family:Arial">6/27</td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"=
+>Sales Ops</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;border:1px solid rgb(204,204,204);font-family:Arial">5GM</td><td sty=
+le=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px soli=
+d rgb(204,204,204);font-family:Arial">Half Page Print Ad</td><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(2=
+04,204,204);font-family:Arial">Write an ad for 5G male</td><td style=3D"ove=
+rflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204=
+,204,204);font-family:Arial">Edwin</td><td style=3D"overflow:hidden;padding=
+:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,20=
+4,204);font-family:Arial">July 8/22</td><td style=3D"overflow:hidden;paddin=
+g:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,2=
+04,204);font-family:Arial">Sep-1/22</td><td style=3D"overflow:hidden;paddin=
+g:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fami=
+ly:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;border:1px solid rgb(204,204,204);font-family:Arial;background-color=
+:rgb(217,210,233)">Edwin Review</td><td style=3D"overflow:hidden;padding:2p=
+x 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,=
+204);font-family:Arial">3</td><td style=3D"overflow:hidden;padding:2px 3px;=
+vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,204);f=
+ont-family:Arial">10</td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">2</td></tr><tr style=3D"height:21px;font-family:Arial"><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right=
+;border:1px solid rgb(204,204,204);font-family:Arial">Jun-27/22</td><td sty=
+le=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px soli=
+d rgb(204,204,204);font-family:Arial">Brett</td><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);f=
+ont-family:Arial">Upsells</td><td style=3D"overflow:hidden;padding:2px 3px;=
+vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">=
+Pitches for Masley</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Come up=
+ with Reframes for each product</td><td style=3D"overflow:hidden;padding:2p=
+x 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:A=
+rial">Sean/Kim</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td st=
+yle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:rig=
+ht;border:1px solid rgb(204,204,204);font-family:Arial">July 20/22</td><td =
+style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px s=
+olid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);fon=
+t-family:Arial">All Review</td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,204);=
+font-family:Arial">1</td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;text-align:center;border:1px solid rgb(204,204,204);font-f=
+amily:Arial">1</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:A=
+rial">2</td></tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;borde=
+r:1px solid rgb(204,204,204);font-family:Arial">Jun-30/22</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(=
+204,204,204);font-family:Arial">Video</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">ND</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;border:1px solid rgb(204,204,204);font-family:Arial">YT Ads</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1=
+px solid rgb(204,204,204);font-family:Arial">Convert Email to YT ad</td><td=
+ style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px =
+solid rgb(204,204,204);font-family:Arial">Edwin</td><td style=3D"overflow:h=
+idden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px sol=
+id rgb(204,204,204);font-family:Arial">July 8/22</td><td style=3D"overflow:=
+hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px so=
+lid rgb(204,204,204);font-family:Arial">July 15/22</td><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204=
+,204);font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;=
+vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;b=
+ackground-color:rgb(217,210,233)">Edwin Write</td><td style=3D"overflow:hid=
+den;padding:2px 3px;vertical-align:bottom;text-align:center;border:1px soli=
+d rgb(204,204,204);font-family:Arial">1</td><td style=3D"overflow:hidden;pa=
+dding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(=
+204,204,204);font-family:Arial">7</td><td style=3D"overflow:hidden;padding:=
+2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204=
+,204);font-family:Arial">2</td></tr><tr style=3D"height:21px;font-family:Ar=
+ial"><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;tex=
+t-align:right;border:1px solid rgb(204,204,204);font-family:Arial">Jun-30/2=
+2</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bo=
+rder:1px solid rgb(204,204,204);font-family:Arial">Video</td><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(2=
+04,204,204);font-family:Arial">ND</td><td style=3D"overflow:hidden;padding:=
+2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family=
+:Arial">YT Ads</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Convert Ema=
+il to YT ad</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align=
+:bottom;border:1px solid rgb(204,204,204);font-family:Arial">John</td><td s=
+tyle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:ri=
+ght;border:1px solid rgb(204,204,204);font-family:Arial">July 8/22</td><td =
+style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:r=
+ight;border:1px solid rgb(204,204,204);font-family:Arial">July 15/22</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px=
+ solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);f=
+ont-family:Arial;background-color:rgb(217,210,233)">John Write</td><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:cente=
+r;border:1px solid rgb(204,204,204);font-family:Arial">1</td><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center;bord=
+er:1px solid rgb(204,204,204);font-family:Arial">7</td><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px =
+solid rgb(204,204,204);font-family:Arial">0</td></tr><tr style=3D"height:21=
+px;font-family:Arial"><td style=3D"overflow:hidden;padding:2px 3px;vertical=
+-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-famil=
+y:Arial">Jun-30/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Video</=
+td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;borde=
+r:1px solid rgb(204,204,204);font-family:Arial">ND</td><td style=3D"overflo=
+w:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204=
+,204);font-family:Arial">YT Ads</td><td style=3D"overflow:hidden;padding:2p=
+x 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:A=
+rial">Convert Email to YT ad</td><td style=3D"overflow:hidden;padding:2px 3=
+px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Aria=
+l;color:rgb(0,255,0)">Maria</td><td style=3D"overflow:hidden;padding:2px 3p=
+x;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204);=
+font-family:Arial">July 8/22</td><td style=3D"overflow:hidden;padding:2px 3=
+px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204)=
+;font-family:Arial">July 15/22</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Ar=
+ial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:botto=
+m;border:1px solid rgb(204,204,204);font-family:Arial;background-color:rgb(=
+217,210,233)">Maria Review</td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,204);=
+font-family:Arial">1</td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;text-align:center;border:1px solid rgb(204,204,204);font-f=
+amily:Arial">7</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:A=
+rial">2</td></tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;borde=
+r:1px solid rgb(204,204,204);font-family:Arial">Jun-30/22</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(=
+204,204,204);font-family:Arial">Video</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">ND</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;border:1px solid rgb(204,204,204);font-family:Arial">YT Ads</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1=
+px solid rgb(204,204,204);font-family:Arial">Convert Email to YT ad</td><td=
+ style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px =
+solid rgb(204,204,204);font-family:Arial">John</td><td style=3D"overflow:hi=
+dden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px soli=
+d rgb(204,204,204);font-family:Arial">July 8/22</td><td style=3D"overflow:h=
+idden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px sol=
+id rgb(204,204,204);font-family:Arial">July 15/22</td><td style=3D"overflow=
+:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,=
+204);font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;v=
+ertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;ba=
+ckground-color:rgb(217,210,233)">John Write</td><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid =
+rgb(204,204,204);font-family:Arial">1</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(20=
+4,204,204);font-family:Arial">7</td><td style=3D"overflow:hidden;padding:2p=
+x 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,2=
+04);font-family:Arial">3</td></tr><tr style=3D"height:21px;font-family:Aria=
+l"><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-=
+align:right;border:1px solid rgb(204,204,204);font-family:Arial">Jun-30/22<=
+/td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bord=
+er:1px solid rgb(204,204,204);font-family:Arial">Video </td><td style=3D"ov=
+erflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(20=
+4,204,204);font-family:Arial">5G</td><td style=3D"overflow:hidden;padding:2=
+px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:=
+Arial">YT Ads</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-ali=
+gn:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Convert Emai=
+l to YT ad</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;border:1px solid rgb(204,204,204);font-family:Arial">Edwin</td><td s=
+tyle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:ri=
+ght;border:1px solid rgb(204,204,204);font-family:Arial">July 8/22</td><td =
+style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:r=
+ight;border:1px solid rgb(204,204,204);font-family:Arial">July 15/22</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px=
+ solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);f=
+ont-family:Arial;background-color:rgb(217,210,233)">Edwin Write</td><td sty=
+le=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:cent=
+er;border:1px solid rgb(204,204,204);font-family:Arial">1</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center;bor=
+der:1px solid rgb(204,204,204);font-family:Arial">7</td><td style=3D"overfl=
+ow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px=
+ solid rgb(204,204,204);font-family:Arial">2</td></tr><tr style=3D"height:2=
+1px;font-family:Arial"><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-fami=
+ly:Arial">Jun-30/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertic=
+al-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">Video =
+</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bor=
+der:1px solid rgb(204,204,204);font-family:Arial">5G</td><td style=3D"overf=
+low:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,2=
+04,204);font-family:Arial">YT Ads</td><td style=3D"overflow:hidden;padding:=
+2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family=
+:Arial">Convert Email to YT ad</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Ar=
+ial">John</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:b=
+ottom;text-align:right;border:1px solid rgb(204,204,204);font-family:Arial"=
+>July 8/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:Arial=
+">July 15/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-alig=
+n:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td styl=
+e=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid=
+ rgb(204,204,204);font-family:Arial;background-color:rgb(217,210,233)">John=
+ Write</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bott=
+om;text-align:center;border:1px solid rgb(204,204,204);font-family:Arial">1=
+</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;tex=
+t-align:center;border:1px solid rgb(204,204,204);font-family:Arial">7</td><=
+td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-alig=
+n:right;border:1px solid rgb(204,204,204);font-family:Arial">2</td></tr><tr=
+ style=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidden;paddi=
+ng:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,=
+204,204);font-family:Arial">Jun-30/22</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">Video </td><td style=3D"overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">5G</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1=
+px solid rgb(204,204,204);font-family:Arial">YT Ads</td><td style=3D"overfl=
+ow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,20=
+4,204);font-family:Arial">Convert Email to YT ad</td><td style=3D"overflow:=
+hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,2=
+04);font-family:Arial">John</td><td style=3D"overflow:hidden;padding:2px 3p=
+x;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204);=
+font-family:Arial">July 8/22</td><td style=3D"overflow:hidden;padding:2px 3=
+px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204)=
+;font-family:Arial">July 15/22</td><td style=3D"overflow:hidden;padding:2px=
+ 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Ar=
+ial"></td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:botto=
+m;border:1px solid rgb(204,204,204);font-family:Arial;background-color:rgb(=
+217,234,211)">Brett Review</td><td style=3D"overflow:hidden;padding:2px 3px=
+;vertical-align:bottom;text-align:center;border:1px solid rgb(204,204,204);=
+font-family:Arial">1</td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;text-align:center;border:1px solid rgb(204,204,204);font-f=
+amily:Arial">7</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-al=
+ign:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:A=
+rial">2</td></tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"o=
+verflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;borde=
+r:1px solid rgb(204,204,204);font-family:Arial">Jun-30/22</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(=
+204,204,204);font-family:Arial">Video </td><td style=3D"overflow:hidden;pad=
+ding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-f=
+amily:Arial">5G</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-a=
+lign:bottom;border:1px solid rgb(204,204,204);font-family:Arial">YT Ads</td=
+><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:=
+1px solid rgb(204,204,204);font-family:Arial">Convert Email to YT ad</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px=
+ solid rgb(204,204,204);font-family:Arial;color:rgb(0,255,0)">Maria</td><td=
+ style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:=
+right;border:1px solid rgb(204,204,204);font-family:Arial">July 8/22</td><t=
+d style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align=
+:right;border:1px solid rgb(204,204,204);font-family:Arial">July 15/22</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1=
+px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow:hid=
+den;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204)=
+;font-family:Arial;background-color:rgb(217,210,233)">Maria Write</td><td s=
+tyle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:ce=
+nter;border:1px solid rgb(204,204,204);font-family:Arial">1</td><td style=
+=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:center=
+;border:1px solid rgb(204,204,204);font-family:Arial">7</td><td style=3D"ov=
+erflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border=
+:1px solid rgb(204,204,204);font-family:Arial">0</td></tr><tr style=3D"heig=
+ht:21px;font-family:Arial"><td style=3D"overflow:hidden;padding:2px 3px;ver=
+tical-align:bottom;text-align:right;border:1px solid rgb(204,204,204);font-=
+family:Arial">Jul-5/22</td><td style=3D"overflow:hidden;padding:2px 3px;ver=
+tical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></t=
+d><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border=
+:1px solid rgb(204,204,204);font-family:Arial">FS</td><td style=3D"overflow=
+:hidden;padding:2px 3px;vertical-align:bottom;font-family:Arial;border:1px =
+solid rgb(204,204,204)">FB Inline VSL</td><td style=3D"overflow:hidden;padd=
+ing:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-fa=
+mily:Arial">Retargeting Ads (5)</td><td style=3D"overflow:hidden;padding:2p=
+x 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);font-family:A=
+rial">Edwin</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align=
+:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:Aria=
+l">July 13/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-ali=
+gn:bottom;text-align:right;border:1px solid rgb(204,204,204);font-family:Ar=
+ial">July 20/22</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-a=
+lign:bottom;border:1px solid rgb(204,204,204);font-family:Arial"></td><td s=
+tyle=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px so=
+lid rgb(204,204,204);font-family:Arial;background-color:rgb(217,210,233)">E=
+dwin Write</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:=
+bottom;text-align:center;border:1px solid rgb(204,204,204);font-family:Aria=
+l">2</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom=
+;text-align:center;border:1px solid rgb(204,204,204);font-family:Arial">2</=
+td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-=
+align:right;border:1px solid rgb(204,204,204);font-family:Arial">1.5</td></=
+tr><tr style=3D"height:21px;font-family:Arial"><td style=3D"overflow:hidden=
+;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rg=
+b(204,204,204);font-family:Arial">Jul-5/22</td><td style=3D"overflow:hidden=
+;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204);fo=
+nt-family:Arial">Video</td><td style=3D"overflow:hidden;padding:2px 3px;ver=
+tical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">FS<=
+/td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bord=
+er:1px solid rgb(204,204,204);font-family:Arial">Before &amp; After Videos<=
+/td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bord=
+er:1px solid rgb(204,204,204);font-family:Arial">Create more TikTok Ads</td=
+><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:=
+1px solid rgb(204,204,204);font-family:Arial;color:rgb(0,255,0)">Maria</td>=
+<td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-ali=
+gn:right;border:1px solid rgb(204,204,204);font-family:Arial">July 13/22</t=
+d><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-a=
+lign:right;border:1px solid rgb(204,204,204);font-family:Arial">July 20/22<=
+/td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;bord=
+er:1px solid rgb(204,204,204);font-family:Arial"></td><td style=3D"overflow=
+:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,=
+204);font-family:Arial;background-color:rgb(217,210,233)">Maria Write</td><=
+td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-alig=
+n:center;border:1px solid rgb(204,204,204);font-family:Arial">1</td><td sty=
+le=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:cent=
+er;border:1px solid rgb(204,204,204);font-family:Arial">2</td><td style=3D"=
+overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;bord=
+er:1px solid rgb(204,204,204);font-family:Arial">2</td></tr><tr style=3D"he=
+ight:21px;font-family:Arial"><td style=3D"overflow:hidden;padding:2px 3px;v=
+ertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204);fon=
+t-family:Arial">Jul-5/22</td><td style=3D"overflow:hidden;padding:2px 3px;v=
+ertical-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial">C=
+opy</td><td style=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;=
+border:1px solid rgb(204,204,204);font-family:Arial">Upsells</td><td style=
+=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid =
+rgb(204,204,204);font-family:Arial">Competitor Analysis</td><td style=3D"ov=
+erflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(20=
+4,204,204);font-family:Arial">Analyze Competitor Upsells/SOP</td><td style=
+=3D"overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid =
+rgb(204,204,204);font-family:Arial">Edwin</td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb=
+(204,204,204);font-family:Arial">July 13/22</td><td style=3D"overflow:hidde=
+n;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid r=
+gb(204,204,204);font-family:Arial">July 20/22</td><td style=3D"overflow:hid=
+den;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204)=
+;font-family:Arial"></td><td style=3D"overflow:hidden;padding:2px 3px;verti=
+cal-align:bottom;border:1px solid rgb(204,204,204);font-family:Arial;backgr=
+ound-color:rgb(217,210,233)">Edwin Review</td><td style=3D"overflow:hidden;=
+padding:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rg=
+b(204,204,204);font-family:Arial">2</td><td style=3D"overflow:hidden;paddin=
+g:2px 3px;vertical-align:bottom;text-align:center;border:1px solid rgb(204,=
+204,204);font-family:Arial">2</td><td style=3D"overflow:hidden;padding:2px =
+3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204=
+);font-family:Arial">1</td></tr></tbody></table></div><div class=3D"gmail_q=
+uote"><div dir=3D"ltr" class=3D"gmail_attr"><br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border=
+-left-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)"><div=
+ dir=3D"ltr"><div dir=3D"ltr"></div></div>
+</blockquote></div></div>
+</blockquote></div>
+</blockquote></div></div>-- <br><div dir=3D"ltr"><br><br>Shawna McCartney=
+=C2=A0=C2=A0=C2=A0<br>Marketing Coordinator=C2=A0<br>Pineapple Company<br><=
+br>w:=C2=A0419.274.9549<br>a:=C2=A0=C2=A0<a href=3D"https://www.google.com/=
+maps/search/57+w+57th+Street,+3rd+Floor,+New+York,+NY+10019?entry=3Dgmail&a=
+mp;source=3Dg" target=3D"_blank">57 w 57th Street, 3rd Floor, New York, NY =
+10019</a>=C2=A0<br></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div></div>-- <br><div dir=3D"ltr"><br><br>Shawna McCartney=
+=C2=A0=C2=A0=C2=A0<br>Marketing Coordinator=C2=A0<br>Pineapple Company<br><=
+br>w:=C2=A0419.274.9549<br>a:=C2=A0=C2=A0<a href=3D"https://www.google.com/=
+maps/search/57+w+57th+Street,+3rd+Floor,+New+York,+NY+10019?entry=3Dgmail&a=
+mp;source=3Dg">57 w 57th Street, 3rd Floor, New York, NY 10019</a>=C2=A0<br=
+></div>
+</blockquote></div>
+</blockquote></div></div>
+
+--000000000000311b2c05e394429a--

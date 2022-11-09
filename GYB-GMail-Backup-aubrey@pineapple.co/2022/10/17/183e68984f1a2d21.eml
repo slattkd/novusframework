@@ -1,0 +1,2687 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:b08c:0:0:0:0 with SMTP id x12csp1950657ejy;
+        Mon, 17 Oct 2022 08:21:56 -0700 (PDT)
+X-Received: by 2002:ac2:4a73:0:b0:4a2:4f2c:199d with SMTP id q19-20020ac24a73000000b004a24f2c199dmr3942869lfp.443.1666020115837;
+        Mon, 17 Oct 2022 08:21:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666020115; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mx1VkNWD5NA19V+eaTy9CZrGnLB/dhE21I2YLs+zut5G/oqeqmRReF+KmxjB+De2pN
+         Qqrac9JWMT2Qy4YNETA+B9/Jgeowcfch8g36Fh4a67pZeya09UgmKuT4VBbGuZwlkect
+         FewwCa9qfIabvCpqYrYeevzEQ+wXMwEeSePF7wxZOTXq3X05a73om9qANG8Ert81fAkx
+         EiQDf+76kovYUEc6erlxYGFbam0Vd24oPCalMryu0JeDHgmuMBd2Lj+17mXjkEXeGyIn
+         pcOos92dyy5N/MVCuo5fNMR5BgUqReqGF+E8gz11EtOmvoTjSGED6AkT+sfaBqIvSxHO
+         EbkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=EwvP/edek62uuCPLCOAykr1zIoIeEbSMMRmuvwKmzKA=;
+        b=UpA6ACk9/lVsLkirf8QCjnQXW/iBZ1Y/uT8sUxyLJjU9aRJLXF1sIXHAUunWJoJOJZ
+         fASsJHaY6WM2aG8STcW4OmxRJy1XF28qc8S4JaT/8e+jXUzyj5TJLyhqTSAExW+AYWPK
+         VJVzE5cyn9Wr7ZkaA7JchdDz4YEszSpbDkJKCcRsHytdrKGWnbBA+HZNNRsSpZR/LsDe
+         5a4RwTIleC8goBW/nXfbas4DlaA5g4/lHZimH5RmVecHG4joUJnHrORt5W9hWOcTo2sV
+         EiqYRzz0gEMh1pOKwi/SAne4BZpWNaBoiBG1OawaZgdWYffLkJusTs7kRPbOg8yF6OZ8
+         BwGQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=yiQtGwsO;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f8-20020ac24988000000b004979df3749dsor1806646lfl.63.2022.10.17.08.21.55
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 17 Oct 2022 08:21:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=yiQtGwsO;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EwvP/edek62uuCPLCOAykr1zIoIeEbSMMRmuvwKmzKA=;
+        b=yiQtGwsOD6N4gVENkoG6hPlWbxRsv4kSnXAO9Ly+bpic0kcbsBDk1VEXSQLNQ95W+z
+         BPdnTwrOgd3/JWKzd7A7NU0zg0hMtMtuBnku5RP2BRAzuD5+9IS7uGM7AYpqGarDuAQA
+         yvk1jLTAwmdjVF0qNhs3HfHGJ2UbeP+9mKzyZgRaryd3eJqcM7aGqO+JEegfwRabaJ6o
+         Sb5qJrqVI5TWHCmXSB223T/HaFZp9KNAWORQQXLSqc76+Idp2DVxfKfv+5pNBa7PP0f+
+         YdJXmDQKBAAHlLzQ+cKAu037UJTZaytSLr5Iq01hI++yeB2kc5U8fucHpcWBoFut/vgu
+         hp+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EwvP/edek62uuCPLCOAykr1zIoIeEbSMMRmuvwKmzKA=;
+        b=QYfBpsf/RuClBU23PUNULUz5go/FP1YJxuOsbDFEk07sdhZ9kMrLYRgSbnoiJz6dV9
+         8bv4daQcLx0f4HGIXWbhDif7HR/kk8JDSgsUvPRCHiPLfM8rPM2peKC82T+Nf7/DgK+N
+         G7QvnzC3VL3OdkpeCzjh8Djhata9lIe9BzxftX4qGgQngLTMI/bU7iT441q/SZIk09xG
+         qaDsuSYnLL29VkJOOjfmNixEp/0QtzYPlNfgerCoSoxLRq3Aq54OFvy46y+qQlk8YImF
+         +GEaaivoNgXPVcDa/7kLKuqttiFLl8crnkiaOBJpG5gOmAvaq7/M1azbCrRehKuFRLpR
+         yhnA==
+X-Gm-Message-State: ACrzQf0dFiuWVS7oV+6lyAUoINj0UUnEWs6mWVoLWeEJR6kDDX71jv3o
+	9qzcaJysn2PGut5i1l18iAWkp6fNQKx7OBsqbYmiOXRTQ7vl6Q==
+X-Google-Smtp-Source: AMsMyM7+HBJWwqxqOZ8y4KM7bVuJNfshI+aDdcRhrsyVDShpWqoCEsBNOxfwGGq1RMO3QrDiytzwpNCZ5SDFpAgzTJE=
+X-Received: by 2002:ac2:50c5:0:b0:4a2:2d62:9f15 with SMTP id
+ h5-20020ac250c5000000b004a22d629f15mr4482940lfm.299.1666020114549; Mon, 17
+ Oct 2022 08:21:54 -0700 (PDT)
+MIME-Version: 1.0
+References: <SJ0PR15MB4220F0F79120E1BA2400B1A1CE239@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <DM5PR1301MB191684B44DCA671FA1B1A584FC239@DM5PR1301MB1916.namprd13.prod.outlook.com>
+ <SJ0PR15MB42200E21AA4E3A438652A006CE239@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <DM5PR1301MB1916C8487A1A3F962ADA33FAFC239@DM5PR1301MB1916.namprd13.prod.outlook.com>
+ <MN2PR13MB3454CB7F810175FAEF51DE3C9C229@MN2PR13MB3454.namprd13.prod.outlook.com>
+ <SJ0PR15MB42203592AC9AF3E7C91AF991CE229@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <MN2PR13MB345410B2A3CD5771958BEC409C229@MN2PR13MB3454.namprd13.prod.outlook.com>
+ <SJ0PR15MB4220A5EF372E20A78F08A2CACE229@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <MN2PR13MB3454D239C444E04D88E93C0B9C229@MN2PR13MB3454.namprd13.prod.outlook.com>
+ <SJ0PR15MB422044A1BDEC1EE33706A0E4CE259@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <MN2PR13MB345463DD66E5703EC71231CA9C249@MN2PR13MB3454.namprd13.prod.outlook.com>
+ <SJ0PR13MB5691E8CDB4CA9719E6B5B111FE249@SJ0PR13MB5691.namprd13.prod.outlook.com>
+ <SJ0PR15MB42204DBAD2D8B38B6E3CCD97CE249@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <SJ0PR13MB56910492A06A1A7E05EFC09EFE249@SJ0PR13MB5691.namprd13.prod.outlook.com>
+ <SJ0PR15MB4220E71328F7B93DFFB1BAC7CE249@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <SJ0PR13MB569167D6205456E0EDD9A187FE249@SJ0PR13MB5691.namprd13.prod.outlook.com>
+ <SJ0PR15MB4220E7FA6485481216CBB023CE249@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <SJ0PR13MB5691FB25DE1384998B968A1DFE279@SJ0PR13MB5691.namprd13.prod.outlook.com>
+ <CO6PR15MB4210E07F4FB7EBA3E7148054CE279@CO6PR15MB4210.namprd15.prod.outlook.com>
+ <CALCR5_R9v+L4=zWjn9EPsFkxe1zDWRBqGh+Ojzx08HzHw9MHNQ@mail.gmail.com>
+ <CO6PR15MB4210C02BB2807EF22F774FB1CE279@CO6PR15MB4210.namprd15.prod.outlook.com>
+ <CALCR5_QDefNuR15e5Og=4RxgzXN9gK5vvRK3G=n8PJ-m8M=i0w@mail.gmail.com>
+ <SJ0PR15MB42200DDF2106738172797316CE279@SJ0PR15MB4220.namprd15.prod.outlook.com>
+ <CALCR5_Tse1nHaZQXshMAwHqYORh3M_p3r3o9ZagbcKteFEGt9g@mail.gmail.com> <CALCR5_SGchX2EZ2ZAm8RqduQvwDRzA7adEaS93VQ3vePiZ4d=A@mail.gmail.com>
+In-Reply-To: <CALCR5_SGchX2EZ2ZAm8RqduQvwDRzA7adEaS93VQ3vePiZ4d=A@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Mon, 17 Oct 2022 11:21:42 -0400
+Message-ID: <CALCR5_RtuTb-H4rd6+5QpRHqGSsiDXKbPtEOpGFGfWL-q5ZN4w@mail.gmail.com>
+Subject: Re: Brandi Gills - Sticky.io Potential Client Referral
+To: Kexin Smith <ksmith@ledgergurus.com>, Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/related; boundary="0000000000001df90205eb3c897d"
+
+--0000000000001df90205eb3c897d
+Content-Type: multipart/alternative; boundary="0000000000001df90105eb3c897c"
+
+--0000000000001df90105eb3c897c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Wait sorry... @Aubrey Allen <aubrey@pineapple.co> - I might be getting my
+wires crossed here.
+
+I think this document contains the *2022* Revival Point YTD sales tax data,
+not 2021.
+
+Can you pick a cutoff date like September 30, 2022 and calculate for all
+three LLCs?
+
+On Sun, Oct 16, 2022 at 11:39 AM Brett Allcorn <brett@pineapple.co> wrote:
+
+> @Aubrey Allen <aubrey@pineapple.co> - can you add the 2021 total sales
+> for Supernatural Man and Waypoint Health by state to columns D & F in thi=
+s
+> document?
+>
+>
+> https://docs.google.com/spreadsheets/d/1YHtx4oakQYhnC_e_dchdAwIuqqjLNBIVL=
+FmnFEUpWLQ/edit#gid=3D0
+>
+> I know Mondays are busy so Tuesday/Wednesday is fine to focus on this -
+> thanks!
+>
+> On Sat, Oct 15, 2022 at 3:00 AM Brett Allcorn <brett@pineapple.co> wrote:
+>
+>> I=E2=80=99ll do the numbers for those Monday
+>>
+>> On Sat, Oct 15, 2022 at 12:32 AM Kexin Smith <ksmith@ledgergurus.com>
+>> wrote:
+>>
+>>> Yes, I think we can definitely work with Avalara to build that into 3
+>>> entities.
+>>>
+>>> With the other two entities, do you also have nexus and need to registe=
+r
+>>> and start collecting taxes?
+>>>
+>>> Kexin
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>> *From:* Brett Allcorn <brett@pineapple.co>
+>>> *Sent:* Friday, October 14, 2022 8:40:42 PM
+>>>
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>> Well it=E2=80=99s less about the $0.17 per transaction and more about t=
+he $19k
+>>> per year times three LLCs.
+>>>
+>>> But maybe we can build it into the transaction somehow.
+>>>
+>>> On Fri, Oct 14, 2022 at 10:06 PM Kexin Smith <ksmith@ledgergurus.com>
+>>> wrote:
+>>>
+>>> I=E2=80=99m waiting for pricing from Sovos then I=E2=80=99ll have a bet=
+ter idea. But the
+>>> majority of the cost is the tax calculation with sticky.io and it's
+>>> about $0.17 a transaction. From your experience, and maybe bring this t=
+o
+>>> your development team as well, is $0.17 a transaction reasonable?
+>>>
+>>> Kexin
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>> *From:* Brett Allcorn <brett@pineapple.co>
+>>> *Sent:* Friday, October 14, 2022 7:46:42 PM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>
+>>>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>> Ok, thanks. You think this is the best direction? If so, can you explai=
+n
+>>> why?
+>>>
+>>> Also we=E2=80=99ve got three separate LLCs we need to do this for.
+>>>
+>>>
+>>>
+>>> On Fri, Oct 14, 2022 at 8:49 PM Kexin Smith <ksmith@ledgergurus.com>
+>>> wrote:
+>>>
+>>> Hi Brett,
+>>>
+>>> I communicated your needs with the Avalara team and this is the final
+>>> proposal with a discount applied.  If this looks okay with you, I can
+>>> schedule a meeting with you and them and see if we can negotiate the pr=
+ice
+>>> a bit more and ask them any questions you have as well.
+>>>
+>>> Best,
+>>> Kexin
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>> *From:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Sent:* Friday, October 14, 2022 6:21:35 PM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Brandi Gills <
+>>> brandi.gills@avalara.com>
+>>> *Subject:* RE: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>> Here is the update proposal!
+>>>
+>>>
+>>>
+>>> Join us at an upcoming Avalara event
+>>> <https://www.avalara.com/us/en/learn/events.html>
+>>> Steve Ripperger | Sales Executive
+>>> *e:* steve.ripperger@avalara.com
+>>> [image: schedule] Schedule a meeting:
+>>> https://avalara.chilipiper.com/book/me/steve-ripperger
+>>> [image: schedule] Submit a Case:
+>>> https://help.avalara.com/Contact_Avalara/Submit_a_Case/ Avalara | Tax
+>>> compliance done right
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Friday, October 14, 2022 11:25 AM
+>>> *To:* Steve Ripperger <steve.ripperger@avalara.com>; Brandi Gills <
+>>> brandi.gills@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Haha I totally understand!!!
+>>>
+>>>
+>>>
+>>> Currently they sell 80% through sticky.io, 10% on Shopify and 10% on
+>>> Amazon.
+>>>
+>>>
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Sent:* Friday, October 14, 2022 9:07:09 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Brandi Gills <
+>>> brandi.gills@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> I was just thinking - what percentage of sales would you say are throug=
+h
+>>> Amazon & Shopify vs Sticky?
+>>>
+>>>
+>>>
+>>> May be able to lower the annual transaction number drastically.
+>>> Apologies for not asking earlier, Brandi and I travelled all day yester=
+day
+>>> I can't speak for Brandi, but brain is still lagging behind me a bit!!
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>>
+>>> Join us at an upcoming Avalara event
+>>> <https://www.avalara.com/us/en/learn/events.html>
+>>> *Steve Ripperger* | Sales Executive
+>>> *e:* steve.ripperger@avalara.com
+>>>
+>>> [image: schedule]
+>>>
+>>> Schedule a meeting:
+>>> https://avalara.chilipiper.com/book/me/steve-ripperger
+>>>
+>>> [image: schedule]
+>>>
+>>> Submit a Case: https://help.avalara.com/Contact_Avalara/Submit_a_Case/
+>>>
+>>> *Avalara* | Tax compliance done right
+>>> ------------------------------
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Friday, October 14, 2022 10:10:36 AM
+>>> *To:* Steve Ripperger <steve.ripperger@avalara.com>; Brandi Gills <
+>>> brandi.gills@avalara.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Hi Steve,
+>>>
+>>>
+>>>
+>>> Thank you so much for the clarification.
+>>>
+>>>
+>>>
+>>> They don=E2=80=99t invoice anything from quickbooks so I don=E2=80=99t =
+think they will
+>>> need the integration there, but correct me if I=E2=80=99m wrong.
+>>>
+>>>
+>>>
+>>> With the $20k transaction fee, any chance you can give them a discount?
+>>>
+>>>
+>>>
+>>> Thanks again!
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Sent:* Friday, October 14, 2022 8:07:00 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Brandi Gills <
+>>> brandi.gills@avalara.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Hi Kexin,
+>>>
+>>>
+>>>
+>>> No problem at all! That is the actual cost of Avatax handling all the
+>>> calculations etc from all sources, ensuring everything flows into MRA
+>>> cleanly.
+>>>
+>>>
+>>>
+>>> That=E2=80=99s for the 100,000 transaction bucket they currently are si=
+tting in.
+>>>
+>>>
+>>>
+>>> Thanks,
+>>>
+>>> Steve
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>>
+>>> Join us at an upcoming Avalara event
+>>> <https://www.avalara.com/us/en/learn/events.html>
+>>> *Steve Ripperger* | Sales Executive
+>>> *e:* steve.ripperger@avalara.com
+>>>
+>>> [image: schedule]
+>>>
+>>> Schedule a meeting:
+>>> https://avalara.chilipiper.com/book/me/steve-ripperger
+>>>
+>>> [image: schedule]
+>>>
+>>> Submit a Case: https://help.avalara.com/Contact_Avalara/Submit_a_Case/
+>>>
+>>> *Avalara* | Tax compliance done right
+>>> ------------------------------
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Friday, October 14, 2022 10:02:31 AM
+>>> *To:* Steve Ripperger <steve.ripperger@avalara.com>; Brandi Gills <
+>>> brandi.gills@avalara.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Hi Steve,
+>>>
+>>>
+>>>
+>>> Thank you so much for sending that over!
+>>>
+>>>
+>>>
+>>> What=E2=80=99s the $20,980 annual charge?
+>>>
+>>>
+>>>
+>>> Best,
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Sent:* Friday, October 14, 2022 7:56:33 AM
+>>> *To:* Brandi Gills <brandi.gills@avalara.com>; Kexin Smith <
+>>> ksmith@ledgergurus.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Subject:* RE: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Good Morning Everyone!
+>>>
+>>>
+>>>
+>>> I have attached a proposal with everything for review.
+>>>
+>>> Let us know if there is anything additional which needs to be addressed=
+,
+>>> questions that arise, or if pricing needs to be adjusted. Happy to work
+>>> with you and the client to ensure a good fit.
+>>>
+>>> Talk soon!
+>>>
+>>> Thanks,
+>>>
+>>> Steve
+>>>
+>>>
+>>>
+>>> Join us at an upcoming Avalara event
+>>> <https://www.avalara.com/us/en/learn/events.html>
+>>> *Steve Ripperger* | Sales Executive
+>>> *e:* steve.ripperger@avalara.com
+>>>
+>>> [image: schedule]
+>>>
+>>> Schedule a meeting:
+>>> https://avalara.chilipiper.com/book/me/steve-ripperger
+>>>
+>>> [image: schedule]
+>>>
+>>> Submit a Case: https://help.avalara.com/Contact_Avalara/Submit_a_Case/
+>>>
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Brandi Gills <brandi.gills@avalara.com>
+>>> *Sent:* Friday, October 14, 2022 9:00 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* RE: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Thank you, Kexin!
+>>>
+>>>
+>>>
+>>> @Steve Ripperger <steve.ripperger@avalara.com> will work on getting a
+>>> quote together and provide you the pricing to pass to the client.
+>>>
+>>>
+>>>
+>>> Thanks,
+>>>
+>>> Brandi
+>>>
+>>>
+>>>
+>>> *Brandi Gills* | Manager, Sales
+>>> *Pronouns:* She / Her / Hers
+>>> *e:* brandi.gills@avalara.com
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Thursday, October 13, 2022 5:20 PM
+>>> *To:* Brandi Gills <brandi.gills@avalara.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Hi Brandi,
+>>>
+>>>
+>>>
+>>> I just confirmed with the client and they have about 8,000 transactions
+>>> a month.
+>>>
+>>>
+>>>
+>>> They use Quickbooks desktop for accounting and Shopify amazon and
+>>> sticky.io as sales channel.
+>>>
+>>>
+>>>
+>>> Contact info: Brett Allcorn brett@pineapple.co and I do not have their
+>>> billing address.
+>>>
+>>>
+>>>
+>>> Let me know if you need any other information.
+>>>
+>>>
+>>>
+>>> Best,
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Brandi Gills <brandi.gills@avalara.com>
+>>> *Sent:* Wednesday, October 12, 2022 9:44:28 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* RE: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Of course! Really, we need three things.
+>>>
+>>>
+>>>
+>>>    1. Do you know roughly how many transactions they do in a year?
+>>>    2. Other than QuickBooks, are they invoicing out of any other
+>>>    systems? I want to make sure we capture all connectors they need to =
+make
+>>>    the process seamless and easy for them. =F0=9F=98=8A
+>>>    3. Main contact information (phone and email) and billing address
+>>>
+>>>
+>>>
+>>> Once we have that information, Steve can create a quote and send to you
+>>> to share the pricing with the client.
+>>>
+>>>
+>>>
+>>> Thanks,
+>>>
+>>> Brandi
+>>>
+>>>
+>>>
+>>> *Brandi Gills* | Manager, Sales
+>>> *Pronouns:* She / Her / Hers
+>>> *e:* brandi.gills@avalara.com
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Wednesday, October 12, 2022 11:32 AM
+>>> *To:* Brandi Gills <brandi.gills@avalara.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Of course! I=E2=80=99d love to answer any questions I can to get a ball=
+park for
+>>> pricing to pass on to the client if that=E2=80=99s okay!
+>>>
+>>>
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Brandi Gills <brandi.gills@avalara.com>
+>>> *Sent:* Wednesday, October 12, 2022 9:26:12 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Melissa Pritchard <
+>>> melissa.pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* RE: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Thank you, Kexin! Would you like us to reach out directly to the client
+>>> and copy you to get the information needed, or do you prefer reaching o=
+ut
+>>> first?
+>>>
+>>>
+>>> Steve, copied on here, will proceed with this process.
+>>>
+>>>
+>>>
+>>> Thanks!
+>>>
+>>> Brandi
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> *Brandi Gills* | Manager, Sales
+>>> *Pronouns:* She / Her / Hers
+>>> *e:* brandi.gills@avalara.com
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Wednesday, October 12, 2022 10:49 AM
+>>> *To:* Brandi Gills <brandi.gills@avalara.com>; Melissa Pritchard <
+>>> Melissa.Pritchard@avalara.com>; Tyler Myers <tyler.myers@avalara.com>;
+>>> Sean O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Good morning Brandi,
+>>>
+>>>
+>>>
+>>> The client uses quickbooks desktop for accounting.
+>>>
+>>>
+>>>
+>>> Thank you!
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Brandi Gills <brandi.gills@avalara.com>
+>>> *Sent:* Wednesday, October 12, 2022 6:59:52 AM
+>>> *To:* Melissa Pritchard <Melissa.Pritchard@avalara.com>; Kexin Smith <
+>>> ksmith@ledgergurus.com>; Tyler Myers <tyler.myers@avalara.com>; Sean
+>>> O'Hara <sean.ohara@avalara.com>
+>>> *Cc:* Steve Ripperger <steve.ripperger@avalara.com>
+>>> *Subject:* RE: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Good Morning!
+>>>
+>>>
+>>>
+>>> Happy to help. =F0=9F=98=8A
+>>>
+>>>
+>>>
+>>> Once we hear back on the accounting system, we can connect on
+>>> transactions to get a quote created for Avatax.
+>>>
+>>>
+>>>
+>>> We look forward to working with you!
+>>>
+>>>
+>>>
+>>> Brandi
+>>>
+>>> *Brandi Gills* | Manager, Sales
+>>> *Pronouns:* She / Her / Hers
+>>> *e:* brandi.gills@avalara.com
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Melissa Pritchard <Melissa.Pritchard@avalara.com>
+>>> *Sent:* Tuesday, October 11, 2022 11:14 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Tyler Myers <
+>>> tyler.myers@avalara.com>; Brandi Gills <brandi.gills@avalara.com>; Sean
+>>> O'Hara <sean.ohara@avalara.com>
+>>> *Subject:* Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Excellent
+>>>
+>>>
+>>>
+>>> Thank you
+>>>
+>>>
+>>>
+>>> *Melissa Pritchard* | Sr. Manager, Sales
+>>> *Pronouns:* She / Her / Hers
+>>> *c:* +1 (503) 7501699
+>>> *e:* melissa.pritchard@avalara.com
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Tuesday, October 11, 2022 11:05 AM
+>>> *To:* Melissa Pritchard <Melissa.Pritchard@avalara.com>; Tyler Myers <
+>>> tyler.myers@avalara.com>; Brandi Gills <brandi.gills@avalara.com>
+>>> *Subject:* Re: Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Hi all,
+>>>
+>>>
+>>>
+>>> The client=E2=80=99s name is Revival Point LLC and they sell supplement=
+s. Their
+>>> annual revenue is about 20 million.
+>>>
+>>>
+>>>
+>>> I=E2=80=99m waiting to hear back from them on what accounting software =
+they use.
+>>>
+>>>
+>>>
+>>> Best,
+>>>
+>>> Kexin
+>>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>>
+>>> *From:* Melissa Pritchard <Melissa.Pritchard@avalara.com>
+>>> *Sent:* Tuesday, October 11, 2022 9:01:58 AM
+>>> *To:* Kexin Smith <ksmith@ledgergurus.com>; Tyler Myers <
+>>> tyler.myers@avalara.com>; Brandi Gills <brandi.gills@avalara.com>
+>>> *Subject:* Brandi Gills - Sticky.io Potential Client Referral
+>>>
+>>>
+>>>
+>>> Kexin =E2=80=93
+>>>
+>>>
+>>>
+>>> What is the clients name.
+>>>
+>>>
+>>>
+>>> I am going to send this over to Brandi a manager on the Avatax team.
+>>> Let me see what she says, she is traveling today.
+>>>
+>>>
+>>>
+>>> Brandi =E2=80=93
+>>>
+>>> Opportunity =E2=80=93 Avatax
+>>>
+>>> Firm =E2=80=93 Ledger Gurus does the returns on MRA
+>>>
+>>>
+>>>
+>>> Thank you
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> *Melissa Pritchard* | Sr. Manager, Sales
+>>> *Pronouns:* She / Her / Hers
+>>> *c:* +1 (503) 7501699
+>>> *e:* melissa.pritchard@avalara.com
+>>> *Avalara* | Tax compliance done right
+>>>
+>>> *From:* Kexin Smith <ksmith@ledgergurus.com>
+>>> *Sent:* Tuesday, October 11, 2022 10:54 AM
+>>> *To:* Melissa Pritchard <Melissa.Pritchard@avalara.com>; Tyler Myers <
+>>> tyler.myers@avalara.com>
+>>> *Cc:* Sean O'Hara <sean.ohara@avalara.com>
+>>> *Subject:* Potential Client Referral
+>>>
+>>>
+>>>
+>>> *EXTERNAL MESSAGE*
+>>>
+>>> Hi Melissa and Tyler,
+>>>
+>>>
+>>>
+>>> I have a client that wants to use Avalara to integrate with their CRM (
+>>> sticky.io) to calculate tax and then to use MRA to file tax returns.
+>>> Who should I talk to to get pricing on the tax calculation function?
+>>>
+>>>
+>>>
+>>> Thank you!
+>>>
+>>>
+>>>
+>>> *Kexin Smith*
+>>>
+>>> Sales Tax Research and Consulting Supervisor
+>>>
+>>> *CPA*
+>>>
+>>> *Ledgergurus.com*
+>>>
+>>> *Email* ksmith@ledgergurus.com
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>>
+>>> *Brett Allcorn*
+>>> Chief Executive Officer | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: brett@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd
+>>> <https://www.google.com/maps/search/13423+Blanco+Rd?entry=3Dgmail&sourc=
+e=3Dg>
+>>> PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipien=
+t
+>>> specified in message only. It is strictly forbidden to share any part o=
+f
+>>> this message with any third party, without a written consent of the sen=
+der.
+>>> If you received this message by mistake, please reply to this message a=
+nd
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>> --
+>>>
+>>>
+>>>
+>>> *Brett Allcorn*
+>>> Chief Executive Officer | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: brett@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd
+>>> <https://www.google.com/maps/search/13423+Blanco+Rd?entry=3Dgmail&sourc=
+e=3Dg>
+>>> PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipien=
+t
+>>> specified in message only. It is strictly forbidden to share any part o=
+f
+>>> this message with any third party, without a written consent of the sen=
+der.
+>>> If you received this message by mistake, please reply to this message a=
+nd
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>> --
+>>
+>>
+>>
+>> *Brett Allcorn*
+>> Chief Executive Officer | pineapple.co
+>>
+>> [image: Photo]
+>>
+>> E: brett@pineapple.co
+>>
+>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>
+>> The content of this email is confidential and intended for the recipient
+>> specified in message only. It is strictly forbidden to share any part of
+>> this message with any third party, without a written consent of the send=
+er.
+>> If you received this message by mistake, please reply to this message an=
+d
+>> follow with its deletion, so that we can ensure such a mistake does not
+>> occur in the future.
+>>
+>
+
+--0000000000001df90105eb3c897c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Wait sorry...=C2=A0<a class=3D"gmail_plusreply" id=3D"plus=
+ReplyChip-1" href=3D"mailto:aubrey@pineapple.co" tabindex=3D"-1">@Aubrey Al=
+len</a>=C2=A0- I might be getting my wires crossed here.<div><br></div><div=
+>I think this document contains the <b><u>2022</u></b>=C2=A0Revival Point Y=
+TD sales tax data, not 2021.</div><div><br></div><div>Can you pick a cutoff=
+ date like September 30, 2022 and calculate for all three LLCs?</div></div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun=
+, Oct 16, 2022 at 11:39 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineap=
+ple.co">brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex"><div dir=3D"ltr"><a class=3D"gmail_plusreply" id=
+=3D"m_-6256872936665666606plusReplyChip-14" href=3D"mailto:aubrey@pineapple=
+.co" target=3D"_blank">@Aubrey Allen</a>=C2=A0- can you add the 2021 total =
+sales for Supernatural Man and Waypoint Health by state to columns D &amp; =
+F in this document?<br><div><br></div><div><a href=3D"https://docs.google.c=
+om/spreadsheets/d/1YHtx4oakQYhnC_e_dchdAwIuqqjLNBIVLFmnFEUpWLQ/edit#gid=3D0=
+" target=3D"_blank">https://docs.google.com/spreadsheets/d/1YHtx4oakQYhnC_e=
+_dchdAwIuqqjLNBIVLFmnFEUpWLQ/edit#gid=3D0</a><br></div><div><br></div><div>=
+I know Mondays are busy so Tuesday/Wednesday is fine to focus on this - tha=
+nks!</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gm=
+ail_attr">On Sat, Oct 15, 2022 at 3:00 AM Brett Allcorn &lt;<a href=3D"mail=
+to:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"auto=
+">I=E2=80=99ll do the numbers for those Monday=C2=A0</div><div><br><div cla=
+ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, Oct 15, 20=
+22 at 12:32 AM Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" ta=
+rget=3D"_blank">ksmith@ledgergurus.com</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">
+
+
+
+<div>
+<div>
+<div>
+<div dir=3D"ltr">
+<div>Yes, I think we can definitely work with Avalara to build that into 3 =
+entities.=C2=A0</div>
+<div dir=3D"ltr"><br>
+</div>
+<div dir=3D"ltr">With the other two entities, do you also have nexus and ne=
+ed to register and start collecting taxes?</div>
+<div dir=3D"ltr"><br>
+</div>
+<div dir=3D"ltr">Kexin</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3ms-outlook-mobile-signature">
+<div><br>
+</div>
+Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">Outlook for iOS</a>=
+</div>
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" style=3D"fon=
+t-size:11pt;font-family:Calibri,sans-serif;color:rgb(0,0,0)"><b style=3D"fo=
+nt-family:Calibri,sans-serif">From:</b> Brett Allcorn &lt;<a href=3D"mailto=
+:brett@pineapple.co" style=3D"font-family:Calibri,sans-serif" target=3D"_bl=
+ank">brett@pineapple.co</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Friday, October 14, 2=
+022 8:40:42 PM</font></div></div><div><div id=3D"m_-6256872936665666606m_-3=
+005764418425711785m_2846511102929028513divRplyFwdMsg" dir=3D"ltr"><font fac=
+e=3D"Calibri, sans-serif" style=3D"font-size:11pt;font-family:Calibri,sans-=
+serif;color:rgb(0,0,0)"><br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> Kexin Smith &lt;<a href=
+=3D"mailto:ksmith@ledgergurus.com" style=3D"font-family:Calibri,sans-serif"=
+ target=3D"_blank">ksmith@ledgergurus.com</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> Re: Brandi Gills -=
+ Sticky.io Potential Client Referral</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"auto">Well it=E2=80=99s less about the $0.17 per transaction an=
+d more about the $19k per year times three LLCs.</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">But maybe we can build it into the transaction somehow.</=
+div>
+<div><br>
+<div>
+<div dir=3D"ltr">On Fri, Oct 14, 2022 at 10:06 PM Kexin Smith &lt;<a href=
+=3D"mailto:ksmith@ledgergurus.com" target=3D"_blank">ksmith@ledgergurus.com=
+</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div>
+<div>
+<div>
+<div dir=3D"ltr">
+<div>I=E2=80=99m waiting for pricing from Sovos then I=E2=80=99ll have a be=
+tter idea. But the majority of the cost is the tax calculation with
+<a href=3D"http://sticky.io" target=3D"_blank">
+sticky.io</a> and it&#39;s about $0.17 a transaction. From your experience,=
+ and maybe bring this to your development team as well, is $0.17 a transact=
+ion reasonable?</div>
+<div dir=3D"ltr"><br>
+</div>
+<div dir=3D"ltr">Kexin=C2=A0</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997ms-outlook-mobile-signature">
+<div><br>
+</div>
+Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></div>
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, =
+sans-serif" style=3D"font-size:11pt;font-family:Calibri,sans-serif;color:rg=
+b(0,0,0)"><b style=3D"font-family:Calibri,sans-serif">From:</b> Brett Allco=
+rn &lt;<a href=3D"mailto:brett@pineapple.co" style=3D"font-family:Calibri,s=
+ans-serif" target=3D"_blank">brett@pineapple.co</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Friday, October 14, 2=
+022 7:46:42 PM<br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> Kexin Smith &lt;<a href=
+=3D"mailto:ksmith@ledgergurus.com" style=3D"font-family:Calibri,sans-serif"=
+ target=3D"_blank">ksmith@ledgergurus.com</a>&gt;</font></div>
+</div>
+<div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, =
+sans-serif" style=3D"font-size:11pt;font-family:Calibri,sans-serif;color:rg=
+b(0,0,0)"><br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> Re: Brandi Gills -=
+ Sticky.io Potential Client Referral</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"auto">Ok, thanks. You think this is the best direction? If so, =
+can you explain why?</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">Also we=E2=80=99ve got three separate LLCs we need to do =
+this for.</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto"><br>
+</div>
+<div><br>
+<div>
+<div dir=3D"ltr">On Fri, Oct 14, 2022 at 8:49 PM Kexin Smith &lt;<a href=3D=
+"mailto:ksmith@ledgergurus.com" target=3D"_blank">ksmith@ledgergurus.com</a=
+>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div>
+<div dir=3D"ltr">
+<div></div>
+<div>
+<div>Hi Brett,</div>
+<div dir=3D"ltr"><br>
+</div>
+<div dir=3D"ltr">I communicated your needs with the Avalara team and this i=
+s the final proposal with a discount applied.=C2=A0 If this looks okay with=
+ you, I can schedule a meeting with you and them and see if we can negotiat=
+e the price a bit more and ask them any
+ questions you have as well.<span></span><span></span></div>
+<div dir=3D"ltr"><br>
+</div>
+<div dir=3D"ltr">Best,</div>
+<div dir=3D"ltr">Kexin=C2=A0</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436ms-outlook-mobile-signatur=
+e">
+<div><br>
+</div>
+Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></div>
+</div>
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436divRplyFwdMsg" dir=3D"ltr"=
+>
+<font face=3D"Calibri, sans-serif" style=3D"font-size:11pt;font-family:Cali=
+bri,sans-serif;color:rgb(0,0,0)"><b style=3D"font-family:Calibri,sans-serif=
+">From:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.c=
+om" style=3D"font-family:Calibri,sans-serif" target=3D"_blank">steve.ripper=
+ger@avalara.com</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Sent:</b> Friday, October 14, 2=
+022 6:21:35 PM<br>
+<b style=3D"font-family:Calibri,sans-serif">To:</b> Kexin Smith &lt;<a href=
+=3D"mailto:ksmith@ledgergurus.com" style=3D"font-family:Calibri,sans-serif"=
+ target=3D"_blank">ksmith@ledgergurus.com</a>&gt;; Brandi Gills &lt;<a href=
+=3D"mailto:brandi.gills@avalara.com" style=3D"font-family:Calibri,sans-seri=
+f" target=3D"_blank">brandi.gills@avalara.com</a>&gt;<br>
+<b style=3D"font-family:Calibri,sans-serif">Subject:</b> RE: Brandi Gills -=
+ Sticky.io Potential Client Referral</font>
+<div>=C2=A0</div>
+</div>
+<div lang=3D"EN-US">
+<div>
+<p>Here is the update proposal!</p>
+<p>=C2=A0</p>
+<p style=3D"font-family:Calibri,Arial,sans-serif;font-size:12px"><span styl=
+e=3D"font-size:12px;font-weight:normal;letter-spacing:0.6px;line-height:2.5=
+;font-family:Calibri,Arial,sans-serif;color:rgb(26,26,26)">Join us at an up=
+coming
+<a href=3D"https://www.avalara.com/us/en/learn/events.html" style=3D"font-f=
+amily:Calibri,Arial,sans-serif" target=3D"_blank">
+Avalara event</a> <br>
+</span><span style=3D"font-size:14px;font-weight:bold;letter-spacing:0.8px;=
+line-height:2.5;font-family:Calibri,Arial,sans-serif;color:rgb(255,102,0)">=
+Steve Ripperger</span> |
+<span style=3D"font-size:12px;font-weight:normal;letter-spacing:0.6px;font-=
+family:Calibri,Arial,sans-serif;color:rgb(26,26,26)">
+Sales Executive</span> <br>
+<span style=3D"font-size:12px;font-style:normal;letter-spacing:0.8px;displa=
+y:block;clear:both;margin-bottom:5px;font-family:Calibri,Arial,sans-serif;c=
+olor:rgb(26,26,26)"></span><span style=3D"font-size:12px;font-weight:normal=
+;letter-spacing:0.8px;display:block;clear:both;margin-bottom:5px;font-famil=
+y:Calibri,Arial,sans-serif;color:rgb(68,68,68)"></span><span style=3D"font-=
+size:12px;font-weight:normal;letter-spacing:0.8px;display:block;clear:both;=
+margin-bottom:5px;font-family:Calibri,Arial,sans-serif;color:rgb(68,68,68)"=
+></span><span style=3D"display:block;clear:both;margin-bottom:5px;font-fami=
+ly:Calibri,Arial,sans-serif"><b style=3D"font-family:Calibri,Arial,sans-ser=
+if;color:rgb(26,26,26)">e:</b>
+<span style=3D"font-size:12px;font-weight:normal;letter-spacing:0.8px;font-=
+family:Calibri,Arial,sans-serif;color:rgb(26,26,26)">
+<a href=3D"mailto:steve.ripperger@avalara.com" style=3D"font-family:Calibri=
+,Arial,sans-serif" target=3D"_blank">steve.ripperger@avalara.com</a></span>
+</span></p>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+<tbody>
+<tr>
+<td>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td><img border=3D"0" alt=3D"schedule" src=3D"cid:183da714a186c2507a81" sty=
+le=3D"width: 20px; max-width: 100%;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td><span style=3D"font-family:Calibri,Arial,sans-serif;font-size:12px;colo=
+r:rgb(26,26,26)">Schedule a meeting:
+<a href=3D"https://avalara.chilipiper.com/book/me/steve-ripperger" style=3D=
+"font-family:Calibri,Arial,sans-serif" target=3D"_blank">
+https://avalara.chilipiper.com/book/me/steve-ripperger</a></span></td>
+</tr>
+<tr>
+<td>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td><img border=3D"0" alt=3D"schedule" src=3D"cid:183da714a186c2507a81" sty=
+le=3D"width: 20px; max-width: 100%;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td><span style=3D"font-family:Calibri,Arial,sans-serif;font-size:12px;colo=
+r:rgb(26,26,26)">Submit a Case:
+<a href=3D"https://help.avalara.com/Contact_Avalara/Submit_a_Case" style=3D=
+"text-decoration:none;font-family:Calibri,Arial,sans-serif;color:rgb(5,155,=
+210)" target=3D"_blank">
+https://help.avalara.com/Contact_Avalara/Submit_a_Case/</a></span></td>
+</tr>
+</tbody>
+</table>
+<span style=3D"font-family:Calibri,Arial,sans-serif;font-weight:bold;font-s=
+ize:18px;letter-spacing:0.025em;color:rgb(255,102,0)">Avalara</span>
+<span style=3D"font-family:Calibri,Arial,sans-serif;font-weight:normal;font=
+-size:12px;letter-spacing:0.025em;color:rgb(145,145,149)">
+| Tax compliance done right</span> <br>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" t=
+arget=3D"_blank">ksmith@ledgergurus.com</a>&gt;
+<br>
+<b>Sent:</b> Friday, October 14, 2022 11:25 AM<br>
+<b>To:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;; Brandi Gills &lt;=
+<a href=3D"mailto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@=
+avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Haha I totally understand!!!</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Currently they sell 80% through <a href=3D"http://sticky.io" target=3D"_=
+blank">
+sticky.io</a>, 10% on Shopify and 10% on Amazon.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_ms-outlook-mobile-signat=
+ure">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_divRplyFwdMsg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.com" targ=
+et=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Sent:</b> Friday, October 14, 2022 9:07:09 AM<br>
+<b>To:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=
+=3D"_blank">ksmith@ledgergurus.com</a>&gt;; Brandi Gills &lt;<a href=3D"mai=
+lto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@avalara.com</a=
+>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>I was just thinking - what percentage of sales would you say are through=
+ Amazon &amp; Shopify vs Sticky?</p>
+</div>
+<div>
+<p><br>
+<br>
+</p>
+</div>
+<div>
+<p>May be able to lower the annual transaction number drastically. Apologie=
+s for not asking earlier, Brandi and I travelled all day yesterday I can&#3=
+9;t speak for Brandi, but brain is still lagging behind me a bit!!</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_ms-outlook-mobile-sign=
+ature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+<p style=3D"margin-bottom:0in"><span style=3D"font-size:9pt;letter-spacing:=
+0.45pt;color:rgb(26,26,26)">Join us at an upcoming
+<a href=3D"https://www.avalara.com/us/en/learn/events.html" target=3D"_blan=
+k">
+Avalara event</a> <br>
+</span><b><span style=3D"font-size:10.5pt;letter-spacing:0.6pt;color:rgb(25=
+5,102,0)">Steve Ripperger</span></b><span style=3D"font-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Sales Executive</=
+span> <br>
+<b><span style=3D"color:rgb(26,26,26)">e:</span></b> <span style=3D"letter-=
+spacing:0.6pt;color:rgb(26,26,26)">
+<a href=3D"mailto:steve.ripperger@avalara.com" target=3D"_blank">steve.ripp=
+erger@avalara.com</a></span>
+</span></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<p><img border=3D"0" src=3D"cid:183da714a18ad7999132" alt=3D"schedule" styl=
+e=3D"width: 20px; max-width: 100%;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in">
+<p><span style=3D"font-size:9pt;color:rgb(26,26,26)">Schedule a meeting: <a=
+ href=3D"https://avalara.chilipiper.com/book/me/steve-ripperger" target=3D"=
+_blank">
+https://avalara.chilipiper.com/book/me/steve-ripperger</a></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0in">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<p><img border=3D"0" src=3D"cid:183da714a18ad7999132" alt=3D"schedule" styl=
+e=3D"width: 20px; max-width: 100%;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in">
+<p><span style=3D"font-size:9pt;color:rgb(26,26,26)">Submit a Case: <a href=
+=3D"https://help.avalara.com/Contact_Avalara/Submit_a_Case" target=3D"_blan=
+k">
+<span style=3D"text-decoration:none;color:rgb(5,155,210)">https://help.aval=
+ara.com/Contact_Avalara/Submit_a_Case/</span></a></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(255,10=
+2,0)">Avalara</span></b>
+<span style=3D"font-size:9pt;letter-spacing:0.3pt;color:rgb(145,145,149)">|=
+ Tax compliance done right</span>
+</p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_divRplyFwdMsg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=3D"_bl=
+ank">ksmith@ledgergurus.com</a>&gt;<br>
+<b>Sent:</b> Friday, October 14, 2022 10:10:36 AM<br>
+<b>To:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;; Brandi Gills &lt;=
+<a href=3D"mailto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@=
+avalara.com</a>&gt;; Melissa Pritchard &lt;<a href=3D"mailto:melissa.pritch=
+ard@avalara.com" target=3D"_blank">melissa.pritchard@avalara.com</a>&gt;;
+ Tyler Myers &lt;<a href=3D"mailto:tyler.myers@avalara.com" target=3D"_blan=
+k">tyler.myers@avalara.com</a>&gt;; Sean O&#39;Hara &lt;<a href=3D"mailto:s=
+ean.ohara@avalara.com" target=3D"_blank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Hi Steve,</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Thank you so much for the clarification.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>They don=E2=80=99t invoice anything from quickbooks so I don=E2=80=99t t=
+hink they will need the integration there, but correct me if I=E2=80=99m wr=
+ong.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>With the $20k transaction fee, any chance you can give them a discount?<=
+/p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Thanks again!</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_ms-outlook-mobile-si=
+gnature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_divRplyFwdMsg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.com" targ=
+et=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Sent:</b> Friday, October 14, 2022 8:07:00 AM<br>
+<b>To:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=
+=3D"_blank">ksmith@ledgergurus.com</a>&gt;; Brandi Gills &lt;<a href=3D"mai=
+lto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@avalara.com</a=
+>&gt;; Melissa Pritchard &lt;<a href=3D"mailto:melissa.pritchard@avalara.co=
+m" target=3D"_blank">melissa.pritchard@avalara.com</a>&gt;;
+ Tyler Myers &lt;<a href=3D"mailto:tyler.myers@avalara.com" target=3D"_blan=
+k">tyler.myers@avalara.com</a>&gt;; Sean O&#39;Hara &lt;<a href=3D"mailto:s=
+ean.ohara@avalara.com" target=3D"_blank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Hi Kexin,=C2=A0</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>No problem at all! That is the actual cost of Avatax handling all the ca=
+lculations etc from all sources, ensuring everything flows into MRA cleanly=
+.=C2=A0</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>That=E2=80=99s for the 100,000 transaction bucket they currently are sit=
+ting in.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Thanks,</p>
+</div>
+<div>
+<p>Steve</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_ms-outlook-mobile-=
+signature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+<p style=3D"margin-bottom:0in"><span style=3D"font-size:9pt;letter-spacing:=
+0.45pt;color:rgb(26,26,26)">Join us at an upcoming
+<a href=3D"https://www.avalara.com/us/en/learn/events.html" target=3D"_blan=
+k">
+Avalara event</a> <br>
+</span><b><span style=3D"font-size:10.5pt;letter-spacing:0.6pt;color:rgb(25=
+5,102,0)">Steve Ripperger</span></b><span style=3D"font-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Sales Executive</=
+span> <br>
+<b><span style=3D"color:rgb(26,26,26)">e:</span></b> <span style=3D"letter-=
+spacing:0.6pt;color:rgb(26,26,26)">
+<a href=3D"mailto:steve.ripperger@avalara.com" target=3D"_blank">steve.ripp=
+erger@avalara.com</a></span>
+</span></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<p><img border=3D"0" src=3D"cid:183da714a18ad7999132" alt=3D"schedule" styl=
+e=3D"width: 20px; max-width: 100%;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in">
+<p><span style=3D"font-size:9pt;color:rgb(26,26,26)">Schedule a meeting: <a=
+ href=3D"https://avalara.chilipiper.com/book/me/steve-ripperger" target=3D"=
+_blank">
+https://avalara.chilipiper.com/book/me/steve-ripperger</a></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0in">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<p><img border=3D"0" src=3D"cid:183da714a18ad7999132" alt=3D"schedule" styl=
+e=3D"width: 20px; max-width: 100%;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in">
+<p><span style=3D"font-size:9pt;color:rgb(26,26,26)">Submit a Case: <a href=
+=3D"https://help.avalara.com/Contact_Avalara/Submit_a_Case" target=3D"_blan=
+k">
+<span style=3D"text-decoration:none;color:rgb(5,155,210)">https://help.aval=
+ara.com/Contact_Avalara/Submit_a_Case/</span></a></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(255,10=
+2,0)">Avalara</span></b>
+<span style=3D"font-size:9pt;letter-spacing:0.3pt;color:rgb(145,145,149)">|=
+ Tax compliance done right</span>
+</p>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_divRplyFwdMsg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=3D"_bl=
+ank">ksmith@ledgergurus.com</a>&gt;<br>
+<b>Sent:</b> Friday, October 14, 2022 10:02:31 AM<br>
+<b>To:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;; Brandi Gills &lt;=
+<a href=3D"mailto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@=
+avalara.com</a>&gt;; Melissa Pritchard &lt;<a href=3D"mailto:melissa.pritch=
+ard@avalara.com" target=3D"_blank">melissa.pritchard@avalara.com</a>&gt;;
+ Tyler Myers &lt;<a href=3D"mailto:tyler.myers@avalara.com" target=3D"_blan=
+k">tyler.myers@avalara.com</a>&gt;; Sean O&#39;Hara &lt;<a href=3D"mailto:s=
+ean.ohara@avalara.com" target=3D"_blank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Hi Steve,</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Thank you so much for sending that over!</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>What=E2=80=99s the $20,980 annual charge?</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Best,</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_ms-outlook-mobil=
+e-signature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_divRplyFwdMsg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.com" targ=
+et=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Sent:</b> Friday, October 14, 2022 7:56:33 AM<br>
+<b>To:</b> Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com" tar=
+get=3D"_blank">brandi.gills@avalara.com</a>&gt;; Kexin Smith &lt;<a href=3D=
+"mailto:ksmith@ledgergurus.com" target=3D"_blank">ksmith@ledgergurus.com</a=
+>&gt;; Melissa Pritchard &lt;<a href=3D"mailto:melissa.pritchard@avalara.co=
+m" target=3D"_blank">melissa.pritchard@avalara.com</a>&gt;;
+ Tyler Myers &lt;<a href=3D"mailto:tyler.myers@avalara.com" target=3D"_blan=
+k">tyler.myers@avalara.com</a>&gt;; Sean O&#39;Hara &lt;<a href=3D"mailto:s=
+ean.ohara@avalara.com" target=3D"_blank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Subject:</b> RE: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<p>Good Morning Everyone!</p>
+<p>=C2=A0</p>
+<p>I have attached a proposal with everything for review.<br>
+<br>
+Let us know if there is anything additional which needs to be addressed, qu=
+estions that arise, or if pricing needs to be adjusted. Happy to work with =
+you and the client to ensure a good fit.<br>
+<br>
+Talk soon!<br>
+<br>
+Thanks,</p>
+<p>Steve</p>
+<p>=C2=A0</p>
+<p style=3D"margin-bottom:0in"><span style=3D"font-size:9pt;letter-spacing:=
+0.45pt;color:rgb(26,26,26)">Join us at an upcoming
+<a href=3D"https://www.avalara.com/us/en/learn/events.html" target=3D"_blan=
+k">
+Avalara event</a> <br>
+</span><b><span style=3D"font-size:10.5pt;letter-spacing:0.6pt;color:rgb(25=
+5,102,0)">Steve Ripperger</span></b><span style=3D"font-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Sales Executive</=
+span> <br>
+<b><span style=3D"color:rgb(26,26,26)">e:</span></b> <span style=3D"letter-=
+spacing:0.6pt;color:rgb(26,26,26)">
+<a href=3D"mailto:steve.ripperger@avalara.com" target=3D"_blank">steve.ripp=
+erger@avalara.com</a></span>
+</span></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<p><img border=3D"0" src=3D"cid:183da714a18ad7999132" alt=3D"schedule" styl=
+e=3D"width: 20px; max-width: 100%;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in">
+<p><span style=3D"font-size:9pt;color:rgb(26,26,26)">Schedule a meeting: <a=
+ href=3D"https://avalara.chilipiper.com/book/me/steve-ripperger" target=3D"=
+_blank">
+https://avalara.chilipiper.com/book/me/steve-ripperger</a></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0in">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td style=3D"padding:0in">
+<p><img border=3D"0" src=3D"cid:183da714a18ad7999132" alt=3D"schedule" styl=
+e=3D"width: 20px; max-width: 100%;"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in">
+<p><span style=3D"font-size:9pt;color:rgb(26,26,26)">Submit a Case: <a href=
+=3D"https://help.avalara.com/Contact_Avalara/Submit_a_Case" target=3D"_blan=
+k">
+<span style=3D"text-decoration:none;color:rgb(5,155,210)">https://help.aval=
+ara.com/Contact_Avalara/Submit_a_Case/</span></a></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(255,10=
+2,0)">Avalara</span></b>
+<span style=3D"font-size:9pt;letter-spacing:0.3pt;color:rgb(145,145,149)">|=
+ Tax compliance done right</span>
+</p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com=
+" target=3D"_blank">brandi.gills@avalara.com</a>&gt;
+<br>
+<b>Sent:</b> Friday, October 14, 2022 9:00 AM<br>
+<b>To:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=
+=3D"_blank">ksmith@ledgergurus.com</a>&gt;; Melissa Pritchard &lt;<a href=
+=3D"mailto:melissa.pritchard@avalara.com" target=3D"_blank">melissa.pritcha=
+rd@avalara.com</a>&gt;; Tyler Myers &lt;<a href=3D"mailto:tyler.myers@avala=
+ra.com" target=3D"_blank">tyler.myers@avalara.com</a>&gt;;
+ Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" target=3D"_b=
+lank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Subject:</b> RE: Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p>Thank you, Kexin! </p>
+<p>=C2=A0</p>
+<p><a id=3D"m_-6256872936665666606m_-3005764418425711785m_28465111029290285=
+13x_m_-1329966959869644997x_m_-2496137579307955436OWAAMABFB6D86CEAA45B49C8B=
+FFF813969924" href=3D"mailto:steve.ripperger@avalara.com" target=3D"_blank"=
+><span style=3D"font-family:Calibri,sans-serif;text-decoration:none">@Steve=
+ Ripperger</span></a> will work
+ on getting a quote together and provide you the pricing to pass to the cli=
+ent.</p>
+<p>=C2=A0</p>
+<p>Thanks,</p>
+<p>Brandi </p>
+<p>=C2=A0</p>
+<p style=3D"margin-bottom:0in"><b><span style=3D"font-size:10.5pt;letter-sp=
+acing:0.6pt;color:rgb(255,102,0)">Brandi Gills</span></b><span style=3D"fon=
+t-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Manager, Sales</s=
+pan> <br>
+<b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)">Pronouns:</span=
+></b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)"> She / Her / =
+Hers<br>
+</span><b><span style=3D"color:rgb(26,26,26)">e:</span></b> <span style=3D"=
+letter-spacing:0.6pt;color:rgb(5,155,210)">
+<a href=3D"mailto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@=
+avalara.com</a></span><br>
+</span><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(25=
+5,102,0)">Avalara</span></b><span style=3D"font-size:9pt">
+<span style=3D"letter-spacing:0.3pt;color:rgb(145,145,149)">| Tax complianc=
+e done right</span>
+</span></p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" t=
+arget=3D"_blank">ksmith@ledgergurus.com</a>&gt;
+<br>
+<b>Sent:</b> Thursday, October 13, 2022 5:20 PM<br>
+<b>To:</b> Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com" tar=
+get=3D"_blank">brandi.gills@avalara.com</a>&gt;; Melissa Pritchard &lt;<a h=
+ref=3D"mailto:melissa.pritchard@avalara.com" target=3D"_blank">melissa.prit=
+chard@avalara.com</a>&gt;; Tyler Myers &lt;<a href=3D"mailto:tyler.myers@av=
+alara.com" target=3D"_blank">tyler.myers@avalara.com</a>&gt;;
+ Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" target=3D"_b=
+lank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Hi Brandi,</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>I just confirmed with the client and they have about 8,000 transactions =
+a month.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>They use Quickbooks desktop for accounting and Shopify amazon and <a hre=
+f=3D"http://sticky.io" target=3D"_blank">
+sticky.io</a> as sales channel.=C2=A0</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Contact info: Brett Allcorn <a href=3D"mailto:brett@pineapple.co" target=
+=3D"_blank">
+brett@pineapple.co</a> and I do not have their billing address.=C2=A0</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Let me know if you need any other information.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Best,</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_ms-outlook-mob=
+ile-signature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_divRplyFwdMsg"=
+>
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com" target=3D"=
+_blank">brandi.gills@avalara.com</a>&gt;<br>
+<b>Sent:</b> Wednesday, October 12, 2022 9:44:28 AM<br>
+<b>To:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=
+=3D"_blank">ksmith@ledgergurus.com</a>&gt;; Melissa Pritchard &lt;<a href=
+=3D"mailto:melissa.pritchard@avalara.com" target=3D"_blank">melissa.pritcha=
+rd@avalara.com</a>&gt;; Tyler Myers &lt;<a href=3D"mailto:tyler.myers@avala=
+ra.com" target=3D"_blank">tyler.myers@avalara.com</a>&gt;;
+ Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" target=3D"_b=
+lank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Subject:</b> RE: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<p>Of course! Really, we need three things.</p>
+<p>=C2=A0</p>
+<ol start=3D"1" type=3D"1" style=3D"margin-top:0in">
+<li style=3D"margin-left:0in">Do you know roughly how many transactions the=
+y do in a year?</li><li style=3D"margin-left:0in">Other than QuickBooks, ar=
+e they invoicing out of any other systems? I want to make sure we capture a=
+ll connectors they need to make the process seamless and easy for them.
+<span style=3D"font-family:&quot;Segoe UI Emoji&quot;,sans-serif">=F0=9F=98=
+=8A</span></li><li style=3D"margin-left:0in">Main contact information (phon=
+e and email) and billing address
+</li></ol>
+<p>=C2=A0</p>
+<p>Once we have that information, Steve can create a quote and send to you =
+to share the pricing with the client.</p>
+<p>=C2=A0</p>
+<p>Thanks,</p>
+<p>Brandi</p>
+<p>=C2=A0</p>
+<p style=3D"margin-bottom:0in"><b><span style=3D"font-size:10.5pt;letter-sp=
+acing:0.6pt;color:rgb(255,102,0)">Brandi Gills</span></b><span style=3D"fon=
+t-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Manager, Sales</s=
+pan> <br>
+<b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)">Pronouns:</span=
+></b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)"> She / Her / =
+Hers<br>
+</span><b><span style=3D"color:rgb(26,26,26)">e:</span></b> <span style=3D"=
+letter-spacing:0.6pt;color:rgb(5,155,210)">
+<a href=3D"mailto:brandi.gills@avalara.com" target=3D"_blank">brandi.gills@=
+avalara.com</a></span><br>
+</span><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(25=
+5,102,0)">Avalara</span></b><span style=3D"font-size:9pt">
+<span style=3D"letter-spacing:0.3pt;color:rgb(145,145,149)">| Tax complianc=
+e done right</span>
+</span></p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" t=
+arget=3D"_blank">ksmith@ledgergurus.com</a>&gt;
+<br>
+<b>Sent:</b> Wednesday, October 12, 2022 11:32 AM<br>
+<b>To:</b> Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com" tar=
+get=3D"_blank">brandi.gills@avalara.com</a>&gt;; Melissa Pritchard &lt;<a h=
+ref=3D"mailto:melissa.pritchard@avalara.com" target=3D"_blank">melissa.prit=
+chard@avalara.com</a>&gt;; Tyler Myers &lt;<a href=3D"mailto:tyler.myers@av=
+alara.com" target=3D"_blank">tyler.myers@avalara.com</a>&gt;;
+ Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" target=3D"_b=
+lank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Of course! I=E2=80=99d love to answer any questions I can to get a ballp=
+ark for pricing to pass on to the client if that=E2=80=99s okay!</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_x_ms-outlook-m=
+obile-signature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"1" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_x_divRplyFwdMs=
+g">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Brandi Gills &lt;</span><a href=3D"mailto:brandi.gills@avalara.com" tar=
+get=3D"_blank">brandi.gills@avalara.com</a><span style=3D"color:black">&gt;=
+<br>
+<b>Sent:</b> Wednesday, October 12, 2022 9:26:12 AM<br>
+<b>To:</b> Kexin Smith &lt;</span><a href=3D"mailto:ksmith@ledgergurus.com"=
+ target=3D"_blank">ksmith@ledgergurus.com</a><span style=3D"color:black">&g=
+t;; Melissa Pritchard &lt;</span><a href=3D"mailto:melissa.pritchard@avalar=
+a.com" target=3D"_blank">melissa.pritchard@avalara.com</a><span style=3D"co=
+lor:black">&gt;;
+ Tyler Myers &lt;</span><a href=3D"mailto:tyler.myers@avalara.com" target=
+=3D"_blank">tyler.myers@avalara.com</a><span style=3D"color:black">&gt;; Se=
+an O&#39;Hara &lt;</span><a href=3D"mailto:sean.ohara@avalara.com" target=
+=3D"_blank">sean.ohara@avalara.com</a><span style=3D"color:black">&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;</span><a href=3D"mailto:steve.ripperger@ava=
+lara.com" target=3D"_blank">steve.ripperger@avalara.com</a><span style=3D"c=
+olor:black">&gt;<br>
+<b>Subject:</b> RE: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<p>Thank you, Kexin! Would you like us to reach out directly to the client =
+and copy you to get the information needed, or do you prefer reaching out f=
+irst?
+</p>
+<p><br>
+Steve, copied on here, will proceed with this process.</p>
+<p>=C2=A0</p>
+<p>Thanks!</p>
+<p>Brandi</p>
+<p>=C2=A0</p>
+<p>=C2=A0</p>
+<p style=3D"margin-bottom:0in"><b><span style=3D"font-size:10.5pt;letter-sp=
+acing:0.6pt;color:rgb(255,102,0)">Brandi Gills</span></b><span style=3D"fon=
+t-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Manager, Sales</s=
+pan> <br>
+<b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)">Pronouns:</span=
+></b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)"> She / Her / =
+Hers<br>
+</span><b><span style=3D"color:rgb(26,26,26)">e:</span></b> </span><a href=
+=3D"mailto:brandi.gills@avalara.com" target=3D"_blank"><span style=3D"font-=
+size:9pt;letter-spacing:0.6pt">brandi.gills@avalara.com</span></a><span sty=
+le=3D"font-size:9pt"><br>
+</span><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(25=
+5,102,0)">Avalara</span></b><span style=3D"font-size:9pt">
+<span style=3D"letter-spacing:0.3pt;color:rgb(145,145,149)">| Tax complianc=
+e done right</span>
+</span></p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" t=
+arget=3D"_blank">ksmith@ledgergurus.com</a>&gt;
+<br>
+<b>Sent:</b> Wednesday, October 12, 2022 10:49 AM<br>
+<b>To:</b> Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com" tar=
+get=3D"_blank">brandi.gills@avalara.com</a>&gt;; Melissa Pritchard &lt;<a h=
+ref=3D"mailto:Melissa.Pritchard@avalara.com" target=3D"_blank">Melissa.Prit=
+chard@avalara.com</a>&gt;; Tyler Myers &lt;<a href=3D"mailto:tyler.myers@av=
+alara.com" target=3D"_blank">tyler.myers@avalara.com</a>&gt;;
+ Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" target=3D"_b=
+lank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;<a href=3D"mailto:steve.ripperger@avalara.co=
+m" target=3D"_blank">steve.ripperger@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Good morning Brandi,</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>The client uses quickbooks desktop for accounting.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Thank you!</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_x_x_ms-outlook=
+-mobile-signature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"1" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_x_x_divRplyFwd=
+Msg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Brandi Gills &lt;</span><a href=3D"mailto:brandi.gills@avalara.com" tar=
+get=3D"_blank">brandi.gills@avalara.com</a><span style=3D"color:black">&gt;=
+<br>
+<b>Sent:</b> Wednesday, October 12, 2022 6:59:52 AM<br>
+<b>To:</b> Melissa Pritchard &lt;</span><a href=3D"mailto:Melissa.Pritchard=
+@avalara.com" target=3D"_blank">Melissa.Pritchard@avalara.com</a><span styl=
+e=3D"color:black">&gt;; Kexin Smith &lt;</span><a href=3D"mailto:ksmith@led=
+gergurus.com" target=3D"_blank">ksmith@ledgergurus.com</a><span style=3D"co=
+lor:black">&gt;;
+ Tyler Myers &lt;</span><a href=3D"mailto:tyler.myers@avalara.com" target=
+=3D"_blank">tyler.myers@avalara.com</a><span style=3D"color:black">&gt;; Se=
+an O&#39;Hara &lt;</span><a href=3D"mailto:sean.ohara@avalara.com" target=
+=3D"_blank">sean.ohara@avalara.com</a><span style=3D"color:black">&gt;<br>
+<b>Cc:</b> Steve Ripperger &lt;</span><a href=3D"mailto:steve.ripperger@ava=
+lara.com" target=3D"_blank">steve.ripperger@avalara.com</a><span style=3D"c=
+olor:black">&gt;<br>
+<b>Subject:</b> RE: Brandi Gills - Sticky.io Potential Client Referral</spa=
+n> </p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<p>Good Morning!</p>
+<p>=C2=A0</p>
+<p>Happy to help. <span style=3D"font-family:&quot;Segoe UI Emoji&quot;,san=
+s-serif">=F0=9F=98=8A</span></p>
+<p>=C2=A0</p>
+<p>Once we hear back on the accounting system, we can connect on transactio=
+ns to get a quote created for Avatax.</p>
+<p>=C2=A0</p>
+<p>We look forward to working with you!</p>
+<p>=C2=A0</p>
+<p>Brandi</p>
+<p style=3D"margin-bottom:0in"><b><span style=3D"font-size:10.5pt;letter-sp=
+acing:0.6pt;color:rgb(255,102,0)">Brandi Gills</span></b><span style=3D"fon=
+t-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Manager, Sales</s=
+pan> <br>
+<b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)">Pronouns:</span=
+></b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)"> She / Her / =
+Hers<br>
+</span><b><span style=3D"color:rgb(26,26,26)">e:</span></b> </span><a href=
+=3D"mailto:brandi.gills@avalara.com" target=3D"_blank"><span style=3D"font-=
+size:9pt;letter-spacing:0.6pt">brandi.gills@avalara.com</span></a><span sty=
+le=3D"font-size:9pt"><br>
+</span><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(25=
+5,102,0)">Avalara</span></b><span style=3D"font-size:9pt">
+<span style=3D"letter-spacing:0.3pt;color:rgb(145,145,149)">| Tax complianc=
+e done right</span>
+</span></p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Melissa Pritchard &lt;<a href=3D"mailto:Melissa.Pritchard@a=
+valara.com" target=3D"_blank">Melissa.Pritchard@avalara.com</a>&gt;
+<br>
+<b>Sent:</b> Tuesday, October 11, 2022 11:14 AM<br>
+<b>To:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" target=
+=3D"_blank">ksmith@ledgergurus.com</a>&gt;; Tyler Myers &lt;<a href=3D"mail=
+to:tyler.myers@avalara.com" target=3D"_blank">tyler.myers@avalara.com</a>&g=
+t;; Brandi Gills &lt;<a href=3D"mailto:brandi.gills@avalara.com" target=3D"=
+_blank">brandi.gills@avalara.com</a>&gt;;
+ Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" target=3D"_b=
+lank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Subject:</b> Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p>Excellent</p>
+<p>=C2=A0</p>
+<p>Thank you</p>
+<p>=C2=A0</p>
+<p style=3D"margin-bottom:0in"><b><span style=3D"font-size:10.5pt;letter-sp=
+acing:0.6pt;color:rgb(255,102,0)">Melissa Pritchard</span></b><span style=
+=3D"font-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Sr. Manager, Sale=
+s</span>
+<br>
+<b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)">Pronouns:</span=
+></b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)"> She / Her / =
+Hers<br>
+<b>c:</b> +1 (503) 7501699<br>
+</span><b><span style=3D"color:rgb(26,26,26)">e:</span></b> </span><a href=
+=3D"mailto:melissa.pritchard@avalara.com" target=3D"_blank"><span style=3D"=
+font-size:9pt;letter-spacing:0.6pt">melissa.pritchard@avalara.com</span></a=
+><span style=3D"font-size:9pt"><br>
+</span><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(25=
+5,102,0)">Avalara</span></b><span style=3D"font-size:9pt">
+<span style=3D"letter-spacing:0.3pt;color:rgb(145,145,149)">| Tax complianc=
+e done right</span>
+</span></p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" t=
+arget=3D"_blank">ksmith@ledgergurus.com</a>&gt;
+<br>
+<b>Sent:</b> Tuesday, October 11, 2022 11:05 AM<br>
+<b>To:</b> Melissa Pritchard &lt;<a href=3D"mailto:Melissa.Pritchard@avalar=
+a.com" target=3D"_blank">Melissa.Pritchard@avalara.com</a>&gt;; Tyler Myers=
+ &lt;<a href=3D"mailto:tyler.myers@avalara.com" target=3D"_blank">tyler.mye=
+rs@avalara.com</a>&gt;; Brandi Gills &lt;<a href=3D"mailto:brandi.gills@ava=
+lara.com" target=3D"_blank">brandi.gills@avalara.com</a>&gt;<br>
+<b>Subject:</b> Re: Brandi Gills - Sticky.io Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p>Hi all,</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>The client=E2=80=99s name is Revival Point LLC and they sell supplements=
+. Their annual revenue is about 20 million.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>I=E2=80=99m waiting to hear back from them on what accounting software t=
+hey use.</p>
+</div>
+<div>
+<p>=C2=A0</p>
+</div>
+<div>
+<p>Best,</p>
+</div>
+<div>
+<p>Kexin=C2=A0</p>
+</div>
+</div>
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_x_x_x_ms-outlo=
+ok-mobile-signature">
+<div>
+<p>=C2=A0</p>
+</div>
+<p>Get <a href=3D"https://aka.ms/o0ukef" target=3D"_blank">
+Outlook for iOS</a></p>
+</div>
+</div>
+<div align=3D"center" style=3D"text-align:center">
+<hr size=3D"1" width=3D"98%" align=3D"center">
+</div>
+<div id=3D"m_-6256872936665666606m_-3005764418425711785m_284651110292902851=
+3x_m_-1329966959869644997x_m_-2496137579307955436x_x_x_x_x_x_x_x_x_divRplyF=
+wdMsg">
+<p><b><span style=3D"color:black">From:</span></b><span style=3D"color:blac=
+k"> Melissa Pritchard &lt;</span><a href=3D"mailto:Melissa.Pritchard@avalar=
+a.com" target=3D"_blank">Melissa.Pritchard@avalara.com</a><span style=3D"co=
+lor:black">&gt;<br>
+<b>Sent:</b> Tuesday, October 11, 2022 9:01:58 AM<br>
+<b>To:</b> Kexin Smith &lt;</span><a href=3D"mailto:ksmith@ledgergurus.com"=
+ target=3D"_blank">ksmith@ledgergurus.com</a><span style=3D"color:black">&g=
+t;; Tyler Myers &lt;</span><a href=3D"mailto:tyler.myers@avalara.com" targe=
+t=3D"_blank">tyler.myers@avalara.com</a><span style=3D"color:black">&gt;;
+ Brandi Gills &lt;</span><a href=3D"mailto:brandi.gills@avalara.com" target=
+=3D"_blank">brandi.gills@avalara.com</a><span style=3D"color:black">&gt;<br=
+>
+<b>Subject:</b> Brandi Gills - Sticky.io Potential Client Referral</span> <=
+/p>
+<div>
+<p>=C2=A0</p>
+</div>
+</div>
+<div>
+<div>
+<p>Kexin =E2=80=93</p>
+<p>=C2=A0</p>
+<p>What is the clients name. </p>
+<p>=C2=A0</p>
+<p>I am going to send this over to Brandi a manager on the Avatax team.=C2=
+=A0 Let me see what she says, she is traveling today.
+</p>
+<p>=C2=A0</p>
+<p>Brandi =E2=80=93</p>
+<p>Opportunity =E2=80=93 Avatax</p>
+<p>Firm =E2=80=93 Ledger Gurus does the returns on MRA</p>
+<p>=C2=A0</p>
+<p>Thank you</p>
+<p>=C2=A0</p>
+<p>=C2=A0</p>
+<p style=3D"margin-bottom:0in"><b><span style=3D"font-size:10.5pt;letter-sp=
+acing:0.6pt;color:rgb(255,102,0)">Melissa Pritchard</span></b><span style=
+=3D"font-size:9pt"> |
+<span style=3D"letter-spacing:0.45pt;color:rgb(26,26,26)">Sr. Manager, Sale=
+s</span>
+<br>
+<b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)">Pronouns:</span=
+></b><span style=3D"letter-spacing:0.6pt;color:rgb(26,26,26)"> She / Her / =
+Hers<br>
+<b>c:</b> +1 (503) 7501699<br>
+</span><b><span style=3D"color:rgb(26,26,26)">e:</span></b> </span><a href=
+=3D"mailto:melissa.pritchard@avalara.com" target=3D"_blank"><span style=3D"=
+font-size:9pt;letter-spacing:0.6pt">melissa.pritchard@avalara.com</span></a=
+><span style=3D"font-size:9pt"><br>
+</span><b><span style=3D"font-size:13.5pt;letter-spacing:0.3pt;color:rgb(25=
+5,102,0)">Avalara</span></b><span style=3D"font-size:9pt">
+<span style=3D"letter-spacing:0.3pt;color:rgb(145,145,149)">| Tax complianc=
+e done right</span>
+</span></p>
+<div>
+<div style=3D"border-style:solid none none;border-top-width:1pt;padding:3pt=
+ 0in 0in;border-top-color:rgb(225,225,225)">
+<p><b>From:</b> Kexin Smith &lt;<a href=3D"mailto:ksmith@ledgergurus.com" t=
+arget=3D"_blank">ksmith@ledgergurus.com</a>&gt;
+<br>
+<b>Sent:</b> Tuesday, October 11, 2022 10:54 AM<br>
+<b>To:</b> Melissa Pritchard &lt;<a href=3D"mailto:Melissa.Pritchard@avalar=
+a.com" target=3D"_blank">Melissa.Pritchard@avalara.com</a>&gt;; Tyler Myers=
+ &lt;<a href=3D"mailto:tyler.myers@avalara.com" target=3D"_blank">tyler.mye=
+rs@avalara.com</a>&gt;<br>
+<b>Cc:</b> Sean O&#39;Hara &lt;<a href=3D"mailto:sean.ohara@avalara.com" ta=
+rget=3D"_blank">sean.ohara@avalara.com</a>&gt;<br>
+<b>Subject:</b> Potential Client Referral</p>
+</div>
+</div>
+<p>=C2=A0</p>
+<p><b><u>EXTERNAL MESSAGE</u></b></p>
+<div>
+<p>Hi Melissa and Tyler,</p>
+<p>=C2=A0</p>
+<p>I have a client that wants to use Avalara to integrate with their CRM (<=
+a href=3D"http://sticky.io" target=3D"_blank">sticky.io</a>) to calculate t=
+ax and then to use MRA to file tax returns. Who should I talk to to get
+ pricing on the tax calculation function?</p>
+<p>=C2=A0</p>
+<p>Thank you!</p>
+<p>=C2=A0</p>
+<p><b><span style=3D"font-size:12pt;color:rgb(91,155,213)">Kexin Smith</spa=
+n></b></p>
+<p><span style=3D"font-size:10pt">Sales Tax Research and Consulting Supervi=
+sor</span></p>
+<p><b><span style=3D"font-size:10pt;color:rgb(91,155,213)">CPA</span></b></=
+p>
+<p><b><span style=3D"font-size:10pt">Ledgergurus.com</span></b></p>
+<p><b><span style=3D"font-size:10pt;color:rgb(91,155,213)">Email</span></b>=
+<span style=3D"font-size:10pt">
+</span><a href=3D"mailto:ksmith@ledgergurus.com" target=3D"_blank"><span st=
+yle=3D"font-size:10pt">ksmith@ledgergurus.com</span></a></p>
+<p><span style=3D"font-size:4pt">=C2=A0</span></p>
+<p><span style=3D"font-size:4pt">=C2=A0 </span></p>
+<p>=C2=A0</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+-- <br>
+<div dir=3D"ltr">
+<div>
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"font-famil=
+y:Verdana,sans-serif;max-width:500px;color:rgb(5,56,95)">
+<tbody style=3D"font-family:Verdana,sans-serif">
+<tr style=3D"font-family:Verdana,sans-serif">
+<td colspan=3D"2" width=3D"500" style=3D"padding-bottom:4px;border-bottom:1=
+px solid rgb(5,56,95);font-family:Verdana,sans-serif">
+<span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-size:18pt;font-family:Verdana,sans-serif;color:r=
+gb(2,112,196)"><strong style=3D"font-family:Verdana,sans-serif">Brett Allco=
+rn</strong></span>
+<span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-size:10pt;font-family:Verdana,sans-serif;color:r=
+gb(5,56,95)">Chief Executive Officer<span style=3D"font-family:Verdana,sans=
+-serif"> |
+</span></span><span style=3D"font-family:Verdana,sans-serif"><a href=3D"htt=
+p://pineapple.co" rel=3D"noopener" style=3D"font-size:10pt;text-decoration:=
+none;font-weight:bold;font-family:Verdana,sans-serif;color:rgb(2,112,196)" =
+target=3D"_blank">pineapple.co</a>
+</span></td>
+</tr>
+<tr style=3D"font-family:Verdana,sans-serif">
+<td width=3D"120" style=3D"padding-top:12px;font-family:Verdana,sans-serif"=
+>
+<p style=3D"padding:0px;margin:0px;font-family:Verdana,sans-serif"><img alt=
+=3D"Photo" width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.c=
+om/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUm=
+SyXuEpRH7B4b1qYw" style=3D"max-width: 90px; height: auto; border: 0px; font=
+-family: Verdana, sans-serif;">
+</p>
+</td>
+<td style=3D"padding-top:15px;font-family:Verdana,sans-serif">
+<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-t=
+op:0px;margin-top:0px;font-family:Verdana,sans-serif">
+</p>
+<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-t=
+op:0px;margin-top:0px;font-family:Verdana,sans-serif">
+<span style=3D"font-size:9pt;font-weight:bold;font-family:Verdana,sans-seri=
+f;color:rgb(5,56,95)">E:</span>
+<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font-si=
+ze:9pt;font-family:Verdana,sans-serif;color:rgb(16,16,16)" target=3D"_blank=
+">
+brett@pineapple.co</a></p>
+<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-t=
+op:0px;margin-top:0px;font-family:Verdana,sans-serif">
+<span style=3D"font-size:9pt;font-weight:bold;font-family:Verdana,sans-seri=
+f;color:rgb(5,56,95)">A:</span>
+<span style=3D"font-size:9pt;font-family:Verdana,sans-serif;color:rgb(16,16=
+,16)">
+<a href=3D"https://www.google.com/maps/search/13423+Blanco+Rd?entry=3Dgmail=
+&amp;source=3Dg" style=3D"font-family:Verdana,sans-serif" target=3D"_blank"=
+>13423 Blanco Rd</a> PMB 8024</span><span style=3D"font-size:9pt;font-famil=
+y:Verdana,sans-serif;color:rgb(16,16,16)">,
+</span><span style=3D"font-size:9pt;font-family:Verdana,sans-serif;color:rg=
+b(16,16,16)">San Antonio, TX 78216</span>
+</p>
+<p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5px;margin-top=
+:5px;font-family:Verdana,sans-serif">
+</p>
+<p style=3D"font-family:Verdana,sans-serif"></p>
+</td>
+</tr>
+<tr style=3D"font-family:Verdana,sans-serif">
+<td colspan=3D"2" style=3D"padding-top:10px;font-family:Verdana,sans-serif"=
+>
+<p style=3D"font-size:7pt;line-height:1.2;font-family:Verdana,sans-serif;co=
+lor:rgb(149,149,149)">
+The content of this email is confidential and intended for the recipient sp=
+ecified in message only. It is strictly forbidden to share any part of this=
+ message with any third party, without a written consent of the sender. If =
+you received this message by mistake,
+ please reply to this message and follow with its deletion, so that we can =
+ensure such a mistake does not occur in the future.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+-- <br>
+<div dir=3D"ltr">
+<div>
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"font-famil=
+y:Verdana,sans-serif;max-width:500px;color:rgb(5,56,95)">
+<tbody style=3D"font-family:Verdana,sans-serif">
+<tr style=3D"font-family:Verdana,sans-serif">
+<td colspan=3D"2" width=3D"500" style=3D"padding-bottom:4px;border-bottom:1=
+px solid rgb(5,56,95);font-family:Verdana,sans-serif">
+<span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-size:18pt;font-family:Verdana,sans-serif;color:r=
+gb(2,112,196)"><strong style=3D"font-family:Verdana,sans-serif">Brett Allco=
+rn</strong></span>
+<span style=3D"font-family:Verdana,sans-serif"><br>
+</span><span style=3D"font-size:10pt;font-family:Verdana,sans-serif;color:r=
+gb(5,56,95)">Chief Executive Officer<span style=3D"font-family:Verdana,sans=
+-serif"> |
+</span></span><span style=3D"font-family:Verdana,sans-serif"><a href=3D"htt=
+p://pineapple.co" rel=3D"noopener" style=3D"font-size:10pt;text-decoration:=
+none;font-weight:bold;font-family:Verdana,sans-serif;color:rgb(2,112,196)" =
+target=3D"_blank">pineapple.co</a>
+</span></td>
+</tr>
+<tr style=3D"font-family:Verdana,sans-serif">
+<td width=3D"120" style=3D"padding-top:12px;font-family:Verdana,sans-serif"=
+>
+<p style=3D"padding:0px;margin:0px;font-family:Verdana,sans-serif"><img alt=
+=3D"Photo" width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.c=
+om/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUm=
+SyXuEpRH7B4b1qYw" style=3D"max-width: 90px; height: auto; border: 0px; font=
+-family: Verdana, sans-serif;">
+</p>
+</td>
+<td style=3D"padding-top:15px;font-family:Verdana,sans-serif">
+<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-t=
+op:0px;margin-top:0px;font-family:Verdana,sans-serif">
+</p>
+<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-t=
+op:0px;margin-top:0px;font-family:Verdana,sans-serif">
+<span style=3D"font-size:9pt;font-weight:bold;font-family:Verdana,sans-seri=
+f;color:rgb(5,56,95)">E:</span> <a href=3D"mailto:brett@pineapple.co" style=
+=3D"text-decoration:none;font-size:9pt;font-family:Verdana,sans-serif;color=
+:rgb(16,16,16)" target=3D"_blank">
+brett@pineapple.co</a></p>
+<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0px;padding-t=
+op:0px;margin-top:0px;font-family:Verdana,sans-serif">
+<span style=3D"font-size:9pt;font-weight:bold;font-family:Verdana,sans-seri=
+f;color:rgb(5,56,95)">A:</span> <span style=3D"font-size:9pt;font-family:Ve=
+rdana,sans-serif;color:rgb(16,16,16)">
+<a href=3D"https://www.google.com/maps/search/13423+Blanco+Rd?entry=3Dgmail=
+&amp;source=3Dg" style=3D"font-family:Verdana,sans-serif" target=3D"_blank"=
+>13423 Blanco Rd</a> PMB 8024</span><span style=3D"font-size:9pt;font-famil=
+y:Verdana,sans-serif;color:rgb(16,16,16)">, </span>
+<span style=3D"font-size:9pt;font-family:Verdana,sans-serif;color:rgb(16,16=
+,16)">San Antonio, TX 78216</span> </p>
+<p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5px;margin-top=
+:5px;font-family:Verdana,sans-serif">
+</p>
+<p style=3D"font-family:Verdana,sans-serif"></p>
+</td>
+</tr>
+<tr style=3D"font-family:Verdana,sans-serif">
+<td colspan=3D"2" style=3D"padding-top:10px;font-family:Verdana,sans-serif"=
+>
+<p style=3D"font-size:7pt;line-height:1.2;font-family:Verdana,sans-serif;co=
+lor:rgb(149,149,149)">
+The content of this email is confidential and intended for the recipient sp=
+ecified in message only. It is strictly forbidden to share any part of this=
+ message with any third party, without a written consent of the sender. If =
+you received this message by mistake,
+ please reply to this message and follow with its deletion, so that we can =
+ensure such a mistake does not occur in the future.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</blockquote></div></div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Executi=
+ve Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span> 			 		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000001df90105eb3c897c--
+--0000000000001df90205eb3c897d
+Content-Type: image/png; name="0.png"
+Content-Disposition: inline; filename="0.png"
+Content-Transfer-Encoding: base64
+Content-ID: <183da714a186c2507a81>
+X-Attachment-Id: 183da714a186c2507a81
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2
+MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5j
+ZUlEPSJ4bXAuaWlkOjZEMDZFNjA2NjY4QTExRTg5MUQ1OEU3Q0M4MEY1NEZCIiB4bXBNTTpEb2N1
+bWVudElEPSJ4bXAuZGlkOjZEMDZFNjA3NjY4QTExRTg5MUQ1OEU3Q0M4MEY1NEZCIj4gPHhtcE1N
+OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkQwNkU2MDQ2NjhBMTFFODkx
+RDU4RTdDQzgwRjU0RkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkQwNkU2MDU2NjhBMTFF
+ODkxRDU4RTdDQzgwRjU0RkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94Onht
+cG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6GFMI0AAAA51BMVEXV1dVEREScnJwcHBwiIiJ9fX0e
+Hh78/PyoqKjp6eknJyd2dnYsLCyurq56enq1tbVfX19dXV1XV1eWlpZ7e3vf39/n5+fr6+v19fX0
+9PSUlJQqKioXFxezs7P9/f2xsbHd3d3w8PDi4uJKSkodHR2goKBra2tJSUkwMDBFRUV3d3f4+PhD
+Q0OKioqJiYlpaWlnZ2fc3Nxubm7FxcUvLy9aWlq2traQkJDe3t4uLi4kJCTNzc1YWFi0tLTm5ubv
+7+/q6upRUVHy8vKtra3Dw8MhISGfn59sbGwSEhIaGhqpqakPDw////+Av0QaAAAATXRSTlP/////
+////////////////////////////////////////////////////////////////////////////
+////////////////////ANNqEYAAAACgSURBVHjalNDFDsMwEEVRB5ukzMzMzMyd2P//PVXVpO1Y
+3eSurLOZJxP2J+IMdTHSW3M49NAMpVWMbvCVZnJjj7C+KjI2AIJwKo1ZolNZINyCUROg78LXbxNQ
+7yd+Z5Ls+J2FVHATUi4I5zKAoQIEYl/swjJM9Kj/CM24jXlJOLyfCrRsLMMoa746i9e0tYrQnx5t
+CzXzk+bNOf3kpwADAMR7Z6yGQYu1AAAAAElFTkSuQmCCDQo=
+--0000000000001df90205eb3c897d
+Content-Type: image/png; name="image001.png"
+Content-Disposition: inline; filename="image001.png"
+Content-Transfer-Encoding: base64
+Content-ID: <183da714a18ad7999132>
+X-Attachment-Id: 183da714a18ad7999132
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2
+MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5j
+ZUlEPSJ4bXAuaWlkOjZEMDZFNjA2NjY4QTExRTg5MUQ1OEU3Q0M4MEY1NEZCIiB4bXBNTTpEb2N1
+bWVudElEPSJ4bXAuZGlkOjZEMDZFNjA3NjY4QTExRTg5MUQ1OEU3Q0M4MEY1NEZCIj4gPHhtcE1N
+OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkQwNkU2MDQ2NjhBMTFFODkx
+RDU4RTdDQzgwRjU0RkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkQwNkU2MDU2NjhBMTFF
+ODkxRDU4RTdDQzgwRjU0RkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94Onht
+cG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6GFMI0AAAA51BMVEXV1dVEREScnJwcHBwiIiJ9fX0e
+Hh78/PyoqKjp6eknJyd2dnYsLCyurq56enq1tbVfX19dXV1XV1eWlpZ7e3vf39/n5+fr6+v19fX0
+9PSUlJQqKioXFxezs7P9/f2xsbHd3d3w8PDi4uJKSkodHR2goKBra2tJSUkwMDBFRUV3d3f4+PhD
+Q0OKioqJiYlpaWlnZ2fc3Nxubm7FxcUvLy9aWlq2traQkJDe3t4uLi4kJCTNzc1YWFi0tLTm5ubv
+7+/q6upRUVHy8vKtra3Dw8MhISGfn59sbGwSEhIaGhqpqakPDw////+Av0QaAAAATXRSTlP/////
+////////////////////////////////////////////////////////////////////////////
+////////////////////ANNqEYAAAACgSURBVHjalNDFDsMwEEVRB5ukzMzMzMyd2P//PVXVpO1Y
+3eSurLOZJxP2J+IMdTHSW3M49NAMpVWMbvCVZnJjj7C+KjI2AIJwKo1ZolNZINyCUROg78LXbxNQ
+7yd+Z5Ls+J2FVHATUi4I5zKAoQIEYl/swjJM9Kj/CM24jXlJOLyfCrRsLMMoa746i9e0tYrQnx5t
+CzXzk+bNOf3kpwADAMR7Z6yGQYu1AAAAAElFTkSuQmCCDQo=
+--0000000000001df90205eb3c897d--

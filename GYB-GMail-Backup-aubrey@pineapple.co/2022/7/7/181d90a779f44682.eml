@@ -1,0 +1,718 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp4163238ejq;
+        Thu, 7 Jul 2022 07:22:30 -0700 (PDT)
+X-Received: by 2002:a81:188a:0:b0:31c:86ee:2cf5 with SMTP id 132-20020a81188a000000b0031c86ee2cf5mr28961756ywy.471.1657203750450;
+        Thu, 07 Jul 2022 07:22:30 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1657203750; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=o3g4J4f4yDb2imuhLLrDGEdmiwuk40UYk5QbOwSpe4Z0A68BhrbGTzzw9opK0xY621
+         7bZaDoYkCqs3Ktj87ytXOuVYYe5Nck8g3XBfOZUi6fHxlA5SvZe29sfA0+LD35gGVuGu
+         YNl/E2ZVfHnW7u3O6kB331FelfYucqJqnF3nYq9z+K34u/ID1HxW3IF+TSDYs2U6gUQt
+         LkJ0WhbyF9HcS9Sghw84sy0Vied4hznq/wt57t1p7H+ZRGj6YztABqT9EUvSWz3PG//w
+         6SSTKEx9veJx8+gwi2btzvS3iJdG9fQnWEPAdZtHufi42ayW1hOh36H39QSZrQYMR6U2
+         qX3A==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:mime-version:date:message-id:feedback-id:to
+         :reply-to:subject:from:dkim-signature;
+        bh=MR9oKL9KmnL9qjqudda5C2SbiwKkqIfALpjsi6lQnHk=;
+        b=w8zaboFEXRiLP44TDoiaR7FlRc+HHRDNeWYKkQ659s3jbKAzX9AROtVw4NICVmXZl1
+         7GxOOn0GV78tZRbR7Ws3spk8DsOxP+tR6hQl9faPJt3qKiWEZejOyBIBPeupjuf8KGw2
+         elI46DxggIaUBGzsUirwKGuQo6hz9ilrK26g40ZSsyTqhRMEUkb2Je/f2C5zToiC8u7J
+         45j1YOU8BKnW4BwMliKhbKCzszIMTIV+dMe1qEDlPAkwHxjFh+hmS/xDXj480zfTiJvD
+         bKoY7+WbmL5q9nV4xo67pRu6+O+wM/u9gRKLjttbGyoLmBQCHRRuB8+mnebIGm4cnwmY
+         5uCA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=VQYNmOv7;
+       arc=pass (i=2 spf=pass spfdomain=mandrillapp.com dkim=pass dkdomain=onlinemail.tableau.com dkim=pass dkdomain=mandrillapp.com dmarc=pass fromdomain=tableau.com);
+       spf=pass (google.com: domain of reportviewer+bncbdm4znvb4ujbbjoytolamgqeowo2m2q@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=reportviewer+bncBDM4ZNVB4UJBBJOYTOLAMGQEOWO2M2Q@pineapple.co;
+       dmarc=fail (p=REJECT sp=NONE dis=NONE arc=pass) header.from=tableau.com
+Return-Path: <reportviewer+bncBDM4ZNVB4UJBBJOYTOLAMGQEOWO2M2Q@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 198-20020a8115cf000000b0031cb85f2165sor2781807ywv.15.2022.07.07.07.22.30
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 07 Jul 2022 07:22:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of reportviewer+bncbdm4znvb4ujbbjoytolamgqeowo2m2q@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=VQYNmOv7;
+       arc=pass (i=2 spf=pass spfdomain=mandrillapp.com dkim=pass dkdomain=onlinemail.tableau.com dkim=pass dkdomain=mandrillapp.com dmarc=pass fromdomain=tableau.com);
+       spf=pass (google.com: domain of reportviewer+bncbdm4znvb4ujbbjoytolamgqeowo2m2q@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=reportviewer+bncBDM4ZNVB4UJBBJOYTOLAMGQEOWO2M2Q@pineapple.co;
+       dmarc=fail (p=REJECT sp=NONE dis=NONE arc=pass) header.from=tableau.com
+ARC-Seal: i=2; a=rsa-sha256; t=1657203750; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=Mk0srPdovDyCEsZxp009AztKXDmM/fEa2wUQLM/Ip/l6162QJcZowpo2NBqYRv39t/
+         ghZ5dT5Rj/aJLvaNNmA1yMII+ySnwnUSbTGJ66vTygsCEYG5BjFgNrIQlN9YswcCG8Zp
+         5dSAWeaY7QXcRndxLOFz/c/N37eBWf5Vb4bsPo5V4TK+7w9Bl/FP+2l71yEuYDEUrfpy
+         L4OrmIM76HjGAVZRpk/ao7L9MmPBzTQ77fMChPt4biph6sfnaEToja7PXZK643jdqRQ0
+         BosgeHdkR87LBKEbtiRX/jnbT5v5rXE81U/hc/lWnb4uqUO5W8hd1GdjQCRXI/N1BeaZ
+         ekqA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:mime-version:date:message-id:feedback-id:to
+         :reply-to:subject:from:dkim-signature;
+        bh=MR9oKL9KmnL9qjqudda5C2SbiwKkqIfALpjsi6lQnHk=;
+        b=bxyEyZD0+Df/Q5HUWqE7TwJzz8w9+zGkJkbBJC/jQc+G45b9TNi/pOVxXAZFY5ZsAl
+         nheUIGSSXWvfmQL78wQBQk4cMuZs9fzD6haxcWIn0qm+ITXzDoWKuO94dbWVhvZMoMbO
+         et9V8D/WXaAYb0QLt07bIHR0SF80xgeAaOKJE+N+YAEo/mX3agh1vjKSyJmOL+ICd+9/
+         OXgLcivdbzRvX7hxHiE17kTyQhgF88sLBBKppKt3gLKyJsgXqmpPHVaAG623NRqRj37M
+         LWYUfHuYULXY4cdlbK35Stxd2SMsy0l0UqNFako3cH8XTCeMHUTSeLvuzwu+FQqS+39m
+         R9Rw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@onlinemail.tableau.com header.s=mandrill header.b=LmcYQbRA;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=KBNZMTkj;
+       spf=pass (google.com: domain of bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com designates 198.2.186.2 as permitted sender) smtp.mailfrom=bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=tableau.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=from:subject:reply-to:to:feedback-id:message-id:date:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-unsubscribe;
+        bh=MR9oKL9KmnL9qjqudda5C2SbiwKkqIfALpjsi6lQnHk=;
+        b=VQYNmOv7SLbIGyuYgMylFWVDYMyRiGtWp+uf8eNTHMMp37hXVPNOLAROjio7bzy74/
+         RDnRVXA4cOM+Zw+Ici59yuCMwqrpeKrH0dfjP6BmCunFfh9febH1nZxDvdLeiLrst5EE
+         TXETJFGCvTY4oIMlazynnounehDDpOdZkXfZvzMV6vKhfDEk4iKqYTT4vqPsyxOQ4TED
+         GAJELk3V8xsBD8PWTZCeKzCmCb5eEa8bYLSnE983S89gefuhQxZcOtRHi9dK6No2lrSE
+         z+fLaSYnI4wBsINWpURotRfrZGx1ZudaCXjTTdeINHBAdRzvOk2W/lhUgYPerHkETI4O
+         wKcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:subject:reply-to:to:feedback-id:message-id
+         :date:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-unsubscribe;
+        bh=MR9oKL9KmnL9qjqudda5C2SbiwKkqIfALpjsi6lQnHk=;
+        b=zwnLD3Thzbzm6kSuSrd7nnLcP5FuoJPOA5c5dAdyU1FmWE4LAlDJNLZsuYcY9JE89y
+         dzHuBfh88sBALsxBv6VSPoavEMAg0+qdgx+1/Pq/HVLUzwMpOxWdVXbqNIuI2eemriTJ
+         boiHqiaLp97kKQbh5E3tDG1m8M4haXRQEHTXYe0CFWPzEz+UmJPi1JALImYUvdDqZmNl
+         BgnMLdceHxZLiUvdK7zmeKxjeZGtvEjveZ8M5NIC4rGFP0bPngyC9ThKhqKkrXtRAsXK
+         xSqLu49L4MAXABRr2vgW+WtckzMzMzsPwNCTczu9GNSnsrOS9gjYoRitW4+NShkRlhvd
+         LoYw==
+X-Gm-Message-State: AJIora/jFkKN5CTxlv0s4I5iSSG9+h23KpsA7eCzF/vJ164vwncCv3bT
+	URbDQ0O8KeJbDbsZ4Cw2zOWIcwFU
+X-Google-Smtp-Source: AGRyM1vYSi0gcl9ajwlva1Orw2gA/Qc8+ZYND7wUNxnaQ24e7HShRLwsRCfoaNe6beymahRGYO9RmQ==
+X-Received: by 2002:a81:1586:0:b0:31c:80cd:a035 with SMTP id 128-20020a811586000000b0031c80cda035mr32136052ywv.332.1657203749984;
+        Thu, 07 Jul 2022 07:22:29 -0700 (PDT)
+X-BeenThere: reportviewer@pineapple.co
+Received: by 2002:a0d:e6cd:0:b0:31c:b5c9:1b19 with SMTP id p196-20020a0de6cd000000b0031cb5c91b19ls4350875ywe.11.gmail;
+ Thu, 07 Jul 2022 07:22:29 -0700 (PDT)
+X-Received: by 2002:a0d:cc4a:0:b0:31c:933d:ac7b with SMTP id o71-20020a0dcc4a000000b0031c933dac7bmr25673942ywd.390.1657203749172;
+        Thu, 07 Jul 2022 07:22:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657203749; cv=none;
+        d=google.com; s=arc-20160816;
+        b=G6FGbI06qbJSi4oJI9wwBMKaftwvZLU8pWVpnbWs5ijSWdLwGBy93qa8flkZu7eoaq
+         jihmwXy+Msl1dqaRPGXQAPrLD4r67fwuKxi7mPVW9KO6tOMLvXYN9KF7ENjPBdHQ1rGU
+         +ofJlSMtX82OHw9BN4+CnAuN9RfGrUC7UXIBf18aPoUqNsD1wVkadZTqC3DPaBqpp+k/
+         GgKgacDVnzld6ZfYWcsHMyC30r8uDSUkCfDJqEmnyL5LcF0ZwhXNk4UMc2AC1vXpzjyq
+         Y+m/HQh3ooQw3p4eS27k8UINFyzxYP239zDablkc+Kp5Q+/dMMSOcaNTBiNTr2WHi/is
+         6faw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:date:message-id:feedback-id:to:reply-to:subject:from
+         :dkim-signature:dkim-signature;
+        bh=MR9oKL9KmnL9qjqudda5C2SbiwKkqIfALpjsi6lQnHk=;
+        b=F6m2FAbiJgtF9THs57sWxvENFMeNYMdEvY+Ci7y9Obl+7F9YEOMXJE+g+sCEnKD/pP
+         LzsLW/OiXAS/jfFxZKJVy2K6SnprZoNs9fpgKGW4A7998qrDwmKYbQ/RxTIjsFpWLwsX
+         JXogiWmY3jCluoI61eSCbsK0gc5GYTcfFMKzk88LuiH06zbOJZ6+s2A0Ef1ZBffl9RiX
+         yz5SWwmzrd7fvljmeINgHazGbVmXT2RSmEw89rEMyDVirCTUKRWSOf3njUnNFyQvle1E
+         iS1VywVvYbCWfqe47Zaxb71TyR4FtLWiUh7FrPCh8SO5F9QFLM6E+s68wbOM4cfmWdt+
+         KA7Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@onlinemail.tableau.com header.s=mandrill header.b=LmcYQbRA;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=KBNZMTkj;
+       spf=pass (google.com: domain of bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com designates 198.2.186.2 as permitted sender) smtp.mailfrom=bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=tableau.com
+Received: from mail186-2.suw21.mandrillapp.com (mail186-2.suw21.mandrillapp.com. [198.2.186.2])
+        by mx.google.com with ESMTPS id s80-20020a819b53000000b0031c9803ecb2si19070959ywg.434.2022.07.07.07.22.29
+        for <reportviewer@pineapple.co>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Jul 2022 07:22:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com designates 198.2.186.2 as permitted sender) client-ip=198.2.186.2;
+Received: from pmta10.mandrill.prod.suw01.rsglab.com (localhost [127.0.0.1])
+	by mail186-2.suw21.mandrillapp.com (Mailchimp) with ESMTP id 4LdzBs0YKhzS62QLJ
+	for <reportviewer@pineapple.co>; Thu,  7 Jul 2022 14:22:29 +0000 (GMT)
+From: Tableau Online <reghelp@onlinemail.tableau.com>
+Subject: You've Successfully Joined Tableau Online
+Received: from [35.160.92.113] by mandrillapp.com id 132e3b3c85fe473f811fade8d425d52e; Thu, 07 Jul 2022 14:22:28 +0000
+Reply-To: reghelp@onlinemail.tableau.com
+To: Pineapple Reporting <reportviewer@pineapple.co>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30346553.132e3b3c85fe473f811fade8d425d52e
+X-Mandrill-User: md_30346553
+Feedback-ID: 30346553:30346553.20220707:md
+Message-Id: <30346553.20220707142228.62c6ec24e94188.22163867@mail186-2.suw21.mandrillapp.com>
+Date: Thu, 07 Jul 2022 14:22:28 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="_av-5sVggbM5VFhLYk390JoyGA"
+X-Original-Sender: reghelp@onlinemail.tableau.com
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@onlinemail.tableau.com header.s=mandrill header.b=LmcYQbRA;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill
+ header.b=KBNZMTkj;       spf=pass (google.com: domain of bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com
+ designates 198.2.186.2 as permitted sender) smtp.mailfrom=bounce-md_30346553.62c6ec24.v1-132e3b3c85fe473f811fade8d425d52e@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=tableau.com
+Precedence: list
+Mailing-list: list reportviewer@pineapple.co; contact reportviewer+owners@pineapple.co
+List-ID: <reportviewer.pineapple.co>
+X-Spam-Checked-In-Group: reportviewer@pineapple.co
+X-Google-Group-Id: 869051491001
+List-Post: <https://groups.google.com/a/pineapple.co/group/reportviewer/post>, <mailto:reportviewer@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:reportviewer+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/reportviewer/>
+List-Unsubscribe: <mailto:googlegroups-manage+869051491001+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/reportviewer/subscribe>
+
+--_av-5sVggbM5VFhLYk390JoyGA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+   Tableau <https://mandrillapp.com/track/click/30346553/tableau.com?p=3Dey=
+JzIjoiUDAyUF9xWDF2T1BkM2ZKcE1hVXgzM0tmekJzIiwidiI6MSwicCI6IntcInVcIjozMDM0N=
+jU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvdGFibGVhdS5jb21cIixcImlkXCI6=
+XCIxMzJlM2IzYzg1ZmU0NzNmODExZmFkZThkNDI1ZDUyZVwiLFwidXJsX2lkc1wiOltcImZkNjk=
+4NGU0MGRmNTQxODZmZTUwMmIwYTkyMzNkNTEyMGQ3YWFlMmVcIl19In0>                  =
+             You've joined
+Pineapple Products        Sign In <https://mandrillapp.com/track/click/3034=
+6553/online.tableau.com?p=3DeyJzIjoiUkJRUTd4RGNGaTJkdmZTRkQ1U0ZuMG5BWXJjIiw=
+idiI6MSwicCI6IntcInVcIjozMDM0NjU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXF=
+xcL29ubGluZS50YWJsZWF1LmNvbVxcXC9cIixcImlkXCI6XCIxMzJlM2IzYzg1ZmU0NzNmODExZ=
+mFkZThkNDI1ZDUyZVwiLFwidXJsX2lkc1wiOltcIjQ2MTY5YzdiYWZlNDE2MjgzNjQ2YWJlYzU3=
+OTI2ZDBkMDA3NjE4N2ZcIl19In0>            
+                    Check out our video tutorials.
+<https://mandrillapp.com/track/click/30346553/www.tableau.com?p=3DeyJzIjoic=
+nhYby1KQmxxc1c3eWp6NzdaUFA0NHd1OUlRIiwidiI6MSwicCI6IntcInVcIjozMDM0NjU1Myxc=
+InZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LnRhYmxlYXUuY29tXFxcL2xlYXJuXFx=
+cL3RyYWluaW5nP3F0LXRyYWluaW5nX3RhYnM9MSNxdC10cmFpbmluZ190YWJzXCIsXCJpZFwiOl=
+wiMTMyZTNiM2M4NWZlNDczZjgxMWZhZGU4ZDQyNWQ1MmVcIixcInVybF9pZHNcIjpbXCI1NWM0Y=
+jZlYzI5OTcwZjUxMmY1ODdkYjZlZDc4MTc3ZjYyYjkwMGEzXCJdfSJ9>
+                                    
+  Copyright =C2=A9 2022 Tableau Software. All Rights Reserved. 1621 N 34th =
+St.
+Seattle, WA 98103  
+   
+  Privacy. <https://mandrillapp.com/track/click/30346553/www.tableau.com?p=
+=3DeyJzIjoicmtGWXVOX0tKM1g0UEpwOTRhRk1ROUdQRTc0IiwidiI6MSwicCI6IntcInVcIjoz=
+MDM0NjU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LnRhYmxlYXUuY29tXFx=
+cL3ByaXZhY3lcIixcImlkXCI6XCIxMzJlM2IzYzg1ZmU0NzNmODExZmFkZThkNDI1ZDUyZVwiLF=
+widXJsX2lkc1wiOltcIjQ0MmUzMWYzZGQ1MmQxODA3NDM2OWUwNjZjMDAxNTAwNDIzNWZjNGZcI=
+l19In0> You've got it.
+
+--_av-5sVggbM5VFhLYk390JoyGA
+Content-Type: multipart/related; boundary="_av-fniipqDGpArKOOQFo3B6Og"
+
+--_av-fniipqDGpArKOOQFo3B6Og
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>Tableau</title>
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width" />
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" =
+/>
+  <style type=3D"text/css">
+  /* CLIENT-SPECIFIC STYLES */
+
+  #outlook a {
+    padding: 0;
+  }
+  /* Force Outlook to provide a "view in browser" message */
+
+  .ReadMsgBody {
+    width: 100%;
+  }
+
+  .ExternalClass {
+    width: 100%;
+  }
+  /* Force Hotmail to display emails at full width */
+
+  .ExternalClass,
+  .ExternalClass p,
+  .ExternalClass span,
+  .ExternalClass font,
+  .ExternalClass td,
+  .ExternalClass div {
+    line-height: 100%;
+  }
+  /* Force Hotmail to display normal line spacing */
+
+  body,
+  table,
+  td,
+  a {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  /* Prevent WebKit and Windows mobile changing default text sizes */
+
+  table,
+  td {
+    mso-table-lspace: 0pt;
+    mso-table-rspace: 0pt;
+  }
+  /* Remove spacing between tables in Outlook 1957 and up */
+
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+  /* Allow smoother rendering of resized image in Internet Explorer */
+  /* RESET STYLES */
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    border: 0;
+    line-height: 100%;
+    outline: none;
+    text-decoration: none;
+  }
+
+  table {
+    border-collapse: collapse !important;
+  }
+
+  body {
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+  }
+
+  @media screen and (max-width: 600px) {
+    table[class=3D"wrapper"] {
+      width: 100% !important;
+    }
+    td[class=3D"logo"] {
+      text-align: left;
+      padding: 20px 0 20px 0 !important;
+    }
+    td[class=3D"mobile-hide"] {
+      display: none !important;
+    }
+    td[class=3D"logo"] img {
+      margin: 0 auto!important;
+    }
+    img[class=3D"img-max"] {
+      max-width: 100%;
+      height: auto;
+    }
+    table[class=3Dbody] .btn table {
+      width: 100% !important;
+    }
+    table[class=3D"responsive-table"] {
+      width: 100%!important;
+    }
+    td[class=3D"section-padding"] {
+      padding: 30px 15px 0px 15px !important;
+    }
+    td[class=3D"section-padding2"] {
+      padding: 30px 15px 0 15px !important;
+    }
+  }
+  </style>
+</head>
+
+<body style=3D"margin: 0; padding: 0;">
+
+<!-- HEADER -->
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" styl=
+e=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
+  <tr>
+    <td bgcolor=3D"#ffffff" align=3D"center" class=3D"section-padding" styl=
+e=3D"padding-top:10px;padding-bottom:10px;-webkit-text-size-adjust:100%;-ms=
+-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"500"=
+ class=3D"responsive-table" style=3D"-webkit-text-size-adjust:100%;-ms-text=
+-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse=
+:collapse !important;">
+        <tr>
+          <td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:1=
+00%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+            <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;ms=
+o-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important=
+;">
+              <tr>
+                <td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-ad=
+just:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                  <table width=3D"100%" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:1=
+00%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !imp=
+ortant;">
+                    <tbody>
+                      <tr>
+                        <td style=3D"-webkit-text-size-adjust:100%;-ms-text=
+-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                          <table width=3D"100%" border=3D"0" cellspacing=3D=
+"0" cellpadding=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-=
+adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:colla=
+pse !important;">
+                            <tr>
+                              <td bgcolor=3D"#ffffff" width=3D"215" align=
+=3D"center">
+                                <a href=3D"https://mandrillapp.com/track/cl=
+ick/30346553/tableau.com?p=3DeyJzIjoiUDAyUF9xWDF2T1BkM2ZKcE1hVXgzM0tmekJzIi=
+widiI6MSwicCI6IntcInVcIjozMDM0NjU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cX=
+FwvdGFibGVhdS5jb21cIixcImlkXCI6XCIxMzJlM2IzYzg1ZmU0NzNmODExZmFkZThkNDI1ZDUy=
+ZVwiLFwidXJsX2lkc1wiOltcImZkNjk4NGU0MGRmNTQxODZmZTUwMmIwYTkyMzNkNTEyMGQ3YWF=
+lMmVcIl19In0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09    <img src=3D=
+"cid:tableauSoftwareLogo" alt=3D"" width=3D"215" style=3D"display: block; f=
+ont-family: Georgia; color: #ffffff;" border=3D"0"></a></td>
+=09=09=09=09=09=09=09=09=09=09                                </a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+  <!--Hero Grid-->
+  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" st=
+yle=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-ls=
+pace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
+    <tr>
+      <td bgcolor=3D"#ffffff" align=3D"center" class=3D"section-padding" st=
+yle=3D"padding-top:10px;padding-bottom:10px;-webkit-text-size-adjust:100%;-=
+ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+        <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"50=
+0" class=3D"responsive-table" style=3D"-webkit-text-size-adjust:100%;-ms-te=
+xt-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collap=
+se:collapse !important;">
+          <tr>
+            <td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust=
+:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+              <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadd=
+ing=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;=
+mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !importa=
+nt;">
+                <tr>
+                  <td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-=
+adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                    <!-- Text Grid -->
+                    <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust=
+:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !i=
+mportant;">
+                      <tr>
+                        <td align=3D"center" style=3D"font-size:24px;font-f=
+amily: Arial, sans-serif;color:#666666;padding-top:30px;-webkit-text-size-a=
+djust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:=
+0pt;">You've joined Pineapple Products</td>
+                      </tr>
+                    </table>
+                    <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust=
+:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !i=
+mportant;">
+                      <tr>
+                        <td align=3D"center" style=3D"padding-top:25px;padd=
+ing-bottom:0;padding-right:0;padding-left:0;-webkit-text-size-adjust:100%;-=
+ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                          <table border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" class=3D"responsive-table" style=3D"-webkit-text-size-adjust:100%;-m=
+s-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-co=
+llapse:collapse !important;">
+                            <tr>
+                              <td bgcolor=3D"#F58F50" align=3D"center" styl=
+e=3D"padding-top:12px;padding-bottom:12px;padding-right:18px;padding-left:1=
+8px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspac=
+e:0pt;mso-table-rspace:0pt;"><a href=3D"https://mandrillapp.com/track/click=
+/30346553/online.tableau.com?p=3DeyJzIjoiUkJRUTd4RGNGaTJkdmZTRkQ1U0ZuMG5BWX=
+JjIiwidiI6MSwicCI6IntcInVcIjozMDM0NjU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcX=
+FwvXFxcL29ubGluZS50YWJsZWF1LmNvbVxcXC9cIixcImlkXCI6XCIxMzJlM2IzYzg1ZmU0NzNm=
+ODExZmFkZThkNDI1ZDUyZVwiLFwidXJsX2lkc1wiOltcIjQ2MTY5YzdiYWZlNDE2MjgzNjQ2YWJ=
+lYzU3OTI2ZDBkMDA3NjE4N2ZcIl19In0" style=3D"font-size:16px;font-family: Aria=
+l, sans-serif;font-weight:normal;color:#ffffff;text-decoration:none;-webkit=
+-text-size-adjust:100%;-ms-text-size-adjust:100%;">Sign In</a></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!--Grid-->
+  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" st=
+yle=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-ls=
+pace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
+    <tr>
+      <td bgcolor=3D"#ffffff" align=3D"center" class=3D"section-padding" st=
+yle=3D"padding-top:10px;padding-bottom:0px;padding-right:15px;padding-left:=
+15px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;">
+        <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"50=
+0" class=3D"responsive-table" style=3D"-webkit-text-size-adjust:100%;-ms-te=
+xt-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collap=
+se:collapse !important;">
+          <tr>
+            <td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust=
+:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+              <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadd=
+ing=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;=
+mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !importa=
+nt;">
+                <tr>
+                  <td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-=
+adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                    <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust=
+:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !i=
+mportant;">
+                      <tr>
+                        <td valign=3D"top" class=3D"mobile-wrapper" style=
+=3D"padding-top:30px;padding-bottom:0;padding-right:0;padding-left:0;-webki=
+t-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-=
+table-rspace:0pt;">
+                          <table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" width=3D"100%" align=3D"center" class=3D"responsive-table" style=3D"=
+-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0p=
+t;mso-table-rspace:0pt;border-collapse:collapse !important;">
+                            <tr>
+                              <td style=3D"padding-top:0;padding-bottom:0px=
+;padding-right:0;padding-left:0;-webkit-text-size-adjust:100%;-ms-text-size=
+-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                <table cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" width=3D"100%" style=3D"-webkit-text-size-adjust:100%;-ms-text=
+-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse=
+:collapse !important;">
+                                  <tr>
+                                    <td align=3D"center" style=3D"padding-t=
+op:10px;padding-bottom:0;padding-right:0;padding-left:0;font-family: Arial,=
+ sans-serif;font-size:18px;-webkit-text-size-adjust:100%;-ms-text-size-adju=
+st:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;"><a style=3D"color:#367E=
+9C; text-decoration: none;" href=3D"https://mandrillapp.com/track/click/303=
+46553/www.tableau.com?p=3DeyJzIjoicnhYby1KQmxxc1c3eWp6NzdaUFA0NHd1OUlRIiwid=
+iI6MSwicCI6IntcInVcIjozMDM0NjU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwv=
+d3d3LnRhYmxlYXUuY29tXFxcL2xlYXJuXFxcL3RyYWluaW5nP3F0LXRyYWluaW5nX3RhYnM9MSN=
+xdC10cmFpbmluZ190YWJzXCIsXCJpZFwiOlwiMTMyZTNiM2M4NWZlNDczZjgxMWZhZGU4ZDQyNW=
+Q1MmVcIixcInVybF9pZHNcIjpbXCI1NWM0YjZlYzI5OTcwZjUxMmY1ODdkYjZlZDc4MTc3ZjYyY=
+jkwMGEzXCJdfSJ9">Check out our video tutorials.</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td align=3D"center" class=3D"padding-c=
+ity" style=3D"padding-top:15px;padding-bottom:10px;padding-right:0;padding-=
+left:0;border-radius:0 0 5px 5px;-webkit-text-size-adjust:100%;-ms-text-siz=
+e-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                                    </td>
+                                  </tr>
+
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+
+<!-- Footer -->
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+  <tbody>
+    <tr>
+      <td style=3D"padding-top: 25px; padding-bottom: 25px;" class=3D"secti=
+on-padding2;" align=3D"center" bgcolor=3D"#ffffff">
+        <table class=3D"responsive-table" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" width=3D"600">
+          <tbody>
+            <tr>
+              <td>
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%">
+                  <tbody>
+                    <tr>
+                      <td align=3D"center">
+                        <dl style=3D"font-size:10px;line-height:14px;font-f=
+amily:Helvetica, Arial, sans-serif;color:#666666; border-top-color: #ccc; b=
+order-top-style: solid; border-top-width: 1px;" colspan=3D"2">
+                          <dt>
+                            <br>
+                          </dt>
+                          <dt>Copyright &copy; 2022 Tableau Software. All R=
+ights Reserved.</dt>
+                          <dt>1621 N 34th St. Seattle, WA 98103</dt>
+                          <dt>
+                            <br>
+                          </dt>
+                          <dt>
+                            <br>
+                          </dt>
+                          <dt><a style=3D"text-decoration: none; color: #F5=
+8F50;" href=3D"https://mandrillapp.com/track/click/30346553/www.tableau.com=
+?p=3DeyJzIjoicmtGWXVOX0tKM1g0UEpwOTRhRk1ROUdQRTc0IiwidiI6MSwicCI6IntcInVcIj=
+ozMDM0NjU1MyxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LnRhYmxlYXUuY29tX=
+FxcL3ByaXZhY3lcIixcImlkXCI6XCIxMzJlM2IzYzg1ZmU0NzNmODExZmFkZThkNDI1ZDUyZVwi=
+LFwidXJsX2lkc1wiOltcIjQ0MmUzMWYzZGQ1MmQxODA3NDM2OWUwNjZjMDAxNTAwNDIzNWZjNGZ=
+cIl19In0">Privacy.</a> You've got it.</dt>
+                        </dl>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<img src=3D"https://mandrillapp.com/track/open.php?u=3D30346553&id=3D132e3b=
+3c85fe473f811fade8d425d52e" height=3D"1" width=3D"1"></body>
+</html>
+
+--_av-fniipqDGpArKOOQFo3B6Og
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Id: <tableauSoftwareLogo>
+Content-Disposition: inline
+
+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
+
+--_av-fniipqDGpArKOOQFo3B6Og--
+
+--_av-5sVggbM5VFhLYk390JoyGA--
+

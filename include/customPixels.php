@@ -7,14 +7,33 @@ This should be fired on every page, so via a proxy cron, through the queue manag
 it will not load or show in the source. Variables will need to passed with the pixel.
 */
 
-// TODO: Add functionality to prevent test orders from firing custom pixels (IE Taboola+Outbrain Issue)
+use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
+use Monolog\Formatter\LineFormatter;
 
 debugTimerStart('pixel-logger', 'Starting up pixel logger');
     $loggerPixel = new Logger('Pixel');
-    $loggerPixel->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_pixel.log', Logger::INFO));
+    //$loggerPixel->pushProcessor(new \Monolog\Processor\GitProcessor());
+    $loggerPixel->pushProcessor(new \Monolog\Processor\WebProcessor());
+    $stream_handler_px = new RotatingFileHandler('../log/pixel.log', 0, Logger::INFO, true, 0664);
+    $stream_handler_px->setFilenameFormat('{date}_{filename}', 'Y-m-d');
+    $output = "%level_name% | %datetime% > %message% | %context% %extra%\n";
+    $dateFormat = "Y-n-j g:i:s a";
+    $formatter_px = new LineFormatter(
+        $output, // Format of message in log
+        $dateFormat, // Datetime format
+        true, // allowInlineLineBreaks option, default false
+        true  // discard empty Square brackets in the end, default false
+    );
+    $stream_handler_px->setFormatter($formatter_px);
+    $loggerPixel->pushHandler($stream_handler_px);
 debugTimerEnd('pixel-logger');
+
+
+// TODO: Add functionality to prevent test orders from firing custom pixels (IE Taboola+Outbrain Issue)
+
 
 /*
 echo $_SESSION['url'] . '<br>';
@@ -25,14 +44,14 @@ $pageType = $_SESSION['pageType'] ?? 'default';
 $pixelsFired = array();
 
 
-function pixelLogging($logger, $pixelsFired)
+function pixelLogging($loggerPixel, $pixelsFired)
 {
     $email = $_SESSION['email'] ?? 'n/a';
     $session = session_id();
     $pageType = $_SESSION['pageType'] ?? 'default';
     $pixelsFired = implode(',', $pixelsFired);
-    $pixelLog = $session . ' || ' . $email . ' || ' . $pageType . ' || ' . $pixelsFired . ' || ';
-    $logger->info('Pixel Log: ' . $pixelLog);
+    $pixelLog = $session . ' || ' . $email . ' || ' . $pageType . ' || ' . $pixelsFired;
+    $loggerPixel->info('Pixel Log: ' . $pixelLog);
 }
 
 
@@ -190,10 +209,19 @@ switch ($pageType) {
     case "up2":
         ?>
         <script>
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
-            });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'GTM<?php echo $pageType;?>',
+            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
+            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+            'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
+            'transactionProducts': [{
+                'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
+                'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
+                'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
+                'quantity': 1
+            }]
+        });
         </script>
         <?php
         break;
@@ -202,12 +230,90 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM<?php echo $pageType;?>',
+                'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
+                'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+                'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
+                'transactionProducts': [{
+                    'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
+                    'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
+                    'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
+                    'quantity': 1
+                }]
             });
+
+
+        </script>
+
+        <!-- TruConversion for 5gmale.com -->
+        <script type="text/javascript">
+            var _tip = _tip || [];
+            (function(d,s,id){
+              var js, tjs = d.getElementsByTagName(s)[0];
+              if(d.getElementById(id)) { return; }
+              js = d.createElement(s); js.id = id;
+              js.async = true;
+              js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
+              tjs.parentNode.insertBefore(js, tjs);
+            }(document, 'script', 'ti-js'));
         </script>
         <?php
         break;
     case "up4":
+        ?>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'GTM<?php echo $pageType;?>',
+            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
+            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+            'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
+            'transactionProducts': [{
+                'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
+                'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
+                'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
+                'quantity': 1
+            }]
+        });
+        </script>
+
+        <!-- TruConversion for 5gmale.com -->
+        <script type="text/javascript">
+            var _tip = _tip || [];
+            (function(d, s, id) {
+                var js, tjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.async = true;
+                js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
+                tjs.parentNode.insertBefore(js, tjs);
+            }(document, 'script', 'ti-js'));
+        </script>
+        <?php
+        break;
+    case "upinterstitial":
+    ?>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'GTM<?php echo $pageType;?>',
+        'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
+        'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+        'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
+        'transactionProducts': [{
+            'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
+            'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
+            'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
+            'quantity': 1
+        }]
+    });
+    </script>
+    <?php
+    break;
+    case "dn0":
         ?>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -220,10 +326,32 @@ switch ($pageType) {
     case "dn1":
         ?>
         <script>
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
-            });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'GTM<?php echo $pageType;?>',
+            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
+            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+            'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
+            'transactionProducts': [{
+                'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
+                'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
+                'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
+                'quantity': 1
+            }]
+        });
+        </script>
+
+        <!-- TruConversion for 5gmale.com -->
+        <script type="text/javascript">
+            var _tip = _tip || [];
+            (function(d,s,id){
+              var js, tjs = d.getElementsByTagName(s)[0];
+              if(d.getElementById(id)) { return; }
+              js = d.createElement(s); js.id = id;
+              js.async = true;
+              js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
+              tjs.parentNode.insertBefore(js, tjs);
+            }(document, 'script', 'ti-js'));
         </script>
         <?php
         break;
@@ -247,13 +375,48 @@ switch ($pageType) {
         </script>
         <?php
         break;
-    case "receipt":
-        ?>
+    case "dn4":
+    ?>
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'GTM<?php echo $pageType;?>'
             });
+        </script>
+        <?php
+        break;
+    case "receipt":
+        ?>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'GTM<?php echo $pageType;?>',
+            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
+            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+            'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
+            'transactionProducts': [{
+                'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
+                'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
+                'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
+                'quantity': 1
+            }]
+        });
+        </script>
+
+        <!-- TruConversion for 5gmale.com -->
+        <script type="text/javascript">
+            var _tip = _tip || [];
+            (function(d, s, id) {
+                var js, tjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.async = true;
+                js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
+                tjs.parentNode.insertBefore(js, tjs);
+            }(document, 'script', 'ti-js'));
         </script>
         <?php
         break;

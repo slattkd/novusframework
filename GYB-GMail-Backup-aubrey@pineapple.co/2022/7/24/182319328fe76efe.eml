@@ -1,0 +1,251 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:1613:0:0:0:0 with SMTP id m19csp633447ejd;
+        Sun, 24 Jul 2022 11:58:24 -0700 (PDT)
+X-Received: by 2002:a17:90b:3148:b0:1ef:e4ce:1ebf with SMTP id ip8-20020a17090b314800b001efe4ce1ebfmr10470308pjb.220.1658689104022;
+        Sun, 24 Jul 2022 11:58:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658689104; cv=none;
+        d=google.com; s=arc-20160816;
+        b=XAml9agkjGmc23EEtd3CJ9DJ+X+Sf7C/83nbDy8St+0/CrGwFVPWZ91q1IqxB/CqPW
+         x2w3KYD607UbVsKuhahEq4kKasNftWzI5HKqawE1UZaQWEfSs5DETGPe6bpnOKYuLhxG
+         F9xDHD3onzN6glP9kTD+5TkrjQbHw12kaa2fe7H3KuB0tOOiMjubMceMvU8Xc8IT3XdM
+         q3hE4M3XEwgpCG7Lsp4Sg1uNw05hfckR6tBe/uSEPp2EqaX9H7DdwQJ7X4ApK+PxqFy1
+         +3xCO9ZLLLherVEc17cuWrpHoqO+vwx6X2SHEfBdF9ISO7ozO38/47uxr+TMHJqZltVZ
+         7gyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=d+V8Pb3TU9IuS4sOhrdKTXsG78fqRMNs64a8SlthjPM=;
+        b=ZskH0lhTWMa5hEmYk+t100I4bBVQCSahDKfPt44Q6Ei/Nuze22XyzLTMJHJW7pmO9Q
+         WMecKvtLHnd0bwcnlSRsEy7TSFw/whDREJRI7eT2+BQAQNlvfy9VTtNTVBeiEAJBMIea
+         nBQSUG6dvo9hqvaJBYZXz4fnWLXGn2tvWftQdOGuSVAew5rqhTMRXXubEsSvABDGUrU+
+         1Vx5DYIJTtrUOtucH1fh2v9H0fmIeJQju1cNjRRxaQLKQ+Z9My4VigRAW8sny7dSjPb7
+         EWy/yfrKgljWSR99LmzYCXHqakV7DJLomGg1GRraxDyc/uBfY0ngMAZtYbMo5r9lQ19L
+         GNug==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=K9nytENO;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x7-20020a1709028ec700b0016d6c2e7f9esor561583plo.79.2022.07.24.11.58.23
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Sun, 24 Jul 2022 11:58:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=K9nytENO;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=d+V8Pb3TU9IuS4sOhrdKTXsG78fqRMNs64a8SlthjPM=;
+        b=K9nytENOCDS2kggmpqyjOjZjdgujdTRRc3aeB9Z+CMURLidgz4dMTuMEvg0NNyJAun
+         lZCwqr/2+z+XvGFycLi2a89Fd1evxNztoD4DvabhmnlkrUGOEBLfrndflfAWcSdykcPq
+         8Mk5fsSj1M2hS4PFQbFViwxYZOGtjM3IqKkAQIrxBO7c2wA5LxgpGXSCZJRrI0b8ABii
+         H8CIVm9kBCmgirmbxm38p+AU3XkNuC6Gm9ThkPyFt+2eSNuwG4uUzvBMQ5jzir6YYnoD
+         7qake/sw19VNHeLHuQiAGN2eJ7HnB4so5ACYFpUkEbCeYH2x2eKlwKmcXbY3iAsuLMdl
+         f92A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=d+V8Pb3TU9IuS4sOhrdKTXsG78fqRMNs64a8SlthjPM=;
+        b=Lzbe2k0vA0imD+Obz4Sm84oYmNnlMUgerQfEpd3W6TVeorAZtpFvov8gKWSn8/FbPm
+         XCoYLu2ytn9jLkpvokaxlkC9MtF9fmnRjTIeEPpU4eb1e/pJOw0sQOhjd3GFHotIKzR5
+         QHE0fb7wXssFXvkIyKaGBbLhneFSBzoGwxQYt5gogKUEx3/odXdULR+3XNPVkNHLgIDA
+         U3mn7vjGI1w5hfDpFiNlEHvqpQJevqhFi+BQ3U8qhYSY4Y7sqv4kMVjea1F58RcrC/01
+         4CBLUxLqJ83tJVlneCiRW2RfcpiZLq0qQoWuhvaxdPKE68zbtLO3ES4ND9rSL+L0kEtH
+         qc3g==
+X-Gm-Message-State: AJIora+ccYFSWi637ghCR+2oTekSiRcCtIUrGRSM5DfSC7JgYsEvBfSt
+	SxWeeI7JxZv6u3mR9SSyC37R33Dmy/BU6rzwemlewovklcrv5XwzwAU=
+X-Google-Smtp-Source: AGRyM1v9+0iThU0/EiYAAAZY1w/h3CYHA7cQ1AIHD8aBZqdhwaQAb37kRzv1uEcFeQK8ag5Wxtc3p+C24R/djGtpi9s=
+X-Received: by 2002:a17:902:d2c9:b0:16d:7b12:51e0 with SMTP id
+ n9-20020a170902d2c900b0016d7b1251e0mr892107plc.4.1658689102625; Sun, 24 Jul
+ 2022 11:58:22 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Sun, 24 Jul 2022 14:58:11 -0400
+Message-ID: <CALCR5_T7ir=ruZpLU=yK5=dE9Vqvq-v_ibLVf-FL+-7_S5vH9w@mail.gmail.com>
+Subject: Efficiency Survey Question
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000c15f7205e491a60f"
+
+--000000000000c15f7205e491a60f
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey thanks for taking the time to fill this out!
+
+I saw you wrote:
+
+*"Lack of guidance and clear goals. I was hired on as essentially an
+assistant to an Analyst, so as previously stated, finding guidance to solve
+problems or take on new tasks is difficult without a Data Analyst to turn
+to. While we are getting away from KNIME, there are questions that need to
+be answered and issues resolved in order for us to move forward and
+understand where past reporting might have gone wrong. Currently, I don't
+have anyone to turn to in that regard, which leaves me with limited options
+for how to resolve these problems. I can only go by what I've been shown
+and told, and what is already there for me to reference."*
+
+
+Do you feel like access to Ian will help you get what you need?
+
+Also, do you feel like reporting to me instead of Mike will help or too
+early to tell?
+
+Lastly, I will add that other than Jarren and myself and Ian and our Sticky
+rep (and maybe Brooke a bit since she preorganized the product IDs in
+Sticky) there is no one else to talk to here.
+
+So if none of those people have the answer that you're looking for, you're
+going to have to do the work from scratch.
+
+So in that case, you'll probably have to use a combination of people in the
+company, your own ideas and potentially an outside coach or consultant
+(like Ian) to help you figure out how best to do things.
+
+And of course, you can always run the game plan past me to see what I think
+before you put it into action.
+
+Hopefully that gives you a better lay of the land as far as whose available
+to talk to and how to handle situations that come up?
+
+
+
+-- 
+
+
+
+*Brett Allcorn*
+Chief Executive Officer | pineapple.co
+
+[image: Photo]
+
+E: brett@pineapple.co
+
+A: 57 w 57th St., 3rd Floor, New York, NY 10001
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--000000000000c15f7205e491a60f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Aubrey thanks for taking the time to fill this out!<di=
+v><br></div><div>I saw you wrote:=C2=A0</div><div><i><br></i></div><blockqu=
+ote style=3D"margin:0 0 0 40px;border:none;padding:0px"><div><i>&quot;Lack =
+of guidance and clear goals. I was hired on as essentially an assistant to =
+an Analyst, so as previously stated, finding guidance to solve problems or =
+take on new tasks is difficult without a Data Analyst to turn to. While we =
+are getting away from KNIME, there are questions that need to be answered a=
+nd issues resolved in order for us to move forward and understand where pas=
+t reporting might have gone wrong. Currently, I don&#39;t have anyone to tu=
+rn to in that regard, which leaves me with limited options for how to resol=
+ve these problems. I can only go by what I&#39;ve been shown and told, and =
+what is already there for me to reference.&quot;</i></div></blockquote><div=
+><i><br></i></div><div>Do you feel like access to Ian will help you get wha=
+t you need?</div><div><br></div><div>Also, do you feel like reporting to me=
+ instead of Mike will help or too early to tell?</div><div><br></div><div>L=
+astly, I will add that other than Jarren and myself and Ian and our Sticky =
+rep (and maybe Brooke a bit since she preorganized the product IDs in Stick=
+y) there is no one else to talk to here.</div><div><br></div><div>So if non=
+e of those people have the answer that you&#39;re looking for, you&#39;re g=
+oing to have to do the work from scratch.</div><div><br></div><div>So in th=
+at case, you&#39;ll probably have to use a combination of people in the com=
+pany, your own ideas and potentially an outside coach or consultant (like I=
+an) to help you figure out how best to do things.</div><div><br></div><div>=
+And of course, you can always run the game plan=C2=A0past me to see what I =
+think before you put it into action.</div><div><br></div><div>Hopefully tha=
+t gives you a better lay of the land as far as whose available to talk to a=
+nd how to handle situations that come up?</div><div><br></div><div><br><div=
+><div><br></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-smar=
+tmail=3D"gmail_signature">=20
+
+
+<div>
+
+<table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500p=
+x" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id #05385f" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Chief Executive Of=
+ficer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">E:</span>=
+=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:#101010" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">A:</span>=
+ 			 		=09
+					<span style=3D"font-size:9pt;color:#101010">57 w 57th St., 3rd Floor</=
+span><span style=3D"font-size:9pt;color:#101010">, </span>		=09
+					<span style=3D"font-size:9pt;color:#101010">New York, NY 10001</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div></div>
+
+--000000000000c15f7205e491a60f--

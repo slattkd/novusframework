@@ -415,4 +415,67 @@ class sticky
                 return false;
         }
     }
+
+    public function api($type = null, $api = null)
+    {
+        /*
+        $api['username'] = $sticky_api_username;
+        $api['password'] = $sticky_api_password;
+
+        echo $sticky_api_username;
+
+        foreach ($api as $key => $value) {
+            //$append . = '&' . $key . '=' . $value
+        }
+        $append = rtrim($append, '&');
+
+        if ($type <= '1' || !$type) {
+            $type = 'transact.php'
+        } else {
+            $type = 'membership.php'
+        }
+        $url = $sticky_api_instance . '/admin/' . $type;
+        */
+
+        $api['username']='5gmale-funnel';
+        $api['password']='MAzpqTRAXa4Dvk';
+
+        foreach($api as $key => $value) { $append .= '&'.$key.'='.$value; }
+        $append= rtrim($append,'&');
+
+        if($type <='1'||!$type) $type='transact.php';
+        else $type='membership.php';
+        $url='https://gdc.sticky.io/admin/'.$type;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $api);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
+
+        $buffer = curl_exec($ch);
+        curl_close($ch);
+        if (empty($buffer)) {
+            return "Api Error";
+        } else {
+            $return = explode('&', $buffer);
+            foreach ($return as $line) {
+                $line = explode('=', $line);
+                $results[$line[0]] = urldecode($line[1]);
+            }
+        }
+        if ($results['errorFound'] == 1 && !$_SESSION['customer']['transactionId']) {
+            if ($results['responseCode'] == 500) {
+                return array('error' => $results['responseCode'] . "-" . $results['declineReason']);
+            } else {
+                return array('error' => $results['responseCode'] . "-" . $results['errorMessage']);
+            }
+            exit;
+        }
+        return $results;
+    }
 }

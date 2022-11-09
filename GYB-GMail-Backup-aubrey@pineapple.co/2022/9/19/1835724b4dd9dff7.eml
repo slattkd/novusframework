@@ -1,0 +1,695 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:4541:0:0:0:0 with SMTP id s1csp1419098ejq;
+        Mon, 19 Sep 2022 12:06:07 -0700 (PDT)
+X-Received: by 2002:a17:90a:f8c6:b0:203:21f3:f22e with SMTP id l6-20020a17090af8c600b0020321f3f22emr21101405pjd.36.1663614367039;
+        Mon, 19 Sep 2022 12:06:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663614367; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ckaWUJZsL7ZyM0e18jqHantCHZuVKKt/5ZduPFf5oKJUSeuM0VxnqJxaSKNxqsNwlb
+         XrpzaxSqR72DcxkXdFUrv2Sv0hmvazo6lBWJkQqQaU1GW2yMGJfO0st4i0LVP9nedVuh
+         fARPhwzeHyrY6FmjwmoCshczUJstC3zWmmtbWF9fPkpJSr4Rg+yOEgZV2/kC7SHh85fT
+         lHHHi0ZtT78Z9KY/r+ibRwFBy7jWp3wZstiXkT14MEFp5u3Qx+luz/dvi/ZqiMjYzbf9
+         UYtWSm5jEQIVNzMUTXkHXC7e6D+rRCZtK5rNHRnPcSAGZK+X44wm6BMRERxdl5NkOEr6
+         Lsxg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Ob+nJ18m6vWB1OCsps3c8nOQ4f0FeubL8OhonP517Z0=;
+        b=krrgLbr/3vX70+/Q5n2JLgEt8mEraKG3ewsDmvRqFs85IwaPJMyOu/NiW10SwW5tpb
+         71L6w300f4nPdyUuWh783ox+lMlEInwqCp+UU6ZJCliQ+GyI5fEZVBDxd1TkfKUevC8T
+         kXR5DqlEoaZzTSrH6PXSrwQT4V9ytWPI0vSASCBbiXvLBIn1Gu2Qm65GnpSupp6NDlXd
+         sWQql4fHdL+Al0HN4oBgsgnHSoQFMxhMg32I1ulEuOhyOk0abGxOfVcCn0hb6L78xV72
+         9CjE1haMEcT88MBf0b2wq4MN8+PXvY0DT7qwHpqL0MgLq3wu8QUpBbzy1TLeBZgYUf1m
+         yCxg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mediareps-com.20210112.gappssmtp.com header.s=20210112 header.b=51e0iPnK;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of sabrina@mediareps.com) smtp.mailfrom=sabrina@mediareps.com
+Return-Path: <sabrina@mediareps.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 130-20020a621988000000b0053e3631a12esor13809637pfz.49.2022.09.19.12.06.06
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 19 Sep 2022 12:06:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of sabrina@mediareps.com) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mediareps-com.20210112.gappssmtp.com header.s=20210112 header.b=51e0iPnK;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of sabrina@mediareps.com) smtp.mailfrom=sabrina@mediareps.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=mediareps-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=Ob+nJ18m6vWB1OCsps3c8nOQ4f0FeubL8OhonP517Z0=;
+        b=51e0iPnK0yoQ1GTTJ39rasjOZ2qoeKEC6m8sjCxrSgeNvqKcyUDAZnBqs1IYnOyTS6
+         37nhuf1EwYlnCRreko5RBWhg02VmIEBu4MJYebEOd0BAeyXhksxaisAtvdstUpRplPjh
+         atyY6FvA5W+D+c4hZFyksS2fQVuqzJME/it+jlruI/ZNPeuggnOB+qQ1yXR5rg5GhVAQ
+         YjKOLgJt4QNWi2yaL03QiJNrriMYrTvu9ayffEFNGHoZdSaOdSSvC366OFLa0fxt8AHG
+         wNUHd7xnapSsRXvqh4ytEcY6awxPYXcTUvBjTsNLvun0LFMOMyYxNtEmrES4sMHNM7Ew
+         TbfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=Ob+nJ18m6vWB1OCsps3c8nOQ4f0FeubL8OhonP517Z0=;
+        b=Uno4TlrmQyLDOIr8SssWhFW4eu8aRwtOSewayjhkCj4I8gf46ZsxX6jZJTTyxlo6Tj
+         N3+l+8bi8znaUyq5Ywxlr88iT0mp1ineKMDlBPXSlxWp49beTYTbiJhJ7/9tT807b10P
+         Am47Dv7f0JvWg8otKb9EZs5n4K3sT6AT4xGcTO2rvtk6tj0SQbjpZGd48J0TVuphqmL2
+         Bs8R39hOOp2gB1sFDDvFcWsGCBJ+OVk8udW0YzbJ1X/fLRIL+H17ROqHHzC8fF+fHroJ
+         LmKd3ecaK8rWOt+ozIKTK63O5X3VFgVbiSBru9AA04C153uym89GNJ/2YUlicMeAV0VM
+         w1SA==
+X-Gm-Message-State: ACrzQf1qzEW7KGyHSbkpYDhFO5klFosVd1XPfy6Nw0IrsnfEoqLSiczM
+	OHfFwRRMReZ2JFbi0XTRPhNYxfrY1W42yd1xs8zGDA==
+X-Google-Smtp-Source: AMsMyM7bmCPbiefdv1iuCueWg7/fzng365hUX8VYok1ixY+yRswAipGUYKOqZJPptw+pGCuz5DiR8F5GkUbfSMOq5eY=
+X-Received: by 2002:aa7:97a1:0:b0:546:988f:86cb with SMTP id
+ d1-20020aa797a1000000b00546988f86cbmr20423052pfq.58.1663614366476; Mon, 19
+ Sep 2022 12:06:06 -0700 (PDT)
+MIME-Version: 1.0
+References: <MW2PR12MB2362264D8740226E7AC1B5C3DC469@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <CAEFX3DsdNoqaE=5kdcQQ7YyjSU4sH6snzb4jZtSnQV_cmNy_Jw@mail.gmail.com> <MW2PR12MB2362536C8DF307D9D0AF4F30DC469@MW2PR12MB2362.namprd12.prod.outlook.com>
+In-Reply-To: <MW2PR12MB2362536C8DF307D9D0AF4F30DC469@MW2PR12MB2362.namprd12.prod.outlook.com>
+From: Sabrina Magana <Sabrina@mediareps.com>
+Date: Mon, 19 Sep 2022 12:05:55 -0700
+Message-ID: <CAF=8AcdpDmeGCjkjgfa6iPCqoCNNDBecBzcQRjNgHPJOP9=FgQ@mail.gmail.com>
+Subject: Re: Instructions for how to compute the monthly revenue share payment
+ to Second Marsh Consulting for Revenue Share
+To: "bob rkgconsultinginc.com" <bob@rkgconsultinginc.com>
+Cc: Mark Bauman <mark@mediareps.com>, Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000005b893505e90c6700"
+
+--0000000000005b893505e90c6700
+Content-Type: text/plain; charset="UTF-8"
+
+Hi everyone,
+
+I apologize for missing the Zoom meeting last week and being away from my
+email.
+I am on the mend and will review this as soon as possible to get the
+payment out.
+
+Bob, I will let you know if I have any questions along the way.
+Thank you!
+
+On Wed, Sep 14, 2022 at 4:46 PM bob rkgconsultinginc.com <
+bob@rkgconsultinginc.com> wrote:
+
+> Mark,
+>
+> Very sorry to hear that Sabrina is ill. I did not know, and she did not
+> tell us. Wishing her a speedy recovery.
+>
+> You were not on the invite for the meeting, as I understood from an email
+> you sent a while back that you wished me to deal with her on this. Forgive
+> me if you intended to be included.
+>
+> In any case, to calculate August, we do not have access to the basic
+> information (sales and the related costs.) Thus, the calculation has to be
+> performed on your end. And the purpose of the call was to explain the
+> calculation process, and where the information should be found.
+>
+> I agree that the August payment is not likely to be large, but most likely
+> more than just a few hundred dollars.
+>
+> With the information recently provided to us from Pineapple -- and
+> included on the worksheet I sent over -- the June payment should have been
+> $4,019.25 and the July payment $3,211.61. We estimated and you paid $4,700
+> for each month. Thus, you overpaid by $1,968.84. That amount should be an
+> offset to the August payment. If the August payment were the same as the
+> July payment ($3,411.61) the balance due to us would be about $1,430.
+>
+> I am confused by your comment about deduction from Pineapple payment or
+> vice versa. Perhaps because  I am not aware of the terms of the agreement.
+> But my sense is this August payment has nothing to do with Pineapple. It is
+> a straight payment from Media Reps to Second Marsh Consulting. But correct
+> me if I am missing something.
+>
+> So, bottom line:
+>
+>    - Wishing Sabrina well.
+>    - She, when better, or someone else, needs to review the instructions
+>    I sent over to calculate the August payment due us using the worksheet
+>    provided, deducting the $1,968.84 June and July overpayment.
+>    - Going forward, calculation and payment should be made by 1oth of the
+>    month for the previous month revenue share amount.
+>
+> Hoping this is clear, and always happy to discuss.
+>
+> Bob
+>
+>
+> Robert S. Greisman
+> *RKG consulting group, inc.*
+> *BUSINESS GROWTH ADVISORS *
+>
+> *business growth | fractional CFO | M & A advisory *
+>
+> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |* LinkedIn
+> <https://www.linkedin.com/in/bobgreisman/>*
+>
+> IMPORTANT: The contents of this email and any attachments are
+> confidential. They are intended for the named recipient(s) only. If you
+> have received this email by mistake, please notify the sender immediately
+> and do not disclose the contents to anyone or make copies thereof.
+> ------------------------------
+> *From:* Mark Bauman <mark@mediareps.com>
+> *Sent:* Wednesday, September 14, 2022 5:54 PM
+> *To:* bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+> *Cc:* Sabrina Magana <Sabrina@mediareps.com>; Aubrey Allen <
+> aubrey@pineapple.co>
+> *Subject:* Re: Instructions for how to compute the monthly revenue share
+> payment to Second Marsh Consulting for Revenue Share
+>
+> HI Bob,
+> Did you guys have a scheduled call?
+> I 'm sorry i didn't get an alert.
+> Sabrina is sick right now if she did not tell you yet.
+>
+> Looks like payment should have been $300-$400, so nothings really due, but
+> instead of waiting for those funds we are going to deduct from what
+> PIneapple owes us or vice versa, so please let's do calculate August.
+>
+> Kind Regards,
+>
+> Mark Bauman
+> President at Media Reps
+> Phone: +1858.337.4014 // Skype: mark media (live:c3bfd17d1c210863)
+>
+> Visit Website <http://www.mediareps.com> // Contact us
+> <http://www.mediareps.com/> // Follow us on Twitter
+> <http://twitter.com/mediareps>
+>
+> Proud to release the 1st ever Ad Block Prevention system tied to an Ad
+> Platform. Signup to ReviveAds.com to revive the revenue that ad block
+> users are stealing from you.
+> CONFIDENTIALITY NOTICE: This email transmission, and any documents, files
+> or previous email messages attached are intended only for the person(s) or
+> entity to which it is specifically addressed and may contain confidential
+> information that is legally privileged. Any review, re-transmission,
+> dissemination or other use of, or taking of any action in reliance upon,
+> this information by persons or entities other than the intended recipient
+> is prohibited. If you received this in error, please contact the sender and
+> destroy the original transmission and its attachments without copying or
+> saving in any manner.
+>
+>
+>
+> On Wed, Sep 14, 2022 at 12:42 PM bob rkgconsultinginc.com <
+> bob@rkgconsultinginc.com> wrote:
+>
+> Sabrina,
+>
+> With today's call being a miss again, let's try this way: Written
+> instructions for computing the monthly Media Reps (MR) revenue share
+> payment to Second Marsh Consulting (SMC) for the sale of Enrich Info
+> Products under the arrangement recently acquired from Pineapple / Gotham.
+>
+> The basic concept is simple: SMC receives a monthly revenue sharing
+> payment an amount equal to 41.5% of gross profit. Gross profit is gross
+> sales less certain defined costs and expenses, such as chargeback costs,
+> refunds, affiliate costs, and others.
+>
+> The slightly tricky part is that many of the costs related to the sales of
+> a particular month are not known until sometimes months later. For example,
+> for a sale made in January, the refund or chargeback cost often hits the
+> accounts in April or May, thus making the determination of the monthly
+> gross profit not possible.
+>
+> To address that problem, gross profit is computed in total, since
+> inception. Meaning, all sales from day one through the computation month,
+> less all costs and expenses from day one through the computation month.
+> That provides the cumulative gross profit to which 41.5% is applied. From
+> that amount, the cumulative revenue share payments from all prior periods
+> is subtracted, to arrive at the current month revenue share amount.
+>
+> Attached are two worksheets you will need. The first one is the gross
+> sales by month since inception. The second is the gross sales minus the
+> cumulative costs, as described above, to arrive at total gross profit, and
+> then total prior revenue share payments made to arrive at current month
+> amount.
+>
+> Most of the information -- sales and costs -- come from Sticky.IO, but
+> some of the costs come from Cake. Aubrey can help with how and where you
+> can find the elements that go into the worksheet if you need it.
+>
+> The contract provides that you are to provide the computation for our
+> review, and payment, by the 10th of the month for the preceding month.
+> For the months of June and July (payments made in July and August) an
+> estimated $4,700 was paid each month (based on average of prior months)
+> since actual information for the calculation was not then available.  It
+> appears that those estimates were high, and can be trued-up with the
+> payment for the month of August, meaning reduce August payment by amount of
+> the June and July overpayments. Obviously, the August payment -- due
+> September 10 -- is past due, because we have not connected and provided you
+> this training until now. Thus, your speedy attention to it at this point is
+> appreciated.
+>
+> Please review these worksheets, and then if you wish a walk through,
+> please set up a Zoom or three-way call with us and we can go over it all on
+> a shared screen.
+>
+> Thanks,
+> Bob
+>
+> Robert S. Greisman
+> *RKG consulting group, inc.*
+> *BUSINESS GROWTH ADVISORS *
+>
+> *business growth | fractional CFO | M & A advisory *
+>
+> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |* LinkedIn
+> <https://www.linkedin.com/in/bobgreisman/>*
+>
+> IMPORTANT: The contents of this email and any attachments are
+> confidential. They are intended for the named recipient(s) only. If you
+> have received this email by mistake, please notify the sender immediately
+> and do not disclose the contents to anyone or make copies thereof.
+>
+>
+
+-- 
+Regards,
+
+Sabrina Magana
+Admin Assistant | Media Reps
+
+--0000000000005b893505e90c6700
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi everyone,<div><br></div><div>I apologize for missing th=
+e Zoom meeting last week and being away from my email.</div><div>I am on th=
+e mend and will review this as soon as possible to get the payment out.</di=
+v><div><br></div><div>Bob, I will let you know if I have any questions alon=
+g the way.</div><div>Thank you!</div></div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Wed, Sep 14, 2022 at 4:46 PM bob <a=
+ href=3D"http://rkgconsultinginc.com" target=3D"_blank">rkgconsultinginc.co=
+m</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" target=3D"_blank">bob=
+@rkgconsultinginc.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div>
+
+
+
+
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+Mark,=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+Very sorry to hear that Sabrina is ill. I did not know, and she did not tel=
+l us. Wishing her a speedy recovery.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+You were not on the invite for the meeting, as I understood from an email y=
+ou sent a while back that you wished me to deal with her on this. Forgive m=
+e if you intended to be included.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+In any case, to calculate August, we do not have access to the basic inform=
+ation (sales and the related costs.) Thus, the calculation has to be perfor=
+med on your end. And the purpose of the call was to explain the calculation=
+ process, and where the information
+ should be found.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+I agree that the August payment is not likely to be large, but most likely =
+more than just a few hundred dollars.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+With the information recently provided to us from Pineapple -- and included=
+ on the worksheet I sent over -- the June payment should have been $4,019.2=
+5 and the July payment $3,211.61. We estimated and you paid $4,700 for each=
+ month. Thus, you overpaid by $1,968.84.
+ That amount should be an offset to the August payment. If the August payme=
+nt were the same as the July payment ($3,411.61) the balance due to us woul=
+d be about $1,430.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+I am confused by your comment about deduction from Pineapple payment or vic=
+e versa. Perhaps because=C2=A0 I am not aware of the terms of the agreement=
+. But my sense is this August payment has nothing to do with Pineapple. It =
+is a straight payment from Media Reps
+ to Second Marsh Consulting. But correct me if I am missing something.</div=
+>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+So, bottom line:</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<ul>
+<li>Wishing Sabrina well.</li><li>She, when better, or someone else, needs =
+to review the instructions I sent over to calculate the August payment due =
+us using the worksheet provided, deducting the $1,968.84 June and July over=
+payment.</li><li>Going forward, calculation and payment should be made by 1=
+o<span><sup>th</sup>=C2=A0of the month for the previous month revenue share=
+ amount.</span></li></ul>
+<div><span>Hoping this is clear, and always happy to discuss.=C2=A0</span><=
+/div>
+<div><span><br>
+</span></div>
+<div><span>Bob</span></div>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div>
+<div id=3D"m_-5082567326253615225m_3838753650725252877Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;background-color:blac=
+k"><span style=3D"margin:0px;color:navy"><span style=3D"margin:0px;font-siz=
+e:8pt"><span style=3D"margin:0px;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>=C2=A0</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS=C2=A0</=
+span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;col=
+or:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:0p=
+x;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>=C2=A0</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" rel=3D"noopener noreferrer" title=3D"Website" style=3D=
+"margin:0px" target=3D"_blank">Website</a></strong><span>=C2=A0</span>|<str=
+ong><a href=3D"https://www.linkedin.com/in/bobgreisman/" rel=3D"noopener no=
+referrer" title=3D"LinkedIn" style=3D"margin:0px" target=3D"_blank"><span>=
+=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: The =
+contents of this email and any attachments are
+ confidential. They are intended for the named recipient(s) only. If you ha=
+ve received this email by mistake, please notify the sender immediately and=
+ do not disclose the contents to anyone or make copies thereof.</span></spa=
+n></span></div>
+</div>
+</div>
+<div id=3D"m_-5082567326253615225m_3838753650725252877appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-5082567326253615225m_3838753650725252877divRplyFwdMsg" dir=3D=
+"ltr"><font face=3D"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"=
+#000000"><b>From:</b> Mark Bauman &lt;<a href=3D"mailto:mark@mediareps.com"=
+ target=3D"_blank">mark@mediareps.com</a>&gt;<br>
+<b>Sent:</b> Wednesday, September 14, 2022 5:54 PM<br>
+<b>To:</b> bob <a href=3D"http://rkgconsultinginc.com" target=3D"_blank">rk=
+gconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" targ=
+et=3D"_blank">bob@rkgconsultinginc.com</a>&gt;<br>
+<b>Cc:</b> Sabrina Magana &lt;<a href=3D"mailto:Sabrina@mediareps.com" targ=
+et=3D"_blank">Sabrina@mediareps.com</a>&gt;; Aubrey Allen &lt;<a href=3D"ma=
+ilto:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>&gt;<br>
+<b>Subject:</b> Re: Instructions for how to compute the monthly revenue sha=
+re payment to Second Marsh Consulting for Revenue Share</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"ltr">HI Bob,<br>
+Did you guys have a scheduled call?<br>
+I &#39;m sorry i didn&#39;t get an alert.
+<div>Sabrina is sick right now if she did not tell you yet.</div>
+<div><br>
+</div>
+<div>Looks like payment should have been $300-$400, so nothings really due,=
+ but instead of waiting for those funds we are going to deduct from what PI=
+neapple owes us or vice versa, so please let&#39;s do calculate August.<br =
+clear=3D"all">
+<div>
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr"><br>
+Kind Regards,<br>
+<br>
+Mark Bauman<br>
+President at Media Reps<br>
+Phone: +1858.337.4014 // Skype: mark media (live:c3bfd17d1c210863)<br>
+<br>
+<a href=3D"http://www.mediareps.com" target=3D"_blank">Visit Website</a> //=
+ <a href=3D"http://www.mediareps.com/" target=3D"_blank">
+Contact us</a> //<a href=3D"http://twitter.com/mediareps" target=3D"_blank"=
+> Follow us on Twitter</a><br>
+<table width=3D"100%" border=3D"0" align=3D"center" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"color:rgb(0,0,0);font-family:Times;font-size:medium">
+<tbody>
+<tr>
+<td align=3D"center"><br>
+</td>
+</tr>
+<tr>
+<td height=3D"10"></td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"font-family:&quot;Open Sans&quot;,Arial,sans-=
+serif;font-size:13px;color:rgb(51,51,51);line-height:20px">
+Proud to release the 1st ever Ad Block Prevention system tied to an Ad Plat=
+form. Signup to
+<a href=3D"http://ReviveAds.com" target=3D"_blank">ReviveAds.com</a> to rev=
+ive the revenue that ad block users are stealing from you.</td>
+</tr>
+</tbody>
+</table>
+=C2=A0 =C2=A0 =C2=A0 <br>
+CONFIDENTIALITY NOTICE: This email transmission, and any documents, files o=
+r previous email messages attached are intended only for the person(s) or e=
+ntity to which it is specifically addressed and may contain confidential in=
+formation that is legally privileged.
+ Any review, re-transmission, dissemination or other use of, or taking of a=
+ny action in reliance upon, this information by persons or entities other t=
+han the intended recipient is prohibited. If you received this in error, pl=
+ease contact the sender and destroy
+ the original transmission and its attachments without copying or saving in=
+ any manner.<br>
+<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+<br>
+<div>
+<div dir=3D"ltr">On Wed, Sep 14, 2022 at 12:42 PM bob <a href=3D"http://rkg=
+consultinginc.com" target=3D"_blank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" ta=
+rget=3D"_blank">bob@rkgconsultinginc.com</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div>
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Sa=
+brina,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Wi=
+th today&#39;s call being a miss again, let&#39;s try this way: Written ins=
+tructions for computing the monthly Media Reps (MR) revenue share payment t=
+o Second Marsh Consulting (SMC) for the
+ sale of Enrich Info Products under the arrangement recently acquired from =
+Pineapple / Gotham.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+e basic concept is simple: SMC receives a monthly revenue sharing payment a=
+n amount equal to 41.5% of gross profit. Gross profit is gross sales less c=
+ertain defined costs and expenses,
+ such as chargeback costs, refunds, affiliate costs, and others.=C2=A0</div=
+>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+e slightly tricky part is that many of the costs related to the sales of a =
+particular month are not known until sometimes months later. For example, f=
+or a sale made in January, the refund
+ or chargeback cost often hits the accounts in April or May, thus making th=
+e determination of the monthly gross profit not possible.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">To=
+ address that problem, gross profit is computed in total, since inception. =
+Meaning, all sales from day one through the computation month, less all cos=
+ts and expenses from day one through
+ the computation month. That provides the cumulative gross profit to which =
+41.5% is applied. From that amount, the cumulative revenue share payments f=
+rom all prior periods is subtracted, to arrive at the current month revenue=
+ share amount.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">At=
+tached are two worksheets you will need. The first one is the gross sales b=
+y month since inception. The second is the gross sales minus the cumulative=
+ costs, as described above, to arrive
+ at total gross profit, and then total prior revenue share payments made to=
+ arrive at current month amount.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Mo=
+st of the information -- sales and costs -- come from Sticky.IO, but some o=
+f the costs come from Cake. Aubrey can help with how and where you can find=
+ the elements that go into the worksheet
+ if you need it.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+e contract provides that you are to provide the computation for our review,=
+ and payment, by the 10<span><sup>th</sup>=C2=A0of the month for the preced=
+ing month. For the months of June and
+ July (payments made in July and August) an estimated $4,700 was paid each =
+month (based on average of prior months) since actual information for the c=
+alculation was not then available.=C2=A0 It appears that those estimates we=
+re high, and can be trued-up with the
+ payment for the month of August, meaning reduce August payment by amount o=
+f the June and July overpayments. Obviously, the August payment -- due Sept=
+ember 10 -- is past due, because we have not connected and provided you thi=
+s training until now. Thus, your
+ speedy attention to it at this point is appreciated.=C2=A0</span></div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Pl=
+ease review these worksheets, and then if you wish a walk through, please s=
+et up a Zoom or three-way call with us and we can go over it all on a share=
+d screen.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+anks,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Bo=
+b</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div>
+<div id=3D"m_-5082567326253615225m_3838753650725252877x_m_-4931170318931101=
+155Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;background-color:blac=
+k"><span style=3D"margin:0px;color:navy"><span style=3D"margin:0px;font-siz=
+e:8pt"><span style=3D"margin:0px;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>=C2=A0</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS=C2=A0</=
+span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;col=
+or:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:0p=
+x;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>=C2=A0</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" rel=3D"noopener noreferrer" title=3D"Website" style=3D=
+"margin:0px" target=3D"_blank">Website</a></strong><span>=C2=A0</span>|<str=
+ong><a href=3D"https://www.linkedin.com/in/bobgreisman/" rel=3D"noopener no=
+referrer" title=3D"LinkedIn" style=3D"margin:0px" target=3D"_blank"><span>=
+=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: The =
+contents of this email and any attachments
+ are confidential. They are intended for the named recipient(s) only. If yo=
+u have received this email by mistake, please notify the sender immediately=
+ and do not disclose the contents to anyone or make copies thereof.</span><=
+/span></span></div>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+
+</div></blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=
+=3D"ltr"><div dir=3D"ltr">Regards,<div><br></div><div>Sabrina Magana</div><=
+div>Admin Assistant | Media Reps</div></div></div>
+
+--0000000000005b893505e90c6700--

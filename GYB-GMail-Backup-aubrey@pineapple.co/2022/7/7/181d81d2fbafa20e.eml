@@ -1,0 +1,177 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp3997950ejq;
+        Thu, 7 Jul 2022 03:03:20 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3307:b0:527:cbdc:d7dc with SMTP id cq7-20020a056a00330700b00527cbdcd7dcmr50089376pfb.85.1657188200266;
+        Thu, 07 Jul 2022 03:03:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657188200; cv=none;
+        d=google.com; s=arc-20160816;
+        b=AIXXY+7DeQokB7vKY1f+OREozN/ZhciLt1gAFtfU8BdCVicjC5XJQjk0e9F0KMaaFc
+         koPQdTB66eQSWmP7HKyz38Ao5/trvEEIdyL/Fr8DWfPgTLlBZzKy74pbaqYyPYXILQsN
+         Ed2WQPwckSlrVd+n6knEDpRR9R4qF/BzGQ8KYu9sLRlowNjbsN69F28gBOnfZF23yk6b
+         35mjR7fCEE/rNna1QT9n4dYIWj9NA5BdbwjDlEvNyS3k0ej4fhnGeM2YMMcYso8bBYon
+         HuxAUKeRls6TLERqcG4EmW4AQHohGIa7X2y64Ocw+Dzpm8YZvzsYw2CZtX1tvraemU9L
+         X00w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=afzIR52E/NZwsgKsPMlKZrKGwJe76v6QSyPnKrIPing=;
+        b=qaM9ljkk5rQJx7jfB1G5KVsXQHNZfx/1a8KT7xJaRomgsK1FLiZnk3t1DQN82Lwdvl
+         xcvIzcQLUERacJIsJaSLBRsJXQ6lJHLn7VYu2IEOIPOK6yj0StENX80fVRSv/RgEXxgg
+         OB622erH8N9M7Y4BxNPZToIo47VHvLyR4DLXpC14cRV6N1fV2BlyvYjn6d4FCkiBQP1e
+         XK8VexI5gK/avsAmG9rn+V99VcvQ2aIbDZ02qGlY8KH0UL5UHBgd7bs0k9Ulf0envOAA
+         N/Bl/LkDql6+tD1ipVje5td9ZTjjCw4+rhnGWSpvz3SgoCTKcKkh6YWCBlGqkyacfFcj
+         uoPw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=1m4Lrl4L;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o5-20020a17090aac0500b001ef991f12f0sor3255496pjq.2.2022.07.07.03.03.19
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 07 Jul 2022 03:03:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=1m4Lrl4L;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=afzIR52E/NZwsgKsPMlKZrKGwJe76v6QSyPnKrIPing=;
+        b=1m4Lrl4LIJ4PKt9tiiAzkNzyKeH7nbb/lVYtxTZzwG5av6XIZ4WHXeAbmjOjjQbICw
+         f272FwZpvCQZKAaQ/4pinBQYBMwVHfNxR6ynkLBJ/wDFGwItsZ+Ipbah2r+Cvb8SQB3g
+         bP5p8SGfm4vzfED+cpc+H7XdnJEY3XikXhz+xlR6rKgsHLenXfOuc0VaZ0jIuvmv2M2i
+         KCse54ythwdD0UUC+gotsO49rj07yEqi0pmUdbQZeS1csn4UTgClfpAbuc2VrW62KBPF
+         Hsp3TDYxwXLfGJta9mF2auJa0QDR3cIrF6tytyyOTYsAC34S79xz080B2Q9UR/zkCDFW
+         4EeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=afzIR52E/NZwsgKsPMlKZrKGwJe76v6QSyPnKrIPing=;
+        b=SyOe2BnYjVyDZnr4gCQ5hV78W+pREscnaNSzcHmOJVGNpia3r2JRJrzNP79SHbB1gR
+         WnjLxSTh2o/WQ6i3K23gEM74EvWFVHVFWO/6U8FwZfGfHUOe/Tu2274pS/WPWWespMK2
+         FstlziN0/3PjmBJwiXwR+gZBNlEQV3UwALa8glBytkOwyU+asx/owcUL49TyZ0h0cWFR
+         R1SOZWbIlGO1++eZJgdVgyjnU1pxmGp5hmqmNl2uMToirWNrRRgZLdXIXINSsLYThqrV
+         veweNafKAfBKWRRR6DVQnRVyDKS1RpTpVjlUxOGad02BsG/KFydnMVCt74IRdJgtPU1e
+         XdbA==
+X-Gm-Message-State: AJIora8qwW+/qU7LVlZ1Kzze6lzDBW2q8j7W0kAndZaBob/MMYWvDyh2
+	HVZajCJDrbxDfbjWIN7rMBd6mZDDtAv0qbPy/bf2YQ7LyZzIicYgJdQ+/A==
+X-Google-Smtp-Source: AGRyM1vT1SU0kJ0VtxpiYkCob2fpHhq+DUGQVaFXSNoHwmoVp9H2YaHSlxLp/IDYzhhHaiyfkKoI5xl1O3wfmrU391c=
+X-Received: by 2002:a17:90b:4f81:b0:1ef:acca:2d6b with SMTP id
+ qe1-20020a17090b4f8100b001efacca2d6bmr4026484pjb.243.1657188199470; Thu, 07
+ Jul 2022 03:03:19 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Thu, 7 Jul 2022 13:03:05 +0300
+Message-ID: <CALCR5_RrCbD3kBF0VsrVZBwmdzn7=uMe+GkZ4yPqKCP5sNq=fg@mail.gmail.com>
+Subject: Time sensitive - efficiency survey review
+To: Kirsten Woods <kirsten@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000f4ae9505e33431d9"
+
+--000000000000f4ae9505e33431d9
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Kirsten and Brooke, can you review this survey quickly today and let me
+know if you have any suggestions to improve it?
+
+https://survey.zohopublic.com/zs/vJCzvG
+
+Aubrey, I cc'd you too in case you want to take a look and give feedback
+too.
+
+My goal here is to identify *inefficiencies* in the organization that
+managers and execs might be blind to.
+
+The goal is *NOT* to assign blame to people.
+
+Just to identify the issues as a group together so that we can all work
+together to make the company better.
+
+Inefficiencies drive everyone nuts. They are a problem for the person doing
+the work, the manager, me, the person waiting for the work - everyone.
+
+And yet despite everyone technically wanting them gone, due to a myriad of
+reasons, efficiencies still exist and we must work together to identify and
+remove them.
+
+*Just some context on where this is coming from: *
+
+I've noticed some issues within the copywriting team that are leading
+projects that would have taken me 2-4 days to complete to now take 2-3
+weeks.
+
+After starting to dig into it, the problem is a combination of writers not
+having proper instructions at the start of the project, not assigning the
+right writers to the right project and not having a proper template to
+follow to enhance quality of work.
+
+There's also problems with the copy review process. Right now Colin needs
+to review and then it goes to me. But items for me to review are batched,
+meaning they sometimes sit in the batch list for 7+ days before they get to
+me. Then I need a lot of time to complete the work, because it's a big
+batch of work all at once. So the process was very inefficient and slow
+leading to working taking 10-15X longer to get done than is reasonable.
+
+Further, departments that depend on such copy had no agreement with the
+copy team on the dates copy would be delivered, so they could never really
+justify putting pressure on the copy team for files. These departments have
+no idea what is a realistic turnaround time or how busy the department is,
+so they sit patiently waiting... in one case for 42 days and counting, for
+a single page of copy.
+
+So we've got to identify and stamp out these extreme efficiencies.
+
+In addition to sending out this survey, I am intent on meeting with almost
+every single individual in the company to try to get more qualitative
+feedback.
+
+I'll compile everything I find into an action plan.
+
+--000000000000f4ae9505e33431d9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Kirsten and Brooke, can you review this survey quickly=
+ today and let me know if you have any suggestions to=C2=A0improve it?<div>=
+<br></div><div><a href=3D"https://survey.zohopublic.com/zs/vJCzvG">https://=
+survey.zohopublic.com/zs/vJCzvG</a><br></div><div><br></div><div>Aubrey, I =
+cc&#39;d you too in case you want to take a look and give feedback too.</di=
+v><div><br></div><div>My goal here is to identify <b>inefficiencies</b> in =
+the organization that managers and execs might be blind to.</div><div><br><=
+/div><div>The goal is <u>NOT</u> to assign blame to people.</div><div><br><=
+/div><div>Just to identify the issues as a group together so that we can al=
+l work together to make the company better.</div><div><br></div><div>Ineffi=
+ciencies drive everyone nuts. They are a problem for the person doing the w=
+ork, the manager, me, the person waiting for the work - everyone.</div><div=
+><br></div><div>And yet despite everyone technically wanting them gone, due=
+ to a myriad of reasons, efficiencies=C2=A0still exist and we must work tog=
+ether to identify=C2=A0and remove them.</div><div><br></div><div><b>Just so=
+me context on where this is coming from:=C2=A0</b></div><div><br></div><div=
+>I&#39;ve noticed some issues within the copywriting team that are leading =
+projects that would have taken me 2-4 days to complete to now take 2-3 week=
+s.</div><div><br></div><div>After starting to dig into it, the problem is a=
+ combination of writers not having proper instructions at the start of the =
+project, not assigning the right writers to the right project and not havin=
+g a proper template to follow to enhance quality of work.</div><div><br></d=
+iv><div>There&#39;s also problems with the copy review process. Right now C=
+olin needs to review and then it goes to me. But items for me to review are=
+ batched, meaning they sometimes sit in the batch list for 7+ days before t=
+hey get to me. Then I need a lot of time to complete the work, because it&#=
+39;s a big batch of work all at once. So the process was very inefficient a=
+nd slow leading to working taking 10-15X longer to get done than is reasona=
+ble.</div><div><br></div><div>Further, departments that depend on such copy=
+ had no agreement with the copy team on the dates copy would be delivered, =
+so they could never really justify putting pressure on the copy team for fi=
+les. These departments have no idea what is a realistic turnaround time or =
+how busy the department is, so they sit patiently waiting... in one case fo=
+r 42 days and counting, for a single page of copy.</div><div><br></div><div=
+>So we&#39;ve got to identify and stamp out these extreme efficiencies.</di=
+v><div><br></div><div>In addition to sending out this survey, I am intent o=
+n meeting with almost every single individual in the company to try to get =
+more qualitative feedback.</div><div><br></div><div>I&#39;ll compile everyt=
+hing I find into an action plan.</div><div><br></div><div><br></div><div><b=
+r></div></div>
+
+--000000000000f4ae9505e33431d9--

@@ -1,0 +1,725 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:2348:0:0:0:0 with SMTP id m8csp143222eja;
+        Mon, 28 Feb 2022 12:13:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw0NaquahIUR1JJZG3AOvVaVrD3E1IEIYIQXN8SokxepFfY0LO6g+4yhQf6ldv8k+YQMwHL
+X-Received: by 2002:a81:6344:0:b0:2d5:e25c:3ceb with SMTP id x65-20020a816344000000b002d5e25c3cebmr21333475ywb.418.1646079216054;
+        Mon, 28 Feb 2022 12:13:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646079216; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dNSEuBE2bGUVPYSqa/rNL47KNVPuALPzV+o20rx9c0B0bjsIwOXLJGMtK+0UHuqmRw
+         Mp2FaH3N537wLwDZBkeB7D5DIzrfNp5HMDWS49xVYJJn3WU8wpXa1ZjPOe+ehMG3FFs5
+         w7tc602i3+qcxuaqEVNux20FakSS5xDBKJksNFhYND+6fsW18rRbUcz0i6xC/ssPBYZu
+         mqY6pg1mZ2HU2vMFy8LuN+9z8ioq2jdXNdARmd9udGlXNALP9+2I0wHMGO7ApzlWTmUR
+         pPbZSwkFmwRLjKi9KgcH1SPx03svFpmHfzZ7IM8cnlrBFuijxD+lVpUe0jZ0bylZn8Cj
+         xIZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:mime-version:from:date:dkim-signature;
+        bh=tntETz9gB+vcCS3JJsv0w3B37KNtJ+8gUTfQ74cr8uw=;
+        b=z+ZhgN9XWynuj4Qr4gAgsKehUM46eKBNMBsU759FfPce1TfDbcP/2kwRAa+ncSH4O1
+         rTPYd9wPbkKiFADeGD8CnqQvYlBYi2n+zbknJ4wEJfBZDpJR+knHOMHfW7Ny7lm786Kn
+         M5GnN9Iqq7BMdvmskCq7bn6aS/DEsRgTYTn0IBAyEofTN+TAFkBPACp+/FORHP0yF4TH
+         0dtPu2g+/Fx/hFLmFSCanX6g/+wceElY52maGAqv8KIPomNwr/jLLuC0pcsB5uBWdYsO
+         Po8CGZ+6afFfneFbY7MHNsO9z7BIe12H5mQSY7G0b76PfIm6EGeRhfiBAi9inHaZ1+I7
+         MDmQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@app.lucidchart.com header.s=s1 header.b=WdrWzyfm;
+       spf=pass (google.com: domain of bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com designates 149.72.168.224 as permitted sender) smtp.mailfrom="bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lucidchart.com
+Return-Path: <bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com>
+Received: from o1.ptr8772.lucidchart.com (o1.ptr8772.lucidchart.com. [149.72.168.224])
+        by mx.google.com with ESMTPS id k138-20020a252490000000b006241c44f12fsi8889018ybk.571.2022.02.28.12.13.35
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 28 Feb 2022 12:13:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com designates 149.72.168.224 as permitted sender) client-ip=149.72.168.224;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@app.lucidchart.com header.s=s1 header.b=WdrWzyfm;
+       spf=pass (google.com: domain of bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com designates 149.72.168.224 as permitted sender) smtp.mailfrom="bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lucidchart.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=app.lucidchart.com;
+	h=content-type:from:mime-version:subject:to;
+	s=s1; bh=tntETz9gB+vcCS3JJsv0w3B37KNtJ+8gUTfQ74cr8uw=;
+	b=WdrWzyfmAfiTPwWmome9FLkk8nDpIcIXzSVTUivVLzls4kqMHTczTY+tZZvHhu1I8Y6M
+	NWvptbaRiRKOq+K6WYqYNP7xM7p3JWe6eIqSiy1Aa9dg1u192807jlHgoiJlDlNWxRf7Vk
+	+zk3pUW1IxHTk7+VNSWZoFF2Ogk5vTzDQIIeL/g89ee7S8dQF6MNi1z5Mog/cpER8kZDvP
+	NetX7op3uJWnaDfbKkqUw6zsLJL66a57NFwMwlw/GrzrFj++b4wAl9OEo+wu8sAPqk4w3X
+	n5OksS71FwWIvnIqb2O369U6NxmKnRIfZ0gnxJz9RiVixLsNKIRQU0JLW05ikgZg==
+Received: by filterdrecv-7c94f5678f-pbhk4 with SMTP id filterdrecv-7c94f5678f-pbhk4-1-621D2CEF-23
+        2022-02-28 20:13:35.251659571 +0000 UTC m=+14501797.097313188
+Received: from OTAyNTcwMA (unknown)
+	by ismtpd0192p1iad2.sendgrid.net (SG)
+	with HTTP
+	id DeWZd8T3RrCcQjLNm72PlQ
+	Mon, 28 Feb 2022 20:13:35.218 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=180635879a25da925896c3c4ad3fceb2b03634dab6dc5107b59962e65d5b
+Date: Mon, 28 Feb 2022 20:13:35 +0000 (UTC)
+From: Lucidchart <notice@lucidchart.com>
+Mime-Version: 1.0
+Message-ID: <DeWZd8T3RrCcQjLNm72PlQ@ismtpd0192p1iad2.sendgrid.net>
+Subject: Changes were made to your Lucidchart subscription
+X-SG-EID: 
+ =?us-ascii?Q?F7ch6cUo+p2AKwe0fFo2wOhiaV+AYuyhyJgq0huQTmNJFoJnirKvyaysdgST5d?=
+ =?us-ascii?Q?vN0SqOGH0SWF217Ywk4j=2FXLhUGlvUDbb6uElQ3H?=
+ =?us-ascii?Q?ZONzCSfR29EkeO4dYu=2FaMBBzWRsSB1t4UsKdiLR?=
+ =?us-ascii?Q?wp3Hs2XrvX9qqkN+1=2FLadn95ga33s4QO0DLW1CY?=
+ =?us-ascii?Q?Y7E3mGS4iwdNlxoXvmIpyEndH89X5AHfeZRsimT?=
+ =?us-ascii?Q?ei2lGVUNX1tr5+nH3ZTBxtTh1LLLnVZfC1UKid?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb=2FhO9p=2FWJKAJUpj=2Fbl19CGY0QIxay4hme4JcoWchkW?=
+ =?us-ascii?Q?F0FSa1=2F39U5xZNUb81vRQpNxfWHkUhTDDHBNyWX?=
+ =?us-ascii?Q?F9WdAqGnUZyk3lXQ8hUvegAzxG6S5TIv9Ni3kCx?=
+ =?us-ascii?Q?3Lt=2FdqPVdCbh6G+Ekn0pgTd+moXFcPhZ9vHc27a?=
+ =?us-ascii?Q?R4hU67e8unfFIGbEdkVqZMtVk13FeO47s1Et8DC?=
+ =?us-ascii?Q?1xv=2F+DCaTBq3+ZyKmPCTL2q3DvF2KR5I3pnXBLs?=
+ =?us-ascii?Q?uTvo4e40EpFuNjWcmAX4Bgt0fkkzbQyFxb4hqT2?=
+ =?us-ascii?Q?zt8LnfVfXpdwRRcvVpxiacvwx5jwY5IMf3emfMm?=
+ =?us-ascii?Q?nEh5M1eoBuzeAONIq2ssdb+6t5iCgyhD9FhohPp?=
+ =?us-ascii?Q?GNOJYbCCKYRF=2FqC07aMEHT2pHVIb0Hpe=2F94dktW?=
+ =?us-ascii?Q?XIlGxdkVFJ7774=3D?=
+To: aubrey@pineapple.co
+X-Entity-ID: Lgtt+uPFXlTJxk36zWascg==
+
+--180635879a25da925896c3c4ad3fceb2b03634dab6dc5107b59962e65d5b
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+
+Thank you for subscribing to Lucidchart=20
+
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0
+
+https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2Fpq7gkkDxN5WGuJTwqTpZKta=
+WetsuhgEy4edTxiThFVwL3GlVl6IYvYi4Vidsi_B_ofyoDmZzklSkp3SsQxvrldDXqQRjavjdxZ=
+PJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZYoWf0tiqG13PQa1gMuMWpiKv=
+IB3BbpUrMwXA6Gyz2ECNP9MKGYqAbzTr-2Bscw-2BzzSrruf5PjQKYtO2Lu9PrPH-2Bj0b8aP4o=
+IFFmlirrU6l9aGyD3P-2BOrd16-2FGuAR1J4zSkgyJ98rh3d6w8qSawfsuSj1YT3gMt8QGjdJv5=
+Og41ZRZHO6I0BAIQBe-2BBvZzu1giHsoqAFVxA1FbYigLzlrpAQZFEiCLy50kY6UG-2F5PjnySr=
+WI-2FYp1deqb2d7q74oS2fhvUo0y6D0gqcbYjyQgaBnxZWkqFDUhSdMGGoiuacL6Dr2tVEx4uJp=
+FCSmmsaWsAC6aZb-2FZaoNtkvxPmIYdB9JIciGfb-2Fs6mQCety88PPRtAVGbdMFRYsYMaItyet=
+w7tcISRQIhsc4uEo4BdnEAzIwFQTRxceOCnlhKOtO1Jak0gOJyKxm6Ch38OuOSbNB1AO6L8tbs4=
+ikJbueSCNF7UXEMGSHAUJ9yaSZ8o4K1ChbPRAbt6e9iZcY3Q876Pp7uHaj-2BpQg6Zi-2FtY7wl=
+-2Fe8PWQEE7hAVQ-3D
+
+Your subscription has been changed
+
+To view or make additional changes to your subscription, visit your account=
+ page https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2Fpq7gkkDxN5WGuJTwq=
+TpZKtaWetsuhgEy4edTxjemfiVoTmAMH20Osk6jwmC1WI-2BYLh3J7edAQHOxF8lJA-3D-3DRoj=
+D_ofyoDmZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53i=
+Y-2Bsz5VkfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9MKGYqAbzTr-2Bscw-=
+2BzzSrruf5PjQKYtO2Lu9PrPH-2Bj0b8aP4oIFFmlirrU6l9aGyD3P-2BOrd16-2FGuAR1J4zSk=
+gyJ98rh3d6w8qSawfsuSj1YT3gMt8QGjdJv5Og41ZRZHO6I0BAIQBe-2BBvZzu1giHsoqAFVxA1=
+FbYigLzlrpAQZFEiCLy50kY6UG-2F5PjnySrWI-2FYp1deqb2d7q74oS2fhvUo0y6D0gqcbYjyQ=
+gaBnxZWkqFDUhSdMGGoiuacL6Dr2tVEx4uJpFCSmmsaWsAC6aZb-2FZaoNtkvxPmIYdB9JIciGf=
+b-2Fs6mQCety88PPRtAVGbdMsDKyWtFh-2B9AybWDu-2FTUbORNxgpKp-2F8d5-2FrCWKta8vhg=
+6yrNr1J3Y2u7ozBEYrQSt5Jz41zqnRy8JQSY3a90Ztsgs1sYUia6oje3ZgYoc0GawXkE1tT2FCc=
+HGJRja4DmtEGjPJ-2FUVd14iAAO4eRBeA2VFrtcQhGllYn2-2BMkVf79U-3D
+
+Your plan:
+
+Lucidchart Individual
+
+($540.00)
+
+Next payment date:=C2=A0
+
+Mar 14, 2022=C2=A0
+
+
+
+
+
+Lucid Software, Inc.
+
+10355 South Jordan Gateway, Suite 150,
+ South Jordan, UT 84095 USA https://sg.app.lucidchart.com/ls/click?upn=3DiV=
+TT-2Fpq7gkkDxN5WGuJTwqTpZKtaWetsuhgEy4edTxifXvdEPZNISBMygDP0YeMer2dy_ofyoDm=
+ZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5V=
+kfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9MKGYqAbzTr-2Bscw-2BzzSrru=
+f5PjQKYtO2Lu9PrPH-2Bj0b8aP4oIFFmlirrU6l9aGyD3P-2BOrd16-2FGuAR1J4zSkgyJ98rh3=
+d6w8qSawfsuSj1YT3gMt8QGjdJv5Og41ZRZHO6I0BAIQBe-2BBvZzu1giHsoqAFVxA1FbYigLzl=
+rpAQZFEiCLy50kY6UG-2F5PjnySrWI-2FYp1deqb2d7q74oS2fhvUo0y6D0gqcbYjyQgaBnxZWk=
+qFDUhSdMGGoiuacL6Dr2tVEx4uJpFCSmmsaWsAC6aZb-2FZaoNtkvxPmIYdB9JIciGfb-2Fs6mQ=
+Cety88PPRtAVGbdM8Gw0ELUlpietjqBd0Trq8pSPMIdSp6Bvq2AIimqi8XJa5yJCw3TnDxak2jk=
+vlnRXl8MEwKx1pRIUJd5XF4vrb69idmzRxH8k4-2B6Iw9ZF-2FW2noWk0xPn-2B0tONtBNv7Cnn=
+00EtOTnTSFd0BwvWQujcQMMpffObAtONtXy61ok7h34-3D
+
+
+--180635879a25da925896c3c4ad3fceb2b03634dab6dc5107b59962e65d5b
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=us-ascii
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html>
+    <head lang=3D"en">
+        <meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DUT=
+F-8" />
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <title>Thank you for subscribing to Lucidchart </title>
+        <!--[if mso]>
+        <style>
+        * {
+        font-family: sans-serif!important;
+        }
+        </style>
+        <![endif]-->
+        <style>
+            html,
+            body {
+                margin: 0 auto!important;
+                padding: 0!important;
+                height: 100%!important;
+                width: 100%!important;
+            }
+            * {
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+            div[style*=3D"margin: 16px 0"] {
+                margin:0!important;
+            }
+            table,
+            td {
+                mso-table-lspace: 0pt!important;
+                mso-table-rspace: 0pt!important;
+            }
+            table {
+                border-spacing: 0!important;
+                border-collapse: collapse!important;
+                table-layout: fixed!important;
+                margin: 0 auto!important;
+            }
+            table table table {
+                table-layout: auto;
+            }
+            img {
+                -ms-interpolation-mode:bicubic;
+            }
+            *[x-apple-data-detectors] {
+                color: inherit!important;
+                text-decoration: none!important;
+            }
+            .x-gmail-data-detectors,
+            .x-gmail-data-detectors *,
+            .aBn {
+                border-bottom: 0!important;
+                cursor: default!important;
+            }
+           =20
+            @media screen and (max-width: 420px){
+                u ~ div { width: 100vw !important; }
+                div >u ~ div { width: 100% !important; }
+            }
+           =20
+            @media only screen and (min-device-width: 375px) and (max-devic=
+e-width: 413px) {
+                .email-container {
+                    min-width: 375px!important;
+                }
+            }
+           =20
+            .link:hover {
+              color:    #2F3296    !important;
+            }
+           =20
+            @media print{=20
+                #_eoa_div {
+                    background-image: url('https://RIz9t7cjpy.eoapxl.com/RI=
+z9t7cjpy/P');=20
+                }=20
+            }=20
+            div.OutlookMessageHeader, table.moz-email-headers-table, blockq=
+uote #_eoa_div, #mailContainerBody #_eoa_div {
+                background-image:url('https://RIz9t7cjpy.eoapxl.com/RIz9t7c=
+jpy/F')=20
+            }=20
+           =20
+            @media only screen and (max-width: 660px) {
+
+                .mobile-text-header {
+                    font-size: 29px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    max-width: 660px !important;
+                    padding-top: 60px !important;
+                }
+
+                .mobile-text-intro {
+                    font-size: 20px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    max-width: 660px !important;
+                    padding-top: 40px !important;
+                }
+
+                .mobile-padding {
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    max-width: 660px !important;
+                }
+               =20
+                .mobile-text-highlight {
+                    font-size: 22px !important;
+                }
+
+                .mobile-text-footer {
+                    font-size: 12px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    padding-top: 30px !important;
+                    max-width: 660px !important;
+                }
+               =20
+                .hide {
+                    display:none!important;
+                    padding-top: 0px !important;
+                    padding-bottom: 0px !important;
+                    height: 0px !important;
+                }
+               =20
+                .left-column {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    font-size: 16px !important;
+                    padding-right: 15px !important;
+                }
+               =20
+                .right-column {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding-left: 15px !important;
+                }
+               =20
+                .two-column {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                }
+                               =20
+            }
+        </style>
+    </head>
+<body width=3D"100%" bgcolor=3D"#f2f2f2" style=3D"Margin: 0;">
+    <div style=3D"display:none;font-size:1px;color:#333333;line-height:1px;=
+max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+         &#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&=
+#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbs=
+p;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&=
+nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#820=
+4;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#=
+8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp=
+;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&n=
+bsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204=
+;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8=
+204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;=
+&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nb=
+sp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;=
+&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#82=
+04;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&=
+#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbs=
+p;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&=
+nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#820=
+4;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#=
+8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp=
+;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&n=
+bsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204=
+;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8=
+204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;=
+&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nb=
+sp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;=
+&nbsp;
+    </div>
+<div lang=3D"en">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" height=3D"100%" wid=
+th=3D"100%" bgcolor=3D"#f2f2f2" style=3D"border-collapse:collapse;">
+<tr>
+<td valign=3D"top">
+      <center style=3D"width: 100%;">
+        <div style=3D"max-width: 660px;">
+            <!--[if mso]>
+            <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"660" style=3D"max-width: 660px; min-width: 660px;" align=3D"center">
+            <tr>
+            <td width=3D"420">
+            <![endif]-->
+            <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=
+=3D"center" bgcolor=3D"#ffffff" width=3D"100%" style=3D"max-width: 660px;">
+                <tr>
+                    <td style=3D"padding: 0px 0px 0px 0px; font-size: 0px; =
+mso-height-rule: exactly; line-height: 6px; color:   #F96B13 ; background-c=
+olor:   #F96B13 ;">
+                        &nbsp;
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align=3D"left" valign=3D"middle" width=3D"100%" hei=
+ght=3D"100%"  style=3D"font-size:0; padding: 24px 30px 0px 35px;" class=3D"=
+mobile-text">
+                        <a href=3D"https://sg.app.lucidchart.com/ls/click?u=
+pn=3DiVTT-2Fpq7gkkDxN5WGuJTwqTpZKtaWetsuhgEy4edTxiThFVwL3GlVl6IYvYi4VidfUFp=
+_ofyoDmZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY=
+-2Bsz5VkfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9MKGYqAbzTr-2Bscw-2=
+BzzSrruf5PjQKYtO2Lu9PrPH-2Bj0b8aP4oIFFmlirrU6l9aGyD3P-2BOrd16-2FGuAR1J4zSkg=
+yJ98rh3d6w8qSawfsuSj1YT3gMt8QGjdJv5Og41ZRZHO6I0BAIQBe-2BBvZzu1giHsoqAFVxA1F=
+bYigLzlrpAQZFEiCLy50kY6UG-2F5PjnySrWI-2FYp1deqb2d7q74oS2fhvUo0y6D0gqcbYjyQg=
+aBnxZWkqFDUhSdMGGoiuacL6Dr2tVEx4uJpFCSmmsaWsAC6aZb-2FZaoNtkvxPmIYdB9JIciGfb=
+-2Fs6mQCety88PPRtAVGbdMcA8L6Mi9pH4Cfv8UAZqfhWIsU9Lu5mjxn-2FurtE04jhYNSHTD4l=
+0rK-2BBCpXLJINy6AqNb8ozpkaIEkp0IeyqUv-2FJz9lVWcaoFeJTOlwGM-2FDe-2F5OdwVcGj9=
+hDpEKAyxkXPK-2FWqUtuvddGKUSoS-2BI8Ap7JydOAzNXTu63sVrTyOW4c-3D">
+                            <img src=3D"https://cdn-cashy-static-assets.luc=
+idchart.com/marketing/emails/20210914_Lucidchart_logo_email_transparent.png=
+" width=3D"158" alt=3D"Lucidchart" style=3D"border: 0;width: 100%; max-widt=
+h: 158px; vertical-align:middle;">
+                        </a>
+                    </td>
+                </tr>
+           =20
+                <tr>
+                    <td valign=3D"top" style=3D"font-family: Arial,Helvetic=
+a,Verdana,sans-serif; font-size: 36px; mso-height-rule: exactly; line-heigh=
+t: 46.8px; color: #4C5158; padding: 80px 60px 0px 60px; text-align: left;" =
+class=3D"mobile-text-header">
+                        Your subscription has been changed
+                    </td>
+                </tr>
+                <tr>
+                    <td valign=3D"top" style=3D"font-family: Arial,Helvetic=
+a,Verdana,sans-serif; font-size: 20px; mso-height-rule: exactly; line-heigh=
+t: 30px; color: #4C5158; padding: 47px 60px 40px 60px; text-align: left;" c=
+lass=3D"mobile-text-intro">
+                        To view or make additional changes to your subscrip=
+tion, visit <a href=3D"https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2F=
+pq7gkkDxN5WGuJTwkMtNut-2BW6jy44oqW0gw7xwbHE8ItF8AeQA80L9GDw2qCUVqbRPZ8A6dKl=
+-2BpKrvbMw-3D-3DRzsX_ofyoDmZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl=
+9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECN=
+P9MKGYqAbzTr-2Bscw-2BzzSrruf5PjQKYtO2Lu9PrPH-2Bj0b8aP4oIFFmlirrU6l9aGyD3P-2=
+BOrd16-2FGuAR1J4zSkgyJ98rh3d6w8qSawfsuSj1YT3gMt8QGjdJv5Og41ZRZHO6I0BAIQBe-2=
+BBvZzu1giHsoqAFVxA1FbYigLzlrpAQZFEiCLy50kY6UG-2F5PjnySrWI-2FYp1deqb2d7q74oS=
+2fhvUo0y6D0gqcbYjyQgaBnxZWkqFDUhSdMGGoiuacL6Dr2tVEx4uJpFCSmmsaWsAC6aZb-2FZa=
+oNtkvxPmIYdB9JIciGfb-2Fs6mQCety88PPRtAVGbdMjcXHs00ujC5473rG8RIk5UOapfe-2Fma=
+qYImnZzjhlO1du5gucQQSHjI4lYD6bJsYCtkjVFIKmNhX-2BL38OFv8TRadWn3etQWQ2c7ePir7=
+qSKvrtvIJBZgFr3UAocD0NWhhNZBnvgDTXEcvOhExFqxJzklS3b9-2FbFKggaWcOG7yJms-3D" =
+target=3D"blank" style=3D"color:   #F96B13  ;" class=3D"link">your account =
+page</a>.
+                    </td>
+                </tr>
+            </table>
+            <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=
+=3D"center" width=3D"100%" style=3D"max-width: 660px;" bgcolor=3D"#ffffff">
+                <tr>
+                    <td style=3D"padding: 0px 60px 0px 60px; text-align:lef=
+t; font-size: 0px; mso-height-rule: exactly; line-height: 0px;" class=3D"mo=
+bile-padding">
+                        <table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;">
+                            <tr>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=
+=3D"center" width=3D"100%" style=3D"max-width: 660px;"  bgcolor=3D"#ffffff"=
+>
+                <tr>
+                    <td style=3D"padding: 0px 60px 0px 60px; text-align:lef=
+t; font-size: 0px; mso-height-rule: exactly; line-height: 0px;" class=3D"mo=
+bile-padding">
+                        <table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center" width=3D"100%" style=3D"width: 540px; max-width: 54=
+0px;" class=3D"left-column">
+                            <tr>
+                                <td style=3D"padding: 20px 0px 0px 0px; mso=
+-height-rule: exactly;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                                <td style=3D"padding: 20px 0px 0px 0px; mso=
+-height-rule: exactly;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                                                                           =
+                                                                           =
+         </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style=3D"padding: 0px 60px 0px 60px; text-align:lef=
+t; font-size: 0px; mso-height-rule: exactly; line-height: 0px;" class=3D"mo=
+bile-padding">
+                        <table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;">
+                            <tr>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width=3D"224" max-width=3D"224" align=
+=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Verdana,sans=
+-serif; font-size: 16px; mso-height-rule: exactly; line-height: 24px; color=
+: #4C5158; padding: 40px 15px 40px 0px; width: 100%; max-width: 224px;">
+                                    <table cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;=
+">
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 16px; mso-height-rule: exactly; line-height: 2=
+4px; color: #4C5158; padding: 0px 0px; width: 100%; max-width: 224px;">
+                                                <b>Your plan:</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 28px; mso-height-rule: exactly; line-height: 3=
+6px; color: #4C5158; padding: 10px 0px 0px 0px; width: 100%; max-width: 224=
+px;" class=3D"mobile-text-highlight">
+                                               Lucidchart Individual
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 28px; mso-height-rule: exactly; line-height: 3=
+6px; color: #4C5158; padding: 10px 0px 0px 0px; width: 100%; max-width: 224=
+px;" class=3D"mobile-text-highlight">
+                                               $540.00
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width=3D"224" max-width=3D"224" align=
+=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Verdana,sans=
+-serif; font-size: 16px; mso-height-rule: exactly; line-height: 24px; color=
+: #4C5158; padding: 40px 0px 40px 15px; width: 100%; max-width: 224px;">
+                                    <table cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;=
+">
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 16px; mso-height-rule: exactly; line-height: 2=
+4px; color: #4C5158; padding: 0px 0px 0px 0px; width: 100%; max-width: 224p=
+x;">
+                                                <b>Next payment date:&nbsp;=
+</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 28px; mso-height-rule: exactly; line-height: 3=
+6px; color: #4C5158; padding: 10px 0px 0px 0px; width: 100%; max-width: 224=
+px;" class=3D"mobile-text-highlight">
+                                               Mar 14, 2022&nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style=3D"padding: 0px 60px 0px 60px; text-align:lef=
+t; font-size: 0px; mso-height-rule: exactly; line-height: 0px;" class=3D"mo=
+bile-padding">
+                        <table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;">
+                            <tr>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width=3D"224" max-width=3D"224" align=
+=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Verdana,sans=
+-serif; font-size: 16px; mso-height-rule: exactly; line-height: 24px; color=
+: #4C5158; padding: 20px 15px 60px 0px; width: 100%; max-width: 224px;">
+                                    <table cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;=
+">
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 12px; mso-height-rule: exactly; line-height: 1=
+8px; color: #4C5158; padding: 0px 0px; width: 100%; max-width: 224px;">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 28px; mso-height-rule: exactly; line-height: 3=
+6px; color: #4C5158; padding: 0px 0px 0px 0px; width: 100%; max-width: 224p=
+x;">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width=3D"224" max-width=3D"224" align=
+=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Verdana,sans=
+-serif; font-size: 16px; mso-height-rule: exactly; line-height: 24px; color=
+: #4C5158; padding: 20px 0px 60px 15px; width: 100%; max-width: 224px;">
+                                    <table cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"center" width=3D"100%" style=3D"max-width: 660px;=
+">
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 12px; mso-height-rule: exactly; line-height: 1=
+8px; color: #4C5158; padding: 0px 0px; width: 100%; max-width: 224px;">
+                                                <b></b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width=3D"224" max-width=3D"=
+224" align=3D"left" valign=3D"top" style=3D"font-family: Arial,Helvetica,Ve=
+rdana,sans-serif; font-size: 12px; mso-height-rule: exactly; line-height: 1=
+8px; color: #4C5158; padding: 0px 0px; width: 100%; max-width: 224px;">
+                                              =20
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                                <td style=3D"padding: 0px 60px 0px 60px; te=
+xt-align:left; font-size: 0px; mso-height-rule: exactly; line-height: 1px; =
+color: #e9ebed; background-color: #e9ebed;" class=3D"mobile-padding">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=
+=3D"center" bgcolor=3D"#ffffff" width=3D"100%" style=3D"max-width: 660px;">
+                <tr bgcolor=3D"#f2f2f2">
+                    <td style=3D"padding:40px 60px 40px 60px; width: 400;fo=
+nt-size: 12px; font-family: Arial,Helvetica,Verdana,sans-serif; mso-height-=
+rule: exactly; line-height:18px; text-align: left; color: #888;" class=3D"m=
+obile-text-footer">
+                        Lucid Software Inc.<br>
+                        <a href=3D"https://sg.app.lucidchart.com/ls/click?u=
+pn=3DiVTT-2Fpq7gkkDxN5WGuJTwqmoV0ZWTuJLi-2F6XNRjepeM-3DDukN_ofyoDmZzklSkp3S=
+sQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZYoWf0=
+tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9MKGYqAbzTr-2Bscw-2BzzSrruf5PjQKYtO=
+2Lu9PrPH-2Bj0b8aP4oIFFmlirrU6l9aGyD3P-2BOrd16-2FGuAR1J4zSkgyJ98rh3d6w8qSawf=
+suSj1YT3gMt8QGjdJv5Og41ZRZHO6I0BAIQBe-2BBvZzu1giHsoqAFVxA1FbYigLzlrpAQZFEiC=
+Ly50kY6UG-2F5PjnySrWI-2FYp1deqb2d7q74oS2fhvUo0y6D0gqcbYjyQgaBnxZWkqFDUhSdMG=
+GoiuacL6Dr2tVEx4uJpFCSmmsaWsAC6aZb-2FZaoNtkvxPmIYdB9JIciGfb-2Fs6mQCety88PPR=
+tAVGbdMJwv213HDg6ZIhckEwm92hSZQNx8l0bxmxwahDI59UwHnfNSuZvVv9jERhNDJbHaCBaMQ=
+9DY65ZrsTBqD8-2F-2FiidO3-2B9ih7YwFXR1-2FhtHH9p7fjyFWq-2Bo299qTsz5i9rW5D3Gv-=
+2FKzG-2F9xAgDDan-2FHxu798ekeH2iUXWVfR-2Bb3mkmc-3D" target=3D"_blank" style=
+=3D"text-decoration: none; color: #888; cursor: default;" >10355 South Jord=
+an Gateway, Suite 150<br>
+                        South Jordan, UT 84095 USA</a>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </center>
+</td>
+</tr>
+</table>
+</div>
+<img src=3D"https://sg.app.lucidchart.com/wf/open?upn=3DzeIhPS250T-2Bb1l28t=
+RfHr-2FSSPwxo-2FqTmbwmoMOME8caWPMyyyuWns9DvgKayIU4hhkqaNOi0PZnT-2B-2Bmdv7Hd=
+T6aA7yfjq9wCyJuXkAj7Sy63eTmY6oqZxaYwKQ8R59-2FakR4YLGvTSom-2BdpR0s-2Ffieu04N=
+XMe-2Fc5lbKSJphTogE-2Bd4QDmqMXmr6k8-2F8MxFUvu4t6kOzSj11H2vhWDN5uZw4eVDCunbk=
+dpuT-2F8oi-2Bw-2FecgIde4y3N1YF8bfjHdDVvR3c8humylRAYWE2oINFzblqm6gTkJqlx-2F-=
+2BKTQSLuGmWWpIbkWUnJIDcudAuDEIlkCSNwzlVP3y2tNRb-2BvlYUvIjVcfnCbhZ5v-2Ban-2B=
+qVgG9a5jj2-2B4CqYmIWNfxE70mO2mMXiGFGcXaLSAH1y2GD-2FtbS5bXjcZNreEr6f-2FrJagB=
+fomlC4I-2B-2BOUSALtgB3PtwmZhWc08gpERNwlPSLyrXKNY6t8iWgu75IP1B12h4TFxO2y41nk=
+MYVXfGfMn6Q66Mtu-2F47l0mkeN3RjIkWD3C8y01Mocrq4geZ0rqxvkLmlPPoh-2Fv7pN95dlDW=
+maWrNlfr0FabOHJhopEubPNvBvCMTZObhyq1s0n5YA2AdR3VTlh0-3D" alt=3D"" width=3D"=
+1" height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !impo=
+rtant;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !im=
+portant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !i=
+mportant;padding-bottom:0 !important;padding-right:0 !important;padding-lef=
+t:0 !important;"/></body>
+</html>
+
+
+--180635879a25da925896c3c4ad3fceb2b03634dab6dc5107b59962e65d5b--

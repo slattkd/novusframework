@@ -1,0 +1,183 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp6389715ejc;
+        Wed, 8 Jun 2022 08:41:48 -0700 (PDT)
+X-Received: by 2002:ab0:7794:0:b0:35c:a50c:df8d with SMTP id x20-20020ab07794000000b0035ca50cdf8dmr37624449uar.42.1654702908382;
+        Wed, 08 Jun 2022 08:41:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654702908; cv=none;
+        d=google.com; s=arc-20160816;
+        b=w2lTZRNyDDYrBysbTQUBDaG1DkYdrX3QYqOWPYmY4kYljxIw0amtzDREcDVuZWuGn3
+         4EFsLtL9tmF4jESK2K5zOvAx8jNV2+SvG3z4mODFZuzHPKONsXj1JhVsMlqD7fOXycGp
+         PUMuPeW+fWIYC8kSSPE4MeytEcoq/d7Un7zgiqZfTQKn1G7J6mgBgjCr9A9pB+DyR95L
+         pSSt8VaBGPQ5XAuTyq94szzU8x+JyvanxdTVftniGc9oPPKzrxEkwmU0AUBWXy9TNLox
+         NoUkj5TbzpcRF9O5QDEuFNvpbAT1PkIMKgoIcADgAOKgi0JPedFIzUxMjcPzipqK//8p
+         6Bjw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=9CEP82i6q2f2fEApc1/LznYnbFjLMPT4FJs3K18XiEA=;
+        b=tyaGkf5dwMj3DhJzJZVK00As/fvQzSS3q6HGqXr7ouZFpEsL3qiXx7XtYkCVSM2psr
+         MnbBfOsVbTDT3AoOfJ8hYiQQr9P1wex2ojLjPnVxsscEyd7tN9OJqOE0QDWX7CCTXq+q
+         +OfCZj2ZCc4kQom9uytCAtgysXaWxqRGf/CfYJlkPTEpgEJ5xralbcAtn1VECfv0UO0C
+         6K7P65g13bRJBB/VOuQ746NV84vZudS9Wr+1qHOo57WqLiJe8hoz2TdlLXijFQ+9CnBx
+         mbMRF+Wh8taD5tQqlELJH3G2DpIA6laHJphH3XWOAAG4rQ1d11cWeZBB4WtT40ZmG5BF
+         FlzQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=PBE3yRym;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y14-20020a1f7d0e000000b0035e913e757bsor531502vkc.39.2022.06.08.08.41.47
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 08 Jun 2022 08:41:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=PBE3yRym;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=9CEP82i6q2f2fEApc1/LznYnbFjLMPT4FJs3K18XiEA=;
+        b=PBE3yRymUy5/kjNupC/sg8Ry6f6kxIhJXTVO6ECSbScjgNesvE41FGxX8Qf/UXiNuJ
+         OAW/WExQ58w3uZYt7v5NxptuaR92EUcYEthwAiRyxnaVVAStsyKqN+jR1F8nLlsBLBUp
+         iF4ItCMC3G1mEbw3jMpVh1gbItaHlMJBntPWB3hCpxUexsaxNmHXZugXhWqn+LT697Ea
+         y9iVHw5ss035Vz2RJi3NN6YXZ8U0j14+hJPoPAcXLJpjKIze3qTWQMtoFNzgmcXeQazu
+         5pvH72nZN00tvzES053wET9LTDvdQ8SFp0WVe5xNo4Q4G1vX9HfADU4ckDOZWZHd0TJt
+         aGjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=9CEP82i6q2f2fEApc1/LznYnbFjLMPT4FJs3K18XiEA=;
+        b=YuBz9phDdy1b8ivY3BYjSo/NIDSsYUO3NlTd9FkdnEzFTaDhBQbUgE60nBfcPRmapL
+         uL5iXibjIH/ALooJ/964Eufvsz8iy7xBhs6CWn9kdXTkgS+SifFCWbS35w06vyIMek0s
+         w+e8kRkm5H3Yi7l9qUThLaLWIVZ+eJo4bg/MPWSC78HvUaToX4MXFBeGUj+Ij6E4sD3l
+         NBqr7WAIqphN4fbYtSz736NJ0EC1o682qCGQTqFzg4rezIUqSqv/4XPjJOJKfFBRAqyI
+         Ay2Nxn0UCYKPHRB6WzL/w7/Zb12ajXiR0Edlo60laSfE/vVok8CopXPa26csDVjUR5me
+         OxRg==
+X-Gm-Message-State: AOAM5327qPJw0fihdUFZ27LvEJG+Q6X7Rw3zaMZS1pe7FNpPp2NkBLYr
+	JoaPqCRUMwg5A1aIDAjdb4GeibraTtuPY+dAK6N1Ax879EsJmtCx
+X-Google-Smtp-Source: ABdhPJy5OfUb/YAekoQjC/cpisptXd6/O3gij17G5amCmD5UxeDbdNw16PmJg64KZsMPeV6TaZ7ynA89tSg01knCZ/8=
+X-Received: by 2002:a1f:73c1:0:b0:35c:cb95:832 with SMTP id
+ o184-20020a1f73c1000000b0035ccb950832mr14252128vkc.15.1654702907565; Wed, 08
+ Jun 2022 08:41:47 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP9nsSoModPcGjdaw9KCJ69f35NboxG9VyKpUgy1sqe63g@mail.gmail.com>
+ <CA+_WZaX+u=Ku4TW2nE+2nHL059gAdv93_0WBanZLq2HCnhkLZA@mail.gmail.com>
+In-Reply-To: <CA+_WZaX+u=Ku4TW2nE+2nHL059gAdv93_0WBanZLq2HCnhkLZA@mail.gmail.com>
+From: Brooke Whoolery <brooke@pineapple.co>
+Date: Wed, 8 Jun 2022 10:41:11 -0500
+Message-ID: <CAH69s1qDnve1gbJ1MFT-+xc7HTU+Mp66P1yC4vVHuVo7ZNW1NQ@mail.gmail.com>
+Subject: Re: Dr. Feurstein & Dr. Masley, May 2022
+To: Sean Chipman <sean@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Taylor Piccolo <taylor@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000003c58105e0f18ba8"
+
+--00000000000003c58105e0f18ba8
+Content-Type: text/plain; charset="UTF-8"
+
+Hello,
+
+Sean/Andrea - can you please let me know when both Masley and Feurstein
+were paid and the amounts? Thanks!
+
+
+Outie 5000,
+-
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Brooke Whoolery  Director of Operations
+
+Pineapple Company
+p: 724.984.6740
+w:  pineapple.co
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+
+On Wed, Jun 1, 2022 at 8:05 PM Sean Chipman <sean@pineapple.co> wrote:
+
+> how many hours did Masley work?
+>
+> On Wed, Jun 1, 2022 at 2:50 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+>
+>> Good afternoon!
+>>
+>> For the month of May:
+>>
+>> # of Nitric Drive bottles sold = 1410
+>> Total due to Dr. Feurstein = $141.00
+>>
+>> # of new Floraspring customers: 2982
+>>
+>>
+>> Have a wonderful day!
+>> --
+>> Aubrey Allen
+>> Data Analytics Technician
+>> Pineapple Products, Inc.
+>>
+>
+
+--00000000000003c58105e0f18ba8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,=C2=A0<div><br></div><div>Sean/Andrea - can you plea=
+se let me know when both Masley and Feurstein were paid and=C2=A0the amount=
+s? Thanks!=C2=A0</div><div><br></div><div><br></div><div><div><div dir=3D"l=
+tr" class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=
+=3D"ltr"><div>Outie 5000,=C2=A0</div>-<table cellspacing=3D"0" width=3D"500=
+" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spacing:0px=
+;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sans-serif">=
+<tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0p=
+x;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pineapple.co/pinea=
+ppleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"create=
+d with MySignature.io" width=3D"100" src=3D"https://img.mysignature.io/p/e/=
+3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" style=3D"wi=
+dth:100px;border-radius:15%"></a></td><td valign=3D"top" style=3D"border-le=
+ft:2px solid rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,208=
+,255);border-right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,255=
+);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" borde=
+r=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;line-height:1.=
+4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"=
+><tbody><tr><td><span style=3D"font-stretch:normal;font-size:1.2em;line-hei=
+ght:normal;font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">Bro=
+oke Whoolery</span><span style=3D"font-family:Verdana,Geneva,sans-serif">=
+=C2=A0 Director of Operations</span></td></tr><tr><td style=3D"padding:5px =
+0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Company=
+</div></td></tr><tr><td><font color=3D"#46d0ff" face=3D"Verdana, Geneva, sa=
+ns-serif">p: </font><font face=3D"Verdana, Geneva, sans-serif" color=3D"#00=
+0000">724.984.6740</font></td></tr><tr><td><span style=3D"font-family:Verda=
+na,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<span styl=
+e=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://pineapple.co/=
+" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a></span></td>=
+</tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb=
+(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Genev=
+a,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10019=C2=A0</span><=
+/td></tr></tbody></table></td></tr></tbody></table><table cellspacing=3D"0"=
+ width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;borde=
+r-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato=
+,sans-serif"></table></div></div></div><br></div></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 1, 2022 at 8:0=
+5 PM Sean Chipman &lt;<a href=3D"mailto:sean@pineapple.co">sean@pineapple.c=
+o</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+><div dir=3D"ltr">how many hours did Masley work?</div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 1, 2022 at 2:5=
+0 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_bla=
+nk">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex"><div dir=3D"ltr">Good afternoon!<div><br></div><div>=
+For the month of May:</div><div><br></div><div># of Nitric Drive bottles so=
+ld =3D 1410</div><div>Total due to Dr. Feurstein =3D $141.00</div><div><br>=
+</div><div># of new Floraspring customers: 2982</div><div><br></div><div><b=
+r></div><div>Have a wonderful day!<br>-- <br><div dir=3D"ltr"><div dir=3D"l=
+tr">Aubrey Allen<div>Data Analytics Technician</div><div>Pineapple Products=
+, Inc.</div></div></div></div></div>
+</blockquote></div>
+</blockquote></div>
+
+--00000000000003c58105e0f18ba8--

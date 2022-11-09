@@ -1,0 +1,427 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:3102:0:0:0:0 with SMTP id wl2csp2637141ejb;
+        Wed, 2 Nov 2022 06:05:18 -0700 (PDT)
+X-Received: by 2002:a17:90b:4b8c:b0:213:6a84:b4b0 with SMTP id lr12-20020a17090b4b8c00b002136a84b4b0mr36578252pjb.207.1667394318440;
+        Wed, 02 Nov 2022 06:05:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1667394318; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fbv+y+2gZum+XWuRmr8i6LBwcxtX5KzsnZ4HyxirDhIZkqw43phcwB4bfuWKCPuq10
+         KWku/G7y+iBE2H42mJjw4HmsGfmqwjJ3rL1ocP2+1qDYsioWH4DHKb5OIOuyHETYYfz+
+         plHIsZ4qZh2itTPM/HERgwqKTOe2/RpTH6Ca8jngPZuxa8l8hgaheSG7KuU2XEfp/0V7
+         vgLKY6i6udiDpYWpR+ypu9Mm/DzavTPU8tHXHqOe+ph/ltwDgvic4j5NeTzJRElyB3Sl
+         kTlzn5UR2aQtGt3+jQHt2mz2tHgZDRjVgHlHy4fnoBs2WSyyIpqsHyOOD+00U9tSPpPx
+         sDiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=InCVkC6ruSkhqnDvrkW0mXn0pHKhPodylxo64bCaPwU=;
+        b=AG98GyoRU2am+KX1wWwnpaavVS9QRf+gtcEq1zdU/J6vZOqn6olsSGk12bZ4rT3m7D
+         B2RloT8eQeZOoXlQ3Wdj113j3yaKj7iE24kQVHHqQjrp1YMirc02VUlCJhES7SjPxozN
+         /MXSU+DvbQqsYGoSNQUpYEiHdPgskktci8V3rBi0auPpxlDjP7btfiP0dUC2hQsQceFG
+         9O1UcH1eK9oa9KGSa9Zu/wtEWJMqI8UQqrxRwQRZgl5J1UWVyXBqqgX4tZp8KevywV1y
+         zmHTM5cHr62P0avcP/qU1w2QqLEmwnuL/tTS/9l5KSw4u6t0geS0m56vQPwS9maNkJWJ
+         4Uxw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=zEpwz0OG;
+       spf=pass (google.com: domain of kirsten@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kirsten@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <kirsten@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k5-20020a17090a9d8500b001fa9ccba22bsor810666pjp.34.2022.11.02.06.05.17
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 02 Nov 2022 06:05:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kirsten@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=zEpwz0OG;
+       spf=pass (google.com: domain of kirsten@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kirsten@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=InCVkC6ruSkhqnDvrkW0mXn0pHKhPodylxo64bCaPwU=;
+        b=zEpwz0OGsGrzLrKkNACYyYSRQYPnWj42W0EVfMWAyZa90Oc+eg6Vsa0oOy2E4fnhzF
+         19LFWeaX3V3UbNUecFVJMJVlcfUMJsQHAi+ikVkyaDkAgTEGagghDrwE4wh8ZGoKFt/Z
+         oVyXVxaPIKVnJGuD3fxGf0nu9N4wRDnQ7/4Eh5gPoIbo8N9gYdiQjPM3j2fUyDWDizUD
+         ms4RLwzNRUokI0OFNN7K3DuuuDbstl1Nreed6GH+MQpYSFbiGynxT1onyNh7oaUwO1TN
+         8be3rjJpMsZ8u66YbIescgkCXnExH2Eojb7Pm6k702TmiZp1YZAnY81D4/bccuxUj7T+
+         mdSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=InCVkC6ruSkhqnDvrkW0mXn0pHKhPodylxo64bCaPwU=;
+        b=BxYPP8Oxej91YrM+wmva5S5SzLd36fU42JV2CRavS/j2b8En+jub+pYjnR8TVRbb0i
+         WkxjiD/QqHumFI8iOrfM+HaISa+0FtV3vDGYVTWWnS6l8/G6qN4BNDkdKgRjmxvJSMI1
+         XipnYjOxA7d9eDGwSt2jFu8DLimRLa0fYAygNKEZ6A++rBG9UmODAtDFPEsN0qmq+RWu
+         K6qgVXSn23hqXm40+wxps/3bWmFeXfIS5MfQmU7qNtY0i4Dp9UX29dadl5zIGhwIUmnw
+         4eLqTQUTudVAZ22C+C6tJEXXx75qtpdJf4YDA9fwHuJiwwxALjM+C2sqq7B8fhFE2mtw
+         t0Sg==
+X-Gm-Message-State: ACrzQf0BvXd1pAuzRj2OT+JTHRqiwu0tKAV43XE4tprnGNudzqE5Vc7n
+	i9EjldxCeVXVAHGulzlUXLwcQgH9/QVjwO0+R0e26cn7
+X-Google-Smtp-Source: AMsMyM4MecSYr4y3B5d9Y+P1t1iuT1jSO53iArThZTUInK55lyCc16TD+kzZF4+PFl21AorUC8a7X40TeA9VmOu1zQw=
+X-Received: by 2002:a17:90a:110f:b0:213:931b:ebe9 with SMTP id
+ d15-20020a17090a110f00b00213931bebe9mr29944258pja.50.1667394317415; Wed, 02
+ Nov 2022 06:05:17 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_Qe72uvDMhSRYAoWo3Zbn7N=-yMfsWndY-WqGETEXyAmg@mail.gmail.com>
+ <CAF+qxE+ctdBoX5=NifG1VDrGN7AvFpSg6aZgqkDV0RmV9o1Y+g@mail.gmail.com>
+ <CAHbmDP89nFmqo_9W7EyLi3zxK4QJVR5eGrWUdCQqO+LT0b=yJA@mail.gmail.com>
+ <CAJsXUXCZS4MTcK75bgtsfgfQvchAi0W5EkWHQf2WLidefvxXWw@mail.gmail.com>
+ <CALCR5_QRE1On07s+bay6a6Ecd_HE2foLuHwbtMZGphE3mP78yw@mail.gmail.com>
+ <CAJsXUXAO+s1OC6ent4VoU_PRvbMCOCKtitmyYdd-c3v4YYdy1Q@mail.gmail.com> <CALCR5_RsNv7YGYm1bbnP1Tt73KuO5dvSfw+5OZWtNJdRb03nDA@mail.gmail.com>
+In-Reply-To: <CALCR5_RsNv7YGYm1bbnP1Tt73KuO5dvSfw+5OZWtNJdRb03nDA@mail.gmail.com>
+From: Kirsten Woods <kirsten@pineapple.co>
+Date: Wed, 2 Nov 2022 07:05:06 -0600
+Message-ID: <CAF+qxELVxTVu9eMxV9OgXLJjVJ9-uWkCT+J4hYwtF1KihRcoww@mail.gmail.com>
+Subject: Re: Help with Q3 company presentation
+To: Brett Allcorn <brett@pineapple.co>
+Cc: Amber Glenn <amber@pineapple.co>, Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000fd8eea05ec7c7d62"
+
+--000000000000fd8eea05ec7c7d62
+Content-Type: text/plain; charset="UTF-8"
+
+Brett,
+
+I've written up slides 9 & 14 from my end, as soon as we have editing
+access I can add them, or if you'd prefer, here's the link from my side for
+those details:
+
+https://docs.google.com/presentation/d/1VpyuXXY0dkzmVYsIgVrRH_jAGSweUl5UWBT_l_RSvHk/edit?usp=sharing
+
+Kirsten
+
+On Tue, Nov 1, 2022 at 12:52 PM Brett Allcorn <brett@pineapple.co> wrote:
+
+> Thanks!
+>
+> On Tue, Nov 1, 2022 at 2:46 PM Amber Glenn <amber@pineapple.co> wrote:
+>
+>> My portion is complete! Thanks
+>>
+>>
+>> On Tue, Nov 1, 2022 at 1:37 PM Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>>> No there was a bunch, I just left her name there for formatting
+>>> reference.
+>>>
+>>> Also I forgot a deadline here... *Thursday 5pm ET* would be great
+>>> thanks!
+>>>
+>>> On Tue, Nov 1, 2022 at 9:45 AM Amber Glenn <amber@pineapple.co> wrote:
+>>>
+>>>> Sure thing, Brett.
+>>>> Was Bonnie the last new hire that was announced? Trying to find my
+>>>> starting point.
+>>>> Thanks!
+>>>>
+>>>> On Tue, Nov 1, 2022 at 9:31 AM Aubrey Allen <aubrey@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Sure, no problem!  I also requested editing access.
+>>>>>
+>>>>> Thanks!
+>>>>> Aubrey
+>>>>>
+>>>>> On Tue, Nov 1, 2022 at 7:13 AM Kirsten Woods <kirsten@pineapple.co>
+>>>>> wrote:
+>>>>>
+>>>>>> Happy to help.  It looks like right now it's only viewing access, do
+>>>>>> you mind changing this to editing access?
+>>>>>>
+>>>>>> Thanks!
+>>>>>> Kirsten
+>>>>>>
+>>>>>>
+>>>>>> On Mon, Oct 31, 2022 at 5:04 PM Brett Allcorn <brett@pineapple.co>
+>>>>>> wrote:
+>>>>>>
+>>>>>>> Kirsten, can you help me with slide 9 and 14?
+>>>>>>>
+>>>>>>> Aubrey, can you help with slide 5?
+>>>>>>>
+>>>>>>> Amber, can you help with slide 15?
+>>>>>>>
+>>>>>>> Thank you!
+>>>>>>>
+>>>>>>> Link to doc here:
+>>>>>>> https://docs.google.com/presentation/d/1F0fNHaqd4KCi0J9O_rf-SirDT9qWTWcfARz4iVnGnbg/edit#slide=id.g12270894980_0_30
+>>>>>>>
+>>>>>>> --
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> *Brett Allcorn*
+>>>>>>> Chief Executive Officer | pineapple.co
+>>>>>>>
+>>>>>>> [image: Photo]
+>>>>>>>
+>>>>>>> E: brett@pineapple.co
+>>>>>>>
+>>>>>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>>>>>
+>>>>>>> The content of this email is confidential and intended for the
+>>>>>>> recipient specified in message only. It is strictly forbidden to share any
+>>>>>>> part of this message with any third party, without a written consent of the
+>>>>>>> sender. If you received this message by mistake, please reply to this
+>>>>>>> message and follow with its deletion, so that we can ensure such a mistake
+>>>>>>> does not occur in the future.
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>> --
+>>>>> *Aubrey Allen*
+>>>>> Data Analytics Technician | pineapple.co
+>>>>>
+>>>>> [image: Photo]
+>>>>>
+>>>>> E: aubrey@pineapple.co
+>>>>>
+>>>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>>>
+>>>>> The content of this email is confidential and intended for the
+>>>>> recipient specified in message only. It is strictly forbidden to share any
+>>>>> part of this message with any third party, without a written consent of the
+>>>>> sender. If you received this message by mistake, please reply to this
+>>>>> message and follow with its deletion, so that we can ensure such a mistake
+>>>>> does not occur in the future.
+>>>>>
+>>>>
+
+--000000000000fd8eea05ec7c7d62
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Brett,<div><br></div><div>I&#39;ve written up slides 9 &am=
+p; 14 from my end, as soon as we have editing access I can add them, or if =
+you&#39;d prefer, here&#39;s the link from my side for those details:</div>=
+<div><br></div><div><a href=3D"https://docs.google.com/presentation/d/1Vpyu=
+XXY0dkzmVYsIgVrRH_jAGSweUl5UWBT_l_RSvHk/edit?usp=3Dsharing">https://docs.go=
+ogle.com/presentation/d/1VpyuXXY0dkzmVYsIgVrRH_jAGSweUl5UWBT_l_RSvHk/edit?u=
+sp=3Dsharing</a><br></div><div><br></div><div>Kirsten=C2=A0</div></div><br>=
+<div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, No=
+v 1, 2022 at 12:52 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.c=
+o">brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div dir=3D"ltr">Thanks!=C2=A0<br></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 1, 2022 =
+at 2:46 PM Amber Glenn &lt;<a href=3D"mailto:amber@pineapple.co" target=3D"=
+_blank">amber@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex"><div dir=3D"ltr">My portion is complete! Thanks<b=
+r><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
+s=3D"gmail_attr">On Tue, Nov 1, 2022 at 1:37 PM Brett Allcorn &lt;<a href=
+=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr">No there was a bunch, I just left her name there for formatting re=
+ference.<div><br></div><div>Also I forgot a deadline here... <b><u>Thursday=
+ 5pm ET</u></b> would be great thanks!</div></div><br><div class=3D"gmail_q=
+uote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 1, 2022 at 9:45 AM =
+Amber Glenn &lt;<a href=3D"mailto:amber@pineapple.co" target=3D"_blank">amb=
+er@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex"><div dir=3D"ltr">Sure thing, Brett.<div>Was Bonnie the last =
+new hire that was announced? Trying to find my starting point.</div><div>Th=
+anks!</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Tue, Nov 1, 2022 at 9:31 AM Aubrey Allen &lt;<a href=3D"mailt=
+o:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr=
+">Sure, no problem!=C2=A0 I also requested editing access.<div><br></div><d=
+iv>Thanks!</div><div>Aubrey</div><div><br><div class=3D"gmail_quote"><div d=
+ir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 1, 2022 at 7:13 AM Kirsten Wood=
+s &lt;<a href=3D"mailto:kirsten@pineapple.co" target=3D"_blank">kirsten@pin=
+eapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"ltr">Happy to help.=C2=A0 It looks like right now it=
+&#39;s only viewing access, do you mind changing this to editing access?<di=
+v><br></div><div>Thanks!<br>Kirsten<br><div><br></div></div></div><br><div =
+class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 31,=
+ 2022 at 5:04 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" ta=
+rget=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Kirsten, can you help me=
+ with slide 9 and 14?<div><br></div><div>Aubrey, can you help with slide 5?=
+</div><div><br></div><div>Amber, can you help with slide 15?</div><div><br>=
+</div><div>Thank you!</div><div><br></div><div>Link to doc here:=C2=A0<a hr=
+ef=3D"https://docs.google.com/presentation/d/1F0fNHaqd4KCi0J9O_rf-SirDT9qWT=
+WcfARz4iVnGnbg/edit#slide=3Did.g12270894980_0_30" target=3D"_blank">https:/=
+/docs.google.com/presentation/d/1F0fNHaqd4KCi0J9O_rf-SirDT9qWTWcfARz4iVnGnb=
+g/edit#slide=3Did.g12270894980_0_30</a><br clear=3D"all"><div><br></div>-- =
+<br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Executi=
+ve Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span> 			 		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+>=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000fd8eea05ec7c7d62--

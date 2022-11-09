@@ -1,0 +1,334 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp414669ejz;
+        Mon, 25 Jul 2022 12:49:55 -0700 (PDT)
+X-Received: by 2002:a17:902:f608:b0:16d:c44:137 with SMTP id n8-20020a170902f60800b0016d0c440137mr13767391plg.173.1658778595513;
+        Mon, 25 Jul 2022 12:49:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658778595; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Q+tfShO/8Sp/4aVxYhraZE+BI+Un6dxi8MkkfOuxDHsTksO10GV6N5xaPKHk3zItLm
+         CFYMNLT6Lf4BvnwwhT9YSg2s3O2Dti4MlFs4CN8xtkLUa0AJVw5fR5K+Y0k6+HBn13wX
+         /mBWjfX19Fp0NCy4LPVojqF4iTQu3nVTOAjeuzvnY8QwNaDVgjXVgUOwc9lu79E+lEbc
+         n0ewL6pjTid4hqH+SqckzVe0lS79Yv4IEymn7TGam0iOvfsk0cIs/umypmYlyN/2DIxN
+         cDQW2tHqu5Jp7ORZhyFY2xXCTSR+1NbZ6+fxDx2UjleJHIGSgVpkcML+/BKP9XpcU9JG
+         J8jQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=iL6GSs3jXFJRz7Y+hS/gJUy9aXOB4mhqDefZJAKbiCk=;
+        b=l+ooXcCK1GIwgbF4MGqsNU8cE2CnJtnDa/G0zs7yrJ8J08mwA9IfBafDI6D9+osMZa
+         C0NoWvsA3bY6AThUtdZroLB8WsJR1DcUHArs2PRx9Gna9njtqMvn/yTha9DiNmD4hcJi
+         qD//pOiEzEPPx+6290hwz/K2VkvHjKQiLG54XKnbvfsHwT/tIIrXbnBKha0miPFytHrV
+         lukic7yoDcybxCStAjt8R9J7b+ogCAp7YckJp52tPJPwi31mLNHkanwgpeLCHTcWMnKs
+         4rcBnkBaDAzCsDZvkIHbUfJyV/uOElKnqRLAET7q4f7tksAQ+FdwjGn1OyZKNBNpvc/Y
+         17Ug==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="2uDLoqx/";
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s9-20020a170902b18900b0016d2124a1e6sor2333162plr.142.2022.07.25.12.49.55
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 25 Jul 2022 12:49:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="2uDLoqx/";
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=iL6GSs3jXFJRz7Y+hS/gJUy9aXOB4mhqDefZJAKbiCk=;
+        b=2uDLoqx/UtYeUfmHyr5sfSPERskkZULtPHzjH7HojDG1BJMvJqJu6sKkhkRvLMjyUa
+         +T2l2lmxTCQeOy1rHX/Qt9B6Ky7s1tOD0nntlCZRhNhy4Y6RB1V8+brDTIjqIn3c81nT
+         rCTTcY9Qh5gNfmdBuHbyT59tUHZ1jIZImriVUyKBw7EL1NlZ4uCCUnpddzf7Tk1d88Qe
+         ua9F7I3zuDiy3BdwHKi8ho8yGQxK0zY2dk/B0s1qtIyThWeCOD8yO7DIdkoX0fozmpin
+         pWtCWWqg1KkW+EM3F+L93NIboY8NSCDnFfNO2RlLBGvcYhub4mGjv7Q5aHY2XLYpoS1J
+         6AGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=iL6GSs3jXFJRz7Y+hS/gJUy9aXOB4mhqDefZJAKbiCk=;
+        b=T8isesFvm3zhdNeBuFMAsIbO9eYJGh1f4rpyY+5iMry1GPyY2eCvih9uZjlGhQvu7G
+         Mb/e2aIVsmWWbiOlCEe0X6iCQ7I803Ye4JcM1OSWQP34KMRGlnJNCm1K3EN5lymRT9Py
+         SBdm9Ujji5/aAY+R0PRTeCKkPpy4Vqr23yOeikIkTr8W0Q2+slX7x2SzN8e4Qo53ZOKC
+         +TXd63KyE75OEgwS/JMVCGy4oxTNDTOyQsKYmZ87IGV6pgX7avopadPvBJVYVUp59C1e
+         SUcW7XiQjaFaSEADtf+m4BWTAg4MsJMuO+cpSv7LU6Yne0+wp8UKVVRMR/qpUB4qqhnP
+         o2cA==
+X-Gm-Message-State: AJIora+IRKLQ6AUgurE9lWeYIciftJyT30VGzmd1EXNIYmNE5QbG6BdI
+	uwiL8yCzowmHYhvhOgqA2iU9BNlcElTzzb1GxdotTa9QBoIo7OdW
+X-Google-Smtp-Source: AGRyM1u5OovB8oL8VzbTNFCafMB0KVmi5cjRSqgPSbwK2MGNaQgPkoVjtg2K7CV1ZZmKfAVYkR+n+PYv92UeKKHBOLI=
+X-Received: by 2002:a17:90b:4f8f:b0:1f2:1eab:b3ea with SMTP id
+ qe15-20020a17090b4f8f00b001f21eabb3eamr15637695pjb.243.1658778594768; Mon, 25
+ Jul 2022 12:49:54 -0700 (PDT)
+MIME-Version: 1.0
+References: <MN2PR13MB2703E74D1E369995D9D99FD395959@MN2PR13MB2703.namprd13.prod.outlook.com>
+ <CALCR5_Rdztt0q5JCBbpFj=vanoQjoLj0RsFbcT8=Qo7x6Pwm-A@mail.gmail.com>
+ <CAHbmDP-fJkHgxG3RbsBPT83aD-4=tdSvVhvP0BZv66tAEVrJFw@mail.gmail.com>
+ <CALCR5_SsjG+ykzc4xdEZKR3tX=y6Wo6Qxseh1FC-HUmL-pvGAQ@mail.gmail.com> <CAHbmDP--qU2ZBrYDdvpFO=Mfn8Y=bWXcdaOk8UwDzGi__j3iFQ@mail.gmail.com>
+In-Reply-To: <CAHbmDP--qU2ZBrYDdvpFO=Mfn8Y=bWXcdaOk8UwDzGi__j3iFQ@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Mon, 25 Jul 2022 15:49:44 -0400
+Message-ID: <CALCR5_Qqg5N=dmjycM-jCN5FCjpHNEuMPTKww9GW6p59nMBtVw@mail.gmail.com>
+Subject: Re: Avalara & Pineapple Co- Follow Up
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000e70b8805e4a67c08"
+
+--000000000000e70b8805e4a67c08
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Appreciate it :)
+
+On Mon, Jul 25, 2022 at 3:31 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> I'll certainly do my best to get it to you by then!
+>
+> On Mon, Jul 25, 2022 at 2:23 PM Brett Allcorn <brett@pineapple.co> wrote:
+>
+>> Could you potentially have it sooner?
+>>
+>> Wednesday, end of day?
+>>
+>> On Mon, Jul 25, 2022 at 2:54 PM Aubrey Allen <aubrey@pineapple.co> wrote=
+:
+>>
+>>> Hello all!
+>>>
+>>> @Brett Allcorn <brett@pineapple.co> - Yes, I can provide Ryan with this
+>>> information.  I should be able to have this for y'all before the end of=
+ the
+>>> week.
+>>>
+>>> Thank you!
+>>> Aubrey
+>>>
+>>> On Mon, Jul 25, 2022 at 1:27 PM Brett Allcorn <brett@pineapple.co>
+>>> wrote:
+>>>
+>>>> @Aubrey Allen <aubrey@pineapple.co> - can you provide Ryan the first
+>>>> item on his "data needed" list which is 2021 sales in Sticky (do not
+>>>> include tests and declines), including total $ volume by state for the=
+ year
+>>>> and total number of transactions for the year.
+>>>>
+>>>>
+>>>>
+>>>> On Mon, Jul 25, 2022 at 1:52 PM Ryan Henderson <
+>>>> ryan.henderson@avalara.com> wrote:
+>>>>
+>>>>> Team,
+>>>>>
+>>>>> Thank you for your time today!
+>>>>>
+>>>>>
+>>>>>
+>>>>> *Requirements & How Avalara Handles:*
+>>>>>
+>>>>>    - Understanding where you have nexus obligations. Avalara will do
+>>>>>    a sales tax risk assessment to tell you where you should be regist=
+ered,
+>>>>>    when your obligation started, and what your liability is for each =
+state.
+>>>>>    - Automate sales tax rates and taxability. Avalara=E2=80=99s AvaTa=
+x will
+>>>>>    calculate the taxability and rate from data points on the invoice =
+in real
+>>>>>    time.
+>>>>>    - Track economic nexus obligations. AvaTax has a heat map that
+>>>>>    will track and alert you when you are approaching a nexus threshol=
+d.
+>>>>>    - Automate the return filing process. Avalara will automate the
+>>>>>    return process.
+>>>>>
+>>>>>
+>>>>>
+>>>>> *Plan of Action:*
+>>>>>
+>>>>>    - Gather a basic understanding of what cost once sales data is
+>>>>>    reviewed.
+>>>>>    - Schedule a tax advisory call to discuss the risk assessment and
+>>>>>    determine how to proceed.
+>>>>>    - Review the recommended solutions for your situation.
+>>>>>    - Finalize pricing and next steps.
+>>>>>
+>>>>>
+>>>>>
+>>>>> *Data Needed:*
+>>>>>
+>>>>>    - 2021 sales data by state (transaction volume and total dollars
+>>>>>    if possible)
+>>>>>    - Location of remote employees
+>>>>>    - List of states you are currently registered
+>>>>>
+>>>>>
+>>>>>
+>>>>> *Resources:*
+>>>>>
+>>>>>    - State-by-state guide to economic nexus laws (avalara.com)
+>>>>>    <https://www.avalara.com/us/en/learn/guides/state-by-state-guide-e=
+conomic-nexus-laws.html>
+>>>>>    - Streamlined Sales Tax (SST) - Avalara
+>>>>>    <https://www.avalara.com/us/en/products/sales-and-use-tax/streamli=
+ned-sales-tax.html>
+>>>>>    - State-by-state physical presence nexus guide (avalara.com)
+>>>>>    <https://www.avalara.com/us/en/learn/guides/state-by-state-physica=
+l-presence-nexus-guide.html>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>> Once I can review the data, we will set up a call to discuss the plan
+>>>>> of action. Please let me know if you have any additional questions.
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>> All the best,
+>>>>>
+>>>>> Ryan Henderson | Sales Executive
+>>>>> *e:* ryan.henderson@avalara.com
+>>>>> Avalara | Tax compliance done right
+>>>>>
+>>>>
+
+--000000000000e70b8805e4a67c08
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Appreciate it :)</div><br><div class=3D"gmail_quote"><div =
+dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 25, 2022 at 3:31 PM Aubrey All=
+en &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr">I&#39;ll certainly=C2=A0do my best to get it to you by then!</div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon=
+, Jul 25, 2022 at 2:23 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapp=
+le.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Could you poten=
+tially have it sooner?<div><br></div><div>Wednesday, end of day?</div></div=
+><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mo=
+n, Jul 25, 2022 at 2:54 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineap=
+ple.co" target=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
+1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hello all!<di=
+v><br></div><div><a class=3D"gmail_plusreply" id=3D"gmail-m_557159992894522=
+2691gmail-m_4908908427045618086gmail-m_-674051621527214516plusReplyChip-0" =
+href=3D"mailto:brett@pineapple.co" target=3D"_blank">@Brett Allcorn</a>=C2=
+=A0- Yes, I can provide Ryan with this information.=C2=A0 I should be able =
+to have this for y&#39;all before the end of the week.</div><div><br></div>=
+<div>Thank you!</div><div>Aubrey</div></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 25, 2022 at 1:27 PM Brett=
+ Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@=
+pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex"><div dir=3D"ltr"><a class=3D"gmail_plusreply" id=3D"gmail-m_557=
+1599928945222691gmail-m_4908908427045618086gmail-m_-674051621527214516gmail=
+-m_-3800040692200078399plusReplyChip-6" href=3D"mailto:aubrey@pineapple.co"=
+ target=3D"_blank">@Aubrey Allen</a>=C2=A0- can you provide Ryan the first =
+item on his &quot;data needed&quot; list which is 2021 sales in Sticky (do =
+not include tests and declines), including total $ volume by state for the =
+year and total number of transactions for the year.<br><div><br></div><div>=
+<br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gm=
+ail_attr">On Mon, Jul 25, 2022 at 1:52 PM Ryan Henderson &lt;<a href=3D"mai=
+lto:ryan.henderson@avalara.com" target=3D"_blank">ryan.henderson@avalara.co=
+m</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+>
+
+
+
+<div lang=3D"EN-US"><div>
+<p class=3D"MsoNormal">Team,<u></u><u></u></p>
+<p class=3D"MsoNormal"><u></u><u></u></p>
+<p class=3D"MsoNormal">Thank you for your time today!<u></u><u></u></p>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal"><b>Requirements &amp; How Avalara Handles:<u></u><u>=
+</u></b></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li style=3D"margin-left:0in">Understanding where you have nexus obligation=
+s. Avalara will do a sales tax risk assessment to tell you where you should=
+ be registered, when your obligation started, and what your
+ liability is for each state. <u></u><u></u></li><li style=3D"margin-left:0=
+in">Automate sales tax rates and taxability. Avalara=E2=80=99s AvaTax will =
+calculate the taxability and rate from data points on the invoice in real t=
+ime.<u></u><u></u></li><li style=3D"margin-left:0in">Track economic nexus o=
+bligations. AvaTax has a heat map that will track and alert you when you ar=
+e approaching a nexus threshold.<u></u><u></u></li><li style=3D"margin-left=
+:0in">Automate the return filing process. Avalara will automate the return =
+process.<u></u><u></u></li></ul>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal"><b>Plan of Action:<u></u><u></u></b></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li style=3D"margin-left:0in">Gather a basic understanding of what cost onc=
+e sales data is reviewed.<u></u><u></u></li><li style=3D"margin-left:0in">S=
+chedule a tax advisory call to discuss the risk assessment and determine ho=
+w to proceed.<u></u><u></u></li><li style=3D"margin-left:0in">Review the re=
+commended solutions for your situation.<u></u><u></u></li><li style=3D"marg=
+in-left:0in">Finalize pricing and next steps.<u></u><u></u></li></ul>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal"><b><span style=3D"background:yellow">Data Needed:</s=
+pan><u></u><u></u></b></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li style=3D"margin-left:0in">2021 sales data by state (transaction volume =
+and total dollars if possible)<u></u><u></u></li><li style=3D"margin-left:0=
+in">Location of remote employees<u></u><u></u></li><li style=3D"margin-left=
+:0in">List of states you are currently registered<u></u><u></u></li></ul>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal"><b>Resources:<u></u><u></u></b></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li style=3D"margin-left:0in"><a href=3D"https://www.avalara.com/us/en/lear=
+n/guides/state-by-state-guide-economic-nexus-laws.html" target=3D"_blank"><=
+span style=3D"color:blue">State-by-state guide to economic nexus laws (aval=
+ara.com)</span></a><u></u><u></u></li><li style=3D"margin-left:0in"><a href=
+=3D"https://www.avalara.com/us/en/products/sales-and-use-tax/streamlined-sa=
+les-tax.html" target=3D"_blank"><span style=3D"color:blue">Streamlined Sale=
+s Tax (SST) - Avalara</span></a><u></u><u></u></li><li style=3D"margin-left=
+:0in"><a href=3D"https://www.avalara.com/us/en/learn/guides/state-by-state-=
+physical-presence-nexus-guide.html" target=3D"_blank"><span style=3D"color:=
+blue">State-by-state physical presence nexus guide (avalara.com)</span></a>=
+<u></u><u></u></li></ul>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal">Once I can review the data, we will set up a call to=
+ discuss the plan of action. Please let me know if you have any additional =
+questions.<u></u><u></u></p>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<p class=3D"MsoNormal">All the best,<u></u><u></u></p>
+</div>
+<p style=3D"font-family:Calibri,Arial,sans-serif;font-size:12px">
+<span style=3D"font-size:14px;color:rgb(255,102,0);font-weight:bold;letter-=
+spacing:0.8px;line-height:2.5">Ryan Henderson</span> |=20
+<span style=3D"font-size:12px;color:rgb(26,26,26);font-weight:normal;letter=
+-spacing:0.6px">Sales Executive</span> <br>
+<span style=3D"font-size:12px;color:rgb(26,26,26);font-style:normal;letter-=
+spacing:0.8px;display:block;clear:both;margin-bottom:5px"></span>
+<span style=3D"font-size:12px;color:rgb(26,26,26);font-style:normal;letter-=
+spacing:0.8px;display:block;clear:both;margin-bottom:5px"></span>
+<span style=3D"font-size:12px;color:rgb(26,26,26);font-style:normal;letter-=
+spacing:0.8px;display:block;clear:both;margin-bottom:5px"></span>=20
+<span style=3D"display:block;clear:both;margin-bottom:5px"><b style=3D"colo=
+r:rgb(26,26,26)">e:</b> <span style=3D"font-size:12px;color:rgb(5,155,210);=
+font-weight:normal;letter-spacing:0.8px"><a href=3D"mailto:ryan.henderson@a=
+valara.com" target=3D"_blank">ryan.henderson@avalara.com</a></span><br>
+<span style=3D"font-family:Calibri,Arial,sans-serif;font-weight:bold;color:=
+rgb(255,102,0);font-size:18px;letter-spacing:0.025em">Avalara</span> <span =
+style=3D"font-family:Calibri,Arial,sans-serif;font-weight:normal;color:rgb(=
+145,145,149);font-size:12px;letter-spacing:0.025em">| Tax compliance done r=
+ight</span>=20
+</span></p>
+
+</div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000e70b8805e4a67c08--

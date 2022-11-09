@@ -1,0 +1,529 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp2544213ejd;
+        Tue, 12 Apr 2022 10:27:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGSs/DDgc5bh8rng+TFiNEAE2EUGUyMQu4WYeQ/a1mICM/4tzt94fVFKldOjLWn8TQOqlr
+X-Received: by 2002:a65:57cc:0:b0:384:3370:e161 with SMTP id q12-20020a6557cc000000b003843370e161mr31244268pgr.364.1649784421936;
+        Tue, 12 Apr 2022 10:27:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1649784421; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oz7VIuKaOR0HnKb4tUcWVVu8BEcM5BkZgYyXBDjT/hSuw7BnWTse2GmdhYMotpbyaE
+         cGBo++2xnE24tOh0ng1E9PlEVFhEwyzLp9WOBIf4LKF79feD6uH3B062eQNIvsnDbPgi
+         bhSOu77x79S4AU5v155d31sAEbrJo7JyEDMZ0CYeK9yuUrX4wo3Qu5dC/kdhOpk7jFOF
+         P5WqRkYQ1/QMtogxzqfXEdCflAU9J3+TEcbDlRUTvzHFMLTxv4cYuG0NAoT15SSZVWp+
+         EVKuyv39JL8xupkM7HRSDoQ/rV6bOHYUwVkF2SYlAwhBC/C64waWUCdkkIujRpEo5kuu
+         8CMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:subject:message-id:mime-version:from:date
+         :dkim-signature;
+        bh=kQmy+9dJcX3htJbFAt5mb96R7X90rF8Y0fXme3nD8Vg=;
+        b=g96K90dEt3PXAQqCz/KRVZ24W4gQhjXmq+5G3IOpaB1rJ72kEY1GDroCxSoOsBJ7Zv
+         zGr2zgyCilufogLy3YXOzMXFzQyMtv3Kw4gN2QG7Qdof8gTBbYS2VhH4CERR6u+IzYSS
+         k2FQVOHIsu26iGLrbm3lg1aBQk9q4h6Wv2Jo8PkeKCrXJFdCjjj28GtlhzKX3C2drXWG
+         CKhoS7Riq9ztwJQ012w5xHFf0xEdEGskq29Rx2x4fQqVBznWL+UKR6lpsU8XhUcnaKzM
+         gxtT+ydwf7hmK/GxhZL3ezGLc/K8f2ofYKKBsJ4XNsdGlSDdd0TGShumbmwMqLrJESY4
+         B+0g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@app.lucidchart.com header.s=s1 header.b=Y3STdLEk;
+       spf=pass (google.com: domain of bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com designates 149.72.168.224 as permitted sender) smtp.mailfrom="bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lucidchart.com
+Return-Path: <bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com>
+Received: from o1.ptr8772.lucidchart.com (o1.ptr8772.lucidchart.com. [149.72.168.224])
+        by mx.google.com with ESMTPS id 2-20020a17090a01c200b001caa0b8c6f0si14767455pjd.18.2022.04.12.10.26.55
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Apr 2022 10:27:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com designates 149.72.168.224 as permitted sender) client-ip=149.72.168.224;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@app.lucidchart.com header.s=s1 header.b=Y3STdLEk;
+       spf=pass (google.com: domain of bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com designates 149.72.168.224 as permitted sender) smtp.mailfrom="bounces+9025700-0652-aubrey=pineapple.co@em9689.app.lucidchart.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lucidchart.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=app.lucidchart.com;
+	h=content-type:from:mime-version:subject:reply-to:to;
+	s=s1; bh=kQmy+9dJcX3htJbFAt5mb96R7X90rF8Y0fXme3nD8Vg=;
+	b=Y3STdLEkkockFJUJVSYGI+HE/+IucbPMTmbwhkpHr68xJC+CppoBdEfRTNxhv5Sf1j0r
+	JsWqXcEO26IG/CXr/Jkkmk2V9oT/B0Wuj0Pgg/N6ycxoZA0Cz7IlPd4hlGKCd7j32rjoNB
+	BB4MBVaY+9B4enO/wkmoHUDMad6VxTbJDAMbjrMD/Is4XZBp4Q16HZPMNrj26HIw2/wDY1
+	LCANPZRayDj6Ga2KHC4oaPx7EYMUqyy03IiaxbIM8Vs7Hf7X9AcNe1zZL3zXzmDV1FP22f
+	UJjrGLRJkv6IANASbLcCGK4T72xDpItYfKMxGcBwhEjruQmpYdkdk1e+AT9Xzw3g==
+Received: by filterdrecv-7ff6978b4c-gltkd with SMTP id filterdrecv-7ff6978b4c-gltkd-1-6255B65E-55
+        2022-04-12 17:26:54.384153964 +0000 UTC m=+502570.317342204
+Received: from OTAyNTcwMA (unknown)
+	by geopod-ismtpd-4-2 (SG) with HTTP
+	id GuGbk1C7S2mqrIsrcoNFOg
+	Tue, 12 Apr 2022 17:26:54.071 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=7a77df90e67e942f1468ce16bbfa53cf88dd5b1b4a1be9a2ba04320caece
+Date: Tue, 12 Apr 2022 17:26:54 +0000 (UTC)
+From: Greg Davis  via Lucidchart <sharing@lucidchart.com>
+Mime-Version: 1.0
+Message-ID: <GuGbk1C7S2mqrIsrcoNFOg@geopod-ismtpd-4-2>
+Subject: You're invited to the document "Pineapple Data Garden Database Flow
+ Chart"
+Reply-To: Greg Davis <greg@dolphinconsulting.org>
+X-SG-EID: 
+ =?us-ascii?Q?FnZNYfi0nfVSJJt9t0ttQNxIXwZD+zGoAtFiI8Gidu4xFBGop=2FkDbzwtROtJFc?=
+ =?us-ascii?Q?N4=2FPAKs=2FfktY=2FEqcfZx24im1yrlugdE=2FxtyVruf?=
+ =?us-ascii?Q?0I4h6hXRYQ11S00T5nI9eMgcQhxLxIcB4IIl8u4?=
+ =?us-ascii?Q?Q0zDi25zmlOJrpzYwZINfh+bw2AfBzSfaUU281v?=
+ =?us-ascii?Q?usSWdAtsi=2FY2AI6DITRyrlC9dwwJVrVcLQ1OSkE?=
+ =?us-ascii?Q?yTRs5yG=2FoWMe78ttzSh9AGzZigKukMXhtPScVzm?=
+ =?us-ascii?Q?3aCVcrK1acGp70SVCumvQ=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb=2FhO9p=2FWJKAJUpj=2Fbl19CGY0QIxay4hme4JcoWchkW?=
+ =?us-ascii?Q?F0FSa1=2F39U5xZNUb81vRQpNxfWHkUhTDDHBNyWX?=
+ =?us-ascii?Q?F9WdAqGnUZyk3lXQ8hUvegAzxG6QsgpwAyHTe55?=
+ =?us-ascii?Q?y7gd+mL4cn9wWsMlqHWl8WzcCvMHcJQLpEeM8iM?=
+ =?us-ascii?Q?6+gUe6E10gF0DRa1sUT4Vj5d7qVhoRK4kFgM+Ov?=
+ =?us-ascii?Q?7WRHEYAezf0oywbhs9HU1gsKhlvnq0N43gWWWZl?=
+ =?us-ascii?Q?AURd8GfpiZFM=2FkROLu9aszZg6bZxean=2F4iW=2F5YB?=
+ =?us-ascii?Q?GW4x7ZqvZkd+dMmsmvVfOMdZyjvu2efmIIHqQOx?=
+ =?us-ascii?Q?dUWM3or3ao3nEwDvOldhtSC4TxtaFH84n6zIFk0?=
+ =?us-ascii?Q?YBi=2FseBQiE?=
+To: aubrey@pineapple.co
+X-Entity-ID: Lgtt+uPFXlTJxk36zWascg==
+
+--7a77df90e67e942f1468ce16bbfa53cf88dd5b1b4a1be9a2ba04320caece
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+
+You're invited to the document "Pineapple Data Garden Database Flow Chart"
+
+Greg Davis shared the Lucidchart document Pineapple Data Garden Database Fl=
+ow Chart with you - accept the invitation to take a closer look! =E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0
+
+
+https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2Fpq7gkkDxN5WGuJTwqTpZKta=
+WetsuhgEy4edTxiThFVwL3GlVl6IYvYi4VidyyQ__ofyoDmZzklSkp3SsQxvrldDXqQRjavjdxZ=
+PJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZYoWf0tiqG13PQa1gMuMWpiKv=
+IB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBHw1hl9fFdFggtdqO0koF3PgVy64rW9Ts=
+wLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxaBtrYhXpCC8b3FPxYItmFesOxFfGgUwR=
+yT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9CalUknLcSf12qZNiVMccCeya11R9sRHHR9=
+kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQpWBPCFpOuzrUnKigSEyXr3jVATJZK6Kl=
+JFqOZN85I70hefX6pKGM66Na8cnb5agPghMFprAyLotfVw9Te3KHMlkovw-2B-2FD3Z7Fc8f7m-=
+2Foa7wZ-2FFODdOIUL1qlQDU8fT3RcO-2FoYGxUSrwWxQhMbAu1hXsWRGd-2FbaPpVaIiw8rshw=
+v0XotIG11akTRTmpH9JdgJ1GExIeWrK1kK8l6bO
+
+Greg Davis shared the Lucidchart document Pineapple Data Garden Database Fl=
+ow Chart https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2Fpq7gkkDxN5WGuJ=
+TwlaOJDS9CRXuWWJ-2FtluujEgs8B6mNvAhAsDkWK3ycsMwbBwCjxWTCRwz0MVZNUgnd2EkZkLt=
+E8z7Gst7kmW8bcH2ymbkRIpyKvEjkwwWj7h-2BkAvaXt-2BgAlnjtkOGf5bWk5t373ZJqy3Q409=
+FqtQcJkBGShXrvaIeZvyA7d7p7zg8PV223d1anDg0jeBkpm9zEMKP6ESM3F3NhScfW4JbCBdI2u=
+Yc2lQ3GUi5wbqAfDD0Qsu1qtFQ97BvbnaWPCPuuf9so1TeRj9iv9uEGLvRVh5orVGVBiXlIaHrV=
+Cr5yBetQ-2BIScyGkYvtayRKj-2FIIyhSaqGAD2a5SWM3hHBzl30mg-3DzDCw_ofyoDmZzklSkp=
+3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZYoW=
+f0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBHw1hl9fFdFg=
+gtdqO0koF3PgVy64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxaBtrYhXpCC8=
+b3FPxYItmFesOxFfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9CalUknLcSf12q=
+ZNiVMccCeya11R9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQpWBPCFpOuzr=
+UnKigSEyXr3jVATJZK6KlJFqOZN-2Bt19RiHsPwT40Lj73W-2BU5LlaeT1pawvukl-2Fugv-2BU=
+e5u6zTCxruNohmj-2F9ll1-2BV3qafmi5Mo8OBH0NOitO3RNpvCaEy02kYUW3wYYycllyilAEtc=
+ylJXioywkqN6L-2FjIvpEgcZh4X3TB5oc1HYeasCfBLuvkp5W0izzwIsGi0Vub with you =E2=
+=80=94 accept the invitation to take a closer look!
+
+Message from Greg:
+
+
+
+Accept invitation https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2Fpq7gk=
+kDxN5WGuJTwlaOJDS9CRXuWWJ-2FtluujEgs8B6mNvAhAsDkWK3ycsMwbBwCjxWTCRwz0MVZNUg=
+nd2EkZkLtE8z7Gst7kmW8bcH2ymbkRIpyKvEjkwwWj7h-2BkAvaXt-2BgAlnjtkOGf5bWk5t373=
+ZJqy3Q409FqtQcJkBGShXrvaIeZvyA7d7p7zg8PV223d1anDg0jeBkpm9zEMKP6ESM3F3NhScfW=
+4JbCBdI2uYc2lQ3GUi5wbqAfDD0Qsu1qtFQ97BvbnaWPCPuuf9so1TeRj9iv9uEGLvRVh5orVGV=
+BiXlIaHrVCr5yBetQ-2BIScyGkYvtayRKj-2FIIyhSaqGAD2a5SWM3hHBzl30mg-3DEnpj_ofyo=
+DmZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz=
+5VkfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBHw=
+1hl9fFdFggtdqO0koF3PgVy64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxaB=
+trYhXpCC8b3FPxYItmFesOxFfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9CalU=
+knLcSf12qZNiVMccCeya11R9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQpW=
+BPCFpOuzrUnKigSEyXr3jVATJZK6KlJFqOZN0eSyLgYM4H1a9RQjCX7GAjdcFnBIR3x1Ah0z3Em=
+Jc-2FKmYQy9w3rXVC5WFMQGMnemjeo71uNA3JF3M-2Fp4iDg3my8Ab1r-2BFSYqzBenAqD-2Bu4=
+3QSc0SipohtTYmJ68gPJG0VEPZXVqoY3lLBrwzH741wE95Sf1DFz0qFBanbiEJ-2B9x
+
+Lucid Software, Inc.
+
+10355 South Jordan Gateway, Suite 150,
+ South Jordan, UT 84095 USA https://sg.app.lucidchart.com/ls/click?upn=3DiV=
+TT-2Fpq7gkkDxN5WGuJTwqTpZKtaWetsuhgEy4edTxifXvdEPZNISBMygDP0YeMeGak2_ofyoDm=
+ZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5V=
+kfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBHw1h=
+l9fFdFggtdqO0koF3PgVy64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxaBtr=
+YhXpCC8b3FPxYItmFesOxFfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9CalUkn=
+LcSf12qZNiVMccCeya11R9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQpWBP=
+CFpOuzrUnKigSEyXr3jVATJZK6KlJFqOZN-2BfexOm6Lsyegbsm1O84tChCecyHxPCDe1m64O-2=
+B9EmrkKMu76O2NC0o1cE9elQXalQySCyBqk-2Fyg5PVas81wktaMAgpolIY2XEZS-2FVp01IVa3=
+EmoQrqzT8-2FgBtJhZEKoe1fqV39xSsBhpiT8S-2B4Gloe-2F0kKggwbxuRtCOoq01ZfK
+
+
+--7a77df90e67e942f1468ce16bbfa53cf88dd5b1b4a1be9a2ba04320caece
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=us-ascii
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html lang=3D"en">
+    <head>
+        <meta http-equiv=3D"Content-Type" content=3D"text/html charset=3DUT=
+F-8" />
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <title>You're invited to the document "Pineapple Data Garden Databa=
+se Flow Chart"</title>
+        <!--[if mso]>
+        <style>
+        * {
+        font-family: sans-serif!important;
+        }
+        </style>
+        <![endif]-->
+        <style>
+            html,
+            body {
+                margin: 0 auto!important;
+                padding: 0!important;
+                height: 100%!important;
+                width: 100%!important;
+            }
+            * {
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+            div[style*=3D"margin: 16px 0"] {
+                margin:0!important;
+            }
+            table,
+            td {
+                mso-table-lspace: 0pt!important;
+                mso-table-rspace: 0pt!important;
+            }
+            table {
+                border-spacing: 0!important;
+                border-collapse: collapse!important;
+                table-layout: fixed!important;
+                margin: 0 auto!important;
+            }
+            table table table {
+                table-layout: auto;
+            }
+            img {
+                -ms-interpolation-mode:bicubic;
+            }
+            *[x-apple-data-detectors] {
+                color: inherit!important;
+                text-decoration: none!important;
+            }
+            .x-gmail-data-detectors,
+            .x-gmail-data-detectors *,
+            .aBn {
+                border-bottom: 0!important;
+                cursor: default!important;
+            }
+           =20
+            @media screen and (max-width: 480px){
+                u ~ div { width: 100vw !important; }
+                div >u ~ div { width: 100% !important; }
+            }
+           =20
+            @media only screen and (min-device-width: 375px) and (max-devic=
+e-width: 413px) {
+                .email-container {
+                    min-width: 375px!important;
+                }
+            }
+   =20
+            .button:hover {
+              background-color: #FFF3D9 !important;
+              border: 1px solid #CC4E00 !important;
+              color: #EB5A00 !important;
+              box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;=20
+            }   =20
+           =20
+            .link:hover {
+              color: #2F3296 !important;
+            }       =20
+           =20
+            @media print{=20
+                #_eoa_div {
+                    background-image: url('https://RIz9t7cjpy.eoapxl.com/RI=
+z9t7cjpy/P');=20
+                }=20
+            }=20
+            div.OutlookMessageHeader, table.moz-email-headers-table, blockq=
+uote #_eoa_div, #mailContainerBody #_eoa_div {
+                background-image:url('https://RIz9t7cjpy.eoapxl.com/RIz9t7c=
+jpy/F')=20
+            }=20
+           =20
+            @media only screen and (max-width: 660px) {
+
+                .mobile-text {
+                    font-size: 16px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    max-width: 660px !important;
+                }
+               =20
+                .mobile-text-small {
+                    font-size: 14px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    max-width: 660px !important;                   =20
+                }
+
+                .mobile-text-footer {
+                    font-size: 12px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    padding-top: 30px !important;
+                    max-width: 660px !important;
+                }
+               =20
+                .mobile-icon {
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    padding-top: 60px !important;
+                }
+               =20
+                .button {
+                    line-height: 45px !important;
+                    padding-top: 10px !important;
+                    padding-bottom: 10px !important;
+                }
+               =20
+                .button-padding {
+                    line-height: 45px !important;
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                }
+               =20
+                .mobile-thumbnail-icons {
+                    padding-left: 15px !important;
+                    padding-right: 0px !important;
+                }
+                               =20
+            }
+                @media only screen and (max-width: 375px) {
+                    .button {
+                        padding-left: 30px!important;
+                        padding-right: 30px!important;
+                    }
+                }
+        </style>
+    </head>
+<body width=3D"100%" bgcolor=3D"#f2f2f2" style=3D"Margin: 0;">
+<div style=3D"display:none;font-size:1px;color:#333333;line-height:1px;max-=
+height:0px;max-width:0px;opacity:0;overflow:hidden;">
+    Greg Davis shared the document Pineapple Data Garden Database Flow Char=
+t with you - accept the invitation to take a closer look! &#8204;&nbsp;&#82=
+04;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&=
+#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbs=
+p;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&=
+nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#820=
+4;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#=
+8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp=
+;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&n=
+bsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204=
+;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8=
+204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;=
+&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nb=
+sp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;=
+&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#82=
+04;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&=
+#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbs=
+p;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&=
+nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#820=
+4;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#=
+8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp=
+;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&n=
+bsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204=
+;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8=
+204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;=
+&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nb=
+sp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;
+</div>
+<div lang=3D"en">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" height=3D"100%" wid=
+th=3D"100%" bgcolor=3D"#f2f2f2" style=3D"border-collapse:collapse;">
+<tr>
+<td valign=3D"top">
+<center style=3D"width: 100%;">
+<div style=3D"max-width: 660px;">
+<!--[if mso]>
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"660" style=
+=3D"max-width: 660px; min-width: 660px;" align=3D"center">
+<tr>
+<td width=3D"380">
+<![endif]-->
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" bg=
+color=3D"#ffffff" width=3D"100%" style=3D"max-width: 660px;">
+    <tr>
+        <td style=3D"padding: 0px 0px 0px 0px; text-align:left; font-size: =
+0px; mso-height-rule: exactly; line-height: 6px; color: #F96B13; background=
+-color: #F96B13;" class=3D"mobile-text">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td align=3D"left" valign=3D"middle" width=3D"100%" height=3D"100%"=
+  style=3D"font-size:0; padding: 24px 30px 0px 35px;" class=3D"mobile-text"=
+>
+            <a href=3D"https://sg.app.lucidchart.com/ls/click?upn=3DiVTT-2F=
+pq7gkkDxN5WGuJTwqTpZKtaWetsuhgEy4edTxiThFVwL3GlVl6IYvYi4VidG3mT_ofyoDmZzklS=
+kp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZY=
+oWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBHw1hl9fFd=
+FggtdqO0koF3PgVy64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxaBtrYhXpC=
+C8b3FPxYItmFesOxFfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9CalUknLcSf1=
+2qZNiVMccCeya11R9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQpWBPCFpOu=
+zrUnKigSEyXr3jVATJZK6KlJFqOZN85-2BtYIcLsdDhj17BfiUATaqAbZMl8PJrjciXJm2eibIA=
+wL1DXskMeCyHu0Q6-2FRUUFgAzRbNP7eLBscL1rGKEr-2BkCYql6-2FwZXaM6TS5KrUaBE1GXSK=
+jWXUl0eggmeTEMUPgddEHFAPaMqiTBmg7BCxl7mIvrGBdT6qTfabaOoI3d">
+                <img src=3D"https://cdn-cashy-static-assets.lucidchart.com/=
+marketing/emails/20210914_Lucidchart_logo_email_transparent.png" width=3D"1=
+58" alt=3D"Lucidchart" style=3D"border: 0;width: 100%; max-width: 158px; ve=
+rtical-align:middle;">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td valign=3D"middle" align=3D"left" style=3D"font-size:0px; line-h=
+eight:0px; padding: 80px 60px 0px 60px;" width=3D"100%" class=3D"mobile-ico=
+n">
+            <img src=3D"https://cdn-cashy-static-assets.lucidchart.com/mark=
+eting/emails/Transactional/20200108_doc_invite_icon.png" alt=3D"Icon" borde=
+r=3D"0" width=3D"75" style=3D"display:block; width:100%; max-width:75px;">
+        </td>
+    </tr>
+    <tr>
+        <td valign=3D"top" style=3D"font-family: Arial,Helvetica,Verdana,sa=
+ns-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; col=
+or: #4C5158; padding: 20px 60px 0px 60px; text-align: left;" class=3D"mobil=
+e-text">
+           Greg Davis shared the Lucidchart document <a href=3D"https://sg.=
+app.lucidchart.com/uni/ls/click?upn=3DiVTT-2Fpq7gkkDxN5WGuJTwlaOJDS9CRXuWWJ=
+-2FtluujEgs8B6mNvAhAsDkWK3ycsMwbBwCjxWTCRwz0MVZNUgnd2EkZkLtE8z7Gst7kmW8bcH2=
+ymbkRIpyKvEjkwwWj7h-2BU6hrQiidnBRJT6HOevVlBELf94uysk1WwYkKUkYN8L5LPD3AAkyXG=
+6AdIpZaRCHRpZ6EESCjfOKCAr0XV6EuGlpOS-2FLcAfHwwsyqRdu1C0Z9VtqiBWem9hApPJBz-2=
+BOMKeINoyF1jQrDOwAJpH-2BzdDL3mwuntuEFCQXNUTZIBPjaY41ssELffjCyqdYBJH0wTCZx9c=
+eD1u0VJtdHCYd8DyGMc-2FLFUNDX1ogEJktrwIis-3DfH9l_ofyoDmZzklSkp3SsQxvrldDXqQR=
+javjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bsz5VkfHZYoWf0tiqG13PQa1gM=
+uMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBHw1hl9fFdFggtdqO0koF3PgVy=
+64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxaBtrYhXpCC8b3FPxYItmFesOx=
+FfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9CalUknLcSf12qZNiVMccCeya11R=
+9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQpWBPCFpOuzrUnKigSEyXr3jVA=
+TJZK6KlJFqOZNyK2G8s-2BSZbpcggtPRhBuPC42rX1zz4VFp9izr5HnjoAdiDkyNiThH5-2B-2B=
+yEKMszfFLDBo5-2FR7vZraIcMUwmn5k6es25MSBLvu16YzTNxdjDewcs0XDZLwblUsyZpkWaykj=
+xvRmoc4wMC5tbWxDkamkA9zsc411oEIJ7cYab4lwXs"  universal=3D"true" target=3D"b=
+lank" style=3D"color: #F96B13;" class=3D"link">Pineapple Data Garden Databa=
+se Flow Chart</a> with you &mdash; accept the invitation to take a closer l=
+ook!
+        </td>
+    </tr>
+    <tr>
+        <td align=3D"left" style=3D"padding: 30px 60px 30px 60px; vertical-=
+align: top;" class=3D"button-padding">
+            <a href=3D"https://sg.app.lucidchart.com/uni/ls/click?upn=3DiVT=
+T-2Fpq7gkkDxN5WGuJTwlaOJDS9CRXuWWJ-2FtluujEgs8B6mNvAhAsDkWK3ycsMwbBwCjxWTCR=
+wz0MVZNUgnd2EkZkLtE8z7Gst7kmW8bcH2ymbkRIpyKvEjkwwWj7h-2BU6hrQiidnBRJT6HOevV=
+lBELf94uysk1WwYkKUkYN8L5LPD3AAkyXG6AdIpZaRCHRpZ6EESCjfOKCAr0XV6EuGlpOS-2FLc=
+AfHwwsyqRdu1C0Z9VtqiBWem9hApPJBz-2BOMKeINoyF1jQrDOwAJpH-2BzdDL3mwuntuEFCQXN=
+UTZIBPjaY41ssELffjCyqdYBJH0wTCZx9ceD1u0VJtdHCYd8DyGMc-2FLFUNDX1ogEJktrwIis-=
+3DyD83_ofyoDmZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJ=
+oA53iY-2Bsz5VkfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2X=
+ki4R95RFBHw1hl9fFdFggtdqO0koF3PgVy64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7Ae=
+Ow6Imp2zxaBtrYhXpCC8b3FPxYItmFesOxFfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2Fl=
+IplIOd9CalUknLcSf12qZNiVMccCeya11R9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9=
+SPUnFybgQpWBPCFpOuzrUnKigSEyXr3jVATJZK6KlJFqOZN80CEo-2F6B7y8epYeUGoCeJS1lcY=
+ujEVPhmY-2Bh44iaVJCsSYUYZvtyQno3TRVPJ83z6jDBJy0lSUz-2Fc0D1GT-2FzRYm-2Bbt-2B=
+x3Ueoa4d3QS4kxzh-2BEWrUVg6meCbMYP8qj1QhT-2F9KGYJ80Kr57gOjjpqluEdanCh9jkIyTe=
+vhP47fCPS"  universal=3D"true" style=3D"background: #F96B13; border: 1px so=
+lid #F96B13; text-decoration: none; padding: 20px 30px; color: #ffffff; bor=
+der-radius: 4px; display:inline-block; mso-padding-alt:0; font-family:Arial=
+,Helvetica,Verdana,sans-serif;font-size:20px;" class=3D"button">
+                <!--[if mso]><i style=3D"letter-spacing: 25px;mso-font-widt=
+h:-100%;mso-text-raise:30pt">&nbsp;</i><![endif]-->
+                <span style=3D"mso-text-raise:15pt;">
+                    Accept invitation
+                </span>
+                <!--[if mso]><i style=3D"letter-spacing: 25px;mso-font-widt=
+h:-100%">&nbsp;</i><![endif]-->
+            </a>
+        </td>
+    </tr>
+    <tr bgcolor=3D"#f2f2f2">
+        <td style=3D"padding:40px 60px 40px 60px; width: 400;font-size: 12p=
+x; font-family: Arial,Helvetica,Verdana,sans-serif; mso-height-rule: exactl=
+y; line-height:18px; text-align: left; color: #888;" class=3D"mobile-text-f=
+ooter">
+            Lucid Software Inc.<br> <a href=3D"https://sg.app.lucidchart.co=
+m/ls/click?upn=3DiVTT-2Fpq7gkkDxN5WGuJTwvtdjSDMxGgnWrz-2FwCW0CTs-3DqLav_ofy=
+oDmZzklSkp3SsQxvrldDXqQRjavjdxZPJZeMw33BMLYAk-2BjOl9z6ts0dMdfItcJoA53iY-2Bs=
+z5VkfHZYoWf0tiqG13PQa1gMuMWpiKvIB3BbpUrMwXA6Gyz2ECNP9M84L-2Fn3A2Xki4R95RFBH=
+w1hl9fFdFggtdqO0koF3PgVy64rW9TswLPrWPaY4WutSFAf9YN7yiVQTfhWBAE7AeOw6Imp2zxa=
+BtrYhXpCC8b3FPxYItmFesOxFfGgUwRyT2FjlJxzg6Mp27ex7jcxkkxrIQyid-2FlIplIOd9Cal=
+UknLcSf12qZNiVMccCeya11R9sRHHR9kyzsCpSBcqGbCXtdl0F8-2BFJnzqSLmNU9SPUnFybgQp=
+WBPCFpOuzrUnKigSEyXr3jVATJZK6KlJFqOZN8YAElFjlyelWvcpQmjfIZR8WdmHC9Z8L85KI1K=
+D-2FOeGhdZ4pj2KCD2lMt6PR5Xe6WKoPTS2qCpU9dNfsldC4vC6q2F6V5gWAEkneZaQnBcY3KTT=
+l1gj6JQ7euU4OoGsEnc6MKY81UNwgwCbxhraWROk9CrX4kXZ4cVF-2FO2lYrwj" target=3D"_=
+blank" style=3D"text-decoration: none; color: #888; cursor: default;" >1035=
+5 South Jordan Gateway, Suite 150<br>South Jordan, UT 84095 USA</a>
+        </td>
+    </tr>
+</table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+</center>
+</td>
+</tr>
+</table>
+</div>
+<img src=3D"https://sg.app.lucidchart.com/wf/open?upn=3DzeIhPS250T-2Bb1l28t=
+RfHr-2FSSPwxo-2FqTmbwmoMOME8caWPMyyyuWns9DvgKayIU4hhkqaNOi0PZnT-2B-2Bmdv7Hd=
+T6aA7yfjq9wCyJuXkAj7Sy63eTmY6oqZxaYwKQ8R59-2FaKzP-2BDFLv-2BxfvSMU6w9DTGjBOH=
+mW-2FEDqq1ql2KktiLKNKaFqKppkvmAA0qVGd2i1lmubp-2Fq9DavgmMhu-2BTrXOP9FS-2BY6-=
+2F8EfVXqQloBFEtwrpol9oMhVWuIvp9bl2zxHbID6FC4Z17RGKoXLB5V5nzll-2FuH9idQwfBMo=
+hMfNT-2FejGOkvHlWciJoV4SYt1JGq2PgB7aPmWbNcRxOczzsqMSJv2WL-2B5SJLtbKACMVPG3b=
+GLeaYj2j-2BeYJs-2FnkDzUDOipfRxQP3arc87PAqe2HR71Iyr15B5xy3hEEY9mfJggTNvIM6OO=
+cYRhXhc6tiG5szVJBH9MVnhU5Z0-2F3v-2FFkW3qcJUGB0wadPQvSocwM7FVWJGxMFhY5GXD3B-=
+2B3GrYhepvJxX5QeklizHPRFwj8-2BN1bidrX49IVPwmOzm1bEjXmeTeBco6HUbCmMuo5MZgJlZ=
+QzVB2xtRjaqc-2Fo9l2gVI8zQ-3D-3D" alt=3D"" width=3D"1" height=3D"1" border=
+=3D"0" style=3D"height:1px !important;width:1px !important;border-width:0 !=
+important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0=
+ !important;margin-left:0 !important;padding-top:0 !important;padding-botto=
+m:0 !important;padding-right:0 !important;padding-left:0 !important;"/></bo=
+dy>
+</html>
+
+--7a77df90e67e942f1468ce16bbfa53cf88dd5b1b4a1be9a2ba04320caece--

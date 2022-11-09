@@ -1,0 +1,148 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp825553ejd;
+        Thu, 3 Mar 2022 09:56:52 -0800 (PST)
+X-Received: by 2002:a05:6102:418a:b0:307:8e85:7b7d with SMTP id cd10-20020a056102418a00b003078e857b7dmr15199934vsb.53.1646330212457;
+        Thu, 03 Mar 2022 09:56:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646330212; cv=none;
+        d=google.com; s=arc-20160816;
+        b=a/HFKcb+rBWUDyOpF+s4sktQOGpvKEu6hVBTI3YgVC+n/BNHC7oRJ/L8BDDKyx+FL9
+         1oRQytZDL8puMoDNsKPSpJCdYE56irLpXlwMsrOqV8evD8pHLiff8ZdE1dRxMHOeaFUW
+         WuoHO6bbBVoFvNqZbGg+iB1aGXtSwZFOin3yOWlCQ/BbF4rEqNokHh6fncCr+C56u20b
+         tLQ1i7OVVJYBm7bmiI/2SQi6NhrPSJKgHJf3HGrqhklFYZu0rSYogGFf97uOAk37mkf6
+         dvpe2PMVM06wnPIFuLzR9WHWRMrkaaP6y+Gj4iazaW5ycsqfu3MlzYt6eMTln5HI9Xf4
+         YJBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=GmPZs9n/r86cERFeUPQcosiv018sMJYHbZDcvGRG/Z0=;
+        b=JqzKYEvgOAPoBfkcWDdcqVHatM9MPrCYKXJAk8vzPwOpuRI+IrL3eNVoJ7fgADtY/y
+         s95SGqls4yJivurlNvpk6zZkJrjX39pXJfldnINYnwdrJ0aQ1+EjEHc6r8j5PT+F4kV/
+         OULru5e+uz3LNssQEqaTY/jFwCiCNwARyKciBMr4JXJZWnY7zLvexbx7JL4lz9m7C0gj
+         GqA9TuSIHq+VsxbtfrQ5d9CzEUwBegTrKvnD85VFmeA+Qv2ibNSditsJbPwZPuwzThZn
+         zih6rkP17v8rxE3EQfr5dpqqsWVdVF2RAOpgvBp+h9CADe/+Q+BP7dJdN9TlK1bYfmT8
+         18rQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=6FN6uQVD;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s1-20020a67e341000000b0031e4ea4867csor82422vsm.14.2022.03.03.09.56.52
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 03 Mar 2022 09:56:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=6FN6uQVD;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=GmPZs9n/r86cERFeUPQcosiv018sMJYHbZDcvGRG/Z0=;
+        b=6FN6uQVD7j5ASG4nEO8Ph1RvFDZpsYiPo/bWhV5d2BkrPx1zN84qylI7pkugR5MItI
+         BzITNe276VBtEAjAMkKnTl0c9S/33u3sFFqe2J4/ewXi3ceLJiajsuRGeQ4z6On9oXpE
+         hXvmpEp6v5Mw+dg+y2XtsxmI4r3u+cxQ+U9rNADNf/blnlcKc159Nx39T2WEVcwyHp6F
+         GcHFGrj6o3ZPNdIc7lfRhX1ijlwALq7xcr961irDG0e+tjTswPfr1ZRFkfnjBH2RlAov
+         isganDnTe10HJpMuSc06QF5iYiAxTRnpTs73mkYfSUA/p1QT9ngy2J6vdPdZJgL9C7ka
+         widw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=GmPZs9n/r86cERFeUPQcosiv018sMJYHbZDcvGRG/Z0=;
+        b=F1Vn0I6X+KsWSz5DCKL17vG6oB69yJXFdIXVAF3j1Yty+GAIudKMpNKnImwIkOVIYZ
+         7CYt53bGDQPAORy9EuN5bS4Krf6av9fo0U4/fOrJ71t+gqMd8Ygbr2o1z/TjeRCPLPmu
+         SWf7tGwpIMHpBX4kKvL9x8gYHrhsKLmgB+kxOXXmL1AeoJRSodl9aBfPvohWD8JfskIn
+         ZskURO2M49ucNCmmTgiyqCHxT/gQNN0suLFKwLVJuVYZVudQx1GEALbn18jJVqxQQjea
+         3V3pF0GkMcxpLvEPblGj3ima47kStIjtU4oG1Awwil85PIZZ80+W/2S/3HITcjVNQ8NJ
+         oVqQ==
+X-Gm-Message-State: AOAM532qqQRgc1hSscUkFS2ZJEjuWXR0rDfEP5c24f4N7FBSvojBDXcB
+	yiOLJ8gd7J6wfd66HjKkUBtmo8Y0NmkJltWu748VBpAAIlJLdA==
+X-Google-Smtp-Source: ABdhPJxDYS+eJlfpRiqwdh9W8m5gpa3OYb2FZzEdO2zEGufU6/Z7EeHedzZOJUDEGnyrQAsvsCN1zb6XeJbkwsCOsfQ=
+X-Received: by 2002:a67:f61a:0:b0:31c:1996:8858 with SMTP id
+ k26-20020a67f61a000000b0031c19968858mr14556889vso.68.1646330211980; Thu, 03
+ Mar 2022 09:56:51 -0800 (PST)
+MIME-Version: 1.0
+From: Brooke Whoolery <brooke@pineapple.co>
+Date: Thu, 3 Mar 2022 11:56:16 -0600
+Message-ID: <CAH69s1oPUBJAvqnqJ+ypu2g51Lr7=BO7Rk-Cu1uKNfKJ1LvK3A@mail.gmail.com>
+Subject: Doctor Info
+To: Sean Chipman <sean@pineapple.co>, Greg Davis <greg@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Jeannie Dopson <jeannie@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000077ed5c05d9541fd3"
+
+--00000000000077ed5c05d9541fd3
+Content-Type: text/plain; charset="UTF-8"
+
+Hello,
+
+If I could please get the following info to send my monthly update email to
+Dr. Feuerstein and Dr. Masley, I would appreciate it.
+
+*Need From Finance:*
+
+Total dollar amount and date paid to Dr. Masley
+
+*Need From Analysts: *
+
+Total # of nitric drive bottles sold in the month of February
+Total # of *new* Floraspring customers in the month of February
+
+Thank you!
+
+-
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Brooke Whoolery  Director of Support and Sales
+
+Pineapple Company
+p: 724.984.6740
+w:  pineapple.co
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+--00000000000077ed5c05d9541fd3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div><div dir=3D"ltr" class=3D"gmail_signature" data-=
+smartmail=3D"gmail_signature"><div dir=3D"ltr"><div>Hello,=C2=A0</div><div>=
+<br></div><div>If I could please get the following info to send my monthly =
+update email to Dr. Feuerstein and Dr. Masley, I would appreciate=C2=A0it.=
+=C2=A0</div><div><br></div><div><b>Need From Finance:</b></div><div><br></d=
+iv><div>Total dollar amount and date paid to Dr. Masley</div><div><br></div=
+><div><b>Need From Analysts:=C2=A0</b></div><div><br></div><div>Total # of =
+nitric drive bottles sold in the month of February</div><div>Total # of <b>=
+new</b> Floraspring customers in the month of February</div><div><br></div>=
+<div>Thank you!=C2=A0</div><div><br></div>-<table cellspacing=3D"0" width=
+=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-spac=
+ing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sans-=
+serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px 9px=
+ 0px 0px;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pineapple.c=
+o/pineappleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D=
+"created with MySignature.io" width=3D"100" src=3D"https://img.mysignature.=
+io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" styl=
+e=3D"width:100px;border-radius:15%"></a></td><td valign=3D"top" style=3D"bo=
+rder-left:2px solid rgb(70,208,255);vertical-align:top;border-top-color:rgb=
+(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color:rgb(70,=
+208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0=
+" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;line-he=
+ight:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(=
+0,0,1)"><tbody><tr><td><span style=3D"font-stretch:normal;font-size:1.2em;l=
+ine-height:normal;font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,25=
+5)">Brooke Whoolery</span><span style=3D"font-family:Verdana,Geneva,sans-se=
+rif">=C2=A0 Director of Support and Sales</span></td></tr><tr><td style=3D"=
+padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pinea=
+pple Company</div></td></tr><tr><td><font color=3D"#46d0ff" face=3D"Verdana=
+, Geneva, sans-serif">p: </font><font face=3D"Verdana, Geneva, sans-serif" =
+color=3D"#000000">724.984.6740</font></td></tr><tr><td><span style=3D"font-=
+family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=
+=A0<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://=
+pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a=
+></span></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-se=
+rif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-family:=
+Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10019=
+=C2=A0</span></td></tr></tbody></table></td></tr></tbody></table><table cel=
+lspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-s=
+ize:13px;border-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);fo=
+nt-family:Lato,sans-serif"></table></div></div></div></div></div>
+
+--00000000000077ed5c05d9541fd3--

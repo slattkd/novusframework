@@ -202,26 +202,10 @@ window.onbeforeunload = function() {
 //end possible exit intent replacement
 </script>
 
-<script type="text/javascript">
-    $("#myVid").on("contextmenu",function(e){
-        return false;
-    });
-</script>
 
 
-<script>
-$( document ).ready(function() {
-    //remove timer popup
-    window.hideTimerPopup = function() {
-        $('#runOutModal').remove();
-    }
 
-    window.closeTimerPopup = function() {
-        $('#runOutModal').modal('hide');
-        $("body").removeClass("modal-open");
-    }
-});
-</script>
+
 
 <!-- To fade in a form, enter the time in milliseconds and the id of the <div> to fade in -->
 <!-- @sheena - any idea what this does? -->
@@ -253,49 +237,9 @@ $( document ).ready(function() {
 
 
 
-<!-- Briteverify, verifies that email is valid/exists, include script & enter id of the email text box -->
-<script>
-    emailInput = "#inf_field_Email";
-</script>
-<!-- Buy Safe Script -->
-
-<script>
-<?php
-if (isset($_SESSION["alink"])) {
-    if ($_SESSION["alink"] == 'off') {
-        echo(`$("#afflink").css('display','none')`);
-    } else {
-        echo(`$("#afflink").css('display','inline-block')`);
-    }
-}
-?>
-</script>
 
 
 
-<?php
-if ($_SESSION["a"] == 496) { ?>
-<script>
-  $("#disclaimer").css('display','block');
-</script>
-<?php } else { ?>
-<script>
-  $("#disclaimer").css('display','none');
-</script>
-<?php }
-
-?>
-
-<!--
-<script type='text/javascript'>
-    $(document).ready(function(){
-        setInterval(function(){
-            $.get( "/session_keep.php", function( data ) {});
-        }, (1000 * 60 * 5)) // 1 second * 60 * 5 = 5 minutes
-
-    });
-</script>
--->
 
 
 

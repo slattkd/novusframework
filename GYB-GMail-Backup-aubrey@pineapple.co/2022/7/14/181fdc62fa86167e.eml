@@ -1,0 +1,387 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp1173370ejb;
+        Thu, 14 Jul 2022 10:33:52 -0700 (PDT)
+X-Received: by 2002:a17:90b:1086:b0:1ef:8885:e176 with SMTP id gj6-20020a17090b108600b001ef8885e176mr16957199pjb.105.1657820032708;
+        Thu, 14 Jul 2022 10:33:52 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1657820032; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=d+Rl3rcg3ymxj4DB+RD6JDBHpO4tB5NvMpc6+zZLf4Eb9XuF+2F2Pcf7q/Dgypj76w
+         b16gpd6NLGQGm6SnKemY4QmIqK3wIUaGIkCRBxTqE3zFBpIYjeS04474NRN4Fq5aZmwf
+         ky9DG/VdYTPDpekfHGAi9Z5X9eHJiTYWf6cz453p9bZ3mOsnzKRIv0Prp6KN2KxsYZeC
+         TTLX/B7KvQHjGi9ShfqsljW7ty8eXemHVmNYXtG83ycK+BSwkNiraFi7GCTqePZNXMGU
+         erB8U4lWGHzviOBbdWIWI6ob4XQCJpWY8c98If5iYn97pTB/5mfeWNPcJvsb0KfhgHXX
+         guJg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=ckujQEbhgrl2BrjNbsoK1Ws1MmteNoMjN8wv4PY69UY=;
+        b=zk6mklJGHo7QV5Dgx6Th8URW0SB2xHiawegqZehOXmmFce5VQDcuioS7Kjh9okE3W7
+         RC4gpaX1+sNPDPIj3WeUNVKKujwUTGUpPHsPeUova1/QhGChoprAzTfJy5Fpa4yj42nI
+         pmD155T+XePPT0f0eqrxw5QkwWtCUHp0n48oYaMCg+wExIZ8ASQIifaDwY1RgqWB9MrP
+         tRLu9GfcIfxXxuHKMKKnB/YeQa2GvH4G6JyB1wd/gMYsn0/YdOnAV29JoMOQ+DLAd966
+         PUobiGhA8G8Jznx3uX1kCO52wOeGdU/Zf5Ggr7k5DR48cPG3RdJHDNio1Twa59gER9TT
+         os2Q==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=oGdkqKT5;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcvm3emc7ugbb5fgyglamgqeod65wzy@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCVM3EMC7UGBB5FGYGLAMGQEOD65WZY@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBCVM3EMC7UGBB5FGYGLAMGQEOD65WZY@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id u11-20020a17090282cb00b0016c972affa2sor1007992plz.66.2022.07.14.10.33.52
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 14 Jul 2022 10:33:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbcvm3emc7ugbb5fgyglamgqeod65wzy@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=oGdkqKT5;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcvm3emc7ugbb5fgyglamgqeod65wzy@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCVM3EMC7UGBB5FGYGLAMGQEOD65WZY@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1657820032; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=KRR94wMqFVQbigWkLz0aZHvAolz3z/i7jqIoB13/XVFY3rhW6MtG00/a6COdApf5Q8
+         yyMo5+Jm8Ykf2pn0uKSWhUyMCWk2U1vQI04RElvqNUbn6aZySknop2aJlh0baenaEja5
+         g4n1ROy9BJN+HsndOi0jKmdwHugzhDGVkFEhyaQml0GB/TXIA7BKu3vt6kQnFhpVzbFM
+         Bwa0TGyRy/ztFU7uW/p1Kjd9MRY1n0pvx+lhjzpTxEem0N8+GAZB04x99C0tv2fGLRKV
+         oO8Pe27g/hVV1Bl9xuZwP6kC6oKdKT8UfUAe0mjGZ2eWrQaLxuNxXTvlrQYyyeIe55f1
+         yAAQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=ckujQEbhgrl2BrjNbsoK1Ws1MmteNoMjN8wv4PY69UY=;
+        b=zc58X3ws2JVeZrtILCT+h+jysCuR0tj5FUIWlT7h8qbKLzRYBCRuHfgRL1pqhAoN6E
+         JTlArQCG3MPyp+DoVjoee3mTIiJ7z/CVyeO+ctnDztSDLxv/xic1r65OxzsJOOACIN2a
+         LwBpKtz8GFnFZbuRBghIKrzV6UoyeGyKMCae7nTcGGSxLqK/Rh56lDsLr/UU5prquhQS
+         guxRstobOaoJ0R5RjVYGEotqZpXCCcw/r6ST2bAFf3uNxZdwuisBi/tCy5dEwloVE4z2
+         OZYRW8/z6+LAddaEoOb54kXs29kh5eGs8bfjs0CsJsNGxonTj+Ai437dfYmPprpoyYu7
+         RzFA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="V6P/IxEq";
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-unsubscribe;
+        bh=ckujQEbhgrl2BrjNbsoK1Ws1MmteNoMjN8wv4PY69UY=;
+        b=oGdkqKT5j1KrIJhXnJiC9gsZqOuTPN29pZ6beyaU3Xx7z5w1C4VAXNRfluRQCSqB7K
+         pVJzuw0V7PI/BvLrw4qPkB+obHBgf6KYYFjgHiB/njPF5wkHGk0hhf/ky08cPBkkZoF0
+         Hz7CBtQSQlzmFi5Hzzvkh8wGcTlTH0qHOjXh3W3NQifT1t0p7ITiWpTUhaA/ocqe9Jvb
+         nfT+NTTEHlokFuuJ5ZhAsafpzdKb/w7+5NECehY7pIsey3qBGFEadq/NkfvUkCqnCoWM
+         lgQP9vLmZJlOSxjaLqcGpG5ZH9jV9rQUVQxkb0BSruzedWJmAuIltVDJCDLlIawY3awq
+         H1Tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-unsubscribe;
+        bh=ckujQEbhgrl2BrjNbsoK1Ws1MmteNoMjN8wv4PY69UY=;
+        b=vu0dEJgSuZrchdZ96CNnT+mtX2S/Bcp9Y+M2ZVWzBFzBXW0n4+rUNdSzu/ZiFGLgxy
+         L1op9diDniOqdWmM4H8O3jwx2InYlc42SZ13Q4Rc7Tso+WHFEhXOCHQbzU8i2tFOIRB/
+         RZqX0qyzM3uzcbzvVb8g2T+8f8u7uKPY5Xr0szeXimXg6Sz4Va6vocujZ514zhLBsqbJ
+         HowthYSswDHqMDQg+M5sspdf5ddocJkrZCJAy2yhsH5QRBBInBPomBUwlKLz9yXx6xEs
+         lk8N7uA0lyR/YQYlT+XBoDSXYTCZPyi9VE80UcVjSG12lw9oPAFqJHunZWo2rkwjZEXu
+         gg1Q==
+X-Gm-Message-State: AJIora/ksRhSbk1JBvn00a86ti1GBOiv/K531JDu2OsmSPZTvPdRIllH
+	Vy/xYTKOgkI0Gsd37h7Skx1HJAom
+X-Google-Smtp-Source: AGRyM1t1AaRscf3hRfH1LTkXh46Fzvg+kROdrJ9v7/X+OYQzkxvFjFRTRL2yHIb31kZ0wl4UQ8w9yQ==
+X-Received: by 2002:aa7:8649:0:b0:52a:baae:16c9 with SMTP id a9-20020aa78649000000b0052abaae16c9mr9232729pfo.26.1657820021961;
+        Thu, 14 Jul 2022 10:33:41 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a05:6a00:1a45:b0:528:9c55:f866 with SMTP id
+ h5-20020a056a001a4500b005289c55f866ls4620989pfv.4.gmail; Thu, 14 Jul 2022
+ 10:33:41 -0700 (PDT)
+X-Received: by 2002:a63:8c47:0:b0:40d:2d4:e3a2 with SMTP id q7-20020a638c47000000b0040d02d4e3a2mr8763605pgn.2.1657820020962;
+        Thu, 14 Jul 2022 10:33:40 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a05:6a00:ace:b0:505:bb88:8eb0 with SMTP id
+ c14-20020a056a000ace00b00505bb888eb0ls4615020pfl.10.gmail; Thu, 14 Jul 2022
+ 10:33:40 -0700 (PDT)
+X-Received: by 2002:a63:5c42:0:b0:412:b2e9:97e4 with SMTP id n2-20020a635c42000000b00412b2e997e4mr8912141pgm.36.1657820020012;
+        Thu, 14 Jul 2022 10:33:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657820020; cv=none;
+        d=google.com; s=arc-20160816;
+        b=e25w2un3uhkgYov58Ry6EuEChQzFsStLkKFTQ6CentNP7UQR1lD46IdOO5K1ojRxzt
+         hURg3MyHiY/ektEgjGU3vnD8iYpzLkbnWXauHOdeFSFab4a0argPB48wZd+peKUDB4qN
+         bWoQbShNSieBtaVz19yr7pyWJqSLZh9aajbuSbkenUdCvPcK6eW2C2hmEEGwTeAK07gw
+         jL+J1fIHBlvcJFLTtB1jILqNf3n+RQVQOz3h0eZcmDijpGMsWmhbiUlLgq9AFo0lGe9b
+         VM9BYtcMu4ShWhv5e07sn3RUfnSkcAmqiBUyslmaN9QAQbiWl4uy4WdoPmwebL4jAPoq
+         0eeg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=ckujQEbhgrl2BrjNbsoK1Ws1MmteNoMjN8wv4PY69UY=;
+        b=P4D4UXd3loy1aierMHXrf3O4XQa1jOecd2MhVzFRl2BtxhNHYk5w+Fcw9bgVBJU586
+         qSwOqXjyAHK1rY5vHtAjcW2BaaVgYD0rNy3Y939DOFk3lO6ihn0OF2sv4uiHtIBasdke
+         VsZIrEuQM5oEzbu7G64fT92BOnrUfdvtwvpEm4n5eDumk1fqQn8HZF7l/egzIS3uzpVF
+         kIN4X+CujLccaFxcKWxgglPDltQhUxoUUdXw/FavXp2fV27H9ay2/hizfBhAE/mwisYU
+         wEOuic2ELiYjwwph5fsE1PAawQXuc97/1vXkmLMyxJNSxFuFlAfg6f1kA8VkJPaeDkVu
+         fcSQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="V6P/IxEq";
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n184-20020a6340c1000000b004124f034b3esor1037421pga.39.2022.07.14.10.33.39
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Thu, 14 Jul 2022 10:33:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a63:1e5f:0:b0:419:d6bf:b9d7 with SMTP id
+ p31-20020a631e5f000000b00419d6bfb9d7mr437995pgm.593.1657820019245; Thu, 14
+ Jul 2022 10:33:39 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Thu, 14 Jul 2022 13:33:28 -0400
+Message-ID: <CALCR5_TmPdqsMg9h43LaZrQuH0aPTL9bYKWLXTDT5ZCU1gja+w@mail.gmail.com>
+Subject: Summary of Cost-Cutting Presentation & Next Steps
+To: All <all@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000005961d105e3c74d13"
+X-Original-Sender: brett@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b="V6P/IxEq";       spf=pass (google.com: domain of brett@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--0000000000005961d105e3c74d13
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thank you for joining me for my cust-cutting presentation.
+
+
+Here are the slides
+<https://docs.google.com/presentation/d/1B0rMFIIIzoWGcjmOUN1kD2i0b53JLV-WSZ=
+2lnjygxHc/edit?usp=3Dsharing>
+from my presentation.
+
+
+Here is the video recording
+<https://docs.google.com/presentation/d/1B0rMFIIIzoWGcjmOUN1kD2i0b53JLV-WSZ=
+2lnjygxHc/edit?usp=3Dsharing>
+from my presentation.
+
+*I=E2=80=99d like to sum up the actions we=E2=80=99ll be taking to cut cost=
+s and increase
+revenue:*
+
+Immediately, we will be putting a 90-day hold on...
+
+
+   -
+
+   Travel
+   -
+
+   Equipment
+   -
+
+   Raises (though raise and performance reviews can still take place)
+   -
+
+   New hires of employees and contractors
+   -
+
+   New SaaS services
+
+
+Exceptions can be made on a case-by-case basis.
+
+
+We've also already made cuts to SaaS services, contractors and employees -
+over $180k in expenses per month!
+
+
+And I've worked with our managers and Head of HR, Amber, to ensure we give
+any employee affected by this our utmost support during this time.
+
+*I will be checking back in with everyone bi-monthly on our progress:*
+
+
+Ideally I will update you on the 1st and 15th of every month.
+
+
+We will re-review expense freezes on Thursday, October 13th, 2022.
+
+In addition, I=E2=80=99d love your help filling out the efficiency survey t=
+hat I=E2=80=99ll
+send out tomorrow.
+
+While it=E2=80=99s certainly a challenging time for the economy, the compan=
+y has a
+very strong foundation of products, revenue and truly great people working
+here.
+
+There is absolutely no doubt in my mind we will get through this and come
+out the other side stronger, more efficient and in a greater position to
+take advantage of the inevitable upswing that comes after a recession.
+
+Thank you for being a part of this company. I appreciate your dedication,
+time and effort in making sure we all get through this together!
+
+
+- Brett
+
+--0000000000005961d105e3c74d13
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><span id=3D"gmail-docs-internal-guid-9fc24030-7fff-7201-13=
+18-9a54b28279e0"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;ma=
+rgin-bottom:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);backgrou=
+nd-color:transparent;font-variant-numeric:normal;font-variant-east-asian:no=
+rmal;vertical-align:baseline;white-space:pre-wrap">Thank you for joining me=
+ for my cust-cutting presentation.</span></p><p dir=3D"ltr" style=3D"line-h=
+eight:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Ari=
+al;color:rgb(0,0,0);background-color:transparent;font-variant-numeric:norma=
+l;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wr=
+ap"><br></span></p><p style=3D"line-height:1.38;margin-top:0pt;margin-botto=
+m:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:t=
+ransparent;font-variant-numeric:normal;font-variant-east-asian:normal;verti=
+cal-align:baseline;white-space:pre-wrap">Here are the <a href=3D"https://do=
+cs.google.com/presentation/d/1B0rMFIIIzoWGcjmOUN1kD2i0b53JLV-WSZ2lnjygxHc/e=
+dit?usp=3Dsharing">slides</a> from my presentation.</span></p><p style=3D"l=
+ine-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-famil=
+y:Arial;color:rgb(0,0,0);background-color:transparent;font-variant-numeric:=
+normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:p=
+re-wrap"><br></span></p><p style=3D"line-height:1.38;margin-top:0pt;margin-=
+bottom:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-co=
+lor:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;=
+vertical-align:baseline;white-space:pre-wrap">Here is the <a href=3D"https:=
+//docs.google.com/presentation/d/1B0rMFIIIzoWGcjmOUN1kD2i0b53JLV-WSZ2lnjygx=
+Hc/edit?usp=3Dsharing">video recording</a> from my presentation.</span></p>=
+<br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0=
+pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:tran=
+sparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical=
+-align:baseline;white-space:pre-wrap"><b>I=E2=80=99d like to sum up the act=
+ions we=E2=80=99ll be taking to cut costs and increase revenue:</b></span><=
+/p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-botto=
+m:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:t=
+ransparent;font-variant-numeric:normal;font-variant-east-asian:normal;verti=
+cal-align:baseline;white-space:pre-wrap">Immediately, we will be putting a =
+90-day hold on...</span></p><br><ul style=3D"margin-top:0px;margin-bottom:0=
+px"><li dir=3D"ltr" style=3D"list-style-type:disc;font-family:Arial;color:r=
+gb(0,0,0);background-color:transparent;font-variant-numeric:normal;font-var=
+iant-east-asian:normal;vertical-align:baseline;white-space:pre"><p dir=3D"l=
+tr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt" role=3D"pre=
+sentation"><span style=3D"background-color:transparent;font-variant-numeric=
+:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:=
+pre-wrap">Travel</span></p></li><li dir=3D"ltr" style=3D"list-style-type:di=
+sc;font-family:Arial;color:rgb(0,0,0);background-color:transparent;font-var=
+iant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;=
+white-space:pre"><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;ma=
+rgin-bottom:0pt" role=3D"presentation"><span style=3D"background-color:tran=
+sparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical=
+-align:baseline;white-space:pre-wrap">Equipment</span></p></li><li dir=3D"l=
+tr" style=3D"list-style-type:disc;font-family:Arial;color:rgb(0,0,0);backgr=
+ound-color:transparent;font-variant-numeric:normal;font-variant-east-asian:=
+normal;vertical-align:baseline;white-space:pre"><p dir=3D"ltr" style=3D"lin=
+e-height:1.38;margin-top:0pt;margin-bottom:0pt" role=3D"presentation"><span=
+ style=3D"background-color:transparent;font-variant-numeric:normal;font-var=
+iant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">Raises=
+ (though raise and performance reviews can still take place)</span></p></li=
+><li dir=3D"ltr" style=3D"list-style-type:disc;font-family:Arial;color:rgb(=
+0,0,0);background-color:transparent;font-variant-numeric:normal;font-varian=
+t-east-asian:normal;vertical-align:baseline;white-space:pre"><p dir=3D"ltr"=
+ style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt" role=3D"presen=
+tation"><span style=3D"background-color:transparent;font-variant-numeric:no=
+rmal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre=
+-wrap">New hires of employees and contractors</span></p></li><li dir=3D"ltr=
+" style=3D"list-style-type:disc;font-family:Arial;color:rgb(0,0,0);backgrou=
+nd-color:transparent;font-variant-numeric:normal;font-variant-east-asian:no=
+rmal;vertical-align:baseline;white-space:pre"><p dir=3D"ltr" style=3D"line-=
+height:1.38;margin-top:0pt;margin-bottom:0pt" role=3D"presentation"><span s=
+tyle=3D"background-color:transparent;font-variant-numeric:normal;font-varia=
+nt-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">New SaaS=
+ services</span></p></li></ul><br><p dir=3D"ltr" style=3D"line-height:1.38;=
+margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Arial;color:rg=
+b(0,0,0);background-color:transparent;font-variant-numeric:normal;font-vari=
+ant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">Excepti=
+ons can be made on a case-by-case basis.</span></p><p dir=3D"ltr" style=3D"=
+line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-fami=
+ly:Arial;color:rgb(0,0,0);background-color:transparent;font-variant-numeric=
+:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:=
+pre-wrap"><br></span></p><p style=3D"line-height:1.38;margin-top:0pt;margin=
+-bottom:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-c=
+olor:transparent;font-variant-numeric:normal;font-variant-east-asian:normal=
+;vertical-align:baseline;white-space:pre-wrap">We&#39;ve also already made =
+cuts to SaaS services, contractors and employees - over $180k in expenses p=
+er month!</span></p><p style=3D"line-height:1.38;margin-top:0pt;margin-bott=
+om:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:=
+transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vert=
+ical-align:baseline;white-space:pre-wrap"><br></span></p><p style=3D"line-h=
+eight:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Ari=
+al;color:rgb(0,0,0);background-color:transparent;font-variant-numeric:norma=
+l;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wr=
+ap">And I&#39;ve worked with our managers and Head of HR, Amber, to ensure =
+we give any employee affected by this our utmost support during this time.<=
+/span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margi=
+n-bottom:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-=
+color:transparent;font-variant-numeric:normal;font-variant-east-asian:norma=
+l;vertical-align:baseline;white-space:pre-wrap"><b>I will be checking back =
+in with everyone bi-monthly on our progress:</b> </span></p><p dir=3D"ltr" =
+style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"=
+font-family:Arial;color:rgb(0,0,0);background-color:transparent;font-varian=
+t-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;whi=
+te-space:pre-wrap"><br></span></p><p dir=3D"ltr" style=3D"line-height:1.38;=
+margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Arial;color:rg=
+b(0,0,0);background-color:transparent;font-variant-numeric:normal;font-vari=
+ant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">Ideally=
+ I will update you on the 1st and 15th of every month.</span></p><p dir=3D"=
+ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span styl=
+e=3D"font-family:Arial;color:rgb(0,0,0);background-color:transparent;font-v=
+ariant-numeric:normal;font-variant-east-asian:normal;vertical-align:baselin=
+e;white-space:pre-wrap"><br></span></p><p dir=3D"ltr" style=3D"line-height:=
+1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Arial;col=
+or:rgb(0,0,0);background-color:transparent;font-variant-numeric:normal;font=
+-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">We=
+ will re-review  expense freezes on Thursday, October 13th, 2022.</span></p=
+><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:=
+0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:tra=
+nsparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertica=
+l-align:baseline;white-space:pre-wrap">In addition, I=E2=80=99d love your h=
+elp filling out the efficiency survey that I=E2=80=99ll send out tomorrow.<=
+/span></p><br><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margi=
+n-bottom:0pt"><span style=3D"font-family:Arial;color:rgb(0,0,0);background-=
+color:transparent;font-variant-numeric:normal;font-variant-east-asian:norma=
+l;vertical-align:baseline;white-space:pre-wrap">While it=E2=80=99s certainl=
+y a challenging time for the economy, the company has a very strong foundat=
+ion of products, revenue and truly great people working here.</span></p><br=
+><p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt"=
+><span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:transpa=
+rent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-al=
+ign:baseline;white-space:pre-wrap">There is absolutely no doubt in my mind =
+we will get through this and come out the other side stronger, more efficie=
+nt and in a greater position to take advantage of the inevitable upswing th=
+at comes after a recession.</span></p><br><p dir=3D"ltr" style=3D"line-heig=
+ht:1.38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Arial;=
+color:rgb(0,0,0);background-color:transparent;font-variant-numeric:normal;f=
+ont-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap"=
+>Thank you for being a part of this company. I appreciate your dedication, =
+time and effort in making sure we all get through this together!</span></p>=
+<p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt">=
+<span style=3D"font-family:Arial;color:rgb(0,0,0);background-color:transpar=
+ent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-ali=
+gn:baseline;white-space:pre-wrap"><br></span></p><p style=3D"line-height:1.=
+38;margin-top:0pt;margin-bottom:0pt"><span style=3D"font-family:Arial;color=
+:rgb(0,0,0);background-color:transparent;font-variant-numeric:normal;font-v=
+ariant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap">- Br=
+ett</span></p></span><br class=3D"gmail-Apple-interchange-newline"></div>
+
+--0000000000005961d105e3c74d13--

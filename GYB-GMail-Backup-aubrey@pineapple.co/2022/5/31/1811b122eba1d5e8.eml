@@ -1,0 +1,79 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp960648ejc;
+        Tue, 31 May 2022 10:03:05 -0700 (PDT)
+X-Received: by 2002:a05:6214:1c05:b0:462:134d:6fac with SMTP id u5-20020a0562141c0500b00462134d6facmr44990946qvc.76.1654016585262;
+        Tue, 31 May 2022 10:03:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654016585; cv=none;
+        d=google.com; s=arc-20160816;
+        b=q1Hsmtz2tdGlQs4JB49Kq1SAI+IqwnL6RohAps54EKXQrnNtmaunvIL92/4vd/A8io
+         8EbL/4p8gA1NGQQ3qHqal9ekT6FDLWy42/G3ba0HWKUXGQyqK30P1+ZmpvCyGQ57SwlM
+         cY2G4i7rKMt8mQUg1osZ+5VxjU7ObpmK4Hl9NkCR0OCHb4bpcxAGPWjjmvFvMYNqeUkx
+         B0x4Oui3RIic8ad6Uu0S4Kd1HYIT1vq4gBTkiQOzqS6buZ1z/XR7GZKZGU+ACaY+kO7g
+         m/T+8MqPpd0qmU3tB/Ge9hHiva4ibqU2ZWnfVoWpiW9W0OYwXAV8oeUpuNZ81vjEs09O
+         uEGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=wkuz0BhQpYZRwVxpqnVU1euHT/nr7fih3eMLMOPVxwc=;
+        b=pXv4JjNseKTU9gghmv7yZ7jl6SwHSQzFrajkvxlam+tD42LyjFtHX10gB52LfFGNKz
+         7+TmdzyPHp4hBeMxGUMH1zN3dsALBEbfcym0iYTLqS0SMSJWQx0sUrvdAqBgXU/xzgaI
+         ghMc5nVM3iXL9Lexo4Jg+nTLb49YN5m3DPFfsZbQ0AU8KSqABB//KcMecVp9GYywu5+a
+         UuL3aqx4GljcuQozToFVzMspboVlho14dAlvZbTwWQIHhEmRRt6+RGDFYuvtgjmOu2Z/
+         shBxQF13kbMv1/8k80pv72AVLTV4kL6tj+GYCB+isZQD6udfvdi3qviWg4OfHnF7KA6Z
+         VQBQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@chargebackhero.com header.s=google header.b=jobaFknd;
+       spf=pass (google.com: domain of secure@chargebackhero.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=secure@chargebackhero.com
+Return-Path: <secure@chargebackhero.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k8-20020ad453c8000000b0046441d794e1sor5811396qvv.72.2022.05.31.10.03.05
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 31 May 2022 10:03:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of secure@chargebackhero.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@chargebackhero.com header.s=google header.b=jobaFknd;
+       spf=pass (google.com: domain of secure@chargebackhero.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=secure@chargebackhero.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chargebackhero.com; s=google;
+        h=date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding;
+        bh=wkuz0BhQpYZRwVxpqnVU1euHT/nr7fih3eMLMOPVxwc=;
+        b=jobaFkndtJE3wOzBUCfs3mPLDu34lMxCgJwl8ATJl4tq/dnF2FueyPMTyPomN/w+Yf
+         CaejPoOp/NaIewHWt3WlnPDcYuy4iLOvd8FbD3F/cY4k1sC1ABJFLLtYfM+VlKq3Uyqr
+         77uwrVPuiqPyryzQyGbpPRiE8g6o2yyttHesTc475NMnczi3hzS8iBphS3eyBMIUQEiv
+         JJagYAfXVnslIy38zuT7ZKmj9TUtujVhWT8/6eyJHNKqzjA847XJLeWmdWi5pSP9pFzN
+         r72gUFiR+nXiRc3UQqPJ+3dD5xkOAljiBnhhPK8RdGr2eP6D+4MPNRvLWEf/4Ow+vGYB
+         abhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding;
+        bh=wkuz0BhQpYZRwVxpqnVU1euHT/nr7fih3eMLMOPVxwc=;
+        b=Gp4bZhaQQkHGb7r8UVmLIgTvDqt5UlzzCNtvBOBTj/JpUmcnQVMADzBMWIsM9Qfrx6
+         mFaUMow0U3/QjcuezJlYYVdqd6xXBExAzE3UuMvuNbgqkgSFwaRmiGZnExz/eUX9E3al
+         gqHBXvDs7oyAbINu86WaRr304ZpWL4ZuxqNKMUaUYgOeGDx/Q5D874wvr8Rl8RPpZ4Wx
+         FFscRSJZWnq7DEodTJZqUM7QcAyhvyC0fXemf6tgRv4vNZ+0KWt9uuREJXu2lAX+UnVo
+         nwA35dyNCo9nowy8hq7iRSEUf8V0CUhxyXsrud2oNMSqYfNFnq/PyMo/ULzfi1MXWEH8
+         WjEg==
+X-Gm-Message-State: AOAM5316uMTGRHOksdtJldHDg+JyEc7N1W2VKReDr/dXKFy+/TtIWk4Y
+	woiUF1Luqm8FBLA62xqt+LspHN9M3NBk1Q==
+X-Google-Smtp-Source: ABdhPJwHibZrby45ZuhimN/3vzHzb4llDiTttkSjQDXPCtDU5t7N82Mxo9G7hxn9AWVyyfwCeYamiw==
+X-Received: by 2002:a05:6214:1d25:b0:464:55a9:48df with SMTP id f5-20020a0562141d2500b0046455a948dfmr7641289qvd.113.1654016584679;
+        Tue, 31 May 2022 10:03:04 -0700 (PDT)
+Return-Path: <secure@chargebackhero.com>
+Received: from ip-172-31-51-153.ec2.internal (ec2-52-20-122-54.compute-1.amazonaws.com. [52.20.122.54])
+        by smtp.gmail.com with ESMTPSA id t8-20020ac87608000000b00304bbcc1b8asm1281228qtq.28.2022.05.31.10.03.04
+        for <aubrey@pineapple.co>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 May 2022 10:03:04 -0700 (PDT)
+Date: Tue, 31 May 2022 17:03:03 +0000 (UTC)
+From: secure@chargebackhero.com
+To: aubrey@pineapple.co
+Message-ID: <97381218.0.1654016583780@ip-172-31-51-153.ec2.internal>
+Subject: Chargeback Hero Reset Password Link
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+https://chargebackhero.com/cbms/reset-password.html?token=d63c8a4e-a964-4c8d-a9f3-140af940a00d

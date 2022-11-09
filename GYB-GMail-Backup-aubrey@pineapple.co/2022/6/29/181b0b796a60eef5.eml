@@ -1,0 +1,614 @@
+MIME-Version: 1.0
+Date: Wed, 29 Jun 2022 13:27:11 -0500
+References: <CAAcEqJcdRfquT-O=miekfZQVaAF+BMaUYkiwBm7YdcALjuy+nQ@mail.gmail.com>
+	<CAHbmDP-31rGKgbOxZ-u_ZC=s1Uv9H_iHtSGPuNfLTjuK0DEN8w@mail.gmail.com>
+	<CAAcEqJeYtsfpC3zhboSEkSauETC3YavoSSN84Oxm+JVfddU0Og@mail.gmail.com>
+	<CAHbmDP8Hm2XXFh0VJ_EyupD=YVNSSpNW2f_S95mxhjGLyfWHqA@mail.gmail.com>
+	<CAAcEqJeQ82xGn-YmMsPL8XJ8gExDYbTY8-m2EtGT4F-NmCUyag@mail.gmail.com>
+In-Reply-To: <CAAcEqJeQ82xGn-YmMsPL8XJ8gExDYbTY8-m2EtGT4F-NmCUyag@mail.gmail.com>
+Message-ID: <CAHbmDP9QR5HQMcAKUpgC1mCDtv3HjAPx9FFVUNEi0Juwd71NLA@mail.gmail.com>
+Subject: Re: Fran Payment Calculation for Product - Elixir of Eros - Gotham Club
+From: Aubrey Allen <aubrey@pineapple.co>
+To: Marco Shimazaki <marco@pineapple.co>
+Content-Type: multipart/mixed; boundary="00000000000027547405e29a4dbd"
+
+--00000000000027547405e29a4dbd
+Content-Type: multipart/alternative; boundary="00000000000027547205e29a4dbb"
+
+--00000000000027547205e29a4dbb
+Content-Type: text/plain; charset="UTF-8"
+
+No need to be sorry-- certainly not your fault!
+
+I've attached a spreadsheet with as much pertinent information as I can
+glean from the Gotham Enrich Profit Calculator routine and its
+deliverables.  You'll see that (according to the way the routine is
+calculating profit with the new product categorizations), these specific
+products are returning profits that are in the red, thus the payout is also
+negative.  The columns in the bottom table are representative of those
+respective values for the lifetime of the contract from 5/1/20-5/31/22,
+although it appears that Info Products were not introduced until 10/2020.
+
+I apologize that this spreadsheet does not look like what you've requested,
+but many of those specifics, including quantity of sales, are not part of
+the deliverables of this particular routine.  I believe I will be able to
+find these using other methods, like the Weekly Sales dashboard routine,
+but that will take me some additional time to get to work in that capacity
+and yield proper results.
+
+Please let me know how best to proceed!  I'm sorry my answer isn't as
+straight-forward as I'd like it to be-- I promise I'm not trying to be
+obtuse here.
+
+On Wed, Jun 29, 2022 at 12:23 PM Marco Shimazaki <marco@pineapple.co> wrote:
+
+> No worries sorry for the headache.
+>
+> So just looking for the accurate so actual sales each month and what is
+> supposed to be paid solely for that sub category (Info Products - Enrich)
+>
+> So I believe it would be the following breakouts:
+> Qty Day 0 Gross Revenue Day 0 Net Revenue After Expenses Day 0 Net
+> Revenue After Expenses & Affiliate Commissions Gross Revenue Total Net
+> Revenue Total Net Revenue after Affiliate Commissions TOTAL Net Factor Fran
+> Payment
+> 58.5%
+> Hope that make sense basically trying to give the new buyer the accurate
+> log of previous payments so they can continue them going forward.
+>
+> *Again this is only for Digital Product since that's the brand being sold.*
+>
+> On Wed, Jun 29, 2022 at 1:04 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+>
+>> Are you specifically looking for how much Fran was paid out for these
+>> products over March, April, & May, or are you looking for actual sales of
+>> these particular products?
+>>
+>> The reason that I ask, is because the trouble with the Payout numbers
+>> specifically is that this past month we had some issues with the KNIME
+>> routine that required further investigation/manipulation.  The sweeping
+>> changes in Product Categories on Sticky revealed some errors in the way
+>> that Enrich profits have been calculated in the past.  Long story short, we
+>> realized that at times, we have been mis-attributing some Info Products to
+>> include more than those 3 specific Fran products.  As such, the payout
+>> returns are in the negative for the last few months (indicating that we
+>> have "over-paid" our share on this funnel in the past).  This is a problem
+>> that I've discussed with Brooke and Gene, so they are aware of the
+>> situation.
+>>
+>> I'd be happy to provide you with more of the information, I just wanted
+>> to get a better idea of what you were looking for specifically before I
+>> open this can of worms on you!
+>>
+>> On Wed, Jun 29, 2022 at 11:54 AM Marco Shimazaki <marco@pineapple.co>
+>> wrote:
+>>
+>>> Do we have the report for a few months possibly last 3 months (March /
+>>> April / May) just for Enrich Info Products (Elixir of Eros) (The Pursuit
+>>> Institute) (Sexual Obsession Switch)
+>>>
+>>> We are looking to provide that previous data to the new owner.
+>>>
+>>>
+>>> On Wed, Jun 29, 2022 at 12:48 PM Aubrey Allen <aubrey@pineapple.co>
+>>> wrote:
+>>>
+>>>> Hi Marco!
+>>>>
+>>>> That is correct, I've been handling the Enrich payout calculations.
+>>>> Fran's payments are calculated as 41.5% of the Net Profit for all
+>>>> products/categories, including Info Products.  When we calculate Fran's
+>>>> monthly payout, Elixir of Eros is combined into an "Enrich Info Products"
+>>>> funnel along with The Pursuit Institute and Sexual Obsession Switch.
+>>>>
+>>>> Please let me know if I can assist in any other way, or if you need
+>>>> specific info on payouts for this funnel or product!
+>>>>
+>>>> Best,
+>>>>
+>>>>
+>>>> On Wed, Jun 29, 2022 at 11:17 AM Marco Shimazaki <marco@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Hey Aubrey,
+>>>>>
+>>>>> I am looking for the formula to calculate Fran's payments for his
+>>>>> product sales. I believe you handle this?
+>>>>>
+>>>>> Not sure if it changes by-product, but we are focused on Elixir of
+>>>>> Eros (Digital Product) that was under Gotham Club.
+>>>>>
+>>>>> Thanks in advance for your help.
+>>>>>
+>>>>>
+>>>>> --
+>>>>> [image: https://mysignature.io/?utm_source=logo]
+>>>>> <https://mysignature.io/?utm_source=logo>
+>>>>> Marco Shimazaki Email Marketing Manager
+>>>>>
+>>>>> Pineapple Products
+>>>>> s:  sbu.marco.shimazaki
+>>>>> w:  pineapple.co
+>>>>> a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+>>>>>
+>>>>
+>>>>
+>>>> --
+>>>> Aubrey Allen
+>>>> Data Analytics Technician
+>>>> Pineapple Products, Inc.
+>>>>
+>>>
+>>>
+>>> --
+>>> [image: https://mysignature.io/?utm_source=logo]
+>>> <https://mysignature.io/?utm_source=logo>
+>>> Marco Shimazaki Email Marketing Manager
+>>>
+>>> Pineapple Products
+>>> s:  sbu.marco.shimazaki
+>>> w:  pineapple.co
+>>> a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+>>>
+>>
+>
+> --
+> [image: https://mysignature.io/?utm_source=logo]
+> <https://mysignature.io/?utm_source=logo>
+> Marco Shimazaki Email Marketing Manager
+>
+> Pineapple Products
+> s:  sbu.marco.shimazaki
+> w:  pineapple.co
+> a:  600 Broadway Ste 200 #1460 Albany, NY 12207
+>
+
+--00000000000027547205e29a4dbb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">No need to be sorry-- certainly not your fault!<div><br></=
+div><div>I&#39;ve attached a spreadsheet=C2=A0with as much pertinent inform=
+ation as I can glean from the Gotham Enrich Profit Calculator routine and i=
+ts deliverables.=C2=A0 You&#39;ll see that (according to the way the routin=
+e is calculating=C2=A0profit with the new product categorizations), these s=
+pecific products are returning profits that are in the red, thus the payout=
+ is also negative.=C2=A0 The columns in the bottom table are representative=
+ of those respective values for the lifetime of the contract from 5/1/20-5/=
+31/22, although it appears that Info Products were not introduced until 10/=
+2020.</div><div><br></div><div>I apologize that this spreadsheet does not l=
+ook like what you&#39;ve requested, but many of those specifics, including =
+quantity of sales, are not part of the deliverables of this particular rout=
+ine.=C2=A0 I believe I will be able to find these using other methods, like=
+ the Weekly Sales dashboard routine, but that will take me some additional =
+time to get to work in that capacity and yield proper results.</div><div><b=
+r></div><div>Please let me know how best to proceed!=C2=A0 I&#39;m sorry my=
+ answer isn&#39;t as straight-forward as I&#39;d like it to be-- I promise =
+I&#39;m=C2=A0not trying to be obtuse here.=C2=A0</div></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 29, 2022=
+ at 12:23 PM Marco Shimazaki &lt;<a href=3D"mailto:marco@pineapple.co">marc=
+o@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex"><div dir=3D"ltr">No worries sorry for the headache.<div><br><=
+/div><div>So just looking for the accurate so actual sales each month and w=
+hat is supposed to be paid solely for that sub category (Info Products - En=
+rich)</div><div><br></div><div>So I believe it would be the following break=
+outs:</div><div><table cellspacing=3D"0" cellpadding=3D"0" dir=3D"ltr" bord=
+er=3D"1" style=3D"table-layout:fixed;font-size:10pt;font-family:Arial;width=
+:0px;border-collapse:collapse;border:none"><colgroup><col width=3D"100"><co=
+l width=3D"100"><col width=3D"100"><col width=3D"100"><col width=3D"100"><c=
+ol width=3D"100"><col width=3D"100"><col width=3D"100"><col width=3D"100"><=
+/colgroup><tbody><tr style=3D"height:21px"><td style=3D"border:1px solid rg=
+b(0,0,0);overflow:hidden;padding:2px 3px;vertical-align:bottom;font-family:=
+Calibri;font-size:11pt;font-weight:bold;text-align:center">Qty</td><td styl=
+e=3D"border-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0)=
+ rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align=
+:bottom;font-family:Calibri;font-size:11pt;font-weight:bold;text-align:cent=
+er">Day 0 Gross Revenue</td><td style=3D"border-width:1px;border-style:soli=
+d;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:h=
+idden;padding:2px 3px;vertical-align:bottom;font-family:Calibri;font-size:1=
+1pt;font-weight:bold;text-align:center">Day 0 Net Revenue After Expenses</t=
+d><td style=3D"border-width:1px;border-style:solid;border-color:rgb(0,0,0) =
+rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vert=
+ical-align:bottom;font-family:Calibri;font-size:11pt;font-weight:bold;text-=
+align:center">Day 0 Net Revenue After Expenses &amp; Affiliate Commissions<=
+/td><td style=3D"border-width:1px;border-style:solid;border-color:rgb(0,0,0=
+) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;ve=
+rtical-align:bottom;font-family:Calibri;font-size:11pt;font-weight:bold;tex=
+t-align:center">Gross Revenue Total</td><td style=3D"border-width:1px;borde=
+r-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204=
+);overflow:hidden;padding:2px 3px;vertical-align:bottom;font-family:Calibri=
+;font-size:11pt;font-weight:bold;text-align:center">Net Revenue Total</td><=
+td style=3D"border-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb=
+(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertica=
+l-align:bottom;font-family:Calibri;font-size:11pt;font-weight:bold;text-ali=
+gn:center">Net Revenue after Affiliate Commissions TOTAL</td><td style=3D"b=
+order-width:1px;border-style:solid;border-color:rgb(0,0,0) rgb(0,0,0) rgb(0=
+,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:middl=
+e;font-family:Calibri;font-size:11pt;font-weight:bold;text-align:center">Ne=
+t Factor</td><td style=3D"border-width:1px;border-style:solid;border-color:=
+rgb(0,0,0) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2=
+px 3px;vertical-align:middle;font-family:Calibri;font-size:11pt;font-weight=
+:bold;text-align:center">Fran Payment</td></tr><tr style=3D"height:21px"><t=
+d style=3D"border-width:1px;border-style:solid;border-color:rgb(204,204,204=
+) rgb(0,0,0) rgb(0,0,0);overflow:hidden;padding:2px 3px;vertical-align:bott=
+om"></td><td style=3D"border-width:1px;border-style:solid;border-color:rgb(=
+204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding=
+:2px 3px;vertical-align:bottom"></td><td style=3D"border-width:1px;border-s=
+tyle:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,=
+204);overflow:hidden;padding:2px 3px;vertical-align:bottom"></td><td style=
+=3D"border-width:1px;border-style:solid;border-color:rgb(204,204,204) rgb(0=
+,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;vertical-=
+align:bottom"></td><td style=3D"border-width:1px;border-style:solid;border-=
+color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidd=
+en;padding:2px 3px;vertical-align:bottom"></td><td style=3D"border-width:1p=
+x;border-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rg=
+b(204,204,204);overflow:hidden;padding:2px 3px;vertical-align:bottom"></td>=
+<td style=3D"border-width:1px;border-style:solid;border-color:rgb(204,204,2=
+04) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);overflow:hidden;padding:2px 3px;=
+vertical-align:bottom"></td><td style=3D"border-width:1px;border-style:soli=
+d;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,204,204);over=
+flow:hidden;padding:2px 3px;vertical-align:middle;font-family:Calibri;font-=
+size:11pt;text-align:center">58.5%</td><td style=3D"border-width:1px;border=
+-style:solid;border-color:rgb(204,204,204) rgb(0,0,0) rgb(0,0,0) rgb(204,20=
+4,204);overflow:hidden;padding:2px 3px;vertical-align:bottom"></td></tr></t=
+body></table><br></div><div>Hope that make sense basically trying to give t=
+he new buyer the accurate log of previous payments so they can continue the=
+m going forward.=C2=A0</div><div><br></div><div><b>Again this is only for D=
+igital Product since that&#39;s the brand being sold.</b></div></div><br><d=
+iv class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun =
+29, 2022 at 1:04 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co"=
+ target=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Are you specifically=
+ looking for how much Fran was paid out for these products over March, Apri=
+l, &amp; May, or are you looking for actual sales of these particular produ=
+cts?<div><br></div><div>The reason that I ask, is because the trouble with =
+the Payout numbers specifically is that this past month we had some issues =
+with the KNIME routine that required further investigation/manipulation.=C2=
+=A0 The sweeping changes in Product Categories on Sticky revealed some erro=
+rs in the way that Enrich profits have been calculated in the past.=C2=A0 L=
+ong story short, we realized that at times, we have been mis-attributing so=
+me Info Products to include more than those 3 specific Fran products.=C2=A0=
+ As such, the payout returns are in the negative for the last few months (i=
+ndicating that we have &quot;over-paid&quot; our share on this funnel in th=
+e past).=C2=A0 This is a problem that I&#39;ve discussed with Brooke and Ge=
+ne, so they are aware of the situation.</div><div><br></div><div>I&#39;d be=
+ happy to provide you with more of the information, I just wanted to get a =
+better idea of what you were looking for specifically=C2=A0before I open th=
+is can of worms on you!</div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Wed, Jun 29, 2022 at 11:54 AM Marco Shimaz=
+aki &lt;<a href=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pinea=
+pple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr">Do we have the report for a few months possibly las=
+t 3 months (March / April / May) just for=C2=A0Enrich Info Products (Elixir=
+ of Eros) (The Pursuit Institute) (Sexual Obsession Switch)<div><br></div><=
+div>We are looking to provide that previous data to the new owner.<br><div>=
+<br></div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Wed, Jun 29, 2022 at 12:48 PM Aubrey Allen &lt;<a href=
+=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>&g=
+t; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div d=
+ir=3D"ltr">Hi Marco!<div><br></div><div>That is correct, I&#39;ve been hand=
+ling=C2=A0the Enrich payout calculations.=C2=A0 Fran&#39;s payments are cal=
+culated as 41.5% of the Net Profit for all products/categories, including I=
+nfo Products.=C2=A0 When we calculate Fran&#39;s monthly payout, Elixir of =
+Eros is combined into an &quot;Enrich Info Products&quot; funnel along with=
+=C2=A0The Pursuit Institute and Sexual Obsession Switch.</div><div><br></di=
+v><div>Please let me know if I can assist in any other way, or if you need =
+specific info on payouts for this funnel or product!</div><div><br></div><d=
+iv>Best,</div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Wed, Jun 29, 2022 at 11:17 AM Marco Shimaz=
+aki &lt;<a href=3D"mailto:marco@pineapple.co" target=3D"_blank">marco@pinea=
+pple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr">Hey Aubrey,<div><br></div><div>I am looking for the=
+ formula to calculate Fran&#39;s payments for his product sales. I believe =
+you handle this?</div><div><br></div><div>Not sure if it changes by-product=
+, but we are focused on Elixir of Eros (Digital Product) that was under Got=
+ham Club.</div><div><br></div><div>Thanks in advance for your help.</div><d=
+iv><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"><div dir=3D"ltr=
+"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" sty=
+le=3D"font-size:13px;border-spacing:0px;border-collapse:collapse;color:rgb(=
+97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=3D"100" valign=
+=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top"><a href=3D"ht=
+tps://mysignature.io/?utm_source=3Dlogo" style=3D"color:rgb(0,0,0)" target=
+=3D"_blank"><img alt=3D"https://mysignature.io/?utm_source=3Dlogo" width=3D=
+"100" src=3D"https://ci3.googleusercontent.com/proxy/6j1uusK0CXxKQ5NrI7hyPL=
+fB8Hdpzu8kqQVHcHnV2ZLTZKKmPtlfi_sMVmf5lgGYTjAW7pi0So7srQaYOXRV6zDrm2az3UXkg=
+cnncqwnha4c-HMr14ZtwDR5d62bLGo6KU5lu5okHR-XlA61LEA=3Ds0-d-e1-ft#https://img=
+.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D159=
+4774986" style=3D"width: 100px; border-radius: 15%;"></a></td><td valign=3D=
+"top" style=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;bor=
+der-top-color:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bot=
+tom-color:rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0"=
+ cellpadding=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse=
+:collapse;line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:1=
+1.05px;color:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0ff" face=3D"Ver=
+dana, Geneva, sans-serif"><span style=3D"font-size:13.26px">Marco Shimazaki=
+ Email Marketing Manager</span></font></td></tr><tr><td style=3D"padding:5p=
+x 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Produ=
+cts</div></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-s=
+erif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.shimazaki</td></=
+tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(7=
+0,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:Verdana,Geneva,=
+sans-serif"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" tar=
+get=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span style=3D"font=
+-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=
+=A0<span><span style=3D"font-size:8.5pt;font-family:Verdana;background-colo=
+r:transparent;vertical-align:baseline;white-space:pre-wrap">600 Broadway St=
+e 200 #1460 Albany, NY 12207</span></span><span style=3D"font-family:Verdan=
+a,Geneva,sans-serif">=C2=A0</span></td></tr></tbody></table></td></tr></tbo=
+dy></table></div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr">Aubrey Allen<div>Data Analytics Technician</div><div>Pine=
+apple Products, Inc.</div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" =
+border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:col=
+lapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=
+=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top=
+"><a href=3D"https://mysignature.io/?utm_source=3Dlogo" style=3D"color:rgb(=
+0,0,0)" target=3D"_blank"><img alt=3D"https://mysignature.io/?utm_source=3D=
+logo" width=3D"100" src=3D"https://ci3.googleusercontent.com/proxy/6j1uusK0=
+CXxKQ5NrI7hyPLfB8Hdpzu8kqQVHcHnV2ZLTZKKmPtlfi_sMVmf5lgGYTjAW7pi0So7srQaYOXR=
+V6zDrm2az3UXkgcnncqwnha4c-HMr14ZtwDR5d62bLGo6KU5lu5okHR-XlA61LEA=3Ds0-d-e1-=
+ft#https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.=
+png?time=3D1594774986" style=3D"width: 100px; border-radius: 15%;"></a></td=
+><td valign=3D"top" style=3D"border-left:2px solid rgb(70,208,255);vertical=
+-align:top;border-top-color:rgb(70,208,255);border-right-color:rgb(70,208,2=
+55);border-bottom-color:rgb(70,208,255);padding:0px 0px 0px 9px"><table cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-spacing:0px;b=
+order-collapse:collapse;line-height:1.4;font-family:Verdana,Geneva,sans-ser=
+if;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0f=
+f" face=3D"Verdana, Geneva, sans-serif"><span style=3D"font-size:13.26px">M=
+arco Shimazaki Email Marketing Manager</span></font></td></tr><tr><td style=
+=3D"padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">P=
+ineapple Products</div></td></tr><tr><td><span style=3D"font-family:Verdana=
+,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.sh=
+imazaki</td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-ser=
+if;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:V=
+erdana,Geneva,sans-serif"><a href=3D"http://pineapple.co/" style=3D"color:r=
+gb(0,0,1)" target=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span=
+ style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=
+=C2=A0</span>=C2=A0<span><span style=3D"font-size:8.5pt;font-family:Verdana=
+;background-color:transparent;vertical-align:baseline;white-space:pre-wrap"=
+>600 Broadway Ste 200 #1460 Albany, NY 12207</span></span><span style=3D"fo=
+nt-family:Verdana,Geneva,sans-serif">=C2=A0</span></td></tr></tbody></table=
+></td></tr></tbody></table></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" =
+border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:col=
+lapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=
+=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top=
+"><a href=3D"https://mysignature.io/?utm_source=3Dlogo" style=3D"color:rgb(=
+0,0,0)" target=3D"_blank"><img alt=3D"https://mysignature.io/?utm_source=3D=
+logo" width=3D"100" src=3D"https://ci3.googleusercontent.com/proxy/6j1uusK0=
+CXxKQ5NrI7hyPLfB8Hdpzu8kqQVHcHnV2ZLTZKKmPtlfi_sMVmf5lgGYTjAW7pi0So7srQaYOXR=
+V6zDrm2az3UXkgcnncqwnha4c-HMr14ZtwDR5d62bLGo6KU5lu5okHR-XlA61LEA=3Ds0-d-e1-=
+ft#https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.=
+png?time=3D1594774986" style=3D"width: 100px; border-radius: 15%;"></a></td=
+><td valign=3D"top" style=3D"border-left:2px solid rgb(70,208,255);vertical=
+-align:top;border-top-color:rgb(70,208,255);border-right-color:rgb(70,208,2=
+55);border-bottom-color:rgb(70,208,255);padding:0px 0px 0px 9px"><table cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-spacing:0px;b=
+order-collapse:collapse;line-height:1.4;font-family:Verdana,Geneva,sans-ser=
+if;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><font color=3D"#46d0f=
+f" face=3D"Verdana, Geneva, sans-serif"><span style=3D"font-size:13.26px">M=
+arco Shimazaki Email Marketing Manager</span></font></td></tr><tr><td style=
+=3D"padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">P=
+ineapple Products</div></td></tr><tr><td><span style=3D"font-family:Verdana=
+,Geneva,sans-serif;color:rgb(70,208,255)">s:=C2=A0</span>=C2=A0sbu.marco.sh=
+imazaki</td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-ser=
+if;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0<span style=3D"font-family:V=
+erdana,Geneva,sans-serif"><a href=3D"http://pineapple.co/" style=3D"color:r=
+gb(0,0,1)" target=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span=
+ style=3D"font-family:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=
+=C2=A0</span>=C2=A0<span><span style=3D"font-size:8.5pt;font-family:Verdana=
+;background-color:transparent;vertical-align:baseline;white-space:pre-wrap"=
+>600 Broadway Ste 200 #1460 Albany, NY 12207</span></span><span style=3D"fo=
+nt-family:Verdana,Geneva,sans-serif">=C2=A0</span></td></tr></tbody></table=
+></td></tr></tbody></table></div></div>
+</blockquote></div>
+
+--00000000000027547205e29a4dbb--
+--00000000000027547405e29a4dbd
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; 
+	name="EnrichInfoProducts_Detail_2022.xlsx"
+Content-Disposition: attachment; 
+	filename="EnrichInfoProducts_Detail_2022.xlsx"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_l4zx1fy00
+Content-ID: <f_l4zx1fy00>
+
+UEsDBBQABgAIAAAAIQBi7p1oXgEAAJAEAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAAC
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACs
+lMtOwzAQRfdI/EPkLUrcskAINe2CxxIqUT7AxJPGqmNbnmlp/56J+xBCoRVqN7ESz9x7MvHNaLJu
+bbaCiMa7UgyLgcjAVV4bNy/Fx+wlvxcZknJaWe+gFBtAMRlfX41mmwCYcbfDUjRE4UFKrBpoFRY+
+gOOd2sdWEd/GuQyqWqg5yNvB4E5W3hE4yqnTEOPRE9RqaSl7XvPjLUkEiyJ73BZ2XqVQIVhTKWJS
+uXL6l0u+cyi4M9VgYwLeMIaQvQ7dzt8Gu743Hk00GrKpivSqWsaQayu/fFx8er8ojov0UPq6NhVo
+Xy1bnkCBIYLS2ABQa4u0Fq0ybs99xD8Vo0zL8MIg3fsl4RMcxN8bZLqej5BkThgibSzgpceeRE85
+NyqCfqfIybg4wE/tYxx8bqbRB+QERfj/FPYR6brzwEIQycAhJH2H7eDI6Tt77NDlW4Pu8ZbpfzL+
+BgAA//8DAFBLAwQUAAYACAAAACEAtVUwI/QAAABMAgAACwAIAl9yZWxzLy5yZWxzIKIEAiigAAIA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKyS
+TU/DMAyG70j8h8j31d2QEEJLd0FIuyFUfoBJ3A+1jaMkG92/JxwQVBqDA0d/vX78ytvdPI3qyCH2
+4jSsixIUOyO2d62Gl/pxdQcqJnKWRnGs4cQRdtX11faZR0p5KHa9jyqruKihS8nfI0bT8USxEM8u
+VxoJE6UchhY9mYFaxk1Z3mL4rgHVQlPtrYawtzeg6pPPm3/XlqbpDT+IOUzs0pkVyHNiZ9mufMhs
+IfX5GlVTaDlpsGKecjoieV9kbMDzRJu/E/18LU6cyFIiNBL4Ms9HxyWg9X9atDTxy515xDcJw6vI
+8MmCix+o3gEAAP//AwBQSwMEFAAGAAgAAAAhAD2JSn6BAwAAWAgAAA8AAAB4bC93b3JrYm9vay54
+bWysVVFvozgQfj/p/gPi3QGDIYCarEIIukrdU9XttY8rF0yxApizTZuq2v9+Y0jS9nI65bonJTYe
+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
+--00000000000027547405e29a4dbd--

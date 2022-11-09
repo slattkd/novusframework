@@ -1,0 +1,137 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp1274711ejd;
+        Wed, 30 Mar 2022 14:14:41 -0700 (PDT)
+X-Received: by 2002:a05:6122:c4c:b0:33f:dccd:9452 with SMTP id i12-20020a0561220c4c00b0033fdccd9452mr720844vkr.28.1648674881286;
+        Wed, 30 Mar 2022 14:14:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648674881; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RRgrqKVI1reWHPAnisuYc3pJlW/TkL+VGDB5Cm+1MEihYfm2xZKDhSduC4fkSC9Sum
+         lzcbaRMNVUOnlAkARPUcmhD4RqzIVOxgHu9pXXilLwD8zYdQhNven8JWq2QeEMrY5k+N
+         t5EH98HUxby1Hh1aiKhGFGwsiY84oHuTlODAXSVPi5AFTRKI+SwMNnxx+4RSHuwIhY0g
+         JucWRpVe5pCpBtQ0wIY44mJMm9m430jEXr/mLFFv4M/hI1C7Yq4FmkGZalnAw0B7Wdb1
+         dLDL0JZ4AkKEjkmpfvK7lmW0ob0gZV5zWe1hL+gPEz8BWx7RcyisQFEKGazebfahbKsS
+         pR1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ruEi5zR20S8z/C5Qh00k4PSIaRpNOmXOoe6BsJh3y+g=;
+        b=OUXu94HErcyHuOTHJQkAZiv0+8KG3Sj6lS7XRnfDlB+KGcSsN4m5shKzZATis0RS/4
+         Xlqkzkplbs++jXnikgAGCvpJs8FBHHPMqg6ypuA8bT6RtV9n7JfwDOLOQfbdbURNm34A
+         YdDNFVsASWRJHcQ6n4SN5u8bvOzRQ+9pIeJ+XX1mx7fDPHh4S5XcfCi9uR1dhK5Sq/h4
+         TiuOaVeqOQgyO02XApX6QRH6o7ZW+EG0aZN6R1nRJbXzNZ69+ymjmER1KKIqd0SkXJOH
+         8var2DynjCtbhQk3esBs1pFGwimBiGMIHIQTi5CNLg11JJ+nBF2rhBdpZIEWR08qWzak
+         7oiw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=mdTbffsy;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <greg@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f11-20020ac5c5ab000000b0033ecb05b07asor4760029vkl.43.2022.03.30.14.14.41
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 30 Mar 2022 14:14:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=mdTbffsy;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=ruEi5zR20S8z/C5Qh00k4PSIaRpNOmXOoe6BsJh3y+g=;
+        b=mdTbffsyznpbWmHOTFeBtxaQegUWpCYZIkpxQ3FjWVj4082zSCi04WBxt1I8lU7Dzs
+         8XX2aFgDTjd6Tgmp9cmNQEdtNohLNOhonUtqP1kBdOgxXOqaMkxX99WV4OAMuQh2JuaC
+         o6Fu+fs1vrVP0lL+ysYStQUC1J0DIyZ+aJQ4Qc3WzAh2gu+TV1XKY0FGSauOIy8KEGrE
+         3qPKmiX2tNwdGzLSIAji5cAT1+ICJUFi7H2JZ5WjLlPadxW+MrJtVK2FSTCgwlu0CUuv
+         cQVCWV4szgHOFEl5+VZdQoCdUmi3wMCCQy5SJ77EQH2NgAPmWITyRohNvjLdTNfqz5hM
+         j+BA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=ruEi5zR20S8z/C5Qh00k4PSIaRpNOmXOoe6BsJh3y+g=;
+        b=3kBmfnC7BHk8Z3bwJeFEfp6TYhTGeQixGifOhr/fUabBK7kvD2O2aStUYI6y6By8bL
+         ht9w921xzniS9lCFIHyB46A/NIo4zW/n2J65PH3RViRqE8V2OSaHeZYq99WzPOAcn9z5
+         cY/JUz6y6XuByhes6eAopu4/vBcIX1pnetJTqVmASQU4m069Z4R656BUvQ+ugK8Nt3Wv
+         n+OLueIBFt9oASKDnuSSrcG4UUpSuAwzD1G1P3n0kqi/NdTTXz0Y02BZw3n6mI7aa9bH
+         AMa4NFAwjP0da45+DuRlZI/BxEP8FKyuGmTmrF0iYyYU40V7/hazOR1NMvBfSM/Bi6Dy
+         ExxQ==
+X-Gm-Message-State: AOAM533+eXUDDVSOGOufCpNt9MN3mLONRsIxiymP22l3rtriKzw1cII4
+	7gQSS83/C1HLp1ty8ezIkSw8ANXQ6ujqkKZfNTH3iOMynDyTRQ==
+X-Google-Smtp-Source: ABdhPJw9O2UtUq1paITndWP33GFoV1IxdDlq42/3Nomlfxo8pnB3T0+ZjVbDgVZOUqCp3Aob97z3uaiV4rGxkcJ4OFY=
+X-Received: by 2002:a05:6122:7cc:b0:343:24a7:757 with SMTP id
+ l12-20020a05612207cc00b0034324a70757mr834677vkr.14.1648674880673; Wed, 30 Mar
+ 2022 14:14:40 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP9U-vbWjZK61PcHvpDYSde2vLV3fKnpR-fYYY92N00siw@mail.gmail.com>
+In-Reply-To: <CAHbmDP9U-vbWjZK61PcHvpDYSde2vLV3fKnpR-fYYY92N00siw@mail.gmail.com>
+From: Greg Davis <greg@pineapple.co>
+Date: Wed, 30 Mar 2022 14:14:29 -0700
+Message-ID: <CAEZ8TWWRonpM4r9kUQQuoXj52mpT65039myxYJQ3kTq4FSBtpA@mail.gmail.com>
+Subject: Re: SQL Database Documentation
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000009ceccb05db76085b"
+
+--0000000000009ceccb05db76085b
+Content-Type: text/plain; charset="UTF-8"
+
+I will look it over, probably in the morning
+
+On Wed, Mar 30, 2022 at 1:59 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Greg!
+>
+> Please find attached the screenshots of the SQL Database Tables (View &
+> Structure pages), as well as the Spreadsheet that has all of the exported
+> tables.
+>
+> I had to go with more than 1000 lines in order to capture Rebills that
+> were up to 2 months away from the Initial purchase, but I was able to use
+> significantly smaller samples from the StickyExports and CakeConversions
+> Tables so that all of the tabs could live in this same file.  The section I
+> chose has a ton of examples of Initials w/ Upsells and quite a few examples
+> of multiple recurring orders as well.
+>
+> I hope that this is what you were envisioning-- happy to change things up
+> as you see fit.
+>
+>  SQL Database Exports.xlsx
+> <https://drive.google.com/file/d/1kZIVP1vPu1YIckNDeSKFs8tfu7-Y4PLL/view?usp=drive_web>
+>
+>
+
+--0000000000009ceccb05db76085b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">I will look it over, probably in the morning=C2=A0</div><=
+div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On=
+ Wed, Mar 30, 2022 at 1:59 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pin=
+eapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
+-left:1ex"><div dir=3D"ltr">Hi Greg!=C2=A0<div><br></div><div>Please find a=
+ttached the screenshots of the SQL Database Tables (View &amp; Structure pa=
+ges), as well as the Spreadsheet that has all of the exported tables.</div>=
+<div><br></div><div>I had to go with more than 1000 lines in order to captu=
+re Rebills that were up to 2 months away from the Initial purchase, but I w=
+as able to use significantly smaller samples from the StickyExports and Cak=
+eConversions Tables so that all of the tabs could live in this same file.=
+=C2=A0 The section I chose has a ton of examples of Initials w/ Upsells and=
+ quite a few examples of multiple recurring orders as well.<br><br>I hope t=
+hat this is what you were envisioning-- happy to change things up as you se=
+e fit.<br><br><div class=3D"gmail_chip gmail_drive_chip" style=3D"width:396=
+px;height:18px;max-height:18px;background-color:rgb(245,245,245);padding:5p=
+x;font-family:arial;font-weight:bold;font-size:13px;border:1px solid rgb(22=
+1,221,221);line-height:1"><a href=3D"https://drive.google.com/file/d/1kZIVP=
+1vPu1YIckNDeSKFs8tfu7-Y4PLL/view?usp=3Ddrive_web" style=3D"display:inline-b=
+lock;max-width:366px;overflow:hidden;text-overflow:ellipsis;white-space:now=
+rap;text-decoration-line:none;padding:1px 0px;border:none" aria-label=3D"SQ=
+L Database Exports.xlsx" target=3D"_blank"><img style=3D"vertical-align:bot=
+tom;border:none" src=3D"https://ssl.gstatic.com/docs/doclist/images/icon_10=
+_generic_list.png">=C2=A0<span dir=3D"ltr" style=3D"vertical-align:bottom;t=
+ext-decoration:none">SQL Database Exports.xlsx</span></a><img style=3D"opac=
+ity:0.55;float:right;display:none"></div><br></div></div>
+</blockquote></div></div>
+
+--0000000000009ceccb05db76085b--

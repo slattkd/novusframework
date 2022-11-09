@@ -1,0 +1,228 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:1613:0:0:0:0 with SMTP id m19csp614446ejd;
+        Sun, 24 Jul 2022 09:52:27 -0700 (PDT)
+X-Received: by 2002:a63:c21:0:b0:412:22fa:6cdb with SMTP id b33-20020a630c21000000b0041222fa6cdbmr7639432pgl.423.1658681546781;
+        Sun, 24 Jul 2022 09:52:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658681546; cv=none;
+        d=google.com; s=arc-20160816;
+        b=x5Vsg44m0yqOQRFFRExLXnJmb3jtNK5cLHWiopUznZLGJIU1HE4C0IPy7FQKKBjNx/
+         Ohu5d+NxYxpKW6f75F4tXIVDTlw7zf+cz0Kh1qbEYCpn0U5VeUH8oz3zeGe9jKBteoDf
+         P/dbj20uxgxFEOnm1hJtpE6I1EHP6bJHjBSf6J6/mRzQc/bmyUZmxjZJ+arcwllxIsCU
+         vzNo/OwwxYGt8wpLG51imQmtbKKUZSH7G667oueUcFhIo9irxuD2BXrI7dwABjndJ/Ax
+         oxD0bDoN08Xpb67sV9krB0jxSf0jTp5FcXoH/bjhXtlRrymgUFzKpFTT+5BMJYiH9bQl
+         8ALg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=fLIVt/yHEEri1EO+LEVk0UnguemAGx6/z+6rIsR/82o=;
+        b=py6LiH1LY+I20E76Gr90S8Jll86pQfsD8vlBSGf9MQYB7BoRu6TmVVfPqu5vSDEVca
+         yD7N5ogPJSII0VBLInv3us+I5YzrlGWkFTL/LnNouKbbT1jXYjqTGIhPxWpCMLmsEuQe
+         j1Q+oWOhGuH/XZ9DDfnzgjcJg+m8JazwTpi0AtpjgnCzUhu5tsWrLWTz5BUoXVh1sEWM
+         Ppz2Gm62+KA3QlYb2YOvGZYd5Ux48auM29KVufV//ciIgpbkBFmX2fSkvCEDfbQ92Reg
+         tiqgZOMKZ/LyH9BAHhZg7nbzVHD/02hlHD4xgeDhcCODMl3Bi3P7LdJ9NrHurkuiOomX
+         hRmA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=RGi9ll4R;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m2-20020a17090a5a4200b001ed3f4f879asor3611131pji.28.2022.07.24.09.52.25
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Sun, 24 Jul 2022 09:52:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=RGi9ll4R;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=fLIVt/yHEEri1EO+LEVk0UnguemAGx6/z+6rIsR/82o=;
+        b=RGi9ll4RQnl+z7th6HJC2IBACzlyR7H3fzOvGh3Xk+WswnAa3YHicXNz1NDTgaB3I/
+         RC3q3H092A+bUEiktX7KciNGpV/WyAPjlRRzmiJhAcq/1pl5OmFcrW5JIenz97AW+zzB
+         6v2+I6SEqqSR7ade/Ry97353FJdpBzJTKc+Z33Krcru76ejyGGOtwQyrplFUl+b60wyQ
+         2zZNa9dac2AWRt+dDZHi3HgAzzMWtasISPzU3jln2IDXh9P6G22Ent2b0K2JPMTlSW+W
+         rd17y7ERJrdGLfE6dNtd3m9Gj+Sep+2i7rSwrMevVm4eZm+AFn+OAOmYRTuN3XFuqY2o
+         BlUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=fLIVt/yHEEri1EO+LEVk0UnguemAGx6/z+6rIsR/82o=;
+        b=njIoYSaSlyL1Mhqn4s7T+qWfu96SY2szkH1B3mWzP3He7H6ztnYiGF4A6Z/ZYY7va8
+         xjewrl96MQEtWmg07kd/Kmc43xHWBoU6HgDkThpcGKMfwfo1fSQnLKLdJUyb8cKcj+b5
+         QOJN4ARsCylPm49boe9vtl4Z0eFwDye9AwCc9H8A1UZpNGMiqm6byg9oifQ5zZDY8SKO
+         cmzCnD7fGpLWel65K6ugs2A/nXkKkTI/ylmBOSYICM8JqEhlanKZ3N4UWdYnDBAZ3ua4
+         xLcgOLOfIkS4SBUZHZ7RzDkqts/fChzqIHlqFpH/d/2j9lMbYMB3eaINIB2IYDgC0xHx
+         Gfyg==
+X-Gm-Message-State: AJIora+U7a+Y+FKZTQNTlm+K7UGy++9qfVqIoE/FUrKUbuJUJ7FGOITF
+	wF9icHYqzgAehLoJz+JY72Jm+iNWXm6xZU5S2ymzugQx+hLiaQ==
+X-Google-Smtp-Source: AGRyM1tD1mzhQ6XJLrE+lbPFrqNA+dXJFGgfYxlUHVmYsWq5CnTjZY6vO/W/SYIKiyIfBWrZep/fS7buyKHZ///iGrQ=
+X-Received: by 2002:a17:90b:33d2:b0:1f0:3a40:982d with SMTP id
+ lk18-20020a17090b33d200b001f03a40982dmr10211646pjb.60.1658681544817; Sun, 24
+ Jul 2022 09:52:24 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Sun, 24 Jul 2022 12:52:14 -0400
+Message-ID: <CALCR5_QAO_TRjMoP6Etir02crm-a5LiBBLCaX99x5hpaU7_hvw@mail.gmail.com>
+Subject: Company wide reporting needs audit
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000004655a005e48fe441"
+
+--0000000000004655a005e48fe441
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hey Aubrey, so I had made some notes about what questions we want
+department heads to answer regarding reports:
+
+- Which reports do you need done that are not being done at all right now
+or are not being done to your satisfaction?
+
+For each item they list please include:
+- What does this report accomplish? (Eg goal of report)
+- what is the frequency of this report? (Eg daily, weekly, monthly, etc)
+- Is this report critical? If so, why is this important?
+- Please mark the report you=E2=80=99d want to start being done first with =
+an X.
+- Why do you want this done first?
+
+--=20
+
+
+
+*Brett Allcorn*
+Chief Executive Officer | pineapple.co
+
+[image: Photo]
+
+E: brett@pineapple.co
+
+A: 57 w 57th St., 3rd Floor, New York, NY 10001
+
+The content of this email is confidential and intended for the recipient
+specified in message only. It is strictly forbidden to share any part of
+this message with any third party, without a written consent of the sender.
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.
+
+--0000000000004655a005e48fe441
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hey Aubrey, so I had made some notes about what questions we want departmen=
+t heads to answer regarding reports:<div dir=3D"auto"><br></div><div dir=3D=
+"auto"><span id=3D"docs-internal-guid-6f23a110-7fff-552c-4821-60a16257c7a8"=
+ style=3D"font-size:11pt;font-family:Arial;font-variant-ligatures:normal;fo=
+nt-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;c=
+olor:rgb(0,0,0)">- Which reports do you need done that are not being done a=
+t all right now or are not being done to your satisfaction?</span></div><di=
+v dir=3D"auto"><span style=3D"font-size:11pt;font-family:Arial;font-variant=
+-ligatures:normal;font-variant-east-asian:normal;vertical-align:baseline;wh=
+ite-space:pre-wrap;color:rgb(0,0,0)"><br></span></div><div dir=3D"auto"><sp=
+an style=3D"font-size:11pt;font-family:Arial;font-variant-ligatures:normal;=
+font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap=
+;color:rgb(0,0,0)">For each item they list please include:</span></div><div=
+ dir=3D"auto"><span style=3D"font-family:Arial;font-size:11pt;white-space:p=
+re-wrap;color:rgb(0,0,0)">- What does this report accomplish?=C2=A0(Eg goal=
+ of report)</span></div><div dir=3D"auto"><span style=3D"font-family:Arial;=
+font-size:11pt;white-space:pre-wrap;color:rgb(0,0,0)">- what is the frequen=
+cy of this report? (Eg daily, weekly, monthly, etc)</span></div><div dir=3D=
+"auto"><span style=3D"font-family:Arial;font-size:11pt;white-space:pre-wrap=
+;color:rgb(0,0,0)">- Is this report critical? If so, why is this important?=
+=C2=A0</span></div><div dir=3D"auto"><span style=3D"font-family:Arial;font-=
+size:11pt;white-space:pre-wrap;color:rgb(0,0,0)">- Please mark the report y=
+ou=E2=80=99d want to start being done first with an X.=C2=A0</span></div><d=
+iv dir=3D"auto"><span style=3D"font-family:Arial;font-size:11pt;white-space=
+:pre-wrap;color:rgb(0,0,0)">- Why do you want this done first?=C2=A0</span>=
+</div><div dir=3D"auto" style=3D"background-color:rgba(0,0,0,0);border-colo=
+r:rgb(255,255,255)"><font style=3D"font-family:Arial;color:rgb(0,0,0)"><spa=
+n style=3D"font-size:14.666666984558105px;white-space:pre-wrap;font-family:=
+Arial"></span></font></div><div dir=3D"auto"><br></div>-- <br><div dir=3D"l=
+tr" class=3D"gmail_signature" data-smartmail=3D"gmail_signature">=20
+
+
+<div>
+
+<table style=3D"FONT-FAMILY:Verdana,sans-serif;COLOR:#05385f;max-width:500p=
+x" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id #05385f" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"FONT-SIZE:18pt;COLOR:#0270c4;FONT-FAMILY:Verdana=
+,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:#05385f">Chief Executive Of=
+ficer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;color:#0270c4!important;text-decoration:none;font-weight:bold=
+" target=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width:90px;height:auto;border:0" width=
+=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIor=
+K4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw=
+">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">E:</span>=
+=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:#101010" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:#05385f;font-weight:bold">A:</span>=
+ 			 		=09
+					<span style=3D"font-size:9pt;color:#101010">57 w 57th St., 3rd Floor</=
+span><span style=3D"font-size:9pt;color:#101010">, </span>		=09
+					<span style=3D"font-size:9pt;color:#101010">New York, NY 10001</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;COLOR:#959595;FONT-FA=
+MILY:Verdana,sans-serif">The content of this email is confidential and inte=
+nded for the recipient specified in message only. It is strictly forbidden =
+to share any part of this message with any third party, without a written c=
+onsent of the sender. If you received this message by mistake, please reply=
+ to this message and follow with its deletion, so that we can ensure such a=
+ mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div>
+
+--0000000000004655a005e48fe441--

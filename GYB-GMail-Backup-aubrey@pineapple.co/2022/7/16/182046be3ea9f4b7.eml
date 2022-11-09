@@ -1,0 +1,199 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp653552ejb;
+        Fri, 15 Jul 2022 17:32:35 -0700 (PDT)
+X-Received: by 2002:a2e:a5cb:0:b0:25d:7a70:2891 with SMTP id n11-20020a2ea5cb000000b0025d7a702891mr8276298ljp.295.1657931555617;
+        Fri, 15 Jul 2022 17:32:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657931555; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MXQ+ukXT4c/EJl1vhPPqkgfQ1/azWyA3CmCW2OzLg/yVk9Aya5+7VY/F4tbxYA9Gdh
+         fJOwoybBJ4qTlxvlhVe3gv7K0V1fc8o9L3+zjBqkHNEceqvRK5U47vwMXhvrxPI8dCc2
+         HjgZ+Vi/7KlkzeiReejTJ+KCvCdb3ok1Pl2sMmkjPaQ4aQk9UHtd/SeHEv+MMXgaORDD
+         YSMlVavioQFBRfqh30nAqPWWzBHE8L90ofuzwefuxLSnWSU7XyP+rNefgw/xPfUs3MwF
+         wjIiDKt5ZfPWPo3CmQ+Z6bYU+TJRBVCOTxY8bwLqcI3s69ktKWbsytuk0tkI+XsioC/L
+         e7BA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=50OPbzsb05Y/9Q1ScTJnxCpypafz15smk7JL2Hm4Yig=;
+        b=KYvBe7i8VZnu3vHAOq6ufZSB3bpVaDP5Sxl6Bx502YsHLqzyaLuQOklpZI92i00PUp
+         oru7jJsoKXpCpaVHp3gxHHRzQB1fe1gGYOevypnmCxtnNq+MbaBcGqCnk5RtSJV+KiaU
+         I8XupBARtqBVokdQQUp/ZUDFYAhHB7+JBLmCwuGaAS41YD8YGV+zYSOrPnivr24d8sDo
+         LmWlMOWnb/FzlfVDH+Bx+pAuCyLZzZaH6k1ouoMb55RIos0rOB+LRqz2WonOhBpkVkku
+         Cr2MlEayQH8bnkEkUMFTsdn9slkng8ZnPh9IMy0NbueLopf50uFq5Nwh222OlwRq/RbU
+         GLmw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=HQa1Wii5;
+       spf=pass (google.com: domain of shawna@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=shawna@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <shawna@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x26-20020a2e881a000000b0025d740a9a28sor2218225ljh.24.2022.07.15.17.32.34
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 15 Jul 2022 17:32:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shawna@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=HQa1Wii5;
+       spf=pass (google.com: domain of shawna@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=shawna@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=50OPbzsb05Y/9Q1ScTJnxCpypafz15smk7JL2Hm4Yig=;
+        b=HQa1Wii5C4e2iR9xxpJC3/TxmUm2ar8/grW/xG00bIvvmeIEc++AXpcBvt3YU0YIEN
+         QdUcErl9ldeWQ5hqLJh2Yfwiwni6WB0ToHHDC+Sd4AF9GL3pdt4McMPpFCxs+u7vEMtB
+         v4KiHfGupL85lP7ekWIamWdWQCJ42I6lKvLLXJTKqWkoscUYyC5uJPt8Fhhonbdg8Kqy
+         p0WzhS/ZvuaHUkPgagFB+jxiRrYylro51SzcoDPr0earVC71V3QSPzwb2uokvmc8uPM4
+         tsNN2NW4ggnp5gOhrWimJZHY6jlTaXCuuvzBlcwnlp8RtZxPEQLlcJ1tMPrBwrCJ4srl
+         wv+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=50OPbzsb05Y/9Q1ScTJnxCpypafz15smk7JL2Hm4Yig=;
+        b=h00sH8G1umevZ+6+/467dNLARe99FWILwmj019ODZjvTMcxlwKqZqfK5nEnlEpo/ui
+         sB43VTkPS6F8nokXVSOXnYWHsuiHlPhDuJ6raj/RAUCp4K4HGzfcfOUp/ds03kJ9pbeY
+         3cPMTWNNm7M0Ab2laHmjLmTKKZrrh9+a70EoT1zIKKcY73XclkwznIAQnaHvczMecHXe
+         vrL0IGRVf9VRN5MOilSIRAe9VneJXwNw5lTkX7uCgUcf7+4jsmnA8/XdQch2U5zaY3Kh
+         40qyZAdVWQC83/TALNGsmDlvZGaYN4Hm1+lWJFZh3s9p4UR4jfA6MQOElaCzzOk22FFW
+         NX0g==
+X-Gm-Message-State: AJIora/Nu39p08x1gCgNqYjkjHkHGt4LakDMUeryk1o+1tzfhRF3+oXg
+	Ja6oMNeLnVVhaUZtfM7XMAjxsITlEQofeV8wTDiuMdVdLEOirA==
+X-Google-Smtp-Source: AGRyM1vkBkRhzOmt2Fnv/PBYofzATO43FLcRZjnhxu0tm3JtRddOJoyE3upjTNybT1Q99AhBIW4D9bsAgY5SebMRyFs=
+X-Received: by 2002:a2e:bf0f:0:b0:25d:4594:6bba with SMTP id
+ c15-20020a2ebf0f000000b0025d45946bbamr8530398ljr.116.1657931554276; Fri, 15
+ Jul 2022 17:32:34 -0700 (PDT)
+MIME-Version: 1.0
+References: <CADDQ+kkLbC4+FD5qXW_3u1w4w35xjYu1Xh+OyWvxWJsS8QxrHQ@mail.gmail.com>
+In-Reply-To: <CADDQ+kkLbC4+FD5qXW_3u1w4w35xjYu1Xh+OyWvxWJsS8QxrHQ@mail.gmail.com>
+From: Shawna McCartney <shawna@pineapple.co>
+Date: Fri, 15 Jul 2022 20:32:22 -0400
+Message-ID: <CADDQ+kmBOred=c9jtkf8-nUF3G5wUx=L3rMuqvzeniL4hUQ9hw@mail.gmail.com>
+Subject: Re: Monthly Stats for Copy Dept
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000005ae15205e3e145d9"
+
+--0000000000005ae15205e3e145d9
+Content-Type: text/plain; charset="UTF-8"
+
+Hey I have included the information below for ease of reference.
+
+Here is the dashboard from which the information is being extracted. The
+tab you need is Project Stats.
+
+https://docs.google.com/spreadsheets/d/1ntvGq3OqflkIYd8JgorFnjAwV2YrLcOQQFKY0ObPuS4/edit?usp=sharing
+
+
+
+
+
+
+On Thu, Jul 14, 2022 at 10:02 PM Shawna McCartney <shawna@pineapple.co>
+wrote:
+
+> Hi Aubrey,
+>
+> So Brett wants to glean some information from the Copy Dept to determine
+> their efficiency and figure out what is working and what isn't. What
+> exactly do you need from me in order to create a report?
+>
+> - Analyzed by writer and type of project we need to determine:
+>     - Time spent per project
+>    - Dept Efficiency
+>    - Output vs Requests on a monthly basis
+>    - any other helpful statistics that could give greater insight into our
+> department.
+>
+> You were also copied on the thread entitled "Dept Efficiency Daily Update
+> 2" if you wanted to read through for a better understanding of my request.
+> Let me know if you have any questions.
+>
+> Side note - I dont know what I dont know so please let me know if this all
+> makes sense.
+>
+> [image: created with MySignature.io]
+> <http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+> Shawna McCartney
+> Pineapple Company
+>
+> w:  pineapple.co
+> a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+>
+>
+>
+> --
+
+
+Shawna McCartney
+Marketing Coordinator
+Pineapple Company
+
+w: 419.274.9549
+a:  57 w 57th Street, 3rd Floor, New York, NY 10019
+
+--0000000000005ae15205e3e145d9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><div dir=3D"ltr">Hey I have included the information below for ease of=
+=C2=A0reference.<div><br></div><div>Here is the dashboard from which the in=
+formation is being extracted. The tab you need is Project Stats.=C2=A0</div=
+><div><br></div><div><a href=3D"https://docs.google.com/spreadsheets/d/1ntv=
+Gq3OqflkIYd8JgorFnjAwV2YrLcOQQFKY0ObPuS4/edit?usp=3Dsharing" target=3D"_bla=
+nk">https://docs.google.com/spreadsheets/d/1ntvGq3OqflkIYd8JgorFnjAwV2YrLcO=
+QQFKY0ObPuS4/edit?usp=3Dsharing</a>=C2=A0<br></div><div><br></div><div><br>=
+</div><div><br></div><div><br></div></div></div><div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 14, 2022 at 10:0=
+2 PM Shawna McCartney &lt;<a href=3D"mailto:shawna@pineapple.co" target=3D"=
+_blank">shawna@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex"><div dir=3D"ltr">Hi Aubrey,<div><br></div><div>S=
+o Brett wants to glean some information from the Copy Dept to determine the=
+ir efficiency and figure out what is working and what isn&#39;t. What exact=
+ly do you need from me in order to create a report?</div><div><br></div><di=
+v>- Analyzed by writer and type of project we need to determine:=C2=A0</div=
+><div>=C2=A0 =C2=A0 - Time spent per project</div><div>=C2=A0 =C2=A0- Dept =
+Efficiency</div><div>=C2=A0 =C2=A0- Output vs Requests on a monthly basis=
+=C2=A0</div><div>=C2=A0 =C2=A0- any other helpful statistics that could giv=
+e greater insight into our department.</div><div><br></div><div>You were al=
+so copied=C2=A0on the thread entitled &quot;Dept Efficiency Daily Update 2&=
+quot; if you wanted to read through for a better understanding of my reques=
+t. Let me know if you have any questions.=C2=A0</div><div><br></div><div>Si=
+de note - I dont=C2=A0know what I dont=C2=A0know so please let me know if t=
+his all makes sense.</div><div><br clear=3D"all"><div><div dir=3D"ltr"><div=
+ dir=3D"ltr"><div style=3D"color:rgb(34,34,34)"><table cellspacing=3D"0" wi=
+dth=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;border-s=
+pacing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lato,sa=
+ns-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px =
+9px 0px 0px;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pineappl=
+e.co/pineappleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=
+=3D"created with MySignature.io" width=3D"100" src=3D"https://img.mysignatu=
+re.io/p/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" s=
+tyle=3D"width:100px;border-radius:15%"></a></td><td valign=3D"top" style=3D=
+"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-color:=
+rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color:rgb(=
+70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;li=
+ne-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;color=
+:rgb(0,0,1)"><tbody><tr><td><span style=3D"font-family:Verdana,Geneva,sans-=
+serif"><font color=3D"#46d0ff"><span style=3D"font-size:13.26px">Shawna McC=
+artney</span></font>=C2=A0=C2=A0<br></span></td></tr><tr><td style=3D"paddi=
+ng:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapple =
+Company</div></td></tr><tr><td><br></td></tr><tr><td><span style=3D"font-fa=
+mily:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">w:=C2=A0</span>=C2=A0=
+<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"http://pin=
+eapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pineapple.co</a></=
+span></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif=
+;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"font-family:Ver=
+dana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York, NY 10019=C2=
+=A0</span></td></tr></tbody></table></td></tr></tbody></table></div><div st=
+yle=3D"color:rgb(34,34,34)"><font color=3D"#46d0ff" size=3D"2"><br></font><=
+/div><div style=3D"color:rgb(34,34,34)"><br></div><div style=3D"color:rgb(3=
+4,34,34)"><br></div></div></div></div></div></div>
+</blockquote></div>
+</div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"g=
+mail_signature"><br><br>Shawna McCartney=C2=A0=C2=A0=C2=A0<br>Marketing Coo=
+rdinator=C2=A0<br>Pineapple Company<br><br>w:=C2=A0419.274.9549<br>a:=C2=A0=
+=C2=A057 w 57th Street, 3rd Floor, New York, NY 10019=C2=A0<br></div>
+
+--0000000000005ae15205e3e145d9--

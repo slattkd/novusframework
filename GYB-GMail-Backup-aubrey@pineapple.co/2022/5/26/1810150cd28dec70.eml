@@ -1,0 +1,88 @@
+MIME-Version: 1.0
+Date: Thu, 26 May 2022 12:01:21 -0500
+References: <CALCR5_Qxm5j7VT6n8Cg8Hj3TUEomrYFhJNZnYWwYR-K8ipdnvw@mail.gmail.com>
+	<CAHbmDP8WJBsRgeb8LSmT50AMHxLn3peDdnt63+56wkw--nd7NA@mail.gmail.com>
+	<CALCR5_T-kn3gKZyepoVZJzW0vU+i0CnRAXV5x0hMvNmZQuQOrA@mail.gmail.com>
+In-Reply-To: <CALCR5_T-kn3gKZyepoVZJzW0vU+i0CnRAXV5x0hMvNmZQuQOrA@mail.gmail.com>
+Message-ID: <CAHbmDP8NhALRZkkAqSOpC04uh7D4LZXUocFeyVDdxjqpKUKwHg@mail.gmail.com>
+Subject: Re: Negative acquisition costs for affiliate department
+From: Aubrey Allen <aubrey@pineapple.co>
+To: Brett Allcorn <brett@pineapple.co>
+Cc: Jarren Scheller <jarren@pineapple.co>, Mike McBrien <mike@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000a2bd6b05dfed23ce"
+
+--000000000000a2bd6b05dfed23ce
+Content-Type: text/plain; charset="UTF-8"
+
+Ok, figured it out!  It looks like the spreadsheet was mistakenly set up to
+subtract Day 0 Net Expenses *from *Day 0 Profit to calculate Acquisition
+cost, when in reality it should be the other way around.
+
+It may take just a little bit for me to make all the changes as it affects
+a number of rows, but I'm going to start making the necessary adjustments
+in the "by Dept." sheets and I will ping you when I'm finished.
+
+On Thu, May 26, 2022 at 11:44 AM Brett Allcorn <brett@pineapple.co> wrote:
+
+> Thanks!
+>
+> On Thu, May 26, 2022 at 12:42 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+>
+>> Hi Brett,
+>>
+>> Let me take a look and see what I can do.  I'll get back to you shortly!
+>>
+>> On Thu, May 26, 2022 at 11:39 AM Brett Allcorn <brett@pineapple.co>
+>> wrote:
+>>
+>>> Hey Aubrey, I found an issue with our acquisition costs for the
+>>> affiliate team.
+>>>
+>>> They are listed as negative numbers...
+>>>
+>>>
+>>> https://docs.google.com/spreadsheets/d/1yk9YcHIThN7w0qitQeRC1485fTwLFCK4XXJz0X5PFks/edit#gid=1367458977
+>>>
+>>> See cell CB183 for an example
+>>>
+>>
+
+--000000000000a2bd6b05dfed23ce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Ok, figured it out!=C2=A0 It looks like the spreadsheet wa=
+s mistakenly set up to subtract Day 0 Net Expenses <b>from </b>Day 0 Profit=
+ to calculate Acquisition cost, when in reality it should be the other way =
+around.=C2=A0=C2=A0<div><br></div><div>It may take just a little bit for me=
+ to make all the changes as it affects a number of rows, but I&#39;m going =
+to start making the necessary adjustments in the &quot;by Dept.&quot; sheet=
+s and I will ping you when I&#39;m finished.</div></div><br><div class=3D"g=
+mail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, May 26, 2022 at 1=
+1:44 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co">brett@pinea=
+pple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr">Thanks!=C2=A0<br></div><br><div class=3D"gmail_quot=
+e"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, May 26, 2022 at 12:42 PM A=
+ubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">au=
+brey@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex"><div dir=3D"ltr">Hi Brett,<div><br></div><div>Let me take =
+a look and see what I can do.=C2=A0 I&#39;ll get back to you shortly!</div>=
+</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+On Thu, May 26, 2022 at 11:39 AM Brett Allcorn &lt;<a href=3D"mailto:brett@=
+pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hey Aubr=
+ey, I found an issue with our acquisition=C2=A0costs for the affiliate team=
+.<div><br></div><div>They are listed as negative numbers...</div><div><br><=
+/div><div><a href=3D"https://docs.google.com/spreadsheets/d/1yk9YcHIThN7w0q=
+itQeRC1485fTwLFCK4XXJz0X5PFks/edit#gid=3D1367458977" target=3D"_blank">http=
+s://docs.google.com/spreadsheets/d/1yk9YcHIThN7w0qitQeRC1485fTwLFCK4XXJz0X5=
+PFks/edit#gid=3D1367458977</a><br></div><div><br></div><div>See cell CB183 =
+for an example</div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000a2bd6b05dfed23ce--

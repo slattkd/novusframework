@@ -1,0 +1,119 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:38d9:0:0:0:0 with SMTP id r25csp5813772ejd;
+        Mon, 28 Mar 2022 10:34:29 -0700 (PDT)
+X-Received: by 2002:a1f:a5d6:0:b0:337:3418:1733 with SMTP id o205-20020a1fa5d6000000b0033734181733mr12221457vke.12.1648488865584;
+        Mon, 28 Mar 2022 10:34:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648488865; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hxZ7rW3FSODPZVUoeXl8aKdcXgMJHFC6wOrRFKNchdehZ3QZ2Iq3L5cGlaSqR1u5Z1
+         KEA/KTVSfu9QRzfCbk8+fjW8ZXzOqdUWUiDcXebdS63sYSuP6aRuio+RfFW+cYnKrA6w
+         gH8gwinojrSV/SsGArO1BchwUX5tSEy1hYEnDVfAAEH/rcUeTvWBrJOOJPxypCxK5Pxv
+         hDxt6A/nn02QGBX8QWmp+w5s+6Zj5HhKKxd00fUe+4SocNRYHW2PyclqYxV1p0NfrW9E
+         ETY9h+JJeObz24hrqAFa2dLxMrz3cjKGi9i8UYrjiz9skXGnMApJYuNaCz3yLX8aQ8Nk
+         tunw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=l4roqOqFHd2MOGzt6dxXNgfMW35q8ZUEuZiQAqLIWKU=;
+        b=VBzBlea4OPgxMRc9OGdBKX2xrIuYBMUs175wjXXyMPyen+hhJmR2b+Sicy5svM904S
+         1aRBbZ1fx0bvuqncF8X0lyvxHmCRegYMO6y92741DFDSNlOxhW1jLLkxHaObE3JjYzNR
+         UQbRaiC+3s++CvH7bHO+v0r3f9DICK2o2bM+P+Kp9+PsslilVADpFKDYl6q/A1aRN7QM
+         6cU6A4XQLJFCqKdIqYn8rx3GC7/Aq1/pZZ0/9C1j5bRkA24NGio2xQ/5byx6YfSzzZ1m
+         2shwbwYyjjRll6AKU3NveY+eSOom6axDCOF/KKaAqJzpguDfti9fbOREcY8DJTAnPtSO
+         8tcg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=SSe5YUIi;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <greg@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u17-20020ab07211000000b00342490e974bsor2430529uao.13.2022.03.28.10.34.24
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 28 Mar 2022 10:34:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=SSe5YUIi;
+       spf=pass (google.com: domain of greg@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=greg@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=l4roqOqFHd2MOGzt6dxXNgfMW35q8ZUEuZiQAqLIWKU=;
+        b=SSe5YUIiO6Qm1KksPT9GWTRWqHjUlwyfL1sUi1z5Djo9VS2kcycIiTlhD8J3gFQ+QR
+         Rin6t8KXmOiCp+n8YGsKAr5Xk7AX3l+g08f5vG5IzsILOhJcZZ3PtrytPO9rvlnT04FS
+         c1C7XPhjDCnK9ZdcUIrS13b5MXsE+wkQ/RdnJPBx4spe8sHSxUvHiZsWmLRebL6v0kOp
+         dvHRgTM0x3ZFlP0WmO17Ii+SDwUxCJGlPDHLMJLTQuvTrijBJMxUvBzbu560DKbyyev9
+         gjgtKvMQGyq0WxuvHf215uZsqrbxL81Q0eGHAErQmkSU0+twApFeITWOnu25Bb27eSn3
+         jlLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=l4roqOqFHd2MOGzt6dxXNgfMW35q8ZUEuZiQAqLIWKU=;
+        b=gbyXbhffwuxtKFPfhgd/1xemv+1uCFo5DKXeOL9x3dHxlSs9+P2n/dz3wVxQuHlLuW
+         YDDxbPpmhqMCJPVIiU1aD76n/GPvaESJvMxbLpLl2uEIKQBqn4Aa1Zy6uERNk9o0aQAw
+         owJieMpWzrqOmlAN7YeaAYDJcxBq+CCf3Em08jm2riQ/Al0c0qy0EQS0CeQOMwo07Kb3
+         ML5/St3/BFp3q4XhVztVq5xJCJgKh7ZnYK3XJGkW88J4wBp1J7RqXeQXcJbeaGl/6AIO
+         aR9ivO0Z9TIBWw0BLuTQDA4w/LVZEjCYE/CrOL+J2NfCOwMjL1Jo1gndQpqwvV3TpagQ
+         dHiA==
+X-Gm-Message-State: AOAM533SgDjPrG0+3hvi4H0wGQEpLmGK1js07wt3BSqBpVTAMbuyx6WD
+	0UNrhcUaG3zkcoxBQtnlc3oagFrKcz+h4p/IZPwGs27t
+X-Google-Smtp-Source: ABdhPJzL8wQztvEtVoztw126QeYPcBPZovSoDqShiKWIkyioX2vfaV/91BCnIvsAkWsHWMTEsds/TbTK4D5Hvemwi4Q=
+X-Received: by 2002:ab0:70d7:0:b0:359:f05c:38bb with SMTP id
+ r23-20020ab070d7000000b00359f05c38bbmr3278270ual.76.1648488864718; Mon, 28
+ Mar 2022 10:34:24 -0700 (PDT)
+MIME-Version: 1.0
+From: Greg Davis <greg@pineapple.co>
+Date: Mon, 28 Mar 2022 13:33:48 -0400
+Message-ID: <CAEZ8TWWpSdKTjXXiou0bfuogR+rFmZStU-j3CigFUjyskc0GoQ@mail.gmail.com>
+Subject: Access for Aubrey
+To: Mike McBrien <mike@pineapple.co>, Aubrey Allen <aubrey@pineapple.co>, 
+	Sean Chipman <sean@pineapple.co>, Gene Naftulyev <gene@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000032b52a05db4ab951"
+
+--00000000000032b52a05db4ab951
+Content-Type: text/plain; charset="UTF-8"
+
+Please send / grant rights for the following to Aubrey for entering in Ad
+spend. We will work on it together this week, and I will watch her enter in
+to help for next week.
+
+Regards,
+Greg
+
+Outbrain for Kendago:
+https://my.outbrain.com/amplify/site/marketers/00334f27e888e04062e48c656e1eda1b21/reports/campaigns?from=20220131&to=20220206
+
+https://backstage.taboola.com/ (for Kendago)
+
+Facebook (I can not access our account right now, it is asking for 2-factor
+authentication.
+
+https://ads.google.com/
+377-540-4348 Revival Point
+928-195-2605 Supernatural Man
+204-441-4874 Nitric Drive
+245-624-0905 Flavo Trim Secret
+100-192-6619 Flora Spring 2
+
+--00000000000032b52a05db4ab951
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Please send / grant rights for the following to Aubrey for=
+ entering in Ad spend. We will work on it together this week, and I will wa=
+tch her enter in to help for next week.<div><br></div><div>Regards,</div><d=
+iv>Greg</div><div><br></div><div>Outbrain for Kendago:</div><div><a href=3D=
+"https://my.outbrain.com/amplify/site/marketers/00334f27e888e04062e48c656e1=
+eda1b21/reports/campaigns?from=3D20220131&amp;to=3D20220206" target=3D"_bla=
+nk">https://my.outbrain.com/amplify/site/marketers/00334f27e888e04062e48c65=
+6e1eda1b21/reports/campaigns?from=3D20220131&amp;to=3D20220206</a><br></div=
+><div><br></div><div><a href=3D"https://backstage.taboola.com/" target=3D"_=
+blank">https://backstage.taboola.com/</a> (for Kendago)<br></div><div><br><=
+/div><div>Facebook (I can not access our account right now, it is asking fo=
+r 2-factor authentication.</div><div><br></div><div><a href=3D"https://ads.=
+google.com/">https://ads.google.com/</a><br>377-540-4348 Revival Point<br>9=
+28-195-2605 Supernatural Man<br>204-441-4874 Nitric Drive<br>245-624-0905 F=
+lavo Trim Secret<br>100-192-6619 Flora Spring 2<br></div><div><br></div><di=
+v><br></div><div><br></div></div>
+
+--00000000000032b52a05db4ab951--

@@ -1,0 +1,147 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp787850ejb;
+        Sun, 10 Jul 2022 01:01:22 -0700 (PDT)
+X-Received: by 2002:a63:194c:0:b0:408:a9d1:400c with SMTP id 12-20020a63194c000000b00408a9d1400cmr10952443pgz.559.1657440081841;
+        Sun, 10 Jul 2022 01:01:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657440081; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WIRbl+GLx184bylRTt3JLUnHxkU4v1NRRoZOGrGDVubWI8m2X0AS7gjrfni8EMr6mn
+         hcop0TMO65YtVgIJVa7nRpuT6I8ARYzmzKyceyGKJrgbNMV+GsAs7HX3rPO7yhYwSlno
+         92ddSsOV8myLdKhwCc4syij9C5EYARDFjTLpOvevhH3d2D6SLJb2HhtyZqHHn8tILlnK
+         YmIKz8jCpDLRLL/BGw1lMtU+3ng6Y1tbcupaY9ygIC7a68DgJq0Ii1FqFxy41hqow8NG
+         SR/3kRRnnSYETQ6p+es2ZDl9DLgXr+KK0k7oSwYMtXKwjIcYMBWJ3y2ybvpeX3EE8Cgp
+         7/7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=12vSjapG7ij+SxT194woIYNOQ0lp55iVOgFhYK5W9/w=;
+        b=AkBz0QxqnMtQ/ao5EuJJXew3N1/IqiyMIVVOslkYSgW7PVpj1tdJxT0lEI+5w9+xD3
+         Ta6bpEFNpu/diPqLSGp6mcwcH4XoMwbCMqNd/bwhcvNWDOjm+tQ4Q4A7IA4lpvZI/scR
+         L+XPCl6G9G6m0OJBNL7R+F5xQPXM//V6TawRuUM7nH4kucVOFrWiH91Q7nVo9EvepgKo
+         p1wcBMmXaQFaYzasVmb0LpJjHYNildc6OsftsXVW84yJhLAjgwV8hVL4Wq7f2/a9e5IH
+         LUQaKL+1U4sYOvUuudu1sK1DnMX3HleqIo5YUZZabRw04/QXK6skVm/cGYv6JzJhMDqi
+         g/Zg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=BUoFCVb9;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n6-20020a17090a4e0600b001efc1b238cbsor2130992pjh.43.2022.07.10.01.01.21
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Sun, 10 Jul 2022 01:01:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=BUoFCVb9;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=12vSjapG7ij+SxT194woIYNOQ0lp55iVOgFhYK5W9/w=;
+        b=BUoFCVb9L4Wpb3yqBGKE9cZhivu08pSCYbK15/1P0G5mjKOvJT5+uGne096V2Mm5m9
+         olbOvpX6Nt3uJz7tAWfW0U0V3YrihpsY//m+A/pMD35giBFhxKSLnghkC4pVKO+0z3R9
+         L8rknM1Hkr0p+Cnx4ZsPgoJJ4KfWu+wu7LrZvKO7y0jV2D7njdPRC6Cerd4q90KXI3yE
+         3YbvaVbRgj9euC3beOat3coxYy73mYymgc3ikSKSm4l9XnQaHlscHGTaStCwJAqkmlMK
+         eaJTdwGWwXQSpY1wXSqVvlJ5tgKkTclgTgmrvptA8KoW777pw0jwmIH/CJbbOzRByxvJ
+         aqBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=12vSjapG7ij+SxT194woIYNOQ0lp55iVOgFhYK5W9/w=;
+        b=5IFid5dGgVOV36c0xWr9e/lOulUqxyTu+oXcmiPUQPt4Ib5VTeDE6kA0+1671aHnjH
+         4MxuO5cQGhCzZ0tKWB3JFvlHJA7XflZaR54SclWfcFziWe0xKk2z1FbfDpRuOQK7BlW1
+         FUtBuLG5iw+jeolSghZW7nI62RhfrJ4JP16c3Z93mmu5WFpbVw4TShcO/pnjZSAzwyGG
+         nkZ0ibAmYCVrJW9EeOBSSNVzDWZiDz2p7mnCc27vffGm5IWBj2wkjxxWkwXfzK7YzJU6
+         PrkS7olwbFC06uu0K/aeoYsoLkM5HNYfVaE1+3cqLwM2fquP6IgMNp9kxlAobqs7NHrK
+         x8sA==
+X-Gm-Message-State: AJIora/NME3ikMrPpdWgVm0k6A6lNNy/+WuG5p9zDyZIXldbPTvn0k1W
+	BUNksG8jsiw7xhNw1ZiFBSSvPoeHieHXM7ReNRAkRdjShraC9L/SeVQ=
+X-Google-Smtp-Source: AGRyM1sABdm1Rh1p5GjOt1QgrRwXhnQczQVEKFH/O4WHeLBy78uJfTo3H6MT5MfbxYh5TDdMewvV9hXFR/iFUyHb+8k=
+X-Received: by 2002:a17:90b:240b:b0:1ef:8a68:1596 with SMTP id
+ nr11-20020a17090b240b00b001ef8a681596mr10503318pjb.234.1657440080805; Sun, 10
+ Jul 2022 01:01:20 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_Ra0NxAMPQcOoi_z4urWOH+_ygCVcwt2Ydf_UBgV1o+rg@mail.gmail.com>
+ <CAAHZi9wF8+h3cJZ_LdNJQw6HCt_ncTS3u=RwMswYdD-3Oa-0Jw@mail.gmail.com>
+In-Reply-To: <CAAHZi9wF8+h3cJZ_LdNJQw6HCt_ncTS3u=RwMswYdD-3Oa-0Jw@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Sun, 10 Jul 2022 10:01:08 +0200
+Message-ID: <CALCR5_TJERTM-996-D1k+0Rah7b9o1ha7qm1FXYoyrARBZeuDg@mail.gmail.com>
+Subject: Re: Test Sales
+To: Mike McBrien <mike@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000040d6f105e36ed706"
+
+--00000000000040d6f105e36ed706
+Content-Type: text/plain; charset="UTF-8"
+
+All good info thanks
+
+On Sun, Jul 10, 2022 at 9:47 AM Mike McBrien <mike@pineapple.co> wrote:
+
+> We do a bunch of test sales...
+>
+>    1. For every deployment we do at least 4 test sales (mobile and
+>    desktop, on dev and production).
+>    2. We do test sales on local developer machines when testing functions
+>    for things like measurebit's sale event coding, heaving coding days I could
+>    easily do 20-30 test transactions when debugging or changing checkout
+>    features.
+>    3. Whenever a change is made in Google Tag Manager, I test the
+>    checkout process both on staging and production.
+>    4. We are starting to run automated "Ghost Inspector" tests which uses
+>    test transactions to verify the checkout is working properly.
+>
+> As we automate testing in more of our funnels I expect this number to
+> continue to increase. If we need to somehow differentiate these please let
+> me know!
+>
+> -Mike
+>
+> On Fri, Jul 8, 2022 at 10:34 AM Brett Allcorn <brett@pineapple.co> wrote:
+>
+>> Mike Aubrey said we have 1574 tests in June.
+>>
+>> Is there a reason we are conducting over 50 test sales every day?
+>>
+>> I'm sure there is a good reason, just trying to understand.
+>>
+>
+
+--00000000000040d6f105e36ed706
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">All good info thanks</div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jul 10, 2022 at 9:47 AM Mike M=
+cBrien &lt;<a href=3D"mailto:mike@pineapple.co">mike@pineapple.co</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr">We do a bunch of test sales...=C2=A0<br><ol><li>For every deployme=
+nt we do at least 4 test sales (mobile and desktop, on dev and production).=
+=C2=A0</li><li>We do test sales on local=C2=A0developer=C2=A0machines when =
+testing functions for things like measurebit&#39;s sale event coding,=C2=A0=
+heaving=C2=A0coding days I could easily do 20-30 test=C2=A0transactions whe=
+n debugging or changing checkout features.</li><li>Whenever a change is mad=
+e in Google Tag Manager, I test the checkout process both on staging and pr=
+oduction.</li><li>We are starting to run automated &quot;Ghost Inspector&qu=
+ot; tests which uses test transactions to verify the checkout is working pr=
+operly.</li></ol><div>As we automate=C2=A0testing in more of our funnels I =
+expect this number to continue to increase. If we need to somehow different=
+iate=C2=A0these please let me know!</div><div><br></div><div>-Mike</div></d=
+iv><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On =
+Fri, Jul 8, 2022 at 10:34 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pine=
+apple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
+:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Mike Aubrey =
+said we have=C2=A01574 tests in June.<div><br></div><div>Is there a reason =
+we are conducting over 50 test sales every day?</div><div><br></div><div>I&=
+#39;m sure there is a good reason, just trying to understand.</div></div>
+</blockquote></div>
+</blockquote></div>
+
+--00000000000040d6f105e36ed706--

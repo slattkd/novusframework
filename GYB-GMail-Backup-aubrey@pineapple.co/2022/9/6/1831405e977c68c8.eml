@@ -1,0 +1,443 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:a91:0:0:0:0 with SMTP id y17csp453685ejf;
+        Tue, 6 Sep 2022 11:17:55 -0700 (PDT)
+X-Received: by 2002:a17:902:cec7:b0:172:5b09:161c with SMTP id d7-20020a170902cec700b001725b09161cmr53328590plg.60.1662488275193;
+        Tue, 06 Sep 2022 11:17:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662488275; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wJUngWmkdZGg3jFTz2PsHVlyVnVceawkf82CIDcfuW7cQKmVEq+JPFU2l82lN/Fup+
+         es/aRGoO9MebzF38c4/hNSV1PhYFCvixB1t3tTwERi/YERLi5rs9x2shtGb+SV36VJaG
+         2dS+lVlq+o0V/8BseS3pDoBduUSZKeRK1bVtrVeGBaHr5/3aI2fWF5LzonfDmCFAVNTo
+         b30W/ZCaBzdU9EC0nbTAXurGBl7MGBBGPw/1kYl4opjJEmjWp6p+VtmSbdyeritMB/yV
+         JaTO6eIJIPei+RIDuAftIyLTJukNOFR76l7dAD2zTV2nnq5hR/Y90jFRTD03ig4Myw/f
+         e1kQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=SVO/RAf4mlerijfDjklm3YffvSGeziOYubIvJ+Z8E0c=;
+        b=pWJpzkCIiWmHF8zx8KWuXRxwA6DRkSnG9e3OD1diQHTJrhc8alH/TeYFoHUAoMVaR8
+         8+TrNJfYtFZt42v8fxUN8JAxtqOVL+p3MA4iOnrJ/AnkbJfcBFIQ5DnUjyjYrr+qD5xY
+         crZZMx796Mf9+ipkISMxhwcEOjR36Ez5mflG6mn0rAcBK5V3Ekwt6qCiNSzs+rylMedS
+         h1zQ14I7DTIQ6d/e7itmXjp7w51ns0/VVFVJFB8stV0abEcIcwSTnzwjeErcXdCE3/cK
+         LzsbNrNeuVRPw0WWdj1+Okjhd0cQ7O/eQsFInUeVsRyGhy/HoLjxhopPHlLSyri92BQg
+         5Crw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mediareps-com.20210112.gappssmtp.com header.s=20210112 header.b=0iFjU4F0;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of sabrina@mediareps.com) smtp.mailfrom=sabrina@mediareps.com
+Return-Path: <sabrina@mediareps.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u5-20020a056a00124500b005384c3b0a65sor7272702pfi.18.2022.09.06.11.17.54
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 06 Sep 2022 11:17:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of sabrina@mediareps.com) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mediareps-com.20210112.gappssmtp.com header.s=20210112 header.b=0iFjU4F0;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of sabrina@mediareps.com) smtp.mailfrom=sabrina@mediareps.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=mediareps-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=SVO/RAf4mlerijfDjklm3YffvSGeziOYubIvJ+Z8E0c=;
+        b=0iFjU4F0lZGqWJS9Fxm1BEA0WgeB88DgdYtKZT8zrVjcQ19VY5FRK/XPyYs4IX20d0
+         ABOvAzUTf/1P8fpoMXvCNzVdl/gARg2ltpGbUp18KxUquIe7nGnEIt7sQMPRFb0QjcBn
+         JGOcpHr9BTMX3mxoDFhbZLmdYA2/M04ocgxbu0Un3Coymh2sqADzelD79mZZMToPUITb
+         +Vt20lE32JB235wVZLHBdkgbQ6EavNE2Be+LPyEvcC+I0vPUqVQVdFIKoPXt4mkiZofA
+         Gw0QEXcav9qYJdSdHmgmM1V7h4hfEhj+r1ceNorOEqq8nzzkzUVZAlEn2njq6PizYpy2
+         mo4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=SVO/RAf4mlerijfDjklm3YffvSGeziOYubIvJ+Z8E0c=;
+        b=A3qfmlYf0xVFjnCIvf/5GsqMfp5ro2SkyiCulXekl/RG2slykKfEttVvQs2al7uxhY
+         r/MM3i+oWDhFdaqCbiM+yIPl9Z53PXou2sp+PufWM3NcejS7lZJZxK2Xy51u+1sI6y2L
+         1xcCBB2Ro7+8qMPYVFmXp0xKDyhUotSWh0cbYGvvca1ZHUNlzmJFMC+WnhjfbCbVeY3n
+         MMrA41zstC0BrCN+kwmyaMgDsWqT+8tCthDzpyoSHrvOT/CZ5EGTvi+qVik9FLkQySJb
+         1/PsmAwe1T4kPTXwQCL91mWLgJ9jfyr9A10Vl3uy2/NvHfQOjTOeOhDpDutmDnJ6Nwf/
+         U9rA==
+X-Gm-Message-State: ACgBeo3LuvCSOlQMEl7hfUmRU7U8OdeKR8/p/jzOrFWSv8bgIixdP5q5
+	XjqA0gc+I+zQv/+VO6dJWZRBgvCQeJZAEBNm0ETeAQ==
+X-Google-Smtp-Source: AA6agR43i1DhPNwlCaFImydiBzLSaOuPzyH2LgQVySkYh268sjKcArchPhnbJdC8Z49KA47cXYpOl1Bo/RddHy21InE=
+X-Received: by 2002:a63:1ce:0:b0:42f:f103:31df with SMTP id
+ 197-20020a6301ce000000b0042ff10331dfmr31227686pgb.90.1662488274457; Tue, 06
+ Sep 2022 11:17:54 -0700 (PDT)
+MIME-Version: 1.0
+References: <MW2PR12MB23621DB6C67D2FE49EEF5FEADC7E9@MW2PR12MB2362.namprd12.prod.outlook.com>
+ <CAF=8Acd_e5c=QiUKBdaVyo3NCO1Z9EOfHtDVMzfFZG-TE6Bb4A@mail.gmail.com> <MW2PR12MB2362FE0A127C6A76CF0AA17CDC7E9@MW2PR12MB2362.namprd12.prod.outlook.com>
+In-Reply-To: <MW2PR12MB2362FE0A127C6A76CF0AA17CDC7E9@MW2PR12MB2362.namprd12.prod.outlook.com>
+From: Sabrina Magana <Sabrina@mediareps.com>
+Date: Tue, 6 Sep 2022 11:17:43 -0700
+Message-ID: <CAF=8AcdLeQzDxiCNo67zeBrMS9k1q4PBHq5vmD0_-VktX=rcxw@mail.gmail.com>
+Subject: Re: Short call to explain Second Marsh Consulting Revenue Share computation
+To: "bob rkgconsultinginc.com" <bob@rkgconsultinginc.com>
+Cc: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000000aed3305e806374d"
+
+--0000000000000aed3305e806374d
+Content-Type: text/plain; charset="UTF-8"
+
+No worries! I can certainly plan for earlier on Thursday - how's 11am or 12
+PST?
+
+On Tue, Sep 6, 2022 at 11:07 AM bob rkgconsultinginc.com <
+bob@rkgconsultinginc.com> wrote:
+
+> I am adding Aubrey to this so we can all figure out a time at the same
+> time.
+>
+> Sabrina, I am on Central time and Aubrey on ET, I think. In any case, we
+> can only do the call on Thursday *before* 4 pm central time, or 2 pm PT.
+> (I did not realize you were PT.)
+>
+> If you can't do earlier, I am suggesting following times.
+>
+>
+>    - Next Monday, at 10 am PT / 1 pm ET
+>    - Tuesday at 9 am PT / 12 pm ET, or from 11 am PT / 3 pm ET on.
+>
+> Thanks,
+> Bob
+>
+> Robert S. Greisman
+> *RKG consulting group, inc.*
+> *BUSINESS GROWTH ADVISORS *
+>
+> *business growth | fractional CFO | M & A advisory *
+>
+> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |* LinkedIn
+> <https://www.linkedin.com/in/bobgreisman/>*
+>
+> IMPORTANT: The contents of this email and any attachments are
+> confidential. They are intended for the named recipient(s) only. If you
+> have received this email by mistake, please notify the sender immediately
+> and do not disclose the contents to anyone or make copies thereof.
+> ------------------------------
+> *From:* Sabrina Magana <Sabrina@mediareps.com>
+> *Sent:* Tuesday, September 6, 2022 12:06 PM
+> *To:* bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+> *Subject:* Re: Short call to explain Second Marsh Consulting Revenue
+> Share computation
+>
+> Hi Bob,
+>
+> I hope you had a great long weekend as well!
+>
+> Thursday afternoon works for me, anytime after 2pm PST.
+> Let me know what works for you. Thanks!
+>
+> On Tue, Sep 6, 2022 at 4:20 AM bob rkgconsultinginc.com <
+> bob@rkgconsultinginc.com> wrote:
+>
+> Sabrina,
+>
+> Hope you are well and had a great long weekend.
+>
+> I am writing to set a time for a short call to provide you with some
+> training / guidance on the computation of the monthly revenue share payment
+> to Second Marsh Consulting for the Enrich Info products recently acquired
+> by you as part of the Pineapple / Gotham transaction. I have prepared a
+> template you can use and will walk you through it. The template contains
+> the historical information needed, and I hope to have Aubrey from Pineapple
+> on the call to explain where the current info is pulled from.
+>
+> Are you available Thursday afternoon for this short call? If not, please
+> suggest some times for early next week.
+>
+> Thanks,
+> Bob
+>
+> Robert S. Greisman
+> *RKG consulting group, inc.*
+> *BUSINESS GROWTH ADVISORS *
+>
+> *business growth | fractional CFO | M & A advisory *
+>
+> Phone: 847-902-0258 *Website <http://www.rkgconsultinginc.com/>* |* LinkedIn
+> <https://www.linkedin.com/in/bobgreisman/>*
+>
+> IMPORTANT: The contents of this email and any attachments are
+> confidential. They are intended for the named recipient(s) only. If you
+> have received this email by mistake, please notify the sender immediately
+> and do not disclose the contents to anyone or make copies thereof.
+>
+>
+>
+> --
+> Regards,
+>
+> Sabrina Magana
+> Admin Assistant | Media Reps
+>
+
+
+-- 
+Regards,
+
+Sabrina Magana
+Admin Assistant | Media Reps
+
+--0000000000000aed3305e806374d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">No worries! I can certainly plan for earlier on Thursday -=
+ how&#39;s 11am or 12 PST?</div><br><div class=3D"gmail_quote"><div dir=3D"=
+ltr" class=3D"gmail_attr">On Tue, Sep 6, 2022 at 11:07 AM bob <a href=3D"ht=
+tp://rkgconsultinginc.com">rkgconsultinginc.com</a> &lt;<a href=3D"mailto:b=
+ob@rkgconsultinginc.com">bob@rkgconsultinginc.com</a>&gt; wrote:<br></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex"><div class=3D"msg-42305982=
+24059465077">
+
+
+
+
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+I am adding Aubrey to this so we can all figure out a time at the same time=
+.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+Sabrina, I am on Central time and Aubrey on ET, I think. In any case, we ca=
+n only do the call on Thursday
+<i>before</i> 4 pm central time, or 2 pm PT. (I did not realize you were PT=
+.)=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+If you can&#39;t do earlier, I am suggesting following times.</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">
+<ul>
+<li>Next Monday, at 10 am PT / 1 pm ET</li><li style=3D"font-family:Georgia=
+,serif;font-size:12pt;color:rgb(0,0,0)">
+Tuesday at 9 am PT / 12 pm ET, or from 11 am PT / 3 pm ET on.</li></ul>
+<div>Thanks,</div>
+<div>Bob</div>
+</div>
+<div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div id=3D"m_-4230598224059465077Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;background-color:blac=
+k"><span style=3D"margin:0px;color:navy"><span style=3D"margin:0px;font-siz=
+e:8pt"><span style=3D"margin:0px;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>=C2=A0</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS=C2=A0</=
+span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;col=
+or:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:0p=
+x;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>=C2=A0</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" rel=3D"noopener noreferrer" title=3D"Website" style=3D=
+"margin:0px" target=3D"_blank">Website</a></strong><span>=C2=A0</span>|<str=
+ong><a href=3D"https://www.linkedin.com/in/bobgreisman/" rel=3D"noopener no=
+referrer" title=3D"LinkedIn" style=3D"margin:0px" target=3D"_blank"><span>=
+=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: The =
+contents of this email and any attachments are
+ confidential. They are intended for the named recipient(s) only. If you ha=
+ve received this email by mistake, please notify the sender immediately and=
+ do not disclose the contents to anyone or make copies thereof.</span></spa=
+n></span></div>
+</div>
+</div>
+<div id=3D"m_-4230598224059465077appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-4230598224059465077divRplyFwdMsg" dir=3D"ltr"><font face=3D"C=
+alibri, sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b>=
+ Sabrina Magana &lt;<a href=3D"mailto:Sabrina@mediareps.com" target=3D"_bla=
+nk">Sabrina@mediareps.com</a>&gt;<br>
+<b>Sent:</b> Tuesday, September 6, 2022 12:06 PM<br>
+<b>To:</b> bob <a href=3D"http://rkgconsultinginc.com" target=3D"_blank">rk=
+gconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" targ=
+et=3D"_blank">bob@rkgconsultinginc.com</a>&gt;<br>
+<b>Subject:</b> Re: Short call to explain Second Marsh Consulting Revenue S=
+hare computation</font>
+<div>=C2=A0</div>
+</div>
+<div>
+<div dir=3D"ltr">Hi Bob,
+<div><br>
+</div>
+<div>I hope you had a great long weekend as well!</div>
+<div><br>
+</div>
+<div>Thursday afternoon works=C2=A0for me, anytime after 2pm PST.</div>
+<div>Let me know what works for you. Thanks!</div>
+</div>
+<br>
+<div>
+<div dir=3D"ltr">On Tue, Sep 6, 2022 at 4:20 AM bob <a href=3D"http://rkgco=
+nsultinginc.com" target=3D"_blank">
+rkgconsultinginc.com</a> &lt;<a href=3D"mailto:bob@rkgconsultinginc.com" ta=
+rget=3D"_blank">bob@rkgconsultinginc.com</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div>
+<div dir=3D"ltr">
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Sa=
+brina,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Ho=
+pe you are well and had a great long weekend.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">I =
+am writing to set a time for a short call to provide you with some training=
+ / guidance on the computation of the monthly revenue share payment to Seco=
+nd Marsh Consulting for the Enrich
+ Info products recently acquired by you as part of the Pineapple / Gotham t=
+ransaction. I have prepared a template you can use and will walk you throug=
+h it. The template contains the historical information needed, and I hope t=
+o have Aubrey from Pineapple on
+ the call to explain where the current info is pulled from.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Ar=
+e you available Thursday afternoon for this short call? If not, please sugg=
+est some times for early next week.=C2=A0</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Th=
+anks,</div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)">Bo=
+b</div>
+<div>
+<div style=3D"font-family:Georgia,serif;font-size:12pt;color:rgb(0,0,0)"><b=
+r>
+</div>
+<div id=3D"m_-4230598224059465077x_m_-2476062120355622404Signature">
+<div>
+<div><span style=3D"margin:0px;font-family:Georgia;text-align:start;backgro=
+und-color:rgb(255,255,255)"><span style=3D"margin:0px;background-color:blac=
+k"><span style=3D"margin:0px;color:navy"><span style=3D"margin:0px;font-siz=
+e:8pt"><span style=3D"margin:0px;background-color:white">Robert
+ S. Greisman</span></span><br>
+</span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>=C2=A0</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS=C2=A0</=
+span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;background-color:rgb(153,51,0)"><span style=3D"ma=
+rgin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:whi=
+te"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;col=
+or:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:0p=
+x;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;,courier"><spa=
+n style=3D"margin:0px;font-family:&quot;arial black&quot;,&quot;avant garde=
+&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;,couri=
+er"><span style=3D"margin:0px;font-family:verdana,geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>=C2=A0</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" rel=3D"noopener noreferrer" title=3D"Website" style=3D=
+"margin:0px" target=3D"_blank">Website</a></strong><span>=C2=A0</span>|<str=
+ong><a href=3D"https://www.linkedin.com/in/bobgreisman/" rel=3D"noopener no=
+referrer" title=3D"LinkedIn" style=3D"margin:0px" target=3D"_blank"><span>=
+=C2=A0</span>LinkedIn</a></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255,255,255)">
+=C2=A0</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255,255,255)"><span style=3D"margin:0px;font-family:&quot;courier =
+new&quot;,courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: The =
+contents of this email and any attachments
+ are confidential. They are intended for the named recipient(s) only. If yo=
+u have received this email by mistake, please notify the sender immediately=
+ and do not disclose the contents to anyone or make copies thereof.</span><=
+/span></span></div>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+<br clear=3D"all">
+<div><br>
+</div>
+-- <br>
+<div dir=3D"ltr">
+<div dir=3D"ltr">Regards,
+<div><br>
+</div>
+<div>Sabrina Magana</div>
+<div>Admin Assistant | Media Reps</div>
+</div>
+</div>
+</div>
+</div>
+
+</div></blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=
+=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr">Regards,<div><br></div>=
+<div>Sabrina Magana</div><div>Admin Assistant | Media Reps</div></div></div=
+>
+
+--0000000000000aed3305e806374d--

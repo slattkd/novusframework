@@ -1,0 +1,811 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp545600ejz;
+        Wed, 27 Jul 2022 14:20:29 -0700 (PDT)
+X-Received: by 2002:a81:f8e:0:b0:31f:4226:eb58 with SMTP id 136-20020a810f8e000000b0031f4226eb58mr10690562ywp.19.1658956828619;
+        Wed, 27 Jul 2022 14:20:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658956828; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bj7ngPBYqQGuyEyzPie0T6AtT8iVkpBOgRB+kVyB6rkMbacw+XbhSIiapM9SOH5stA
+         tYrk1+AzWxdXEtz9QxSWlLQkygszbRPpi5PB3FCW3PTgLF0NViCqYqyEEoZQJl3i6n24
+         v8jvT+cGxOllA5HiVjwTYYkd4UUK49sfbxwu1dGyfKcBiL2NQV+vRWa+zv0LJ5ODDRtp
+         H1haptDm7usqJaRp7aLcIVmkTZxd9zwzVs0iPCpYqv2Xr9xRafJ3vN5LXQpeikxCo3cj
+         HagHUdOx8ySwS9FaVuewaiUDFgf5rAH0iBcvVJTCS522lZsr8uh2m9crRo1dqe5tT5ar
+         +hXA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=LIttgZf9evRd28ljjLlvsWe6MZb0y8LoovrMVvd3H8Q=;
+        b=Vod4zGdA2/LGjjKa3a5g6ewSK3quUIXNQ7UMmKaEXgnpRL78GZR9E57sa2PUm7i580
+         eaIEdz0NhRUIAhrQpCNkUwxbyf+Pl9yAmlutZBGYZS3gdFSCCDSneZOrn0i1xl2CdkLa
+         uY2+4kbSbKpu5dVHI55yUiymhwMIoUt4n5qojZ9HAaVncSH2K9X/7DCruw2CQLluOsjV
+         ZBsA6GNfwsD6NwnB9gm2LlPPXB44iNSE1mRJXtnkxhlCosut7hcRdmGBBhLI3/6l0DwF
+         G7NwXO5dxqhGyolN0NqyLKcua2hCRBvzp3UJygDwPV/6zNt5HJFlMHB3L4cbO87MqEJK
+         xhug==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=rKCkwJOs;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <kerry@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 138-20020a811290000000b0031f47efb0d3sor2192800yws.40.2022.07.27.14.20.28
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 27 Jul 2022 14:20:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=rKCkwJOs;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=LIttgZf9evRd28ljjLlvsWe6MZb0y8LoovrMVvd3H8Q=;
+        b=rKCkwJOsjNOiMvfA5vjiLF2bM7dmW/2NO7t2/ZRpSeOALUIcV3FF/OfQBtiHmuwJkt
+         eOMhBITnBbZxB7keZ1AqdfSBmvfgC5xFIh6vFcaqVK/qjQuvYGjHqSRwQwwW1hKE8W6A
+         gezOALJxA7dKkEfoDPcFbPYUbT9pfs5sIj3gy25ffuYygIfRBM7If5mgjcaIsgQ4We9q
+         995vFXyBGdr7Yfy7rfOg4CQ3ycyyemYKlq3ZFGQj6CTAcOPGUyQ3B2h1JywPdqr+z6fR
+         hQgvRw8Kjn6KnpNnZC6KWGqGBWWzQLyiUG/XmlyM4t9snJsGIu5cPrt9h9heQIh9XgRv
+         a0bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=LIttgZf9evRd28ljjLlvsWe6MZb0y8LoovrMVvd3H8Q=;
+        b=m9ocWxVaZSiQLPvQMWMuJwQLOlRld1nv0eMZ3Ab8oFmCKmNc2zHeiduUdVyEG43AZa
+         Nbqg24FkHGRo7E9/Mn5rOlqZ77dDp2M35MdgcaB2s1FURDHpfb+7oQk6b6pJlTwWXpg9
+         tzBLSy5p2xJrp3WfZclUkRjZ1oBDvOFXWC9Cb/HZIOHnOMoqkbUukHncqaI/lqLc4VRb
+         0CEg0sMBrH/AuT0FfLsX4Lw5TRGezjXQoL/HZDaP46qcfOe4u3AUVnw0pTSH+OMtA/fb
+         IqxAKBgO77/ltepauGTELMmLLZtlbN+Cv5d5wEWAkzZPw4LY3hdF0X9Cp69SZbN051bp
+         r4hg==
+X-Gm-Message-State: AJIora9SUwZif6Xy8CT+LWFzX5Y9RY/IPq34B5MdVWYeOxYQmme/Cgei
+	LnG4GK1HxkKOnO8EO/XoSj1qqrrS0b2INOGnq+r/feGtFanlOw==
+X-Google-Smtp-Source: AGRyM1uab1vKRqRNq9dIIuICjm1FzJZlMbcblDL7zh+i28xKdLHTqCk0RJ6NndkEmUiH5bOX2A+n5YDANykBc2TKe5U=
+X-Received: by 2002:a81:7d02:0:b0:31e:5cc8:e157 with SMTP id
+ y2-20020a817d02000000b0031e5cc8e157mr20678417ywc.271.1658956827758; Wed, 27
+ Jul 2022 14:20:27 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP9z77DuXNz916OCUGmSScBQtOS2h1eM8OhUqUUiZy_fxw@mail.gmail.com>
+ <CA+ceVcXYK1R0MW2v6xewq1m95NcY-WO0iBEfnvuw-QzneD-kxA@mail.gmail.com>
+ <CAJ8r_h1UctC4uwrEPSpGapDdiN6_zvY7tsEU1gY=Lm2i0Zym7g@mail.gmail.com>
+ <CAJ8r_h0Q72_BX26ocSF_H3sAeQjbg9cf98NSDxMJf4pwiLw1Xg@mail.gmail.com> <CA+ceVcVq=ERRzXoUiN8Zm1hGAFi=s8Re6LKXCTCwm9UV+EkSoA@mail.gmail.com>
+In-Reply-To: <CA+ceVcVq=ERRzXoUiN8Zm1hGAFi=s8Re6LKXCTCwm9UV+EkSoA@mail.gmail.com>
+From: Kerry Scott <kerry@pineapple.co>
+Date: Wed, 27 Jul 2022 14:20:16 -0700
+Message-ID: <CAJ8r_h2CQH1cEW_8Ta9_-oUhaaGpQBz_se0PN-+e0RuF7Pmyvg@mail.gmail.com>
+Subject: Re: Mid and End of Month Profit Reports for Brett
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Megan Harnett <megan@pineapple.co>, Andrea Abramowski <andrea@pineapple.co>
+Content-Type: multipart/mixed; boundary="0000000000006b094605e4cffca8"
+
+--0000000000006b094605e4cffca8
+Content-Type: multipart/alternative; boundary="0000000000006b094205e4cffca6"
+
+--0000000000006b094205e4cffca6
+Content-Type: text/plain; charset="UTF-8"
+
+Before I turn this into a bigger project I am hoping this is a part of what
+you are looking for.  My answers are in blue.
+Affiliate expenses?  Are these considered part of the above employee
+expenses (No), these are expensed to Pineapple how much we payout.  How are
+these paid? These are paid through bill.com
+Spreadsheet attached goes over the Affiliate expenses from 07/01/22 -
+07/15/22 if this what you are looking for then I know how to proceed with
+the rest.
+
+On Wed, Jul 27, 2022 at 11:09 AM Andrea Abramowski <andrea@pineapple.co>
+wrote:
+
+> I've told Brett that. He can do with it what he wants
+>
+>
+> *Andrea Abramowski, CPA*
+> Controller | pineapple.co
+>
+> [image: Photo]
+>
+> E: andrea@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+>
+> On Wed, Jul 27, 2022 at 2:07 PM Kerry Scott <kerry@pineapple.co> wrote:
+>
+>> Plus our mid month will not be acuract right now due to bank feeds not
+>> working properly.
+>>
+>> On Wed, Jul 27, 2022 at 11:06 AM Kerry Scott <kerry@pineapple.co> wrote:
+>>
+>>> So basically looking for a PNL mid month?  That is really all this
+>>> information here?
+>>>
+>>> On Wed, Jul 27, 2022 at 11:03 AM Andrea Abramowski <andrea@pineapple.co>
+>>> wrote:
+>>>
+>>>> Hey Megan & Kerry,
+>>>>
+>>>> Can you guys help Aubrey? Unfortunately, I've only scanned the email,
+>>>> so.....
+>>>>
+>>>> On Fri, Jul 15, 2022 at 3:31 PM Aubrey Allen <aubrey@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Hi Andrea!
+>>>>>
+>>>>> I hope you are looking forward to a nice weekend!  I had Brett request
+>>>>> a new report from me, and I could use your help in finding data on some of
+>>>>> our expenses.  I've attached Brett's correspondence below so that you have
+>>>>> some context.  He would like me to be able to have a quicker, though
+>>>>> perhaps slightly less accurate, Sales & Profit report that we could compare
+>>>>> to your monthly "close."
+>>>>>
+>>>>> I am able to use Sticky to find Gross Revenue, as well as chargebacks,
+>>>>> voids, refunds, declines, etc., so I know how to get Brett a Net Revenue
+>>>>> Total *without* *expenses*.  What I could use your help with is
+>>>>> defining & locating all of our expenses so that I can incorporate them in
+>>>>> my report.
+>>>>>      -What are our employee expenses and how are they calculated?  (I
+>>>>> know I provide y'all with some commission information, but obviously
+>>>>> there's more to it than that.)
+>>>>>      -Affiliate expenses?  Are these considered part of the above
+>>>>> employee expenses, or something else?  How are these paid?
+>>>>>      -How is the Finance department calculating things like COGS,
+>>>>> Shipping Costs, and Processing Fees?  I have some methods for this in the
+>>>>> Data department, but would be curious to know how or whether our methods
+>>>>> differ.
+>>>>>      -Credit Card expenses?  This is something Brett mentioned but I
+>>>>> could use more explanation about what expenses those cover specifically.
+>>>>>     -Any additional expenses I may not be considering.
+>>>>>
+>>>>> I realize this is a big ask with a lot of details.  Currently, I can
+>>>>> find some of this information in disparate places but am not always sure of
+>>>>> its accuracy.  If it would be easier I'd be happy to schedule a time for us
+>>>>> to meet to discuss further.  Just let me know what works best for you!
+>>>>>
+>>>>> Thank you so much in advance!  I would really appreciate your help and
+>>>>> insight as I try to navigate this new report.
+>>>>>
+>>>>> --
+>>>>> Aubrey Allen
+>>>>> Data Analytics Technician
+>>>>> Pineapple Products, Inc.
+>>>>> Brett Allcorn
+>>>>> Jul 14, 2022, 1:00 PM (1 day ago)
+>>>>> to me
+>>>>> Hey Aubrey, to improve the company and help us navigate the economic
+>>>>> downturn, I'd like to find a way to evaluate where the company is at on the
+>>>>> 1st of the month and the 15th.
+>>>>>
+>>>>> *The issue is: *the finance department does something called a
+>>>>> "close" in which they need about two weeks to get all the financial data in
+>>>>> order and ensure its accurate before presenting it to me.
+>>>>>
+>>>>> And so the data I'm getting is DANGEROUSLY delayed.
+>>>>>
+>>>>> Solutions:
+>>>>>
+>>>>> 1) So obviously you can keep getting me the sales per month on the
+>>>>> first of every month. But I'd also recommend you get me that data on the
+>>>>> 15th as well.
+>>>>>
+>>>>> 2) The data will be more useful if we can get as many of our expenses
+>>>>> into those reports as soon as possible.
+>>>>> - We can get refunds, chargebacks from Sticky
+>>>>> - We can get acquisition costs from the advertising platforms
+>>>>> - Employee expenses should be fairly predictable and repetitive (can
+>>>>> get data from finance)
+>>>>> - The rest of the expenses are paid every Monday, so finance should be
+>>>>> able to provide that
+>>>>> - The last thing is credit cards, if we pay those 2x weekly, then you
+>>>>> should be able to get the totals of those payments weekly
+>>>>> - There might be other expenses? I would confirm w Andrea
+>>>>>
+>>>>> Lastly we can compare your preliminary report w Andrea's "close"
+>>>>> report and see how off they are and why.
+>>>>>
+>>>>> But ultimately I'd want to get it within about 5% of difference for
+>>>>> the preliminary.
+>>>>>
+>>>>> Preliminary will be slightly less accurate and MUCH faster.
+>>>>>
+>>>>> "Close" report will be highly accurately, very slow.
+>>>>>
+>>>>> Does this make sense?
+>>>>>
+>>>>>
+
+--0000000000006b094205e4cffca6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,sa=
+ns-serif">Before I turn this into a bigger project I am hoping this is a pa=
+rt of what you are looking for.=C2=A0 My answers are in blue.</div><div cla=
+ss=3D"gmail_default" style=3D"font-family:arial,sans-serif"><span style=3D"=
+font-family:Arial,Helvetica,sans-serif">Affiliate expenses?=C2=A0 Are these=
+ considered part of the above employee expenses <font color=3D"#073763">(No=
+), these are expensed to Pineapple how much we payout.</font> =C2=A0How are=
+ these paid? <font color=3D"#073763">These are paid through <a href=3D"http=
+://bill.com" target=3D"_blank">bill.com</a></font></span><br></div><div cla=
+ss=3D"gmail_default" style=3D"font-family:arial,sans-serif">Spreadsheet att=
+ached goes over the Affiliate expenses from 07/01/22 - 07/15/22 if this wha=
+t you are looking for then I know how to proceed with the rest.</div></div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed=
+, Jul 27, 2022 at 11:09 AM Andrea Abramowski &lt;<a href=3D"mailto:andrea@p=
+ineapple.co" target=3D"_blank">andrea@pineapple.co</a>&gt; wrote:<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left-width:1px;border-left-style:solid;border-left-color:rgb(204,204,204);p=
+adding-left:1ex"><div dir=3D"ltr">I&#39;ve told Brett that. He can do with =
+it what he wants<div><br></div><div><br clear=3D"all"><div><div dir=3D"ltr"=
+>=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom-width:1=
+px;border-bottom-style:solid;border-bottom-color:rgb(5,56,95)" width=3D"500=
+">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Controller<sp=
+an> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">andrea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Wed, Jul 27, 2022 at 2:07 PM Kerry Scott &lt;<a =
+href=3D"mailto:kerry@pineapple.co" target=3D"_blank">kerry@pineapple.co</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;border-left-col=
+or:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_=
+default" style=3D"font-family:arial,sans-serif">Plus our mid month will not=
+ be acuract right now due to bank feeds not working properly.</div></div><b=
+r><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, =
+Jul 27, 2022 at 11:06 AM Kerry Scott &lt;<a href=3D"mailto:kerry@pineapple.=
+co" target=3D"_blank">kerry@pineapple.co</a>&gt; wrote:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width=
+:1px;border-left-style:solid;border-left-color:rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:a=
+rial,sans-serif">So basically looking for a PNL mid month?=C2=A0 That is re=
+ally all this information here?</div></div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 27, 2022 at 11:03 AM Andre=
+a Abramowski &lt;<a href=3D"mailto:andrea@pineapple.co" target=3D"_blank">a=
+ndrea@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style=
+:solid;border-left-color:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr=
+">Hey Megan &amp; Kerry,=C2=A0<div><br></div><div>Can you guys help Aubrey?=
+ Unfortunately, I&#39;ve only scanned the email, so.....</div></div><br><di=
+v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jul 1=
+5, 2022 at 3:31 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co" =
+target=3D"_blank">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1p=
+x;border-left-style:solid;border-left-color:rgb(204,204,204);padding-left:1=
+ex"><div dir=3D"ltr">Hi Andrea!<div><br></div><div>I hope you are looking f=
+orward to a nice weekend!=C2=A0 I had Brett request a new report from me, a=
+nd I could use your help in finding data on some of our expenses.=C2=A0 I&#=
+39;ve attached Brett&#39;s correspondence below so that you have some conte=
+xt.=C2=A0 He would like me to be able to have a quicker, though perhaps sli=
+ghtly less accurate, Sales &amp; Profit report that we could compare to you=
+r monthly &quot;close.&quot;</div><div><br></div><div>I am able to use Stic=
+ky to find Gross Revenue, as well as chargebacks, voids, refunds, declines,=
+ etc., so I know how to get Brett a Net Revenue Total <i>without</i>=C2=A0<=
+i>expenses</i>.=C2=A0 What I could use your help with is defining &amp; loc=
+ating all of our expenses so that I can incorporate them in my report.=C2=
+=A0=C2=A0</div><div>=C2=A0 =C2=A0 =C2=A0-What are our employee expenses and=
+ how are they calculated?=C2=A0 (I know I provide y&#39;all with some commi=
+ssion information, but obviously there&#39;s more to it than that.)</div><d=
+iv>=C2=A0 =C2=A0 =C2=A0-Affiliate expenses?=C2=A0 Are these considered part=
+ of the above employee expenses, or something else?=C2=A0 How are these pai=
+d?</div><div>=C2=A0 =C2=A0 =C2=A0-How is the Finance department calculating=
+ things like COGS, Shipping Costs, and Processing Fees?=C2=A0 I have some m=
+ethods for this in the Data department, but would be curious to know how or=
+ whether our methods differ.</div><div>=C2=A0 =C2=A0 =C2=A0-Credit Card exp=
+enses?=C2=A0 This is something Brett mentioned but I could use more explana=
+tion about what expenses those cover specifically.</div><div>=C2=A0 =C2=A0 =
+-Any additional expenses I may not be considering.</div><div><br></div><div=
+>I realize this is a big ask with a lot of details.=C2=A0 Currently, I can =
+find some of this information in disparate places but am not always sure of=
+ its accuracy.=C2=A0 If it would be easier I&#39;d be happy to schedule a t=
+ime for us to meet to discuss further.=C2=A0 Just let me know what works be=
+st for you!</div><div><br></div><div>Thank you so much in advance!=C2=A0 I =
+would really appreciate your help and insight as I try to navigate this new=
+ report.</div><div><br></div><div>--<br><div dir=3D"ltr"><div dir=3D"ltr">A=
+ubrey Allen<div>Data Analytics Technician</div><div>Pineapple Products, Inc=
+.</div></div></div></div><div><div style=3D"font-size:0.875rem;padding:20px=
+ 0px 0px;font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif"><table =
+cellpadding=3D"0" style=3D"border-collapse:collapse;margin-top:0px;width:au=
+to;font-size:0.875rem;letter-spacing:0.2px;display:block"><tbody style=3D"d=
+isplay:block"><tr style=3D"height:auto;display:flex"><td style=3D"white-spa=
+ce:nowrap;padding:0px;vertical-align:top;width:867.844px;line-height:20px;d=
+isplay:block;max-height:20px"><table cellpadding=3D"0" style=3D"border-coll=
+apse:collapse;table-layout:fixed;width:867.844px"><tbody><tr><td style=3D"d=
+isplay:flex"><h3 style=3D"overflow:hidden;font-size:0.75rem;font-weight:inh=
+erit;margin:inherit;text-overflow:ellipsis;letter-spacing:0.3px;color:rgb(9=
+5,99,104);line-height:20px"><span role=3D"gridcell"><span name=3D"Brett All=
+corn" style=3D"color:rgb(32,33,36);font-size:0.875rem;font-weight:bold;disp=
+lay:inline;vertical-align:top;letter-spacing:0.2px;line-height:20px"><span =
+style=3D"vertical-align:top">Brett Allcorn</span></span></span></h3></td></=
+tr></tbody></table></td><td style=3D"text-align:right;white-space:nowrap;ve=
+rtical-align:top;display:block;max-height:20px"><div style=3D"padding:0px;d=
+isplay:flex"><span id=3D"gmail-m_1960538650942394530gmail-m_-32294985899643=
+14981gmail-m_-595595093644355305gmail-m_330413088264068026gmail-m_768767911=
+3337766564gmail-m_-4274963557402302624gmail-m_2074857781876896353gmail-:2vn=
+" title=3D"Jul 14, 2022, 1:00 PM" alt=3D"Jul 14, 2022, 1:00 PM" role=3D"gri=
+dcell" style=3D"vertical-align:top;margin:0px;font-size:0.75rem;letter-spac=
+ing:0.3px;color:rgb(95,99,104);display:block;line-height:20px">Jul 14, 2022=
+, 1:00 PM (1 day ago)</span><div aria-label=3D"Not starred" title=3D"Not st=
+arred" role=3D"checkbox" aria-checked=3D"false" style=3D"display:inline-blo=
+ck;height:20px;margin-left:20px;outline:0px"><span style=3D"display:inline-=
+flex;height:20px;text-align:center;width:20px;padding:0px;margin:0px;border=
+:none;outline:none"></span></div></div></td><td style=3D"text-align:right;w=
+hite-space:nowrap;vertical-align:top;display:flex"></td><td rowspan=3D"2" s=
+tyle=3D"text-align:right;white-space:nowrap;vertical-align:top;display:bloc=
+k;max-height:20px"><div role=3D"button" aria-label=3D"Reply" style=3D"displ=
+ay:inline-flex;border-radius:2px 0px 0px 2px;font-size:0.875rem;text-align:=
+center;margin:0px 0px 0px 20px;height:20px;line-height:18px;min-width:0px;o=
+utline:none;padding:0px;background-color:transparent;color:rgb(68,68,68);bo=
+rder:none"><img role=3D"button" src=3D"https://mail.google.com/mail/u/0/ima=
+ges/cleardot.gif" alt=3D"" style=3D"background-image: url(&quot;https://ci4=
+.googleusercontent.com/proxy/TCwXu1isPZcPvl3kJIyXpCmhX7cU-H38qDIoi6OjZandOw=
+QNQdUtHA8lIf-XLqxpXWOEwym0pAdxq-cLUMKBKNUbWQ8Kvnt12HTO5u91BT04-Rlsj8YeSVPaz=
+lI0LU9qVjk=3Ds0-d-e1-ft#https://www.gstatic.com/images/icons/material/syste=
+m_gm/2x/reply_black_20dp.png&quot;); background-size: 20px; height: 20px; m=
+argin: 0px; vertical-align: middle; width: 20px; opacity: 0.71; display: in=
+line-block; padding: 0px; background-position: 50% 50%;"></div><div id=3D"g=
+mail-m_1960538650942394530gmail-m_-3229498589964314981gmail-m_-595595093644=
+355305gmail-m_330413088264068026gmail-m_7687679113337766564gmail-m_-4274963=
+557402302624gmail-m_2074857781876896353gmail-:2vv" role=3D"button" aria-exp=
+anded=3D"false" aria-haspopup=3D"true" aria-label=3D"More" style=3D"display=
+:inline-flex;border-radius:0px 2px 2px 0px;font-size:0.875rem;text-align:ce=
+nter;margin:0px 0px 0px 20px;height:20px;line-height:18px;min-width:0px;out=
+line:none;padding:0px;background-color:transparent;color:rgb(68,68,68);bord=
+er:none"><img role=3D"menu" src=3D"https://mail.google.com/mail/u/0/images/=
+cleardot.gif" alt=3D"" style=3D"background-image: url(&quot;https://ci3.goo=
+gleusercontent.com/proxy/z-Y_BHd-R28kL8Wap0GlmYmc8rt-9levqgnolvd_NFDlGsIw2b=
+zDGD3M0xqiQeq7Pp4Z8_tI9Rm5Tb0kWSINVVOg89Rs2DpluJeZEY3YaZYy2nMua4DkM24EX_I8k=
+WxLsxv2IPV_=3Ds0-d-e1-ft#https://www.gstatic.com/images/icons/material/syst=
+em_gm/2x/more_vert_black_20dp.png&quot;); background-size: 20px; height: 20=
+px; width: 20px; margin: 0px; vertical-align: middle; opacity: 0.71; displa=
+y: inline-block; padding: 0px; background-position: 50% 50%;"></div></td></=
+tr><tr style=3D"height:auto;display:flex"><td colspan=3D"3"><table cellpadd=
+ing=3D"0" style=3D"border-collapse:collapse;table-layout:fixed;white-space:=
+nowrap;width:1175px"><tbody><tr><td style=3D"overflow:visible;text-overflow=
+:ellipsis;display:flex;line-height:20px"><div style=3D"overflow:hidden;max-=
+width:92%;display:inline-block"><span style=3D"vertical-align:top;color:rgb=
+(95,99,104);font-size:0.75rem;letter-spacing:0.3px;line-height:20px">to=C2=
+=A0<span name=3D"me" style=3D"vertical-align:top">me</span></span></div><di=
+v id=3D"gmail-m_1960538650942394530gmail-m_-3229498589964314981gmail-m_-595=
+595093644355305gmail-m_330413088264068026gmail-m_7687679113337766564gmail-m=
+_-4274963557402302624gmail-m_2074857781876896353gmail-:2z1" aria-haspopup=
+=3D"true" role=3D"button" aria-label=3D"Show details" style=3D"display:inli=
+ne-flex;margin-left:4px;vertical-align:top;border:none;outline:none"><img s=
+rc=3D"https://mail.google.com/mail/u/0/images/cleardot.gif" alt=3D"" style=
+=3D"background-image: url(&quot;https://ci6.googleusercontent.com/proxy/BJu=
+Li1pdSuXlptCkICPLIHLeVbm4czRchUvNtY2K9OONpuRXMIlSWZwTSOwJD16n5dn4krDIjJWUN5=
+XKIFx1ZnYv8ar0aMA7TesprxAt5mw7ew1XuimFnJrdNN03XZsLCrPiL76GcaqpORS5=3Ds0-d-e=
+1-ft#https://www.gstatic.com/images/icons/material/system_gm/2x/arrow_drop_=
+down_black_20dp.png&quot;); background-size: 20px; padding: 0px; vertical-a=
+lign: baseline; height: 20px; width: 20px; border: none; margin: 0px 0px 0p=
+x auto; display: flex; opacity: 0.71; background-position: 50% 50%;"></div>=
+</td></tr></tbody></table></td></tr></tbody></table></div><div id=3D"gmail-=
+m_1960538650942394530gmail-m_-3229498589964314981gmail-m_-59559509364435530=
+5gmail-m_330413088264068026gmail-m_7687679113337766564gmail-m_-427496355740=
+2302624gmail-m_2074857781876896353gmail-:2vk" style=3D"font-family:Roboto,R=
+obotoDraft,Helvetica,Arial,sans-serif;font-size:medium"><div></div><div></d=
+iv><div></div><div></div></div><div style=3D"font-family:Roboto,RobotoDraft=
+,Helvetica,Arial,sans-serif;font-size:medium"><div></div><div id=3D"gmail-m=
+_1960538650942394530gmail-m_-3229498589964314981gmail-m_-595595093644355305=
+gmail-m_330413088264068026gmail-m_7687679113337766564gmail-m_-4274963557402=
+302624gmail-m_2074857781876896353gmail-:2z4"></div><div id=3D"gmail-m_19605=
+38650942394530gmail-m_-3229498589964314981gmail-m_-595595093644355305gmail-=
+m_330413088264068026gmail-m_7687679113337766564gmail-m_-4274963557402302624=
+gmail-m_2074857781876896353gmail-:2vl" style=3D"direction:ltr;margin:8px 0p=
+x 0px;padding:0px;font-size:0.875rem"><div id=3D"gmail-m_196053865094239453=
+0gmail-m_-3229498589964314981gmail-m_-595595093644355305gmail-m_33041308826=
+4068026gmail-m_7687679113337766564gmail-m_-4274963557402302624gmail-m_20748=
+57781876896353gmail-:2z5" style=3D"font-variant-numeric:normal;font-variant=
+-east-asian:normal;font-stretch:normal;font-size:small;line-height:1.5;font=
+-family:Arial,Helvetica,sans-serif;overflow:hidden"><div dir=3D"ltr">Hey Au=
+brey, to improve=C2=A0the company and help us navigate the economic downtur=
+n, I&#39;d like to find a way to evaluate where the company is at on the 1s=
+t of the month and the 15th.<div><br></div><div><b>The issue is:=C2=A0</b>t=
+he finance department does something called a &quot;close&quot; in which th=
+ey need about two weeks to get all the financial data in order and ensure i=
+ts accurate before presenting it to me.</div><div><br></div><div>And so the=
+ data I&#39;m getting is DANGEROUSLY delayed.</div><div><br></div><div>Solu=
+tions:</div><div><br></div><div>1) So obviously you can keep getting me the=
+ sales per month on the first of every month. But I&#39;d also recommend yo=
+u get me that data on the 15th as well.<br></div><div><br></div><div>2) The=
+ data will be more useful if we can get as many of our expenses into those =
+reports as soon as possible.=C2=A0</div><div>- We can get refunds, chargeba=
+cks from Sticky</div><div>- We can get acquisition costs from the advertisi=
+ng platforms</div><div>- Employee expenses should be fairly predictable and=
+ repetitive (can get data from finance)</div><div>- The rest of the expense=
+s are paid every Monday, so finance should be able to provide that</div><di=
+v>- The last thing is credit cards, if we pay those 2x weekly, then you sho=
+uld be able to get the totals of those payments weekly</div><div>- There mi=
+ght be other expenses? I would confirm w Andrea</div><div><br></div><div>La=
+stly we can compare your preliminary report w Andrea&#39;s &quot;close&quot=
+; report and see how off they are and why.</div><div><br></div><div>But ult=
+imately I&#39;d want to get it within about 5% of difference for the prelim=
+inary.</div><div><br></div><div>Preliminary will be slightly less accurate =
+and MUCH faster.</div><div><br></div><div>&quot;Close&quot; report will be =
+highly accurately, very slow.</div><div><br></div><div>Does this make sense=
+?<br></div></div></div></div></div><div><br></div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000006b094205e4cffca6--
+--0000000000006b094605e4cffca8
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; 
+	name="Copy of Report1_from_Pineapple_Products_Inc.xlsx"
+Content-Disposition: attachment; 
+	filename="Copy of Report1_from_Pineapple_Products_Inc.xlsx"
+Content-Transfer-Encoding: base64
+Content-ID: <f_l643ztdp0>
+X-Attachment-Id: f_l643ztdp0
+
+UEsDBBQABgAIAAAAIQB0NlqmegEAAIQFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAAC
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACs
+VM1OAjEQvpv4DpteDVvwYIxh4YB6VBLwAWo7sA3dtukMCG/vbEFiDEIIXLbZtvP9TGemP1w3rlhB
+Qht8JXplVxTgdTDWzyvxMX3tPIoCSXmjXPBQiQ2gGA5ub/rTTQQsONpjJWqi+CQl6hoahWWI4Plk
+FlKjiH/TXEalF2oO8r7bfZA6eAJPHWoxxKD/DDO1dFS8rHl7q+TTelGMtvdaqkqoGJ3VilioXHnz
+h6QTZjOrwQS9bBi6xJhAGawBqHFlTJYZ0wSI2BgKeZAzgcPzSHeuSo7MwrC2Ee/Y+j8M7cn/rnZx
+7/wcyRooxirRm2rYu1w7+RXS4jOERXkc5NzU5BSVjbL+R/cR/nwZZV56VxbS+svAJ3QQ1xjI/L1c
+QoY5QYi0cYDXTnsGPcVcqwRmQly986sL+I19QodWTo9qLpErJ2GPe4yfW3qcQkSeGgnOF/DTom10
+JzIQJLKwb9JDxb5n5JFzsWNoZ5oBc4Bb5hk6+AYAAP//AwBQSwMEFAAGAAgAAAAhALVVMCP0AAAA
+TAIAAAsACAJfcmVscy8ucmVscyCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACskk1PwzAMhu9I/IfI99XdkBBCS3dBSLshVH6ASdwP
+tY2jJBvdvyccEFQagwNHf71+/Mrb3TyN6sgh9uI0rIsSFDsjtnethpf6cXUHKiZylkZxrOHEEXbV
+9dX2mUdKeSh2vY8qq7iooUvJ3yNG0/FEsRDPLlcaCROlHIYWPZmBWsZNWd5i+K4B1UJT7a2GsLc3
+oOqTz5t/15am6Q0/iDlM7NKZFchzYmfZrnzIbCH1+RpVU2g5abBinnI6InlfZGzA80SbvxP9fC1O
+nMhSIjQS+DLPR8cloPV/WrQ08cudecQ3CcOryPDJgosfqN4BAAD//wMAUEsDBBQABgAIAAAAIQCS
+B5TsBAEAAD8DAAAaAAgBeGwvX3JlbHMvd29ya2Jvb2sueG1sLnJlbHMgogQBKKAAAQAAAAAAAAAA
+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
+AA0AZAMAALM8AAAAAA==
+--0000000000006b094605e4cffca8--

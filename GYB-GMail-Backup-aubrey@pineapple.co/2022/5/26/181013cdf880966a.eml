@@ -1,0 +1,97 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp510268ejl;
+        Thu, 26 May 2022 09:39:35 -0700 (PDT)
+X-Received: by 2002:a17:90a:eaca:b0:1e0:882b:6523 with SMTP id ev10-20020a17090aeaca00b001e0882b6523mr3623321pjb.192.1653583175528;
+        Thu, 26 May 2022 09:39:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1653583175; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dVg9EQBBr0xIjUp/hJMrHJMHcfzqZlb9tzMkwSf6avaEP0NP6S+NeasrqAHQyewHoj
+         NagYCCZQJkWykc+4QypC1pQzm8i7Y913WPzcMwMgzyHXcwtrq4vONQBt11EA/o0CUbbL
+         PYe2qEqHYasN3/4t1lI3q6oZO+yZGVgeIOGarLhD2u1LtLkD+kbzbPDKdEvoPEcXiYSY
+         qHqbFkB4bAb4hnHcCvxv7m569VhvYC+iOqjPPW4Ge+CEvgUGnxDXNzHE6sKfUyshi/1c
+         xxKj3QYoJRvidS7gtqptZdjZNE98X+E59uJnanIKwVdOfYZCgz+lEP9VBWufeRQ0vn/k
+         I00A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=ws/V1HVwcoDyPIqbmermGXuGgPC/TCGF0V4+w3u+H0c=;
+        b=oVSyrgG9avatA9zboj2QzrNJPzKlG9+Nt13y3e/P49ZQDwIHzvct+FdI2lrHGZhIA1
+         9QYJiwc5Inlxjcj6AyTm8ILlu5aNqULJI/nTa5a/jzc6Am4m8wTJFuGp5u+uf3xLHNtL
+         wkHGvLkJkhUu0wVwR3OttCKFOVfxSCpp1wogFumTBIgwG5z4oKZtUoP4KOExRR1ODet6
+         FOHtXPbB4/jqVbd+B9LW/tJ80tB2uagDvrbooF9PXF1UIKPoLSyxWHvoPU0TjhkLhy0b
+         r94kqd1xmt2EUXUT5oskSldEvCXqLD3BODwR5GqCNZiGiwJNiCQDgr8V/5hwuQoURRZQ
+         +qUg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=7PsZf76N;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.65 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id l19-20020a170902d35300b00161df2bb221sor970001plk.113.2022.05.26.09.39.35
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 26 May 2022 09:39:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=7PsZf76N;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.65 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=ws/V1HVwcoDyPIqbmermGXuGgPC/TCGF0V4+w3u+H0c=;
+        b=7PsZf76NrI3mw2JRFuDJS+tlh+y4Zr4BsFL5V2oOEkGZ+XfSB99t5Et5sdmaVf6rTj
+         EhZayLvwX3W7vuQ/+fY3avGCC30TxcUQ0id9zw+r6/FInY7T20EYxUXI8rU1kjgLt4Pk
+         FMSn3DlAmCLjX5HV73r1kT3GYfFUMly9KpowyCbmuG1R9nYM+I4eua6IRtAHF/9d/1dD
+         YqneMiHlCkWo71whCqNQKeN9/IPcqBOyWe52UetV919rdcIqbDp2kl6wa4+TjU99FkQ8
+         enrS6dheNt4ifiQ+agZFkxedui9EO9YQ3IfGYzJMYLwzTTAgsSGBjwd1Fa+DlwPkccaQ
+         p76w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=ws/V1HVwcoDyPIqbmermGXuGgPC/TCGF0V4+w3u+H0c=;
+        b=yFa9kbluzIGtsnGYI2KdtQfxytCE+p6NcvTfC2A++XXdc+tCwztY/VG+Z61GpWvcyA
+         ZkQzvLXWlFDgwmf6SVNSiPk6D0+RfCI7V12Dlp5n7ubvZXj3reObnJzjunctWJ2jUkQb
+         4fgCAhZb7U74cSN/3hjL/WxawljNCWvWoGSnZurlZ90Ws4apnVMmNg/AcATv95TgKpQ/
+         fBkXt2N3C9HpS8vqsozqhKIcvsu/4M0q+NCiiloYvlfZnOpLYLBttGR+9ntl4aJoSTC3
+         6pH/mVXlJ9Q5IFqBey1tPlUMUtOvuuQnyEESFt2U5Yl90WjzydrN/CyERGmD16bpb6W9
+         hO0w==
+X-Gm-Message-State: AOAM532qKtS2gG9nAaeErVsc+h0p+pZ7ER48LJ3In9RaPxeroVnkqqbH
+	DL/WvhRRwdR26VcJJaZPGI4BlYbYJGONIi62wZkOlcwKyOH5m8N2f3c4wQ==
+X-Google-Smtp-Source: ABdhPJxVhVzIOSdbgLGcbyn5YCRPjDomo73SGimq3ehXvirgOrsXPM+RfCEt7iemooLgtPObqmIaPincTe0FEayExm4=
+X-Received: by 2002:a17:902:778e:b0:162:2cf7:28be with SMTP id
+ o14-20020a170902778e00b001622cf728bemr18836175pll.0.1653583174421; Thu, 26
+ May 2022 09:39:34 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Thu, 26 May 2022 12:39:23 -0400
+Message-ID: <CALCR5_Qxm5j7VT6n8Cg8Hj3TUEomrYFhJNZnYWwYR-K8ipdnvw@mail.gmail.com>
+Subject: Negative acquisition costs for affiliate department
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Jarren Scheller <jarren@pineapple.co>, Mike McBrien <mike@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000b7eb0405dfecd5a9"
+
+--000000000000b7eb0405dfecd5a9
+Content-Type: text/plain; charset="UTF-8"
+
+Hey Aubrey, I found an issue with our acquisition costs for the affiliate
+team.
+
+They are listed as negative numbers...
+
+https://docs.google.com/spreadsheets/d/1yk9YcHIThN7w0qitQeRC1485fTwLFCK4XXJz0X5PFks/edit#gid=1367458977
+
+See cell CB183 for an example
+
+--000000000000b7eb0405dfecd5a9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Aubrey, I found an issue with our acquisition=C2=A0cos=
+ts for the affiliate team.<div><br></div><div>They are listed as negative n=
+umbers...</div><div><br></div><div><a href=3D"https://docs.google.com/sprea=
+dsheets/d/1yk9YcHIThN7w0qitQeRC1485fTwLFCK4XXJz0X5PFks/edit#gid=3D136745897=
+7">https://docs.google.com/spreadsheets/d/1yk9YcHIThN7w0qitQeRC1485fTwLFCK4=
+XXJz0X5PFks/edit#gid=3D1367458977</a><br></div><div><br></div><div>See cell=
+ CB183 for an example</div></div>
+
+--000000000000b7eb0405dfecd5a9--

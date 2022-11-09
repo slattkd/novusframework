@@ -1,0 +1,338 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp5752318ejc;
+        Tue, 7 Jun 2022 10:46:14 -0700 (PDT)
+X-Received: by 2002:a05:6602:2c41:b0:669:8bcf:c6a6 with SMTP id x1-20020a0566022c4100b006698bcfc6a6mr271609iov.15.1654623973880;
+        Tue, 07 Jun 2022 10:46:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654623973; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KuPC/xYzgLOcwAeAiymzK3QtNzjIfAbmMS5CGx75E/4+V5Yf6XflgsMnHfnG8KGp4N
+         ZSngF8L2ryyqpUrJ8OC34q/DnJcxaPNUFsStWwjszqV3E226MjLyHz28onDozBslJHnm
+         rGvsB8xEi4p4MS7ApDPTsegAoYpYYWYBfWStt16pVPHkVRKvmK8PJ810GuXk1zB4S1WS
+         h+BZBRcuMWBS58vEGR8JTyB6oy5Z2K0jr1gCFSt5gHO8OojDkoewqw4FYyUuX3sumvI1
+         PGypijKz8Bi6QvkxgS8sHnCqHoXo2BC9u9OfX76kualGW3qccux2zVXDK2+E3deMKroC
+         y6HA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:date:mime-version:dkim-signature;
+        bh=WmMT6EXFpcBuuKEwjimwB+l+GCDYSZtNXUP/BZOvrnQ=;
+        b=tpswmZiZoVIuRJhqLNtBma+8WopvJwZFHeD13pceEDqsZaOV/Fl1PZSTL6Dl42Vb2b
+         CDSWfuF7W2GXptWhMlVC1vT898UoH+4RW7ZwFapZfI02pALUh+4vB6dGNbBs2/1wGY7P
+         DaxKRL5hxgyRgHKxlSwI0Dn/0Cmc40rF+5WJxz8a0sOPdGYX0KIyu+Ga1wj9mu50VmPB
+         UVtYiVE8qitR/N0nJyPC4OuECUC7evRJoI3CUX49UwZNvmGX5hQdQ0Xdc16nTCG0cKvm
+         lgT1+l7lbGiMBWYVsEF6pgYJ4h7jCUF/Ha5KsRKjOd+h9IQWunAKqINGCY0Y3KA0eAxl
+         m/AA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Mpk6k0AE;
+       spf=pass (google.com: domain of 35y6fyg4kbpwjkpebu-jknalhuckkcha.8ki6q7nauleja6llha.8k@chime-notifications.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=35Y6fYg4KBpwJKPEBU-JKNALHUCKKCHA.8KI6Q7NAULEJA6LLHA.8K@chime-notifications.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <35Y6fYg4KBpwJKPEBU-JKNALHUCKKCHA.8KI6Q7NAULEJA6LLHA.8K@chime-notifications.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id z12-20020a056638214c00b00331c052bf28sor1917382jaj.110.2022.06.07.10.46.13
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 07 Jun 2022 10:46:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 35y6fyg4kbpwjkpebu-jknalhuckkcha.8ki6q7nauleja6llha.8k@chime-notifications.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=Mpk6k0AE;
+       spf=pass (google.com: domain of 35y6fyg4kbpwjkpebu-jknalhuckkcha.8ki6q7nauleja6llha.8k@chime-notifications.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=35Y6fYg4KBpwJKPEBU-JKNALHUCKKCHA.8KI6Q7NAULEJA6LLHA.8K@chime-notifications.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=mime-version:date:message-id:subject:from:to;
+        bh=WmMT6EXFpcBuuKEwjimwB+l+GCDYSZtNXUP/BZOvrnQ=;
+        b=Mpk6k0AEi3Ro/j/3bkv8VxOxqopj7UEbrSRaM3XsWBTuwwCml0LFIoGCIv0TpvPogo
+         V3hmWZLuuTGhuweuQaXg+owYLIvfIlT4RkvBLdK6TtCFzmIpIPnPfPEr7FFOqnzJ0m+0
+         Jzwndv/IaxVHFxpbLP/Jxk+tLBTkqcKvjPp8MuvqBEpMOxjmqs4XOYSmsnyyxOtdgAiQ
+         VQf/DUl/KfzpoYzPhBjlcq9zaFuHk9XVVkhe0Ony4I6QRaE4QunRjycmSZhRvS3iM6xY
+         yZ5qRnB1jcOWBHo5vBchQBk/z7lVmMOKGoefl45VjWkzIMb6Z260zW9jMkWowtPwQqCI
+         7+7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
+        bh=WmMT6EXFpcBuuKEwjimwB+l+GCDYSZtNXUP/BZOvrnQ=;
+        b=sV5YVwo7P58VFJkPlqU9/1la6+HoOsFArBFVNCS3MZY2MFrtWddIvhQEhtZrubeVK+
+         M7UGlcCB/fRaJFqKiA1g3noZ1+bFXDhgw4VX10uHzFmy7UQpO3EaTwch218aynGnp5h8
+         +TnH7Wbw0G+kp5Vu9AT2dBN9IVWIbJ2GYpwiMiViLLamyLVDeBdnX7vgTBtrqgZh1dWo
+         O9c4PQvHAE73G1GDdcM7p2Z3jqEurCab5zpqwG9MXnYOXm1S2cOi/Be2DUmPf8Yq+n+N
+         A97+2N6F9L6Lmpq2kzqVwzaDoETr/nPvx4Vv7eaMQyC8d5Zg4XAKaodPqbrSibQOXXIw
+         J8BA==
+X-Gm-Message-State: AOAM5308tda4MdD1ELRElcb5MLYIz75N+Ytb06nPJMHOIQPWI+QdYTIv
+	dLJQr9hvC4uf8DkGUFfnllGQW4qWFWc4u2NCJA==
+X-Google-Smtp-Source: ABdhPJyFb89NghuSSnJPw+epu1P0eeEhz6bVCPrQnLfwO/YJMDlDsetiH/2BKe/ero5H1EAw3V9quEpmZlEzePmR8rSP
+MIME-Version: 1.0
+X-Received: by 2002:a05:6638:4187:b0:330:93f:6946 with SMTP id
+ az7-20020a056638418700b00330093f6946mr16140476jab.295.1654623973631; Tue, 07
+ Jun 2022 10:46:13 -0700 (PDT)
+Date: Tue, 07 Jun 2022 10:46:13 -0700
+X-Notifications: Io0Ea6QMQA2IoGaGGfB4mg
+X-Notifications-Bounce-Info: AXvZQxdN31UmaILxl4xk-7wBCgKEO-CQHJdCD0Z_lsroUW_BrdMKoaNkQ8m1NpyWRlb1QjGK9Vn0J3uUCHCVyI8AycG-gT1izpw8gncHjYKrI5z6x1FDowI5nCXmHmA4ucAV0ulsjGQi8LjViBrvH-_cgsZiW8PdgzMgMP7AhWLWsxeDlMygE2iVoGP4xjsNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <C6d4h7G6VMUxiCxIma--Sg@notifications.google.com>
+Subject: You've been invited to access a Google Tag Manager account
+From: Google Notifications <notify-noreply@google.com>
+To: aubrey@pineapple.co
+Content-Type: multipart/alternative; boundary="0000000000002f688805e0df2ab0"
+
+--0000000000002f688805e0df2ab0
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIFRhZyBNYW5hZ2VyDQoNCllvdSBhcmUgaW52aXRlZCB0byBhY2Nlc3MgdGhlIGZvbGxv
+d2luZyBHb29nbGUgVGFnIE1hbmFnZXIgYWNjb3VudCBtYW5hZ2VkICANCmJ5IG1pa2VAcGluZWFw
+cGxlLmNvOg0KDQpDbGluaWNhIE5hdHVyYWxzDQoNCg0KDQpPcGVuIGludml0YXRpb24gaW4gR29v
+Z2xlIFRhZyBNYW5hZ2VyDQoNCg0KDQpJZiB5b3UncmUgdW5hYmxlIHRvIGNsaWNrIHRoZSBsaW5r
+IGFib3ZlIG9yIHlvdSBlbmNvdW50ZXIgYW55IGlzc3VlcywgIA0KcGxlYXNlIGNvcHkgYW5kIHBh
+c3RlIHRoaXMgVVJMIGludG8gYSBuZXcgYnJvd3Npbmcgd2luZG93IGluc3RlYWQ6DQpodHRwczov
+L3RhZ21hbmFnZXIuZ29vZ2xlLmNvbS8jL29yZy9LYXZfQ3g1MlJHQ0NtOFRGaFJocEpBDQoNCkdv
+b2dsZSBUYWcgTWFuYWdlciBhbGxvd3MgeW91IHRvIHF1aWNrbHkgYW5kIGVhc2lseSB1cGRhdGUg
+YW5hbHl0aWNzLCAgDQptYXJrZXRpbmcsIGFuZCBvdGhlciB0YWdzIG9uIHlvdXIgd2Vic2l0ZSBv
+ciBtb2JpbGUgYXBwLiBPbmNlIHRoZSBUYWcgIA0KTWFuYWdlciB3ZWIgc25pcHBldCBvciBtb2Jp
+bGUgU0RLIGhhcyBiZWVuIGFkZGVkLCB5b3UgY2FuIGNvbmZpZ3VyZSBhbmQgIA0KZGVwbG95IHlv
+dXIgdGFnIGNvbmZpZ3VyYXRpb25zIGZyb20gYSB3ZWItYmFzZWQgaW50ZXJmYWNlLiBUaGlzIHJl
+ZHVjZXMgIA0KZXJyb3JzIGFuZCBmcmVlcyB5b3UgZnJvbSB0aGUgbmVlZCB0byBpbnZvbHZlIGEg
+ZGV2ZWxvcGVyIGV2ZXJ5IHRpbWUgeW91ICANCmhhdmUgdG8gbWFrZSBjaGFuZ2VzIHRvIHlvdXIg
+dGFnIGNvbmZpZ3VyYXRpb24uDQoNClRoZSBHb29nbGUgVGFnIE1hbmFnZXIgVGVhbQ0KDQoNCg0K
+R29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFpbiBWaWV3LCBDQSA5
+NDA0Mw0KDQpZb3UgaGF2ZSByZWNlaXZlZCB0aGlzIGVtYWlsIGJlY2F1c2UgeW91IGFyZSBpbnZp
+dGVkIHRvIGFjY2VzcyBhIEdvb2dsZSBUYWcgIA0KTWFuYWdlciBhY2NvdW50Lg0KDQoNCg0KDQri
+gJTigJTigJTigJTigJTigJTigJTigJQg4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCUIOKAlOKAlOKA
+lOKAlOKAlOKAlOKAlOKAlCDigJTigJTigJTigJTigJTigJTigJTigJQg4oCU4oCU4oCU4oCU4oCU
+4oCU4oCU4oCUIOKAlOKAlOKAlOKAlOKAlOKAlOKAlOKAlCDigJTigJTigJTigJTigJTigJTigJTi
+gJQg4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCUDQoNCg0KDQoNCg0KDQo=
+--0000000000002f688805e0df2ab0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><title></title><meta charset=3D"utf-=
+8"><meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1"><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><style typ=
+e=3D"text/css">@media only screen and (min-width: 320px) and (max-width: 48=
+0px) {
+    #ios-gmail-fix, #ios-gmail-fix td {
+  display: none !important;
+        height: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important
+  }
+    }
+@media only screen and (device-width: 412px) and (orientation: portrait) {
+  section td.copy table tr td a {
+  font-weight: 400 !important
+  }
+    td.copy table tr td a {
+  font-weight: 400 !important
+  }
+    }</style></head><body style=3D"-ms-text-size-adjust:100%; -webkit-text-=
+size-adjust:100%; background:#ededed; height:100%; margin:0; padding:0; wid=
+th:100%" height=3D"100%" width=3D"100%"><section><div id=3D"main-wrapper" s=
+tyle=3D"background:#ededed; height:100%; padding:0; width:100%" height=3D"1=
+00%" width=3D"100%"><center><!--[if mso]><table><tr><td width=3D"600"><![en=
+dif]--><table id=3D"main-content" style=3D"-ms-text-size-adjust:100%; -prem=
+ailer-align:center; -premailer-border:0; -premailer-cellpadding:0; -premail=
+er-cellspacing:0; -premailer-width:100%; -webkit-text-size-adjust:100%; bor=
+der-collapse:collapse; margin:0 auto; max-width:648px; mso-table-lspace:0; =
+mso-table-rspace:0" align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" width=3D"100%"><tr><td class=3D"gutter" style=3D"-ms-text-size-a=
+djust:100%; -premailer-width:20; -webkit-text-size-adjust:100%; mso-table-l=
+space:0; mso-table-rspace:0" width=3D"20">&nbsp;</td><td id=3D"body" class=
+=3D"card-container" style=3D"-ms-text-size-adjust:100%; -webkit-text-size-a=
+djust:100%; mso-table-lspace:0; mso-table-rspace:0; padding:0"><table class=
+=3D"vert-spacer large" style=3D"-ms-text-size-adjust:100%; -premailer-borde=
+r:0; -premailer-cellpadding:0; -premailer-cellspacing:0; -premailer-height:=
+80; -premailer-width:100%; -webkit-text-size-adjust:100%; border-collapse:c=
+ollapse; height:80px; mso-table-lspace:0; mso-table-rspace:0" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" height=3D"80" width=3D"100%"><tr><td st=
+yle=3D"-ms-text-size-adjust:100%; -premailer-height:80; -webkit-text-size-a=
+djust:100%; height:80px; mso-table-lspace:0; mso-table-rspace:0" height=3D"=
+80"><!--[if mso]>&nbsp;<![endif]-->&nbsp;</td></tr></table><table class=3D"=
+card" style=3D"-ms-text-size-adjust:100%; -premailer-border:0; -premailer-c=
+ellpadding:0; -premailer-cellspacing:0; -premailer-width:600; -webkit-text-=
+size-adjust:100%; background-color:#ffffff; border-collapse:collapse; mso-t=
+able-lspace:0; mso-table-rspace:0" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"600" bgcolor=3D"#ffffff"><tr><td class=3D"gutter" style=
+=3D"-ms-text-size-adjust:100%; -premailer-width:24; -webkit-text-size-adjus=
+t:100%; mso-table-lspace:0; mso-table-rspace:0" width=3D"24">&nbsp;</td><td=
+ class=3D"content" style=3D"-ms-text-size-adjust:100%; -premailer-width:552=
+; -webkit-text-size-adjust:100%; mso-table-lspace:0; mso-table-rspace:0; pa=
+dding:24px 0" width=3D"552"><table style=3D"-ms-text-size-adjust:100%; -pre=
+mailer-border:0; -premailer-cellpadding:0; -premailer-cellspacing:0; -webki=
+t-text-size-adjust:100%; border-collapse:collapse; mso-table-lspace:0; mso-=
+table-rspace:0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td id=
+=3D"logo" style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%=
+; mso-table-lspace:0; mso-table-rspace:0; padding:0 0 16px 0; padding-botto=
+m:0"><img src=3D"http://services.google.com/fh/files/emails/tag_manager_wel=
+come_logo.png" alt=3D"Google Tag Manager" style=3D"-ms-interpolation-mode:b=
+icubic; -premailer-align:left; border:0; height:20px; line-height:100%; out=
+line:none; text-decoration:none" align=3D"left" height=3D"20"></td></tr><tr=
+><td class=3D"copy" style=3D'-ms-text-size-adjust:100%; -webkit-text-size-a=
+djust:100%; color:#444444; font-family:"Roboto", "Open Sans", Arial, sans-s=
+erif; font-size:13px; font-weight:400; line-height:19px; mso-table-lspace:0=
+; mso-table-rspace:0; padding:24px 0 0 0; text-align:left' align=3D"left">Y=
+ou are invited to access the following Google Tag Manager account managed b=
+y <span class=3D"email-link" style=3D"color:#444444; cursor:text; text-deco=
+ration:none"><a href=3D"#" class=3D"email-link" style=3D"-ms-text-size-adju=
+st:100%; -webkit-text-size-adjust:100%; color:#444444; cursor:text; text-de=
+coration:none">mike@pineapple.co</a></span>:</td></tr><tr><td class=3D"copy=
+ opt-acct-name" style=3D'-ms-text-size-adjust:100%; -webkit-text-size-adjus=
+t:100%; color:#444444; font-family:"Roboto", "Open Sans", Arial, sans-serif=
+; font-size:13px; font-weight:400; line-height:19px; mso-table-lspace:0; ms=
+o-table-rspace:0; padding:24px 0 0 0; text-align:left' align=3D"left"><span=
+ class=3D"opt-acc-name" style=3D"font-size:22px">Clinica Naturals</span></t=
+d></tr><tr><td class=3D"copy" width style=3D'-ms-text-size-adjust:100%; -we=
+bkit-text-size-adjust:100%; color:#444444; font-family:"Roboto", "Open Sans=
+", Arial, sans-serif; font-size:13px; font-weight:400; line-height:19px; ms=
+o-table-lspace:0; mso-table-rspace:0; padding:24px 0 0 0; text-align:left' =
+align=3D"left"><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"-ms-text-size-adjust:100%; -premailer-border:0; -premailer-cellpadding=
+:0; -premailer-cellspacing:0; -webkit-text-size-adjust:100%; border-collaps=
+e:collapse; mso-table-lspace:0; mso-table-rspace:0"><tr><td align=3D"left" =
+style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; border-r=
+adius:2px; mso-table-lspace:0; mso-table-rspace:0" bgcolor=3D"#519af8"><a h=
+ref=3D"https://tagmanager.google.com/#/org/Kav_Cx52RGCCm8TFhRhpJA" target=
+=3D"_blank" style=3D'-ms-text-size-adjust:100%; -webkit-text-size-adjust:no=
+ne; border:3px solid #519af8; border-radius:2px; color:#ffffff; display:inl=
+ine-block; font-family:"Roboto", Arial, sans-serif; font-size:18px; font-we=
+ight:100; line-height:46px; padding:2.5px 10px; text-align:center; text-dec=
+oration:none' align=3D"center">Open invitation in Google Tag Manager</a></t=
+d></tr></table></td></tr><tr><td class=3D"copy" style=3D'-ms-text-size-adju=
+st:100%; -webkit-text-size-adjust:100%; color:#444444; font-family:"Roboto"=
+, "Open Sans", Arial, sans-serif; font-size:13px; font-weight:400; line-hei=
+ght:19px; mso-table-lspace:0; mso-table-rspace:0; padding:24px 0 0 0; text-=
+align:left' align=3D"left">If you're unable to click the link above or you =
+encounter any issues, please copy and paste this URL into a new browsing wi=
+ndow instead:<br><a href=3D"https://tagmanager.google.com/#/org/Kav_Cx52RGC=
+Cm8TFhRhpJA" style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:1=
+00%; color:#519af8; text-decoration:none">https://tagmanager.google.com/#/o=
+rg/Kav_Cx52RGCCm8TFhRhpJA</a><br><br>Google Tag Manager allows you to quick=
+ly and easily update analytics, marketing, and other tags  on your website =
+or mobile app. Once the Tag Manager web snippet or mobile SDK has been adde=
+d, you can configure and deploy your tag configurations from a web-based in=
+terface. This reduces errors and frees you from the need to involve a devel=
+oper every time you have to make changes to your tag configuration.</td></t=
+r><tr><td class=3D"copy" style=3D'-ms-text-size-adjust:100%; -webkit-text-s=
+ize-adjust:100%; color:#444444; font-family:"Roboto", "Open Sans", Arial, s=
+ans-serif; font-size:13px; font-weight:400; line-height:19px; mso-table-lsp=
+ace:0; mso-table-rspace:0; padding:24px 0 0 0; text-align:left' align=3D"le=
+ft">The Google Tag Manager Team</td></tr></table></td><td class=3D"gutter" =
+style=3D"-ms-text-size-adjust:100%; -premailer-width:24; -webkit-text-size-=
+adjust:100%; mso-table-lspace:0; mso-table-rspace:0" width=3D"24">&nbsp;</t=
+d></tr></table><table class=3D"vert-spacer" style=3D"-ms-text-size-adjust:1=
+00%; -premailer-border:0; -premailer-cellpadding:0; -premailer-cellspacing:=
+0; -premailer-height:12; -premailer-width:100%; -webkit-text-size-adjust:10=
+0%; border-collapse:collapse; height:12px; mso-table-lspace:0; mso-table-rs=
+pace:0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"12" widt=
+h=3D"100%"><tr><td style=3D"-ms-text-size-adjust:100%; -premailer-height:12=
+; -webkit-text-size-adjust:100%; height:12px; mso-table-lspace:0; mso-table=
+-rspace:0" height=3D"12"><!--[if mso]>&nbsp;<![endif]-->&nbsp;</td></tr></t=
+able><table id=3D"footer" class=3D"card" style=3D"-ms-text-size-adjust:100%=
+; -premailer-border:0; -premailer-cellpadding:0; -premailer-cellspacing:0; =
+-premailer-width:600; -webkit-text-size-adjust:100%; background-color:#ffff=
+ff; border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" bgcolor=3D"#fffff=
+f"><tr><td class=3D"gutter" style=3D"-ms-text-size-adjust:100%; -premailer-=
+width:24; -webkit-text-size-adjust:100%; mso-table-lspace:0; mso-table-rspa=
+ce:0" width=3D"24">&nbsp;</td><td class=3D"content" style=3D'-ms-text-size-=
+adjust:100%; -premailer-width:552; -webkit-text-size-adjust:100%; color:#44=
+4444; font-family:"Roboto", "Open Sans", Arial, sans-serif; font-size:13px;=
+ font-weight:400; line-height:19px; mso-table-lspace:0; mso-table-rspace:0;=
+ padding:24px 0; text-align:left' width=3D"552" align=3D"left">Google LLC 1=
+600 Amphitheatre Parkway, Mountain View, CA 94043<br><br>You have received =
+this email because you are invited to access a Google Tag Manager account.<=
+/td><td class=3D"gutter" style=3D"-ms-text-size-adjust:100%; -premailer-wid=
+th:24; -webkit-text-size-adjust:100%; mso-table-lspace:0; mso-table-rspace:=
+0" width=3D"24">&nbsp;</td></tr></table><table class=3D"vert-spacer large" =
+style=3D"-ms-text-size-adjust:100%; -premailer-border:0; -premailer-cellpad=
+ding:0; -premailer-cellspacing:0; -premailer-height:80; -premailer-width:10=
+0%; -webkit-text-size-adjust:100%; border-collapse:collapse; height:80px; m=
+so-table-lspace:0; mso-table-rspace:0" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" height=3D"80" width=3D"100%"><tr><td style=3D"-ms-text-size-ad=
+just:100%; -premailer-height:80; -webkit-text-size-adjust:100%; height:80px=
+; mso-table-lspace:0; mso-table-rspace:0" height=3D"80"><!--[if mso]>&nbsp;=
+<![endif]-->&nbsp;</td></tr></table></td><td class=3D"gutter" style=3D"-ms-=
+text-size-adjust:100%; -premailer-width:20; -webkit-text-size-adjust:100%; =
+mso-table-lspace:0; mso-table-rspace:0" width=3D"20">&nbsp;</td></tr><tr><t=
+d colspan=3D"3" style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjus=
+t:100%; mso-table-lspace:0; mso-table-rspace:0"><table id=3D"ios-gmail-fix"=
+ style=3D"-ms-text-size-adjust:100%; -premailer-border:0; -premailer-cellpa=
+dding:0; -premailer-cellspacing:0; -webkit-text-size-adjust:100%; border-co=
+llapse:collapse; mso-table-lspace:0; mso-table-rspace:0; text-align:center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"center"><tr><td =
+style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; color:#e=
+deded; font-family:Arial, sans-serif; font-size:10px; mso-table-lspace:0; m=
+so-table-rspace:0; text-align:center; white-space:nowrap" align=3D"center">=
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td><td style=3D"-=
+ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; color:#ededed; fon=
+t-family:Arial, sans-serif; font-size:10px; mso-table-lspace:0; mso-table-r=
+space:0; text-align:center; white-space:nowrap" align=3D"center">&mdash;&md=
+ash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td><td style=3D"-ms-text-si=
+ze-adjust:100%; -webkit-text-size-adjust:100%; color:#ededed; font-family:A=
+rial, sans-serif; font-size:10px; mso-table-lspace:0; mso-table-rspace:0; t=
+ext-align:center; white-space:nowrap" align=3D"center">&mdash;&mdash;&mdash=
+;&mdash;&mdash;&mdash;&mdash;&mdash;</td><td style=3D"-ms-text-size-adjust:=
+100%; -webkit-text-size-adjust:100%; color:#ededed; font-family:Arial, sans=
+-serif; font-size:10px; mso-table-lspace:0; mso-table-rspace:0; text-align:=
+center; white-space:nowrap" align=3D"center">&mdash;&mdash;&mdash;&mdash;&m=
+dash;&mdash;&mdash;&mdash;</td><td style=3D"-ms-text-size-adjust:100%; -web=
+kit-text-size-adjust:100%; color:#ededed; font-family:Arial, sans-serif; fo=
+nt-size:10px; mso-table-lspace:0; mso-table-rspace:0; text-align:center; wh=
+ite-space:nowrap" align=3D"center">&mdash;&mdash;&mdash;&mdash;&mdash;&mdas=
+h;&mdash;&mdash;</td><td style=3D"-ms-text-size-adjust:100%; -webkit-text-s=
+ize-adjust:100%; color:#ededed; font-family:Arial, sans-serif; font-size:10=
+px; mso-table-lspace:0; mso-table-rspace:0; text-align:center; white-space:=
+nowrap" align=3D"center">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&=
+mdash;</td><td style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust=
+:100%; color:#ededed; font-family:Arial, sans-serif; font-size:10px; mso-ta=
+ble-lspace:0; mso-table-rspace:0; text-align:center; white-space:nowrap" al=
+ign=3D"center">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td=
+><td style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; col=
+or:#ededed; font-family:Arial, sans-serif; font-size:10px; mso-table-lspace=
+:0; mso-table-rspace:0; text-align:center; white-space:nowrap" align=3D"cen=
+ter">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</td></tr></ta=
+ble></td></tr><tr><td colspan=3D"3" style=3D"-ms-text-size-adjust:100%; -we=
+bkit-text-size-adjust:100%; mso-table-lspace:0; mso-table-rspace:0"><table =
+id=3D"inbox-fix" style=3D"-ms-text-size-adjust:100%; -premailer-border:0; -=
+premailer-cellpadding:0; -premailer-cellspacing:0; -premailer-width:640; -w=
+ebkit-text-size-adjust:100%; border-collapse:collapse; mso-table-lspace:0; =
+mso-table-rspace:0; text-align:center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"640" align=3D"center"><tr><td style=3D"-ms-text-size-=
+adjust:100%; -premailer-width:80; -webkit-text-size-adjust:100%; mso-table-=
+lspace:0; mso-table-rspace:0" width=3D"80"><img src=3D"https://services.goo=
+gle.com/fh/files/emails/spacer.png" alt=3D"" style=3D"-ms-interpolation-mod=
+e:bicubic; border:0; height:0; line-height:100%; outline:none; text-decorat=
+ion:none; width:80px" height=3D"0" width=3D"80"></td><td style=3D"-ms-text-=
+size-adjust:100%; -premailer-width:80; -webkit-text-size-adjust:100%; mso-t=
+able-lspace:0; mso-table-rspace:0" width=3D"80"><img src=3D"https://service=
+s.google.com/fh/files/emails/spacer.png" alt=3D"" style=3D"-ms-interpolatio=
+n-mode:bicubic; border:0; height:0; line-height:100%; outline:none; text-de=
+coration:none; width:80px" height=3D"0" width=3D"80"></td><td style=3D"-ms-=
+text-size-adjust:100%; -premailer-width:80; -webkit-text-size-adjust:100%; =
+mso-table-lspace:0; mso-table-rspace:0" width=3D"80"><img src=3D"https://se=
+rvices.google.com/fh/files/emails/spacer.png" alt=3D"" style=3D"-ms-interpo=
+lation-mode:bicubic; border:0; height:0; line-height:100%; outline:none; te=
+xt-decoration:none; width:80px" height=3D"0" width=3D"80"></td><td style=3D=
+"-ms-text-size-adjust:100%; -premailer-width:80; -webkit-text-size-adjust:1=
+00%; mso-table-lspace:0; mso-table-rspace:0" width=3D"80"><img src=3D"https=
+://services.google.com/fh/files/emails/spacer.png" alt=3D"" style=3D"-ms-in=
+terpolation-mode:bicubic; border:0; height:0; line-height:100%; outline:non=
+e; text-decoration:none; width:80px" height=3D"0" width=3D"80"></td><td sty=
+le=3D"-ms-text-size-adjust:100%; -premailer-width:80; -webkit-text-size-adj=
+ust:100%; mso-table-lspace:0; mso-table-rspace:0" width=3D"80"><img src=3D"=
+https://services.google.com/fh/files/emails/spacer.png" alt=3D"" style=3D"-=
+ms-interpolation-mode:bicubic; border:0; height:0; line-height:100%; outlin=
+e:none; text-decoration:none; width:80px" height=3D"0" width=3D"80"></td><t=
+d style=3D"-ms-text-size-adjust:100%; -premailer-width:80; -webkit-text-siz=
+e-adjust:100%; mso-table-lspace:0; mso-table-rspace:0" width=3D"80"><img sr=
+c=3D"https://services.google.com/fh/files/emails/spacer.png" alt=3D"" style=
+=3D"-ms-interpolation-mode:bicubic; border:0; height:0; line-height:100%; o=
+utline:none; text-decoration:none; width:80px" height=3D"0" width=3D"80"></=
+td><td style=3D"-ms-text-size-adjust:100%; -premailer-width:80; -webkit-tex=
+t-size-adjust:100%; mso-table-lspace:0; mso-table-rspace:0" width=3D"80"><i=
+mg src=3D"https://services.google.com/fh/files/emails/spacer.png" alt=3D"" =
+style=3D"-ms-interpolation-mode:bicubic; border:0; height:0; line-height:10=
+0%; outline:none; text-decoration:none; width:80px" height=3D"0" width=3D"8=
+0"></td><td style=3D"-ms-text-size-adjust:100%; -premailer-width:80; -webki=
+t-text-size-adjust:100%; mso-table-lspace:0; mso-table-rspace:0" width=3D"8=
+0"><img src=3D"https://services.google.com/fh/files/emails/spacer.png" alt=
+=3D"" style=3D"-ms-interpolation-mode:bicubic; border:0; height:0; line-hei=
+ght:100%; outline:none; text-decoration:none; width:80px" height=3D"0" widt=
+h=3D"80"></td></tr></table></td></tr></table><!--[if mso]></td></tr></table=
+><![endif]--></center></div></section></body></html>
+--0000000000002f688805e0df2ab0--

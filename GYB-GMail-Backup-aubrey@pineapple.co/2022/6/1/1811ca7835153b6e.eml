@@ -1,0 +1,237 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp1179111ejc;
+        Tue, 31 May 2022 17:25:49 -0700 (PDT)
+X-Received: by 2002:a02:3506:0:b0:328:9a29:678 with SMTP id k6-20020a023506000000b003289a290678mr32300365jaa.33.1654043149113;
+        Tue, 31 May 2022 17:25:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1654043149; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NGJMByII1g78Zpa6W59O66WUa8rdBmfns27FQpKhi+rEU/MxhL5FKjDLsKrL8oZcpi
+         ACmO1/EK2a1fwXZuyF5XgKQewz1Kx+J21N8r/UNFjTVYuzKBbzo6EwywjrhS9BtozgyZ
+         +MAHoyFuzSj9yrBvAgb+OKFyWPn2a9E5O1djTVpZEAeRBi9SWxXOaOe4L0LgjEFC22ym
+         6JO+rMaz8gblCXORs1s46+o70N89/SuqkU8xSfAOIDVFeL+PAWhop5fbRS6diJpPP+kV
+         y7r81kTkeCHABuHiWW1Yp+6NYk3eH0dtlMiZ/lgXCPn2K0ReE+RAhYNDI9AfBJr4i79a
+         wt9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:in-reply-to:cc:references:message-id:date:subject:mime-version
+         :from:content-transfer-encoding:dkim-signature;
+        bh=N/HfG4uPHdwGNPA+lykVEqhbmNsVa0l1hWtt7EvsDAQ=;
+        b=y6vJmLyLquLOQ7xFh1ig69DyCp7kFY7MS1MQt+EVYzNMo+CuYYtOpBnvm5/j/+4mQg
+         Ovk/KTzmgc0WtWibG49jwGOH1NmNY7FqHl+nAHScz/SYehNA4FVyE1gLckdl1MphzeLQ
+         KWKDMpDNhlKiZTMbKLki9ARs4GBeUhP42bVauM9mjJN1kcPiJqxzKwp4UoZXCD2h2qHd
+         Gtny5USlgHkphvycbKG6MAClew5pC+HeqO0yZgp+Wi4nVXpAN84kreTfS6OZ7bDa4iBC
+         kktoOtbb8JG432SD2T+FqGNFnjAWiIVBYb1iJUOqxDx0M0iav0YtM5JBU72oPtrSaF6m
+         5CaA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=aAZ2Hm+l;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p73-20020a02294c000000b003315682b7b3sor176348jap.20.2022.05.31.17.25.48
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 31 May 2022 17:25:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=aAZ2Hm+l;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:from:mime-version:subject:date:message-id
+         :references:cc:in-reply-to:to;
+        bh=N/HfG4uPHdwGNPA+lykVEqhbmNsVa0l1hWtt7EvsDAQ=;
+        b=aAZ2Hm+lk6VXw+pYK7RDBCY0ER/wm1w3ng3w8w4BnnHVJsXoZjRipMYIu1Lzl8hW1Z
+         Eas43M4QNV6WdbqddjYJHDh32JPAfvF/TxrQVM5evbSCwCFcXKohg+bI1afqxO408/jl
+         dM49Cy4RD/Y3wECBvbkXlJobGJnDJaJhDbMXSwvwLVKpifP3Ewqmjy25TZpjnSFF7tsV
+         CDtrwcDDqVvU70f+jWxt4p7hxBCAWh6ukwwzFlCSh3KzUi2B6t+NTpvbV9HLl2GoWs88
+         Ydbdw1l2tQoNJlBBzAMKVUozhDj7yHEpsLWPvJtf4E3+wGuULz4v/ZpQEBtKiYjoJ4e3
+         2X6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:content-transfer-encoding:from:mime-version
+         :subject:date:message-id:references:cc:in-reply-to:to;
+        bh=N/HfG4uPHdwGNPA+lykVEqhbmNsVa0l1hWtt7EvsDAQ=;
+        b=gaoRc2OrcjxzM76ltEiYp3ShuW5KYWiystygwRY6/1REREv18bNj7yrVVxosuiw0TI
+         378UDF8f1ZIP+1hCBSMRID5ltVCEMw71QYAHySwBl9eiaE7619WJc2E+G632C8u8dvDA
+         ZY4qBvMzqIX2EdKZ/rKt8+Rb7kYhjZXO10hF8YudHKFvzk6ahULvl37t3wq87cKGUAyj
+         1Gthl8979HmAIutQ0BPQn0M5myu9MmnTxksdVyummjnSwNcXz7w6xX8Y9ElQsygKeADO
+         WdyXaAobBEda32LP8gm/luAueWxdCYfihkGbS8R1kU0wiw8Pc7qUWYNmU2OGxtjQ+xe+
+         EKbQ==
+X-Gm-Message-State: AOAM531JaUjHQiNHY9DyOzvkKcd3k+7WG3rB/JYBkmYj+4XjMhJt3hvn
+	ismJL+PaJF4xUf+b8OxBxN7SZXunfVbJxVZB
+X-Google-Smtp-Source: ABdhPJy6e1u0Oihwn+xDOsOsREJxeXnDLOdpgnRZj2FKe2GS+R3MspRsImQ3v+R7wP7kxWRjpxflfQ==
+X-Received: by 2002:a02:ac08:0:b0:330:f857:9af with SMTP id a8-20020a02ac08000000b00330f85709afmr11974501jao.204.1654043147897;
+        Tue, 31 May 2022 17:25:47 -0700 (PDT)
+Return-Path: <brooke@pineapple.co>
+Received: from smtpclient.apple ([2600:1008:b023:d077:4997:167:c4e5:332c])
+        by smtp.gmail.com with ESMTPSA id s7-20020a5e9807000000b00668cd9cb8eesm5204ioj.38.2022.05.31.17.25.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 May 2022 17:25:47 -0700 (PDT)
+Content-Type: multipart/alternative; boundary=Apple-Mail-F44A7FCC-C4A6-4CDC-9687-71C0E49CB05B
+Content-Transfer-Encoding: 7bit
+From: Brooke Whoolery <brooke@pineapple.co>
+Mime-Version: 1.0 (1.0)
+Subject: Re: Checkign in
+Date: Tue, 31 May 2022 19:25:46 -0500
+Message-Id: <16A813B9-53F4-4FC1-966B-27A3F10CC543@pineapple.co>
+References: <CAHAae-s_cXddq_3kC+H3bHW2zL-f8RoJyKdg=tcaTiN3sbx2pQ@mail.gmail.com>
+Cc: Aubrey Allen <aubrey@pineapple.co>
+In-Reply-To: <CAHAae-s_cXddq_3kC+H3bHW2zL-f8RoJyKdg=tcaTiN3sbx2pQ@mail.gmail.com>
+To: Ricky Ahuja <ricky@pineapple.co>
+X-Mailer: iPhone Mail (19F77)
+
+
+--Apple-Mail-F44A7FCC-C4A6-4CDC-9687-71C0E49CB05B
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hey Ricky,
+
+Aubrey should be able to get to this sometime this week, but I=E2=80=99ll le=
+t her confirm, thanks!=20
+
+> On May 31, 2022, at 7:10 PM, Ricky Ahuja <ricky@pineapple.co> wrote:
+>=20
+> =EF=BB=BF
+> Hello Brooke and Aubrey, how are you?
+>=20
+> Is it possible to get some feedback on the quality of traffic from my affi=
+liate Convert2Media, Aff ID - 1294.
+>=20
+> Specifically, I am looking for the following;
+>=20
+> 1) Refund rate
+> 2) Chargeback rate
+> 3) Declines
+>=20
+> Or any possible red flags.
+>=20
+> I am working on getting them to scale the traffic so before I do - just wa=
+nt to make sure it looks good.=20
+>=20
+> Thank you,
+>=20
+> =09
+> Ricky Ahuja   Affiliate Director
+> Pineapple Offers
+> p:  571.577.7363
+> w:  www.pineapple.co
+> s: ricky.ahuja=20
+>=20
+> Book an Affiliate Call For Your Project Success
+>=20
+> =20
+>=20
+> You will walk away with a strategy, a roadmap for immediate action steps t=
+o move forward. We want to alleviate obstacles and confusion that stand in y=
+our way.=20
+>=20
+>=20
+>=20
+> We can discuss: Vertical/niche evaluation  I  Brainstorm on traffic possib=
+ilities  I   Idea suggestions I   Affiliate marketing options  I   New verti=
+cal expansion  I =20
+>=20
+> =20
+>=20
+> Call us today at 571-577-7363 OR Schedule your CALL
+
+--Apple-Mail-F44A7FCC-C4A6-4CDC-9687-71C0E49CB05B
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charset=3D=
+utf-8"></head><body dir=3D"auto"><div dir=3D"ltr"></div><div dir=3D"ltr">Hey=
+ Ricky,</div><div dir=3D"ltr"><br></div><div dir=3D"ltr">Aubrey should be ab=
+le to get to this sometime this week, but I=E2=80=99ll let her confirm, than=
+ks!&nbsp;</div><div dir=3D"ltr"><br><blockquote type=3D"cite">On May 31, 202=
+2, at 7:10 PM, Ricky Ahuja &lt;ricky@pineapple.co&gt; wrote:<br><br></blockq=
+uote></div><blockquote type=3D"cite"><div dir=3D"ltr">=EF=BB=BF<div dir=3D"l=
+tr">Hello&nbsp;Brooke and Aubrey, how are you?<div><br></div><div>Is it poss=
+ible&nbsp;to get some feedback on the quality&nbsp;of traffic from my affili=
+ate Convert2Media, Aff ID - 1294.</div><div><br></div><div>Specifically, I a=
+m looking for the following;<br><br>1) Refund rate</div><div>2) Chargeback r=
+ate</div><div>3) Declines</div><div><br></div><div>Or any possible red flags=
+.</div><div><br></div><div>I am working on getting&nbsp;them to scale the tr=
+affic so before I do - just want to make sure it looks good.&nbsp;</div><div=
+><br></div><div>Thank you,</div><div><br clear=3D"all"><div><div dir=3D"ltr"=
+ class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"lt=
+r"><table cellspacing=3D"0" width=3D"500" cellpadding=3D"0" border=3D"0" sty=
+le=3D"font-size:13px;border-spacing:0px;border-collapse:collapse;color:rgb(9=
+7,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=3D"100" valign=3D=
+"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top"><img width=3D"96"=
+ height=3D"94" src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4zJNzp=
+EiMgUr4kOrTSIR4gmHcXL_KZ9fKpt7y-4HyBIWxwsbyAIIEVR3BqKIzKXPTGsXbKQxRw" data-u=
+nique-identifier=3D""></td><td valign=3D"top" style=3D"border-left:2px solid=
+ rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,208,255);border-=
+right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding:0px 0=
+px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D=
+"border-spacing:0px;border-collapse:collapse;line-height:1.4;font-family:Ver=
+dana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><f=
+ont color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif"><span style=3D"fo=
+nt-size:13.26px">Ricky Ahuja</span></font>&nbsp;<span style=3D"font-family:V=
+erdana,Geneva,sans-serif">&nbsp; Affiliate Director</span></td></tr><tr><td s=
+tyle=3D"padding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif=
+">Pineapple Offers</div></td></tr><tr><td><span style=3D"font-family:Verdana=
+,Geneva,sans-serif;color:rgb(70,208,255)">p:&nbsp;</span>&nbsp;571.577.7363<=
+/td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color:=
+rgb(70,208,255)">w:&nbsp;</span>&nbsp;<font face=3D"Verdana, Geneva, sans-se=
+rif"><a href=3D"http://www.pineapple.co" target=3D"_blank">www.pineapple.co<=
+/a></font></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-s=
+erif"><font color=3D"#46d0ff">s: </font><font color=3D"#000000">ricky.ahuja<=
+/font>&nbsp;</span></td></tr></tbody></table><br><p class=3D"MsoNormal" styl=
+e=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:sm=
+all"><b><span style=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(=
+204,0,0)">Book an Affiliate Call For Your Project Success</span></b></p><p c=
+lass=3D"MsoNormal" style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,=
+sans-serif;font-size:small"><b><span style=3D"font-size:9pt;font-family:Aria=
+l,sans-serif;color:rgb(204,0,0)">&nbsp;<u></u><u></u></span></b></p><p class=
+=3D"MsoNormal" style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans=
+-serif;font-size:small"><span style=3D"font-size:9pt;font-family:Arial,sans-=
+serif;color:black">You will walk away with a&nbsp;</span><b><span style=3D"f=
+ont-size:9pt;font-family:Arial,sans-serif">strategy, a roadmap&nbsp;</span><=
+/b><span style=3D"font-size:9pt;font-family:Arial,sans-serif">for<b>&nbsp;im=
+mediate action steps</b>&nbsp;to move forward. We want to&nbsp;<b>alleviate o=
+bstacles</b>&nbsp;and&nbsp;<b>confusion&nbsp;</b>that stand in your way.&nbs=
+p;</span></p><p class=3D"MsoNormal" style=3D"color:rgb(34,34,34);font-family=
+:Arial,Helvetica,sans-serif;font-size:small"><span style=3D"font-size:9pt;fo=
+nt-family:Arial,sans-serif"><br></span></p><p class=3D"MsoNormal" style=3D"c=
+olor:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:small"><=
+span style=3D"font-size:9pt;font-family:Arial,sans-serif">We can discuss:&nb=
+sp;<span style=3D"color:black">Vertical/niche evaluation&nbsp;&nbsp;</span><=
+/span><b><span style=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb=
+(192,0,0)">I</span></b><span style=3D"font-size:9pt;font-family:Arial,sans-s=
+erif;color:black">&nbsp; Brainstorm on traffic possibilities</span><span sty=
+le=3D"font-size:9pt;font-family:Arial,sans-serif">&nbsp;&nbsp;</span><b><spa=
+n style=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(192,0,0)">I<=
+/span></b><span style=3D"font-size:9pt;font-family:Arial,sans-serif;color:bl=
+ack">&nbsp;&nbsp; Idea&nbsp;</span><span style=3D"font-size:9pt;font-family:=
+Arial,sans-serif">suggestions&nbsp;</span><b><span style=3D"font-size:9pt;fo=
+nt-family:Arial,sans-serif;color:rgb(192,0,0)">I</span></b><span style=3D"fo=
+nt-size:9pt;font-family:Arial,sans-serif;color:black">&nbsp; &nbsp;Affiliate=
+ marketing options&nbsp;&nbsp;</span><b><span style=3D"font-size:9pt;font-fa=
+mily:Arial,sans-serif;color:rgb(192,0,0)">I</span></b><span style=3D"font-si=
+ze:9pt;font-family:Arial,sans-serif;color:black">&nbsp;</span><span style=3D=
+"font-size:9pt;font-family:Arial,sans-serif;color:black">&nbsp; New vertical=
+ expansion</span><span style=3D"font-size:9pt;font-family:Arial,sans-serif">=
+&nbsp;&nbsp;</span><b><span style=3D"font-size:9pt;font-family:Arial,sans-se=
+rif;color:rgb(192,0,0)">I</span></b><span style=3D"font-size:9pt;font-family=
+:Arial,sans-serif;color:black">&nbsp;&nbsp;</span></p><p class=3D"MsoNormal"=
+ style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-si=
+ze:small"><span style=3D"font-size:9pt;font-family:Arial,sans-serif;color:bl=
+ack"><u></u>&nbsp;<u></u></span></p><p class=3D"MsoNormal" style=3D"color:rg=
+b(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:small"><span st=
+yle=3D"font-size:9pt;font-family:Arial,sans-serif;color:black">Call us today=
+ at&nbsp;</span><b><span style=3D"font-size:9pt;font-family:Arial,sans-serif=
+;color:rgb(204,0,0)">571-577-7363&nbsp;</span></b><b><span style=3D"font-siz=
+e:9pt;font-family:Arial,sans-serif">OR<span style=3D"color:rgb(204,0,0)">&nb=
+sp;</span></span></b><b><span style=3D"color:rgb(192,0,0)"><a href=3D"http:/=
+/calendly.com/rickyahuja" style=3D"color:rgb(17,85,204)" target=3D"_blank"><=
+span style=3D"color:rgb(192,0,0)">Schedule your CALL</span></a></span></b></=
+p></td></tr></tbody></table></div></div></div></div></div>
+</div></blockquote></body></html>=
+
+--Apple-Mail-F44A7FCC-C4A6-4CDC-9687-71C0E49CB05B--

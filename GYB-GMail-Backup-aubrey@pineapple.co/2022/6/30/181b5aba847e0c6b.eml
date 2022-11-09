@@ -1,0 +1,352 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp372350ejc;
+        Thu, 30 Jun 2022 10:32:15 -0700 (PDT)
+X-Received: by 2002:a7b:c5d0:0:b0:3a0:3dc8:73a1 with SMTP id n16-20020a7bc5d0000000b003a03dc873a1mr11110205wmk.98.1656610335098;
+        Thu, 30 Jun 2022 10:32:15 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1656610335; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=fD8PIpiwW5nDjdyqp6KypMDpcqwtFY5iRtcB5jUP5pUszpoppdvMPtwQJrEvPzmPqJ
+         YRzjNgg2YkDsQ5qp/ikuO854cZfrbetUkUAs7m8l4/8T83ztXGGefil4mkX7ygEW/+85
+         n8i7WQaI9YJeXRInUu7db8NdW+mOvn74XQZzwOHgv2aA+avITbRKgH9kvxuSroL6aO8p
+         7JJ9Nyc/w9W8kjjaS4MEZqlY/Gc81n1V+kcp3wJOB+IaH3bVyWITeIXLjgPuCrza3b1Z
+         j7/f3YAenVrC/bqwhc+pfsAEClWnOKuQ1d2iSWy/vZRR44fcre2r/3DbAgQOLtYC+I8k
+         Nc8A==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PBSR2r3J8U52i2YmsokUfMpvirLjM1cHNQMGsgYOsFg=;
+        b=JVZZUY8MkaYdTjT0W7rduwIdwIZdIXTPNB0Q1Y27AVhk+PRg+FenuwACm+7WKKieuO
+         FrdQ8ibbZ9v25XOOszvbpwN1/+ES2nimnigb5H46gDgbMtmNZrbjBwkPIIY/JZuWM+TX
+         rA/EFRJrrX6ai7nBqaUMQ3Tjcovr/irG8b5GrqP3hZcVnN4xjW0st/q43gfh7sUb2p1J
+         +2IkI3X3rJhgN3xs6ej36xEDuSNLqhv0/p8RNewZZP38zFv3uQgg7TPa1kabMNKwZHAq
+         uNnvcgVSeHfHZ+WOcXoH9+KAPkzDV4cNvlsGFtgM55UqZFNaSfQhs099g1CR91mnGRZg
+         yPUQ==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=zUCTvBJ0;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcy7x5eh4mlbbhn466kqmgqejlkeazi@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCY7X5EH4MLBBHN466KQMGQEJLKEAZI@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <all+bncBCY7X5EH4MLBBHN466KQMGQEJLKEAZI@pineapple.co>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 2-20020a05600c02c200b003941bfcf81bsor820582wmn.32.2022.06.30.10.32.15
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 30 Jun 2022 10:32:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of all+bncbcy7x5eh4mlbbhn466kqmgqejlkeazi@pineapple.co designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=zUCTvBJ0;
+       arc=pass (i=2 spf=pass spfdomain=pineapple.co dkim=pass dkdomain=pineapple-co.20210112.gappssmtp.com dmarc=pass fromdomain=pineapple.co);
+       spf=pass (google.com: domain of all+bncbcy7x5eh4mlbbhn466kqmgqejlkeazi@pineapple.co designates 209.85.220.69 as permitted sender) smtp.mailfrom=all+bncBCY7X5EH4MLBBHN466KQMGQEJLKEAZI@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+ARC-Seal: i=2; a=rsa-sha256; t=1656610335; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=SHI179yDRK+d2bHDh/4YWGIZxoFGMnNyx/hD1LpbDhoYsGsDZw5SCcnprGEy0Rfrhb
+         Hu5BGRGM0zItv86MXGUKNaY+12I4n3z7DAI58w0mtieu9XDQ8cRO3VLXIyTvXZFHCkDg
+         ZvFoMLu9/BpH2AGlPSwxn7EWDfPrI5m/Yw1HuRPrUS+AnbDGB3DlZmkr2doQiTALmkgW
+         YFuKIZkQmIQPmaHUU/3Q85F5HBCTlw9yCdodvRYoa6F2u/ANRfLRyaFWctmUCS+gcEmd
+         t0GQop9WXT+ja0zJJyJb9v+TN3jBKAobhZ83Kn8yWIF7pC71LkVJkjHcJMhLFV684RjP
+         VDDg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-archive:list-help:list-post:list-id
+         :mailing-list:precedence:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PBSR2r3J8U52i2YmsokUfMpvirLjM1cHNQMGsgYOsFg=;
+        b=Vq5mBlbIG2E03QQuZUkMILpvnrJo6WfOQ5crS6X754VWmDGBkmS4CQSCRmA+97F7lx
+         VW5PDS92KLof1r0jA6bS6qJy5KbAXpX6UIw9ozneyuEiWwQiibuGYW/p6RmLw1xjRc//
+         zJys9iaRMl4bSxPerdJToKr2Cs0P7YP1BpcfwJPy6BAY4CQ78HWnA48v+OK4tK4BfXle
+         spRZquck8PSoxCUcXjTS5SZnIGwfYS0xUvs4BRuAcU86LD5pWju5OD7AWBnf421h9dt1
+         jg01QzYuGjr+Biv91O/YdeM42j3aQS+kAnxr5I5Rq/y1GGtEAAaySv697Y07kMbhixhi
+         yqiA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=LjZotS8c;
+       spf=pass (google.com: domain of karabyrne@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=karabyrne@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-unsubscribe;
+        bh=PBSR2r3J8U52i2YmsokUfMpvirLjM1cHNQMGsgYOsFg=;
+        b=zUCTvBJ0FwXgsqDam/tQH4K/j9oIvmGffEK25sUNCozSqlsHU6uADbXEsm2nv5aEf0
+         w6+kRUG15c7uzmo7zte2Q8djZDA/G2p2zTYCZmMmxtjpEwZlscVpN/gbBaJVuEn5cqVM
+         xHqCZBe9Sy7fXtZjRiBWugQNs3LRojZrM+8yHsebZ2Ly6iggYlXRvnlOE9UkvjXpJhcO
+         qZb4Cl9/sfNLdk0Af0GtOgrqkdTiaNnlpzbvcsRKSxYojA1575rvuXu+Js/A900KP23K
+         xxuddZuABkDirMAs89eQ6KpjES4Y6iOc3HPEVL+hTP1rpfXm2szSmbSqzgjqYFaayz4j
+         /f6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-unsubscribe;
+        bh=PBSR2r3J8U52i2YmsokUfMpvirLjM1cHNQMGsgYOsFg=;
+        b=Y0erY+Mn72PLgSYdCB1/5+hGsYF3ovI/Q2/+jJpGw8m9Yg9yL8todBYQB9rMxokPd1
+         UMjkZI3YAxz/H3xMy5UhpqTSRRxSp3EcZXt2dY3+/jW84/9m4Wu+ZpNNydfE328SaONW
+         gDj3/a9TxVTQxGUwrUQjKsSmuE4adAPSb/dfkvMQOC8LQG4ig0IGMQviQRHiTsIpcUxB
+         9tW0EqaOmQFfZnjWEU9599w/gjfAV9DacslMD5Y9Up5xeBrnJogfexOhgwefgaq7O4y0
+         Esv5kq5Zc31QaH5PpoGPLLQ4xN/CSSnaEg+nxEw2X45REqVZWTAPyN09+iU9nYEkFVMM
+         0Kvw==
+X-Gm-Message-State: AJIora8CdwSjlljuDWLeP5kcJokYv5/Th9Uw44fvq1v+LKgZ1rISQvKS
+	nV1MCMtIg3esRoHI58nFOdD1Pd7A
+X-Google-Smtp-Source: AGRyM1vfCTcUVGfEDMG6qnBri87VxbEypvi2w1q1owDXgtczuIpWbAfUNJtmZ48XkaJhXEmAAAN7pQ==
+X-Received: by 2002:a05:600c:1ca9:b0:3a1:887d:1567 with SMTP id k41-20020a05600c1ca900b003a1887d1567mr921356wms.175.1656610334815;
+        Thu, 30 Jun 2022 10:32:14 -0700 (PDT)
+X-BeenThere: pineapple.co
+Received: by 2002:a05:6000:178b:b0:21d:350e:23a6 with SMTP id
+ e11-20020a056000178b00b0021d350e23a6ls4883880wrg.2.gmail; Thu, 30 Jun 2022
+ 10:32:13 -0700 (PDT)
+X-Received: by 2002:a05:6000:1ac8:b0:21b:9236:6207 with SMTP id i8-20020a0560001ac800b0021b92366207mr9324178wry.123.1656610333665;
+        Thu, 30 Jun 2022 10:32:13 -0700 (PDT)
+X-BeenThere: all@pineapple.co
+Received: by 2002:a05:600c:4ec7:b0:39c:871d:313f with SMTP id
+ g7-20020a05600c4ec700b0039c871d313fls2013172wmq.2.canary-gmail; Thu, 30 Jun
+ 2022 10:32:12 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f81:b0:39c:809c:8a9e with SMTP id n1-20020a05600c4f8100b0039c809c8a9emr13527200wmq.39.1656610332591;
+        Thu, 30 Jun 2022 10:32:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656610332; cv=none;
+        d=google.com; s=arc-20160816;
+        b=L4Gio2o2WXBHz3O1lhz9dzKezTcJKh0lehDAocNglSrd6eLUUWz3tmuOIPtraUl0lc
+         AxquE5Xqnx/1u3Ae8sKh8+RsynjGCdJPtjQCyQhuFSR/bkdfwPzjR/woaVVW7KjOLCqD
+         f/iDTwOumy0DDo/OwvkUSp7LjYILfeyhCtPXTa4R0F3g7e7s2M7J84CN8sbOEQ5JASS3
+         o/7Enxw+yYUIMgXg+4uVy5VGiBeCtqHEIFmYQcZc/nmEZbAeKdfgIOB1Z8fPktfsx96E
+         ywb4KOCHIYLFW1+bMxbz3NSGnrKklglB7GHZ9pCoBjP38xdI19KMPc+BAKnqksV2qcXG
+         VSuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=PBSR2r3J8U52i2YmsokUfMpvirLjM1cHNQMGsgYOsFg=;
+        b=xzZynRUhmmyW3cA32HAo3qGomF22C5iMp/vWONcZu/GE5FvjMacReQ1nXQSnUNulPD
+         YqGY5XsfswCv8mg+nmzYplcNwrVY+q/E78Py9iysgKSf4RUHxKJ0cMmb2/ieF7tmNXhr
+         XVBPmLFn7m0X1PpUaA0L+gx/uVLJwNDb2Z6L4PsSigNMMKRQbrzOt2hvBSM4nFwTolJu
+         FvEylhQWIDMBKAu7X2pu5Vlpvzua9ZsvHR9koSrzNzIFxkvZgkQA5xcFWAj8BaithuZe
+         0dhMQyULTjUelEpqNJ3p43Hfe3BkTiBdreHAduHZQsJgnuE0Nf1SofBT73L5IoQX3SFp
+         k/mw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=LjZotS8c;
+       spf=pass (google.com: domain of karabyrne@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=karabyrne@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 8-20020a1c0208000000b003914ac8efdbsor1768861wmc.24.2022.06.30.10.32.12
+        for <all@pineapple.co>
+        (Google Transport Security);
+        Thu, 30 Jun 2022 10:32:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karabyrne@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+X-Received: by 2002:a05:600c:2113:b0:3a0:432c:a8e8 with SMTP id
+ u19-20020a05600c211300b003a0432ca8e8mr11578566wml.71.1656610332100; Thu, 30
+ Jun 2022 10:32:12 -0700 (PDT)
+MIME-Version: 1.0
+References: <e3345ca9-284d-40d2-9af9-7d3272478baa@docs-share.google.com>
+ <00000000000012367305e2ad41dc@google.com> <CAL8q-W1Za_POOdcQPZT1y1s5XsEAdCVeUiqnXMqcu6nPe-Z+pA@mail.gmail.com>
+ <CAOqcTXCTLG09yCxBz3+kyXLE4QAgc+eNyah2zR8Ya35LS2sibQ@mail.gmail.com>
+In-Reply-To: <CAOqcTXCTLG09yCxBz3+kyXLE4QAgc+eNyah2zR8Ya35LS2sibQ@mail.gmail.com>
+From: Kara Byrne <karabyrne@pineapple.co>
+Date: Thu, 30 Jun 2022 13:32:01 -0400
+Message-ID: <CAD+oiFQAf9fnYx+XRRHVVH8GfVYieQixcXWiqrw2dcdUevCDRQ@mail.gmail.com>
+Subject: Re: Document shared with you: "Unlimited PTO Policy"
+To: Stephanie Sleigh <stephanie@pineapple.co>
+Cc: All <all@pineapple.co>, Amber Glenn <amber@pineapple.co>, Anna Urbas <anna@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000006068aa05e2ada6b8"
+X-Original-Sender: karabyrne@pineapple.co
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112
+ header.b=LjZotS8c;       spf=pass (google.com: domain of karabyrne@pineapple.co
+ designates 209.85.220.41 as permitted sender) smtp.mailfrom=karabyrne@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Precedence: list
+Mailing-list: list all@pineapple.co; contact all+owners@pineapple.co
+List-ID: <all.pineapple.co>
+X-Spam-Checked-In-Group: all@pineapple.co
+X-Google-Group-Id: 565930853596
+List-Post: <https://groups.google.com/a/pineapple.co/group/all/post>, <mailto:all@pineapple.co>
+List-Help: <https://support.google.com/a/pineapple.co/bin/topic.py?topic=25838>,
+ <mailto:all+help@pineapple.co>
+List-Archive: <https://groups.google.com/a/pineapple.co/group/all/>
+List-Unsubscribe: <mailto:googlegroups-manage+565930853596+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/pineapple.co/group/all/subscribe>
+
+--0000000000006068aa05e2ada6b8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thank you so much!
+
+On Thu, Jun 30, 2022 at 1:21 PM Stephanie Sleigh <stephanie@pineapple.co>
+wrote:
+
+> That is amazing! Thanks for the great news!
+>
+> Have a great day everyone! =E2=98=80=EF=B8=8F=E2=9C=8C=EF=B8=8F
+>
+> On Thu, Jun 30, 2022 at 1:09 PM Anna Urbas <anna@pineapple.co> wrote:
+>
+>> Thank you so much Amber and Pineapple!!!!!!!!
+>>
+>> On Thu, Jun 30, 2022 at 1:03 PM Amber Glenn (via Google Docs) <
+>> amber@pineapple.co> wrote:
+>>
+>>> Amber Glenn shared a document
+>>> [image: Unknown profile photo]
+>>> Amber Glenn (amber@pineapple.co) has invited you to *view* the
+>>> following document:
+>>> Please reach out to your manager or HR with any questions or concerns.
+>>> Thank you!
+>>> Unlimited PTO Policy
+>>>
+>>> <https://docs.google.com/document/d/1-8-j_NWDELl7q95F-DNiTcV3mNEUDECeuL=
+zkriFVaPg/edit?usp=3Dsharing_eil_m&ts=3D62bdd778>
+>>>
+>>> Open
+>>> <https://docs.google.com/document/d/1-8-j_NWDELl7q95F-DNiTcV3mNEUDECeuL=
+zkriFVaPg/edit?usp=3Dsharing_eip_m&ts=3D62bdd778>
+>>> Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA
+>>> <https://www.google.com/maps/search/1600+Amphitheatre+Parkway,+Mountain=
++View,+CA+94043,+USA?entry=3Dgmail&source=3Dg>
+>>> You have received this email because amber@pineapple.co shared a
+>>> document with you from Google Docs. [image: Logo for Google Docs]
+>>> <https://workspace.google.com/>
+>>>
+>> --
+> [image: created with MySignature.io]
+> <https://mysignature.io/?utm_source=3Dlogo>
+> Stephanie Sleigh
+> Affiliate Manager
+>
+> Pineapple Company
+>
+> calendly.com/stephanie-pineappleco
+> p:  905.373.6367
+> s:  fitness.gal2@hotmail.ca
+> w: pineapple.co
+> a:  57 w 57th Street, 3rd Floor, New York, NY 10001
+> <https://www.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+York=
+,+NY+10001?entry=3Dgmail&source=3Dg>
+>
+>
+
+--0000000000006068aa05e2ada6b8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Thank you so much!=C2=A0</div><div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jun 30, 2022 at 1:21=
+ PM Stephanie Sleigh &lt;<a href=3D"mailto:stephanie@pineapple.co">stephani=
+e@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div =
+dir=3D"auto">That is amazing! Thanks for the great news!=C2=A0</div><div di=
+r=3D"auto"><br></div><div dir=3D"auto">Have a great day everyone! =E2=98=80=
+=EF=B8=8F=E2=9C=8C=EF=B8=8F</div><div><br><div class=3D"gmail_quote"><div d=
+ir=3D"ltr" class=3D"gmail_attr">On Thu, Jun 30, 2022 at 1:09 PM Anna Urbas =
+&lt;<a href=3D"mailto:anna@pineapple.co" target=3D"_blank">anna@pineapple.c=
+o</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr"><=
+div dir=3D"ltr">Thank you so much Amber and Pineapple!!!!!!!!</div></div><d=
+iv dir=3D"ltr"><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gma=
+il_attr">On Thu, Jun 30, 2022 at 1:03 PM Amber Glenn (via Google Docs) &lt;=
+<a href=3D"mailto:amber@pineapple.co" target=3D"_blank">amber@pineapple.co<=
+/a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><=
+div><table style=3D"border-collapse:collapse;width:100%;background-color:wh=
+ite;text-align:center" role=3D"presentation"><tbody><tr><td style=3D"paddin=
+g:24px 0px 16px"><table style=3D"border-collapse:collapse;font-family:Robot=
+o,Arial,Helvetica,sans-serif;word-break:break-word;display:inline-block;wid=
+th:90%;max-width:700px;min-width:280px;text-align:left" role=3D"presentatio=
+n"><tbody><tr><td style=3D"padding:0px"><table style=3D"width:100%;border:1=
+px solid rgb(218,220,224);border-radius:8px;border-spacing:0px;table-layout=
+:fixed;border-collapse:separate" role=3D"presentation"><tbody><tr><td style=
+=3D"padding:4.5%" dir=3D"ltr"><div style=3D"margin-bottom:32px;font-family:=
+&quot;Google Sans&quot;,Roboto,Arial,Helvetica,sans-serif;font-style:normal=
+;font-size:28px;line-height:36px;color:rgb(60,64,67)">Amber Glenn shared a =
+document</div><table style=3D"border-collapse:collapse;font-family:Roboto,A=
+rial,Helvetica,sans-serif;font-size:16px;line-height:24px;color:rgb(32,33,3=
+6);letter-spacing:0.1px;table-layout:fixed;width:100%" role=3D"presentation=
+"><tbody><tr><td style=3D"padding:0px;vertical-align:top;width:50px"><div><=
+img style=3D"border-radius:50%;display:block" width=3D"50" height=3D"50" sr=
+c=3D"https://ssl.gstatic.com/s2/profiles/images/silhouette64.png" alt=3D"Un=
+known profile photo"></div></td><td style=3D"padding:0px 0px 0px 12px;verti=
+cal-align:top"><div style=3D"padding-top:12px">Amber Glenn (<a href=3D"mail=
+to:amber@pineapple.co" style=3D"color:inherit;text-decoration:none" target=
+=3D"_blank">amber@pineapple.co</a>) has invited you to <b>view</b> the foll=
+owing document:</div><div style=3D"margin-top:24px;color:rgb(95,99,104)">Pl=
+ease reach out to your manager or HR with any questions or concerns. Thank =
+you!</div></td></tr></tbody></table><table style=3D"border-spacing:0px 4px;=
+table-layout:fixed;width:100%" role=3D"presentation"><tbody><tr style=3D"he=
+ight:28px"></tr><tr><td style=3D"padding:0px"><a href=3D"https://docs.googl=
+e.com/document/d/1-8-j_NWDELl7q95F-DNiTcV3mNEUDECeuLzkriFVaPg/edit?usp=3Dsh=
+aring_eil_m&amp;ts=3D62bdd778" style=3D"color:rgb(60,64,67);display:inline-=
+block;max-width:100%;text-decoration:none;vertical-align:top;border:1px sol=
+id rgb(218,220,224);border-radius:16px;white-space:nowrap" target=3D"_blank=
+"><div style=3D"line-height:18px;overflow:hidden;text-overflow:ellipsis;pad=
+ding:6px 12px"><span style=3D"display:inline-block;vertical-align:top;min-w=
+idth:26px;width:26px"><img src=3D"https://ssl.gstatic.com/docs/doclist/imag=
+es/mediatype/icon_1_document_x64.png" width=3D"18" height=3D"18" style=3D"v=
+ertical-align:top" role=3D"presentation"></span><span style=3D"font:500 14p=
+x/18px &quot;Google Sans&quot;,Roboto,Arial,Helvetica,sans-serif;display:in=
+line;letter-spacing:0.2px">Unlimited PTO Policy</span></div></a></td></tr><=
+/tbody></table><table style=3D"border-collapse:collapse" role=3D"presentati=
+on"><tbody><tr style=3D"height:32px"><td></td></tr></tbody></table><div><a =
+href=3D"https://docs.google.com/document/d/1-8-j_NWDELl7q95F-DNiTcV3mNEUDEC=
+euLzkriFVaPg/edit?usp=3Dsharing_eip_m&amp;ts=3D62bdd778" role=3D"button" st=
+yle=3D"padding:0px 24px;font:500 14px/36px &quot;Google Sans&quot;,Roboto,A=
+rial,Helvetica,sans-serif;border:none;border-radius:18px;box-sizing:border-=
+box;display:inline-block;letter-spacing:0.25px;min-height:36px;text-align:c=
+enter;text-decoration:none;background-color:rgb(26,115,232);color:rgb(255,2=
+55,255)" target=3D"_blank">Open</a></div></td></tr></tbody></table><table s=
+tyle=3D"border-collapse:collapse;width:100%" role=3D"presentation"><tbody><=
+tr><td style=3D"padding:24px 4.5%"><table style=3D"border-collapse:collapse=
+;width:100%" dir=3D"ltr"><tbody><tr><td style=3D"padding:0px;font-family:Ro=
+boto,Arial,Helvetica,sans-serif;color:rgb(95,99,104);width:100%;font-size:1=
+2px;line-height:16px;min-height:40px;letter-spacing:0.3px">Google LLC, <a h=
+ref=3D"https://www.google.com/maps/search/1600+Amphitheatre+Parkway,+Mounta=
+in+View,+CA+94043,+USA?entry=3Dgmail&amp;source=3Dg" target=3D"_blank">1600=
+ Amphitheatre Parkway, Mountain View, CA 94043, USA</a><br> You have receiv=
+ed this email because <a href=3D"mailto:amber@pineapple.co" style=3D"color:=
+inherit;text-decoration:none" target=3D"_blank">amber@pineapple.co</a> shar=
+ed a document with you from Google Docs.</td><td style=3D"padding:0px 0px 0=
+px 20px"><a href=3D"https://workspace.google.com/" target=3D"_blank"><img s=
+rc=3D"https://www.gstatic.com/docs/documents/share/images/googleworkspace_l=
+ogo_192x80.png" width=3D"96" height=3D"40" alt=3D"Logo for Google Docs"></a=
+></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></ta=
+ble></td></tr></tbody></table></div></blockquote></div></div>
+</blockquote></div></div>-- <br><div dir=3D"ltr" data-smartmail=3D"gmail_si=
+gnature"><div dir=3D"ltr"><table cellspacing=3D"0" width=3D"500" cellpaddin=
+g=3D"0" border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-coll=
+apse:collapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><=
+td width=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-a=
+lign:top"><a href=3D"https://mysignature.io/?utm_source=3Dlogo" style=3D"co=
+lor:rgb(0,0,0)" target=3D"_blank"><img alt=3D"created with MySignature.io" =
+width=3D"100" src=3D"https://img.mysignature.io/p/e/3/f/e3f6f4b3-342f-58ae-=
+a95a-4b540c36f8aa.png?time=3D1594774986" style=3D"width:100px;border-radius=
+:15%"></a></td><td valign=3D"top" style=3D"border-left:2px solid rgb(70,208=
+,255);vertical-align:top;border-top-color:rgb(70,208,255);border-right-colo=
+r:rgb(70,208,255);border-bottom-color:rgb(70,208,255);padding:0px 0px 0px 9=
+px"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border=
+-spacing:0px;border-collapse:collapse;line-height:1.4;font-family:Verdana,G=
+eneva,sans-serif;font-size:11.05px;color:rgb(0,0,1)"><tbody><tr><td><span s=
+tyle=3D"font-family:Verdana,Geneva,sans-serif"><font color=3D"#46d0ff"><spa=
+n style=3D"font-size:13.26px">Stephanie Sleigh</span></font>=C2=A0<br>Affil=
+iate Manager</span></td></tr><tr><td style=3D"padding:5px 0px"><div style=
+=3D"font-family:Verdana,Geneva,sans-serif">Pineapple Company</div><div styl=
+e=3D"font-family:Verdana,Geneva,sans-serif"><p style=3D"margin:0px;font-str=
+etch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica N=
+eue&quot;;color:rgb(220,161,13)"><a href=3D"https://calendly.com/stephanie-=
+pineappleco" target=3D"_blank">calendly.com/stephanie-pineappleco</a></p></=
+div></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;=
+color:rgb(70,208,255)">p:=C2=A0</span>=C2=A0905.373.6367<br></td></tr><tr><=
+td><font color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif">s:=C2=A0=C2=
+=A0</font><a href=3D"mailto:fitness.gal2@hotmail.ca" target=3D"_blank">fitn=
+ess.gal2@hotmail.ca</a><font color=3D"#46d0ff" face=3D"Verdana, Geneva, san=
+s-serif"><br>w:=C2=A0</font><span style=3D"font-family:Verdana,Geneva,sans-=
+serif"><a href=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" target=
+=3D"_blank">pineapple.co</a></span></td></tr><tr><td><span style=3D"font-fa=
+mily:Verdana,Geneva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0=
+<span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=3D"https://ww=
+w.google.com/maps/search/57+w+57th+Street,+3rd+Floor,+New+York,+NY+10001?en=
+try=3Dgmail&amp;source=3Dg">57 w 57th Street, 3rd Floor, New York, NY 10001=
+</a>=C2=A0</span></td></tr></tbody></table></td></tr></tbody></table></div>=
+</div>
+</blockquote></div></div>
+
+--0000000000006068aa05e2ada6b8--

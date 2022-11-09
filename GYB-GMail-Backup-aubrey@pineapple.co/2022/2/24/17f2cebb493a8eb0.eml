@@ -1,0 +1,130 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:cb86:0:0:0:0 with SMTP id mf6csp1364815ejb;
+        Thu, 24 Feb 2022 10:08:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyL6cljc8J2biYa8kkDLT3HjvYbka0PzmQ7soL2rozrdXQl+iUw5OpHLOw4v19GUHik9O62
+X-Received: by 2002:a05:6870:55a7:b0:c4:7dc0:d77f with SMTP id n39-20020a05687055a700b000c47dc0d77fmr1834487oao.338.1645726118943;
+        Thu, 24 Feb 2022 10:08:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1645726118; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UJtklIasXRX98XdXBPyfUp3iymVbwsMjTP7ui6rPwXgSCqzljZkqJrd3vW9XwM7Cor
+         zOUHhhABZILYF2t/MK1ShtUX5OGsAqQlw/Vum/2qgIwZrpn7sQ7uJJ6tFsSc9speBZEd
+         VXl3/Ums3jFnptms7XigZwP6ciEGbIUhT1dDFwLI4Bnn4ApV103VwNVz7lPSRU2IKxbb
+         TEEy5n0iOllv7ALjQEFcCrGbCoIxvVzxjOMJjasiX/QFqL75OMJWi8RCR6QtVvF3xwat
+         dkGZeBfcxYZaoPEwPOz6Yxo00SZbWZJ+sLZr/EzzCGbla1KVSERaMXgEC9wDQ7E73PQM
+         GluA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject
+         :reply-to:to:from:dkim-signature:dkim-signature;
+        bh=tlye43UrX8lhbqMU4o0EDgOupF+EK7OmuPpR/a5F8eY=;
+        b=mX4oT5KdbNEdAQ0UuLva++EBBdCBjSJncgFjmqfbY2hmtl+Byxu8d+5AUSuhS9lCT4
+         JgiOVK81slhfKlmG0yXFChZImlqg0KXOKmEAisRXEegBXQ0w8cR85y+WGpojipSRaa/s
+         XwYtUMiM/zierWJgJ8sEsR4yo87X1Mb52H8HgswmdxbDwhFeSzFnS/veRST4+VI+oUQe
+         jQgm3bacwKc44QWzDIXOxnImnh8TY51UcMI6CSRhOpw8hP7/dMa6yc8ndEuUJ4QjYDjH
+         4q1Oz9noKOC89LqFbWsehMOOpsvgSeRLEQ5tci0cd8Reb+PjrIGwDMONxgf5Z8tsqbNh
+         aNyA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mystaffingpro.com header.s=dkim header.b=FiO1sH93;
+       dkim=pass header.i=@email-od.com header.s=dkim header.b=ALVCgKJT;
+       spf=pass (google.com: domain of 3833.82.222f800019b37d9.996a1bf0afd969e6ee2f0fe0cebcff63@socketlabs.mystaffingpro.com designates 142.0.186.100 as permitted sender) smtp.mailfrom=3833.82.222f800019b37d9.996a1bf0afd969e6ee2f0fe0cebcff63@socketlabs.mystaffingpro.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mystaffingpro.com
+Return-Path: <3833.82.222f800019b37d9.996a1bf0afd969e6ee2f0fe0cebcff63@socketlabs.mystaffingpro.com>
+Received: from s1-ba64.socketlabs.email-od.com (s1-ba64.socketlabs.email-od.com. [142.0.186.100])
+        by mx.google.com with ESMTPS id m14-20020a056870888e00b000d3db24b895si167510oam.384.2022.02.24.10.08.38
+        for <Aubrey@pineapple.co>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 Feb 2022 10:08:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3833.82.222f800019b37d9.996a1bf0afd969e6ee2f0fe0cebcff63@socketlabs.mystaffingpro.com designates 142.0.186.100 as permitted sender) client-ip=142.0.186.100;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mystaffingpro.com header.s=dkim header.b=FiO1sH93;
+       dkim=pass header.i=@email-od.com header.s=dkim header.b=ALVCgKJT;
+       spf=pass (google.com: domain of 3833.82.222f800019b37d9.996a1bf0afd969e6ee2f0fe0cebcff63@socketlabs.mystaffingpro.com designates 142.0.186.100 as permitted sender) smtp.mailfrom=3833.82.222f800019b37d9.996a1bf0afd969e6ee2f0fe0cebcff63@socketlabs.mystaffingpro.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mystaffingpro.com
+DKIM-Signature: v=1; a=rsa-sha256; d=mystaffingpro.com;s=dkim;
+	c=relaxed/relaxed; q=dns/txt; t=1645726119; x=1648318119;
+	h=content-transfer-encoding:content-type:mime-version:message-id:date:subject:reply-to:to:from:x-thread-info:subject:to:from:cc:reply-to;
+	bh=tlye43UrX8lhbqMU4o0EDgOupF+EK7OmuPpR/a5F8eY=;
+	b=FiO1sH932F51J9arHH10bmJgm4TGd/FNO0Lnc1YxgxByA9YrbiDsSI2GETjpjtAQ36rWr/CFwgfW/ryzo/i2c5RhF/u+5aWZgP+p2N+Yjsv76Ysvtdt+biN/KIP7c3If7Ayho8FRs9NowhGvwbSzWQ1YtDSshxIFFJJatyT9/x0=
+DKIM-Signature: v=1; a=rsa-sha256; d=email-od.com;i=@email-od.com;s=dkim;
+	c=relaxed/relaxed; q=dns/txt; t=1645726119; x=1648318119;
+	h=content-transfer-encoding:content-type:mime-version:message-id:date:subject:reply-to:to:from:x-thread-info:subject:to:from:cc:reply-to;
+	bh=tlye43UrX8lhbqMU4o0EDgOupF+EK7OmuPpR/a5F8eY=;
+	b=ALVCgKJTlXqQTWNG18380Lbo4AOgGDctcIjmb3gP9m+uai4OC4idaRdo/3BCS2XJfPxiiKb8uU3321oT18Q0PoT61d8f4CrNxNCvXtaz8lTqaAfy+L+C9NBINdW4BOWgUfm7bYYAHdDFWZjMfVd2xeTQ3s4otbQF08kBLlvAZwM=
+X-Thread-Info: MzgzMy4xMi4yMjJmODAwMDE5YjM3ZDkuQXVicmV5PXBpbmVhcHBsZS5jbw==
+Received: from r2.us-west-2.aws.in.socketlabs.com (r2.us-west-2.aws.in.socketlabs.com [142.0.190.2]) by mxrs3.email-od.com
+	with ESMTP(version=Tls12 cipher=Aes256 bits=256); Thu, 24 Feb 2022 13:08:37 -0500
+Received: from paychex.com (mx0a-0018d001.pphosted.com [148.163.157.161]) by r2.us-west-2.aws.in.socketlabs.com
+	with ESMTP(version=Tls12 cipher=Aes256 bits=256); Thu, 24 Feb 2022 13:08:36 -0500
+Received: from m0093330.ppops.net (m0093330.ppops.net [127.0.0.1])
+	by pps.redirect (8.17.1.5/8.17.1.5) with ESMTP id 21OI7Dxu018052
+	for <Aubrey@pineapple.co>; Thu, 24 Feb 2022 13:08:35 -0500
+Received: from mailin12.paychex.com (mailoutoma.paychex.com [141.123.64.135])
+	by mx0a-0018d001.pphosted.com (PPS) with ESMTPS id 3eeakm944a-40
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <Aubrey@pineapple.co>; Thu, 24 Feb 2022 13:08:35 -0500
+X-AuditID: 0a2c1234-1c4d5a8000000f27-a2-6217c9a369be
+From: Pineapple Products Inc <noreply@mystaffingpro.com>
+To: Aubrey Allen <Aubrey@pineapple.co>
+Reply-To: <noreply@mystaffingpro.com>
+Subject: Please Complete New Hire Paperwork
+Date: Thu, 24 Feb 2022 13:08:34 -0500
+Message-ID: <20220224-13083426-7c@mspwswprh02.dmz.payx>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrHJMWRmVeSWpSXmKPExsXCpcvCrrv4pHiSwYZ+SYuGA81MDoweL3ed
+	Yw1gjOKySUnNySxLLdK3S+DKmH3oEmvBR/6KHyvnsjYwHuTtYuTkkBAwkVi7cyIziM0mYCGx
+	ZuZTMFtEQE1iwbIzbCC2kICqxK7TGxhBbGEBbYlTn/+A2SxA8a4Du8BsXgFziR8/ZrFD2IIS
+	J2c+YQGxmQXEJa6v+s8MMUdNYmPLb2aIuLbEsoWvmScwcs9C0jILScssJGULGJlXMYrkJmbm
+	ZOYZGukVJFYmZ6RW6CXn525iBIWBjpDJDsbpHYaHGJk4GA8xSnAwK4nwPq4VTxLiTUmsrEot
+	yo8vKs1JLT7EKM3BoiTOK/H6RLyQQHpiSWp2ampBahFMlomDU6qBsalm542E04y2K5wsA55V
+	5Jx4/qRcZdYUd70/nR+6ytUZEu4eY/0Qud4z28392Nvfx0/VJK403VUT4Ke/NmnDHld2wYb1
+	a1d1hut6fm/7kLrSp6Zx05RprMI5HacnHJF3Vd/36YYC1yTPqdxv/5QfXbGx1/ceQ6zq4VdK
+	zFpVc+fd2WUi+795thJLcUaioRZzUXEiAPVjJ23xAQAA
+X-Proofpoint-ORIG-GUID: x0mZUWutmXma1KQ8ov5ZOeDM4cx3aenG
+X-Proofpoint-GUID: x0mZUWutmXma1KQ8ov5ZOeDM4cx3aenG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.816,Hydra:6.0.425,FMLib:17.11.64.514
+ definitions=2022-02-24_04,2022-02-24_01,2022-02-23_01
+X-Proofpoint-Spam-Details-Out: rule=paychex_corp_outbound_policy_notspam
+ policy=paychex_corp_outbound_policy score=0 clxscore=1015
+ priorityscore=1501 mlxscore=0 phishscore=0 lowpriorityscore=0
+ suspectscore=0 malwarescore=0 mlxlogscore=774 impostorscore=0 adultscore=0
+ bulkscore=0 spamscore=0 classifier=spam adjust=0 reason=safe scancount=1
+ engine=8.12.0-2201110000 definitions=main-2202240102
+
+<html>  <head><style type=3D'text/css'>  table {  width: 550px;  border-sty=
+le: ridge;  border-width: 3px;  border-color: #003F87;  }  td {  font-famil=
+y: arial;  font-size: 10pt;  }  a {  color: #003F87;  text-decoration: none=
+;  font-weight: bold;  }  a:hover, a:active {  text-decoration: underline; =
+ }  </style>  </head><body>  <table cellpadding=3D'0' cellspacing=3D'0'>  <=
+tr><td style=3D'width: 10px;'> </td><td style=3D'padding-top: 5px; padding-=
+bottom: 5px;' colspan=3D'2'><img src=3D'/images/spacer.gif'></td><td> </td>=
+</tr>  <tr>  <td style=3D'width: 10px;'> </td>  <td colspan=3D'2' style=3D'=
+font-weight: bold; background-color: #003F87; color: #FFFFFF; font-size: 12=
+pt; height: 2px;'>  <p align=3D'center' style=3D'padding-top: 2px; padding-=
+bottom: 2px;'>Please Complete New Hire Paperwork</td>  <td style=3D'width: =
+10px;'> </td>  </tr>  <tr>  <td style=3D'width: 10px;'> </td>  <td style=3D=
+'padding: 7px, 5px, 5px, 7px;' colspan=3D'2'>  <p>  <br><br>  Dear Aubrey A=
+llen,<br><br>  Welcome to Pineapple Products Inc!  Thank you for accepting =
+our offer for the Data Analytics Technician position.  The next step is to =
+access our New Hire Portal and complete your new hire documents.   Be prepa=
+red to complete your tax forms in addition to reviewing other important com=
+pany policies.  <br><br>  Please <a href=3D'https://www2.appone.com/onboard=
+ing/ApplicantPortal.aspx?A_ID=3D82529225&As_ID=3D101593963'>click here</a> =
+to begin.<br><br>We look forward to having you on our team.<br><br>Pineappl=
+e Products Inc<br>  <br>  <br>  </td></tr>  <tr><td style=3D'width: 10px;'>=
+ </td><td colspan=3D'2' style=3D'font-weight: bold; background-color: #003F=
+87; color: #FFFFFF; font-size: 12pt; height: 2px;'> </td></tr>  <tr>  <td s=
+tyle=3D'width: 10px;'> </td>  <td style=3D'width: 440px;'> </td>  <td align=
+=3D'center' style=3D'padding-top: 3px; padding-bottom: 1px;'><img src=3D'ht=
+tp://client.hrservicesinc.com/appone/images/tabgreymsp.gif'></td></tr></tab=
+le>
+
+<HR>The information contained in this message may be privileged, confidenti=
+al and protected from disclosure. If the reader of this message is not the =
+intended recipient, or an employee or agent responsible for delivering this=
+ message to the intended recipient, you are hereby notified that any dissem=
+ination, distribution or copying of this communication is strictly prohibit=
+ed. If you have received this communication in error, please notify your re=
+presentative immediately and delete this message from your computer. Thank =
+you.<BR>

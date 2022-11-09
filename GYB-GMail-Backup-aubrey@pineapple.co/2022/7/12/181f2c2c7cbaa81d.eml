@@ -1,0 +1,165 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp2238922ejb;
+        Tue, 12 Jul 2022 07:14:20 -0700 (PDT)
+X-Received: by 2002:a05:6512:318a:b0:47f:bdb5:a4e8 with SMTP id i10-20020a056512318a00b0047fbdb5a4e8mr15365042lfe.539.1657635260312;
+        Tue, 12 Jul 2022 07:14:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657635260; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ux3RCt4DeH1FYBvchdZamGtP3lNee/SAXHr/uYwk0+13OVE0qPK1ijDDBr40WizTLu
+         6wMmpiQM3Bxuznkw0oMgGpVujLyJgLTQUuk9CyoeC6F+M2epJQ6HcyQTkwiiqxYvpw+Y
+         5KouNwvA2yzMjt4H1Svf08SxMhw2gRCaOB4n0IGj41w/tTJRE6xVV7/iZ1zygVKbTiyh
+         rwto+TR266j2+B7kPr9SrtddkyEBQDLB1+zrFx2o0zNYWK9D8/9AyRpO+nAChkm9igcg
+         nheBeBfXcg/rp8PRcMQl+Ke5sDsD3d8s//280HnRtImzdkEdJWnfntuvdMgb1QMgB8S+
+         lQew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=lwV2usTi6CTpKBLUKq6hR7MWCQ6dAwsVbAFUkssmJfw=;
+        b=cPYNCck8EJYxPrmHja/ADmLChwaUOg9e4UAxfyLoNvl9vG+rUlN2xkqIDN5/jEoQKX
+         /IF3rOeX2eNLPRKN4WX+7bpQD/jDkl5UHAO6RcYXuVpWXLNoMpsWq4G9uXR0C/pfwKnD
+         +w4Amcz1RT4ViZnekz/q32GuBBodhHDGXFoWTdLlKAkm/IZ2+YRvPA62YuY8ab9/1/j+
+         xu/9gZlUj6WBAw1Dl0PAxsWPDchqWA9fCaaDjIsoZA8VZCpfTHLQlcplsNf3Tau9K1Wo
+         rMVv+FDzc0mmKyxrQ9W18JDHaY8MkRP7TeiMqq7+Z2aQdGaZoNrtdiI1dzJP84fZlWIS
+         5N3A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=YUh+v0Fb;
+       spf=pass (google.com: domain of carla@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=carla@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <carla@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n5-20020a056512310500b0047fbdda5684sor1795852lfb.96.2022.07.12.07.14.19
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 12 Jul 2022 07:14:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of carla@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=YUh+v0Fb;
+       spf=pass (google.com: domain of carla@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=carla@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=lwV2usTi6CTpKBLUKq6hR7MWCQ6dAwsVbAFUkssmJfw=;
+        b=YUh+v0Fb/7uu2cN4XUaWTzvc92FWs50Sz7rFGu8LKn5PgYEC5qlI0t+arlPreIRjUx
+         LqhB5akbwTI55IFUsZEovW5a61/5Yt3ASlexhwBAHVuW5HoJJhh4lcU5hNizmczDMXNz
+         EVWw5GNPbsmG2pvJA/YIoCgXMP/PqCXXAhq4lyaVa48gb9wOYkehYP1w9kL6v71qw/87
+         USiU0PrbdjimJJsHWCHSB16LkVkwuk4Ft6ShvYWEau5PItNY/T1ntRoVlxfqWu0BJVC+
+         hu7Yls2Isve5R/0QGD9SESYhAKKxtlIFv+UX0KTrnNIqzLmFWR3kWjygB6jdvaNGgQVZ
+         NElg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=lwV2usTi6CTpKBLUKq6hR7MWCQ6dAwsVbAFUkssmJfw=;
+        b=GV7kYuJH6SuOq83c6r2r7XyJxVvDIwG0x8/cJ8Q+cjDFtB6wjHsj7pElNuaaXl6tfa
+         c+rxa20dDTVsDnZgfekUMYiRNOE9vrUyL66ZhT+VhiXykvOjbA7403x/ugGM6lcWBgvY
+         5lgHwFzlQ9nFCkdioQyO3VJGrS1OM8cTtRZqiLF8AoBZ03ZaraDhoXrwF04qvUq+NN57
+         GDfcQbptlDh/8j+Wv4fCHbc+RZppXv7JCXfV/36CssKgfj/eU+w9xQ9WbXy28VbCxdSw
+         /4RJvAM4I6rnLxVNmnGVeiIOCxoBl9EL64LHZf39C67MyVjDH3msAp49V4c1BH+XblZG
+         F4GA==
+X-Gm-Message-State: AJIora+T9ic2F37WzKgBxkszZm6TCJsRDJ0FD4xxfreXvySeIEsLw5OT
+	0a0e5c3+47T88xYETIKVh3MgzbcSwG1f5xuA6z4Demjdczh/rA==
+X-Google-Smtp-Source: AGRyM1vQjvhfEwzSjxzQO/SVrTxYcEEMb1tbD0W8EvsdUzJrTCB03/xfrPJH+ARE7xVY6jOvqpfoCwMGwjsmll8YXCg=
+X-Received: by 2002:a05:6512:3a88:b0:481:4bb:3246 with SMTP id
+ q8-20020a0565123a8800b0048104bb3246mr15789479lfu.292.1657635259064; Tue, 12
+ Jul 2022 07:14:19 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP8r9QUroWR2oy-5SpzgAMET8+t3=R8eN29eM4rbr-5Ejw@mail.gmail.com>
+In-Reply-To: <CAHbmDP8r9QUroWR2oy-5SpzgAMET8+t3=R8eN29eM4rbr-5Ejw@mail.gmail.com>
+From: Carla Vallade <carla@pineapple.co>
+Date: Tue, 12 Jul 2022 09:14:07 -0500
+Message-ID: <CAHabGqxsVki2ojwjZy=eAPODbQqoK7sCdF2cWc-6EhCeOE3BNQ@mail.gmail.com>
+Subject: Re: Fran's Offers 7/4-7/10
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000c8bad605e39c4896"
+
+--000000000000c8bad605e39c4896
+Content-Type: text/plain; charset="UTF-8"
+
+Thanks for the update!
+Have an amazing week!
+
+On Tue, Jul 12, 2022 at 8:48 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Good morning!
+>
+> Please be advised that Fran's Offers
+> <https://docs.google.com/spreadsheets/d/1Fiv8evZCgKG2dWwmf0ibbHw5WspjDBliUKV8mFMZSaU/edit?usp=sharing> for
+> last week are up to date.  Thank you!
+>
+> Have a great day!
+>
+> --
+> Aubrey Allen
+> Data Analytics Technician
+> Pineapple Products, Inc.
+>
+-- 
+[image: created with MySignature.io]
+<https://mysignature.io/?utm_source=logo>
+Carla Vallade
+Assistant Affiliate Manager
+
+Pineapple Company
+
+*calendly.com/carla-pineapple <https://calendly.com/carla-pineapple>*
+p:  773.668.4417
+s:  carla@pineapple.co
+w: pineapple.co
+a:  57 w 57th Street, 3rd Floor, New York, NY 10001
+
+--000000000000c8bad605e39c4896
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div>Thanks for the update!</div><div dir=3D"auto">Have an amazing week!=C2=
+=A0</div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmai=
+l_attr">On Tue, Jul 12, 2022 at 8:48 AM Aubrey Allen &lt;<a href=3D"mailto:=
+aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width=
+:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb(204,204=
+,204)"><div dir=3D"ltr">Good morning!<div><br></div><div>Please be advised =
+that<a href=3D"https://docs.google.com/spreadsheets/d/1Fiv8evZCgKG2dWwmf0ib=
+bHw5WspjDBliUKV8mFMZSaU/edit?usp=3Dsharing" target=3D"_blank">=C2=A0Fran&#3=
+9;s Offers</a>=C2=A0for last week are up to date.=C2=A0 Thank you!</div><di=
+v><br></div><div>Have a great day!</div></div><div dir=3D"ltr"><div><br></d=
+iv>-- <br><div dir=3D"ltr" data-smartmail=3D"gmail_signature"><div dir=3D"l=
+tr">Aubrey Allen<div>Data Analytics Technician</div><div>Pineapple Products=
+, Inc.</div></div></div></div>
+</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
+data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><table cellspacing=3D"0=
+" width=3D"500" cellpadding=3D"0" border=3D"0" style=3D"font-size:13px;bord=
+er-spacing:0px;border-collapse:collapse;color:rgb(97,97,97);font-family:Lat=
+o,sans-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:=
+0px 9px 0px 0px;vertical-align:top"><a href=3D"https://mysignature.io/?utm_=
+source=3Dlogo" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=3D"cre=
+ated with MySignature.io" width=3D"100" src=3D"https://img.mysignature.io/p=
+/e/3/f/e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1594774986" style=3D=
+"width:100px;border-radius:15%"></a></td><td valign=3D"top" style=3D"border=
+-left:2px solid rgb(70,208,255);vertical-align:top;border-top-color:rgb(70,=
+208,255);border-right-color:rgb(70,208,255);border-bottom-color:rgb(70,208,=
+255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=3D"0" bo=
+rder=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;line-height=
+:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;color:rgb(0,0,=
+1)"><tbody><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif"><f=
+ont color=3D"#46d0ff"><span style=3D"font-size:13.26px">Carla Vallade</span=
+></font><br>Assistant Affiliate Manager</span></td></tr><tr><td style=3D"pa=
+dding:5px 0px"><div style=3D"font-family:Verdana,Geneva,sans-serif">Pineapp=
+le Company</div><div><p style=3D"margin:0px;font-stretch:normal;line-height=
+:normal"><font color=3D"#1155cc" face=3D"Helvetica Neue"><span style=3D"fon=
+t-size:13px"><u><a href=3D"https://calendly.com/carla-pineapple" target=3D"=
+_blank">calendly.com/carla-pineapple</a></u></span></font><br></p></div></t=
+d></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;color:r=
+gb(70,208,255)">p:=C2=A0</span>=C2=A0773.668.4417<br></td></tr><tr><td><fon=
+t color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif">s:=C2=A0=C2=A0</fo=
+nt><a href=3D"mailto:carla@pineapple.co" target=3D"_blank">carla@pineapple.=
+co</a><font color=3D"#46d0ff" face=3D"Verdana, Geneva, sans-serif"><br>w:=
+=C2=A0</font><span style=3D"font-family:Verdana,Geneva,sans-serif"><a href=
+=3D"http://pineapple.co/" style=3D"color:rgb(0,0,1)" target=3D"_blank">pine=
+apple.co</a></span></td></tr><tr><td><span style=3D"font-family:Verdana,Gen=
+eva,sans-serif;color:rgb(70,208,255)">a:=C2=A0</span>=C2=A0<span style=3D"f=
+ont-family:Verdana,Geneva,sans-serif">57 w 57th Street, 3rd Floor, New York=
+, NY 10001</span></td></tr></tbody></table></td></tr></tbody></table></div>=
+</div>
+
+--000000000000c8bad605e39c4896--

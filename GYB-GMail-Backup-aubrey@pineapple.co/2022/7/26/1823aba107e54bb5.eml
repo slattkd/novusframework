@@ -1,0 +1,145 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp778721ejz;
+        Tue, 26 Jul 2022 06:37:28 -0700 (PDT)
+X-Received: by 2002:a2e:a383:0:b0:25e:1d94:3827 with SMTP id r3-20020a2ea383000000b0025e1d943827mr558084lje.507.1658842648698;
+        Tue, 26 Jul 2022 06:37:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658842648; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FWybpHIwan0ma7i96ObvtVtdoxlILKuP5l5slCu7dN5u8JobgVBEzZJFvOxtdqHUOz
+         rG9/qJbFleWuaWKelZMCsCrbq7j9FRFXXdlP3LplXcLkDCqyqcwmBO2HkrhJgj4b8q9w
+         1CVjnepAwRhYnsnjo4CylOwVw+XsFSn0PXSwKXBKATYI7YGRBO1yIE9UFbV6AdYdYLbF
+         jflo4EKeQY5FvZquBZzSftwTJwyWZv08Yf3tIsszxWS4WJd1Ff+FLw/UEbPgyrGmyJwg
+         F2pjgOc0nHrGlyTmB1zYvKFmOrB5aEha1kaL4iQSckON8SLdMdsBpG2i26b4gftO+B+W
+         /FBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=auto-submitted:precedence:content-disposition
+         :content-transfer-encoding:mime-version:subject:message-id:date:from
+         :to:dkim-signature;
+        bh=q3+YAKOwP5MsUqdiwk/3qwBhHKG+eNPSDZ8bSURVKlc=;
+        b=KzH4stcqrsjDabd0o56OLXOdYTlfmQ2MvT3Mn2PCcA1O5qXSnEIcOEmnX1LB6QppkC
+         jaXsFnL6msCu0tNMfRReE8q9NSB4FDJDOGOyjFzD1afJdtfWabruNgorwDhQz5by6f5n
+         93TxqFipjOv2PdWgSMARbXl0XIg7SFITmknk/uHQbt2VZTksD4A7B7mB290lSmJsj+nv
+         NM0bzhOSze1rSgqFJjTz2+Jk75T/cNosQl3eWVGq7zVzwBmwPV5MQUQCxn0wjrJbb+ir
+         dD7zpi2fRcIYLZpcouM/xVlNfW8Qs+lpjql/lA4i9MzA5c4KVf5jrmbBaApJz/Qt/VBn
+         TUhw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=a0x1qGbR;
+       spf=pass (google.com: domain of robert@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=robert@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <robert@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h12-20020a05651c158c00b0025de7121dcfsor5355125ljq.72.2022.07.26.06.37.28
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 26 Jul 2022 06:37:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of robert@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=a0x1qGbR;
+       spf=pass (google.com: domain of robert@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=robert@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=q3+YAKOwP5MsUqdiwk/3qwBhHKG+eNPSDZ8bSURVKlc=;
+        b=a0x1qGbRpRhevCKOktMo8vQqKM4HrWZzBMB9Uu97Vgp58eELGpMT/KRXroE4QWqbyW
+         FZfN/3b11wdQ5IaIj85j2T3bRXi1evD3gm0D38eBzhNlxZqOWIg/R4Znt0s2WWpdv9ML
+         Ym916lbmpWjbcz3JYIkXlAtfm3XaFuMngbD5vzhcmfpyxNb1n0JT5wSihoHRMEOy4bNh
+         Z0Iy1qar/KcbT8TpSpya4Bh/1q29BKiz1GkusWP1ZVydL3EndFbVkJWqdNfHvAxLECYG
+         b03wE5j+8iY1hyQd9tOaZ315IDB90bcvI7+Fy1BTRYlmgGIec0wxFSFNZpXjz2tnM+54
+         UWnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:to:from:date:message-id:subject:mime-version
+         :content-transfer-encoding:content-disposition:precedence
+         :auto-submitted;
+        bh=q3+YAKOwP5MsUqdiwk/3qwBhHKG+eNPSDZ8bSURVKlc=;
+        b=lFTWhTtri0OHKmzUERMmDKuN2scHL8tI5Vkq+9uN5Fo6uGb+SnjAOOst7j7Fq3kIkI
+         4njMbCe3yvou/0xfX8JyLgMoBGrNF+ef4ihAoFwmw7lbHPnA9FjQT+X5t+IHEhA+Vxfl
+         l7SzLjO+4T3/QDwcYoKeKMQhtOuS+eajR8YxPS967icncDbge1DSf8f1D8rpScBYcyYm
+         /3qyNnTNIPeJ1MX0N5M68rodQ00kDdIdFT2pVMhBv/tJPrzQpTJukWv7avmLNl4BprvB
+         h1ldD8jBY3vfJBxjPBK5y8zXDBu9O4hAIPhZ6+YB8W3TEhnGhOULHPGpl3KQewA1Yg2J
+         9FzQ==
+X-Gm-Message-State: AJIora9xptlwa+5FHbZCq3Ohlq2gDgLm9jmUfB62SzcdgnMWAy2fow3X
+	o1PDebpMJwy9fwSEdFvqsQalVFtg16JrzslYqOmYXCtWUgfpsWZ4v7wFLwzsC99diVA=
+X-Google-Smtp-Source: AGRyM1u4Gc4cvlAZcfl0zTBhvnsLJuuXdOVxWK9odlqpbTZuXJ3jgrKdZdBAeOGQTwcPxg21fKMi3OAXlN8t03Lr0tbqjK65vQKSRoW1w8Id
+X-Received: by 2002:a05:651c:238b:b0:25d:eabe:225a with SMTP id bk11-20020a05651c238b00b0025deabe225amr5703374ljb.28.1658842648171;
+        Tue, 26 Jul 2022 06:37:28 -0700 (PDT)
+To: aubrey@pineapple.co
+From: Robert <robert@pineapple.co>
+Date: Tue, 26 Jul 2022 06:37:27 -0700
+Message-ID: <CANNA0skQ+ZPhp01+zLRU1YY4XKKX9HpjpecCQ39=3T9BF4ZVbA@mail.gmail.com>
+Subject: Out of the Office Re: Departmental Reporting Needs Audit
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+Precedence: bulk
+X-Autoreply: yes
+Auto-Submitted: auto-replied
+
+PGRpdiBkaXI9Imx0ciI+SSBhbSBjdXJyZW50bHkgb3V0IG9mIHRoZSBvZmZpY2UuIEkgd2lsbCBi
+ZSByZXNwb25kZWQgdG8gZW1haWxzIGhvd2V2ZXIgaWYgdGhlIG1hdHRlciBpcyB1cmdlbnQsIHJl
+YWNoIG91dCB0byBlaXRoZXIgQ2FzZXkgb3IgUGV0ZXIsIGJvdGggb2YgdGhlaXIgZW1haWxzIGFy
+ZSBiZWxvdy48ZGl2PjxhIGhyZWY9Imh0dHA6Ly9nb29nXzE1OTczOTY4NjEiIHRhcmdldD0iX2Js
+YW5rIj5wZXRlckBwaW5lYXBwbGUuY288L2E+PC9kaXY+PGRpdj48YSBocmVmPSJtYWlsdG86Y2Fz
+ZXlAcGluZWFwcGxlLmNvIiB0YXJnZXQ9Il9ibGFuayI+Y2FzZXlAcGluZWFwcGxlLmNvPC9hPjwv
+ZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+VGhhbmsgeW91PC9kaXY+PGRpdj48YnI+PGJyPjwvZGl2
+PjwvZGl2Pjxici8+PGJyLz4tLSA8YnIvPjxkaXYgZGlyPSJsdHIiPiANCg0KDQo8ZGl2Pg0KDQo8
+dGFibGUgc3R5bGU9IkZPTlQtRkFNSUxZOlZlcmRhbmEsc2Fucy1zZXJpZjtDT0xPUjojMDUzODVm
+O21heC13aWR0aDo1MDBweCIgY2VsbHNwYWNpbmc9IjAiIGNlbGxwYWRkaW5nPSIwIiBib3JkZXI9
+IjAiPg0KICA8dGJvZHk+DQogICAgPHRyPg0KICAgICAgICA8dGQgY29sc3Bhbj0iMiIgc3R5bGU9
+InBhZGRpbmctYm90dG9tOjRweDtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjMDUzODVmIiB3aWR0
+aD0iNTAwIj4NCgkJCTxzcGFuPjxicj48L3NwYW4+DQoJCQk8c3Bhbj48YnI+PC9zcGFuPg0KCQkJ
+PHNwYW4+PGJyPjwvc3Bhbj4NCiAgICAgICAgICAgIDxzcGFuIHN0eWxlPSJGT05ULVNJWkU6MThw
+dDtDT0xPUjojMDI3MGM0O0ZPTlQtRkFNSUxZOlZlcmRhbmEsc2Fucy1zZXJpZiI+PHN0cm9uZz5S
+b2JlcnQgTWFydGluPC9zdHJvbmc+PC9zcGFuPg0KICAgICAgICAgICAgPHNwYW4+PGJyPjwvc3Bh
+bj4NCiAgICAgICAgICAgIDxzcGFuIHN0eWxlPSJmb250LXNpemU6MTBwdDtjb2xvcjojMDUzODVm
+Ij5TYWxlcyBNYW5hZ2VyPHNwYW4+IHwgPC9zcGFuPjwvc3Bhbj4NCiAgICAgICAgICAgIDxzcGFu
+Pg0KICAgICAgICAgICAgICAgIDxhIGhyZWY9Imh0dHA6Ly9waW5lYXBwbGUuY28iIHJlbD0ibm9v
+cGVuZXIiIHN0eWxlPSJmb250LXNpemU6MTBwdDtjb2xvcjojMDI3MGM0IWltcG9ydGFudDt0ZXh0
+LWRlY29yYXRpb246bm9uZTtmb250LXdlaWdodDpib2xkIiB0YXJnZXQ9Il9ibGFuayI+cGluZWFw
+cGxlLmNvPC9hPg0KICAgICAgICAgICAgPC9zcGFuPg0KICAgICAgICA8L3RkPg0KICAgIDwvdHI+
+DQogICAgPHRyPg0KICAgICAgICA8dGQgc3R5bGU9InBhZGRpbmctdG9wOjEycHgiIHdpZHRoPSIx
+MjAiPg0KICAgICAgICAgICAgPHAgc3R5bGU9InBhZGRpbmc6MHB4O21hcmdpbjowcHgiPgkNCgkJ
+CTxpbWcgYWx0PSJQaG90byIgc3R5bGU9Im1heC13aWR0aDo5MHB4O2hlaWdodDphdXRvO2JvcmRl
+cjowIiB3aWR0aD0iOTAiIGJvcmRlcj0iMCIgc3JjPSJodHRwczovL2NpMy5nb29nbGV1c2VyY29u
+dGVudC5jb20vbWFpbC1zaWcvQUlvcks0eHhyVHViLV9sTU52SU11VjlibXNIX1J1c1d0NkVMcmNp
+M0MyWXZHNWFIMTMwXzB6MGNaSjRzRFVtU3lYdUVwUkg3QjRiMXFZdyIgZGF0YS1vcz0iaHR0cHM6
+Ly9kcml2ZS5nb29nbGUuY29tL3VjP2V4cG9ydD12aWV3JmFtcDtpZD0xSkt5Q21PWGZiZV9CV1FL
+eTJnd01NcWZhczVVSGVHaG0iPg0KICAgICAgICAgICAgPC9wPg0KICAgICAgICA8L3RkPg0KICAg
+ICAgICA8dGQgc3R5bGU9InBhZGRpbmctdG9wOjE1cHgiPg0KICAgICAgICAgICAgPHAgc3R5bGU9
+ImxpbmUtaGVpZ2h0OjEycHg7cGFkZGluZy1ib3R0b206MnB4O21hcmdpbi1ib3R0b206MHB4O3Bh
+ZGRpbmctdG9wOjBweDttYXJnaW4tdG9wOjBweCI+DQoNCiAgICAgICAgICAgIA0KICAgICAgICAg
+ICAgPC9wPjxwIHN0eWxlPSJsaW5lLWhlaWdodDoxMnB4O3BhZGRpbmctYm90dG9tOjJweDttYXJn
+aW4tYm90dG9tOjBweDtwYWRkaW5nLXRvcDowcHg7bWFyZ2luLXRvcDowcHgiPlQ6IDIwNy42NTMu
+MTAwNTwvcD48cCBzdHlsZT0ibGluZS1oZWlnaHQ6MTJweDtwYWRkaW5nLWJvdHRvbToycHg7bWFy
+Z2luLWJvdHRvbTowcHg7cGFkZGluZy10b3A6MHB4O21hcmdpbi10b3A6MHB4Ij4NCgkJCTxzcGFu
+IHN0eWxlPSJmb250LXNpemU6OXB0O2NvbG9yOiMwNTM4NWY7Zm9udC13ZWlnaHQ6Ym9sZCI+RTo8
+L3NwYW4+IA0KCQkJPGEgaHJlZj0ibWFpbHRvOnJvYmVydEBwaW5lYXBwbGUuY28iIHN0eWxlPSJ0
+ZXh0LWRlY29yYXRpb246bm9uZTtmb250LXNpemU6OXB0O2NvbG9yOiMxMDEwMTAiIHRhcmdldD0i
+X2JsYW5rIj5yb2JlcnRAcGluZWFwcGxlLmNvPC9hPjwvcD4NCiAgICAgICAgICAgIAkJPHAgc3R5
+bGU9ImxpbmUtaGVpZ2h0OjEycHg7cGFkZGluZy1ib3R0b206MnB4O21hcmdpbi1ib3R0b206MHB4
+O3BhZGRpbmctdG9wOjBweDttYXJnaW4tdG9wOjBweCI+CQkJDQoJCQkJCTxzcGFuIHN0eWxlPSJm
+b250LXNpemU6OXB0O2NvbG9yOiMwNTM4NWY7Zm9udC13ZWlnaHQ6Ym9sZCI+QTo8L3NwYW4+IAkJ
+CSAJCQkNCgkJCQkJPHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTo5cHQ7Y29sb3I6IzEwMTAxMCI+MTM0
+MjMgQmxhbmNvIFJkIFBNQiA4MDI0PC9zcGFuPjxzcGFuIHN0eWxlPSJmb250LXNpemU6OXB0O2Nv
+bG9yOiMxMDEwMTAiPiwgPC9zcGFuPgkJCQ0KCQkJCQk8c3BhbiBzdHlsZT0iZm9udC1zaXplOjlw
+dDtjb2xvcjojMTAxMDEwIj5TYW4gQW50b25pbywgVFggNzgyMTbCoDwvc3Bhbj48L3A+CQkNCiAg
+ICAgICAgICAgIDxwIHN0eWxlPSJtYXJnaW4tYm90dG9tOjBweDtwYWRkaW5nLWJvdHRvbTowcHg7
+cGFkZGluZy10b3A6NXB4O21hcmdpbi10b3A6NXB4Ij4NCiAgICAgICAgICAgICAgICANCiAgICAg
+ICAgICAgICAgICANCiAgICAgICAgICAgICAgICANCiAgICAgICAgICAgICAgICANCiAgICAgICAg
+ICAgICAgICANCiAgICAgICAgICAgICAgICAJCQ0KICAgICAgICAgICAgPC9wPg0KICAgICAgICA8
+cD48L3A+PC90ZD4NCiAgICA8L3RyPg0KICAgIA0KICAgIDx0cj4NCiAgICAgICAgPHRkIGNvbHNw
+YW49IjIiIHN0eWxlPSJwYWRkaW5nLXRvcDoxMHB4Ij4NCiAgICAgICAgICAgIDxwIHN0eWxlPSJm
+b250LXNpemU6N3B0O2xpbmUtaGVpZ2h0OjEuMjtDT0xPUjojOTU5NTk1O0ZPTlQtRkFNSUxZOlZl
+cmRhbmEsc2Fucy1zZXJpZiI+VGhlIGNvbnRlbnQgb2YgdGhpcyBlbWFpbCBpcyBjb25maWRlbnRp
+YWwgYW5kIGludGVuZGVkIGZvciB0aGUgcmVjaXBpZW50IHNwZWNpZmllZCBpbiBtZXNzYWdlIG9u
+bHkuIEl0IGlzIHN0cmljdGx5IGZvcmJpZGRlbiB0byBzaGFyZSBhbnkgcGFydCBvZiB0aGlzIG1l
+c3NhZ2Ugd2l0aCBhbnkgdGhpcmQgcGFydHksIHdpdGhvdXQgYSB3cml0dGVuIGNvbnNlbnQgb2Yg
+dGhlIHNlbmRlci4gSWYgeW91IHJlY2VpdmVkIHRoaXMgbWVzc2FnZSBieSBtaXN0YWtlLCBwbGVh
+c2UgcmVwbHkgdG8gdGhpcyBtZXNzYWdlIGFuZCBmb2xsb3cgd2l0aCBpdHMgZGVsZXRpb24sIHNv
+IHRoYXQgd2UgY2FuIGVuc3VyZSBzdWNoIGEgbWlzdGFrZSBkb2VzIG5vdCBvY2N1ciBpbiB0aGUg
+ZnV0dXJlLjwvcD4NCiAgICAgICAgPC90ZD4NCiAgICA8L3RyPg0KICA8L3Rib2R5Pg0KPC90YWJs
+ZT4NCg0KDQogDQo8L2Rpdj4NCiAgPC9kaXY+PGJyLz4NCg==

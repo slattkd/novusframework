@@ -44,10 +44,6 @@ if (!empty($_POST))
 
     <body>
         <div class="flex justify-center mt-5">
-            <?php echo ($_SERVER['DOCUMENT_ROOT']); ?>
-            <br>
-            <?php echo ($_SERVER['HTTP_HOST']); ?>
-            <br>
         <h1 class="text-2xl font-semibold text-center" style="letter-spacing: -1px;">Answer These Questions To Qualify For This Discount Now</h1>
         </div>
         <div class="step-one container-vsl mx-auto py-8" style="max-width: 455px">

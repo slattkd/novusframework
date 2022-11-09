@@ -1,0 +1,587 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp312866ejz;
+        Wed, 3 Aug 2022 04:17:35 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7li6px/s3dETTZ2NvUOeK2zyK8UEeGiKnRp0Hs0cW2SwWIesdffqi2rszofnxV/E5b3hoh
+X-Received: by 2002:a17:907:7395:b0:730:b636:2c89 with SMTP id er21-20020a170907739500b00730b6362c89mr1518076ejc.547.1659525455303;
+        Wed, 03 Aug 2022 04:17:35 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1659525455; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=brj0Vt1ZSrru4dsK1x/jw5TqJlSzzDzwjKARVZBRIkgIfWOxxxTGGmDN1X8OgDlP3x
+         47u/pLSxxf6e6XSGAj+mZkt6ch4/R0K3mBka1U19Ngg2jDtyDIWMDXAW/iRD0PKjFGIT
+         G2C3Q1eB7MTQdS3L+56+mzShoJxy4UvlB050TXKbT1C91ap+I7pIfa+P6hGmGbfuowta
+         7ruNZkZX3Rlb8/VzOfoRDuh0b2xPl8B2251PNQdbYJvQ6qynqXYedBVbqwf26wjmMYUX
+         z5qSU3WDwgqWg9+6G1jNoaFkpZbL5ZXm69QutT84LCPxyKTUCrNTPNf5KdY/NFu0CXru
+         2sdg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:msip_labels:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=KMgIS8S2C4R9mF5R3DehULcJ6gB151qpUF1mIW+TqMw=;
+        b=OPAOp8mU/rXMQi+V1J63w5w43LtADTJ//Okna0yIiiP+W5t1y+/wfSX9HJFe79F0Yi
+         RExtEhfadyt4YO49e89e0YIDEgW8JPFce+MKEgQ1FOo7DIjFydx5gykxvbKTfJu+frHL
+         2GPcxDnat0GxAhQMYHCq7dJUxRkeyGXaw4JMv2T28wCxCBIei4rcfShr0a0rxiL4KEFZ
+         Uici6EpVzHSzjMTuQYBGePg6LkJF4sIcj5C8zLAnCtWAepPq1ssd+b/al02wJ9tXZZ0H
+         2RQ5Skw/cN6gTBfwI3ngHlUk5wlYpyNnn5Vk96QEHZoRwIGCZmoz0l20+5dZdXniz6qh
+         gbXA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=rkgconsultinginc.com dkim=pass dkdomain=rkgconsultinginc.com dmarc=pass fromdomain=rkgconsultinginc.com);
+       spf=pass (google.com: domain of bob@rkgconsultinginc.com designates 40.107.243.72 as permitted sender) smtp.mailfrom=bob@rkgconsultinginc.com
+Return-Path: <bob@rkgconsultinginc.com>
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (mail-dm6nam12on2072.outbound.protection.outlook.com. [40.107.243.72])
+        by mx.google.com with ESMTPS id he8-20020a1709073d8800b00711d89b831esi8898274ejc.721.2022.08.03.04.17.34
+        for <aubrey@pineapple.co>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 03 Aug 2022 04:17:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bob@rkgconsultinginc.com designates 40.107.243.72 as permitted sender) client-ip=40.107.243.72;
+Authentication-Results: mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=rkgconsultinginc.com dkim=pass dkdomain=rkgconsultinginc.com dmarc=pass fromdomain=rkgconsultinginc.com);
+       spf=pass (google.com: domain of bob@rkgconsultinginc.com designates 40.107.243.72 as permitted sender) smtp.mailfrom=bob@rkgconsultinginc.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CmwlkM7c0HzcZNj6J5/YwWeIFLuX183L2YqYeMO2TGVMqtyv3n1Dzd5yeu/MDfW7J6hDSWFeG37V2fiwt9Dz8UItXXk5DzPCZctDE9+qB4SO3nRdDbQt/ilguMSSK48G3u72MC2nYKGc9ceQBtm+VbyY6TyUElPj05wg0nOqyV9xv4CQbivDOfnxv2K3jeeDjOz51KoWNGALxcpyK2j840D75sE/NVNWGUm++QBrpuSpW/UY7J4pHqB/gRGNe23gYTZNxDoweW2hP8YvrTNDbPOwKwdiIrV6/W7Nu9SYOjXfhRKSWXMZr1PRRMhSUVtESBPLoB/URgfEIzlkS1RqLA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KMgIS8S2C4R9mF5R3DehULcJ6gB151qpUF1mIW+TqMw=;
+ b=oCb9uO6HLaSrLt1xsEiOqaWR5ayUNuK8Dnhnf0fsXTw91UOK/uD0NuCK86mpSLnfBlqrdpFlXbpNfEhCTH/T/omQEzi2Vw/D614R8fPEF6hv79Wmj07QkdbROv0W6ohn6gARTVH396vxgGJdr1+t9dkDeBuK1CHl1I4Y/Y9gtE/GgLKz/caBE+QcG9JRzVi9DcwmVdnTxmr9XJi3aVj3wYq3Y45ynkd7A16gefXH0eLMVFSx/dTUVRBMauBLpgN8a5gxbYIljnSAOKC5wOP4YwkWnYVYhZgPjaGbIpXUnGUWiBxVElTF86PWSxNxSTCyxiJnP6DIShhE31do8IpzBQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=rkgconsultinginc.com; dmarc=pass action=none
+ header.from=rkgconsultinginc.com; dkim=pass header.d=rkgconsultinginc.com;
+ arc=none
+Received: from DM5PR12MB2359.namprd12.prod.outlook.com (2603:10b6:4:b4::12) by
+ DM4PR12MB5277.namprd12.prod.outlook.com (2603:10b6:5:390::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5504.14; Wed, 3 Aug 2022 11:17:32 +0000
+Received: from DM5PR12MB2359.namprd12.prod.outlook.com
+ ([fe80::71b9:caf:5f37:898f]) by DM5PR12MB2359.namprd12.prod.outlook.com
+ ([fe80::71b9:caf:5f37:898f%5]) with mapi id 15.20.5482.016; Wed, 3 Aug 2022
+ 11:17:32 +0000
+From: bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+To: Aubrey Allen <aubrey@pineapple.co>
+Subject: Re: Enrich Contract Question
+Thread-Topic: Enrich Contract Question
+Thread-Index: AQHYpq3ggqIrrjokF0KhCVLFlG1m2a2dBKAj
+Date: Wed, 3 Aug 2022 11:17:32 +0000
+Message-ID:
+ <DM5PR12MB23598799C0AE1F821DEFFD17DC9C9@DM5PR12MB2359.namprd12.prod.outlook.com>
+References:
+ <CAHbmDP-0NQX03PYT2jp92phzP1t0uPXNn8uw7v5_txBMPKgJTg@mail.gmail.com>
+In-Reply-To:
+ <CAHbmDP-0NQX03PYT2jp92phzP1t0uPXNn8uw7v5_txBMPKgJTg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+msip_labels:
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=rkgconsultinginc.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 944d36da-1f97-47c1-060c-08da7541c2a9
+x-ms-traffictypediagnostic: DM4PR12MB5277:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ +6vrc9KuQE/RcfMypySW+KsOKGQaA90lRyzk8wlgaYrS5j4RDJku02OueIHMMXG6r+hHW33CIHlxV992yk8T1R3RD3/a2gaEEaOygMkgws2TvAHRhBLaAE3npzl2GjZq9o3ls/DLIH3aWBeU9VcDUARIfkQZyp2QqweI20FoEcd39xPA8gQ4VhfEmZGIhRQQ0GbCOEgVq39xt2eo5bI0ecPzbO4gnLUSlcCLtsS7EzspO/Gl83CE8WoJWPqLXqKCa4uOk3Q49oApDSgWdRAL0jBkHXVq6ARCWPEQljg4+9h0IovY56YGML4xHk7DHsxqdaD44OL0nyFUb7yZoUHbuZ2LuhCL0c5H9KgtaG4bo8k5E1+rt+i6OA+q2pBKGgRdGBgkP4VDorE85/Yal9ye9KDl5KnkDMhoS2dAKMEPZyBC99YiYQ3wyjawTnPNX41BN7JTaQ5teT7XJx7K/VfuhUn/63zHwmzp53bO+K+T2fokMOMk6oUAIxhsWwsNl44HQfOlg/Pkpf/gt/hT/SNItr5IGUptV8SbaSEtT/nRpBttHtIG1sMehK4TRxJo0nIK1T/1yfZxuB+RBcXTBmf4xGdy6ZOvN/xvtUQLGw4UoRyB9jS/ZhX5ADxDQIXO2x+aAmX6UW89DWgpaBQZ0DNoAYb64T+sWDRT8wuJlxU38EDSNoBeylQwPOwU4jdWKyUIdKv6VuBT3xikbhqLyLrRZKZTRMS+KjvDwYGOdVuR+1xzFg6fpwGfOl9/+6u4dcmRSz9KIzFLFllgLXUR9s6J6PDC8EwL7FeWYfsAYnZuUMnaMUU4Xci+xTWKcayd4fRcXki/YDwPfc2abnFBxQfGgS334xq+eNplWzLiLiLxvRxFfMh1NPQ+1nA7OUD9MQAN
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM5PR12MB2359.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(39830400003)(396003)(366004)(376002)(136003)(346002)(33656002)(186003)(41300700001)(2906002)(40140700001)(53546011)(9686003)(6506007)(7696005)(86362001)(122000001)(38100700002)(38070700005)(166002)(55016003)(3480700007)(83380400001)(478600001)(5660300002)(316002)(6916009)(19627405001)(7066003)(66556008)(76116006)(52536014)(66946007)(45080400002)(7116003)(66476007)(91956017)(8676002)(71200400001)(64756008)(8936002)(66446008);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?Windows-1252?Q?8LNy+hYCDcVNIn601NxNBgW0ZgxqHsaN5MuiFC8PzIcLRxOFXvJY4jCF?=
+ =?Windows-1252?Q?GQMBY8VNjDcW9QWOnJWmokD9/u0dh22OJWVkQC/cpgXFHOCqK3LyKZhC?=
+ =?Windows-1252?Q?TKZItQhjSuYr545rRb5vul0iXsQYcQJn4WHL1MiQjFogepfGoWEw/cNq?=
+ =?Windows-1252?Q?O3OaS+Nwzlhsqqh3XhJotXEem4CDGG6RwjWtgQqpspNT0oatetp1IcoV?=
+ =?Windows-1252?Q?kiLYUkBLsqzAZ4GijiN4nXbQb2Nn36WcEiYTHyBKkn+QofDSxk0zpD24?=
+ =?Windows-1252?Q?DwRfJ5s5xEUvgfnJ4ZZ14OOemrwiANTkCrMWmrHe1xdyShgORA5OL8Y6?=
+ =?Windows-1252?Q?XUSS/I5tUR73TIgDiSxLVlI9kwOv8+EBIbXxE5maPtT1hIc74JdTNjje?=
+ =?Windows-1252?Q?W1B0cHN6OhVUsXpHUbYEuzEouFpvoa7WbSgAEj9ChK7I+PC+NFTmqc5P?=
+ =?Windows-1252?Q?+R6BwB3A6Fkex5K7FV4MuXXWGJBCmFnaSr2jeUVpkF36SZ1Fo+yEleCE?=
+ =?Windows-1252?Q?erneXWkHVKt23VTPB3SWQAnv19eee2HyMCUPBe7489mM3Sukmdz/C3Sr?=
+ =?Windows-1252?Q?w6Va+fvQt0zbAJTNx7VaqQhHzA8ljrEMVDj5TmCE6Xwlc8rz826cwLCP?=
+ =?Windows-1252?Q?hadewgDxqljYcgXn/m8qiBDe54QmrKhEqZSlCz3OIn/4tlSmq3yNR3t1?=
+ =?Windows-1252?Q?lADJ9Ur0Cmddp+P+qQSxAX8WrvUgxWohExBxp6Hxq6jFdsTE7p8t33kK?=
+ =?Windows-1252?Q?wJ//Hk2DtMCcnYfV1GPqxuEdJCIHdZzyT6X1ldZVhzmNqswQpSv5J0s7?=
+ =?Windows-1252?Q?SF64Q5fhasaVgkpqB6dCivPA+6q1Fsfqd+uWnVC3IJJZzy8cmo/1b0BY?=
+ =?Windows-1252?Q?CwS4hhJez3ha05kOS79wzPC/hmxxnVdZCnzjSAAVJ0JxoZA0L97m/EaW?=
+ =?Windows-1252?Q?dHZDdoToaG+USMv7+bblHh1GnPoa+IyxW/abnldcRRxQ6q530PQp8xf1?=
+ =?Windows-1252?Q?axBsq67FVFwSs9h93dszXgjiF6fCyUSmPXJZKQx+u9l3r9L9WH24dwqy?=
+ =?Windows-1252?Q?g7l6rT8R9s4dEd3K/m+dF/VrO34dZmmn1G38uq5XCbRfvhSRiAlneYkI?=
+ =?Windows-1252?Q?zf/rPROSWivillT8qnN4Anc04GX4uxbb2DYqlAUqqng9Zv7uUg3FFX++?=
+ =?Windows-1252?Q?8XnvcWBHLQPq2XL3L9lHfuCr5k8xZFIr02qdIIwVIS9fnohpUAn4PSzf?=
+ =?Windows-1252?Q?UsauxGeur2M24ibSMnmiDcPwxxAOoISjvZiB1btVGkiCb3NfceSx71SM?=
+ =?Windows-1252?Q?JzqCsKTzX4JStA80xWDFvg4VkZZFfGXEVPrBGh7N61w/OM57DLBkxI/g?=
+ =?Windows-1252?Q?2qmPLYqJRYJdKX6H3JCdM2nfSiP1A+BTTpZ7xkdpYbGZCLUV1yS48Fkb?=
+ =?Windows-1252?Q?wwgmw1AduHCkfYzni9b0UL+kJ5XczB8u0FJm1PT8vekJunci6lgXfReD?=
+ =?Windows-1252?Q?JdMEHQ5ULvpfIMfFF2zKgDVPi/9bgp86a2lyU9ApavioVEZ89Z788lC+?=
+ =?Windows-1252?Q?4FKC6WMhn3v/UQdFJgx7SiqQqL7P3bUoJ6N6L9asQzYnmzJz+L2JFfz+?=
+ =?Windows-1252?Q?KEOZX3oBHZjZgpFYecEZyN3/NLEc4KB3RULdUe8MSA0KPa7qJVXg83v0?=
+ =?Windows-1252?Q?vstFmhNDyWWpsPXAw1BR4zb09ozwRx+AWuuNH+y0qEyU72XSxsWQPQoZ?=
+ =?Windows-1252?Q?IZLjhSzuKmsmtixWlbosMKW9a4VNNVIV9dacwzDo?=
+Content-Type: multipart/alternative;
+	boundary="_000_DM5PR12MB23598799C0AE1F821DEFFD17DC9C9DM5PR12MB2359namp_"
+MIME-Version: 1.0
+X-OriginatorOrg: rkgconsultinginc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM5PR12MB2359.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 944d36da-1f97-47c1-060c-08da7541c2a9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Aug 2022 11:17:32.4902
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 828f9fc8-73cf-44ab-a482-927409ae5ec3
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: dDcG4tsi34oipp6qtC86pxfTLejJbNWezV+cYqzr01E59UxOo9WlUKqFcH2Fo2KVTd1+xJ4mNXUXbsFl4IXGA45ywff+bnLgcs2VDQIInY8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5277
+
+--_000_DM5PR12MB23598799C0AE1F821DEFFD17DC9C9DM5PR12MB2359namp_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+Aubrey,
+
+Happy to help.
+
+Your question: Does Fran's contract stipulate that he should be paid for Up=
+sells of Pineapple Products that occur when customers purchase his products=
+, or should he only be paid for Enrich brand products?
+
+Answer: Most definitely, yes, Fran should be paid for Upsells of Pineapple =
+Products that occur when customers purchase his products.
+
+For historical context, that arrangement was the core of the deal he and Br=
+ett reached and a central concept when they partnered up together for the s=
+ale of these products. Brett's recollection is correct that Fran's payments=
+ should include payment of Upsells of Pineapple Products that occur when cu=
+stomers purchase Fran's products.
+
+For reference, here is copy and paste of language from the agreement.
+
+
+1.              Definitions.
+
+     =93Additional Products=94 means all products (including all subscripti=
+ons for products, and renewals thereof), other than Products, purchased by =
+a customer in the same order for a Product.
+
+
+=93Gross Profit=94 means the sum of: (i) all revenue received by Gotham fro=
+m its distribution and sale of the Products, Inventory and Additional Produ=
+cts;
+
+
+1.1                          Gotham shall provide SMC with such level of ac=
+count access to Gotham=92s and its agents CRM and email marketing platform =
+necessary to review and confirm the sales of Products and Additional Produc=
+ts and that the fees due hereunder are accurate.
+
+
+
+Gotham shall pay SMC the Revenue Share Fee during the Term, and for such pe=
+riod of time following termination of this Agreement that Gotham continues =
+to generate and receive revenue from subscriptions and renewals thereof for=
+ Products and Additional Products.
+
+Hope this helps and gets you on the right road, but if any other questions =
+or clarification needed, feel free to let me know.
+
+Thanks,
+Bob
+
+
+Robert S. Greisman
+RKG consulting group, inc.
+BUSINESS GROWTH ADVISORS
+business growth | fractional CFO | M & A advisory
+
+Phone: 847-902-0258 Website<http://www.rkgconsultinginc.com/> | LinkedIn<ht=
+tps://www.linkedin.com/in/bobgreisman/>
+
+IMPORTANT: The contents of this email and any attachments are confidential.=
+ They are intended for the named recipient(s) only. If you have received th=
+is email by mistake, please notify the sender immediately and do not disclo=
+se the contents to anyone or make copies thereof.
+
+________________________________
+From: Aubrey Allen <aubrey@pineapple.co>
+Sent: Tuesday, August 2, 2022 3:24 PM
+To: bob rkgconsultinginc.com <bob@rkgconsultinginc.com>
+Subject: Enrich Contract Question
+
+Hi Bob,
+
+I hope this email finds you well.  I'm reaching out to see if you could hel=
+p me resolve an issue that's arisen regarding the specifics of Fran's contr=
+act.
+
+Does Fran's contract stipulate that he should be paid for Upsells of Pineap=
+ple Products that occur when customers purchase his products, or should he =
+only be paid for Enrich brand products?
+
+Based on what I've been told previously, I was under the impression that Fr=
+an should receive a share of the profit for all Enrich Products and nothing=
+ beyond that, but Brett informed me yesterday that may not be the case.  I =
+am not familiar with the contract itself but he said you should be able to =
+confirm.
+
+Obviously this is critical in determining whether I'm properly accounting f=
+or Enrich revenue, and in turn, the payout to Fran.  The corrected Gross Re=
+venue numbers that I recently sent over are assuming that Fran is being pai=
+d for the sale of Enrich products only.  I've attached a list of Enrich pro=
+ducts (to my understanding) for your reference.
+
+Thank you in advance,
+Aubrey
+
+Aubrey Allen
+Data Analytics Technician | pineapple.co<http://pineapple.co>
+
+[Photo]
+
+E: aubrey@pineapple.co<mailto:aubrey@pineapple.co>
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+
+The content of this email is confidential and intended for the recipient sp=
+ecified in message only. It is strictly forbidden to share any part of this=
+ message with any third party, without a written consent of the sender. If =
+you received this message by mistake, please reply to this message and foll=
+ow with its deletion, so that we can ensure such a mistake does not occur i=
+n the future.
+
+--_000_DM5PR12MB23598799C0AE1F821DEFFD17DC9C9DM5PR12MB2359namp_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Aubrey,</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Happy to help.&nbsp;</div>
+<div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Your question:&nbsp;<b style=3D"font-family:&quot;Segoe UI&quot;, &quot;Seg=
+oe UI Web (West European)&quot;, &quot;Segoe UI&quot;, -apple-system, Blink=
+MacSystemFont, Roboto, &quot;Helvetica Neue&quot;, sans-serif;font-size:14p=
+x;background-color:rgb(255, 255, 255)">Does Fran's contract stipulate that =
+he should
+ be paid for Upsells of Pineapple Products that occur when customers purcha=
+se his products, or should he only be paid for Enrich brand products?</b></=
+div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<b style=3D"font-family:&quot;Segoe UI&quot;, &quot;Segoe UI Web (West Euro=
+pean)&quot;, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Robot=
+o, &quot;Helvetica Neue&quot;, sans-serif;font-size:14px;background-color:r=
+gb(255, 255, 255)"><br>
+</b></div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Answer: Most definitely, yes, Fran should be paid for Upsells of Pineapple =
+Products that occur when customers purchase his products.&nbsp;</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+For historical context, that arrangement was the core of the deal he and Br=
+ett reached and a central concept when they partnered up together for the s=
+ale of these products. Brett's recollection is correct that Fran's payments=
+ should include payment of Upsells
+ of Pineapple Products that occur when customers purchase Fran's products.&=
+nbsp;</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+For reference, here is copy and paste of language from the agreement.&nbsp;=
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<p class=3D"x_gmail-MsoListParagraph" align=3D"left" style=3D"color:rgb(32,=
+ 31, 30);background-color:rgb(255, 255, 255);margin:0in 0in 0in 77.05pt;fon=
+t-size:11pt;font-family:&quot;Times New Roman&quot;, serif">
+<span style=3D"margin:0px;letter-spacing:-0.1pt">1.<span style=3D"font-size=
+:7pt;font-family:&quot;Times New Roman&quot;;margin:0px">&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;</s=
+pan></span></span><u>Definitions</u>.</p>
+<p class=3D"x_gmail-MsoBodyText" style=3D"color:rgb(32, 31, 30);background-=
+color:rgb(255, 255, 255);margin:0.45pt 0in 0in;font-size:11pt;font-family:&=
+quot;Times New Roman&quot;, serif">
+<span style=3D"margin:0px;text-align:justify;text-indent:1in;letter-spacing=
+:-1.25pt"><span style=3D"font-size:7pt;font-family:&quot;Times New Roman&qu=
+ot;;margin:0px">&nbsp; &nbsp; &nbsp;</span></span><span style=3D"margin:0px=
+;text-align:justify;text-indent:1in">=93</span><b style=3D"text-align:justi=
+fy;text-indent:1in">Additional
+ Products</b><span style=3D"margin:0px;text-align:justify;text-indent:1in">=
+=94 means all products (including all subscriptions for products, and renew=
+als thereof), other than Products, purchased by a customer in the same orde=
+r for a Product.<br>
+<br>
+</span></p>
+<p class=3D"x_gmail-MsoBodyText" style=3D"color:rgb(32, 31, 30);background-=
+color:rgb(255, 255, 255);margin:0.45pt 0in 0in;font-size:11pt;font-family:&=
+quot;Times New Roman&quot;, serif">
+<span style=3D"margin:0px">=93<b>Gross Profit</b>=94 means the sum of: (i) =
+all revenue received by Gotham from its distribution and sale of the Produc=
+ts, Inventory and<span>&nbsp;</span><b>Additional Products</b>;</span></p>
+<p class=3D"x_gmail-MsoBodyText" style=3D"color:rgb(32, 31, 30);background-=
+color:rgb(255, 255, 255);margin:0.45pt 0in 0in;font-size:11pt;font-family:&=
+quot;Times New Roman&quot;, serif">
+<span style=3D"margin:0px"><br>
+</span></p>
+<p class=3D"x_gmail-MsoListParagraph" style=3D"color:rgb(32, 31, 30);backgr=
+ound-color:rgb(255, 255, 255);margin:4.55pt 5.4pt 0.0001pt 5pt;line-height:=
+14.6667px;text-align:justify;text-indent:1in;font-size:11pt;font-family:&qu=
+ot;Times New Roman&quot;, serif">
+<span style=3D"margin:0px;letter-spacing:-1.25pt">1.1<span style=3D"font-si=
+ze:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;;margin:0p=
+x">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;<span>&nbsp;</span></span></span>Gotham shall provide SMC with such leve=
+l of account access to Gotham=92s
+ and its agents CRM and email marketing platform necessary to review and co=
+nfirm the sales<span>&nbsp;</span><span style=3D"margin:0px;letter-spacing:=
+-0.15pt">of<span>&nbsp;</span></span>Products and Additional Products and t=
+hat the fees due hereunder are<span style=3D"margin:0px;letter-spacing:-0.2=
+5pt"><span>&nbsp;</span></span>accurate.<br>
+<br>
+<br>
+</p>
+<p class=3D"x_gmail-MsoListParagraph" style=3D"color:rgb(32, 31, 30);backgr=
+ound-color:rgb(255, 255, 255);margin:4.55pt 5.4pt 0.0001pt 5pt;line-height:=
+14.6667px;text-align:justify;text-indent:1in;font-size:11pt;font-family:&qu=
+ot;Times New Roman&quot;, serif">
+<span style=3D"margin:0px">Gotham shall pay SMC the Revenue Share Fee durin=
+g the Term, and for such period of time following termination of this Agree=
+ment that Gotham continues to generate and receive revenue from subscriptio=
+ns and renewals thereof for Products
+ and Additional<span style=3D"margin:0px;letter-spacing:-0.15pt"><span>&nbs=
+p;</span></span>Products.<br>
+</span></p>
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Hope this helps and gets you on the right road, but if any other questions =
+or clarification needed, feel free to let me know.&nbsp;</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Thanks,</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Bob</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Georgia, serif; font-size: 12pt; color: rgb(0, 0=
+, 0);" class=3D"elementToProof">
+Robert S. Greisman<br>
+</div>
+<div id=3D"Signature">
+<div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;background-color:black"><span style=3D"margin:0px=
+;color:navy"><strong><span style=3D"margin:0px;background-color:white"><spa=
+n style=3D"margin:0px;color:black">RKG<span>&nbsp;</span></span><span style=
+=3D"margin:0px;font-size:8pt"><span style=3D"margin:0px;color:blue">consult=
+ing
+ group, inc.</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;background-color:rgb(153, 51, 0)"><span style=3D"=
+margin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:w=
+hite"><span style=3D"margin:0px;color:black">BUSINESS GROWTH ADVISORS&nbsp;=
+</span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;background-color:rgb(153, 51, 0)"><span style=3D"=
+margin:0px;color:navy"><strong><span style=3D"margin:0px;background-color:w=
+hite"><span style=3D"margin:0px;font-size:10pt"><span style=3D"margin:0px;c=
+olor:black"><span style=3D"margin:0px;font-size:8pt"><span style=3D"margin:=
+0px;color:navy">business
+ growth | fractional CFO | M &amp; A advisory</span></span><br>
+</span></span></span></strong></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;font-family:&quot;courier new&quot;, courier"><sp=
+an style=3D"margin:0px;font-family:&quot;arial black&quot;, &quot;avant gar=
+de&quot;"><span style=3D"margin:0px;font-family:&quot;courier new&quot;, co=
+urier"><span style=3D"margin:0px;font-family:verdana, geneva"><br>
+</span></span></span></span></div>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+<span style=3D"margin:0px;color:black"><span style=3D"margin:0px;font-size:=
+8pt">Phone: 847-902-0258<span>&nbsp;</span><strong><a href=3D"http://www.rk=
+gconsultinginc.com/" target=3D"_blank" rel=3D"noopener noreferrer" data-aut=
+h=3D"NotApplicable" title=3D"Website" data-linkindex=3D"0" style=3D"margin:=
+0px">Website</a></strong><span>&nbsp;</span>|<strong><a href=3D"https://www=
+.linkedin.com/in/bobgreisman/" target=3D"_blank" rel=3D"noopener noreferrer=
+" data-auth=3D"NotApplicable" title=3D"LinkedIn" data-linkindex=3D"1" style=
+=3D"margin:0px"><span>&nbsp;</span>LinkedIn</a></strong></span></span></div=
+>
+<div style=3D"margin:0px;font-family:Georgia;text-align:start;background-co=
+lor:rgb(255, 255, 255)">
+&nbsp;</div>
+<span style=3D"margin:0px;font-family:Georgia;text-align:start;background-c=
+olor:rgb(255, 255, 255)"><span style=3D"margin:0px;font-family:&quot;courie=
+r new&quot;, courier"><span style=3D"margin:0px;font-size:8pt">IMPORTANT: T=
+he contents of this email and any attachments are
+ confidential. They are intended for the named recipient(s) only. If you ha=
+ve received this email by mistake, please notify the sender immediately and=
+ do not disclose the contents to anyone or make copies thereof.</span></spa=
+n></span></div>
+</div>
+</div>
+<div id=3D"signature_bookmark"></div>
+<div id=3D"appendonsend"></div>
+<div style=3D"font-family:Georgia,serif; font-size:12pt; color:rgb(0,0,0)">=
+<br>
+</div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" co=
+lor=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Aubrey Allen &lt;aubr=
+ey@pineapple.co&gt;<br>
+<b>Sent:</b> Tuesday, August 2, 2022 3:24 PM<br>
+<b>To:</b> bob rkgconsultinginc.com &lt;bob@rkgconsultinginc.com&gt;<br>
+<b>Subject:</b> Enrich Contract Question</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div dir=3D"ltr">Hi Bob,
+<div><br>
+</div>
+<div>I hope this email finds you well.&nbsp; I'm reaching out to see if you=
+ could help me resolve an issue that's arisen regarding the specifics of Fr=
+an's contract.</div>
+<div><br>
+</div>
+<div class=3D"elementToProof"><b>Does Fran's contract stipulate that he sho=
+uld be paid for Upsells of Pineapple Products that occur when customers pur=
+chase his products, or should he only be paid for Enrich brand products?</b=
+></div>
+<div><b><br>
+</b></div>
+<div>Based on what I've been told previously, I was under the impression th=
+at Fran should receive a share of the profit for all Enrich Products and no=
+thing beyond that, but Brett informed me yesterday that may not be the case=
+.&nbsp; I am not familiar with the contract
+ itself but he said you should be able to confirm.</div>
+<div><br>
+</div>
+<div>Obviously this is critical in determining&nbsp;whether I'm properly ac=
+counting for Enrich revenue, and in turn, the payout to Fran.&nbsp; The cor=
+rected Gross Revenue numbers that I recently sent over are assuming that Fr=
+an is being paid for the sale of Enrich products
+ only.&nbsp; I've attached a list of Enrich products (to my understanding) =
+for your reference.</div>
+<div><br>
+</div>
+<div>Thank you in advance,</div>
+<div>Aubrey</div>
+<div><br>
+<div dir=3D"ltr" class=3D"x_gmail_signature">
+<div>
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"font-famil=
+y:Verdana,sans-serif; color:#05385f; max-width:500px">
+<tbody>
+<tr>
+<td colspan=3D"2" width=3D"500" style=3D"padding-bottom:4px; border-bottom:=
+1px solid #05385f">
+<span style=3D"font-size:18pt; color:#0270c4; font-family:Verdana,sans-seri=
+f"><strong>Aubrey Allen</strong></span>
+<span><br>
+</span><span style=3D"font-size:10pt; color:#05385f">Data Analytics Technic=
+ian<span> |
+</span></span><span><a href=3D"http://pineapple.co" data-auth=3D"NotApplica=
+ble" style=3D"font-size:10pt; color:#0270c4!important; text-decoration:none=
+; font-weight:bold">pineapple.co</a>
+</span></td>
+</tr>
+<tr>
+<td width=3D"120" style=3D"padding-top:12px">
+<p style=3D"padding:0px; margin:0px"><img alt=3D"Photo" width=3D"90" border=
+=3D"0" style=3D"max-width:90px; height:auto; border:0" src=3D"https://ci3.g=
+oogleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG=
+5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+</p>
+</td>
+<td style=3D"padding-top:15px">
+<p style=3D"line-height:12px; padding-bottom:2px; margin-bottom:0px; paddin=
+g-top:0px; margin-top:0px">
+<span style=3D"font-size:9pt; color:#05385f; font-weight:bold"></span><span=
+ style=3D"font-size:9pt; color:#101010"></span></p>
+<p style=3D"line-height:12px; padding-bottom:2px; margin-bottom:0px; paddin=
+g-top:0px; margin-top:0px">
+<span style=3D"font-size:9pt; color:#05385f; font-weight:bold">E:</span> <a=
+ href=3D"mailto:aubrey@pineapple.co" data-auth=3D"NotApplicable" style=3D"t=
+ext-decoration:none; font-size:9pt; color:#101010">
+aubrey@pineapple.co</a></p>
+<p style=3D"line-height:12px; padding-bottom:2px; margin-bottom:0px; paddin=
+g-top:0px; margin-top:0px">
+<span style=3D"font-size:9pt; color:#05385f; font-weight:bold">A:</span> <s=
+pan style=3D"font-size:9pt; color:#101010">
+13423 Blanco Rd PMB 8024</span><span style=3D"font-size:9pt; color:#101010"=
+>, </span>
+<span style=3D"font-size:9pt; color:#101010">San Antonio, TX 78216</span> <=
+/p>
+<p style=3D"margin-bottom:0px; padding-bottom:0px; padding-top:5px; margin-=
+top:5px">
+</p>
+</td>
+</tr>
+<tr>
+<td colspan=3D"2" style=3D"padding-top:10px">
+<p style=3D"font-size:7pt; line-height:1.2; color:#959595; font-family:Verd=
+ana,sans-serif">
+The content of this email is confidential and intended for the recipient sp=
+ecified in message only. It is strictly forbidden to share any part of this=
+ message with any third party, without a written consent of the sender. If =
+you received this message by mistake,
+ please reply to this message and follow with its deletion, so that we can =
+ensure such a mistake does not occur in the future.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_DM5PR12MB23598799C0AE1F821DEFFD17DC9C9DM5PR12MB2359namp_--

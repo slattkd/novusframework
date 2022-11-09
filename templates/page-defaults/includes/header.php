@@ -2,12 +2,12 @@
     echo $debugbarRenderer->renderHead();
 }?>
 
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="//<?php echo $_SERVER['HTTP_HOST']?>/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="180x180" href="//<?php echo $_SERVER['HTTP_HOST']?>/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//<?php echo $_SERVER['HTTP_HOST']?>/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="//<?php echo $_SERVER['HTTP_HOST']?>/favicon-16x16.png">
+<link rel="manifest" href="//<?php echo $_SERVER['HTTP_HOST']?>/site.webmanifest">
+<link rel="mask-icon" href="//<?php echo $_SERVER['HTTP_HOST']?>/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#cccccc">
 <meta name="theme-color" content="#ffffff">
 
@@ -39,13 +39,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Javascript -->
 <script src="//unpkg.com/alpinejs" defer></script>
-<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.js"></script>
-<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery-ui.min.js"></script>
+<!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.js"></script>-->
+<!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery-ui.min.js"></script>-->
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/fadeInOut-gm601.js"></script>-->
 <script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/pristine.min.js"></script>
-<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/buy-safe.js"></script>
+<!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/buy-safe.js"></script>-->
 <script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/basic-modal.js"></script>
-<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.fancybox.pack.js"></script>
+<!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.fancybox.pack.js"></script>-->
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/stop-pop.js"></script>-->
 
 <!-- CSS -->
@@ -56,10 +56,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Cardo:400,400italic,700' rel='stylesheet' type='text/css' />
 
-<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/buy-safe.css" rel="stylesheet">
+<!--<link rel="stylesheet" href="/css/jquery.fancybox.css">-->
+
+<!--<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/buy-safe.css" rel="stylesheet"> -->
 <link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/main.css" rel="stylesheet">
+<link href="//<?php echo $_SERVER['HTTP_HOST']?>/css/upsell.css" rel="stylesheet" >
 
 <!-- PIXELS -->
 <?php

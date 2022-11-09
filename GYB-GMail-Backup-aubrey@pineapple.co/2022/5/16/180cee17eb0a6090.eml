@@ -1,0 +1,110 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:7389:0:0:0:0 with SMTP id f9csp2291355ejl;
+        Mon, 16 May 2022 14:58:46 -0700 (PDT)
+X-Received: by 2002:a17:90a:a393:b0:1d0:e448:811d with SMTP id x19-20020a17090aa39300b001d0e448811dmr33145827pjp.97.1652738326423;
+        Mon, 16 May 2022 14:58:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1652738326; cv=none;
+        d=google.com; s=arc-20160816;
+        b=V+WyCH+D6P+tpHkw3ZGIwXf0rTnPO+BWh41maP+1aSZc6EGQm4oLPzIYvO0BlS4D/6
+         D2XgvlefDbBOQTxV3rTGYvOOpqnJCjLGL2oiUJG3DZTdyXuzR4AvwsCqWFXTeMsOodBp
+         nXzYgQojnJDzAWS2tsKrLG2ggClVSj2WXLcF7vvlZtiY6+D6rDWinR47MHqL5KrDT7P/
+         XtaYoz2g3I+f+tSxpkHRbqjOrb73nHOsDjdQ/hz1IW6pWC+n1tip3E/D5r2GMlYSdKTt
+         LUrQjnuYlb7kVPg1e7XRs3etaYStzvxo8zYp0U9ZLqPJ48C6OhfPtT5t9TajqwZ+Firp
+         atkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=BUgeNj9Z9lQRFR9LItR0a4CvajLf7PZayXOWdlUw224=;
+        b=baUFcDABGAVRZc8SQhYvX/zd40d5ovp1KLJp9svnxVxDlUTZareYZr/ZLAyAsRZwlp
+         MZZAkDydWjiHbb6+UwbJaEE7roCZJPUYx3pO/RoLnzXYHrUlehSfziXEk5H7/DZRUbow
+         +9KBsyi9Oc2H0WsxPBWzbifWOMVW8QZT+qtmWxuhucz2urrKz/+/ZnWLGe3ZILdezeO+
+         xVfhxJ4Za+sbqwojc9iD+JNF8t4RNUoHRdckFxhJWRZJxJkNz7EdDVta8Z9N1x+ipo/V
+         5JDkTjqTxynbrr0Wod4NciAegezJiPbcGCC7pqwGxCor3rVDyE7JojFbcv0j2awJPbti
+         Ui4Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=5rlrzcxB;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.65 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b9-20020a17090a100900b001d94c4162easor178472pja.16.2022.05.16.14.58.46
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 16 May 2022 14:58:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=5rlrzcxB;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.65 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=BUgeNj9Z9lQRFR9LItR0a4CvajLf7PZayXOWdlUw224=;
+        b=5rlrzcxBGsM2wymquAp0VK/CMFWN3BLvMoqbAhd5RKdL5R5GeNDalqQ4pfki1FCjML
+         YdrGpUMPDtGBZClkYa3gVgnfRfAO+6sjNKebcXjTtbWcZwR81F75FRqlDZ4OhWA9063i
+         rzpNPXY8/YcfVKqsXeG5l+fpXdsNuCI6hY7D0nnTn/HkM9tOAlvBeKNYTb3B6rG117J0
+         QOS0mzIJ85fQECvEF9pu6LlDfgomdo3ViIq1FURxjEH/I5w47E8d4VWu4V7wIm9vv92+
+         h/uKoN2EZE36T+GRFjAHqIFe3RgWi9NSnlTxQYMF5B/Tfrs0NzaZCYkp35RyyUPfYYQi
+         79jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=BUgeNj9Z9lQRFR9LItR0a4CvajLf7PZayXOWdlUw224=;
+        b=oQ807GV+rHjkE42kUtq5v/8KocyE7uLZNeCFTtlxpBmI1IXIVYJJUTF+fekXEUSjG1
+         v/8q+15NQLCY/lDNy+FA6FL/PqzFHkY3ssXN1DAXn0b84ctPRG9C8/ptsvLVBB0A2uVx
+         dcTI3ehn/KQitfQHobhRtgbp+Tw/UlDZn3FMZ6/m0VNIP+gKgEHqhayypUqYs2c0hRVr
+         LjbSqbJ4MGIOG8dUhbNHitNNYSp05JnQgQdLT94gkPVF6AvDHlUMj8OmdlAylNNJQfe4
+         77wHGRL9Ozp9TsfbRQ/VzQ7nw+wvrCTBtZtB9ikUVjYmvn22G/nZuaMIb4Aywckyds+I
+         uhYw==
+X-Gm-Message-State: AOAM531gg+limGbNo7uQOM+ZUhBqXCgGiF7iNp3AIF92pQqEqPRhNztO
+	zaYi/XyZHgq2ueRze5xLJMiQj4xfKJ8lD+kre/G87fVmk4LniaQB8t2uNQ==
+X-Google-Smtp-Source: ABdhPJyo0emmZXmSt/0pXptIQbSqaHbLhqL3q8lhLCmnETm8AO207eM/maaPiEWEwicYR9FYAuTZmm5c+y7tMU5WIzE=
+X-Received: by 2002:a17:90b:3b4b:b0:1dc:5ee5:19ce with SMTP id
+ ot11-20020a17090b3b4b00b001dc5ee519cemr21317403pjb.234.1652738325748; Mon, 16
+ May 2022 14:58:45 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Mon, 16 May 2022 17:58:34 -0400
+Message-ID: <CALCR5_S-Er81RyPUPJ0X_Z8w89nzJmZzsqKeaepBq6Lk+_fOkw@mail.gmail.com>
+Subject: Another ecomm page worth immitating
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: DJ Gelner <dj@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000d03a1005df2820a5"
+
+--000000000000d03a1005df2820a5
+Content-Type: text/plain; charset="UTF-8"
+
+I'd imagine this would do very well too:
+
+https://gethlth.com/getlean/
+
+I like:
+- The strip of news icons
+- Strip of health icons (gluten free etc)
+- Review videos strip
+- Expert recommended strip
+- Special offer mention (10% off for recurring billing)
+
+I don't think we should say the discount is "limited time" but everything
+else is good.
+
+I think if we combine some of this stuff with my other batch of ideas and
+maybe some suggestions from John, Edwin and Jack, we should have another
+big package of changes ready to test soon.
+
+--000000000000d03a1005df2820a5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I&#39;d imagine this would do very well too:<div><br></div=
+><div><a href=3D"https://gethlth.com/getlean/">https://gethlth.com/getlean/=
+</a><br></div><div><br></div><div>I like:</div><div>- The strip of news ico=
+ns</div><div>- Strip of health icons (gluten free etc)</div><div>- Review v=
+ideos strip</div><div>- Expert recommended strip</div><div>- Special offer =
+mention (10% off for recurring billing)</div><div><br></div><div>I don&#39;=
+t think we should say the discount is &quot;limited time&quot; but everythi=
+ng else is good.</div><div><br></div><div>I think if we combine some of thi=
+s stuff with my other batch of ideas and maybe some suggestions from John, =
+Edwin and Jack, we should have another big package of changes ready to test=
+ soon.</div></div>
+
+--000000000000d03a1005df2820a5--

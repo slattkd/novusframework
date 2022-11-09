@@ -1,0 +1,287 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:1613:0:0:0:0 with SMTP id m19csp762772ejd;
+        Mon, 18 Jul 2022 12:03:13 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tK8iBrQQLQyrwtj/7zfnMlz0mKPQoNB2jK3i9eFPd0bfYAdcMzKp7HxQVhaEp5CfNZ1DnM
+X-Received: by 2002:a1f:9b10:0:b0:375:ac1b:c334 with SMTP id d16-20020a1f9b10000000b00375ac1bc334mr1588445vke.24.1658170993566;
+        Mon, 18 Jul 2022 12:03:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658170993; cv=none;
+        d=google.com; s=arc-20160816;
+        b=1JKkTIY0HDmakTFnS8nRzw3/RZYbLKnBLZBsCqagDAI5XcphSosyeewSgvPb+SeGWo
+         +8if+4Dzc1t8GiRIyE4ukaGzMpYUmNaoEtpztoKFFwtjHjLwUTkPcPA+tUwseQWhqXcK
+         xLdrpXZZWB9Z7aU7hLdecbONQwc0Ki5cu4szasMUw6/SQvboVEKq6zSUdewYcxuOuTwP
+         kvyAVM1gs3cEkFdQQK12wwG1QtmaUvbYX19jT56XJ8S2cuSYSLd0Tkp1GE/3/cehVFuX
+         Rdx1LunMCpNjHzwwLo6nWPiEHMFyOMHlPLFaAlMM2ZV8/HMRgmxQbw1UhsMEr5dIpctO
+         qD8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:mime-version:subject:references:in-reply-to:message-id
+         :from:date:dkim-signature;
+        bh=dgVhwGi8VibtldBAT75jnllIvoahA4ArEMk2EiXXTNU=;
+        b=metTp/rd5xgrkQQCXlEWuNEQbn8FCm0G716ezKOph7H+Bv90CudUetEgw36RyKuv/M
+         zGz8Ky2ItjSvl1STbJQvu7e4iL/H44b98jEy3aADGoCD/bFTF98u5oqg/3l0zpmaZBh8
+         Kk0DEmmDrLM+VR1KLcMrF49fQgNw4MRDJ2PAMf5x3HRzZvXvg5ZAqRSXqmKsZV2iT3PN
+         952+ou1fv0hciyUl4HQnw/jwq3L9l7x9FmrvtTKwSZAKD+bNJRPBj0wjjz1atb9fx8Hj
+         NlJsMou8MTkisGJkW2FX5rsx56RocpP2aTiHu1wodM2ubl02ukn98vMi/tEZXcAdJwfP
+         Gx8g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=eGgc3j02;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 198.21.0.156 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from cskrhhwc.outbound-mail.sendgrid.net (cskrhhwc.outbound-mail.sendgrid.net. [198.21.0.156])
+        by mx.google.com with ESMTPS id p1-20020a67d701000000b0035454ea10fesi2063359vsj.75.2022.07.18.12.03.13
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Jul 2022 12:03:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 198.21.0.156 as permitted sender) client-ip=198.21.0.156;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=eGgc3j02;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 198.21.0.156 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:in-reply-to:references:subject:mime-version:content-type:
+	reply-to:to:cc;
+	s=m1; bh=dgVhwGi8VibtldBAT75jnllIvoahA4ArEMk2EiXXTNU=;
+	b=eGgc3j023lS6BdMvMdslF+Zk7q1pz57WeqhhkdWXLKSdho938MGJzdyr4JeOeTz0r3ml
+	ugwAq0+LQm5lySBoQUezAbHCyFtR2c14bH3QvUab0O3yjCkIXhKE9Y0gQfDX5ZIhL6YFK8
+	2chb4vH/ZCG/JBMgBUlxiJnnLFjdCyfME=
+Received: by filterdrecv-698c69b9-6sgkr with SMTP id filterdrecv-698c69b9-6sgkr-1-62D5AE70-C0
+        2022-07-18 19:03:12.687364287 +0000 UTC m=+436496.006139579
+Received: from USAPPSERVER09 (unknown)
+	by geopod-ismtpd-6-2 (SG) with ESMTP
+	id 9XmghywhTVSLETn9VOuvgg
+	for <aubrey@pineapple.co>;
+	Mon, 18 Jul 2022 19:03:12.623 +0000 (UTC)
+Date: Mon, 18 Jul 2022 19:03:12 +0000 (UTC)
+From: "Mike McBrien (Pineapple Products)" <application@teamwork.com>
+Message-ID: <tw.30.154725.981@replies.teamwork.com>
+In-Reply-To: <thread.921738.30.394808.task@replies.teamwork.com>
+References: <thread.921738.30.394808.task@replies.teamwork.com>
+Subject: (davesbigsecret.com/-Sustaining:) - New task: Affiliate update for
+ Lander on davesbigsecret (DevOps List (Mike))
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_61167_728787661.1658170992500"
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-MC-Tags: webserver9
+Reply-To: Pineapple Products <tw.30.154725.981@replies.teamwork.com>
+X-SG-EID: 
+ =?us-ascii?Q?gQkno2vIGpTbi=2FX3IyC+Kk=2F=2FhgGQEIccZrgPJ3hXsPmSZ5P7oTOAvLjEsDxf2Q?=
+ =?us-ascii?Q?jO6Qr4K+oFMaj+M86dk7vdb61BRx6Wh8RcLU9sL?=
+ =?us-ascii?Q?BvP5+OXPET4f3zCfdtExJXEotus4YySkl2JntqT?=
+ =?us-ascii?Q?tbaJ=2FvVRQ4OPOumm0OuB7f9I=2FeRqRC=2FwLWdQEvz?=
+ =?us-ascii?Q?7pltZ4pzALGX07nW0FTnPWrI11auf6P19Nr+tem?=
+ =?us-ascii?Q?J5RE3aK=2FXo5hyxbKrOXyxDYtTaqv6VXGqc3Acqp?=
+ =?us-ascii?Q?O0ZvVQMjMngpQO8kgN02A=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJox7Dz6VF2YSa9nYWReO?=
+ =?us-ascii?Q?uXL5CSK8P+L8lX2MpDr2DlbijBrTwkVmFN+lt7v?=
+ =?us-ascii?Q?DoqbxJxqc=2Fl=2Fv25W3lAAszI2i7hmzl7aZwmmNtW?=
+ =?us-ascii?Q?uH0ZGZyC9Xgy+r1MQLXOqmbnW6MV9QVe6xinSKP?=
+ =?us-ascii?Q?nqXDHlj4JXwsN+3EfgdymzQbZo+zvYA3l8hAZBQ?=
+ =?us-ascii?Q?eTHSJvJiNIEVms=2F895vPVWULMejE09Gv8kivoR8?=
+ =?us-ascii?Q?wV53pCr2kSGFxTGI5i47twt07Cmv4rjcLWesDCw?= =?us-ascii?Q?EJU=3D?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+------=_Part_61167_728787661.1658170992500
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Mike McBrien has assigned a task to you and 7 other people.
+
+Affiliate
+update for Lander on davesbigsecret =E2=80=94 View
+https://davesbigsecret.com/v/landing.php?a=3D614&amp;s1=3D&amp;s2=3D&amp;s3=
+=3D&amp
+;s4=3D&amp;s5=3D&amp;o=3D81&amp;r=3D58395947&amp;utm_medium=3D614&amp;utm_s=
+ource=3D
+I'm the new assistant affiliate manager. I've been speaking with Anand
+Dharsenda, AFFID:614, who is requesting an edit on our 5G creative: 406 -
+davesbigsecret lander.
+He's asking for that landing page with an Autoplay
+option - he wants the video to run and not the click to play plus
+thumbnail image.
+Can you help with this?
+
+(#394808)Task Details
+Start
+Date: 07/18/2022
+Due Date: 07/23/2022
+Assigned To: Mike McBrien, Jarren
+Scheller, Sheena McLean, Aubrey Allen, Dane Slatten, Derek Madden, Ivy
+Cea, Jason Aaberg
+Assigned By: Mike McBrien
+Priority: Not set
+Task List:
+DevOps List (Mike)
+View Task: Affiliate update for Lander on
+davesbigsecret
+Project Details
+Project: davesbigsecret.com/-Sustaining:
+Company: Supernatural Man
+
+Copied To: Aubrey Allen, Dane Slatten, Derek
+Madden, Ivy Cea, Jarren Scheller, Jason Aaberg, Mike McBrien, Sheena
+McLean
+
+------=_Part_61167_728787661.1658170992500
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+
+			<html>
+				<head>
+					<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+					<meta name=3D"viewport" content=3D"width=3D350px, user-scalable=3Dyes"=
+>
+					<style>
+						body {
+							margin:0px;
+						}
+						body,td,th,p{
+							font-family:Tahoma, Arial, Helvetica, sans-serif;
+							font-size:12px;
+							text-align:left;
+						}
+						h3{
+							padding:0;
+							margin:10px 0 5px 0;
+							color:#000000;
+							font-family : arial,sans-serif;
+							font-size: 1.4em;
+							font-weight:bold;
+						}
+						pre {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						pre code {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						blockquote {
+							border-left: 4px solid #DDDDDD;
+							padding: 0 15px;
+							color: #777777;
+							margin-left:10px;
+						}
+
+						blockquote p {
+							font-size:14px !important;
+							color: #777777;
+						}
+
+						span.atwho-inserted {
+							-webkit-text-size-adjust: 100%;
+							-webkit-tap-highlight-color: rgba(0,0,0,0);
+							text-rendering: optimizeLegibility;
+							text-align: left;
+							font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif=
+;
+							line-height: 1.7;
+							word-break: break-word;
+							overflow-wrap: break-word;
+							-webkit-user-modify: read-only;
+							box-sizing: border-box;
+							-webkit-user-select: auto !important;
+							display: inline-block;
+							border: none;
+							font-size: 13px;
+							color: #3f4650;
+							padding: 1px 6px;
+							border-radius: 10px;
+							background-color: #e1e7ef;
+							font-weight: normal;
+							cursor: default;
+							outline: none;
+						}
+
+						a {
+							word-break:break-all;
+						}
+						table td img { max-width:100%; }
+						html { -webkit-text-size-adjust: none; }
+						@media only screen and (max-device-width:480px) {
+							body { width: 350px !important; padding:5px !important;	}
+							table[class=3D"wrapper"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] table { width:300px !important; max-width:3=
+00px !important;}
+							table td[class=3D"dateTime"] { display:none !important; }
+							table td img { max-width:340px!important; }
+							p[class=3D"dateTimeMobile"] { font-family:'Lucida Grande', 'Lucida S=
+ans', Arial, sans-serif; color:#9E9E9E !important; font-size:11px !importan=
+t; line-height:22px !important; margin-bottom:22px !important; margin:0; }
+							h3 span[class=3D"note"], h3 span[class=3D"fwd"] { padding:0 !importa=
+nt; background-color:#ffffff !important; }
+						}
+					</style>
+				</head>
+				<body style=3D"-webkit-text-size-adjust:none;">
+
+					=3D=3D=3D=3D=3D WRITE YOUR REPLY ABOVE THIS LINE =3D=3D=3D=3D=3D<div s=
+tyle=3D"padding:5px 0 10px 10px;clear:both;"><img src=3D"http://assets1.tea=
+mworkpm.net/tko/public/assets/brand/email/teamwork_primary.png" width=3D"20=
+0"  style=3D"width:100%;max-width:200px;" border=3D"0"></div><div class=3D"=
+mailWrap" style=3D"overflow:hidden;padding:10px;font-family:arial;font-size=
+:12px;"> <table width=3D"100%" cellpadding=3D0 cellspacing=3D0><tr><td><h3>=
+Mike McBrien has assigned a task to you and 7 other people.</h3></td></tr><=
+/table><div style=3D"border:1px solid #AAA;border-radius:4px;padding:5px 10=
+px;margin-bottom:20px;overflow:hidden;"><p style=3D"font-size:14px;"><stron=
+g>Affiliate update for Lander on davesbigsecret</strong> &mdash; <a href=3D=
+"https://pineappleproducts.teamwork.com/tasks/394808">View</a></p><p style=
+=3D"font-size:12px;color:#333"><p><a href=3D"https://davesbigsecret.com/v/l=
+anding.php?a=3D614&amp;s1=3D&amp;s2=3D&amp;s3=3D&amp;s4=3D&amp;s5=3D&amp;o=
+=3D81&amp;r=3D58395947&amp;utm_medium=3D614&amp;utm_source=3D" target=3D"_b=
+lank" title=3D"">https://davesbigsecret.com/v/landing.php?a=3D614&amp;s1=3D=
+&amp;s2=3D&amp;s3=3D&amp;s4=3D&amp;s5=3D&amp;o=3D81&amp;r=3D58395947&amp;ut=
+m_medium=3D614&amp;utm_source=3D</a></p>
+<p>I&#39;m the new assistant affiliate manager. I&#39;ve been speaking with=
+ Anand Dharsenda, AFFID:614, who is requesting an edit on our 5G creative: =
+406 - davesbigsecret lander. </p>
+<p>He&#39;s asking for that landing page with an Autoplay option - he wants=
+ the video to run and not the click to play plus thumbnail image.</p>
+<p>Can you help with this?</p>
+</p> </div> <div style=3D"border:1px solid #999;border-left:10px solid #999=
+;padding:10px;color:#555;"><span style=3D"float:right;color:#888;">(#394808=
+)</span><h3 style=3D"margin:0;padding:0;color:#333;">Task Details</h3><p><s=
+trong>Start Date:</strong> 07/18/2022</p><p><strong>Due Date:</strong> 07/2=
+3/2022</p><p><strong>Assigned To:</strong> Mike McBrien, Jarren Scheller, S=
+heena McLean, Aubrey Allen, Dane Slatten, Derek Madden, Ivy Cea, Jason Aabe=
+rg</p><p><strong>Assigned By:</strong> Mike McBrien</p><p><strong>Priority:=
+</strong> Not set</p><p><strong>Task List:</strong> <a href=3D"https://pine=
+appleproducts.teamwork.com/tasklists/60225">DevOps List (Mike)</a></p><p><s=
+trong>View Task:</strong> <a href=3D"https://pineappleproducts.teamwork.com=
+/tasks/394808">Affiliate update for Lander on davesbigsecret</a></p><h3 sty=
+le=3D"margin:0;padding:0;color:#333;">Project Details</h3><p><strong>Projec=
+t:</strong> <a href=3D"https://pineappleproducts.teamwork.com/projects/2909=
+4">davesbigsecret.com/-Sustaining:</a></p><p><strong>Company:</strong> Supe=
+rnatural Man</p></div> <div style=3D"margin-top:10px;color:#999;font-size:1=
+2px;">Copied To: Aubrey Allen, Dane Slatten, Derek Madden, Ivy Cea, Jarren =
+Scheller, Jason Aaberg, Mike McBrien, Sheena McLean</div> <div style=3D"mar=
+gin-top:10px;"><a style=3D"color:#888888;" href=3D"https://pineappleproduct=
+s.teamwork.com/forgot_password">P.S. Just in case: You can reset your passw=
+ord by clicking here</a></div><div style=3D"display:none;font-color:white;f=
+ont-size:1px">Reply to: tw.30.154725.981@replies.teamwork.com</div>=20
+						<div itemscope itemtype=3D"http://schema.org/EmailMessage">
+						  <div itemprop=3D"potentialAction" itemscope itemtype=3D"http://sche=
+ma.org/ViewAction">
+						    <link itemprop=3D"target" href=3D"https://pineappleproducts.teamw=
+ork.com/tasks/394808"/>
+						    <meta itemprop=3D"name" content=3D"View task"/>
+						  </div>
+						  <meta itemprop=3D"description" content=3D"View task on Teamwork"/>
+						</div>
+				=09
+				</body>
+			</html>
+	=09=
+
+------=_Part_61167_728787661.1658170992500--

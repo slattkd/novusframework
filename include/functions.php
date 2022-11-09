@@ -47,12 +47,29 @@ function getFileListAsArray($dir, $recursive = true, $basedir = '', $include_dir
 // Logging with Monolog
 
 // https://github.com/Seldaek/monolog
+use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
+use Monolog\Formatter\LineFormatter;
 
 debugTimerStart('logger', 'Starting up logger');
     $logger = new Logger('System');
-    $logger->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_system.log', Logger::INFO));
+    //$logger->pushProcessor(new \Monolog\Processor\GitProcessor());
+    $logger->pushProcessor(new \Monolog\Processor\WebProcessor());
+    $stream_handler = new RotatingFileHandler('../log/system.log', 0, Logger::INFO, true, 0664);
+    $stream_handler->setFilenameFormat('{date}_{filename}', 'Y-m-d');
+    $output = "%level_name% | %datetime% > %message% | %context% %extra%\n";
+    $dateFormat = "Y-n-j g:i:s a";
+    $formatter = new LineFormatter(
+        $output, // Format of message in log
+        $dateFormat, // Datetime format
+        true, // allowInlineLineBreaks option, default false
+        true  // discard empty Square brackets in the end, default false
+    );
+    $stream_handler->setFormatter($formatter);
+    $logger->pushHandler($stream_handler);
+    //$logger->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_system.log', Logger::INFO));
 debugTimerEnd('logger');
 
 /*
@@ -64,8 +81,40 @@ debugTimerEnd('pixel-logger');
 
 debugTimerStart('404-logger', 'Starting up logger');
     $loggerNotFound = new Logger('404');
-    $loggerNotFound->pushHandler(new StreamHandler('../log/' . date('Y-m-d') . '_404.log', Logger::INFO));
+    //$logger->pushProcessor(new \Monolog\Processor\GitProcessor());
+    $loggerNotFound->pushProcessor(new \Monolog\Processor\WebProcessor());
+    $stream_handler_nf = new RotatingFileHandler('../log/404.log', 0, Logger::INFO, true, 0664);
+    $stream_handler_nf->setFilenameFormat('{date}_{filename}', 'Y-m-d');
+    $output = "%level_name% | %datetime% > %message% | %context% %extra%\n";
+    $dateFormat = "Y-n-j g:i:s a";
+    $formatter_nf = new LineFormatter(
+        $output, // Format of message in log
+        $dateFormat, // Datetime format
+        true, // allowInlineLineBreaks option, default false
+        true  // discard empty Square brackets in the end, default false
+    );
+    $stream_handler_nf->setFormatter($formatter_nf);
+    $loggerNotFound->pushHandler($stream_handler_nf);
 debugTimerEnd('404-logger');
+
+
+debugTimerStart('pixel-logger', 'Starting up pixel logger');
+    $loggerPixel = new Logger('Pixel');
+    //$loggerPixel->pushProcessor(new \Monolog\Processor\GitProcessor());
+    $loggerPixel->pushProcessor(new \Monolog\Processor\WebProcessor());
+    $stream_handler_px = new RotatingFileHandler('../log/pixel.log', 0, Logger::INFO, true, 0664);
+    $stream_handler_px->setFilenameFormat('{date}_{filename}', 'Y-m-d');
+    $output = "%level_name% | %datetime% > %message% | %context% %extra%\n";
+    $dateFormat = "Y-n-j g:i:s a";
+    $formatter_px = new LineFormatter(
+        $output, // Format of message in log
+        $dateFormat, // Datetime format
+        true, // allowInlineLineBreaks option, default false
+        true  // discard empty Square brackets in the end, default false
+    );
+    $stream_handler_nf->setFormatter($formatter_px);
+    $loggerPixel->pushHandler($stream_handler_px);
+debugTimerEnd('pixel-logger');
 
 //TODO: Add Sticky API Functions
  /*

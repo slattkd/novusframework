@@ -1,0 +1,788 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:9acb:0:0:0:0 with SMTP id ah11csp3229529ejc;
+        Wed, 17 Aug 2022 02:10:24 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6Y2SKNW2UZAc5kHZ0aY3khU2JiYdjBEze1batNvpUZQeYks3O1B5Gct1mcAGffk8ikXdGD
+X-Received: by 2002:a05:6214:21e8:b0:476:8d19:f611 with SMTP id p8-20020a05621421e800b004768d19f611mr21515439qvj.128.1660727423898;
+        Wed, 17 Aug 2022 02:10:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660727423; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZlF3srK/2lBpb8wtPc//tEVGPfgpQBpwxeHt4IcvNBhIbyPy97S+IhTLmVUABwgiVn
+         mKc+VystNAn2Tl5qpKfmTCj0XQ1zN71Wd0crn1foE8vhGwDJrVibWVh/VfV3hAN0Ns8v
+         Mze8/qKLf+LQ+AYwh1jCqTSN9CwuDlioU/taTUNbWvASDxbQRgnE3KJHCK2GhWhKxf51
+         PpQLlyQhegsmY9cEFErJpu6B8wVuoE1J4w7iICtVtujtDErE6YINDJcDb880ZMxe9ylY
+         QCRgJnnsnTO7kJqW3na0h2Tn48oqCXtAbVXnsD0VUASB5hA3bnJaKnilZhZqlgaksgka
+         XOGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:content-transfer-encoding:mime-version:subject:message-id:from
+         :date:dkim-signature;
+        bh=PgCg7Mwvz6epmoJShufROhBOcKmpGMqHp2/J8H1sQKs=;
+        b=WrffA363FNa28v15e+1gtxHXoSZ3qa/acjhJunun8B0VdDlAfoWuXW7yWynrCfNUT+
+         1dphZtHHbltJt9pYtLrTN10tUJbSEle98+HkfEySO4c7dUYoBhHfAePAkGM7IzHN68O4
+         L3o/9XsLgMbo38fRZ20i3kjjvbIlkBsOxyuGkOMDXgXNg4G2G3svr8mieZWj7wreKYST
+         xZ2fip2PfMNrtBkDJucUbfmkuecUrUcl2MEjKW90C2Z+36lFiMGiM9Yo2DNeRBjwcXWX
+         LjZpJCZbeTkxLqZ1VnQkmWqqQ3qmfKeDMc6LtvZe1QTUfTvoWd5joMx1wph3c1ymsgOd
+         T1aQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=Y3iFOIsa;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.92.142 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from o3.mail.teamwork.com (o3.mail.teamwork.com. [167.89.92.142])
+        by mx.google.com with ESMTPS id jk9-20020ad45d49000000b00491391a7858si5800091qvb.25.2022.08.17.02.10.23
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 17 Aug 2022 02:10:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.92.142 as permitted sender) client-ip=167.89.92.142;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=Y3iFOIsa;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.92.142 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:subject:mime-version:content-type:content-transfer-encoding:to:
+	cc;
+	s=m1; bh=PgCg7Mwvz6epmoJShufROhBOcKmpGMqHp2/J8H1sQKs=;
+	b=Y3iFOIsa1zo7IFxh5CBlXPxEuvTmKSMWW4MjAMJhFMVw2rygvuExNHbGIRkplrZR5A7a
+	aE5wf1MB/atMnKM6H5j2zsfbgZS/sqIqwrLPBwe9AgIHH4qQ+WyQakPk/65Z7ZE7icqgbK
+	ehAgFC3wreqM+JHZvKkQ7eW4CgH+Z0LdI=
+Received: by filterdrecv-5597cf978f-k4vdc with SMTP id filterdrecv-5597cf978f-k4vdc-1-62FCB07F-25
+        2022-08-17 09:10:23.161777771 +0000 UTC m=+2293533.713303644
+Received: from USWRKHRS01 (unknown)
+	by geopod-ismtpd-5-0 (SG) with ESMTP
+	id LxCfB6JDROictRhSdYrKig
+	for <aubrey@pineapple.co>;
+	Wed, 17 Aug 2022 09:10:22.945 +0000 (UTC)
+Date: Wed, 17 Aug 2022 09:10:23 +0000 (UTC)
+From: Pineapple Products Reports <reports@teamwork.com>
+Message-ID: <103807854.56444.1660727424233.JavaMail.USWRKHRS01$@smtp.sendgrid.net>
+Subject: Daily Project Report for Aubrey Allen (Wednesday 17 Aug 2022)
+MIME-Version: 1.0
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-SG-EID: 
+ =?us-ascii?Q?wljAwsfxRnJI+9TeOPg5bf04vC2VhQT=2F0CTiL5cfP39h+HU=2F9fInhKol+D6mvA?=
+ =?us-ascii?Q?SBPyX+mlukpQncRH4RTjmUiF=2FZlxGQBKfdlJ2Tt?=
+ =?us-ascii?Q?8eV7Ay9X1IR4gcouMimzOZq77=2FwrxFZbK0fw826?=
+ =?us-ascii?Q?Oy=2F66PyE+kVEJ9wFxs3K3PTYcn8ru=2Fz4k5GxzKD?=
+ =?us-ascii?Q?+Wyk11utVAEjN2+B=2F3cReJJJ3LexeweoG4vmPLm?=
+ =?us-ascii?Q?6LLqckFc06SBXNy0cZpqGzPwwq2CyHA+ygOAx71?=
+ =?us-ascii?Q?4=2FvTUrGRkXdvwOUjgdj6g=3D=3D?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+
+                <!doctype html>
+                <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+                <head>
+                    <title>Daily Report Email</title>
+                    <!--[if !mso]><!-- -->
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <!--<![endif]-->
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                    <meta name="viewport" content="width=device-width,initial-scale=1">
+                    <style type="text/css">
+                        #outlook a {
+                            padding: 0;
+                        }
+
+                        body {
+                            margin: 0;
+                            padding: 0;
+                            -webkit-text-size-adjust: 100%;
+                            -ms-text-size-adjust: 100%;
+                        }
+
+                        table,
+                        td {
+                            border-collapse: collapse;
+                            mso-table-lspace: 0pt;
+                            mso-table-rspace: 0pt;
+                        }
+
+                        img {
+                            border: 0;
+                            height: auto;
+                            line-height: 100%;
+                            outline: none;
+                            text-decoration: none;
+                            -ms-interpolation-mode: bicubic;
+                        }
+
+                        p {
+                            display: block;
+                            margin: 13px 0;
+						}
+                    </style>
+                    <!--[if mso]>
+                                    <xml>
+                                    <o:OfficeDocumentSettings>
+                                    <o:AllowPNG/>
+                                    <o:PixelsPerInch>96</o:PixelsPerInch>
+                                    </o:OfficeDocumentSettings>
+                                    </xml>
+                                    <![endif]-->
+                    <!--[if lte mso 11]>
+                                    <style type="text/css">
+                                    .outlook-group-fix { width:100% !important; }
+                                    </style>
+                                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <link href="https://web-fonts.teamwork.com/fonts.css" rel="stylesheet" type="text/css">
+                    <style type="text/css">
+                        @import url(https://web-fonts.teamwork.com/fonts.css);
+                    </style>
+                    <!--<![endif]-->
+                    <style type="text/css">
+                        @media only screen and (min-width:520px) {
+                            .mj-column-per-100 {
+                                width: 100% !important;
+                                max-width: 100%;
+                            }
+                            .mj-column-per-50 {
+                                width: 50% !important;
+                                max-width: 50%;
+                            }
+                            .mj-column-per-10 {
+                                width: 10% !important;
+                                max-width: 10%;
+                            }
+                            .mj-column-per-90 {
+                                width: 90% !important;
+                                max-width: 90%;
+                            }
+                        }
+                    </style>
+					<style type="text/css">
+                        @media only screen and (max-width:520px) {
+                            table.full-width-mobile {
+                                width: 100% !important;
+                            }
+                            td.full-width-mobile {
+                                width: auto !important;
+                            }
+							table.mj-full-width-mobile {
+								width: 100% !important;
+							}
+
+							td.mj-full-width-mobile {
+								width: auto !important;
+							}
+                        }
+						@media only screen and (max-width:620px) {
+							.email-main-container>table>tbody>tr>td {
+								padding-left: 15px !important;
+								padding-right: 15px !important;
+							}
+
+							.mobileSidePadding {
+								padding-left: 0 !important;
+								padding-right: 0 !important;
+							}
+						}
+                        @media only screen and (max-width:520px) {
+                            .ui-heading-title {
+                                font-size: 23px !important;
+                            }
+                            .leftPaddingOnly {
+                                padding-left: 20px !important;
+                            }
+                            .noMobileSidePadding {
+                                padding-left: 0 !important;
+                                padding-right: 0 !important;
+                            }
+                            .ui-event-block {
+                                padding: 0 0 30px !important;
+                            }
+                            .ui-status-block tr>td {
+                                display: block !important;
+                                width: 100%;
+                            }
+                            .sm-padding-top--large,
+                            .sm-padding-top--x-large {
+                                padding-top: 0 !important;
+                            }
+                            .sm-padding-right--medium,
+                            .sm-padding-right--large {
+                                padding-right: 0 !important;
+                            }
+                            .sm-padding-left--medium,
+                            .sm-padding-left--large {
+                                padding-left: 0 !important;
+                            }
+                            .xs-display--none {
+                                display: none !important;
+                            }
+                        }
+						@media (prefers-color-scheme: dark) {
+							.ui-milestone__month {
+								background-color: #ddd;
+								color: #ffffff;
+							}
+
+							.ui-milestone--completed {
+								background: #59C894
+							}
+
+							.ui-milestone--late {
+								background: #FF6562
+							}
+
+							.ui-milestone--upcoming {
+								background: #FF7033
+							}
+						}
+                    </style>
+					<meta name="color-scheme" content="light dark">
+					<meta name="supported-color-schemes" content="light dark">
+                </head>
+            
+                <body style="background-color:#F5F7FA;">
+                    <div style="background-color:#F5F7FA;">
+
+                        <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:620px;" width="620" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                        <div style="margin:0px auto;max-width:620px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="direction:ltr;font-size:0px;padding:20px 0 15px;text-align:center;">
+                                            <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:620px;" ><![endif]-->
+                                            <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                                                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:middle;width:310px;" ><![endif]-->
+                                                <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                                                        <tr>
+                                                            <td align="left" style="font-size:0px;padding:0 20px;word-break:break-word;">
+                                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:122px;"><img height="auto" src="http://tw-webserver1.teamwork.com/tko/public/assets/brand/email/teamwork_primary.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="122"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <!--[if mso | IE]></td><td style="vertical-align:middle;width:310px;" ><![endif]-->
+                                                <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:50%;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                                                        <tr>
+                                                            <td align="right" vertical-align="middle" style="font-size:0px;padding:0;word-break:break-word;">
+                                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
+                                                                    <tr>
+                                                                        
+                                                                        <td>
+                                                                        <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:13px;line-height:1;text-align:left;color:#545662;">
+                                                                            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; padding: 10px 10px 0px 0px; margin: 0;"> 17 August, 2022
+                                                                            </p></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <!--[if mso | IE]></td></tr></table><![endif]-->
+                                            </div>
+                                            <!--[if mso | IE]></td></tr></table><![endif]-->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--[if mso | IE]></td></tr></table><![endif]-->
+
+						<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="box-shadow--main-outlook email-main-container-outlook darkmode-ready-outlook" style="width:620px;" width="620" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+						<div class="box-shadow--main email-main-container darkmode-ready" style="box-shadow: 0 2px 8px rgba(29,28,57,0.10); background: #fcfcfc; background-color: #fcfcfc; margin: 0px auto; border-radius: 8px; max-width: 620px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background: #fcfcfc; background-color: #fcfcfc; width: 100%; border-radius: 8px;" width="100%" bgcolor="#fcfcfc">
+                                <tbody>
+                                    <tr>
+                                        <td style="direction:ltr;font-size:0px;padding:30px 30px 20px;text-align:center;">
+                                            <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="mobileSidePadding-outlook" width="620px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="mobileSidePadding-outlook" style="width:560px;" width="560" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                                            <div class="mobileSidePadding" style="padding-left: 10px; padding-right: 10px; margin: 0px auto; max-width: 560px;">
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                                                                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:560px;" ><![endif]-->
+                                                                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="vertical-align:top;padding:0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                                                        <tr>
+                                                                                            <td align="left" style="font-size:0px;padding:0;word-break:break-word;">
+                                                                                                <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:13px;line-height:1;text-align:left;color:#0b0e1f;">
+                                                                                                    <h2 class="ui-heading-title" style="font-family: 'FaktSoft', Arial, Helvetica, sans-serif; font-size: 26px; font-weight: 400; padding: 0; margin: 0;">
+                                                                                                        Hi Aubrey, here's your Daily Report for Wednesday
+                                                                                                    </h2>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td align="left" style="font-size:0px;padding:15px 0 0;word-break:break-word;">
+                                                                                                <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:18px;line-height:1;text-align:left;color:#0b0e1f;"><strong class="font-weight--semibold" style="font-weight: 500;">Wed 17 Aug 2022</strong> - <em>Pineapple Products</em></div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <!--[if mso | IE]></td></tr></table><![endif]-->
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--[if mso | IE]></td></tr></table></td></tr><tr><td class="mobileSidePadding-outlook" width="620px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="mobileSidePadding-outlook" style="width:560px;" width="560" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                                            <div class="mobileSidePadding" style="padding-left: 10px; padding-right: 10px; margin: 0px auto; max-width: 560px;">
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                                                                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:560px;" ><![endif]-->
+                                                                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                                                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:56px;" ><![endif]-->
+                                                                    <div class="mj-column-per-10 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10%;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="vertical-align:top;padding:0;">
+                                                                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                                                            <tr>
+                                                                                                <td style="font-size:0px;padding:30px 0;word-break:break-word;">
+                                                                                                    <p style="border-top:solid 2px #FFD56A;font-size:1;margin:0px auto;width:50px;"></p>
+                                                                                                    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 2px #FFD56A;font-size:1;margin:0px auto;width:50px;" role="presentation" width="50px" ><tr><td style="height:0;line-height:0;"> &nbsp;
+                                                                                                    </td></tr></table><![endif]-->
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if mso | IE]></td><td style="vertical-align:top;width:504px;" ><![endif]-->
+                                                                    <div class="mj-column-per-90 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:90%;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="vertical-align:top;padding:0;">
+                                                                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"></table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                                                                </div>
+                                                                <!--[if mso | IE]></td></tr></table><![endif]-->
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+            
+                <div class="mobileSidePadding" style="padding-left: 10px; padding-right: 10px; margin: 0px auto; max-width: 560px;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td style="direction:ltr;font-size:0px;padding:0 0 10px;text-align:center;">
+                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:560px;" ><![endif]-->
+                                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                            <tr>
+                                                <td align="left" style="font-size:0px;padding:0;word-break:break-word;">
+                                                    <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:21px;font-weight:540;line-height:1;text-align:left;color:#0b0e1f;">Tasks</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="mobileSidePadding-outlook" style="width:560px;" width="560" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                    <div class="mobileSidePadding" style="padding-left: 10px; padding-right: 10px; margin: 0px auto; max-width: 560px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="direction:ltr;font-size:0px;padding:0;text-align:center;">
+                                        <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:560px;" ><![endif]-->
+                                        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align:top;padding:0;">
+                                                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                                                
+                            <tr>
+                                <td align="left" style="font-size:0px;padding:0 0 10px;word-break:break-word;">
+                                    <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:15px;line-height:1;text-align:left;color:#0b0e1f;margin-top: 10px;">
+                                        <a href="https://pineappleproducts.teamwork.com/#/projects/23790?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="text-decoration: none; color: #1d1c39;">
+                                            <span>
+                                                Data Analytics &amp; Reporting
+                                            </span>
+                                            ( Pineapple Products)
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:0px;padding:0 0 5px;word-break:break-word;">
+                                    <p style="border-top:solid 1px #EEF1F6;font-size:1;margin:0px auto;width:100%;"></p>
+                                    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #EEF1F6;font-size:1;margin:0px auto;width:620px;" role="presentation" width="620px" ><tr><td style="height:0;line-height:0;"> &nbsp;
+                                    </td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td align="left" class="ui-tasklist-name" style="font-size:0px;padding:10px 0 20px;word-break:break-word;">
+                                    <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:14px;line-height:1.2;text-align:left;color:#0b0e1f;">
+                                        <a href="https://pineappleproducts.teamwork.com/#/tasklists/40725?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="text-decoration: none; color: #0b0e1f;">
+                                            <strong class="font-weight--semibold" style="font-weight: 500;">
+                                                Analytics
+                                            </strong>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                        <tr>
+                            <td align="left" style="font-size:0px;padding:0 0 15px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#0b0e1f;font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:13px;line-height:1;table-layout:auto;width:100%;border:none;">
+                                    <tr class="ui-task" valign="top" style="vertical-align: top; font-size: 13px;">
+
+                                    
+                                        <td width="125">
+											<table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0">
+												<tr>
+													<td width="26" height="26" align="center" valign="middle">
+														<a href="https://pineappleproducts.teamwork.com/#/tasks/514701?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="text-decoration: none">
+															<img width="26px" height="26px" srcset="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001@2x.png 2x" src="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001.png" align="middle">
+														</a>
+													</td>
+													<td width="3"></td>
+													<td width="80" height="22" align="left" valign="middle" class="ui-task__task-author is-mine"
+														style="display: inline-block; line-height: 24px; white-space: nowrap; border-radius: 4px; width: 80px; padding: 0 0 0 7px; text-align: left; font-size: 13px; background: #DFF9D6;">
+														Aubrey A.
+													</td>
+												</tr>
+											</table>
+										</td>
+                                    
+                                    <td>
+                                        <a href="https://pineappleproducts.teamwork.com/#/tasks/514701?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" class="ui-task__name" style="display: inline; color: #0b0e1f; text-decoration: none; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+                                            <span class="ui-task__name-label" style="display: inline; padding-right: 5px; line-height: 20px;">
+                                                Affiliate Management Report
+                                            </span>
+                                            
+                                                    <span class="ui-task__due-date--late" style="display: inline-block; color: #999;">Due: 22 August</span>
+                                                
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td align="left" style="font-size:0px;padding:0 0 15px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#0b0e1f;font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:13px;line-height:1;table-layout:auto;width:100%;border:none;">
+                                    <tr class="ui-task" valign="top" style="vertical-align: top; font-size: 13px;">
+
+                                    
+                                        <td width="125">
+											<table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0">
+												<tr>
+													<td width="26" height="26" align="center" valign="middle">
+														<a href="https://pineappleproducts.teamwork.com/#/tasks/514725?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="text-decoration: none">
+															<img width="26px" height="26px" srcset="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001@2x.png 2x" src="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001.png" align="middle">
+														</a>
+													</td>
+													<td width="3"></td>
+													<td width="80" height="22" align="left" valign="middle" class="ui-task__task-author is-mine"
+														style="display: inline-block; line-height: 24px; white-space: nowrap; border-radius: 4px; width: 80px; padding: 0 0 0 7px; text-align: left; font-size: 13px; background: #DFF9D6;">
+														Aubrey A.
+													</td>
+												</tr>
+											</table>
+										</td>
+                                    
+                                    <td>
+                                        <a href="https://pineappleproducts.teamwork.com/#/tasks/514725?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" class="ui-task__name" style="display: inline; color: #0b0e1f; text-decoration: none; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+                                            <span class="ui-task__name-label" style="display: inline; padding-right: 5px; line-height: 20px;">
+                                                Andres' Commission Report
+                                            </span>
+                                            
+                                                    <span class="ui-task__due-date--late" style="display: inline-block; color: #999;">Due: 22 August</span>
+                                                
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td align="left" style="font-size:0px;padding:0 0 15px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#0b0e1f;font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:13px;line-height:1;table-layout:auto;width:100%;border:none;">
+                                    <tr class="ui-task" valign="top" style="vertical-align: top; font-size: 13px;">
+
+                                    
+                                        <td width="125">
+											<table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0">
+												<tr>
+													<td width="26" height="26" align="center" valign="middle">
+														<a href="https://pineappleproducts.teamwork.com/#/tasks/514700?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="text-decoration: none">
+															<img width="26px" height="26px" srcset="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001@2x.png 2x" src="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001.png" align="middle">
+														</a>
+													</td>
+													<td width="3"></td>
+													<td width="80" height="22" align="left" valign="middle" class="ui-task__task-author is-mine"
+														style="display: inline-block; line-height: 24px; white-space: nowrap; border-radius: 4px; width: 80px; padding: 0 0 0 7px; text-align: left; font-size: 13px; background: #DFF9D6;">
+														Aubrey A.
+													</td>
+												</tr>
+											</table>
+										</td>
+                                    
+                                    <td>
+                                        <a href="https://pineappleproducts.teamwork.com/#/tasks/514700?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" class="ui-task__name" style="display: inline; color: #0b0e1f; text-decoration: none; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+                                            <span class="ui-task__name-label" style="display: inline; padding-right: 5px; line-height: 20px;">
+                                                Doug's Commissions Report
+                                            </span>
+                                            
+                                                    <span class="ui-task__due-date--late" style="display: inline-block; color: #999;">Due: 22 August</span>
+                                                
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td align="left" style="font-size:0px;padding:0 0 15px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#0b0e1f;font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:13px;line-height:1;table-layout:auto;width:100%;border:none;">
+                                    <tr class="ui-task" valign="top" style="vertical-align: top; font-size: 13px;">
+
+                                    
+                                        <td width="125">
+											<table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0">
+												<tr>
+													<td width="26" height="26" align="center" valign="middle">
+														<a href="https://pineappleproducts.teamwork.com/#/tasks/514699?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="text-decoration: none">
+															<img width="26px" height="26px" srcset="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001@2x.png 2x" src="http://cdn-pjs.teamwork.com/tko/public/images/email/taskCheckbox_001.png" align="middle">
+														</a>
+													</td>
+													<td width="3"></td>
+													<td width="80" height="22" align="left" valign="middle" class="ui-task__task-author is-mine"
+														style="display: inline-block; line-height: 24px; white-space: nowrap; border-radius: 4px; width: 80px; padding: 0 0 0 7px; text-align: left; font-size: 13px; background: #DFF9D6;">
+														Aubrey A.
+													</td>
+												</tr>
+											</table>
+										</td>
+                                    
+                                    <td>
+                                        <a href="https://pineappleproducts.teamwork.com/#/tasks/514699?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" class="ui-task__name" style="display: inline; color: #0b0e1f; text-decoration: none; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+                                            <span class="ui-task__name-label" style="display: inline; padding-right: 5px; line-height: 20px;">
+                                                Weekly Sales Dashboard
+                                            </span>
+                                            
+                                                    <span class="ui-task__due-date--late" style="display: inline-block; color: #999;">Due: 22 August</span>
+                                                
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--[if mso | IE]></td></tr></table><![endif]-->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+					<!--[if mso | IE]></td></tr></table><![endif]-->
+                
+                <!--[if mso | IE]></td></tr></table></td></tr><tr><td class="" width="620px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:620px;" width="620" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                <div style="margin:0px auto;max-width:620px;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:620px;" ><![endif]-->
+                                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                            <tr>
+                                                <td class="mobileSidePadding" style="font-size: 0px; padding: 0 0 20px; padding-bottom: 10px; word-break: break-word;">
+                                                    <p style="border-top:solid 1px #EEF1F6;font-size:1;margin:0px auto;width:100%;"></p>
+                                                    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #EEF1F6;font-size:1;margin:0px auto;width:480px;" role="presentation" width="480px" ><tr><td style="height:0;line-height:0;"> &nbsp;</td></tr></table><![endif]-->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+                <div class="mobileSidePadding" style="padding-left: 10px; padding-right: 10px; margin: 0px auto; max-width: 620px;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td style="direction:ltr;font-size:0px;padding:0 0 15px;text-align:center;">
+                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:620px;" ><![endif]-->
+                                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                            <tr>
+                                                <td align="left" style="font-size:0px;padding:0;word-break:break-word;">
+                                                    <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:21px;font-weight:540;line-height:1;text-align:left;color:#0b0e1f;">Events</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+				
+                <div class="mobileSidePadding"
+                    style="padding-left: 10px; padding-right: 10px; margin: 0px auto; max-width: 620px;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:620px;" ><![endif]-->
+                                    <div class="mj-column-per-100 mj-outlook-group-fix"
+                                        style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="vertical-align:top;padding:0;">
+                                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                                            width="100%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td align="center"
+                                                                        style="font-size:0px;padding:0 0 25px;word-break:break-word;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0"
+                                                                            role="presentation"
+                                                                            style="border-collapse:collapse;border-spacing:0px;">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="width:130px;"><img
+                                                                                            alt="No Events" height="auto"
+                                                                                            src="http://cdn-pjs.teamwork.com/tko/public/images/email/noEventsBlank.png"
+                                                                                            srcset="http://cdn-pjs.teamwork.com/tko/public/images/email/noEventsBlank@2x.png 2x"
+                                                                                            style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                                                            width="130"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center"
+                                                                        style="font-size:0px;padding:0 0 7px;word-break:break-word;">
+                                                                        <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:16px;font-weight:600;line-height:1;text-align:center;color:#0b0e1f;">
+                                                                            No Events
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center"
+                                                                        style="font-size:0px;padding:0 0 15px;word-break:break-word;">
+                                                                        <div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:14px;line-height:20px;text-align:center;color:#6D6F80;">
+                                                                            You have no upcoming Events at the moment.
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="right" class="hasLink"
+                                                                        style="font-size:0px;padding:0;word-break:break-word;">
+                                                                        <div
+                                                                            style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:14px;line-height:20px;text-align:right;color:#0b0e1f;">
+                                                                            <a href="https://pineappleproducts.teamwork.com/#/calendar?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank"
+                                                                                style="color: #4461D7;">View Calendar</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+												<!--[if mso | IE]></td></tr></table></td></tr></table><![endif]-->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:620px;" width="620" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+							<div style="margin:0px auto;max-width:620px;">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+									<tbody>
+										<tr>
+											<td style="direction:ltr;font-size:0px;padding:25px 20px;text-align:center;">
+												<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:580px;" ><![endif]-->
+												<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+														<tbody>
+															<tr>
+																<td style="vertical-align:top;padding:0;">
+																	<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+																		<tr>
+																			<td align="center" class="hasLink" style="font-size:0px;padding:0;word-break:break-word;">
+																				<div style="font-family:'FaktSoft', Arial, Helvetica, sans-serif;font-size:14px;line-height:28px;text-align:center;color:#727491;">If you don't want to receive this email anymore, you can <a href="https://pineappleproducts.teamwork.com/index.cfm?action=unsubscribeDailyEmail&s=30&i=921738&u=33565" target="_blank" style="color: #4461D7;">unsubscribe</a>
+																				
+																					<br>Sent with <img src="https://cdn-pjs.teamwork.com/tko/public/images/email/footerHeart.png" width="16" height="14" style="vertical-align: middle; margin: 0 5px;"> from <a href="https://teamwork.com?utm_source=daily-report-email&utm_medium=email&utm_campaign=daily-report-email" target="_blank" style="color: #4461D7;">Teamwork.com</a></div>
+																				
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<!--[if mso | IE]></td></tr></table><![endif]-->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!--[if mso | IE]></td></tr></table><![endif]-->
+						</div>
+					</body>
+				</html>
+			

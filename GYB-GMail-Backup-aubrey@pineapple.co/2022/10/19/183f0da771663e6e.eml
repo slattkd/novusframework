@@ -1,0 +1,346 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5442:0:0:0:0 with SMTP id d2csp314009ejp;
+        Wed, 19 Oct 2022 08:26:33 -0700 (PDT)
+X-Received: by 2002:a25:264a:0:b0:6c0:3e00:f5b0 with SMTP id m71-20020a25264a000000b006c03e00f5b0mr7265184ybm.305.1666193192857;
+        Wed, 19 Oct 2022 08:26:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666193192; cv=none;
+        d=google.com; s=arc-20160816;
+        b=thYT+UWlz0TbT1Z/4+ETwOapRcpl7Dh7cUC/zs+ANIH3ybmLYUzGeo99o8XOQ9r8qa
+         v8G1tuWgQXynZlDafuU0Rl/kubPetlCKFclatVuTTkKKfLtKzn2QeR8bE7h1CCSFtx2Z
+         Xpy29vKsbTMZ2hxc/+gIy1kDjnmvcDUfLK2a0GZp+dMYKu6eDPIr2KfQrgLZVNf+TuhR
+         AL2cbuDaGb9KB+3RUwqEg7enyNFpn04Yg+CNoFPS8dyn2t2NuSErJ1+WiwczQLaAiFC/
+         aKoV/Qnm/dNbNm37oVXtXQeEQyPaWqcrXAV4JXb/+DysimYgPO9NIvPTujR5gYD+sFSJ
+         R0vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=QwVfZT2VcAgnjGZ09Sqwqn+70fZJ+lYUkDss03NnHLI=;
+        b=1AftvDKliF+lygmxnxfqptFmbHrzfV95/QLhY8kse9oonOLj+opeImUkZy7L/7cV7P
+         2pnlrlLZ7787bIIcZ8TfAP8q87eoHbiQv5hBr3+UJLbFMz2+EKlVr6wzMWwSypKH5E5M
+         xlPzWwuwHmM4fCdorXnFd/CFL2v3GQLGUn83/aLQi+y6/zbm+rJZ2h6z7E6hDQpIC/Yr
+         mNbYL5Gd2fluhxLxuOPo9x2453JCUAXouJDeQn7h6hW4QdsXPHGQXKp0UOqJP+T1vp7p
+         pTVbH7/psrDlYZvaY0B5p9bT2N0C8VrQb2tvlzfcWD2ijKnhiykgmdDrt0bpyuDaAQrF
+         L09g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=4ElLIutx;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <kerry@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c84-20020a811c57000000b003467eac9f57sor5684276ywc.89.2022.10.19.08.26.32
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 19 Oct 2022 08:26:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=4ElLIutx;
+       spf=pass (google.com: domain of kerry@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=kerry@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=QwVfZT2VcAgnjGZ09Sqwqn+70fZJ+lYUkDss03NnHLI=;
+        b=4ElLIutxJ6tkYyvLKt1cfJeCo3fTXKf96bAflPh+lEbXUAgdANwNHIPjmtRMVfaIBH
+         MOOU0sZy8FlZXhEj5GQ8zzwhHUEKLx5z3SZ+aWj2AGOJmIlXagMtrbwONmS0yJGVUal9
+         E5lnImb/g8IaE96Tnakq9Pp3CpLMWKfusyG4/OX4scVpTL+Us8JRKViMplyYDLZjfKD3
+         /OKOh1bOnnTZUPsNdHwm/nNQipjFZ0OWIu/6xKe1maw1QGa6sVlpWeY2zFu8JRd4oKB6
+         niOow+avNknvrzn5WGXNiRLMwWCR0TBGhOb5CNrI0FaNiWIuEWAW/tX+xacOn9lRp3OL
+         3DfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QwVfZT2VcAgnjGZ09Sqwqn+70fZJ+lYUkDss03NnHLI=;
+        b=gsM1eChoy7X4Tn2sut9h0lXA9gDm4t0trhgPmYjbAyAmuW4xmJR+SGnMKryoHEFUo0
+         82Fb2mcBA8ut7rOMQ3qCL1F9e43o8qqQIrIaIrscXm2XdL63dFKJBXycWoxmqOP/JVDI
+         sm8hOoP7eMXIjLeVOkVIgCnwjRatjNMHccIGNXYPEbeHCL39uWMKgcNeTrDcvLh7VeQ1
+         FYpLcwx6bI5su6u36lN5Y4k/g2uywL1fzrIS/QFUdShcx0gUGYC3nsk6P+gELTJaB2AZ
+         8CQWs0n3wTUXu+HyeVsr1He37DGKZbOff/PlQzxZ9K4N2CcwxnXCROoaK4qsIwb28VEp
+         YsVg==
+X-Gm-Message-State: ACrzQf2O9lmqBdI1EO4gxHSKaGY1beVYtabQY96z8rvbrD81JuDF3L01
+	9kxgi3ugw6t6chTuoCogqH6UbGA3/DPzYGNvaKpxAtQAboYhdg==
+X-Google-Smtp-Source: AMsMyM7I4CaSOY3nNhKJmnr1Nk92rYU7uU6M6WVn2m81RE6/2lfQkLxyLD4a/+WLef21a1Nq4v77GFcAXhZz5ea3n/4=
+X-Received: by 2002:a81:6554:0:b0:349:8e3:a882 with SMTP id
+ z81-20020a816554000000b0034908e3a882mr7267409ywb.388.1666193192230; Wed, 19
+ Oct 2022 08:26:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP9H1HaOBac7FOjFvp0Xcrz=m7LC82_jzX1NAtSz1cpG0g@mail.gmail.com>
+ <CAJ8r_h1FMHzN9CH4pW7=s1jLstK=ZqrsB89vw9CugSwTaHVxaw@mail.gmail.com> <CAHbmDP_WJW1rfNhbxELUXFBB1q=LUVkizow9qV0k54mOZawgug@mail.gmail.com>
+In-Reply-To: <CAHbmDP_WJW1rfNhbxELUXFBB1q=LUVkizow9qV0k54mOZawgug@mail.gmail.com>
+From: Kerry Scott <kerry@pineapple.co>
+Date: Wed, 19 Oct 2022 08:26:21 -0700
+Message-ID: <CAJ8r_h2sK6HEoFLpH3tnpozWY7q_Jk4MTL+ixU8LObaHDowEgQ@mail.gmail.com>
+Subject: Re: Phone Sales Commissions 10/1 - 10/15
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Andrea Abramowski <andrea@pineapple.co>, Megan Harnett <megan@pineapple.co>, 
+	Amber Glenn <amber@pineapple.co>, Carlos Bowden <carlos@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000059b97605eb64d563"
+
+--00000000000059b97605eb64d563
+Content-Type: text/plain; charset="UTF-8"
+
+Next quarterly bonus - please remind me (I have marked it on my calendar)
+but being new to the payroll here (it is different) I do not want to forget
+it.
+Thank you for your assistance.  It is greatly appreciated.
+
+On Wed, Oct 19, 2022 at 8:22 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> No problem!
+>
+> This is just their regular bi-weekly commission.  The Autoship bonuses are
+> only paid out quarterly.
+>
+> On Wed, Oct 19, 2022 at 10:20 AM Kerry Scott <kerry@pineapple.co> wrote:
+>
+>> Thanks for the update! Is it just the regular bonus this time?  Is there
+>> anything we will be missing?
+>>
+>> On Wed, Oct 19, 2022 at 8:19 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+>>
+>>> Good morning!
+>>>
+>>> Please be advised that front-end Phone Sales Commissions
+>>> <https://docs.google.com/spreadsheets/d/1VCUm1pfXl-08L4_BtDKC426AWFLZvJol6l79MFWlMQ0/edit?usp=sharing> are
+>>> complete for 10/1-10/15.
+>>>
+>>> Thank you!
+>>>
+>>> --
+>>> *Aubrey Allen*
+>>> Data Analytics Technician | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: aubrey@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipient
+>>> specified in message only. It is strictly forbidden to share any part of
+>>> this message with any third party, without a written consent of the sender.
+>>> If you received this message by mistake, please reply to this message and
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>
+>
+> --
+> *Aubrey Allen*
+> Data Analytics Technician | pineapple.co
+>
+> [image: Photo]
+>
+> E: aubrey@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+
+--00000000000059b97605eb64d563
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,sa=
+ns-serif">Next quarterly bonus - please remind me (I have marked it on my c=
+alendar) but being new to the payroll here (it is different) I do not want =
+to forget it.</div><div class=3D"gmail_default" style=3D"font-family:arial,=
+sans-serif">Thank you for your assistance.=C2=A0 It is greatly appreciated.=
+</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
+attr">On Wed, Oct 19, 2022 at 8:22 AM Aubrey Allen &lt;<a href=3D"mailto:au=
+brey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1=
+px;border-left-style:solid;border-left-color:rgb(204,204,204);padding-left:=
+1ex"><div dir=3D"ltr">No problem!=C2=A0=C2=A0<div><br></div><div>This is ju=
+st their regular bi-weekly commission.=C2=A0 The Autoship bonuses are only =
+paid out quarterly.</div></div><br><div class=3D"gmail_quote"><div dir=3D"l=
+tr" class=3D"gmail_attr">On Wed, Oct 19, 2022 at 10:20 AM Kerry Scott &lt;<=
+a href=3D"mailto:kerry@pineapple.co" target=3D"_blank">kerry@pineapple.co</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;border-left-c=
+olor:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmai=
+l_default" style=3D"font-family:arial,sans-serif">Thanks for the update! Is=
+ it just the regular=C2=A0bonus this time?=C2=A0 Is there anything we will =
+be missing?<br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, Oct 19, 2022 at 8:19 AM Aubrey Allen &lt;<a hr=
+ef=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pineapple.co</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;border-left-col=
+or:rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Good morning!=C2=A0<=
+div><br></div><div>Please be advised that front-end=C2=A0<a href=3D"https:/=
+/docs.google.com/spreadsheets/d/1VCUm1pfXl-08L4_BtDKC426AWFLZvJol6l79MFWlMQ=
+0/edit?usp=3Dsharing" target=3D"_blank">Phone Sales Commissions</a>=C2=A0ar=
+e complete for 10/1-10/15.</div><div><br></div><div>Thank you!</div><div><b=
+r></div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom-width:1=
+px;border-bottom-style:solid;border-bottom-color:rgb(5,56,95)" width=3D"500=
+">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+>=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom-width:1=
+px;border-bottom-style:solid;border-bottom-color:rgb(5,56,95)" width=3D"500=
+">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div>
+</blockquote></div>
+
+--00000000000059b97605eb64d563--

@@ -1,0 +1,210 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:9acb:0:0:0:0 with SMTP id ah11csp2385420ejc;
+        Wed, 10 Aug 2022 07:37:05 -0700 (PDT)
+X-Received: by 2002:a62:1808:0:b0:52d:9eeb:8853 with SMTP id 8-20020a621808000000b0052d9eeb8853mr27387182pfy.45.1660142224765;
+        Wed, 10 Aug 2022 07:37:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660142224; cv=none;
+        d=google.com; s=arc-20160816;
+        b=B6fQPH23t5Rad4tCXZO33VI6yqm2Jn/NLfUeJMpXblgECrj0YXoT1RIlb+V3c3JoH8
+         PIThGcpUhGbMyHfOXNeT5lUZz8cD9a//spCQLzUA2/3wm2YQ9FjOSd/7B7Ob91yJWGUU
+         9z7ygvkbioawyDW+mpe7pmyR1LHYCPVSPQ1gus9RpC23cW8RvMLk5a85uV+hbgbpKUz2
+         2sn6ZRqJldnagCwL2g4WvQjr/0XJAsoxQRBFSA5qEgPLAK+IGGq5nLUxGDCrVdul9pRu
+         GtTnjwcXCR7m9feYCAa3tx42wmfumubWp+YQ0kVu5Fc/QDKQHxC7EYTP6xy78MlrPWRf
+         tWWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=T75jKUV2xk2gbXyvlW+hMVcvRqWeXQRRwY8wfg5ARh8=;
+        b=ydQnTB34+u83p9D4xSIBnFQ3yUF6hAQCLdxkHC97sFy4ZIF5aihQWEM0ZiHz24cLTc
+         v9pJKcNiGxux/0Z2G2TWX9S6h04W9AqnwoNY/KQZdPi8jlB/B9A4B5NcE2j1NNxHN2J9
+         cDHtXBYgdqu57MAfBUA1jaZ0rwid8yq4uDLIGYUfhpq1R93OX0icei61YF/d3Wj3d5NA
+         pSHhrJcpKZI948gt8Quob1nT8+lh4ZHB90PnBoiQ2ABOUwllXFRXEEYrTo2R45B4zkvA
+         CgozL8LBEOOs0+9fano6cd/ki3UspXlEI7jAIb8m0NRq0UtDRRtPwZLF3i1uM4O1fbAw
+         4adw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="tbPEIN/a";
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g1-20020a170902e38100b0016f018637a7sor8274846ple.119.2022.08.10.07.37.04
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 10 Aug 2022 07:37:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="tbPEIN/a";
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=T75jKUV2xk2gbXyvlW+hMVcvRqWeXQRRwY8wfg5ARh8=;
+        b=tbPEIN/aAhtSWgeQrHvRFYSt85A99Gld53BDos5+6Ep1gEI2/uqf9LcHqQ/04v0C3+
+         884hB8CcCqlWoCbPs0d8l204dY6c8NwDKRWMCnUGx1xiNvqdlZSRU070/OAXZ/lUhwtr
+         fHaA1meq7NQicryCIpHH/Q/z4A9z12vKIN4hzqpqjp7j1td3sONwkXKuXhwznis9/y43
+         6oUH3BEdpCSQhC10i6x43nz0zh2Im+rr24XTjDGXahIrCtMc3DLI/YjBplKB4hWFhFNm
+         cXQeeijpyQSX42mzFQC642c5ffzA2Azrxb1POH3rFJxE9fSO21PxX4Le54BV4qQEW3Us
+         hQqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=T75jKUV2xk2gbXyvlW+hMVcvRqWeXQRRwY8wfg5ARh8=;
+        b=huf7tmqVE0GSTdwu3GtXZCpG+tLkj2Wec4DfYgqIDM7LCk/+971rWokJqlUg8pZRUA
+         O45qDgXPcmoc5bW57b/rB1GNF+JruuvuhKtBpkCEPCSkX9dW9iDkfFVFD4DCrUllk8lO
+         bUHIB29dMWnII4rAAtJf16NVixTBgahm8v9DCVLD31VW7WlfxXpy236i0j+DCWFUfxUR
+         xmHCmKH8YqJbP5MjGdqPKRDtq8DAD8H5/gsaZqHu4F0AnYL+8+o6dsvWbg6q7bBYETHf
+         /0lnX4At7U8278nL3ZpCJU7sZrjgr0clntZig3ZXxp4H4gA4mZNVBAE5HkZmA3fjbdVY
+         5/8g==
+X-Gm-Message-State: ACgBeo3b4rdoRzg6ySORP594OGJ58y/ux5r/UWUqxmax7a6cflj8Y5dI
+	PHhqDQquWXTi0X/XGvMAm6Yh0Acrm97iP5ve/+hqtbAj
+X-Google-Smtp-Source: AA6agR5Od/ZkcwoFiSbYq5Ky7gUEALbw9XnJSNmyB3uKYBwCg+NFLUM+vXaLcPiaOPYBApOXPjVFBrwpW14MMuTU1O8=
+X-Received: by 2002:a17:902:7242:b0:171:398d:9e66 with SMTP id
+ c2-20020a170902724200b00171398d9e66mr2516527pll.19.1660142223735; Wed, 10 Aug
+ 2022 07:37:03 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_RTpGTrZkSOCSivYhoHRXFnuqgaOU_6h1th8p29jwmH1g@mail.gmail.com>
+In-Reply-To: <CALCR5_RTpGTrZkSOCSivYhoHRXFnuqgaOU_6h1th8p29jwmH1g@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Wed, 10 Aug 2022 10:36:52 -0400
+Message-ID: <CALCR5_TUY0bpUx=2BSRtsnWN+1=089d1tO-B1ity-sbAiZuaTQ@mail.gmail.com>
+Subject: Re: Important - Enrich minimum payments down to $40k
+To: Carlos Bowden <carlos@pineapple.co>
+Cc: Andrea Abramowski <andrea@pineapple.co>, Aubrey Allen <aubrey@pineapple.co>, 
+	Kerry Scott <kerry@pineapple.co>, Megan Harnett <megan@pineapple.co>
+Content-Type: multipart/alternative; boundary="00000000000085d5cd05e5e3fb31"
+
+--00000000000085d5cd05e5e3fb31
+Content-Type: text/plain; charset="UTF-8"
+
+please someone confirm? :)
+
+On Mon, Aug 8, 2022 at 10:07 PM Brett Allcorn <brett@pineapple.co> wrote:
+
+> Hey guys, just a reminder from here on out the minimum is now $40k/mo
+>
+> Trying to get it to $35k but need to have a few conversations and run more
+> reports.
+> --
+>
+>
+>
+> *Brett Allcorn*
+> Chief Executive Officer | pineapple.co
+>
+> [image: Photo]
+>
+> E: brett@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+
+--00000000000085d5cd05e5e3fb31
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">please someone confirm? :)</div><br><div class=3D"gmail_qu=
+ote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Aug 8, 2022 at 10:07 PM =
+Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co">brett@pineapple.co<=
+/a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">H=
+ey guys, just a reminder from here on out the minimum is now $40k/mo<div di=
+r=3D"auto"><br></div><div dir=3D"auto">Trying to get it to $35k but need to=
+ have a few conversations and run more reports.</div>-- <br><div dir=3D"ltr=
+">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Executi=
+ve Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span> 			 		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div>
+</blockquote></div>
+
+--00000000000085d5cd05e5e3fb31--

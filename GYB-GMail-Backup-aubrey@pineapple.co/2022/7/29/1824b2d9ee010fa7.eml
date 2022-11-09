@@ -1,0 +1,306 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp1106062ejz;
+        Fri, 29 Jul 2022 11:17:37 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tXFgiLyLiRfAVP/6lXlLcMpJiyvXOeFnoSI5kaqpVrLOU4kv/XZImDbauRnB7UvzZbzgaI
+X-Received: by 2002:a05:622a:1703:b0:31f:555:9d3f with SMTP id h3-20020a05622a170300b0031f05559d3fmr4362883qtk.289.1659118657454;
+        Fri, 29 Jul 2022 11:17:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659118657; cv=none;
+        d=google.com; s=arc-20160816;
+        b=yUW/yoEPVwccaGnD3IDw8XKzLuwJwcPOjqNgdsLrXydMlIR6L6fgzKe1yeejPKk2gk
+         Qu2HBTAnfM8/Pyy413k6NyaKLxcMhKr5MoeDsAue4gNIfqmdwPdmLLBnvMWQc6Ta1qOp
+         GE17+mzxGTLG5z3XiCczOEGndy+mfi+TIATENtEIDLb5SmmIvNl22B5MqI/Och+laJ/8
+         xh7ov66oOsqV6OylWarcV/6E3inmHOmEjLymKNn3QHDXeLsEVXqfSk5Drtp5Db3Ph3+n
+         ZquBPs2eGwqNCxYUgnivghpYCCqU/5Ybt2P6U0/AmVUlLwrqT2KGJ+qXjLac7n7lmQEU
+         ZZgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:mime-version:subject:references:in-reply-to:message-id
+         :from:date:dkim-signature;
+        bh=amBLkohNlX36qQt5Pk8lPtG7hD/nqLiXKQuPkX9a42A=;
+        b=FRVk1ahss1uKNASwRACbEUK7T0Kv+LJqQUt47GFlQDWZOsDA0rgtgROTm8CQlUt/+0
+         2c9bgpZxaV3wmi9cKsfpMaPpjfvKG0ta2Dk6QaH7qaJfATovVmwHeS15weo6UwAE+kIF
+         92NEXUlqGDylHQar1pcvP5WoAkx6tDtTrcXwmGsQm+n3Lxboi18dD0H+HZfFge56qVic
+         9KWV3UBTeziyHrvgZfYlqKziNfNP4aD+p1rlu56VXuXwxL18JQsXslL+FsHqga3MDoUT
+         3FDuD53WxHYmE6ywpvwDTbxzqmUkiWdBzbdz7VJ/aLfVM0N02g2cXGlADegwtuXiXcGq
+         y+PA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=gwXN66N4;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from o2.mail.teamwork.com (o2.mail.teamwork.com. [167.89.90.81])
+        by mx.google.com with ESMTPS id r9-20020a056214212900b0047334367906si2796186qvc.356.2022.07.29.11.17.37
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 29 Jul 2022 11:17:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) client-ip=167.89.90.81;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=gwXN66N4;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.90.81 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:in-reply-to:references:subject:mime-version:content-type:
+	reply-to:to:cc;
+	s=m1; bh=amBLkohNlX36qQt5Pk8lPtG7hD/nqLiXKQuPkX9a42A=;
+	b=gwXN66N4KS2VhAEP1iZPXsTPgHvGrczBF4KSQ/5zvYZbaUFFORsa21p1ihB/fSm9Wxzn
+	CoOuBz7ONvnLpFgDRkkkoA3SBWuBb1H9XxDYXaBUK8ALZnk8Ffo4NgEcxm+ZJeqY1nOZSp
+	txcTR1yGD2Nsyarilc4B0/3tohDww27Sk=
+Received: by filterdrecv-5597cf978f-rkczw with SMTP id filterdrecv-5597cf978f-rkczw-1-62E42441-6
+        2022-07-29 18:17:37.065205048 +0000 UTC m=+684764.958327779
+Received: from USAPPSERVER03 (unknown)
+	by geopod-ismtpd-4-1 (SG) with ESMTP
+	id o8oRZWkGQ--JW8PoO1O8Hw
+	for <aubrey@pineapple.co>;
+	Fri, 29 Jul 2022 18:17:37.060 +0000 (UTC)
+Date: Fri, 29 Jul 2022 18:17:37 +0000 (UTC)
+From: "Teamwork Bot (Pineapple Products)" <application@teamwork.com>
+Message-ID: <tw.30.178217.429@replies.teamwork.com>
+In-Reply-To: <thread.921738.30.425169.task@replies.teamwork.com>
+References: <thread.921738.30.425169.task@replies.teamwork.com>
+Subject: (Data Analytics & Reporting) - New task: Form Submission: GFS API
+ Connection for Inventory Report (Analytics)
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_457890_1971041136.1659118656947"
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-MC-Tags: webserver3
+Reply-To: Pineapple Products <tw.30.178217.429@replies.teamwork.com>
+X-SG-EID: 
+ =?us-ascii?Q?tLe3c=2FDFjIjV7eUsb1D6GgAsL7zML3fTX+VlJADxVfgKc8yROBrXZNDGGSImWn?=
+ =?us-ascii?Q?Zb=2Fnma4r1g0SaiELqQEmHQVfUrYGQpNS0vKtRsT?=
+ =?us-ascii?Q?9CPWwtQb54+b8kQWj987Ptykrt6pVwrqjinMMeE?=
+ =?us-ascii?Q?8Ba6aZSy2rSI15aLg86Z=2FZCqJ5beTG+6XUtFa2y?=
+ =?us-ascii?Q?=2FDDIdof=2FnZibbH+USFx67A6cUl46Wzcv5a0uDfv?=
+ =?us-ascii?Q?VKeebLbcXyvze=2FZz2XK80J3pw5z86=2Fkwpd5ZGIi?=
+ =?us-ascii?Q?Aeu10uSJ5NQMiLEiEDcUg=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJox7Dz6VF2YSa9nYWReO?=
+ =?us-ascii?Q?uXL5CSK8P+L8lX2MpDr2DlbijBrTwkVmFN+lt7v?=
+ =?us-ascii?Q?DoqbxKuuuC97Fu2aMD=2FmjZH1FZkiSytvLojujLl?=
+ =?us-ascii?Q?eupQGiYLv3GK7XdGFFFKL3N3qn8OdqrppWWIMGK?=
+ =?us-ascii?Q?wme4CII37d4j=2FXpIGlzTGSZLa9op2u=2FP6N=2Fiesn?=
+ =?us-ascii?Q?sy4MM2uOPc1kPXBgG1Rj0mCQggybw=2FkaRg70Uv0?=
+ =?us-ascii?Q?4na82b+qcKW6e5QnbH9BEsJX33TwZGCWbHY77BM?= =?us-ascii?Q?nbk=3D?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+------=_Part_457890_1971041136.1659118656947
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Teamwork Bot has assigned a task to you and another person.
+
+Form
+Submission: GFS API Connection for Inventory Report =E2=80=94 View
+Short Request
+Description:
+GFS API Connection for Inventory Report
+Name:
+Taylor Piccolo
+Full Request Description:
+The goal of this report is to help show
+departments how things they're implementing are having an effect on sales.
+To do this, I want to show how the number of sales/velocity is fluctuating
+each month, instead of just giving general information such as, &quot;We
+sold X of Floraspring in the month of July&quot;. I believe it would be
+more beneficial to say, &quot;Florasprings sales were the highest during
+the second week of July&quot;, this was if a new discount or sales tactic
+was used, we know it was successful!
+What I aim to do with this report is
+not only show the numbers we already look at and how much of the product
+has gone out, but also how those numbers have fluctuated throughout the
+month. I will do this by having multiple &quot;check-in&quot; days, where
+those numbers will be logged each month. For example, the 1st, 15th, and
+30th.
+Email:
+taylor@pineapple.co
+Level of urgency.:
+Yellow - Least
+urgency. Within the next month.
+Is there an ETA? If so, when.:
+Wed 31 Aug
+2022
+
+(#425169)Task Details
+Due Date: Not set
+Assigned To: Jarren
+Scheller, Aubrey Allen
+Assigned By: Teamwork Bot
+Priority: Not set
+Task
+List: Analytics
+View Task: Form Submission: GFS API Connection for
+Inventory Report
+Project Details
+Project: Data Analytics &amp; Reporting
+Company: Pineapple Products
+
+Copied To: Aubrey Allen, Jarren Scheller
+
+------=_Part_457890_1971041136.1659118656947
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+
+			<html>
+				<head>
+					<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+					<meta name=3D"viewport" content=3D"width=3D350px, user-scalable=3Dyes"=
+>
+					<style>
+						body {
+							margin:0px;
+						}
+						body,td,th,p{
+							font-family:Tahoma, Arial, Helvetica, sans-serif;
+							font-size:12px;
+							text-align:left;
+						}
+						h3{
+							padding:0;
+							margin:10px 0 5px 0;
+							color:#000000;
+							font-family : arial,sans-serif;
+							font-size: 1.4em;
+							font-weight:bold;
+						}
+						pre {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						pre code {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						blockquote {
+							border-left: 4px solid #DDDDDD;
+							padding: 0 15px;
+							color: #777777;
+							margin-left:10px;
+						}
+
+						blockquote p {
+							font-size:14px !important;
+							color: #777777;
+						}
+
+						span.atwho-inserted {
+							-webkit-text-size-adjust: 100%;
+							-webkit-tap-highlight-color: rgba(0,0,0,0);
+							text-rendering: optimizeLegibility;
+							text-align: left;
+							font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif=
+;
+							line-height: 1.7;
+							word-break: break-word;
+							overflow-wrap: break-word;
+							-webkit-user-modify: read-only;
+							box-sizing: border-box;
+							-webkit-user-select: auto !important;
+							display: inline-block;
+							border: none;
+							font-size: 13px;
+							color: #3f4650;
+							padding: 1px 6px;
+							border-radius: 10px;
+							background-color: #e1e7ef;
+							font-weight: normal;
+							cursor: default;
+							outline: none;
+						}
+
+						a {
+							word-break:break-all;
+						}
+						table td img { max-width:100%; }
+						html { -webkit-text-size-adjust: none; }
+						@media only screen and (max-device-width:480px) {
+							body { width: 350px !important; padding:5px !important;	}
+							table[class=3D"wrapper"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] table { width:300px !important; max-width:3=
+00px !important;}
+							table td[class=3D"dateTime"] { display:none !important; }
+							table td img { max-width:340px!important; }
+							p[class=3D"dateTimeMobile"] { font-family:'Lucida Grande', 'Lucida S=
+ans', Arial, sans-serif; color:#9E9E9E !important; font-size:11px !importan=
+t; line-height:22px !important; margin-bottom:22px !important; margin:0; }
+							h3 span[class=3D"note"], h3 span[class=3D"fwd"] { padding:0 !importa=
+nt; background-color:#ffffff !important; }
+						}
+					</style>
+				</head>
+				<body style=3D"-webkit-text-size-adjust:none;">
+
+					=3D=3D=3D=3D=3D WRITE YOUR REPLY ABOVE THIS LINE =3D=3D=3D=3D=3D<div s=
+tyle=3D"padding:5px 0 10px 10px;clear:both;"><img src=3D"http://assets1.tea=
+mworkpm.net/tko/public/assets/brand/email/teamwork_primary.png" width=3D"20=
+0"  style=3D"width:100%;max-width:200px;" border=3D"0"></div><div class=3D"=
+mailWrap" style=3D"overflow:hidden;padding:10px;font-family:arial;font-size=
+:12px;"> <table width=3D"100%" cellpadding=3D0 cellspacing=3D0><tr><td><h3>=
+Teamwork Bot has assigned a task to you and another person.</h3></td></tr><=
+/table><div style=3D"border:1px solid #AAA;border-radius:4px;padding:5px 10=
+px;margin-bottom:20px;overflow:hidden;"><p style=3D"font-size:14px;"><stron=
+g>Form Submission: GFS API Connection for Inventory Report</strong> &mdash;=
+ <a href=3D"https://pineappleproducts.teamwork.com/tasks/425169">View</a></=
+p><p style=3D"font-size:12px;color:#333"><p><strong>Short Request Descripti=
+on:</strong><br>GFS API Connection for Inventory Report</p>
+<p><strong>Name:</strong><br>Taylor Piccolo</p>
+<p><strong>Full Request Description:</strong><br>The goal of this report is=
+ to help show departments how things they&#39;re implementing are having an=
+ effect on sales. To do this, I want to show how the number of sales/veloci=
+ty is fluctuating each month, instead of just giving general information su=
+ch as, &quot;We sold X of Floraspring in the month of July&quot;. I believe=
+ it would be more beneficial to say, &quot;Florasprings sales were the high=
+est during the second week of July&quot;, this was if a new discount or sal=
+es tactic was used, we know it was successful!<br>What I aim to do with thi=
+s report is not only show the numbers we already look at and how much of th=
+e product has gone out, but also how those numbers have fluctuated througho=
+ut the month. I will do this by having multiple &quot;check-in&quot; days, =
+where those numbers will be logged each month. For example, the 1st, 15th, =
+and 30th.</p>
+<p><strong>Email:</strong><br><a href=3D"mailto:taylor@pineapple.co" target=
+=3D"_blank" title=3D"">taylor@pineapple.co</a></p>
+<p><strong>Level of urgency.:</strong><br>Yellow - Least urgency.  Within t=
+he next month.</p>
+<p><strong>Is there an ETA?  If so, when.:</strong><br>Wed 31 Aug 2022</p>
+</p> </div> <div style=3D"border:1px solid #999;border-left:10px solid #999=
+;padding:10px;color:#555;"><span style=3D"float:right;color:#888;">(#425169=
+)</span><h3 style=3D"margin:0;padding:0;color:#333;">Task Details</h3><p><s=
+trong>Due Date:</strong> Not set</p><p><strong>Assigned To:</strong> Jarren=
+ Scheller, Aubrey Allen</p><p><strong>Assigned By:</strong> Teamwork Bot</p=
+><p><strong>Priority:</strong> Not set</p><p><strong>Task List:</strong> <a=
+ href=3D"https://pineappleproducts.teamwork.com/tasklists/40725">Analytics<=
+/a></p><p><strong>View Task:</strong> <a href=3D"https://pineappleproducts.=
+teamwork.com/tasks/425169">Form Submission: GFS API Connection for Inventor=
+y Report</a></p><h3 style=3D"margin:0;padding:0;color:#333;">Project Detail=
+s</h3><p><strong>Project:</strong> <a href=3D"https://pineappleproducts.tea=
+mwork.com/projects/23790">Data Analytics &amp; Reporting</a></p><p><strong>=
+Company:</strong> Pineapple Products</p></div> <div style=3D"margin-top:10p=
+x;color:#999;font-size:12px;">Copied To: Aubrey Allen, Jarren Scheller</div=
+> <div style=3D"margin-top:10px;"><a style=3D"color:#888888;" href=3D"https=
+://pineappleproducts.teamwork.com/forgot_password">P.S. Just in case: You c=
+an reset your password by clicking here</a></div><div style=3D"display:none=
+;font-color:white;font-size:1px">Reply to: tw.30.178217.429@replies.teamwor=
+k.com</div>=20
+						<div itemscope itemtype=3D"http://schema.org/EmailMessage">
+						  <div itemprop=3D"potentialAction" itemscope itemtype=3D"http://sche=
+ma.org/ViewAction">
+						    <link itemprop=3D"target" href=3D"https://pineappleproducts.teamw=
+ork.com/tasks/425169"/>
+						    <meta itemprop=3D"name" content=3D"View task"/>
+						  </div>
+						  <meta itemprop=3D"description" content=3D"View task on Teamwork"/>
+						</div>
+				=09
+				</body>
+			</html>
+	=09=
+
+------=_Part_457890_1971041136.1659118656947--

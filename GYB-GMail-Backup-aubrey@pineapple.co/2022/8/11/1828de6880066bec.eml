@@ -1,0 +1,337 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:9acb:0:0:0:0 with SMTP id ah11csp796666ejc;
+        Thu, 11 Aug 2022 10:14:32 -0700 (PDT)
+X-Received: by 2002:a05:6512:1096:b0:48b:27a4:5049 with SMTP id j22-20020a056512109600b0048b27a45049mr85042lfg.646.1660238071973;
+        Thu, 11 Aug 2022 10:14:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660238071; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Gv6XvYBxkSbcM4Gsreml6iVjq8VNktmnvPwZar/uZupVtpBfBhq5okz6b5N9z1CDQy
+         yGULehecCgMJUAoFJcdO/fNdwA3lNq2tUWjS+nM0omUAsSYILhDnuqjY8Rb4HQMtQGjn
+         M5cEogow4f6iO4BxdRfBE5hPjs7VmLU9+i6qF8/blGV16Su3MmX1yB8Oo80zJzo4Ee0N
+         VVx20sXdXjzvzDBnx330EOKoOTKCp+pAH8W1MEqys/9FUdNrKTu3rSIl8gf1U9yWI26Z
+         EVNq5Nua9wblLWMtbHLu4uwa5cXiP+TTn69kltAi/3qtd6eTXOn5JudEoQ3lavP36Bvf
+         21sQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=QedU3FrTEdiguabS8gbnipka1n9csVLgXM/VjPJ4W4Y=;
+        b=HBfmgvoHhmMXqKDOUVRCxEqSuCQr0dMfA+7gtEFrQvFCl+7tm61kfzUIJHXtTPqikV
+         bZrjkZsEJM3FwD7oyZ0ZGdsEk7osZ5An7277i7bb+rzNifFlpnjjwHPCvNprun4TxBkn
+         huaba1CMnThDxGJ0RDrNnZvpH/rKw0zdrLjwxSq1FAbPH6GQ7ppGasiz6mONbO/R+9Bw
+         8B0El/isocGW8fFc/MKvBfO8I8bAGL5RMo/IOE/3LneECeFlzSGutpOiaaDmwQvrOm+o
+         dbfr+DEmRTlvy8pEQXgNTT+t7/EM0I200si2Rn1Bd5wPundFWnGyEU98QXEDTzSG27YV
+         4xnQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=Pnx0SStM;
+       spf=pass (google.com: domain of emilyfreiday@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=emilyfreiday@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <emilyfreiday@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d24-20020a2e3318000000b0025e19c85396sor2279801ljc.55.2022.08.11.10.14.31
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 11 Aug 2022 10:14:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of emilyfreiday@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=Pnx0SStM;
+       spf=pass (google.com: domain of emilyfreiday@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=emilyfreiday@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc;
+        bh=QedU3FrTEdiguabS8gbnipka1n9csVLgXM/VjPJ4W4Y=;
+        b=Pnx0SStMykKlmBUPaTQL8WnqyB/nJKSq3b2Y5VylsVGPeGxb0vKW9649c0MDDl3srg
+         L5AxYZGb7lyQx4iMiZ2Me5gFTXj0nhImI/M4U1JqBfbJOvJ92RBeRg8ulxhIRqgJgbLb
+         papmrS81E1wJPiAJu4Im3hQP+0Vxd8v2VIPFz09gp9Bdoh8yrDKzv41SIBWahfLP0pD8
+         6Tw8MCm/a2nReU1KIbMbAC92QwKM+EsRsbhTOtNGKwgfhmd7oJ4ABf5CaakF1MX+LECm
+         RDo63zYR9D60cZKw8QD3KBwOUqGmV/wvfKD2l8up5d38yPVHXVMySXZs2Lgq0B1YZyET
+         ZsqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc;
+        bh=QedU3FrTEdiguabS8gbnipka1n9csVLgXM/VjPJ4W4Y=;
+        b=FjxsBo17C4r0V3MyJlGJ01lBlMm77xu1zHMRy2mRzeLUtfL3y0X1wdHTt0q/l1EpJY
+         XMSZT5j0ea9YQFl8qA+zmmAsfsZmjC7AJ10YLAVuf7YQfZciVNlRuwRcrTPHw21s0FRj
+         VbkEx+YE14GQJIRazGJfbfrFBDLLZcErnjD32bSOQSDtRmUGp3XLrBIjrJHv0Oeg+rUC
+         byzul6Ivr9Jyrg1gKRqBjpFQsuiZscuahjZu430WwTATL5YqbtFEmh/gD7Sqc0PzRwWJ
+         p3LtSCpMdHwOuK98WYq+vUmEeOeNcyy+Q+Y+NFGulx0qthISMumTL7hdYY2JG/aGIe/r
+         m66w==
+X-Gm-Message-State: ACgBeo13CbeJqIeAeJt7thkTavyR9hfjJK2JWxjwpbC5dQKJQbT2O6u0
+	HUzl6Qkt66kpokrXmOnrnOvBY1tRf1ZN0bHr7vyNCBAWgMCCq88m
+X-Google-Smtp-Source: AA6agR6J4+0mvdPjrb1iGRfSx/CClnWFoDYUvxBipRaVIG6qwdkj6kppBfXfPOy0IELfKAG6HoDASJcxqGXFV4QQJ84=
+X-Received: by 2002:a05:651c:a0c:b0:25e:6d4e:1bdb with SMTP id
+ k12-20020a05651c0a0c00b0025e6d4e1bdbmr48045ljq.111.1660238071431; Thu, 11 Aug
+ 2022 10:14:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_SxkoQLHu80SqbHq-SQWUYDmU3w4WVCRJ==RDasv_Efew@mail.gmail.com>
+ <CAFGhg-4ap08AeWry1_1-rVCYaVjxQL3YnZQacO1dvzWVCADqgA@mail.gmail.com> <CAHbmDP-45TtoVEEzssVkCj5LiivcKU71QMYKd8ZXT5GgdAtDkQ@mail.gmail.com>
+In-Reply-To: <CAHbmDP-45TtoVEEzssVkCj5LiivcKU71QMYKd8ZXT5GgdAtDkQ@mail.gmail.com>
+From: Emily Freiday <emilyfreiday@pineapple.co>
+Date: Thu, 11 Aug 2022 13:14:20 -0400
+Message-ID: <CAFGhg-7CAkU48MD+U5vwiqMppYKoHgH9iqeL+2go7ahJQyBupA@mail.gmail.com>
+Subject: Re: Amazon sales for July?
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000007d9b9505e5fa4cb5"
+
+--0000000000007d9b9505e5fa4cb5
+Content-Type: text/plain; charset="UTF-8"
+
+Here you go.
+
+https://drive.google.com/drive/folders/1zu_jsymWXoqJ8ZbVgMwCK9ZUMCd9dw19?usp=sharing
+
+
+Regards,
+
+
+[image: created with MySignature.io]
+<http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+Emily Freiday
+Amazon Account Manager
+
+Pineapple Company
+442-227-3877
+
+
+
+On Thu, Aug 11, 2022 at 12:37 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Emily,
+>
+> I hope you are having a good week so far!
+>
+> Would you be able to send me the same monthly Amazon report you sent the
+> other day, but for each month January-June 2022, please?  I'm trying to get
+> some historical data to add to a report for Brett.
+>
+> Thank you in advance!
+> Aubrey
+>
+> On Tue, Aug 9, 2022 at 12:17 PM Emily Freiday <emilyfreiday@pineapple.co>
+> wrote:
+>
+>> Aubrey,
+>>
+>> See attached. It has all the transactions and fees associated with the
+>> account for the month of July.
+>>
+>> Regards,
+>>
+>>
+>> [image: created with MySignature.io]
+>> <http://s3.amazonaws.com/pineapple.co/pineappleco.gif>
+>> Emily Freiday
+>> Amazon Account Manager
+>>
+>> Pineapple Company
+>> 442-227-3877
+>>
+>>
+>>
+>> On Tue, Aug 9, 2022 at 12:57 PM Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>>> Do you guys have a total of Amazon sales and Amazon fees for July you
+>>> can send Aubrey?
+>>>
+>>> --
+>>>
+>>>
+>>>
+>>> *Brett Allcorn*
+>>> Chief Executive Officer | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: brett@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipient
+>>> specified in message only. It is strictly forbidden to share any part of
+>>> this message with any third party, without a written consent of the sender.
+>>> If you received this message by mistake, please reply to this message and
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>
+
+--0000000000007d9b9505e5fa4cb5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Here you go.=C2=A0<div><br></div><div><a href=3D"https://d=
+rive.google.com/drive/folders/1zu_jsymWXoqJ8ZbVgMwCK9ZUMCd9dw19?usp=3Dshari=
+ng">https://drive.google.com/drive/folders/1zu_jsymWXoqJ8ZbVgMwCK9ZUMCd9dw1=
+9?usp=3Dsharing</a>=C2=A0</div><div><br clear=3D"all"><div><div dir=3D"ltr"=
+ class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"l=
+tr">Regards,=C2=A0<table width=3D"500" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:col=
+lapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td width=
+=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:top=
+"><font size=3D"2" color=3D"#000000" face=3D"verdana, sans-serif"><br></fon=
+t><br><table width=3D"500" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"=
+ style=3D"border-spacing:0px;border-collapse:collapse;font-family:Lato,sans=
+-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px 9p=
+x 0px 0px;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pineapple.=
+co/pineappleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=
+=3D"created with MySignature.io" src=3D"https://img.mysignature.io/p/e/3/f/=
+e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" width=3D"100" s=
+tyle=3D"width:100px;border-radius:15%"></a></td><td valign=3D"top" style=3D=
+"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-color:=
+rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color:rgb(=
+70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;li=
+ne-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;color=
+:rgb(0,0,1)"><tbody><tr><td><font face=3D"Verdana, Geneva, sans-serif"><spa=
+n style=3D"font-size:13.26px"><font color=3D"#0b5394">Emily Freiday</font><=
+br></span></font><font face=3D"Verdana, Geneva, sans-serif" size=3D"2">Amaz=
+on Account Manager</font></td></tr><tr><td style=3D"padding:5px 0px"><div s=
+tyle=3D"font-family:Verdana,Geneva,sans-serif"><font size=3D"2">Pineapple C=
+ompany</font></div><div style=3D"font-family:Verdana,Geneva,sans-serif"></d=
+iv></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif;c=
+olor:rgb(70,208,255)"><font size=3D"2">442-227-3877</font>=C2=A0</span></td=
+></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><=
+div><br></div></div></div></div><br></div></div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Aug 11, 2022 at 12:37 PM =
+Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+<div dir=3D"ltr">Hi Emily,<div><br></div><div>I hope you are having a good =
+week so far!</div><div><br></div><div>Would you be able to send me the same=
+ monthly Amazon report you sent the other day, but for each month January-J=
+une 2022, please?=C2=A0 I&#39;m trying to get some historical data to add t=
+o a report for Brett.</div><div><br></div><div>Thank you in advance!</div><=
+div>Aubrey</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Tue, Aug 9, 2022 at 12:17 PM Emily Freiday &lt;<a href=
+=3D"mailto:emilyfreiday@pineapple.co" target=3D"_blank">emilyfreiday@pineap=
+ple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex"><div dir=3D"ltr">Aubrey,=C2=A0<div><br></div><div>See attached. It ha=
+s all the transactions and fees associated with the account for the month o=
+f July.=C2=A0</div><div><br clear=3D"all"><div><div dir=3D"ltr"><div dir=3D=
+"ltr">Regards,=C2=A0<table width=3D"500" cellspacing=3D"0" cellpadding=3D"0=
+" border=3D"0" style=3D"font-size:13px;border-spacing:0px;border-collapse:c=
+ollapse;color:rgb(97,97,97);font-family:Lato,sans-serif"><tbody><tr><td wid=
+th=3D"100" valign=3D"top" style=3D"padding:0px 9px 0px 0px;vertical-align:t=
+op"><font size=3D"2" color=3D"#000000" face=3D"verdana, sans-serif"><br></f=
+ont><br><table width=3D"500" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" style=3D"border-spacing:0px;border-collapse:collapse;font-family:Lato,sa=
+ns-serif"><tbody><tr><td width=3D"100" valign=3D"top" style=3D"padding:0px =
+9px 0px 0px;vertical-align:top"><a href=3D"http://s3.amazonaws.com/pineappl=
+e.co/pineappleco.gif" style=3D"color:rgb(0,0,0)" target=3D"_blank"><img alt=
+=3D"created with MySignature.io" src=3D"https://img.mysignature.io/p/e/3/f/=
+e3f6f4b3-342f-58ae-a95a-4b540c36f8aa.png?time=3D1595444125" width=3D"100" s=
+tyle=3D"width: 100px; border-radius: 15%;"></a></td><td valign=3D"top" styl=
+e=3D"border-left:2px solid rgb(70,208,255);vertical-align:top;border-top-co=
+lor:rgb(70,208,255);border-right-color:rgb(70,208,255);border-bottom-color:=
+rgb(70,208,255);padding:0px 0px 0px 9px"><table cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" style=3D"border-spacing:0px;border-collapse:collapse;=
+line-height:1.4;font-family:Verdana,Geneva,sans-serif;font-size:11.05px;col=
+or:rgb(0,0,1)"><tbody><tr><td><font face=3D"Verdana, Geneva, sans-serif"><s=
+pan style=3D"font-size:13.26px"><font color=3D"#0b5394">Emily Freiday</font=
+><br></span></font><font face=3D"Verdana, Geneva, sans-serif" size=3D"2">Am=
+azon Account Manager</font></td></tr><tr><td style=3D"padding:5px 0px"><div=
+ style=3D"font-family:Verdana,Geneva,sans-serif"><font size=3D"2">Pineapple=
+ Company</font></div><div style=3D"font-family:Verdana,Geneva,sans-serif"><=
+/div></td></tr><tr><td><span style=3D"font-family:Verdana,Geneva,sans-serif=
+;color:rgb(70,208,255)"><font size=3D"2">442-227-3877</font>=C2=A0</span></=
+td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table=
+><div><br></div></div></div></div><br></div></div><br><div class=3D"gmail_q=
+uote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Aug 9, 2022 at 12:57 PM=
+ Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co" target=3D"_blank">=
+brett@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex"><div dir=3D"ltr">Do you guys have a total of Amazon sales=
+ and Amazon fees for July you can send Aubrey?<br clear=3D"all"><div><br></=
+div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Executi=
+ve Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span> 			 		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000007d9b9505e5fa4cb5--

@@ -1,0 +1,292 @@
+MIME-Version: 1.0
+Date: Mon, 26 Sep 2022 10:44:04 -0500
+References: <CALCR5_RuVYjLoDRp1iGFpbCh7y32MDNQHHz0PvRJ4DvTyqwWcQ@mail.gmail.com>
+	<CALCR5_SvF0gZLe0C0CVyG3pqe2KQjC0C70Vr9LT8VeoOc_=EjQ@mail.gmail.com>
+	<CAHbmDP-Z4+3AGxR9OPEASucnBt5MSRvM4mOwh5uPaSYCsxq55A@mail.gmail.com>
+	<CALCR5_QZowghw6=m=6VcOXdsy9-Ey5tFLBKf2rXKDSxRtR0jeQ@mail.gmail.com>
+In-Reply-To: <CALCR5_QZowghw6=m=6VcOXdsy9-Ey5tFLBKf2rXKDSxRtR0jeQ@mail.gmail.com>
+Message-ID: <CAHbmDP8C9+-Ma0XO_NkdfPotAgHhePK07iWBPWti_kzXf4fGow@mail.gmail.com>
+Subject: Re: Knime routine for Lifetime Value?
+From: Aubrey Allen <aubrey@pineapple.co>
+To: Brett Allcorn <brett@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000d0552405e99665d9"
+
+--000000000000d0552405e99665d9
+Content-Type: text/plain; charset="UTF-8"
+
+Understood.
+
+I'm not sure that Greg would be that helpful here since he didn't work on
+this routine, so he'd be starting from scratch anyway.  Malcolm might know
+more about this routine specifically but I can't say for sure.
+
+What I'll do is start working on it and see if I can get it updated and
+working properly.  I'll also reach out to Jarren in the meantime so he can
+take a look at it as well-- maybe something will jump out at him right away
+as he's going through it.
+
+In order to update the routine I'll have to go through each node to see how
+exactly it's working and to make sure that it's properly coded for new
+products, categories, COGs, expenses, etc. that have changed since Ian
+created the workflow.
+
+I'll see what I can do and keep you updated with how it goes.
+
+On Mon, Sep 26, 2022 at 9:58 AM Brett Allcorn <brett@pineapple.co> wrote:
+
+> OK getting it working would be pretty helpful.
+>
+> Could Greg help you with it? I assume he's busy and I don't believe he
+> ever used this routine.
+>
+> The other option is to see if I can hire Malcolm our ex-COO to help you
+> with knime.
+>
+> Another option, which would be slightly less useful, is for you and Jarren
+> to go through this routine line by line to see what it's doing and compare
+> it to what Jarren's code is doing.
+>
+> But ultimately, if it worked... or we could get it to work for even just
+> one month's worth of data for one LLC like Revival Point, then we could
+> compare the numbers from Knime to Jarren's report, which are quite
+> different and figure out what the difference is.
+>
+> That's the main goal.
+>
+> Jarren's numbers are higher than Knime so its hard to have confidence
+> right now without a good explanation.
+>
+> On Mon, Sep 26, 2022 at 8:46 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+>
+>> Hi Brett,
+>>
+>> There is indeed a KNIME workflow for ALTV-- it was one of the routines
+>> that Ian just recently sent over to me; for whatever reason Greg had never
+>> sent it to me/I'm unsure if he ever worked on it.
+>>
+>> Because Ian's routine hasn't been used since he was at the company, it
+>> will take work to get it updated with current values and running properly.
+>> But, it does exist, and Ian also provided me with a Word doc that has his
+>> operating procedure for executing the routine.
+>>
+>> I can start to see what I can do to get this up and running, and I will
+>> share the routine and the doc with Jarren in case it will be helpful.
+>>
+>> To your point, I haven't actually calculated ALTV, but obviously I'm
+>> happy to try to help in any way I can.  At the very least, the routine
+>> should be helpful in comparing how Ian calculated ALTV to how it is
+>> currently set up.
+>>
+>> Thanks,
+>> Aubrey
+>>
+>> On Sun, Sep 25, 2022 at 7:48 PM Brett Allcorn <brett@pineapple.co> wrote:
+>>
+>>> Oh also Jarren wanted to see if you could double check some of his logic
+>>> and coding as far as the lifetime value reports go.
+>>>
+>>> But I'm not totally sure you understand how our average lifetime values
+>>> are calculated... so I guess lets discuss if it makes sense first.
+>>>
+>>> On Fri, Sep 23, 2022 at 6:11 PM Brett Allcorn <brett@pineapple.co>
+>>> wrote:
+>>>
+>>>> Hey Aubrey, do you know if there are any knime routines you have access
+>>>> to that were used for Ian to create these monthly cohort lifetime value
+>>>> reports?
+>>>>
+>>>>
+>>>> https://docs.google.com/spreadsheets/d/1I3E5N_3CsCnSAJ_kLj9J5PhDPISc_EXTRsDBwInSj6M/edit#gid=1044530964
+>>>>
+>>>>
+>>>> https://docs.google.com/spreadsheets/d/1I3E5N_3CsCnSAJ_kLj9J5PhDPISc_EXTRsDBwInSj6M/edit#gid=1044530964
+>>>>
+>>>> --
+>>>>
+>>>>
+>>>>
+>>>> *Brett Allcorn*
+>>>> Chief Executive Officer | pineapple.co
+>>>>
+>>>> [image: Photo]
+>>>>
+>>>> E: brett@pineapple.co
+>>>>
+>>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>>
+>>>> The content of this email is confidential and intended for the
+>>>> recipient specified in message only. It is strictly forbidden to share any
+>>>> part of this message with any third party, without a written consent of the
+>>>> sender. If you received this message by mistake, please reply to this
+>>>> message and follow with its deletion, so that we can ensure such a mistake
+>>>> does not occur in the future.
+>>>>
+>>>
+
+--000000000000d0552405e99665d9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Understood.<div><br></div><div>I&#39;m not sure that Greg =
+would be that helpful here since he didn&#39;t work on this routine, so he&=
+#39;d be starting from scratch anyway.=C2=A0 Malcolm might know more about =
+this routine specifically but I can&#39;t say for sure.<div><br></div><div>=
+What I&#39;ll do is start working on it and see if I can get it updated and=
+ working properly.=C2=A0 I&#39;ll also reach out to Jarren in the meantime =
+so he can take a look at it as well-- maybe something will jump out at him =
+right away as he&#39;s going through it.</div><div><br></div><div>In order =
+to update the routine I&#39;ll have to go through each node to see how exac=
+tly it&#39;s working and to make sure that it&#39;s properly coded for new =
+products, categories, COGs, expenses, etc. that have changed=C2=A0since Ian=
+ created the workflow.</div><div><br></div><div>I&#39;ll see what I can do =
+and keep you updated with how it goes.</div></div></div><br><div class=3D"g=
+mail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 26, 2022 at 9=
+:58 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co">brett@pineap=
+ple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex"><div dir=3D"ltr">OK getting it working would be pretty helpful.<br><d=
+iv><br></div><div>Could Greg help you with it? I assume he&#39;s busy and I=
+ don&#39;t believe he ever used this routine.</div><div><br></div><div>The =
+other option is to see if I can hire Malcolm our ex-COO to help you with kn=
+ime.</div><div><br></div><div>Another option, which would be slightly less =
+useful, is for you and Jarren to go through this routine line by line to se=
+e what it&#39;s doing and compare it to what Jarren&#39;s code is doing.</d=
+iv><div><br></div><div>But ultimately, if it worked... or we could get it t=
+o work for even just one month&#39;s worth of data for one LLC like Revival=
+ Point, then we could compare the numbers from Knime to Jarren&#39;s report=
+, which are quite different and figure out what the difference is.</div><di=
+v><br></div><div>That&#39;s the main goal.</div><div><br></div><div>Jarren&=
+#39;s numbers are higher than Knime so its hard to have confidence right no=
+w without a good explanation.</div></div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 26, 2022 at 8:46 AM Aubrey A=
+llen &lt;<a href=3D"mailto:aubrey@pineapple.co" target=3D"_blank">aubrey@pi=
+neapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"ltr">Hi Brett,<div><br></div><div>There is indeed a =
+KNIME workflow for ALTV-- it was one of the routines that Ian just recently=
+ sent over to me; for whatever reason Greg had never sent it to me/I&#39;m =
+unsure if he ever worked on it.</div><div><br></div><div>Because Ian&#39;s =
+routine hasn&#39;t been used since he was at the company, it will take work=
+ to get it updated with current values and running properly.=C2=A0 But, it =
+does exist, and Ian also provided me with a Word doc that has his operating=
+ procedure for executing the routine.</div><div><br></div><div>I can start =
+to see what I can do to get this up and running, and I will share the routi=
+ne and the doc with Jarren in case it will be helpful.</div><div><br></div>=
+<div>To your point, I haven&#39;t actually calculated ALTV, but obviously I=
+&#39;m happy to try to help in any way I can.=C2=A0 At the very least, the =
+routine should be helpful in comparing how Ian calculated ALTV to how it is=
+ currently set up.</div><div><br></div><div>Thanks,</div><div>Aubrey</div><=
+/div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">O=
+n Sun, Sep 25, 2022 at 7:48 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pi=
+neapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Oh also Ja=
+rren wanted to see if you could double check some of his logic and coding a=
+s far as the lifetime=C2=A0value reports go.<br><div><br></div><div>But I&#=
+39;m not totally sure you understand how our average lifetime values are ca=
+lculated... so I guess lets discuss if it makes sense first.</div></div><br=
+><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, S=
+ep 23, 2022 at 6:11 PM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.=
+co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
+olid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hey Aubrey, do you=
+ know if there are any knime routines you have access to that were used for=
+ Ian to create these monthly cohort lifetime value reports?<div><br></div><=
+div><a href=3D"https://docs.google.com/spreadsheets/d/1I3E5N_3CsCnSAJ_kLj9J=
+5PhDPISc_EXTRsDBwInSj6M/edit#gid=3D1044530964" target=3D"_blank">https://do=
+cs.google.com/spreadsheets/d/1I3E5N_3CsCnSAJ_kLj9J5PhDPISc_EXTRsDBwInSj6M/e=
+dit#gid=3D1044530964</a></div><div><br></div><div><a href=3D"https://docs.g=
+oogle.com/spreadsheets/d/1I3E5N_3CsCnSAJ_kLj9J5PhDPISc_EXTRsDBwInSj6M/edit#=
+gid=3D1044530964" target=3D"_blank">https://docs.google.com/spreadsheets/d/=
+1I3E5N_3CsCnSAJ_kLj9J5PhDPISc_EXTRsDBwInSj6M/edit#gid=3D1044530964</a><br c=
+lear=3D"all"><div><br></div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+			<span><br></span>
+			<span><br></span>
+			<span><br></span>
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Brett Allcorn</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Chief Executi=
+ve Officer<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">=09
+			<img alt=3D"Photo" style=3D"max-width: 90px; height: auto; border: 0px;"=
+ width=3D"90" border=3D"0" src=3D"https://ci3.googleusercontent.com/mail-si=
+g/AIorK4xxrTub-_lMNvIMuV9bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B=
+4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px">
+
+           =20
+            </p><p style=3D"line-height:12px;padding-bottom:2px;margin-bott=
+om:0px;padding-top:0px;margin-top:0px">
+			<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">E:</sp=
+an>=20
+			<a href=3D"mailto:brett@pineapple.co" style=3D"text-decoration:none;font=
+-size:9pt;color:rgb(16,16,16)" target=3D"_blank">brett@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">		=09
+					<span style=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</=
+span> 			 		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">13423 Blanco Rd PMB =
+8024</span><span style=3D"font-size:9pt;color:rgb(16,16,16)">, </span>		=09
+					<span style=3D"font-size:9pt;color:rgb(16,16,16)">San Antonio, TX 7821=
+6</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        <p></p></td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000d0552405e99665d9--

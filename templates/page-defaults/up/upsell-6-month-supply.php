@@ -196,8 +196,8 @@ if (isset($_SESSION['step_1_orderId'])) {
             <section>
                 <?php
                 $current_step = 2;
-				template('includes/step_bar', null, $current_step);
-				?>
+				        template('includes/step_bar', null, $current_step);
+				        ?>
             </section>
             <div class="flex flex-col w-full rounded p-5 bg-white rounded border border-black">
                 <div class="w-full pb-4 text-center">
@@ -233,7 +233,7 @@ if (isset($_SESSION['step_1_orderId'])) {
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $179.69</strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 57% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/process-up/?pid=11&buy=1&up=test" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+                                <a href="/process-up/?pid=11&buy=1&up=upsell-2-blow-her-away" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
                                 </div>
 
                             </div>
@@ -243,13 +243,15 @@ if (isset($_SESSION['step_1_orderId'])) {
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $297</strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A WHOPPING 65% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/process-up/?pid=250&buy=1" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+                                <a href="/process-up/?pid=250&buy=1&up=upsell-2-blow-her-away" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-center my-4"><span><img class="guarantee" src="https://s3.amazonaws.com/5gmale/90-guarantee.jpg" style="width:114px; height:112px;margin-top:20px;"></span></div>
                         <div class="flex justify-center my-4 font-bold text-center" style="font-size: 20px;"><em>(It's Recommended You Take This One-Time Discount)</em></div>
                     </div>
+
+                    <p class="centered p8" style="font-size: 15px; color: #8C8C8C;"><a href="popupa.php" class="fancybox fancybox.ajax" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Ryan, give my one-time-only discount away to another man. I understand I will NOT get access to this discount again under any circumstances.</p>
 
                 </section>
 

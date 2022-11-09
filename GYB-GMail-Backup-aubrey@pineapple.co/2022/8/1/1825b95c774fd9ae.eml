@@ -1,0 +1,303 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp2895868ejz;
+        Mon, 1 Aug 2022 15:45:19 -0700 (PDT)
+X-Received: by 2002:a63:4608:0:b0:41a:617f:e194 with SMTP id t8-20020a634608000000b0041a617fe194mr15396019pga.152.1659393918877;
+        Mon, 01 Aug 2022 15:45:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659393918; cv=none;
+        d=google.com; s=arc-20160816;
+        b=c3cmhI4968r5GXR4c7nrxg3Pmh9xejSDdJ4OCdA5oGSQSwVHP6ZJm7WS4KtaamVA41
+         gFWYO391hHqueUc0vwnPuxQh3mm5q/n8V7MCnCCCTZMJmw/eBI5qPIax5pd/rUIUkP4U
+         Ya7b5asB7dWtuHH+K6VuNnsuRpfx/gxdr8CR9V8Z7/DB+C/0YFanCErXCkznZ2EaJRpz
+         JPfsdwIpsazfGZ50QpA4v1cNazjq6q2gYpSNPvoAS2CbHv0Cc0FZm6gqMsQYxa6L2nEX
+         f3pGL3qdlI/IDR3joZKDLuCrYIlVCS2zobt0/o4wmBAEmgWYhmGM1fFtR2x8vpk2Plqg
+         eoxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=k2V9Je3cIYE6rwBh5HSHiPg/Ckz/sV03ym/ksxms2+Y=;
+        b=dOMfQfEQ0dEpU5LagVohIIsjEiVlUMFS4ysx9Eiy8I28su6/dLnnX8Rzx9hKnMtGhO
+         MnCoHk5KnaBxWkv4zvQyCbrZuCOclt9fHyzO8BWnkhDDbAuwYJlGHWEf+EJ1NHGRL/8a
+         hm3ktTc94lwFDrWdTVEfTntRA+tC2WLbVgswdskdfHKJIa6SQE14bUdU1CQ7BHB/XTqK
+         asUb4FZ2ZtM+dIRWm1srNDH8Xv85M1ni34FopiJeOGoRq32YDxhYfRz+gN2fkoQ25YK2
+         haT3lsCRYcHgk2+WvrXkhOcjH9kV1vyWLush8C66/9tU/d+zmbtiQM5kFAhWaMZLAAQN
+         Bz8w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=ER43HvFC;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u16-20020a170902e5d000b0016d6f9a1327sor5088627plf.167.2022.08.01.15.45.18
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Mon, 01 Aug 2022 15:45:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=ER43HvFC;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc;
+        bh=k2V9Je3cIYE6rwBh5HSHiPg/Ckz/sV03ym/ksxms2+Y=;
+        b=ER43HvFCNQe8UNYdgv70EahzHgb+y0IGJOD11kP889yiUH0PU5oMC6iOHowvsfF94F
+         NWTq2qIeWYuUDRaw12/sbr7shWZFXRhlFVn0iUGJpKlPU0pjHb0AfAsmHIJbMVd8oWwJ
+         RZhpV17HZ0E024+LK3gvBDz5UtQ4lw0s91aeH+6LqK/K08uKkTgV86SPM7mMlyBWnZqy
+         7rAlkmwaXuhuC55IulUne2/9DaDT3kshDZ3td5dmjJ3Gxjzjl/XgKMFUAVLDDt5X3+a2
+         ptCkomZgHj4QvA/x5A85Js/NcFWNYuGVBogeY02xb/kEcjFf2pkJxkJcZUpDHdoq8gQD
+         tYXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc;
+        bh=k2V9Je3cIYE6rwBh5HSHiPg/Ckz/sV03ym/ksxms2+Y=;
+        b=rmkpwTwWXLPQH6d+51MxKuHyH+aibChrdYLnYE6CFHoTXoieYvIejfQrZieZ81vt2v
+         GPbX4tFpuRL2C+FDa4LQ5YVwsiwv+g4Wjj5GAxS8OgcX9cUinmQQvYLrrdTiGoMhLSFh
+         +tShqwYuRi9e7hr5cJmoihG1qx8aoc2z1Ag+oco+UTp6MW1SUE6TETUtnWtp/7TTldkE
+         dNPygaAxluF7noHVrK+HEIdzAPqPSngZDjeHWF/Jfrb4YT7oLsW2+Azkt42dhvbcC5P7
+         Eb+rem5YMaaLO7DmvZXzV+etn1s+hVIM3y5PfuraowjjpsJ9+LiiffKeiw3PVh/yYxaV
+         RBcA==
+X-Gm-Message-State: ACgBeo2Hn0GvhtpPsvQKr8mYxTYOMMuqQKmvJUL1vmsJZu48rE47V6Wg
+	hmImApr5p634Jnrqrrb5wblY0H7WYrfXVu/VV8cDSsn+IGxNWAAh
+X-Google-Smtp-Source: AA6agR4+Yi+WlT7o8Aw3EdEZum0EHKAczIYf83xzSa0Qxicf5PgiR6Q7Wn4XtK7Vhwg29ucY/C6tZnd9W8Gs/UmEem8=
+X-Received: by 2002:a17:902:778c:b0:16d:9d4d:51f9 with SMTP id
+ o12-20020a170902778c00b0016d9d4d51f9mr18742903pll.19.1659393917732; Mon, 01
+ Aug 2022 15:45:17 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP_1jnaOk3acL6HL6_YJ8rJWQG98OrDb0uD+gAYrR9M+jA@mail.gmail.com>
+In-Reply-To: <CAHbmDP_1jnaOk3acL6HL6_YJ8rJWQG98OrDb0uD+gAYrR9M+jA@mail.gmail.com>
+From: Brett Allcorn <brett@pineapple.co>
+Date: Mon, 1 Aug 2022 18:45:07 -0400
+Message-ID: <CALCR5_RvTFmarNsvp+gZAmz+rW7dV-MZrB1kRV8-=OVVmqiq4A@mail.gmail.com>
+Subject: Re: July 2022 Sales Revenue
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000000262fe05e535c110"
+
+--0000000000000262fe05e535c110
+Content-Type: text/plain; charset="UTF-8"
+
+That seems pretty good to start with
+
+On Mon, Aug 1, 2022 at 5:12 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Brett,
+>
+> I'm still working on confirming and incorporating the expenses that Kerry
+> sent over, so here is this for now.
+>
+> 7/1-7/31/2022
+> Gross Revenue $2,006,816.05
+> Refunds ($157,515.85)
+> Voids ($61,664.61)
+> Chargebacks ($3,570.62)
+> Net Revenue $1,784,064.97
+>
+> So far I've found our Quickbooks expenses for the following:
+> COGS, Acquisition Costs, Merchant Fees, Chargeback Fees, Shipping/Postage
+> Cost, Subscriptions, Payroll (Indirect), Payroll (Direct), Indirect
+> Contractor Fees, and Marketing Fees.
+>
+> Does that seem exhaustive, or am I missing something?
+>
+>
+> Thanks,
+> Aubrey
+>
+> --
+> *Aubrey Allen*
+> Data Analytics Technician | pineapple.co
+>
+> [image: Photo]
+>
+> E: aubrey@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+
+--0000000000000262fe05e535c110
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">That seems pretty good to start with<br></div><br><div cla=
+ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Aug 1, 202=
+2 at 5:12 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey=
+@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex"><div dir=3D"ltr">Hi Brett,<div><br></div><div>I&#39;m still wo=
+rking on confirming and incorporating the expenses that Kerry sent over, so=
+ here is this for now.=C2=A0</div><div><br></div><div><div><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"234" style=3D"border-colla=
+pse:collapse;width:175pt">
+
+ <colgroup><col width=3D"103" style=3D"width:77pt">
+ <col width=3D"131" style=3D"width:98pt">
+ </colgroup><tbody><tr height=3D"19" style=3D"height:14.5pt">
+  <td height=3D"19" width=3D"103" style=3D"height:14.5pt;width:77pt;padding=
+-top:1px;padding-right:1px;padding-left:1px;color:black;font-size:11pt;font=
+-family:Calibri,sans-serif;vertical-align:bottom;border:none;white-space:no=
+wrap"></td>
+  <td width=3D"131" style=3D"width:98pt;font-weight:700;text-align:center;b=
+order:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-left=
+:1px;color:black;font-size:11pt;font-family:Calibri,sans-serif;vertical-ali=
+gn:bottom;white-space:nowrap">7/1-7/31/2022</td>
+ </tr>
+ <tr height=3D"19" style=3D"height:14.5pt">
+  <td height=3D"19" style=3D"height:14.5pt;font-weight:700;border:0.5pt sol=
+id windowtext;padding-top:1px;padding-right:1px;padding-left:1px;color:blac=
+k;font-size:11pt;font-family:Calibri,sans-serif;vertical-align:bottom;white=
+-space:nowrap">Gross Revenue</td>
+  <td align=3D"right" style=3D"border-top:none;border-left:none;border-righ=
+t:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;padding-top:1=
+px;padding-right:1px;padding-left:1px;color:black;font-size:11pt;font-famil=
+y:Calibri,sans-serif;vertical-align:bottom;white-space:nowrap">$2,006,816.0=
+5
+  </td>
+ </tr>
+ <tr height=3D"19" style=3D"height:14.5pt">
+  <td height=3D"19" style=3D"height:14.5pt;border-top:none;font-weight:700;=
+border-right:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;bo=
+rder-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-=
+left:1px;color:black;font-size:11pt;font-family:Calibri,sans-serif;vertical=
+-align:bottom;white-space:nowrap">Refunds</td>
+  <td align=3D"right" style=3D"border-top:none;border-left:none;border-righ=
+t:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;padding-top:1=
+px;padding-right:1px;padding-left:1px;color:black;font-size:11pt;font-famil=
+y:Calibri,sans-serif;vertical-align:bottom;white-space:nowrap"><font color=
+=3D"#FF0000">($157,515.85)</font></td>
+ </tr>
+ <tr height=3D"19" style=3D"height:14.5pt">
+  <td height=3D"19" style=3D"height:14.5pt;border-top:none;font-weight:700;=
+border-right:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;bo=
+rder-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-=
+left:1px;color:black;font-size:11pt;font-family:Calibri,sans-serif;vertical=
+-align:bottom;white-space:nowrap">Voids</td>
+  <td align=3D"right" style=3D"border-top:none;border-left:none;border-righ=
+t:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;padding-top:1=
+px;padding-right:1px;padding-left:1px;color:black;font-size:11pt;font-famil=
+y:Calibri,sans-serif;vertical-align:bottom;white-space:nowrap"><font color=
+=3D"#FF0000">($61,664.61)</font></td>
+ </tr>
+ <tr height=3D"19" style=3D"height:14.5pt">
+  <td height=3D"19" style=3D"height:14.5pt;border-top:none;font-weight:700;=
+border-right:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;bo=
+rder-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-=
+left:1px;color:black;font-size:11pt;font-family:Calibri,sans-serif;vertical=
+-align:bottom;white-space:nowrap">Chargebacks</td>
+  <td align=3D"right" style=3D"border-top:none;border-left:none;border-righ=
+t:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;padding-top:1=
+px;padding-right:1px;padding-left:1px;color:black;font-size:11pt;font-famil=
+y:Calibri,sans-serif;vertical-align:bottom;white-space:nowrap"><font color=
+=3D"#FF0000">($3,570.62)</font></td>
+ </tr>
+ <tr height=3D"19" style=3D"height:14.5pt">
+  <td height=3D"19" style=3D"height:14.5pt;border-top:none;font-weight:700;=
+border-right:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;bo=
+rder-left:0.5pt solid windowtext;padding-top:1px;padding-right:1px;padding-=
+left:1px;color:black;font-size:11pt;font-family:Calibri,sans-serif;vertical=
+-align:bottom;white-space:nowrap">Net
+  Revenue</td>
+  <td align=3D"right" style=3D"border-top:none;border-left:none;border-righ=
+t:0.5pt solid windowtext;border-bottom:0.5pt solid windowtext;padding-top:1=
+px;padding-right:1px;padding-left:1px;color:black;font-size:11pt;font-famil=
+y:Calibri,sans-serif;vertical-align:bottom;white-space:nowrap">$1,784,064.9=
+7 </td>
+ </tr>
+
+</tbody></table></div><div><br></div><div>So far I&#39;ve found our Quickbo=
+oks expenses for the following:=C2=A0</div><div>COGS, Acquisition Costs, Me=
+rchant Fees, Chargeback Fees, Shipping/Postage Cost, Subscriptions, Payroll=
+ (Indirect), Payroll (Direct), Indirect Contractor Fees, and Marketing Fees=
+.</div><div><br></div><div>Does that seem exhaustive, or am I missing somet=
+hing?</div><div><br></div><div><br></div><font face=3D"Arial"><span style=
+=3D"font-size:13.3333px">Thanks,</span></font></div><div><font face=3D"Aria=
+l"><span style=3D"font-size:13.3333px">Aubrey<br></span></font><div><br>-- =
+<br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div></div>
+</blockquote></div>
+
+--0000000000000262fe05e535c110--

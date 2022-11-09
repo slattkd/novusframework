@@ -1,0 +1,148 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp356619ejz;
+        Thu, 4 Aug 2022 07:57:35 -0700 (PDT)
+X-Received: by 2002:a17:907:1b1c:b0:72f:9aac:ee41 with SMTP id mp28-20020a1709071b1c00b0072f9aacee41mr1727983ejc.56.1659625055800;
+        Thu, 04 Aug 2022 07:57:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1659625055; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WAi7uyZHO0Wj8UuVI8Kup3fOm0XMhPoX1mZxZ1Hjy3HpKUPn6dlUHNDhoFSkJ9QUiy
+         ZZomW0FryTZLboFcj3UL8rhDN/QqBg1fQjWDLkAJ/lZ6XcZICLBAM6DAO6I+1WJraOWL
+         XhFFD+dLuYSigoKk+7ocuQZRLskTQcFGhKEUPN03YcrPCPrrqsFXzbbYVnGsR+qo+kl4
+         dogBUh/t/Gt2S2g67WU9UhmrDG8Pyza3taQvoAGg29d6bV3UxigjEgSTAa/c/Z2Twka8
+         yOHojcEUjkpRAw/+kh2cBMigizbg9h9UbaESnktStlr8XxhR6CZXYdmCdPD2xoeKw5FT
+         SodA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=i12aJ961RmTzaLhjLNEu98OiZU0TuREXCpNqF+NI6Hk=;
+        b=YM9U478OU/jpWQpi8O+LG7PIbZnx5ujzhnzbO7codJ1NVXOk18BN9Pshd5JCsE5W23
+         cfGW/ulEKC9jA20tyV3wOWDGi8FkXlyVSsdpZ6XQvJoiAlkDmCiXuetthZJKmGtLxU5S
+         WP2mYgXFHDqAXP8XCrgjuxPHd0ktNHPLjtliGmisF7xndYeIX8/qS6f+4AdBOw3Gud0g
+         aPsOgQb5S7PQGxRjH9Dhn6+el+4lHEMt5AqpvIcW6xmjJKSqNrtJNtf/x0I8OLzmlpB8
+         ACMv9va/0QFyXryih0u0X6WQg4sUVp0YfmJPreeahPGSgJFDXFHoqLSluJaV0hIGep6L
+         1vig==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="VebtVT/S";
+       spf=pass (google.com: domain of ian.moskowitz@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ian.moskowitz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <ian.moskowitz@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p4-20020a170906140400b007307ce0e349sor503883ejc.40.2022.08.04.07.57.35
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 04 Aug 2022 07:57:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ian.moskowitz@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="VebtVT/S";
+       spf=pass (google.com: domain of ian.moskowitz@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ian.moskowitz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc;
+        bh=i12aJ961RmTzaLhjLNEu98OiZU0TuREXCpNqF+NI6Hk=;
+        b=VebtVT/SNXufeUdKLEFwMrGFevXjfml18GXL52aBq9Iw2YjFBer6OFBDZfITAeGj3Z
+         iuTH1mjxg61bFPLUCkyZ3ke5B6ZLrxsr3Pe8y28QIjAYEoJceRQkfflygx5eM60mffge
+         VRF9+FrGPPmWdHdQHt4YIktd4mP97YS9NduFVkuOORo3Yybjhu/DGrCoMHVAe70cBgMc
+         czIT6sXj5Dm85lULhBM9iOymNkGPhCmZYtr+S8bpkrbl94RFyQcz03qfmCN0ILBnnJIo
+         FViu/HZdA6zBwaWoAOM0XI8OazYNLmHrEP73V3HE1cLeIqj6iRJFO5EPEym76klhDDIN
+         b+dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc;
+        bh=i12aJ961RmTzaLhjLNEu98OiZU0TuREXCpNqF+NI6Hk=;
+        b=xAa23wTnjjas58DEmhiJFgkNVBEAEL3FSU68oEtzwW9qDIFWW0G+jwurutDiuwsGBx
+         Ezx3QEiXBduCQxgFUADR57VieRxmj/A0dPa0VfDCtFdjZ8avzboFKwS+/D+mgVgk1Msc
+         +BraAEaSyD0OyC9GK56i3mGWRo9evPUMaE6EAGZjqud7XQdVeXPvE23UfxatUj+5ZpZM
+         RDgTHIXt/emGHJA0PPkIxWMISmnWjizw9SPKeAjZXBH9h+ApMJzxy65XCGDq0O88fkcD
+         hYrtMRgICBMyo1NqOTH1PI5ek99H+hS2Ueo0Y8cd6/2Pwxwd8RZZjcD3jUnovW0CFQO6
+         l+iw==
+X-Gm-Message-State: ACgBeo0KSRb3OLdszrZZHn07CllWIT3p18gSpmO8FV7VDpCzLdHMsz8y
+	dEguE7NgPyTrhK50ctLggA7RMC8ebXv+VH4WX9bJj16J
+X-Google-Smtp-Source: AA6agR6LCuZfE6+vcnsxVQaHjEG17rqwHUrPdgwnLDOFUNFv1zu8LlS1olqw9/bgA4NscSchn7rVF9wEiw4tHy0T2Vg=
+X-Received: by 2002:a17:906:84e8:b0:72e:2f3c:6784 with SMTP id
+ zp8-20020a17090684e800b0072e2f3c6784mr1654768ejb.390.1659625055103; Thu, 04
+ Aug 2022 07:57:35 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAGjnFuXAAq6Vq8aYhsNKOgVg=ASEYkjN1-PDh0jZSbvVhN1qdQ@mail.gmail.com>
+ <CAHbmDP_5ySGx_ytfaj9Z_pWm-CN5ew2nZEjy5mc=B-2P2boiMw@mail.gmail.com>
+In-Reply-To: <CAHbmDP_5ySGx_ytfaj9Z_pWm-CN5ew2nZEjy5mc=B-2P2boiMw@mail.gmail.com>
+From: Ian Moskowitz <ian.moskowitz@gmail.com>
+Date: Thu, 4 Aug 2022 10:56:59 -0400
+Message-ID: <CAGjnFuV8gN9jN972G9qbWZ6YX=sLikUTL-duZxxx5zqKJ_z8TA@mail.gmail.com>
+Subject: Re: 8/3 Meeting
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000deafd105e56b91f5"
+
+--000000000000deafd105e56b91f5
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Aubrey,
+
+Yes - next Wednesday should work for me. Again apologies things got messed
+up yesterday - talk soon.
+
+Ian
+
+On Wed, Aug 3, 2022 at 6:44 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Ian,
+>
+> No need to apologize!  I remembered you had said you'd be traveling.  When
+> you didn't confirm I assumed you would likely not be there and only just
+> popped in to check.
+>
+> Hopefully we'll be able to meet next week at the same time, but if not, no
+> worries.
+>
+> Thanks!
+> Aubrey
+>
+> On Wed, Aug 3, 2022 at 5:38 PM Ian Moskowitz <ian.moskowitz@gmail.com>
+> wrote:
+>
+>> Hi Aubrey,
+>>
+>> So sorry - it completely slipped my mind to touch base on this meeting.
+>> I've been traveling over the past two days and connecting 100% fell off my
+>> radar.
+>>
+>> Apologies - I hope you weren't waiting in the room for me. Again
+>> sorry about the mixup.
+>>
+>> Ian
+>>
+>
+
+--000000000000deafd105e56b91f5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Aubrey,=C2=A0<div><br></div><div>Yes - next Wednesday s=
+hould work for me. Again apologies things got messed up yesterday - talk so=
+on.=C2=A0</div><div><br></div><div>Ian</div></div><br><div class=3D"gmail_q=
+uote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 3, 2022 at 6:44 PM =
+Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+<div dir=3D"ltr">Hi Ian,<div><br></div><div>No need to apologize!=C2=A0 I r=
+emembered you had said you&#39;d be traveling.=C2=A0 When you didn&#39;t co=
+nfirm I assumed you would likely not be there and only just popped in to ch=
+eck.</div><div><br></div><div>Hopefully we&#39;ll be able to meet next week=
+ at the same time, but if not, no worries.</div><div><br></div><div>Thanks!=
+</div><div>Aubrey</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr=
+" class=3D"gmail_attr">On Wed, Aug 3, 2022 at 5:38 PM Ian Moskowitz &lt;<a =
+href=3D"mailto:ian.moskowitz@gmail.com" target=3D"_blank">ian.moskowitz@gma=
+il.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex"><div dir=3D"ltr">Hi Aubrey,<div><br></div><div>So sorry - it complete=
+ly slipped my mind to touch base on this meeting. I&#39;ve been traveling o=
+ver the past two days and connecting 100% fell off my radar.=C2=A0</div><di=
+v><br></div><div>Apologies - I hope you weren&#39;t waiting in the room for=
+ me. Again sorry=C2=A0about the mixup.=C2=A0</div><div><br></div><div>Ian</=
+div></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000deafd105e56b91f5--

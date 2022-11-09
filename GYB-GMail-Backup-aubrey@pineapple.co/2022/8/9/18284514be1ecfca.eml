@@ -1,0 +1,246 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:9acb:0:0:0:0 with SMTP id ah11csp1907294ejc;
+        Tue, 9 Aug 2022 13:34:56 -0700 (PDT)
+X-Received: by 2002:a05:6638:3e86:b0:342:871e:4fc7 with SMTP id ch6-20020a0566383e8600b00342871e4fc7mr11311113jab.200.1660077296199;
+        Tue, 09 Aug 2022 13:34:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660077296; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j27A8zA7u4a3rk0QiNU8QssT15nIv9Q/Q1Pt5veLrxWG9TKpImOZH29Pco2p/srMvd
+         P8rK2WHmu6bQ9bG3Q98WCsHrUgamxAgzEq6ofeo9l8Y12z5OW5HscjOSxG8qK0cg0Z3T
+         7y7XpM4P7IeJgTKHHWfRCg8bJ71iPLj6lxhUPv+JigvuzhZV6UNwXPAAfXYo2d3brG2t
+         3+M5xQB1W+yDk9z9Mw4g+yzMIuC8bz19oeL9czBAzrTIVJo88YEf9rUiF4k0XBljNc94
+         R4eMhqFnsfuwk2S2QDakNlzFk8wOn7KjkSa9RyJJbvHaFi285j7yF5kFAicAv8Zh7vcy
+         y5qg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:references:message-id:subject:date:mime-version:from
+         :content-transfer-encoding:dkim-signature;
+        bh=xiJMwrHzxJe5Z3aU8SA89XnBinMERjb1LpsXFQoFwOU=;
+        b=kB9JHC8WULoSbVN8lAQYO7HMNCUb4VexI3mFJP13Jjqxwxk/KsMQcmZhGBAHDbH2CX
+         Mqqpf2lNbmVLbwedJ0aErXmt4yq1OM2SFFfRURyLzfvAgaRyM/mokQkoybazc4MRnxiO
+         98LMQJuT8eqClzcVb9Zi3282/nlJA6od+DME33Hjpqm3haEgprY5HM47Cg55lIaAUs1m
+         EXtyd13Fo573TuTomsYJ17eHn3BB+qNvQvar2+XdPyzKPlNlxMboNbwPctF+igrVRuJc
+         ypqVbKKv1Fr8KUHOqmVx+kE5HE2JFXjeT6ri+jQzRq7yZ/IUI7HwGBxiJUePWqOlsj6o
+         C6og==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=F6xt9tPJ;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brooke@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n5-20020a056e02140500b002e15734d2dfsor686853ilo.65.2022.08.09.13.34.55
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 09 Aug 2022 13:34:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=F6xt9tPJ;
+       spf=pass (google.com: domain of brooke@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brooke@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=to:references:message-id:subject:date:mime-version:from
+         :content-transfer-encoding:from:to:cc;
+        bh=xiJMwrHzxJe5Z3aU8SA89XnBinMERjb1LpsXFQoFwOU=;
+        b=F6xt9tPJHXBYqIrB5pBSmwNbsDrRD+Sb9N5z2UHuUd3bpTRTWxOZcjyz1luiMFadH4
+         V9HMhtn+ukK2gUcMy/TCuqTZ6+VDy/2wL2+UvGfiwKD+MP2albes9nd9P32LAM8IM8QG
+         mYwJ342PlRvuvdXSC/b/RUlVSUUcA22jtoIB0BKifvzML/AkTgE/BcGWBAz90Y+r1AcW
+         C611kYB+lt59MWHOOVbOaD4whcy/ed8lQSlqYk3ChN4Wxarth9+Ff5ZmzZaTKndrnXmE
+         /5KaeiyfLcSshBYYmn1TBok/cmk4b5+wsVxSHBxTBU1ycwSgpwdGSczgWqZdNKU527lV
+         635A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:references:message-id:subject:date:mime-version:from
+         :content-transfer-encoding:x-gm-message-state:from:to:cc;
+        bh=xiJMwrHzxJe5Z3aU8SA89XnBinMERjb1LpsXFQoFwOU=;
+        b=uZD2TH8308un5E8SuuOfgXRhiVshO2F8GLXBkzgPsdIiy40e6BQiAKZ6Lf+9b1ihod
+         I4qZVABFtt2ReSiMY5gA3xmDBRda3ZI5oHJjIGejvzbWLDhQ8y5nC1zy9RPynQ9jLX/5
+         QzhPRqVRanHKHVB85CgyD4Yc4mlfshRi8Q4BxoSUmvcK7opE+kwniZIDFesCg7kcf05U
+         tUEviRFFHslf4GGpJs2EF6z+qLCE1BCT/54R+yZyPmJBY3hJVctLhpLSucCCQNcGYRv0
+         CsPAaQpqL2sIqWRgf/rTqNraNxI8oB+79TReaKNm1l1BSktNWIe+oI1F1ODbci05b4mC
+         PCIw==
+X-Gm-Message-State: ACgBeo1FmyH1N5zFkn8ZeSb0jh9A0Qc/u69MFbxiP+Ql4iw+2J3CP8Gl
+	omFkjUBJ5APtw4miTqskbXxJYwMycJ6Jv6uf
+X-Google-Smtp-Source: AA6agR4U9BFL6tFgRoLIpVm2Nh7Cy7zsGiazt6Kf7iUPs2vzwIqT8kZuVCqINMs/pel7FF3nERCghw==
+X-Received: by 2002:a92:d70f:0:b0:2e1:5734:d586 with SMTP id m15-20020a92d70f000000b002e15734d586mr1845196iln.251.1660077295090;
+        Tue, 09 Aug 2022 13:34:55 -0700 (PDT)
+Return-Path: <brooke@pineapple.co>
+Received: from smtpclient.apple ([2601:249:8c00:2b40:94a6:3bfd:c609:4e30])
+        by smtp.gmail.com with ESMTPSA id o7-20020a027407000000b0033ebbb649fasm6662769jac.101.2022.08.09.13.34.54
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 09 Aug 2022 13:34:54 -0700 (PDT)
+Content-Type: multipart/alternative; boundary=Apple-Mail-FA076621-016E-42A1-A5D5-9D69F76CBEF4
+Content-Transfer-Encoding: 7bit
+From: Brooke Whoolery <brooke@pineapple.co>
+Mime-Version: 1.0 (1.0)
+Date: Tue, 9 Aug 2022 15:34:53 -0500
+Subject: Fwd: Fran thing
+Message-Id: <FE304BBB-362A-4CC3-B9A7-3AF4E9C06773@pineapple.co>
+References: <CAAFXrBXpV3PyV4vFVcX7LeuyqmKreuYyUDuTCQsmqLvJ0sMpHw@mail.gmail.com>
+To: Aubrey Allen <aubrey@pineapple.co>
+X-Mailer: iPhone Mail (19G71)
+
+
+--Apple-Mail-FA076621-016E-42A1-A5D5-9D69F76CBEF4
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Is this not what we=E2=80=99re already doing? Lol=20
+
+
+Begin forwarded message:
+
+> From: Gene Naftulyev <gene@pineapple.co>
+> Date: August 9, 2022 at 3:32:27 PM CDT
+> To: Andrea Abramowski <andrea@pineapple.co>, Brooke Whoolery <brooke@pinea=
+pple.co>
+> Cc: Kerry Scott <kerry@pineapple.co>
+> Subject: Re: Fran thing
+>=20
+> =EF=BB=BF
+> Hmm..  well my goal was to calculate how much % did the $50k payment make u=
+p of total sales. But sounds like given what you found maybe an audit of tot=
+al payments to Fran and total sales of his products is in order. Looping in B=
+rooke on this as I'm wrapping this week.
+>=20
+>> On Tue, Aug 9, 2022 at 2:47 PM Andrea Abramowski <andrea@pineapple.co> wr=
+ote:
+>> Hey Gene,=20
+>>=20
+>> Kerry is going to work on this project, but I'm confused. So, 41.5% of sa=
+les means he'd have to sell $120,500 to receive the minimum of $50,000. But p=
+er the spreadsheet attached, it looks like he's always sold more than that. B=
+UT, there are definitely payments to Second Marsh in the amount of $50,000. O=
+n the contract, I see Montezuma & Flavo Trim, so maybe all the sales on this=
+ report shouldn't be included?!
+>>=20
+>>=20
+>> Andrea Abramowski, CPA=20
+>> Controller | pineapple.co
+>>=20
+>> E: andrea@pineapple.co
+>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>> The content of this email is confidential and intended for the recipient s=
+pecified in message only. It is strictly forbidden to share any part of this=
+ message with any third party, without a written consent of the sender. If y=
+ou received this message by mistake, please reply to this message and follow=
+ with its deletion, so that we can ensure such a mistake does not occur in t=
+he future.
+
+--Apple-Mail-FA076621-016E-42A1-A5D5-9D69F76CBEF4
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charset=3D=
+utf-8"></head><body dir=3D"auto"><div dir=3D"ltr"></div><div dir=3D"ltr">Is t=
+his not what we=E2=80=99re already doing? Lol&nbsp;<br><br><br>Begin forward=
+ed message:<br><br></div><blockquote type=3D"cite"><div dir=3D"ltr"><b>From:=
+</b> Gene Naftulyev &lt;gene@pineapple.co&gt;<br><b>Date:</b> August 9, 2022=
+ at 3:32:27 PM CDT<br><b>To:</b> Andrea Abramowski &lt;andrea@pineapple.co&g=
+t;, Brooke Whoolery &lt;brooke@pineapple.co&gt;<br><b>Cc:</b> Kerry Scott &l=
+t;kerry@pineapple.co&gt;<br><b>Subject:</b> <b>Re: Fran thing</b><br><br></d=
+iv></blockquote><blockquote type=3D"cite"><div dir=3D"ltr">=EF=BB=BF<div dir=
+=3D"ltr">Hmm..&nbsp; well my goal was to calculate how much % did the $50k p=
+ayment make up of total sales. But sounds like given what you found maybe an=
+ audit of total payments to Fran and total sales of his products is in order=
+. Looping in Brooke on this as I'm wrapping this week.</div><br><div class=3D=
+"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Aug 9, 2022 at 2=
+:47 PM Andrea Abramowski &lt;<a href=3D"mailto:andrea@pineapple.co">andrea@p=
+ineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex"><div dir=3D"ltr">Hey Gene,&nbsp;<div><br></div><div>Kerry is going to=
+ work on this project, but I'm confused. So, 41.5% of sales means he'd have t=
+o sell $120,500 to receive the minimum of $50,000. But per the spreadsheet a=
+ttached, it looks like he's always sold more than that. BUT, there are defin=
+itely payments to Second Marsh in the amount of $50,000. On the contract, I s=
+ee Montezuma&nbsp;&amp; Flavo Trim, so maybe all the sales on this report sh=
+ouldn't be included?!</div><div><br></div><div><br clear=3D"all"><div><div d=
+ir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width:=
+500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px soli=
+d rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:V=
+erdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Controller<spa=
+n> | </span></span>
+            <span>
+                <a href=3D"https://www.google.com/url?q=3Dhttp://pineapple.c=
+o&amp;source=3Dgmail-imap&amp;ust=3D1660681947000000&amp;usg=3DAOvVaw3O9pG2r=
+38iZVnthOh0a81M" rel=3D"noopener" style=3D"font-size:10pt;text-decoration:no=
+ne;font-weight:bold;color:rgb(2,112,196)" target=3D"_blank">pineapple.co</a>=
+
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" s=
+tyle=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"=
+0" src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9=
+bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw" data-unique-identi=
+fier=3D"">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0p=
+x;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5,5=
+6,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16,16=
+,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0p=
+x;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5,5=
+6,95);font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" sty=
+le=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"_bla=
+nk">andrea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;mar=
+gin-bottom:0px;padding-top:0px;margin-top:0px">			<span style=
+=3D"font-size:9pt;color:rgb(5,56,95);font-weight:bold">A:</span> 	=
+		 			<span style=3D"font-size:9pt;color:rgb(16,1=
+6,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-size:9pt;color:rgb=
+(16,16,16)">, </span>			<span style=3D"font-size:9pt;color:=
+rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5px=
+;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149)=
+;font-family:Verdana,sans-serif">The content of this email is confidential a=
+nd intended for the recipient specified in message only. It is strictly forb=
+idden to share any part of this message with any third party, without a writ=
+ten consent of the sender. If you received this message by mistake, please r=
+eply to this message and follow with its deletion, so that we can ensure suc=
+h a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div></div></div>
+</blockquote></div>
+</div></blockquote></body></html>=
+
+--Apple-Mail-FA076621-016E-42A1-A5D5-9D69F76CBEF4--

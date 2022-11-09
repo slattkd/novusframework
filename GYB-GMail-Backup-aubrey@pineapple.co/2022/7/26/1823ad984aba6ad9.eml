@@ -1,0 +1,305 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:300b:0:0:0:0 with SMTP id 11csp799461ejz;
+        Tue, 26 Jul 2022 07:11:50 -0700 (PDT)
+X-Received: by 2002:a17:907:28ca:b0:72b:110a:b34e with SMTP id en10-20020a17090728ca00b0072b110ab34emr14279563ejc.113.1658844710199;
+        Tue, 26 Jul 2022 07:11:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1658844710; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ueLDCxhtuWmHD5LlkjwuKFrb6fPHOe5HXgcg6cRwP/EGjmIToE9v/IjHVhsJli4LF3
+         ph5u8AgOx+vjaTLw02PA0mvle8xMS+rRGVAGU2r3yDQTCe2+o7L1x4vwMqfZZd/A+Hfi
+         y7i41DaKzPF//r8qjUOnmJ8DEcI3NxA38Xr3/gB2Wqx5bG3VckwA8x57zHxrc+lMxOIt
+         WbsbvZpvfuOpdq2f8mBMavZfKwl1YxBcoTshFo/RpDmk9jN7UOvbzpP2PdbqHUr89wmL
+         GkHOiy5bKsFY1TgLwvwM0hndDwxAbtgd1oAFlRxp/USl3SDJ/uaZ3z/2HGpgi/EirVDw
+         84mQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=TJoGyR5716GsRX0C10Vj8a1BEKocLfsoep/1KQlgyuE=;
+        b=QDO4EOyU9jaKJjgcDJKUCxGRavjxmSvybwrw/LOMk9Cn3naLWXw/IdK0OFC47upoCd
+         61WxE+qwwGqD2kq6woR0Gcrf+ccTFN3eU4zLpUaX8IokZNS3/1AlGQBK0bdpAfL3xExB
+         xwVOlOxckhELTA5R6KvXYax9zkHx1aAsr+77OZrnq7E0jsX59mLqkFvks4eK70ZwSpEt
+         qa+0snREUh19AQeDyfVKRn0Q5o44K7ymN7VIRmrJREycvfHseQph23vfQZrIZEwo6NcX
+         ePvpeLqCcTGrnsTtfdLLBgnpLxJkITAAUJNciaGfohDgrrdjeiC9PGjPy4ytwBqXdj9v
+         P1bw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="G/B5zqxR";
+       spf=pass (google.com: domain of taylor@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=taylor@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <taylor@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b17-20020a50b411000000b0043a22f6b344sor7096532edh.58.2022.07.26.07.11.49
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 26 Jul 2022 07:11:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of taylor@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b="G/B5zqxR";
+       spf=pass (google.com: domain of taylor@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=taylor@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=TJoGyR5716GsRX0C10Vj8a1BEKocLfsoep/1KQlgyuE=;
+        b=G/B5zqxRplTm8R4WsWw9AfIGMMZAvBax5EppphgkRWEqUlRAKVVnbM0SLhQCwos0BS
+         HX9xqWmPhDAhJKeK12mdo3/0jFQOGVKNf0zEZv3riDiMGe/JT/B99Ub/70pv6XeXfKPM
+         yNMPyZqR62sh20dmH7LNt4neti1WO/uh/9IroK8k6VLTcx+IZsXiZCx1mCC76QenSXzD
+         eQPpVPZs30Q+34x+8M8vzuKO9rfxHRU63/8+PKXb9uZfmV8pOoFcjs2hnzfi/hkFbrTd
+         3AOp0mUzFZVGHYtMQjlEnd+JEheEbsTy6UIQayY3w16IEne0APBTehVeRpIfQ/q9xNUt
+         FHBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=TJoGyR5716GsRX0C10Vj8a1BEKocLfsoep/1KQlgyuE=;
+        b=40xSc93fmpYdmLOdEtp1NN8cfueoeCFnBo6gbVFEDqW9L63AKzfzuM2jqGq3bwkp4W
+         E5I+vUvaDyb7VvSooOH86Ez3nberL2EB44npGxFDO+AiOCc6jZ0LhKqs/t/3St5UN/9E
+         1G6NYQ2hPkrA0AbwOCx91jS8HFZenSPCFyVEB01CocOqobbWoxejN+r3DTHM9M2vonon
+         ytduYi8MgtUyadV6Z7l0kh9RFDT39gP0Sx6BKThWDFd+2/lrYU1G+lvMMRLr9HKO48+1
+         MpjPVhF0PEzdeEaHY2TVIoS1TM2DhV/4oBHfx/B9bm8+C7GkQCz54VQXaNr2SBeNK+97
+         NQnA==
+X-Gm-Message-State: AJIora9aarvCRECElQk2R1tb0Mu6j+i+IXI9609/efC3b7/W7LXpgPHb
+	OiHSFp+TlB0M+9vk4OcRvZSWKKxE+tfunkDnKiugmAU4Sc6nRg==
+X-Google-Smtp-Source: AGRyM1tuR/dzm09QPKH5Vj+ob287yuKyKDKC918yJx+NIU465amyR15Npqr+gJC8Dndfk7u2WJ7HVOwB/K2u29dkKHA=
+X-Received: by 2002:a05:6402:911:b0:43b:e052:91cb with SMTP id
+ g17-20020a056402091100b0043be05291cbmr16054746edz.403.1658844709006; Tue, 26
+ Jul 2022 07:11:49 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP-_nh=JPwr=LMK2TWGeJ0A-S-FtJ55Tzzxk8S5ix3qbrw@mail.gmail.com>
+In-Reply-To: <CAHbmDP-_nh=JPwr=LMK2TWGeJ0A-S-FtJ55Tzzxk8S5ix3qbrw@mail.gmail.com>
+From: Taylor Piccolo <taylor@pineapple.co>
+Date: Tue, 26 Jul 2022 10:11:38 -0400
+Message-ID: <CAENz_166h_S0zTVxnLpJ7-rcfUBBKvgyMFhbjJ-DpAA1kEFuew@mail.gmail.com>
+Subject: Re: Departmental Reporting Needs Audit
+To: Aubrey Allen <aubrey@pineapple.co>
+Cc: Brooke Whoolery <brooke@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000009e42f905e4b5e1ba"
+
+--0000000000009e42f905e4b5e1ba
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Aubrey!
+
+My idea was actually on my Q3 goals list of things I wanted to begin
+implementing that I sent to Brooke! I'll add her to this email so she
+doesn't have to repeat what I say haha. Brooke, if there is anything you
+want to add or change, of course let me know because we didn't get to speak
+in depth about this, but this is the general breakdown in my head!
+
+*An In-Depth Monthly Inventory Report (Including Amazon Sales). *What I aim
+to do with this report is not only show the numbers we already look at and
+how much of the product has gone out, but also how those numbers have
+fluctuated throughout the month. I will do this by having multiple
+"check-in" days, where those numbers will be logged each month. For
+example, the 1st, 15th, and 30th. I think this would be extremely
+beneficial to other departments as it will keep them in the loop of what is
+having an effect on sales. If the Sales Department implements a new
+discount, or if we add a new grouped sale on Amazon, we will be able to see
+what is truly working for us!
+
+1. The goal of this report would be to show much more than just our
+inventory status, sales velocity, and days to zero as this is currently all
+we are looking at.
+2. This report would be a monthly report, preferably the 1st of each month,
+and dispersed to all departments.
+3. This report is critical because it allows multiple departments to get a
+better understanding of what might be having a negative or positive impact
+on the sales of a particular product!
+4. N/A
+5. This report would be done by me solely. As I update our Master Inventory
+Report, I would also be updating the Monthly Inventory Report, so it would
+not be time consuming at all!
+
+Let me know if you have any questions or need anything else from me!
+
+On Tue, Jul 26, 2022 at 9:37 AM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Good morning!
+>
+> I am reaching out to each of you at Brett's request, in order to better
+> determine what analytical reports you/your department may need that are not
+> currently being done, or are not being done to your satisfaction.
+> This list can include any report that was done previously, that you do
+> currently, or something entirely new that you feel is necessary.
+>
+> *Please respond to this email at your earliest convenience with any
+> reporting needs you see for your department.*  In doing so, please answer
+> the following questions (for each reporting need, if multiple):
+> 1. What is the goal of this report?
+> 2. What will be the frequency of this report? (e.g. daily, monthly,
+> quarterly)
+> 3. Why is this report critical?
+> 4. If you have multiple requests, please indicate which report is of the
+> highest priority and why.
+> 5. Is this report being done by your or your team but takes up a lot of
+> time, or could be done better using automation?
+>
+> I look forward to hearing from y'all soon!  If you have any questions
+> please feel free to reach out via email or on Slack.
+>
+> Best,
+> --
+> *Aubrey Allen*
+> Data Analytics Technician | pineapple.co
+>
+> [image: Photo]
+>
+> E: aubrey@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sender.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+>
+
+--0000000000009e42f905e4b5e1ba
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif">Hi Aubrey!</div><div class=3D"gmail_default" style=3D"font-f=
+amily:times new roman,serif"><br></div><div class=3D"gmail_default" style=
+=3D"font-family:times new roman,serif">My idea was actually on my Q3 goals =
+list of things I wanted to begin implementing that I sent to Brooke! I&#39;=
+ll add her to this email so she doesn&#39;t have to repeat what I say haha.=
+ Brooke, if there is anything you want to add or change, of course let me k=
+now because we didn&#39;t get to speak in depth about this, but this is the=
+ general breakdown in my head!</div><div class=3D"gmail_default" style=3D"f=
+ont-family:times new roman,serif"><br></div><div class=3D"gmail_default" st=
+yle=3D"font-family:times new roman,serif"><b>An In-Depth Monthly Inventory =
+Report (Including Amazon Sales). </b>What I aim to do with this report is n=
+ot only show the numbers we already look at and how much of the product has=
+ gone out, but also how those numbers have fluctuated throughout the month.=
+ I will do this by having multiple &quot;check-in&quot; days, where those n=
+umbers will be logged each month. For example, the 1st, 15th, and 30th. I t=
+hink this would be extremely beneficial to other departments as it will kee=
+p them in the loop of what is having an effect on sales. If the Sales Depar=
+tment implements a new discount, or if we add a new grouped sale on Amazon,=
+ we will be able to see what is truly working for us!</div><div class=3D"gm=
+ail_default" style=3D"font-family:times new roman,serif"><b><br></b></div><=
+div class=3D"gmail_default" style=3D"font-family:times new roman,serif">1. =
+The goal of this report would be to show much more than just our inventory =
+status, sales velocity, and days to zero as this is currently all we are lo=
+oking at.=C2=A0=C2=A0</div><div class=3D"gmail_default" style=3D"font-famil=
+y:times new roman,serif">2. This report would be a monthly report, preferab=
+ly the 1st of each month, and dispersed to all departments.</div><div class=
+=3D"gmail_default" style=3D"font-family:times new roman,serif">3. This repo=
+rt is critical because it allows multiple departments to get a better under=
+standing of what might be having a negative or positive impact on the sales=
+ of a particular product!=C2=A0</div><div class=3D"gmail_default" style=3D"=
+font-family:times new roman,serif">4. N/A</div><div class=3D"gmail_default"=
+ style=3D"font-family:times new roman,serif">5. This report would be done b=
+y me solely. As I update our Master Inventory Report, I would also be updat=
+ing the Monthly Inventory Report, so it would not be time consuming at all!=
+=C2=A0</div><div class=3D"gmail_default" style=3D"font-family:times new rom=
+an,serif"><br></div><div class=3D"gmail_default" style=3D"font-family:times=
+ new roman,serif">Let me know if you have any questions or need anything el=
+se from me!=C2=A0</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr=
+" class=3D"gmail_attr">On Tue, Jul 26, 2022 at 9:37 AM Aubrey Allen &lt;<a =
+href=3D"mailto:aubrey@pineapple.co">aubrey@pineapple.co</a>&gt; wrote:<br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Goo=
+d morning!<div><br></div><div>I am reaching out to each of you at Brett&#39=
+;s request, in order to better determine what analytical reports you/your d=
+epartment may need that are not currently being done, or are not being done=
+ to your satisfaction.=C2=A0=C2=A0</div><div>This list can include any repo=
+rt that was done previously, that you do currently, or something entirely n=
+ew that you feel is necessary.<br><div><div><div dir=3D"auto"><br></div><di=
+v><b>Please respond to this email at your earliest convenience with any rep=
+orting needs you see for your department.</b>=C2=A0 In doing so, please ans=
+wer the following questions (for each reporting=C2=A0need, if multiple):</d=
+iv><div>1. What is the goal of this report?</div><div>2. What will be the f=
+requency of this report? (e.g. daily, monthly, quarterly)</div><div>3. Why =
+is this report critical?=C2=A0=C2=A0</div><div>4. If you have multiple requ=
+ests, please indicate which report is of the highest priority and why.<br><=
+/div><div>5. Is this report being done by your or your team but takes up a =
+lot of time, or could be done better using automation?</div><div dir=3D"aut=
+o"><br></div></div><div>I look forward to hearing from y&#39;all soon!=C2=
+=A0 If you have any questions please feel free to reach out via email or on=
+ Slack.</div><div><br></div><div>Best,</div>-- <br><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Aubrey Allen</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Data Analytic=
+s Technician<span> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:aubrey@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">aubrey@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table><br>
+
+
+=20
+</div>
+  </div></div></div></div>
+</blockquote></div>
+
+--0000000000009e42f905e4b5e1ba--

@@ -1,0 +1,238 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5a89:0:0:0:0 with SMTP id l9csp4149525ejq;
+        Thu, 7 Jul 2022 07:04:33 -0700 (PDT)
+X-Received: by 2002:a92:d8d2:0:b0:2da:99cb:1da with SMTP id l18-20020a92d8d2000000b002da99cb01damr25939302ilo.24.1657202673487;
+        Thu, 07 Jul 2022 07:04:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657202673; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Y3dPMSVRTi9cl+WvngE2gqa3N+rhHaVx0QZENXxTIX+OHWNp1KYwYDK/HyPT5UJHNM
+         2paFuuRx+yG6OvNoMq3ZZqz9WMsDrRBhRFPXQVNbBBkxmM/RN/swd0PzBKeH2fD0NPqi
+         5cifrGq8lCQ/dcsqKBzTU5lvMSebXIVHcEw5mSVTdWLxsV5adyDYuVlv7RMqCdbY5Muq
+         0tFKdcSQ2cqlUUoDYL51ZbOJD+6dL5npV3M74HEoVXrsPSLLIKIvLU3VZd1GnIYAV7jX
+         D6a97hmArNtQtP7nhchCT2gbM4w/zObMSO76FAOUjfZIUWzS3mjH5rpoJh+Ax3S3UvSz
+         D1uA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=rF/ZPAfza4HEOGer33YQ2f1hZNkB2zfE6u2BJ7xG0LA=;
+        b=LoK4ueoHZWNjtBlmHKjmCaigKv4rHaEUKtGmJAb9D2XmFKM1s43eEc5xUp4itjmwMn
+         mCw25wqvyKgc0pI48q6eeBmxKRZdTpaQke2CoMWzXc3fYy93j1kYV2Ylw/L94gm5bCmf
+         jb6R0ewNBq+D/PHzDhs2ybSTBsDkkyeElp2uaPUtV6Mt9b8ul9Swr2E6S2VWk54Bb22T
+         CFHTdn6pmivLcuA8IU56yGTjNVh42OfO6YXWEZz91Ohm+vQ18J5Pzgn2agVAUnYaVXAA
+         XMgDv7yXgmYQbl+dzpvpSCUuaaLzKpMkBkD7rMKeW1xMR7DjelIPFZK5PuQCaXe9s/Ot
+         9XkQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=fi6SZnbD;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <mike@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k9-20020a928e49000000b002dc24ffcebbsor2507374ilh.51.2022.07.07.07.04.33
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Thu, 07 Jul 2022 07:04:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=fi6SZnbD;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=rF/ZPAfza4HEOGer33YQ2f1hZNkB2zfE6u2BJ7xG0LA=;
+        b=fi6SZnbDLb9hI19gcEPqksohFtkirXYWITOx+BgQ77hQhUZ/iO9oyXprhbveb9lXPQ
+         V9G6RYUKA/y1Xu+7OIMHv0E+OKg6diUE9F+4IyNQvyw6geop8AwsUbWjhhXEZUE2P2u/
+         3Jthv4xBoirkIccnQbcmomoz8xqJYmkXVYByu5lZG+xZXYdrSO6d6y4jpA6+GnB+xzGv
+         Sd9i5KTD9c1fDknrN7//tMjLHpKaR/5k4c/2CgH1IyuTaDmA3uFyZoie18nY25Ex4hsp
+         iNqUXH4FdHL/S7flQBfSvM8FKsRaGereEUVlb0XXCvvl+uXVTD5ruDinjMvcnBoaFJwU
+         +lAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=rF/ZPAfza4HEOGer33YQ2f1hZNkB2zfE6u2BJ7xG0LA=;
+        b=GE3Jqjg51QaHuJEoC7G/szyZ02TbrV/s7eEfpbUgkW50QE2rR3qtzZEjQ5enpKrqFx
+         1AUZJzsJJ1slFpozMfQOCrOesIlsDQDxYJd9KifPclBbR9HLXtcO6iIXXoRncMPohS27
+         ds5LWD2H6gEAWGsGihzWOIs2DrEWo1aYX25c8eMh9oDRYnQx/kXhujxEdnei2ajMgBtY
+         RBrQWooZ/3pHpDjwEiLdP1S7JRf7phrx5j8PU6tsKTasBUYbw2rJ++IvaaGoM45Mn1hW
+         vxrH4JX6UH+PRLSvaqRyofLqKM+apTzvBq2hmfhB039K9QeTovxhS/w/1QostntLZWds
+         IALg==
+X-Gm-Message-State: AJIora8bIKzGRx03/r57VK+45MPRsBbkM/KhgECL1htsN1D2JcYA2p+c
+	H3fxwk0ILmO3OXOModueRHSph0IJ0j3AalhZOrHbwHDw
+X-Google-Smtp-Source: AGRyM1ubuTw8iEGIhskliEJqOR2/l/+H1IwMSkQHzy/9hMTP9gTJ8maSE0GoX/lZXYyaLt8jaIQ14kXI42l1HXwrpPY=
+X-Received: by 2002:a05:6e02:178e:b0:2d9:b40:6571 with SMTP id
+ y14-20020a056e02178e00b002d90b406571mr28115615ilu.34.1657202673040; Thu, 07
+ Jul 2022 07:04:33 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHjQFwY7T0xsmELWXjC-cQ4U=jOXfFLYCz-gbrWJzLw1rYpzaQ@mail.gmail.com>
+ <CAAHZi9zFEOC0R_YHLoEOFG+p-2Ao2YGJ27rDXA97NaUXu6=Z-A@mail.gmail.com>
+ <CAHjQFwadO3EBNkhEH9wnQDdufDCmmNUKxoVCYHtuxo_PVpVVfw@mail.gmail.com>
+ <CAAHZi9yFb8Rko3hSMHGADBqEicje=ZZujn6J9Mq6+gWYyf6qaA@mail.gmail.com> <CAHjQFwaox0Uw9WwQ2NX9C9t4SGFTz=zLL40riffD7cc+q+6b6Q@mail.gmail.com>
+In-Reply-To: <CAHjQFwaox0Uw9WwQ2NX9C9t4SGFTz=zLL40riffD7cc+q+6b6Q@mail.gmail.com>
+From: Mike McBrien <mike@pineapple.co>
+Date: Thu, 7 Jul 2022 10:04:22 -0400
+Message-ID: <CAAHZi9yrqhEonG2yUJLQAB3-7Dn6v72fB03aSgPROvdFZ9q0yw@mail.gmail.com>
+Subject: Re: First Look - ALTVr
+To: Jarren Scheller <jarren@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000a5d76805e3379067"
+
+--000000000000a5d76805e3379067
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Please add a global "viewer" license and share that with us.
+
+I just created an email account for this - reportviewer@pineapple.co
+
+Please add it asap and grant access to that user/email
+
+Thank you.
+
+On Thu, Jul 7, 2022 at 9:54 AM Jarren Scheller <jarren@pineapple.co> wrote:
+
+> I figured as much.  We only have one license currently. We would need to
+> get additional viewer licenses.  I can share this one login, but being it=
+=E2=80=99s
+> a dev login I=E2=80=99ll have to set up snowflake access as well.
+>
+> On Thu, Jul 7, 2022 at 7:42 AM Mike McBrien <mike@pineapple.co> wrote:
+>
+>> It is asking us to log in.
+>>
+>> On Thu, Jul 7, 2022 at 9:38 AM Jarren Scheller <jarren@pineapple.co>
+>> wrote:
+>>
+>>> I am not 100% sure this will let you in or not.
+>>>
+>>>
+>>> https://prod-useast-a.online.tableau.com/#/site/pineappleproducts/views=
+/ALTVR/Dashboard1?:iid=3D1
+>>>
+>>>
+>>>
+>>> On Thu, Jul 7, 2022 at 7:14 AM Mike McBrien <mike@pineapple.co> wrote:
+>>>
+>>>> Jarren,
+>>>>
+>>>> Are you able to share the interactive version of this report with us?
+>>>>
+>>>> -Mike
+>>>>
+>>>>
+>>>>
+>>>> On Wed, Jul 6, 2022 at 1:56 PM Jarren Scheller <jarren@pineapple.co>
+>>>> wrote:
+>>>>
+>>>>> Please see the attached image of the ALTV in Tableau.  There is still
+>>>>> some minor things to take care of once signed off on.
+>>>>>
+>>>>>
+>>>>> On the top you have the following:
+>>>>> Days From Initial Order - Every 31 days to 365, anything above 365
+>>>>> days is considered in the 365 aggregate.
+>>>>> Order Status - Current status of orders in the database.  This may
+>>>>> need some tweaking, but is a whole new issue to deal with.
+>>>>> Parent Product - Every product rolled into their "LLC" or "Parent
+>>>>> Product" as I call it.
+>>>>>
+>>>>>
+>>>>> As you go down through the table you will have ALTV of every product
+>>>>> at every stage.
+>>>>> On the far right, you will have the total for each row.
+>>>>> On the bottom, you will have the total for each column.
+>>>>> You can also hover over each cell to find more details.
+>>>>>
+>>>>> Currently, these are the filters:
+>>>>> Affiliate name
+>>>>> Acquisition date
+>>>>> Order date
+>>>>> Parent Product
+>>>>> Days from Initial Order
+>>>>> Order Status
+>>>>> Is test?
+>>>>>
+>>>>>
+>>>>> That's it in a small nutshell.
+>>>>> Thanks,
+>>>>> Jarren
+>>>>>
+>>>>> [image: image.png]
+>>>>>
+>>>>
+
+--000000000000a5d76805e3379067
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Please add a global &quot;viewer&quot; license and share t=
+hat with us.<br><br>I just created an email account for this -=C2=A0<a href=
+=3D"mailto:reportviewer@pineapple.co">reportviewer@pineapple.co</a><br><br>=
+Please add it asap and grant access to that user/email<div><br></div><div>T=
+hank you.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Thu, Jul 7, 2022 at 9:54 AM Jarren Scheller &lt;<a href=
+=3D"mailto:jarren@pineapple.co">jarren@pineapple.co</a>&gt; wrote:<br></div=
+><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
+-left:1px solid rgb(204,204,204);padding-left:1ex"><div><div dir=3D"ltr">I =
+figured as much.=C2=A0 We only have one license currently. We would need to=
+ get additional viewer licenses.=C2=A0 I can share this one login, but bein=
+g it=E2=80=99s a dev login I=E2=80=99ll have to set up snowflake access as =
+well.=C2=A0</div></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+ class=3D"gmail_attr">On Thu, Jul 7, 2022 at 7:42 AM Mike McBrien &lt;<a hr=
+ef=3D"mailto:mike@pineapple.co" target=3D"_blank">mike@pineapple.co</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr">It is asking us to log in.</div><br><div class=3D"gmail_quote"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 7, 2022 at 9:38 AM Jarren Sc=
+heller &lt;<a href=3D"mailto:jarren@pineapple.co" target=3D"_blank">jarren@=
+pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex"><div dir=3D"ltr">I am not 100% sure this will let you in or not=
+.<br><br><div><a href=3D"https://prod-useast-a.online.tableau.com/#/site/pi=
+neappleproducts/views/ALTVR/Dashboard1?:iid=3D1" target=3D"_blank">https://=
+prod-useast-a.online.tableau.com/#/site/pineappleproducts/views/ALTVR/Dashb=
+oard1?:iid=3D1</a><br></div><div><br></div><div><br></div></div><br><div cl=
+ass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jul 7, 20=
+22 at 7:14 AM Mike McBrien &lt;<a href=3D"mailto:mike@pineapple.co" target=
+=3D"_blank">mike@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex"><div dir=3D"ltr">Jarren, <br><br>Are you able =
+to share the interactive version of this report with us?<div><br></div><div=
+>-Mike<br><div><br></div><div><br></div></div></div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 6, 2022 at 1:56 P=
+M Jarren Scheller &lt;<a href=3D"mailto:jarren@pineapple.co" target=3D"_bla=
+nk">jarren@pineapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex"><div dir=3D"ltr">Please see the attached image of th=
+e ALTV in Tableau.=C2=A0 There is still some minor things to take care of o=
+nce signed off on.<div><br></div><div><br><div>On the top you have the foll=
+owing:</div><div>Days From Initial=C2=A0Order - Every 31 days to 365, anyth=
+ing above 365 days is considered in the 365 aggregate.</div><div>Order Stat=
+us - Current status of orders in the database.=C2=A0 This may need some twe=
+aking, but is a whole new issue to deal with.</div><div>Parent Product - Ev=
+ery product rolled into their &quot;LLC&quot; or &quot;Parent Product&quot;=
+ as I call it.=C2=A0=C2=A0</div><div><br></div><div><br></div><div>As you g=
+o down through the table you will have ALTV of every product at every stage=
+.</div><div>On the far right, you will have the total for each row.=C2=A0=
+=C2=A0</div><div>On the bottom, you will have the total for each column.</d=
+iv><div>You can also hover over each cell to find more details.</div><div><=
+br></div><div>Currently, these are the filters:</div><div>Affiliate name</d=
+iv><div>Acquisition=C2=A0date</div><div>Order date</div><div>Parent Product=
+</div><div>Days from Initial Order</div><div>Order Status</div><div>Is test=
+?</div><div><br></div><div><br></div><div>That&#39;s it in a small nutshell=
+.</div><div>Thanks,</div><div>Jarren</div><div><br></div><div><img src=3D"h=
+ttps://mail.google.com/mail/?ui=3D2&amp;ik=3Dafdfd0b171&amp;attid=3D0.1&amp=
+;th=3D181d8e78e714091a&amp;view=3Dfimg&amp;fur=3Dip&amp;rm=3D181d8e78e71409=
+1a&amp;sz=3Dw1600-h1000&amp;attbid=3DANGjdJ96NUjyWbFWu6HAsyTqH_Gaj2whOluOEs=
+V8wNIu_KawOXAL57zBCYI4TnfbJ9BqQtc8tF_94duQw7BHeaYKoC2dCMToGjSuG0U3Juj__TaXp=
+UsbvUwSqvfW4fI&amp;disp=3Demb&amp;realattid=3Dii_l59welrz0&amp;zw" alt=3D"i=
+mage.png" style=3D"width: 926px; max-width: 100%;"><br></div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</div>
+</blockquote></div>
+
+--000000000000a5d76805e3379067--

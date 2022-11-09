@@ -1,0 +1,340 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:4541:0:0:0:0 with SMTP id s1csp597729ejq;
+        Thu, 22 Sep 2022 15:42:21 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4bDQRhp8lTtWCsH/i1dGygCaduQUhzGDADX1f24j/yrchxzMDs8oRgAGws/1f8xlwEABWm
+X-Received: by 2002:a0c:9062:0:b0:498:fc0e:1fc9 with SMTP id o89-20020a0c9062000000b00498fc0e1fc9mr4802932qvo.10.1663886541676;
+        Thu, 22 Sep 2022 15:42:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663886541; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Kh7eE+3lA9AdgKnmzfMyeaGgvX94W0ktClLf07RM9jrzMcOm8+SWnmsJeQrRMe5irx
+         xCsxj2Yb7ph316eOw5PaJEkYVdfY+4Mti/RVLsZnFr0Ldpp1UioKOYplDqODAj2IbUf7
+         L70SQEnjKhULGEnMZQVmSGa+tbz0xSqSqhnwAoY5LIZuKpcI6LvjACg5/hr+InfnBdV1
+         XWCgR8af8B4WGDTgkShagfwxpsxt4/+BuX752Pw9JQI83cZS7aOBzVS1aopDGbb5Kdsj
+         nrXH3kHrmosWqxQmvt+7jDCfX2BiFzJ/rEWwfFJohBfXRv/2dlmAfcxEzpA0Xqffy6kY
+         bVeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:thread-index:mime-version:message-id:date:subject
+         :in-reply-to:references:to:from:dkim-signature;
+        bh=xxUCpRyA+p7UThq2jO7i65Yp2O8TQKzXPILZJ+l3lS8=;
+        b=anXSvIg5llwgSKyg0u8msfgXAAhI/MUKRWTcFiXDbZLGJ7NDdc03DRgjeYE5KQOiSB
+         tKVoVg1IyGG9XwSAu9TuySaAUzTxEo9rhlM2PYKAqsUVnSOv+aUo0usnvcJHIs+NiSBq
+         XfSz3ZJzdGhgPR7nPEy/HQlrOdIF2MwSWPLnfeNHZMfHp/A+xPDAr6xpATvhwxGT7JVh
+         rSJEYYZ1uU6a0PaX4O4USSh/yqBJQ6Uo5vmpUm+KEyVSlFlNiI0AxS6xHDJPQQQ8Ywxt
+         kIoXUzJtfJ9zc6zW5Vp/CWZnhSyBLRrcUWxFcir7W7LEZoRZ21Fc33+s+so1RCC9yzrc
+         u2xA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@aol.com header.s=a2048 header.b=PeAs1PJ6;
+       spf=pass (google.com: domain of samsheard@aol.com designates 66.163.187.147 as permitted sender) smtp.mailfrom=samsheard@aol.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=aol.com
+Return-Path: <samsheard@aol.com>
+Received: from sonic316-21.consmr.mail.ne1.yahoo.com (sonic316-21.consmr.mail.ne1.yahoo.com. [66.163.187.147])
+        by mx.google.com with ESMTPS id d7-20020a05620a240700b006bc6449009bsi4230764qkn.129.2022.09.22.15.42.20
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Sep 2022 15:42:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of samsheard@aol.com designates 66.163.187.147 as permitted sender) client-ip=66.163.187.147;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@aol.com header.s=a2048 header.b=PeAs1PJ6;
+       spf=pass (google.com: domain of samsheard@aol.com designates 66.163.187.147 as permitted sender) smtp.mailfrom=samsheard@aol.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=aol.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048; t=1663886540; bh=xxUCpRyA+p7UThq2jO7i65Yp2O8TQKzXPILZJ+l3lS8=; h=From:To:References:In-Reply-To:Subject:Date:From:Subject:Reply-To; b=PeAs1PJ6OkTl80tG/jPEq+lQhRfYtoZzDEnYpuEZlmRWhYhIxVNJGvbqjIMg2QqRcxQeN3aKr4+KOApsp1gis6t5wPqLd5dcPfp4LWZFTboySox5RtinTLrF8eixfArdXPCYh0hAnU8KI5N33BCGM1EAY80sDdcUuD2UXUwtSri58fAcrUtNDapH2ISX6AT2mxpy3uzPbktV5geueXt0cc5l+mdaAA2c8KtlyF3itqX15mMmNMHygj6WDN0+60d/MwALVeKuOj6ljZy5ulDN7aDoWEL+bsNEwUQ9xCZJq63RBhLlcDeWD4XrHTyjVaDRtS5FRDnfgWx5mkxTS/icmQ==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1663886540; bh=v1a5ATLJUtg//S9fcxtq2MVlTnveO1fPxxx4O4TTQ2b=; h=X-Sonic-MF:From:To:Subject:Date:From:Subject; b=YcCvUIoWo5jAiQpzTfcqUU9Sic3XMi6ly6Vkh6TA6ashbi8hJoVE9htak1+6Asxak1Z19F5yXGuUSXeRTH3+oYVfXbvc1qukhkLLir5swWxOE3LEkqzKrUPVGE8LhtrcWIg54qA/zEvSAYhXbHz+7BDYquh72r6hZgy09M9AnRrCp8HyfCMjTXuZq8ZoN5WsMEq8WZ80uwRysCjJmULzclN0mwhI1nKk8W8CbiuiqAfIw3Uecxav/J2U5ADu9flY19FZRMMSup40LnDiUjxgnZaS6w0JJUA1lcqiTLQeAMWC3cG7uKPpuQJ14/EFw79ir1tkwYqPEPvOo0aoacLMXA==
+X-YMail-OSG: CpqYGtcVM1nrFS.r42IQWjU24zWHyb9nu7ZNcseK8MSay0zY6ldFYg7zbmOW.Ig
+ JwraIUzlnsB2TVfq8NLTPjKskYJSb6cA_El8cV20qNTRqrqhkaXra6LJbICU9FvxtHXZfTpDe620
+ Jyl9_x56lJmBoYbviZGp5KzhWl1WxttPlC94lVGcwnzeQFhmEpbp6wuLnNvkWa2U0zTD_EGBk0CN
+ PexWQ8FsFZSMOj4awKgZkd_PxsmuiEJlu5SVH4RglQFtzKz8HJYXiRnyBkH0Mcos9mhALGgRda_x
+ EyH6CVQoulbveL6acd7OkREzC0.tH0lIO.pBzcJPfevJ5tflBhDymPdMYoQUAkYj2ooR.oJiq0bD
+ FAY6xm.KwkTEVn_jKy2Sk3hartSs_KBaM.YxaU.lK5sb.f2sNZ1cFmXvvUlSvUejNrsWoHhuCnDY
+ eymk5YMNMlEQcAZqwI7QnBvSjwtgBt2tePsJVFYMhc1OVhOEumoNLAWUPkOLuj1DyWakd9liwqIQ
+ 4614RRjAoS7IyCJ01sqW2cEXrEWCZ2jkPRq92na9QbQd1vmmdkRQpQoYSuzihAYQ673Lw_hGaml0
+ pwwe_lW0wvOcXnxUba2NxNq47ubKRMBFqg1rvRuC5_bSENZKTMde3h0PBzRZou3ouZcXI8mwz74A
+ RKPcZPesQKUsQ63yN_URKjljKvjuH8yC.X8WNzkVD_QE1dRu7O49qmo2cERFIWCdhV8VMLmxsiC1
+ E15peL5B.HMN05YxM5bOiAhQIXLo7e3aVl1dqzQ6ks16fq4Nk0wPOjcPBnc6PvCIv.NCETRMWsG9
+ dT2omX1Zh.cUOnCEpJn98AYQR3JER.m88gHTeZfG1YjvpkCYMn2ismBlWl_Y3_qAhBxGbb5W_ssJ
+ GrdYPLR5lQxN_wcelbB0PQeiCnlFFU.OLfq0cEJFkYusdIRknQTpM61mx2FxCSyVDYjRy7WYSSCV
+ MTZsaruGSb_Gb45rYK7vwzUp1y1_6ZhmHg1N7zN_qQ7L5ONTwiom9u68IAKuar2nIeGlLDuIKRyY
+ 7jJCbUsTwjzT836D9DTrDfy0v5oyQlgzqkR_Oc3vt6Q7wT3k7BmKER2rz6c7jiJVW7PGFWRuWK50
+ MzaLZ3odATDyzGe06t38iKnItHI7xrT1D2KJBuJ8EvjzR9wzAkdDyVEpDLHGnmBqZU2WrnARWNgm
+ mLfRaDvNrl3gR4buOa5QhtU1s1dxcL_yJFRB7ylpo5unNxGkjpIXPd6OgyTDRqtn3Qr9L9iZpHJv
+ ElJcmt.Et6iYnVWa9R0f4O74jTSUwmxldhwzPff2BeglPnF0ykDu_.Q.MkAkW7iOPbKGL8mW.7f0
+ Ads1z6.EpHzm0Od.CVxqGzlVAAWeANBq_B7ozis6JNwxDSJn9NtroZSATBfht3rrQpqHgQppt3yM
+ 40OqUf4XZ..xlcwuiHub2pXjijQM4BnPzJpzYswMXAPDtrRFwdAF4dedoPBbE9qqldpEnnojLyEM
+ njGqSZc8z4FwUbYkgtGLdqepswqSRc4.OAONuznArWJ8iZ5UvBnBA4_Z_FYQ8YAE0AkquASyqEhO
+ CWCCCwTwo4CSIoxkkxPu6J1TDZfPuEqbGBAKAJMFBEnv30mL1s_6lisTdEIHIv0o6RTKWT289fLP
+ dkzoJoXLaEJj5vapV.vqCdc0wB4IRXWtMIXyZYc7XKGl8s1dKMjduIMhnRjynsMr6IxzYodKh7Nc
+ XLAUY13i7.lrjBcOzm0ojpKN.q4T0E6dntkEt4bmqxglIeCz3calEB4pqP6ZLBhlCk1gqfb7yohI
+ aBNgO_h8t8LnbR9FJKE6ww0yOB_c2iXAX_ZFvP.CGgExiz9wzGINHfTekss_PkH6H8RBQXOon_p0
+ ee28DYTHG1Pn56r6orLAuK1LOELksjnIzcH4GBltxvkbMJ4SS6n4b98vPkl3RxSE1qP0guRMhb0a
+ rcB05HGmBH2IchSnrgwiqXcoRPQNbTZeU2_GHjFwD1b.LOpIs2ollbWfQlyTLlUmiFenGhdlUt88
+ SVmffPwLLS_q7iWcbz00S1vED9KRx1ntgYm.PyRQORa28Jq_ZezPGCLxJ1AovmOWfONzXIrM.tgZ
+ daSU.etrN6LeDuL6fXhri0xPQNlUldYRVGuPqVBOWup0rOalGAWVRFFoOT8NU9Y_iswJgs042tqV
+ NIXACJtvHk8KyB3n4P5pXnW_YWLVN2S9DR1AXVRzjjdDdJt9UGaDVWW1WGy8fkSFJ5h0k4Qt.u4x
+ f23AGgQ--
+X-Sonic-MF: <samsheard@aol.com>
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic316.consmr.mail.ne1.yahoo.com with HTTP; Thu, 22 Sep 2022 22:42:20 +0000
+Received: by hermes--production-gq1-7dfd88c84d-bd6qh (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID 89a9d7c187741a6a17ad9ab994a0137f;
+          Thu, 22 Sep 2022 22:42:15 +0000 (UTC)
+From: <samsheard@aol.com>
+To: <aubrey@pineapple.co>
+References: <CALCR5_Sa2E3RhcNq1GGQc3Fy=JiUZCPPQA766Wg5qWry44MaAQ@mail.gmail.com>
+In-Reply-To: <CALCR5_Sa2E3RhcNq1GGQc3Fy=JiUZCPPQA766Wg5qWry44MaAQ@mail.gmail.com>
+Subject: FW: Intro to Sam (consultant)
+Date: Thu, 22 Sep 2022 15:42:13 -0700
+Message-ID: <07fd01d8ced4$8ffa8c20$afefa460$@aol.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_07FE_01D8CE99.E39E4C30"
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQIBWF+cHuoqM8C278Q48kNce4Jllq2a91cQ
+Content-Language: en-us
+Content-Length: 9730
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_07FE_01D8CE99.E39E4C30
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Aubrey,
+
+Good to =E2=80=98e-meet=E2=80=99 you. Would love to just touchbase, =
+provide and intro and get to know a little better about the work you =
+have been doing around gathering revenues and expenses in absence of =
+strong financials. I am just here to support and try to help in any way =
+I can. Carlos mentioned I would learn a lot by going through what you =
+have done and it is more true accrual base than the accounting right now =
+and getting knowledge around data sources.
+
+Please just send some time slots that work for you=E2=80=A6.I am on =
+Pacific time, just fyi!
+
+=20
+
+Sam
+
+=20
+
+From: Brett Allcorn <brett@pineapple.co>=20
+Sent: Tuesday, September 20, 2022 7:09 PM
+To: Samsheard@aol.com
+Cc: Amber Glenn <Amber@pineapple.co>; Aubrey Allen =
+<aubrey@pineapple.co>; Brooke Whoolery <brooke@pineapple.co>
+Subject: Intro to Sam (consultant)
+
+=20
+
+Hey Amber, Brooke and Aubrey I wanted to introduce you to Sam who is =
+helping with some organization and improvement in the finance =
+department.
+
+=20
+
+She said some of what she=E2=80=99s doing may spill over into your =
+departments.
+
+=20
+
+I will leave her to reach out to you.
+
+=20
+
+@sam - here=E2=80=99s a remind of who is who:
+
+=20
+
+Aubrey - data, had second method of revenue and expense reporting
+
+=20
+
+Amber - HR
+
+=20
+
+Brooke - Ops and inventory=20
+
+=20
+
+=20
+
+--=20
+
+
+
+
+
+Brett Allcorn=20
+Chief Executive Officer |  <http://pineapple.co> pineapple.co=20
+
+
+  =
+<https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bmsH_R=
+usWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw>=20
+
+E:  <mailto:brett@pineapple.co> brett@pineapple.co
+
+A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216=20
+
+
+The content of this email is confidential and intended for the recipient =
+specified in message only. It is strictly forbidden to share any part of =
+this message with any third party, without a written consent of the =
+sender. If you received this message by mistake, please reply to this =
+message and follow with its deletion, so that we can ensure such a =
+mistake does not occur in the future.
+
+=20
+
+
+------=_NextPart_000_07FE_01D8CE99.E39E4C30
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:x=3D"urn:schemas-microsoft-com:office:excel" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
+xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta =
+http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8"><meta =
+name=3DGenerator content=3D"Microsoft Word 15 (filtered medium)"><!--[if =
+!mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+span.EmailStyle20
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]--></head><body lang=3DEN-US link=3Dblue =
+vlink=3Dpurple style=3D'word-wrap:break-word'><div =
+class=3DWordSection1><p class=3DMsoNormal>Aubrey,<o:p></o:p></p><p =
+class=3DMsoNormal>Good to =E2=80=98e-meet=E2=80=99 you. Would love to =
+just touchbase, provide and intro and get to know a little better about =
+the work you have been doing around gathering revenues and expenses in =
+absence of strong financials. I am just here to support and try to help =
+in any way I can. Carlos mentioned I would learn a lot by going through =
+what you have done and it is more true accrual base than the accounting =
+right now and getting knowledge around data sources.<o:p></o:p></p><p =
+class=3DMsoNormal>Please just send some time slots that work for =
+you=E2=80=A6.I am on Pacific time, just fyi!<o:p></o:p></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
+class=3DMsoNormal>Sam<o:p></o:p></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in'><p class=3DMsoNormal><b>From:</b> Brett Allcorn =
+&lt;brett@pineapple.co&gt; <br><b>Sent:</b> Tuesday, September 20, 2022 =
+7:09 PM<br><b>To:</b> Samsheard@aol.com<br><b>Cc:</b> Amber Glenn =
+&lt;Amber@pineapple.co&gt;; Aubrey Allen &lt;aubrey@pineapple.co&gt;; =
+Brooke Whoolery &lt;brooke@pineapple.co&gt;<br><b>Subject:</b> Intro to =
+Sam (consultant)<o:p></o:p></p></div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><div><p class=3DMsoNormal>Hey =
+Amber, Brooke and Aubrey I wanted to introduce you to Sam who is helping =
+with some organization and improvement in the finance =
+department.<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p =
+class=3DMsoNormal>She said some of what she=E2=80=99s doing may spill =
+over into your departments.<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p class=3DMsoNormal>I =
+will leave her to reach out to you.<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p =
+class=3DMsoNormal>@sam - here=E2=80=99s a remind of who is =
+who:<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p =
+class=3DMsoNormal>Aubrey - data, had second method of revenue and =
+expense reporting<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p =
+class=3DMsoNormal>Amber - HR<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p =
+class=3DMsoNormal>Brooke - Ops and =
+inventory&nbsp;<o:p></o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div><p class=3DMsoNormal>-- =
+<o:p></o:p></p><div><div><table class=3DMsoNormalTable border=3D0 =
+cellspacing=3D0 cellpadding=3D0 style=3D'max-width:375.0pt'><tr><td =
+width=3D500 colspan=3D2 =
+style=3D'width:375.0pt;border:none;border-bottom:solid #05385F =
+1.0pt;padding:0in 0in 3.0pt 0in'><p class=3DMsoNormal><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'><br><br><br></sp=
+an><strong><span =
+style=3D'font-size:18.0pt;font-family:"Verdana",sans-serif;color:#0270C4'=
+>Brett Allcorn</span></strong><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'> =
+<br></span><span =
+style=3D'font-size:10.0pt;font-family:"Verdana",sans-serif;color:#05385F'=
+>Chief Executive Officer | </span><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'><a =
+href=3D"http://pineapple.co" target=3D"_blank"><b><span =
+style=3D'font-size:10.0pt;text-decoration:none'>pineapple.co</span></b></=
+a> <o:p></o:p></span></p></td></tr><tr><td width=3D120 =
+style=3D'width:1.25in;padding:9.0pt 0in 0in 0in'><p =
+style=3D'margin:0in'><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'><img border=3D0 =
+width=3D90 height=3D90 style=3D'width:.9416in;height:.9416in' =
+id=3D"_x0000_i1025" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9=
+bmsH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw" =
+alt=3DPhoto></span><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'><o:p></o:p></spa=
+n></p></td><td style=3D'padding:11.25pt 0in 0in 0in'><p =
+style=3D'margin:0in;line-height:9.0pt'><b><span =
+style=3D'font-size:9.0pt;font-family:"Verdana",sans-serif;color:#05385F'>=
+E:</span></b><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'> <a =
+href=3D"mailto:brett@pineapple.co" target=3D"_blank"><span =
+style=3D'font-size:9.0pt;color:#101010;text-decoration:none'>brett@pineap=
+ple.co</span></a><o:p></o:p></span></p><p =
+style=3D'margin:0in;line-height:9.0pt'><b><span =
+style=3D'font-size:9.0pt;font-family:"Verdana",sans-serif;color:#05385F'>=
+A:</span></b><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'> </span><span =
+style=3D'font-size:9.0pt;font-family:"Verdana",sans-serif;color:#101010'>=
+13423 Blanco Rd PMB 8024, San Antonio, TX 78216</span><span =
+style=3D'font-family:"Verdana",sans-serif;color:#05385F'> =
+<o:p></o:p></span></p></td></tr><tr><td colspan=3D2 =
+style=3D'padding:7.5pt 0in 0in 0in'><p><span =
+style=3D'font-size:7.0pt;font-family:"Verdana",sans-serif;color:#959595'>=
+The content of this email is confidential and intended for the recipient =
+specified in message only. It is strictly forbidden to share any part of =
+this message with any third party, without a written consent of the =
+sender. If you received this message by mistake, please reply to this =
+message and follow with its deletion, so that we can ensure such a =
+mistake does not occur in the =
+future.<o:p></o:p></span></p></td></tr></table><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></div></div></body></html>
+------=_NextPart_000_07FE_01D8CE99.E39E4C30--
+

@@ -1,0 +1,115 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp490807ejb;
+        Fri, 15 Jul 2022 11:41:42 -0700 (PDT)
+X-Received: by 2002:a17:90b:38cd:b0:1ef:b4c2:3624 with SMTP id nn13-20020a17090b38cd00b001efb4c23624mr24097041pjb.168.1657910502000;
+        Fri, 15 Jul 2022 11:41:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657910501; cv=none;
+        d=google.com; s=arc-20160816;
+        b=d0qXHFhKaQ7dRWZUH/zvw9hWu8esLvF5/33X8TNgkoH2I3p+qZrGRaSq6XRaIaD5am
+         GBKnjQHaNXYCzwqGJL/91TJFGsmp2UUheWNIZLG7loD8uINq6elCtjzDL4Y9i/QMEXVq
+         yXjokzEC4pMj0iecdIXcexWF5BJdSb8xhHD34DAbGm4PQFL4cd7CMxHEou1b80/iR3Pt
+         oG++g0Gb4dhwhAgdFbSHeNv6g8u+G7egGWnubSWpESNtYBVc/7oFF7Bu3JPXqTZL1905
+         8kWxy14X8y+n2dKTQ3SZlyFn5zu4IEwy5EKPiN5W01RKCaN14S4cDhU6DUF9nlZsid1B
+         vFPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=11RNsvfz9rX0cxHVt50WOfCFoTYr9Nok5LLjempCe54=;
+        b=a4K20ViAIPWEoMLik0e83bMM4UqYTpf8PHjtpR1210AmX9BXYIIMa67dmWqhTGLmwJ
+         CIYVVjWr4+Q2tczX+HMGp5+UekyyHqY7egVYWEu9BaBsWsB3knAnL/TofpEoGO70axVD
+         /urY1rweDrD1cQJwd8uxujKqB9MeEk1qmmzjZAINR9pmu2tS6kDAaWT+1cLRRefmOkYk
+         2F69M7Z/bttgS37KmCa426Yvr0MhsI6WCfEgmJEiFcBp74sI/nPYTFGuJRJOr4dbEmmI
+         mupSRyXRtQx+xVmWSj+B6jjLxo+o352iOrxm+JW6rRHbn7dcodzT/WjSAkVRLbioyA3M
+         wLtA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=IoA24jXd;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <brett@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w10-20020a17090a8a0a00b001e67c83f4a9sor2284188pjn.32.2022.07.15.11.41.41
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 15 Jul 2022 11:41:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=IoA24jXd;
+       spf=pass (google.com: domain of brett@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=brett@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=11RNsvfz9rX0cxHVt50WOfCFoTYr9Nok5LLjempCe54=;
+        b=IoA24jXdwq7ykJ2g/uTJLwRPQ/4oILM53rSR/HA1XSDuk8ITGXzJ3HsbUlsaVeO4ez
+         /yeQUin5S7G3oiw0GmDM9brxuKCw2MSBEL0aEmiVbR2Rqxg62r/LVv+3pJJeIb5oO5Qe
+         FMfD5T6vAhni9RMILBmsslyeJIMd+40FZpdbWWrEskcZvAXy1D2uqUCwSHqBq0sFfxbK
+         TNp1/W4pn1jX9XiTnQ7lrC0JvvA3WL846ATaAcxV4fc9bryv20iDrhvls0Y4JWf3OY7+
+         YM7NU2IG7FyjeroHAJVitxzLQF4Q1dG6AZfbiHg/kKJJTNGLE/6QZTnu2YHsk1vRxOyh
+         qJ9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=11RNsvfz9rX0cxHVt50WOfCFoTYr9Nok5LLjempCe54=;
+        b=f7YWCJMNeeVZMbAhS+BILU2vtXi14LQmfWU1ZF+Al87Op6NgkFqlbmBN7XBpxeTayb
+         Viy4ejhKoKPK0PCEO+A2XRhnnBkBBLTwcD51+ZU83h68JE1IDPp5NQwtw9fOcBC+xla7
+         HEcmlMfl7/R+bSuXnQCGVtCU/FsF0L2E7DJUZiV2JN+GMjqU1jweyN1GiK1A1wtSvjUP
+         vobaGMBLO0JUtvpDuCWca0CrEhJC0iG9ZgjOKCFeZX4nQZYFt5omijbK+UJBo3ssUvSA
+         CKJst8Hzh2WX/24Y2ZybBgVKdEc0KiB878/xuIgGfmKUY52GC8DeQpXLoDNShhY4FtBJ
+         IoJA==
+X-Gm-Message-State: AJIora9L6PffvMjnTEBrc1vB3Rz1BnuhEuV+9+dQ0HNYyjFgqe0Z2ZKU
+	u14aMytZhv7vOkT1IzdH30r942rh9t+gC71n5RMFmADw
+X-Google-Smtp-Source: AGRyM1ugBKKWuskyMiGWDdv62IuJIlNP4oxucAm0KTlWYDdrZnA9hFo8LO0TKeqSSc1cd+8vgF7adsAUfYoCU9aspoo=
+X-Received: by 2002:a17:90b:33d2:b0:1f0:3a40:982d with SMTP id
+ lk18-20020a17090b33d200b001f03a40982dmr17179663pjb.60.1657910501165; Fri, 15
+ Jul 2022 11:41:41 -0700 (PDT)
+MIME-Version: 1.0
+From: Brett Allcorn <brett@pineapple.co>
+Date: Fri, 15 Jul 2022 14:41:30 -0400
+Message-ID: <CALCR5_SoFb7zk2wk6PJ=ZtC1PPS3ZxX_HUseMoWf2OnhWVLNtg@mail.gmail.com>
+Subject: Individual Cost-Cutting Action Items (Please Approve by Monday EOD!)
+To: Gene Naftulyev <gene@pineapple.co>, Brooke Whoolery <brooke@pineapple.co>, 
+	Colin Chung <colin@pineapple.co>, DJ Gelner <dj@pineapple.co>, Tessa Bender <tessa@pineapple.co>, 
+	Andrea Abramowski <andrea@pineapple.co>, Kendal LaFleur <kendal@pineapple.co>, 
+	Mike McBrien <mike@pineapple.co>, Robert Martin <robert@pineapple.co>, 
+	Jarren Scheller <jarren@pineapple.co>, Jack Nalbandyan <jack@pineapple.co>, 
+	Ryan Alarid <ryanalarid@pineapple.co>, Dimitri Lianoudakis <dimitri@pineapple.co>, 
+	Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000007ddb2e05e3dc5e9f"
+
+--0000000000007ddb2e05e3dc5e9f
+Content-Type: text/plain; charset="UTF-8"
+
+Hey, if you're receiving this then there are cost cutting actions assigned
+to you.
+
+Please sign off on each of these cost-cutting or revenue boosting measures
+by typing "Agreed" in Column D.
+
+Please complete this by Monday, *July 18th EOD*
+
+Please add an estimated due date in Column E.
+
+Due dates can be revised as needed.
+
+If I'm missing any items, please add them in.
+
+Finally, there are a few items here that are actually questions, so for
+those, please just answer the question.
+
+Thank you!
+
+--0000000000007ddb2e05e3dc5e9f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hey, if you&#39;re receiving=C2=A0this then there are=
+ cost cutting actions assigned to you.</div><div><br></div>Please sign off =
+on each of these cost-cutting or revenue boosting measures by typing &quot;=
+Agreed&quot; in Column D.<div><br></div><div>Please complete this by Monday=
+, <b>July 18th EOD</b>=C2=A0<div><br></div><div>Please add an estimated due=
+ date in Column E.</div><div><br></div><div>Due dates can be revised as nee=
+ded.</div><div><br></div><div>If I&#39;m missing any items, please add them=
+ in.</div><div><br></div><div>Finally, there are a few items here that are =
+actually=C2=A0questions, so for those, please just answer the question.</di=
+v><div><br></div><div>Thank you!</div></div></div>
+
+--0000000000007ddb2e05e3dc5e9f--

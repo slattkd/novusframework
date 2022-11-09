@@ -1,0 +1,116 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp563335ejc;
+        Fri, 24 Jun 2022 10:54:32 -0700 (PDT)
+X-Received: by 2002:a6b:d610:0:b0:669:c02c:e41a with SMTP id w16-20020a6bd610000000b00669c02ce41amr77973ioa.173.1656093272148;
+        Fri, 24 Jun 2022 10:54:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1656093272; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wC0sCBcSDgWyewTaf4M4dLlEX0jMGV8KO/zwcOM4qsuttNeEQfudpmndmx1wLWTjO9
+         n8q+IcD3tKNC18r+aQ1RLWg4s3Nj6J5+pWEAlhW2pwRnbFHj+F7XxOzHVOqSuAlV5vPN
+         P2QKhTGHKstUo9q1Z9/7T3ouTvrQGBBQT6VHdn+e7swlqGHa70PXbDKkkVK5DZjGCJsJ
+         bevuOTujxmmwLLBi/2LYt48ARNWHfCjgBF2ub+B87ZXUbL9sQgoMFIM4LYT3pBqqhbNz
+         6HMpe1X76YCIChG1Lpxu3BtzRzfLP7DduqhkgNNZQliIIuxMdapIKLHZMOvHMM74XR+A
+         ++ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=bLsPk5jPXnsdpXc32GzBzyoZOAqqsGBFV0n8n2YOyVY=;
+        b=VLMSVc++7dwi8AJPF/8/9oGuXF1iNugNKfVHL894LgpRKD7+TamETdCXuS+ha+6pVA
+         Jr0ofanPKRGsOhX2HG+bOz81sVRgyIdjVV9Dd2aUf7+Lrda3J8qDSpSghPkdKeL3Nsc3
+         z89naNB2lhmacy+JzWApRqTtsn2DgCAxci/SnE2WC6HKdg5raK573jlWURlooPOYsxOh
+         kkTpKwiKswKv5i7C+c7sl/BluWUu7DmV343LehgVW0jOHEpOnoIh/ol/vA9VchMYW4Qa
+         MlQq+oyPutHdIFOTTLn2VFw3fAbKGrautIMaEyIZh1y+Xzbcz34XhcSEoFbDIBCiNZZU
+         n8xg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=QLy6+1mM;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+Return-Path: <mike@pineapple.co>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f2-20020a92cb42000000b002d0ff11cb81sor885703ilq.89.2022.06.24.10.54.31
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 24 Jun 2022 10:54:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pineapple-co.20210112.gappssmtp.com header.s=20210112 header.b=QLy6+1mM;
+       spf=pass (google.com: domain of mike@pineapple.co designates 209.85.220.41 as permitted sender) smtp.mailfrom=mike@pineapple.co;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pineapple.co
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pineapple-co.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=bLsPk5jPXnsdpXc32GzBzyoZOAqqsGBFV0n8n2YOyVY=;
+        b=QLy6+1mMhykcgloKKAZXK8V9ozAUi6O19oCxxZizA6GZRtseKRqUFLpxxYEYNuu7wG
+         EOrO/SW/OrbJ+r6KSsfjAxaEI8C6EG/RumUuhRBKU1Po4v8HDMeQAj/hqo4IaOJZ6wzr
+         lPP/MfPD5FsZ5jgXMrTjLxqcSpDfni2vrfuMFNakbJIKzPyQhxDpNDas6pqkFuIODOjH
+         97XHL0d1ZIXnzR5INdwtCSY9N9NiBATDPgGrqALfvwTmzClavrhtYf9HTXe9i9FzXRn7
+         srLbEfMb2QZz0OLEvgfK5zX/oUm87i3qNd3yG5ZIX+Bandm+seKE19nNd0k7dHGEK+UE
+         oItQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=bLsPk5jPXnsdpXc32GzBzyoZOAqqsGBFV0n8n2YOyVY=;
+        b=5Zeghet0hqIoY9em7iWiPxBENl9+V4BaXkWCnVxQoZ9qHi7RKuiKtcRLx9jOS/ZZFE
+         PrygeICoVsyrPj/Fl+WUNioWi3YKhViL4T5tnLmSbHihBDkcn05i3o6jaZeulYNU/S11
+         xqaaBzoLVSSajTWhjO5dIjRDyt5RUCVOAXSNG8TDgeXN7y1pmGQGzKseu3hHI2sJtsIM
+         3QzX58hP10Q58E6J+ZwyNls0Hrt/n9PhDDBEQoJFFn95us7rX4YkgIW63FGIIrJAgvAY
+         H2txuc8PDnh7i8ayQo/4ReutpnlG8t8GqrxeMOFbtvFDTXoNrmyMvPGhy+16BOPZ3Glj
+         /Nrw==
+X-Gm-Message-State: AJIora9Lt24Lc7F3tOpizoqwQTTGH+dgCUKToE2mXRo24dzz1633Ns3z
+	u/gKcPjyQ/l7+90lLmwZLDnno4t2VRxE1fWrfiC3DQHoQb55jw==
+X-Google-Smtp-Source: AGRyM1tz1d80Q1+61FTGknUj0DKo5Ud/rIMKTC/NJJgrdlAGR3iJ4GSdIUeXUOYBz6H8RNumYhXHA1Q7SgLuHVXU6ew=
+X-Received: by 2002:a92:cd8f:0:b0:2d9:5d44:6a53 with SMTP id
+ r15-20020a92cd8f000000b002d95d446a53mr108387ilb.226.1656093271347; Fri, 24
+ Jun 2022 10:54:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAHbmDP9+vK0VJPV6zJbAnV85dw_9j=mSvFB+qWKLPT=WrZwvDA@mail.gmail.com>
+In-Reply-To: <CAHbmDP9+vK0VJPV6zJbAnV85dw_9j=mSvFB+qWKLPT=WrZwvDA@mail.gmail.com>
+From: Mike McBrien <mike@pineapple.co>
+Date: Fri, 24 Jun 2022 13:54:20 -0400
+Message-ID: <CAAHZi9zGPTQCcwDS7w4Kr7GvYY2WJEE6p1fN0agsqDoYvns1LQ@mail.gmail.com>
+Subject: Re: Time off Request
+To: Aubrey Allen <aubrey@pineapple.co>
+Content-Type: multipart/alternative; boundary="0000000000002767a305e2354321"
+
+--0000000000002767a305e2354321
+Content-Type: text/plain; charset="UTF-8"
+
+Approved, thank you!
+
+
+On Fri, Jun 24, 2022 at 1:53 PM Aubrey Allen <aubrey@pineapple.co> wrote:
+
+> Hi Mike!
+>
+> Just to follow up from the team meeting-- I would like to request off
+> Monday, July 11th, as I will be spending the weekend in Nashville with my
+> family.
+>
+> I'll be sure to put it on my calendar as well! Thank you!
+>
+> --
+> Aubrey Allen
+> Data Analytics Technician
+> Pineapple Products, Inc.
+>
+
+--0000000000002767a305e2354321
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Approved, thank you!<div><br></div></div><br><div class=3D=
+"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jun 24, 2022 at=
+ 1:53 PM Aubrey Allen &lt;<a href=3D"mailto:aubrey@pineapple.co">aubrey@pin=
+eapple.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"ltr">Hi Mike!<div><br></div><div>Just to follow up f=
+rom the team meeting-- I would like to request off Monday, July 11th, as I =
+will be spending the weekend in Nashville with my family.=C2=A0</div><div><=
+br></div><div>I&#39;ll be sure to put it on my calendar as well! Thank you!=
+<br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"><div dir=3D"ltr">A=
+ubrey Allen<div>Data Analytics Technician</div><div>Pineapple Products, Inc=
+.</div></div></div></div></div>
+</blockquote></div>
+
+--0000000000002767a305e2354321--

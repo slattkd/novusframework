@@ -1,0 +1,450 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:907:770e:0:0:0:0 with SMTP id kw14csp2280197ejc;
+        Tue, 14 Jun 2022 07:15:19 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1uzfhB3XKfvRIpaCTvpiE+R/1BwigfEDFKuU8zAYXwWDQxBa4v7TxMjkLAqN2HgXc0ZPEKz
+X-Received: by 2002:a05:6102:109b:b0:349:d58b:4c10 with SMTP id s27-20020a056102109b00b00349d58b4c10mr2247611vsr.30.1655216119141;
+        Tue, 14 Jun 2022 07:15:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1655216119; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oarBkEd42/bBPht/YSWa1g8TcvKF932PAXviIkEMSsXSFR6sjhfJ4Gn8/pQ6JuPkSP
+         sH2e6+AXPGETyY9fz8lNQKNUTclAsIrqEKs4rKN/FgcjK5GLvgluUAIIU9qsqF3uIL2/
+         ughmPQ4yASKEkuDAjKCO8Xjlc7nGCWCmxAEwGJKoWN556tLHsrXE7Xgu/7Oi+A6LKI8Y
+         uCug9gDYJCBieI5S9i80KD9H1K3hO5P0wqUCK7Z8wzBc6cvtir9HtaAJ1lThLohX2T6M
+         O7dkg+ItPmkmtyqF+K00RVn5P/Q8/7gLkFQDsESY6AUgJ9vHK8/jZjGrbcEZkdsyF1oW
+         c2WA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:mime-version:subject:references:in-reply-to:message-id
+         :from:date:dkim-signature;
+        bh=Z5Hv8GrO9GzbRsczcEES8eyU1zBDDcmKKQi6gYc698c=;
+        b=uzbePvzLFNhjNc5QOWQKOz8ZOpqFGjVPiiBMi4UIjG5SE9S5xMKNPxBxjduIjbwjqK
+         v9kjJ2ADPFPCw6AQOI3t9bImcjkxKiYIxemPbN4RnuGlZwN7aYIr2XmgNQYcMVsUB/GU
+         lAitx81Lz3gM7Fps+ZM85Q02ihQm8CihnGfo58wW+gbVUutR0jQwm3UsnY9g00nDsQ2Q
+         zVsmQs5AJVRlEZ5s+OvBj1UyVU/2ftGp52qcbOen1VO8uKDBwxIkO6qDhUip4TC2VOo/
+         BkoZdkpHPvUo0DpYIsdvdnNFQ04/jqu31WH5t/XYZpzH9ZHhWFjNqdwQbtn7fKXdyt+e
+         jw3w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=tO2eqXkx;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.85.224 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+Return-Path: <bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com>
+Received: from o6.mail.teamwork.com (o6.mail.teamwork.com. [167.89.85.224])
+        by mx.google.com with ESMTPS id z23-20020ab022d7000000b00373590e7bcdsi2126481uam.200.2022.06.14.07.15.17
+        for <aubrey@pineapple.co>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Jun 2022 07:15:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.85.224 as permitted sender) client-ip=167.89.85.224;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.teamwork.com header.s=m1 header.b=tO2eqXkx;
+       spf=pass (google.com: domain of bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com designates 167.89.85.224 as permitted sender) smtp.mailfrom="bounces+2758207-3361-aubrey=pineapple.co@em6245.email.teamwork.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=teamwork.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=email.teamwork.com;
+	h=from:in-reply-to:references:subject:mime-version:content-type:
+	reply-to:to;
+	s=m1; bh=Z5Hv8GrO9GzbRsczcEES8eyU1zBDDcmKKQi6gYc698c=;
+	b=tO2eqXkxxVXGLinhAa7SxsaUhIxLTAUtKxCGcx0zKbfSltLE/kKSxwgdboDM5WKHDByk
+	lEtz+qlSsgukN+atYrUGSjhUuJqMufDXoQSTl67rD4+L/uTZC0TL3dLfYf6GIl7zWmqDPZ
+	t0hUntY8dUG9sbcc8gLmK/VBoCBmKVJBU=
+Received: by filterdrecv-66c96bd486-fm9zv with SMTP id filterdrecv-66c96bd486-fm9zv-1-62A897F5-4
+        2022-06-14 14:15:17.030380494 +0000 UTC m=+506795.821489840
+Received: from USAPPSERVER02 (unknown)
+	by geopod-ismtpd-5-2 (SG) with ESMTP
+	id MCW9mA6GQWWxccEBT-dLQQ
+	for <aubrey@pineapple.co>;
+	Tue, 14 Jun 2022 14:15:16.996 +0000 (UTC)
+Date: Tue, 14 Jun 2022 14:15:17 +0000 (UTC)
+From: "Mike McBrien (Pineapple Products)" <application@teamwork.com>
+Message-ID: <tw.30.94355.485@replies.teamwork.com>
+In-Reply-To: <thread.921738.30.254377.task@replies.teamwork.com>
+References: <thread.921738.30.254377.task@replies.teamwork.com>
+Subject: (Data Analytics & Reporting) Re: Task: Audit GTM (Analytics)
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_145828_1333436647.1655216116934"
+X-Mailer: Teamwork Projects (www.teamwork.com)
+X-MC-Tags: webserver2
+Reply-To: Pineapple Products <tw.30.94355.485@replies.teamwork.com>
+X-SG-EID: 
+ =?us-ascii?Q?gQkno2vIGpTbi=2FX3IyC+Kk=2F=2FhgGQEIccZrgPJ3hXsPmSZ5P7oTOAvLjEsDxf2Q?=
+ =?us-ascii?Q?jO6Qr4K+oFMaj+M86dk7vdb61BRx6Wh8RcLU9sL?=
+ =?us-ascii?Q?BvP5+Okvi5LpvuXqvoDZbYob9OTydWn7BGyAidS?=
+ =?us-ascii?Q?gDxmmrjENqOkKPUKT08PKGX+UBzpMuUqea=2F3+iJ?=
+ =?us-ascii?Q?vRl7uGRGcUy2mRoT70YtdnCekDcVM4R5tKC8=2Fq9?=
+ =?us-ascii?Q?4oNviuPK8lnQ2c34F7colKxivUkeH2SXZM9mwpZ?=
+ =?us-ascii?Q?oBgHxnIU4g=2FPORjaOPKpQ=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FJox7Dz6VF2YSa9nYWReO?=
+ =?us-ascii?Q?uXL5CSK8P+L8lX2MpDr2DlbijBrTwkVmFN+lt7v?=
+ =?us-ascii?Q?DoqbxIn3SN9kmWLS9qQjoLHkYYTRrDd0th81FH7?=
+ =?us-ascii?Q?2gwkofoFLOLAN8=2Fc1ORcxTtgn4XHGkbp+MZO50F?=
+ =?us-ascii?Q?OK6Q5O7AcMFAzj0AlCg3YdvMGdm5VpUfEiq7Z6U?=
+ =?us-ascii?Q?9o6QMiqclwU6fQnXw=3D?=
+To: aubrey@pineapple.co
+X-Entity-ID: 3VvNhzpv5hGejcSM9Zjypw==
+
+------=_Part_145828_1333436647.1655216116934
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Jun 14
+10:15 Jun 14 10:15
+Mike McBrien commented on this task
+Perfect
+thanks.
+
+Jun 10
+17:34 Jun 10 17:34
+Aubrey Allen commented
+https://docs.google.com/spreadsheets/d/1lkaZvfiv5UwBnMd8jwlLQ9ypCxcTZie7RP
+6F_Rt0hFw/edit?usp=sharing
+^^Google Doc -- Google Tag Manager Audit
+
+Jun
+09
+09:24 Jun 09 09:24
+Mike McBrien commented
+Access GTM Here:
+https://tagmanager.google.com/#/home
+
+(#254377) Task Details
+Start Date:
+06/09/2022
+Due Date: 06/15/2022
+Priority: Not set
+Progress: 100%
+Tags:
+Dept: Analytics
+Assigned To: Aubrey Allen
+Assigned By: Mike McBrien
+View
+Task: Audit GTM
+Task List: Analytics
+Task Description:
+
+Complete Audit of
+GTM containers, providing a list of all scripts/tags running for each
+property. We will then review this list for tags or services that we are
+not using and then remove the tags from GTM.
+
+Project Details
+Project:
+Data Analytics &amp; Reporting
+Company: Pineapple Products
+
+Copied To:
+Aubrey Allen
+Not interested?: Stop receiving comments on this task
+Tip:
+You can reply to this message and also use email commands such as #like
+
+------=_Part_145828_1333436647.1655216116934
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+
+			<html>
+				<head>
+					<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+					<meta name=3D"viewport" content=3D"width=3D350px, user-scalable=3Dyes"=
+>
+					<style>
+						body {
+							margin:0px;
+						}
+						body,td,th,p{
+							font-family:Tahoma, Arial, Helvetica, sans-serif;
+							font-size:12px;
+							text-align:left;
+						}
+						h3{
+							padding:0;
+							margin:10px 0 5px 0;
+							color:#000000;
+							font-family : arial,sans-serif;
+							font-size: 1.4em;
+							font-weight:bold;
+						}
+						pre {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						pre code {
+							white-space: pre-wrap;
+							font-family:Monaco,Menlo,Consolas,"Courier New",monospace;
+							font-size:12px;
+						}
+
+						blockquote {
+							border-left: 4px solid #DDDDDD;
+							padding: 0 15px;
+							color: #777777;
+							margin-left:10px;
+						}
+
+						blockquote p {
+							font-size:14px !important;
+							color: #777777;
+						}
+
+						span.atwho-inserted {
+							-webkit-text-size-adjust: 100%;
+							-webkit-tap-highlight-color: rgba(0,0,0,0);
+							text-rendering: optimizeLegibility;
+							text-align: left;
+							font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif=
+;
+							line-height: 1.7;
+							word-break: break-word;
+							overflow-wrap: break-word;
+							-webkit-user-modify: read-only;
+							box-sizing: border-box;
+							-webkit-user-select: auto !important;
+							display: inline-block;
+							border: none;
+							font-size: 13px;
+							color: #3f4650;
+							padding: 1px 6px;
+							border-radius: 10px;
+							background-color: #e1e7ef;
+							font-weight: normal;
+							cursor: default;
+							outline: none;
+						}
+
+						a {
+							word-break:break-all;
+						}
+						table td img { max-width:100%; }
+						html { -webkit-text-size-adjust: none; }
+						@media only screen and (max-device-width:480px) {
+							body { width: 350px !important; padding:5px !important;	}
+							table[class=3D"wrapper"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] { width:340px !important; max-width:340px !=
+important; }
+							table[class=3D"content"] table { width:300px !important; max-width:3=
+00px !important;}
+							table td[class=3D"dateTime"] { display:none !important; }
+							table td img { max-width:340px!important; }
+							p[class=3D"dateTimeMobile"] { font-family:'Lucida Grande', 'Lucida S=
+ans', Arial, sans-serif; color:#9E9E9E !important; font-size:11px !importan=
+t; line-height:22px !important; margin-bottom:22px !important; margin:0; }
+							h3 span[class=3D"note"], h3 span[class=3D"fwd"] { padding:0 !importa=
+nt; background-color:#ffffff !important; }
+						}
+					</style>
+				</head>
+				<body style=3D"-webkit-text-size-adjust:none;">
+
+					=3D=3D=3D=3D=3D WRITE YOUR REPLY ABOVE THIS LINE =3D=3D=3D=3D=3D<div s=
+tyle=3D"padding:5px 0 10px 10px;clear:both;"><img src=3D"http://assets1.tea=
+mworkpm.net/tko/public/assets/brand/email/teamwork_primary.png" width=3D"20=
+0"  style=3D"width:100%;max-width:200px;" border=3D"0"></div><div class=3D"=
+mailWrap" style=3D"overflow:hidden;padding:10px;font-family:arial;font-size=
+:12px;"> <table class=3D"wrapper" cellspacing=3D"0" border=3D"0" cellpaddin=
+g=3D"0" width=3D"100%">
+							<tbody>
+								<tr>
+									<td>
+										<table class=3D"content" width=3D"100%" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0">
+											<tbody>
+												<tr>
+													<td style=3D"padding:0 0 10px 0;">
+													=09
+
+													=09
+														<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadd=
+ing=3D"0" style=3D"padding:0; border-bottom:1px solid #E6E6E6; margin:0;">
+															<tbody>
+																<tr>
+																	<td class=3D"dateTime" width=3D"50" valign=3D"top" align=
+=3D"right" style=3D"padding:10px 10px 0 0px; font-family:'Lucida Grande', '=
+Lucida Sans', Arial, sans-serif; color:#9E9E9E; font-size:11px; line-height=
+:16px; margin:0;">Jun 14<br> 10:15</td>
+																	<td style=3D"padding:10px 20px 0 0px;">
+																		<p class=3D"dateTimeMobile" height=3D"0" style=3D"font-si=
+ze: 0px; height:0px; line-height: 0px; color:#ffffff; margin:0; padding:0;"=
+>Jun 14 10:15</p>
+
+																		<h3 style=3D"font-family:'Helvetica Neue', Helvetica, Ari=
+al, sans-serif; color:#717171; font-size:16px; line-height:22px; margin:0 0=
+ 4px 0; font-weight:normal;">
+																			<strong style=3D"color:#000000;">Mike McBrien</strong> c=
+ommented on this <a href=3D"https://pineappleproducts.teamwork.com/tasks/25=
+4377?c=3D53837" style=3D"color:#717171; text-decoration:underline;">task</a=
+>
+																		</h3>
+
+																		<div style=3D"font-family:'Helvetica Neue', Helvetica, Ar=
+ial, sans-serif; color:#222222; font-size:12px; line-height:16px; padding:0=
+;">
+																			<div>
+ Perfect thanks.
+</div>=20
+																		</div>
+																	=09
+																	=09
+																		<br>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													=09
+															=09
+																<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0" style=3D"padding:0; border-bottom:1px solid #E6E6E6; margin:0;"=
+>
+																	<tbody>
+																		<tr>
+																			<td class=3D"dateTime" width=3D"50" valign=3D"top" align=
+=3D"right" style=3D"padding:10px 10px 0 0px; font-family:'Lucida Grande', '=
+Lucida Sans', Arial, sans-serif; color:#9E9E9E; font-size:11px; line-height=
+:16px; margin:0;">Jun 10<br> 17:34</td>
+																			<td style=3D"padding:10px 20px 0 0px;">
+
+																				<p class=3D"dateTimeMobile" height=3D"0" style=3D"font-=
+size: 0px; height:0px; line-height: 0px; color:#ffffff; margin:0; padding:0=
+;">Jun 10 17:34</p>
+
+																				<h3 style=3D"font-family:'Helvetica Neue', Helvetica, A=
+rial, sans-serif; color:#717171; font-size:16px; line-height:22px; margin:0=
+ 0 4px 0; font-weight:normal;">
+																					<strong style=3D"color:#000000;">Aubrey Allen</strong>=
+ commented
+																				</h3>
+
+																				<div style=3D"font-family:'Helvetica Neue', Helvetica, =
+Arial, sans-serif; color:#222222; font-size:12px; line-height:16px; padding=
+:0;">
+
+																					<div>
+ <a href=3D"https://docs.google.com/spreadsheets/d/1lkaZvfiv5UwBnMd8jwlLQ9y=
+pCxcTZie7RP6F_Rt0hFw/edit?usp=3Dsharing" target=3D"_blank" rel=3D"noopener"=
+ data-mce-href=3D"https://docs.google.com/spreadsheets/d/1lkaZvfiv5UwBnMd8j=
+wlLQ9ypCxcTZie7RP6F_Rt0hFw/edit?usp=3Dsharing">https://docs.google.com/spre=
+adsheets/d/1lkaZvfiv5UwBnMd8jwlLQ9ypCxcTZie7RP6F_Rt0hFw/edit?usp=3Dsharing<=
+/a>
+</div>
+<div>
+ ^^Google Doc -- Google Tag Manager Audit
+</div>=20
+																				</div>
+
+																			=09
+																			=09
+
+																				<br>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+														=09
+															=09
+																<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0" style=3D"padding:0;  margin:0;">
+																	<tbody>
+																		<tr>
+																			<td class=3D"dateTime" width=3D"50" valign=3D"top" align=
+=3D"right" style=3D"padding:10px 10px 0 0px; font-family:'Lucida Grande', '=
+Lucida Sans', Arial, sans-serif; color:#9E9E9E; font-size:11px; line-height=
+:16px; margin:0;">Jun 09<br> 09:24</td>
+																			<td style=3D"padding:10px 20px 0 0px;">
+
+																				<p class=3D"dateTimeMobile" height=3D"0" style=3D"font-=
+size: 0px; height:0px; line-height: 0px; color:#ffffff; margin:0; padding:0=
+;">Jun 09 09:24</p>
+
+																				<h3 style=3D"font-family:'Helvetica Neue', Helvetica, A=
+rial, sans-serif; color:#717171; font-size:16px; line-height:22px; margin:0=
+ 0 4px 0; font-weight:normal;">
+																					<strong style=3D"color:#000000;">Mike McBrien</strong>=
+ commented
+																				</h3>
+
+																				<div style=3D"font-family:'Helvetica Neue', Helvetica, =
+Arial, sans-serif; color:#222222; font-size:12px; line-height:16px; padding=
+:0;">
+
+																					<div>
+ Access GTM Here:=20
+ <a href=3D"https://tagmanager.google.com/#/home" target=3D"_blank" rel=3D"=
+noopener" data-mce-href=3D"https://tagmanager.google.com/#/home">https://ta=
+gmanager.google.com/#/home</a>=20
+</div>=20
+																				</div>
+
+																			=09
+																			=09
+
+																				<br>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+														=09
+													</td>
+												</tr>
+											=09
+											</tbody>
+										</table>
+										<br>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div style=3D"border:1px solid #999;border-left:10px solid #999;paddi=
+ng:10px;color:#555;"> <span style=3D"float:right;color:#888;">(#254377)</sp=
+an> <h3 style=3D"margin:0;padding:0;color:#333;">Task Details</h3> <p><stro=
+ng>Start Date:</strong> 06/09/2022</p> <p><strong>Due Date:</strong> 06/15/=
+2022</p> <p><strong>Priority:</strong> Not set</p> <p><strong>Progress:</st=
+rong> 100%</p> <p><strong>Tags:</strong>=20
+				<span class=3D"tagHolder" style=3D"display:inline-block;margin-left:3px=
+;">
+			=09
+					<span style=3D"display:inline-block;margin-right:2px;border-radius:3px=
+;background-color:#9b7cdb;color:#fff;padding:1px 5px;font-size:11px;">Dept:=
+ Analytics</span>
+			=09
+				</span>
+			</p> <p><strong>Assigned To:</strong> Aubrey Allen</p> <p><strong>Assign=
+ed By:</strong> Mike McBrien</p> <p><strong>View Task:</strong> <a style=3D=
+"color:#346CC4;" href=3D"https://pineappleproducts.teamwork.com/tasks/25437=
+7#comment53837">Audit GTM</a></p> <p><strong>Task List:</strong> <a style=
+=3D"color:#346CC4;" href=3D"https://pineappleproducts.teamwork.com/tasklist=
+s/40725">Analytics</a></p> <p><strong>Task Description:</strong><br><br> <p=
+>Complete Audit of GTM containers, providing a list of all scripts/tags run=
+ning for each property. We will then review this list for tags or services =
+that we are not using and then remove the tags from GTM.</p>
+</p> <h3 style=3D"margin:10px 0 0 0;padding:0;color:#333;">Project Details<=
+/h3> <p><strong>Project:</strong> <a style=3D"color:#346CC4;" href=3D"https=
+://pineappleproducts.teamwork.com/projects/23790">Data Analytics &amp; Repo=
+rting</a></p> <p><strong>Company:</strong> Pineapple Products</p> </div> <p=
+><strong>Copied To:</strong> Aubrey Allen</p><p><strong>Not interested?:</s=
+trong> <a href=3D"https://pineappleproducts.teamwork.com/ufen?uid=3D6FF57DC=
+B9705642821D2300E72296465AC2879D6164686BF626C05FF5BB2BC19" style=3D"color:#=
+888888;">Stop receiving comments on this task</a></p><p><strong>Tip:</stron=
+g> You can reply to this message and also use <a href=3D'https://support.te=
+amwork.com/projects/comments/using-commands-in-email-replies-to-comments'>e=
+mail commands</a> such as &#35;like <div style=3D"margin-top:10px;"><a styl=
+e=3D"color:#888888;" href=3D"https://pineappleproducts.teamwork.com/forgot_=
+password">P.S. Just in case: You can reset your password by clicking here</=
+a></div><div style=3D"display:none;font-color:white;font-size:1px">Reply to=
+: tw.30.94355.485@replies.teamwork.com</div>=20
+						<div itemscope itemtype=3D"http://schema.org/EmailMessage">
+						  <div itemprop=3D"potentialAction" itemscope itemtype=3D"http://sche=
+ma.org/ViewAction">
+						    <link itemprop=3D"target" href=3D"https://pineappleproducts.teamw=
+ork.com/tasks/254377"/>
+						    <meta itemprop=3D"name" content=3D"View task"/>
+						  </div>
+						  <meta itemprop=3D"description" content=3D"View task on Teamwork"/>
+						</div>
+				=09
+				</body>
+			</html>
+	=09=
+
+------=_Part_145828_1333436647.1655216116934--

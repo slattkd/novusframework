@@ -1,0 +1,623 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:5442:0:0:0:0 with SMTP id d2csp374932ejp;
+        Wed, 19 Oct 2022 10:00:38 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1645:b0:2f8:3545:5470 with SMTP id v5-20020a056e02164500b002f835455470mr6496249ilu.245.1666198838006;
+        Wed, 19 Oct 2022 10:00:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1666198838; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ap8Lq28Xl2ZIp/0f6btO0MOSihwPjq4TbSfipnJfCp8Mt+pGmkUVgZfH4uMFPYDZDM
+         QKORlszkUc7yduWUVGLwocRL4W8+Cd2P1+jmVqemEmfKMiJjYFdbMaOtkRCJaYAXBv9c
+         T4bqbtTSLQKWEYRCKoEBMmsB5sucqCtw7DtWCZp3avn4MXLy8qOXZe83MKgK3Znh94ll
+         N/POTFoTlqCW5NFkH0k+vz5z/0NareTXAW856Y1MRdPS02hlY5r6zUEVpSstySv1Ikeg
+         nOr1hvg0jOerq9ICTJ++CqVgEsZsW0jEf+OG/7Y0d+dHQ1JtuLIRDNhUlw/YhmsP1mOJ
+         qbmQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=q0ryHqoWBhfrb3ktG/nv47JrIonBY1DpIUw0xzkfDOc=;
+        b=YfgpzskmkvYEd2AD8+RuBCnb1gzHCuN2Yks15ch8G6Cyq9nCa0Gn71BdeA+4OtSliL
+         OWtAAD7Rw9AOp99cuNay6SRo/S6Nr3j9CACsBtbVhDQaQDJo7WIkmdpXfNg0IuUikyCm
+         1BLtdxIFJigocAbbfXFiYBo+QivXT15HW0i/goKp2TwFkEDVreA8hpfI1W/WEoPQek89
+         cCHM0eESYZjOOjD/SPWU1UeXAS75bCSI4KDat92o9nKjhAwZtB+AQcqaEs10Q5KQ2N6Z
+         CzAwCMDx/skJ0s+2r9EI1tiaIhyG2Fda/cfHxr5RlEfV/XC1vgX10Srul7iabxJBlRcz
+         KeCg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@precisionfinancialllc-com.20210112.gappssmtp.com header.s=20210112 header.b=V2JKAts6;
+       spf=softfail (google.com: domain of transitioning geni@precisionfinancialllc.com does not designate 209.85.220.41 as permitted sender) smtp.mailfrom=geni@precisionfinancialllc.com
+Return-Path: <geni@precisionfinancialllc.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o9-20020a056602124900b0069e269aeb40sor6114364iou.2.2022.10.19.10.00.37
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Wed, 19 Oct 2022 10:00:37 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning geni@precisionfinancialllc.com does not designate 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@precisionfinancialllc-com.20210112.gappssmtp.com header.s=20210112 header.b=V2JKAts6;
+       spf=softfail (google.com: domain of transitioning geni@precisionfinancialllc.com does not designate 209.85.220.41 as permitted sender) smtp.mailfrom=geni@precisionfinancialllc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=precisionfinancialllc-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=q0ryHqoWBhfrb3ktG/nv47JrIonBY1DpIUw0xzkfDOc=;
+        b=V2JKAts6YZ4Ik5tYND4qRhFy+Qs65olG+YNrWsN2/uJQTsBr06GYV/oXbf6Scf0iDb
+         alKYyKA9l6G0zus5u9Zsb0pU5v8/kls3tsIVd4Zd8xD9RJgeRJwkuIm3ME8iiz1dS/nx
+         512Aj0uXfduV+Nc+6TpayK6FU1ZcK5SYfKlHKUBuGS5rB42eRhhoTmf4C9Pc1Dw3R9fI
+         WcHdwTukI2BOVBK1+gUeVPHkYiSZKP9siWkmm20bMTrgWD0Bh7qW7iPMpvkc1MoFcGUU
+         ZI4LJQZSNGbWWajvnm5hM+5HXb9xSiGCy7poCHZVhKhoUukvs8Tyhnq6kB2Y4s/nUwtV
+         X68g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=q0ryHqoWBhfrb3ktG/nv47JrIonBY1DpIUw0xzkfDOc=;
+        b=o6PIUM+kvMST5uuLtPcNUTuG52hp/Yq22cQ1yon9MvU/1t8IEQknXeD+FjHmrMCzln
+         rzu9GQgdh9kIn6/caa4ar9E6GvIzjHVuYJsOkArziQAdxggp6gXqXqDWvMwDS+S6wtxd
+         JRKFp8nPAeOH2SBGklxrRi5aDrSEPMzkcz9gKVnSMUAb7qETFIwvP6yu/A5qmqLwFWpc
+         Mgf35FxCQldbcHRnfo8dHsVy/qoggW+QqR+vA+nbCAZqi0jwOhHLWhM3+qUYEb2K6S70
+         F+sP6YCWD7v4qJRfG0bA4EpUckPlaRmhXXdBivj9Rk2r4ICOrwplLByOHOhY2wl1+9F7
+         KY6w==
+X-Gm-Message-State: ACrzQf1MHY45z+m1qCPXUtVxk68UgwyOQYC4gIYL6Zn9gaDlbzlMzQB3
+	y5uOCUIyTHwv6FQ+bkJEDzQ0eyfiAQbMhe/qVXeKkA==
+X-Google-Smtp-Source: AMsMyM4SiOeoriey6q3MAmZb12ZREWd6qgJgLbTcV3ivByuTUpSTEAPBJk128sHBEzwqXRFos5t67LXPvRsW88gLIYM=
+X-Received: by 2002:a05:6602:2e8d:b0:6bc:77d8:7713 with SMTP id
+ m13-20020a0566022e8d00b006bc77d87713mr6249192iow.144.1666198837409; Wed, 19
+ Oct 2022 10:00:37 -0700 (PDT)
+MIME-Version: 1.0
+References: <20220909151640.62247260a1401c87@mg.mercury.com>
+ <CAAs51=_My1ARzBbSn+ixqZ7M6avh+gFgj6Bc37Q_buT=Ecea3w@mail.gmail.com>
+ <CAK9vRcrE8sP7qYg0Y=g1BvcsRPyTr7QAO9TCYBWOh2rskMDqag@mail.gmail.com>
+ <CALCR5_S0FtAVE0JOxCbVX_mW21LnEyP1hUjohGYQyWpKRD67Fw@mail.gmail.com>
+ <CAK9vRcqnnZY8GFQG0vCA5KaP7vOJUQ0s2Um1=os=B8+BtExXgQ@mail.gmail.com>
+ <CALCR5_Szdou_2vCptgk-MiGgBrU_5HxyVJEwoo6_4g-m7oyZ9w@mail.gmail.com>
+ <CA+ceVcUNJwMV=kw9LXbveaugdHCxtRtpjofp30rLatuSS2QsBg@mail.gmail.com>
+ <CAK9vRcraOeTE+-7AMxy85ysnNHh6RqDB+3o7-QiBc6F3noCWOQ@mail.gmail.com> <CA+ceVcUq1k8w3cvZXvtu6TguVg13-rJn5ijLhBJwpyzKJLCK5g@mail.gmail.com>
+In-Reply-To: <CA+ceVcUq1k8w3cvZXvtu6TguVg13-rJn5ijLhBJwpyzKJLCK5g@mail.gmail.com>
+From: Geni Yang <geni@precisionfinancialllc.com>
+Date: Wed, 19 Oct 2022 10:00:27 -0700
+Message-ID: <CAK9vRco-s4MaK035rA6rnt+FonSn=jhjD0HRXyM5r-V3MjueZA@mail.gmail.com>
+Subject: Re: Second Marsh Consulting received $50,000.00 from PINEAPPLE PRODUC
+To: Andrea Abramowski <andrea@pineapple.co>
+Cc: Brett Allcorn <brett@pineapple.co>, Carlos Bowden <carlos@pineapple.co>, 
+	Fran Rengel <fran@enrichmarketing.com>, Aubrey Allen <aubrey@pineapple.co>, 
+	"bob rkgconsultinginc.com" <bob@rkgconsultinginc.com>
+Content-Type: multipart/alternative; boundary="000000000000d45a9205eb6625aa"
+
+--000000000000d45a9205eb6625aa
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+I do not, please send your new bank info over when you get the chance!
+
+Thanks,
+
+Geni
+
+On Wed, Oct 19, 2022 at 9:31 AM Andrea Abramowski <andrea@pineapple.co>
+wrote:
+
+> Since we pay you out of the main Pineapple account, I believe that one
+> would be best. Do you have the account information for the Chase account
+> ending in 0505?
+>
+> *Andrea Abramowski, CPA*
+> Controller | pineapple.co
+>
+> [image: Photo]
+>
+> E: andrea@pineapple.co
+>
+> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>
+> The content of this email is confidential and intended for the recipient
+> specified in message only. It is strictly forbidden to share any part of
+> this message with any third party, without a written consent of the sende=
+r.
+> If you received this message by mistake, please reply to this message and
+> follow with its deletion, so that we can ensure such a mistake does not
+> occur in the future.
+>
+>
+> On Wed, Oct 19, 2022 at 10:33 AM Geni Yang <geni@precisionfinancialllc.co=
+m>
+> wrote:
+>
+>> Hi Andrea,
+>>
+>> I'm glad you found the amounts! Just to confirm, is the Chase 1002 still
+>> a good bank to use when needed or is there a different one you prefer?
+>>
+>> Thank you,
+>>
+>> Geni
+>>
+>> On Wed, Oct 19, 2022 at 7:21 AM Andrea Abramowski <andrea@pineapple.co>
+>> wrote:
+>>
+>>> Thanks Geni. I was looking in Pineapple's bank account, not the one
+>>> ending in 1002. But I found them, so we're all good. Thanks for your he=
+lp &
+>>> for so promptly refunding us.
+>>>
+>>>
+>>> *Andrea Abramowski, CPA*
+>>> Controller | pineapple.co
+>>>
+>>> [image: Photo]
+>>>
+>>> E: andrea@pineapple.co
+>>>
+>>> A: 13423 Blanco Rd PMB 8024, San Antonio, TX 78216
+>>>
+>>> The content of this email is confidential and intended for the recipien=
+t
+>>> specified in message only. It is strictly forbidden to share any part o=
+f
+>>> this message with any third party, without a written consent of the sen=
+der.
+>>> If you received this message by mistake, please reply to this message a=
+nd
+>>> follow with its deletion, so that we can ensure such a mistake does not
+>>> occur in the future.
+>>>
+>>>
+>>> On Tue, Oct 18, 2022 at 4:42 PM Brett Allcorn <brett@pineapple.co>
+>>> wrote:
+>>>
+>>>> Thank you!
+>>>>
+>>>> On Tue, Oct 18, 2022 at 4:34 PM Geni Yang <
+>>>> geni@precisionfinancialllc.com> wrote:
+>>>>
+>>>>> Hi Brett & Andrea,
+>>>>>
+>>>>> Please see attached for the ACH receipts downloaded from our bank and
+>>>>> the transaction tracking numbers below.  They should have been deposi=
+ted
+>>>>> 3-5 business days after the initiation.
+>>>>>
+>>>>> 9/12/2022 Transaction tracking number: 84106760177383
+>>>>>
+>>>>> 10/11/2022 Transaction tracking number: 84106760164818
+>>>>>
+>>>>> Please let me know what further information you need from us to help
+>>>>> identify the transactions.
+>>>>>
+>>>>> Thank you,
+>>>>>
+>>>>> Geni
+>>>>>
+>>>>> On Tue, Oct 18, 2022 at 1:25 PM Brett Allcorn <brett@pineapple.co>
+>>>>> wrote:
+>>>>>
+>>>>>> Geni, Andrea is having trouble finding these refunds. Can you help
+>>>>>> her?
+>>>>>>
+>>>>>> On Mon, Sep 12, 2022 at 11:51 AM Geni Yang <
+>>>>>> geni@precisionfinancialllc.com> wrote:
+>>>>>>
+>>>>>>> Hi Brett & team,
+>>>>>>>
+>>>>>>> Happy Monday & I hope you all had a good weekend!
+>>>>>>>
+>>>>>>> I have processed the refund for $4,700 back to Pineapple Products,
+>>>>>>> Chase bank ending in 1002.  You should see it in 3-5 business days.
+>>>>>>>
+>>>>>>> Thank you,
+>>>>>>>
+>>>>>>> Geni
+>>>>>>>
+>>>>>>> On Fri, Sep 9, 2022 at 2:23 PM Fran Rengel <fran@enrichmarketing.co=
+m>
+>>>>>>> wrote:
+>>>>>>>
+>>>>>>>> Hey all,
+>>>>>>>>
+>>>>>>>> Based on what Brett and I just agreed to, the minimum is now 45.3k=
+,
+>>>>>>>> and this will apply retroactively to August.
+>>>>>>>>
+>>>>>>>> So, Geni - please ACH $4.7k back to Pineapple, and make the
+>>>>>>>> invoices 45.3k going forward.
+>>>>>>>>
+>>>>>>>> Geni and Bob, I have forwarded you guys an email with the other
+>>>>>>>> details of the changes to the deal.
+>>>>>>>>
+>>>>>>>> Let me know if you guys have any questions.
+>>>>>>>>
+>>>>>>>> - Fran
+>>>>>>>>
+>>>>>>>> ---------- Forwarded message ---------
+>>>>>>>> From: Mercury <hello@mercury.com>
+>>>>>>>> Date: Fri, Sep 9, 2022 at 10:16 AM
+>>>>>>>> Subject: Second Marsh Consulting received $50,000.00 from PINEAPPL=
+E
+>>>>>>>> PRODUC
+>>>>>>>> To: <Fran@secondmarshconsulting.com>
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> Hi Francisco,
+>>>>>>>>
+>>>>>>>> You've received $50,000.00
+>>>>>>>> <https://mercury.com/transactions/551c1f76-3052-11ed-b5f6-47582bca=
+7ba9>
+>>>>>>>> via ACH In from PINEAPPLE PRODUC to your company's Mercury checkin=
+g account
+>>>>>>>> =E2=80=A2=E2=80=A28775.
+>>>>>>>>
+>>>>>>>> If you have any questions, just reply to this email.
+>>>>>>>> The Mercury Team
+>>>>>>>> ------------------------------
+>>>>>>>>
+>>>>>>>> You are receiving notifications for Second Marsh Consulting on all
+>>>>>>>> incoming transactions <https://mercury.com/settings/notifications>=
+.
+>>>>>>>> Sent with care from
+>>>>>>>> Mercury Technologies, Inc.
+>>>>>>>> 660 Mission Street, San Francisco, CA 94105
+>>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> --
+>>>>>>> *Geni Yang*
+>>>>>>> Accountant
+>>>>>>>
+>>>>>>> Geni@PrecisionF.com
+>>>>>>> (626) 841-2633
+>>>>>>>
+>>>>>>>
+>>>>>
+>>>>> --
+>>>>> *Geni Yang*
+>>>>> Accountant
+>>>>>
+>>>>> Geni@PrecisionF.com
+>>>>> (626) 841-2633
+>>>>>
+>>>>>
+>>
+>> --
+>> *Geni Yang*
+>> Accountant
+>>
+>> Geni@PrecisionF.com
+>> (626) 841-2633
+>>
+>>
+
+--=20
+*Geni Yang*
+Accountant
+
+Geni@PrecisionF.com
+(626) 841-2633
+
+--000000000000d45a9205eb6625aa
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:tahoma,s=
+ans-serif">I do not, please send your new bank info over when you get the c=
+hance!</div><div class=3D"gmail_default" style=3D"font-family:tahoma,sans-s=
+erif"><br></div><div class=3D"gmail_default" style=3D"font-family:tahoma,sa=
+ns-serif">Thanks,</div><div class=3D"gmail_default" style=3D"font-family:ta=
+homa,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-famil=
+y:tahoma,sans-serif">Geni</div></div><br><div class=3D"gmail_quote"><div di=
+r=3D"ltr" class=3D"gmail_attr">On Wed, Oct 19, 2022 at 9:31 AM Andrea Abram=
+owski &lt;<a href=3D"mailto:andrea@pineapple.co">andrea@pineapple.co</a>&gt=
+; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div di=
+r=3D"ltr">Since we pay you out of the main Pineapple account, I believe tha=
+t one would be best. Do you have the account information for the Chase acco=
+unt ending in 0505?<div><br clear=3D"all"><div><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Controller<sp=
+an> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">andrea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Wed, Oct 19, 2022 at 10:33 AM Geni Yang &lt;<a h=
+ref=3D"mailto:geni@precisionfinancialllc.com" target=3D"_blank">geni@precis=
+ionfinancialllc.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"f=
+ont-family:tahoma,sans-serif">Hi Andrea,</div><div class=3D"gmail_default" =
+style=3D"font-family:tahoma,sans-serif"><br></div><div class=3D"gmail_defau=
+lt" style=3D"font-family:tahoma,sans-serif">I&#39;m glad you found the amou=
+nts! Just to confirm, is the Chase 1002 still a good bank to use when neede=
+d or is there a different one you prefer?</div><div class=3D"gmail_default"=
+ style=3D"font-family:tahoma,sans-serif"><br></div><div class=3D"gmail_defa=
+ult" style=3D"font-family:tahoma,sans-serif">Thank you,</div><div class=3D"=
+gmail_default" style=3D"font-family:tahoma,sans-serif"><br></div><div class=
+=3D"gmail_default" style=3D"font-family:tahoma,sans-serif">Geni</div></div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed=
+, Oct 19, 2022 at 7:21 AM Andrea Abramowski &lt;<a href=3D"mailto:andrea@pi=
+neapple.co" target=3D"_blank">andrea@pineapple.co</a>&gt; wrote:<br></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Thanks Ge=
+ni. I was looking in Pineapple&#39;s bank=C2=A0account, not the one ending =
+in 1002. But I found them, so we&#39;re all good. Thanks for your help &amp=
+; for so promptly refunding=C2=A0us.=C2=A0<div><br></div><div><br clear=3D"=
+all"><div><div dir=3D"ltr">=20
+
+
+<div>
+
+<table style=3D"font-family:Verdana,sans-serif;color:rgb(5,56,95);max-width=
+:500px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+  <tbody>
+    <tr>
+        <td colspan=3D"2" style=3D"padding-bottom:4px;border-bottom:1px sol=
+id rgb(5,56,95)" width=3D"500">
+            <span style=3D"font-size:18pt;color:rgb(2,112,196);font-family:=
+Verdana,sans-serif"><strong>Andrea Abramowski, CPA</strong></span>
+            <span><br></span>
+            <span style=3D"font-size:10pt;color:rgb(5,56,95)">Controller<sp=
+an> | </span></span>
+            <span>
+                <a href=3D"http://pineapple.co" rel=3D"noopener" style=3D"f=
+ont-size:10pt;text-decoration:none;font-weight:bold;color:rgb(2,112,196)" t=
+arget=3D"_blank">pineapple.co</a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding-top:12px" width=3D"120">
+            <p style=3D"padding:0px;margin:0px">	<img alt=3D"Photo" style=
+=3D"max-width: 90px; height: auto; border: 0px;" width=3D"90" border=3D"0" =
+src=3D"https://ci3.googleusercontent.com/mail-sig/AIorK4xxrTub-_lMNvIMuV9bm=
+sH_RusWt6ELrci3C2YvG5aH130_0z0cZJ4sDUmSyXuEpRH7B4b1qYw">
+            </p>
+        </td>
+        <td style=3D"padding-top:15px">
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold"></span> <span style=3D"font-size:9pt;color:rgb(16=
+,16,16)"></span></p>
+           =20
+            <p style=3D"line-height:12px;padding-bottom:2px;margin-bottom:0=
+px;padding-top:0px;margin-top:0px"><span style=3D"font-size:9pt;color:rgb(5=
+,56,95);font-weight:bold">E:</span> <a href=3D"mailto:andrea@pineapple.co" =
+style=3D"text-decoration:none;font-size:9pt;color:rgb(16,16,16)" target=3D"=
+_blank">andrea@pineapple.co</a></p>
+            		<p style=3D"line-height:12px;padding-bottom:2px;margin-bottom=
+:0px;padding-top:0px;margin-top:0px">			<span style=3D"font-size:9pt;color:=
+rgb(5,56,95);font-weight:bold">A:</span> 			 			<span style=3D"font-size:9p=
+t;color:rgb(16,16,16)">13423 Blanco Rd PMB 8024</span><span style=3D"font-s=
+ize:9pt;color:rgb(16,16,16)">, </span>			<span style=3D"font-size:9pt;color=
+:rgb(16,16,16)">San Antonio, TX 78216</span>
+            </p>	=09
+            <p style=3D"margin-bottom:0px;padding-bottom:0px;padding-top:5p=
+x;margin-top:5px">
+               =20
+               =20
+               =20
+               =20
+               =20
+                	=09
+            </p>
+        </td>
+    </tr>
+   =20
+    <tr>
+        <td colspan=3D"2" style=3D"padding-top:10px">
+            <p style=3D"font-size:7pt;line-height:1.2;color:rgb(149,149,149=
+);font-family:Verdana,sans-serif">The content of this email is confidential=
+ and intended for the recipient specified in message only. It is strictly f=
+orbidden to share any part of this message with any third party, without a =
+written consent of the sender. If you received this message by mistake, ple=
+ase reply to this message and follow with its deletion, so that we can ensu=
+re such a mistake does not occur in the future.</p>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+=20
+</div>
+  </div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Tue, Oct 18, 2022 at 4:42 PM Brett Allcorn &lt;<=
+a href=3D"mailto:brett@pineapple.co" target=3D"_blank">brett@pineapple.co</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><d=
+iv dir=3D"ltr">Thank you!</div><br><div class=3D"gmail_quote"><div dir=3D"l=
+tr" class=3D"gmail_attr">On Tue, Oct 18, 2022 at 4:34 PM Geni Yang &lt;<a h=
+ref=3D"mailto:geni@precisionfinancialllc.com" target=3D"_blank">geni@precis=
+ionfinancialllc.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"f=
+ont-family:tahoma,sans-serif">Hi Brett &amp; Andrea,</div><div class=3D"gma=
+il_default" style=3D"font-family:tahoma,sans-serif"><br></div><div class=3D=
+"gmail_default" style=3D"font-family:tahoma,sans-serif">Please see attached=
+ for the ACH receipts downloaded from our bank and the transaction tracking=
+ numbers below.=C2=A0 They should have been deposited 3-5 business days aft=
+er the initiation.=C2=A0</div><div class=3D"gmail_default" style=3D"font-fa=
+mily:tahoma,sans-serif"><br></div><div class=3D"gmail_default"><font face=
+=3D"tahoma, sans-serif">9/12/2022=C2=A0Transaction tracking number:=C2=A084=
+106760177383</font></div><div class=3D"gmail_default"><font face=3D"tahoma,=
+ sans-serif"><br></font></div><div class=3D"gmail_default"><font face=3D"ta=
+homa, sans-serif">10/11/2022=C2=A0Transaction tracking number: 841067601648=
+18</font><br></div><div class=3D"gmail_default"><font face=3D"tahoma, sans-=
+serif"><br></font></div><div class=3D"gmail_default"><font face=3D"tahoma, =
+sans-serif">Please let me know what further information you need from us to=
+ help identify the transactions.=C2=A0</font></div><div class=3D"gmail_defa=
+ult"><font face=3D"tahoma, sans-serif"><br></font></div><div class=3D"gmail=
+_default"><font face=3D"tahoma, sans-serif">Thank you,</font></div><div cla=
+ss=3D"gmail_default"><font face=3D"tahoma, sans-serif"><br></font></div><di=
+v class=3D"gmail_default"><font face=3D"tahoma, sans-serif">Geni</font></di=
+v></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Tue, Oct 18, 2022 at 1:25 PM Brett Allcorn &lt;<a href=3D"mailto:brett=
+@pineapple.co" target=3D"_blank">brett@pineapple.co</a>&gt; wrote:<br></div=
+><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
+-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Geni, A=
+ndrea is having trouble finding these refunds. Can you help her?</div><br><=
+div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep=
+ 12, 2022 at 11:51 AM Geni Yang &lt;<a href=3D"mailto:geni@precisionfinanci=
+alllc.com" target=3D"_blank">geni@precisionfinancialllc.com</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
+><div class=3D"gmail_default" style=3D"font-family:tahoma,sans-serif">Hi Br=
+ett &amp; team,<br></div><div class=3D"gmail_default" style=3D"font-family:=
+tahoma,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-fam=
+ily:tahoma,sans-serif">Happy Monday &amp; I hope you all had a good weekend=
+!</div><div class=3D"gmail_default" style=3D"font-family:tahoma,sans-serif"=
+><br></div><div class=3D"gmail_default" style=3D"font-family:tahoma,sans-se=
+rif">I have processed the refund for $4,700 back to Pineapple Products, Cha=
+se bank ending in 1002.=C2=A0 You should see it in 3-5 business days.</div>=
+<div class=3D"gmail_default" style=3D"font-family:tahoma,sans-serif"><br></=
+div><div class=3D"gmail_default" style=3D"font-family:tahoma,sans-serif">Th=
+ank you,</div><div class=3D"gmail_default" style=3D"font-family:tahoma,sans=
+-serif"><br></div><div class=3D"gmail_default" style=3D"font-family:tahoma,=
+sans-serif">Geni</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+ class=3D"gmail_attr">On Fri, Sep 9, 2022 at 2:23 PM Fran Rengel &lt;<a hre=
+f=3D"mailto:fran@enrichmarketing.com" target=3D"_blank">fran@enrichmarketin=
+g.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex"><div dir=3D"ltr">Hey all,<br><br>Based on what=C2=A0Brett and I just a=
+greed to, the minimum is now 45.3k, and this will apply retroactively to Au=
+gust.<div><br></div><div>So, Geni - please ACH $4.7k back to Pineapple, and=
+ make the invoices 45.3k going forward.</div><div><br></div><div>Geni and B=
+ob, I have forwarded you guys an email with the other details of the change=
+s to the deal.</div><div><br></div><div>Let me know if you guys have any qu=
+estions.</div><div><br></div><div>- Fran<br><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded message --------=
+-<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Mercury</strong>=
+ <span dir=3D"auto">&lt;<a href=3D"mailto:hello@mercury.com" target=3D"_bla=
+nk">hello@mercury.com</a>&gt;</span><br>Date: Fri, Sep 9, 2022 at 10:16 AM<=
+br>Subject: Second Marsh Consulting received $50,000.00 from PINEAPPLE PROD=
+UC<br>To:  &lt;<a href=3D"mailto:Fran@secondmarshconsulting.com" target=3D"=
+_blank">Fran@secondmarshconsulting.com</a>&gt;<br></div><br><br><div><u></u=
+>
+
+
+<div><div id=3D"m_-2053214187547462970m_-9201050485989806380m_2892499253473=
+458537m_1916731205064530953m_4743413039072453524m_7659285836576223041m_-954=
+442354939870766m_5421508673428381184m_-4871389205449088941m_-45543005964206=
+40474m_-641104196013217774body"><img id=3D"m_-2053214187547462970m_-9201050=
+485989806380m_2892499253473458537m_1916731205064530953m_4743413039072453524=
+m_7659285836576223041m_-954442354939870766m_5421508673428381184m_-487138920=
+5449088941m_-4554300596420640474m_-641104196013217774logo" alt=3D"" src=3D"=
+https://mercury.com/icons/email/mercury-email-logo-4x.png">
+<div id=3D"m_-2053214187547462970m_-9201050485989806380m_289249925347345853=
+7m_1916731205064530953m_4743413039072453524m_7659285836576223041m_-95444235=
+4939870766m_5421508673428381184m_-4871389205449088941m_-4554300596420640474=
+m_-641104196013217774content"><p>Hi Francisco,</p>
+<p>You&#39;ve received <a href=3D"https://mercury.com/transactions/551c1f76=
+-3052-11ed-b5f6-47582bca7ba9" target=3D"_blank">$50,000.00</a> via ACH In f=
+rom PINEAPPLE PRODUC to your company&#39;s Mercury checking account =E2=80=
+=A2=E2=80=A28775.</p>
+<p>If you have any questions, just reply to this email.<br>The Mercury Team=
+</p>
+</div>
+<hr id=3D"m_-2053214187547462970m_-9201050485989806380m_2892499253473458537=
+m_1916731205064530953m_4743413039072453524m_7659285836576223041m_-954442354=
+939870766m_5421508673428381184m_-4871389205449088941m_-4554300596420640474m=
+_-641104196013217774footer-hr">
+<div id=3D"m_-2053214187547462970m_-9201050485989806380m_289249925347345853=
+7m_1916731205064530953m_4743413039072453524m_7659285836576223041m_-95444235=
+4939870766m_5421508673428381184m_-4871389205449088941m_-4554300596420640474=
+m_-641104196013217774footer"><p>You are receiving notifications for Second =
+Marsh Consulting on <a href=3D"https://mercury.com/settings/notifications" =
+target=3D"_blank">all incoming transactions</a>.</p>
+Sent with care from<br>
+Mercury Technologies, Inc.<br>
+660 Mission Street, San Francisco, CA 94105</div>
+</div>
+</div>
+
+</div></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><div><b>Geni Yang</b></div><div>Accountant</div><div><br>=
+</div><div>Geni@PrecisionF.com</div><div>(626) 841-2633</div><div><br></div=
+></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><div><b>Geni Yang</b></div><div>Accountant</div><div><br>=
+</div><div>Geni@PrecisionF.com</div><div>(626) 841-2633</div><div><br></div=
+></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><div><b>Geni Yang</b></div><div>Accountant</div><div><br>=
+</div><div>Geni@PrecisionF.com</div><div>(626) 841-2633</div><div><br></div=
+></div></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><div><b>Geni Yang</b></div><div=
+>Accountant</div><div><br></div><div>Geni@PrecisionF.com</div><div>(626) 84=
+1-2633</div><div><br></div></div></div>
+
+--000000000000d45a9205eb6625aa--

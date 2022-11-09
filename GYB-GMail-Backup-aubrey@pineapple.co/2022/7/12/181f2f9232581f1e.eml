@@ -1,0 +1,197 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:e095:0:0:0:0 with SMTP id gh21csp2283217ejb;
+        Tue, 12 Jul 2022 08:13:42 -0700 (PDT)
+X-Received: by 2002:a05:651c:b14:b0:25a:a19a:b1c4 with SMTP id b20-20020a05651c0b1400b0025aa19ab1c4mr12684046ljr.25.1657638822618;
+        Tue, 12 Jul 2022 08:13:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657638822; cv=none;
+        d=google.com; s=arc-20160816;
+        b=aQmtpNjw7yFcCpiWGJI2t4BshopD+YTbRgm3HabwdPUGoRxyHqy3GAYUjt3+cEbuXR
+         iCyhPZCmwskdY01UUEIwwbSUjOcjUw40KN2JTjOxlJhEDxNwNdofO0HSzwVBlyi8Qv+P
+         kaunZyRP7ch9o+3+Y7hM5SzjnLIKMKxbL7lpU/OF2BSAxpwS6I1CmHdVk7MROXb17dV3
+         u1+hkSlmcnHHYpDWnZ3CWlTEN+sQWfF55C3VdOb5VM93L7AIsic93n0vUgUeBaDJcrd5
+         sxDHTMmT0gXhGmhhmTUlo/R+N9bzgMRoChFS7cWUqZPo+T5ySskWA1KaH/xVngBSpL9I
+         i1/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=fdu7s8Xdua2pmX+KWahUga1LJan/EoiMrLWVTN8hJAc=;
+        b=gCFYQwo00Ch++pU5KJPF6K8grt+Xqthj7a4M3fLbiz3ga9xm7JWqvUBTQmj9VxmfPw
+         sv3b0DvDd50oF/XFDmchiyB/rI/DlzKg1YdIS0L7/u77hZpyTR0odTumIV09t4e79Sgm
+         ZjLA8s7bK0Bjrwxolcb/3Gaq8Rpx428ryEhc8IkIyKKz4jPepblThTd3tUJptFluFQxs
+         5mnGWWzB1lT2U1J3YQbU69jRUWqBRlMy1aZ+XOcA2XXby+xlvBGm0Az6q1Icm32FRBYN
+         RZo1pFkOQsgmsccnnJ9wJjOKcyKjgcgxLjP+eqJrz7SbwhujIrNEg02/BGtKIP4pMQyu
+         /vVA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ironsidegroup.com header.s=google header.b=1d7zBYe2;
+       spf=pass (google.com: domain of rbohne@ironsidegroup.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=rbohne@ironsidegroup.com
+Return-Path: <rbohne@ironsidegroup.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b3-20020a196703000000b004810b63e5bcsor1841194lfc.72.2022.07.12.08.13.41
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Tue, 12 Jul 2022 08:13:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rbohne@ironsidegroup.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ironsidegroup.com header.s=google header.b=1d7zBYe2;
+       spf=pass (google.com: domain of rbohne@ironsidegroup.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=rbohne@ironsidegroup.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ironsidegroup.com; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=fdu7s8Xdua2pmX+KWahUga1LJan/EoiMrLWVTN8hJAc=;
+        b=1d7zBYe2/Jeoh8fZgF9dvGVMayqiJEmed5DVLz5Ytyy5cpmHkLWaFK1hnmoV/SMsEf
+         R2+Ba+vC0bzv6BkHVeI+7KQfePmPcNS7nF/zyYofwyMJ3VbAHg3+FhZQdpii0WYeE3mM
+         s7/Os6m1g3ILgC8hTlhjWqD6pYvG6/Po3Cdf4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=fdu7s8Xdua2pmX+KWahUga1LJan/EoiMrLWVTN8hJAc=;
+        b=yrMxXK0IvYr0W9wpi6YZT0gcH9I1j8iicWPqiwU9zuVJPWs913eIS8mwQvIeY0OoUz
+         DkVJFCobPTp0eSIARBjMzNWFJPovhuyTFC8btpsSTIuRVEV2Epms5Xpm6xpnMxeXWfZ5
+         72I3x7NAyFPOuvUMxyczBgykVFMFR8OwrrPn1oGS4dxrgfKY1T0qbzBwMdL5TGE9OsoW
+         8TKjPC9bm8NTWFHZQvAG/NkmRR45kHy6GB7G97q1VV2cuKU5DDxP1wTc4vjdKuLfVObr
+         AvIqMZMfgIC1e0p5f1qTjMb1mkJIzHYWl/ToOO7zUoKrWtT73Ei3whW+iPVwDfP1DOoH
+         aAmw==
+X-Gm-Message-State: AJIora8/jWANkJyooaI0S6FlcRWULIeeEzvwAfXLVuYqRuHYy6WsjKUo
+	3fGyk0BqDCyEA9qZPTGHGxW/0dKFmd8BzhJT4WRB+g==
+X-Google-Smtp-Source: AGRyM1uEju6lFk1JOWAO4jTJ93z/DGtDaql2+S/LhTJz+THQT8s0UqHnNTtHBLJd7bFXiO9aGm5cZsLWNS/rK8CsqMQ=
+X-Received: by 2002:a05:6512:2308:b0:489:e0cd:7ce6 with SMTP id
+ o8-20020a056512230800b00489e0cd7ce6mr5997553lfu.145.1657638821711; Tue, 12
+ Jul 2022 08:13:41 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALCR5_RO9D3R6Kx627gSL2H-tDu_FtG9rET-gvZt_6QJQpjJVQ@mail.gmail.com>
+In-Reply-To: <CALCR5_RO9D3R6Kx627gSL2H-tDu_FtG9rET-gvZt_6QJQpjJVQ@mail.gmail.com>
+From: Ryan Bohne <rbohne@ironsidegroup.com>
+Date: Tue, 12 Jul 2022 11:14:45 -0400
+Message-ID: <CAAbFat1hf2cxmCgh=3bUXhm6Neri+2j3AEQFqCOgeGBE-TKDng@mail.gmail.com>
+Subject: Re: Best way to get ad costs from Google and Facebook
+To: Brett Allcorn <brett@pineapple.co>
+Cc: Aubrey Allen <aubrey@pineapple.co>, Jarren Scheller <jarren@pineapple.co>
+Content-Type: multipart/alternative; boundary="000000000000226c8705e39d1d2b"
+
+--000000000000226c8705e39d1d2b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hey Brett -- there are a couple tools that we discussed together (i.e.
+Matillion and Fivetran). I'm happy to discuss these options further.
+
+Jarren, what kind of issues are you running into using the APIs to pull
+this data daily?
+
+On Sun, Jul 10, 2022 at 9:20 AM Brett Allcorn <brett@pineapple.co> wrote:
+
+> Hey Ryan do you recommend any tools to pull this data daily that Jarren
+> can use?
+
+
+
+--=20
+
+<http://www.ironsidegroup.com/?utm_source=3DWiseStamp&utm_medium=3Demail&ut=
+m_term=3D&utm_content=3D&utm_campaign=3Dsignature>
+
+
+Ryan Bohne
+Senior Consultant
+
+O  203-815-9444
+M  203-815-9444
+rbohne@ironsidegroup.com
+https://IronsideGroup.com
+<https://IronsideGroup.com?utm_source=3DWiseStamp&utm_medium=3Demail&utm_te=
+rm=3D&utm_content=3D&utm_campaign=3Dsignature>
+Minding your business=E2=84=A2
+Join the conversation
+<https://twitter.com/ironsidegroup?utm_source=3DWiseStamp&utm_medium=3Demai=
+l&utm_term=3D&utm_content=3D&utm_campaign=3Dsignature>
+
+<https://www.linkedin.com/company/the-ironside-group-inc-?utm_source=3DWise=
+Stamp&utm_medium=3Demail&utm_term=3D&utm_content=3D&utm_campaign=3Dsignatur=
+e>
+
+<https://www.youtube.com/user/IronsideGroup?utm_source=3DWiseStamp&utm_medi=
+um=3Demail&utm_term=3D&utm_content=3D&utm_campaign=3Dsignature>
+
+--000000000000226c8705e39d1d2b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hey Brett -- there are a couple tools that we discussed to=
+gether (i.e. Matillion and Fivetran). I&#39;m happy to discuss these option=
+s further.<div><br></div><div>Jarren, what kind of issues are you running i=
+nto using the APIs to pull this data daily?</div></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jul 10, 2022 at 9:=
+20 AM Brett Allcorn &lt;<a href=3D"mailto:brett@pineapple.co">brett@pineapp=
+le.co</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">Hey Ryan do you recommend any tools to pull this data daily that Jarre=
+n can use?
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div><table border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0"><tbody><tr><td style=3D"font-size:0px;height:10px" height=3D"1=
+0"></td></tr><tr><td style=3D"font-size:0px;height:10px" height=3D"10"></td=
+></tr><tr><td style=3D"font-size:0px;height:10px" height=3D"10"></td></tr><=
+tr><td style=3D"font-size:0px;height:10px" height=3D"10"></td></tr><tr><td =
+style=3D"font-size:0px;height:10px" height=3D"10"></td></tr><tr><td><table =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"510" style=3D"wid=
+th:510px"><tbody><tr><td></td></tr><tr><td style=3D"padding-top:0px"><table=
+ style=3D"text-align:left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+><tbody><tr><td style=3D"height:21px" colspan=3D"3">=C2=A0</td></tr><tr><td=
+ style=3D"vertical-align:top"><a href=3D"http://www.ironsidegroup.com/?utm_=
+source=3DWiseStamp&amp;utm_medium=3Demail&amp;utm_term=3D&amp;utm_content=
+=3D&amp;utm_campaign=3Dsignature" target=3D"_blank"><img style=3D"width: 70=
+px; height: 87px;" src=3D"http://ironsidegroup.com/images/is-email-sig-logo=
+.png" alt=3D""></a></td><td style=3D"width:14px">=C2=A0</td><td style=3D"ve=
+rtical-align:top"><p style=3D"margin:0px;padding:0px;line-height:18px"><spa=
+n style=3D"font-family:Georgia;font-size:12px;font-weight:bold;color:rgb(7,=
+27,44);text-transform:uppercase">Ryan Bohne</span><br> <span style=3D"font-=
+family:Georgia;font-size:11.3px;font-style:normal;color:rgb(143,130,121)">S=
+enior Consultant</span></p><p style=3D"margin:0px;padding:0px;line-height:3=
+0px;font-size:11.3px;font-style:normal"><span style=3D"font-family:Georgia;=
+color:rgb(255,198,39)">O</span>=C2=A0 <span style=3D"font-family:Georgia;co=
+lor:rgb(143,130,121)">203-815-9444</span><br> <span style=3D"font-family:Ge=
+orgia;color:rgb(255,198,39)">M</span>=C2=A0 <span style=3D"font-family:Geor=
+gia;color:rgb(143,130,121)">203-815-9444</span><br> <a style=3D"text-decora=
+tion:none;color:rgb(143,130,121);font-family:Georgia" href=3D"mailto:rbohne=
+@ironsidegroup.com" target=3D"_blank">rbohne@ironsidegroup.com</a><br> <a s=
+tyle=3D"text-decoration:none;color:rgb(7,27,44);font-family:Georgia" href=
+=3D"https://IronsideGroup.com?utm_source=3DWiseStamp&amp;utm_medium=3Demail=
+&amp;utm_term=3D&amp;utm_content=3D&amp;utm_campaign=3Dsignature" target=3D=
+"_blank">https://IronsideGroup.com</a><br> <span style=3D"font-size:18px;co=
+lor:rgb(7,27,44);line-height:50px;font-family:Georgia">Minding your busines=
+s=E2=84=A2</span><br> <span style=3D"font-family:Georgia;color:rgb(143,130,=
+121)">Join the conversation=C2=A0 =C2=A0</span><a style=3D"text-decoration:=
+none" href=3D"https://twitter.com/ironsidegroup?utm_source=3DWiseStamp&amp;=
+utm_medium=3Demail&amp;utm_term=3D&amp;utm_content=3D&amp;utm_campaign=3Dsi=
+gnature" target=3D"_blank"><img style=3D"width: 13px; height: 11px;" src=3D=
+"http://ironsidegroup.com/images/is-email-sig-twitter.png" alt=3D""></a>=C2=
+=A0=C2=A0=C2=A0 =C2=A0<a style=3D"text-decoration:none" href=3D"https://www=
+.linkedin.com/company/the-ironside-group-inc-?utm_source=3DWiseStamp&amp;ut=
+m_medium=3Demail&amp;utm_term=3D&amp;utm_content=3D&amp;utm_campaign=3Dsign=
+ature" target=3D"_blank"><img style=3D"width: 12px; height: 12px;" src=3D"h=
+ttp://ironsidegroup.com/images/is-email-sig-li.png" alt=3D""></a>=C2=A0 =C2=
+=A0 =C2=A0<a style=3D"text-decoration:none" href=3D"https://www.youtube.com=
+/user/IronsideGroup?utm_source=3DWiseStamp&amp;utm_medium=3Demail&amp;utm_t=
+erm=3D&amp;utm_content=3D&amp;utm_campaign=3Dsignature" target=3D"_blank"><=
+img style=3D"width: 12px; height: 12px;" src=3D"http://ironsidegroup.com/im=
+ages/is-email-sig-yt.png" alt=3D""></a></p></td></tr></tbody></table><div s=
+tyle=3D"margin:0px;padding:0px;display:block"></div><div style=3D"margin:0p=
+x;padding:0px;display:block"></div><div style=3D"margin:0px;padding:0px;dis=
+play:block"></div><div style=3D"margin:0px;padding:0px;display:block"></div=
+><div style=3D"margin:0px;padding:0px;display:block"></div><div style=3D"ma=
+rgin:0px;padding:0px;display:block"></div><div style=3D"margin:0px;padding:=
+0px;display:block"></div><div style=3D"margin:0px;padding:0px;display:block=
+"></div><div style=3D"margin-top:5px"><div style=3D"font-size:12px"><span><=
+/span>
+<a>
+<span></span>
+</a>
+</div></div></td></tr><tr><td></td></tr></tbody></table></td></tr><tr><td><=
+img style=3D"display: none;" src=3D"https://tracy.srv.wisestamp.com/px/team=
+s/eyJkb21haW4iOiAiaXJvbnNpZGVncm91cC5jb20iLCAic2lnbmF0dXJlX2lkIjogNjU2NjkzO=
+DQ3NjAxOTcxMiwgInVzZXJfZW1haWwiOiAicmJvaG5lQGlyb25zaWRlZ3JvdXAuY29tIiwgInBs=
+YW4iOiAiRGlhbW9uZCJ9.png" alt=3D""></td></tr></tbody></table></div></div>
+
+--000000000000226c8705e39d1d2b--

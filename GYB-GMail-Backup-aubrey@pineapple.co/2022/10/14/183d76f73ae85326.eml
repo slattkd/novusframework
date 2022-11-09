@@ -1,0 +1,1228 @@
+Delivered-To: aubrey@pineapple.co
+Received: by 2002:a17:906:b08c:0:0:0:0 with SMTP id x12csp368612ejy;
+        Fri, 14 Oct 2022 09:59:09 -0700 (PDT)
+X-Received: by 2002:a05:6e02:13f4:b0:2f8:c7bc:b339 with SMTP id w20-20020a056e0213f400b002f8c7bcb339mr2709722ilj.171.1665766748846;
+        Fri, 14 Oct 2022 09:59:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665766748; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WqYlWkTdyZigDtgIjJPgXbPDxRMdG6xc59szsr8FxoODAGVIvt/ynRXS+ejzexXMAc
+         baHCNG6eFcyO7d/I+xuVaSCIovfa8X3xS023HZRGLDRxUTFTsa04/h+QMIoNqUMVJaat
+         q1NR29wjnFWxjcshqKh9L3UYGZUkm3jzZf02TYmCYsdONk4WStQqSi5CPIbFzHyPliVG
+         c3kQWmtChpoyWCjG1ezGvRUEmEvGJo4QfQ29WMAxVTjKeQOj7CNfPFnnKZUtEVeYDw1R
+         Ay91BiALzg+PgBijtc6QyvvH40VIeh11jXY3kFL4sD/BKe5jOL5TW0SLR6piAdzebNs2
+         lq1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:reply-to:feedback-id:references:date
+         :mime-version:dkim-signature;
+        bh=F2s467kf7SvY8QZCFU3New1gR1HkTPqqgER7JHARWUE=;
+        b=yibWcINgL3vfzeHkVmmSoo5J0mwocNLOsSov3V3xpcFk1SkwdRGiBUDXL7IAdbNClN
+         IRIDVVoecHy8g7h4xHjnCH10UqbCX3bIJKZbzhlTBu/zbrko+dtb+CJZsAJJUBc4maiu
+         +3dpdrFKVNBaqu/53U02yyg8uC0/+qK4DzlPOV+9nxsDk75KbvDXdd8fd2BkyGJmmN+i
+         sNOCF2LF+nf5Jrt3mED5mmvx8XHmqXnhtVm6ugyOSwR03Jb3HFWHN77zaxx/12G25S1e
+         iFrHrD4Feg+/rLbraghpUO/6AAi6G8mO6CBcKqfIFNVW3IL+QOlsjCYLgknO6HLmE158
+         D/dQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@docs.google.com header.s=20210112 header.b="aLdFv/+z";
+       spf=pass (google.com: domain of 3xjvjyxapbs0v755x6cb-67ax84hw7vb.z77z4x.v75tduaxh816xt884x.v7@docos.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3XJVJYxAPBs0v755x6CB-67Ax84Hw7vB.z77z4x.v75tDuAxH816xt884x.v7@docos.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=docs.google.com
+Return-Path: <3XJVJYxAPBs0v755x6CB-67Ax84Hw7vB.z77z4x.v75tDuAxH816xt884x.v7@docos.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id a1-20020a056e0208a100b002e939413e87sor890502ilt.134.2022.10.14.09.59.08
+        for <aubrey@pineapple.co>
+        (Google Transport Security);
+        Fri, 14 Oct 2022 09:59:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3xjvjyxapbs0v755x6cb-67ax84hw7vb.z77z4x.v75tduaxh816xt884x.v7@docos.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@docs.google.com header.s=20210112 header.b="aLdFv/+z";
+       spf=pass (google.com: domain of 3xjvjyxapbs0v755x6cb-67ax84hw7vb.z77z4x.v75tduaxh816xt884x.v7@docos.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3XJVJYxAPBs0v755x6CB-67Ax84Hw7vB.z77z4x.v75tDuAxH816xt884x.v7@docos.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=docs.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=docs.google.com; s=20210112;
+        h=to:from:subject:message-id:reply-to:feedback-id:references:date
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=F2s467kf7SvY8QZCFU3New1gR1HkTPqqgER7JHARWUE=;
+        b=aLdFv/+zWUgziE5ZruQvtLcxIQFSNIL+5XsGWw7OnFL2vJHgcrQN82uSUGzS40y6QW
+         pGJ4L/J2Wiro29z2Y5RlO6Ifvp10JnzCAgsmwbuXpVlhX7dNIVTSIO+fWWv53nXYXqHE
+         dHmpmosEHx5mt3i2UN34bW6+W+TvCaKg8LSkwRXHFavVQ8svymEkM2oVlGhLkTeRtskW
+         RVRSJVWaPV795GtYCvm52mYgcmklXyiZbgp8EAhihukNPdM33Bw5iUM2MIhx3vRBllsv
+         6I3giFSjm9QlkM+NiIK+CKhVvm/pvFbVgVtXvXoGlX6QkyFUOShgGzJXmYF0KjAWF3u3
+         K1yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:from:subject:message-id:reply-to:feedback-id:references:date
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=F2s467kf7SvY8QZCFU3New1gR1HkTPqqgER7JHARWUE=;
+        b=s51MZYJPkRh+bb1aUzsr+lkmdoZPZysVaARQW7FC4A4xy6cOPYsqh+CTf9reNopw7m
+         OU6xuJbw+Ahe5TaUudLqMVupFrJu117njkuuk8zJ9mtL+pn3ZUGE6eGVvYfQe3QlpNVi
+         OkSbF6sEo1ZJ6J9DTKeUunzgut4KNYI/xvxXNZzn7B6BFlu0L6zgYCwkenzGpnlsLHzp
+         bSg3YcSo6G5wKqeVmCuxLm/cjAMQnT21khosuZjJKsVWXNdc6vkKhGyLVUxiW8RSohGd
+         yQjoqJAD8m6hJsTNu8G+Fwq1WQfS8gOXq8OW7putOEcx3VssA0Lgm8PZcUlv/AS2E34y
+         dLSg==
+X-Gm-Message-State: ACrzQf0q4DYNOL4WeCUERMdj19Sd4kx2yNLAwukQQi7j/QkNxKB9oU0h
+	eovURXGDegMH/CLRMh4=
+X-Google-Smtp-Source: AMsMyM6SiThWfDlZ3E+XB3ser5KYqGYXtkZYmPG5HJ2BuOR+XcKUQMl7kupvDtiDghYRay7FKw==
+MIME-Version: 1.0
+X-Received: by 2002:a05:6e02:1885:b0:2fa:1ae2:2902 with SMTP id
+ o5-20020a056e02188500b002fa1ae22902mr2850366ilu.283.1665766748228; Fri, 14
+ Oct 2022 09:59:08 -0700 (PDT)
+Date: Fri, 14 Oct 2022 09:59:08 -0700
+X-Document-ID: sE3gnxlO0ht1TnLKssp6HzQ
+References: <d+c0UzZ254bE8waHQxVG5MS3NzcDZIelE6@docs.google.com>
+X-No-Auto-Attachment: 1
+Feedback-ID: MailTypeComment:EditorsNotification
+X-EditorsNotification-Confidence: true
+X-EditorsNotification-ConfidenceNotificationType: COMMENT
+Reply-to: No Reply <d+noreply@docs.google.com>
+X-Notifications: 5517c66ad8680000
+X-Notifications-Bounce-Info: AT2jwkYc-hIGjWUH0Hv9hYJnQ3_LY66QHj5dPd26gT-CxPbm2FZAJIGc4LOVrcs07fu27oSQFBAHDtiAH1JrmPkWMSY_2Hm2BW2MilqcdSxfYSzAJ4PWV6kRj__hsZ2nSvsA1oj2vol3JdNJBwSUPuM4-0tGWTx1mJs8taKxQWORcjyOv0j2HxtNuV4O3uBe09IcF6tewBzrjg426moqVOdDXT5WGm24U-S1g5tHGhuVuyBne7oh_ZfONjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <g0cDZ7mJ4HRFbMAca8pIjQ@notifications.google.com>
+Subject: Data Analytics Technician - Aubrey
+From: "Brett Allcorn (Google Docs)" <comments-noreply@docs.google.com>
+To: aubrey@pineapple.co
+Content-Type: multipart/alternative; boundary="0000000000004e8c4905eb018ba2"
+
+--0000000000004e8c4905eb018ba2
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+New activity in the following document
+Data Analytics Technician - Aubrey  
+(https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=comment_email_document&ts=6349955c&usp_dm=false)
+
+4 comments
+
+.
+Brett Allcorn
+| sweeping company changes
+What are these?
+
+Reply (Reply  
+<d+AORGpRdtr5Sl9ukkzmTFtubW_3nIqkAj69SQiIA17MlL2UApvB83d33QRRK_yKnRLGhGFBI7eESks98V7noJZznFshWGI7u2c7SQ0QIfqfleUpiWvqLTYArJyJMqrK2_iF8kmaOWpyLCeyJrOGz9-iRCiWitWsnOl5zHCthrH0wSs7Fhjdcy35I@docs.google.com>)
+Open  
+(https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=AAAAhyuFsXA&usp=comment_email_discussion&ts=6349955c&usp_dm=false)
+
+.
+Brett Allcorn
+| Shipping Cost
+What is this? I thought we were getting shipping data directly from TLF now?
+
+Reply (Reply  
+<d+AORGpReGOl6f1UdPIbXzq6fjlTLiX44Ta7f82UgrIZUkpCDbkQ_xb1QRw08M_52VoL5RHXiLK3o1IdvgmJacWlQsEoL7TPgKdxapKXpBt4hZss8SdFycsTeEQzHylgk8kqzTDh4Q-bw81mMnC8RFGgKcEYarOabZrnyNJaqt4IsrO57Ir5iFSqg@docs.google.com>)
+Open  
+(https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=AAAAhyuFsXE&usp=comment_email_discussion&ts=6349955c&usp_dm=false)
+
+.
+Brett Allcorn
+| extemporaneous
+just clarifying the definition of this work... is this the same as ad hoc?
+
+Reply (Reply  
+<d+AORGpReR4yolyaGUfAwUJItNic7aWGAXZMtaIgDV3_XrIQYppS3N6FF3zTD_mjDoYnLoO6uiqqphGoihNW2_YVJ4Cpuv8ejlCaAgXfPS9RaLtT0B_1BQ0sIFfwFIZxhv4pGUACdfslqIyXpVAtG4kVkcgCmrpxyMIcMP3UMctzHd5Mtaxs_gFW4@docs.google.com>)
+Open  
+(https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=AAAAhyuFsXM&usp=comment_email_discussion&ts=6349955c&usp_dm=false)
+
+.
+Brett Allcorn
+| Tasks for this week:
+this looks great, thanks
+
+Reply (Reply  
+<d+AORGpRcjwSLJKqiSC1iePWA2kCkEkOwU10GH8D_n_deKrSlVDj0Svu580X7uMe2NBX3o1URNHdT2lcS-4b4saPKNMdazblEWXxbT28V7qLvVzYnY042PRNbSWh61xLNv6DP4aegphibBOyCsDApJQkcoYRJow5KOmwejXC4EXEmpIkFFsqPXZVM@docs.google.com>)
+Open  
+(https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=AAAAhyuFsYE&usp=comment_email_discussion&ts=6349955c&usp_dm=false)
+
+Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA
+
+You have received this email because you are a participant in the updated  
+items or subscribed to notifications on Data Analytics Technician - Aubrey  
+(https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=comment_email_document&ts=6349955c&usp_dm=false).  
+Change what Google sends you  
+(https://docs.google.com/document/u/114158927163364935005/docos/notify?ouid=114158927163364935005&id=1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4&title=Data+Analytics+Technician+-+Aubrey&resourcekey).  
+You cannot reply to this email.
+
+--0000000000004e8c4905eb018ba2
+Content-Type: text/x-amp-html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html amp4email data-css-strict><head><meta charset=3D"utf-8=
+"><meta name=3D"email.contentIds" content=3D"AAAAhyuFsYE,AAAAhyuFsXM,AAAAhy=
+uFsXE,AAAAhyuFsXA"><script async src=3D"https://cdn.ampproject.org/v0.js"><=
+/script><script async custom-element=3D"amp-list" src=3D"https://cdn.amppro=
+ject.org/v0/amp-list-0.1.js"></script><script async custom-template=3D"amp-=
+mustache" src=3D"https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></scrip=
+t><script async custom-element=3D"amp-form" src=3D"https://cdn.ampproject.o=
+rg/v0/amp-form-0.1.js"></script><script async custom-element=3D"amp-bind" s=
+rc=3D"https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script><style amp4em=
+ail-boilerplate>body{visibility:hidden}</style><style amp-custom>.material-=
+button{-webkit-appearance: none; cursor: pointer; outline: none;}.material-=
+button:focus {outline: 1px solid transparent;}.material-button:disabled{cur=
+sor: initial; outline: none;}.material-button-transparent{background-color:=
+ transparent; color: #1a73e8;}.material-button-transparent:hover{background=
+-color: rgba(26, 115, 232, .04);}.material-button-transparent:focus{backgro=
+und-color: rgba(26, 115, 232, .12);}.material-button-transparent:active{bac=
+kground-color: rgba(26, 115, 232, .12); box-shadow: 0 1px 3px 1px rgba(60, =
+64, 67, .15);}.material-button-transparent:disabled{background-color: trans=
+parent; color: #3c4043; opacity: 0.38;}.material-text-input{border: none; b=
+order-bottom: 1px solid #3c4043;}.material-text-input:focus{border-bottom: =
+2px solid #2277e8;}a {color: #1a73e8;}input:disabled {opacity: 0.4;}.screen=
+reader-hidden-offscreen {position: absolute; left: -10000px; top: auto; hei=
+ght: 1px; overflow: hidden;}#document-chip-section {align-items: center; di=
+splay: flex;}#document-chip-section > * + * {margin-left: 12px;}#document-c=
+hip {align-items: center; display: flex; flex: 1; margin-right: auto; max-w=
+idth: calc(100% - 12pxpx); min-width: 0; flex-basis: calc((100% - 12px) * 0=
+.45);}#subscription-accordion {cursor: pointer;}#subscription-accordion-ico=
+n, #subscription-accordion-arrow {height: 24px; width: 24px;}#subscription-=
+accordion-icon > * {visibility: hidden;}#subscription-accordion-text {color=
+: #5F6368; font: 400 14px/20px Roboto, Arial, Helvetica, sans-serif; letter=
+-spacing: 0.25px; white-space: nowrap;}@media screen and (max-width: 500px)=
+ {#subscription-accordion-text {display: none;}}#subscription-accordion-ico=
+n.comments-all.edits-true > #subscription-accordion-icon-all, #subscription=
+-accordion-icon.comments-all.edits-disabled > #subscription-accordion-icon-=
+all, #subscription-accordion-icon.comments-all.edits-false > #subscription-=
+accordion-icon-important, #subscription-accordion-icon.comments-important >=
+ #subscription-accordion-icon-important, #subscription-accordion-icon.comme=
+nts-none.edits-true > #subscription-accordion-icon-important, #subscription=
+-accordion-icon.comments-none.edits-false > #subscription-accordion-icon-no=
+ne, #subscription-accordion-icon.comments-none.edits-disabled > #subscripti=
+on-accordion-icon-none {visibility: visible;}.stack {position: relative;}.s=
+tack > * {bottom: 0; left: 0; position: absolute; right: 0; top: 0;}#subscr=
+iption-section {margin: 0; text-align: center;}@media screen and (max-width=
+: 500px) {#subscription-section {text-align: left;}}#subscription-controls =
+{display: inline-block; margin: -6px 0; max-width: 100%; text-align: initia=
+l;}#subscription-controls > * + * {margin-top: 12px;}#subscription-controls=
+-notice {color: #D93025; font: 400 12px/16px Roboto, Arial, Helvetica, sans=
+-serif;}.subscription-form {align-items: baseline; color: #5F6368; display:=
+ flex; flex-direction: row; font: 400 14px/20px Google Sans, Roboto, Arial,=
+ Helvetica, sans-serif; letter-spacing: 0.25px; white-space: nowrap;}.subsc=
+ription-form > label {display: flex; flex-direction: column; font: 500 11px=
+/16px Roboto, Arial, Helvetica, sans-serif; letter-spacing: 0.8px; text-tra=
+nsform: uppercase;}.subscription-select {margin-left: 10px; min-width: 0; p=
+osition: relative;}.subscription-native-select {border: none; bottom: 0; cu=
+rsor: pointer; height: 100%; left: 0; margin: 0; opacity: 0; position: abso=
+lute; right: 0; top: 0; width: 100%; z-index: 1;}.subscription-native-selec=
+t:hover + .subscription-custom-select, .subscription-native-select:focus + =
+.subscription-custom-select {background-color: #F8F9FA;}.subscription-nativ=
+e-select:focus + .subscription-custom-select {outline: 1px solid transparen=
+t;}label:hover + .subscription-select > .subscription-custom-select, .subsc=
+ription-native-select:disabled + .subscription-custom-select {background-co=
+lor: white; outline: none;}.subscription-native-select, .subscription-custo=
+m-select {border-radius: 4px;}.subscription-custom-select {align-items: cen=
+ter; background-color: white; border: 1px solid #DADCE0; display: flex; fle=
+x-direction: row; padding: 6px 4px 6px 10px;}.subscription-custom-select-la=
+bels {display: flex; flex-direction: column; font-weight: 500; margin-right=
+: 12px; overflow: hidden;}.subscription-custom-select-labels > * {overflow:=
+ hidden; text-overflow: ellipsis;}.subscription-measuring-label {height: 0;=
+ overflow: hidden; visibility: hidden;}.subscription-custom-select-arrow {b=
+order-color: #5F6368 transparent; border-style: solid; border-width: 5px 5p=
+x 0 5px; height: 0; margin: 7.5px 7px; width: 0;}.visible {visibility: visi=
+ble;}.hidden {visibility: hidden;}.none {display: none;}.inline {display: i=
+nline;}.block {display: block;}.disabled {opacity: 0.4;}.discussions-contai=
+ner {margin-top: 20px;}.discussions-container > * + * {border-top: 1px soli=
+d #eee; margin-top: 20px; padding-top: 20px;}.discussions-container-no-sepa=
+rator {padding-top: 20px;}.discussions-container-no-separator > * + * {marg=
+in-top: 40px;}.resolving-discussion {opacity: 0.4;}.resolving-discussion .r=
+esolve-button {visibility: hidden;}.submitting-reply .reply-form-textarea {=
+opacity: 0.4;}.submitting-reply .resolve-button {visibility: hidden;}.reply=
+-error-text {display: none;}.submit-error .reply-error-text {display: block=
+;}.post-dark-text {color: #3c4043;}.head-post {margin-top: 0px; word-break:=
+ break-word; word-wrap: break-word;}.reply-post {margin-top: 12px; word-bre=
+ak: break-word; word-wrap: break-word;}.post-light-text {color: #777777;}@m=
+edia screen and (min-width: 601px) {.discussion-open-button {float: right;}=
+}.flex {display: flex;}.flex-column {flex-direction: column;}.align-start {=
+align-items: flex-start;}.align-center {align-items: center;}.align-baselin=
+e {align-items: baseline;}.align-end {align-items: flex-end;}.flex-space-co=
+lumn-12px > * + * {margin-top: 12px;}.flex-space-column-16px > * + * {margi=
+n-top: 16px;}.flex-space-column-20px > * + * {margin-top: 20px;}.flex-space=
+-row-8px > * + * {margin-left: 8px;}@media screen and (max-width: 600px) {.=
+document-content-snippet ul, .document-content-snippet ol {padding-left: 20=
+px;}}</style></head><body><div style=3D"font: 14px Roboto, Arial, Helvetica=
+, sans-serif;"><template type=3D"amp-mustache" id=3D"inline-action-post">{{=
+#post}}<div style=3D"margin-top: 12px; word-break: break-word; word-wrap: b=
+reak-word;"><div class=3D"{{#isHeadPost}}head-post{{/isHeadPost}}{{^isHeadP=
+ost}}reply-post{{/isHeadPost}}"><table role=3D"presentation" cellpadding=3D=
+"0" cellspacing=3D"0" style=3D"width: 100%;" class=3D"{{#isNew}}post-dark-t=
+ext{{/isNew}}{{^isNew}}post-light-text{{/isNew}}"><tr><td style=3D"vertical=
+-align: top; width: 44px;"><amp-img src=3D"{{authorPhotoUrl}}" alt=3D"" hei=
+ght=3D"32" width=3D"32" style=3D"border-radius: 50%;box-sizing: border-box;=
+ display: block;"></amp-img></td><td><h3 style=3D"display: inline-block; fo=
+nt: 500 14px Google Sans, Roboto, Arial, Helvetica, sans-serif; letter-spac=
+ing: .25px; line-height: 20px; margin: 6px 0 2px 0;">{{authorName}}</h3>{{#=
+creationTime}} <span style=3D"color: #5F6368; font: 400 12px/16px Roboto, A=
+rial, Helvetica, sans-serif; letter-spacing: 0.2px; white-space: nowrap;">=
+=E2=80=A2 {{creationTime}}</span>{{/creationTime}}{{#isNew}}<h4 style=3D"ba=
+ckground: #1a73e8; border-radius: 8px; color: #fff; display: inline-block; =
+font: 700 12px/16px Roboto, Arial, Helvetica, sans-serif; margin-bottom: 0;=
+ margin-top: 0; margin-left: 10px; padding: 0 6px;">New</h4>{{/isNew}}<div =
+style=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: =
+20px; letter-spacing: .2px;">{{#htmlBody}}<div style=3D"margin-top: 6px;" c=
+lass=3D"notranslate">{{{htmlBody}}}</div>{{/htmlBody}}{{#htmlActionText}}<d=
+iv style=3D"margin-top: 6px;"><i>{{{htmlActionText}}}</i></div>{{/htmlActio=
+nText}}{{#showCopiedText}}<div style=3D"margin: 18px 0;height: 1px; backgro=
+und-color: #eee;"></div><div style=3D"color: #3c4043; font: italic 14px Rob=
+oto, Arial, Helvetica, sans-serif; margin: 18px 0 6px 0; width: 100%;">Comm=
+ents above copied from original document</div>{{/showCopiedText}}</div></td=
+></tr></table></div></div>{{/post}}</template><amp-list id=3D"discussionLis=
+t" diffable binding=3D"refresh-evaluate" layout=3D"container" single-item i=
+tems=3D"." src=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWP=
+EIqKV9Dhb-1D5gC8r6Nqd4/dynamicmail/comments?emailToken=3DAORGpRemmczKAK8_bs=
+GjT9AGw8mErNi78-OpU6e8TQprdHK8r986kGGaDxYQ51QvG5tkgB7izaBI7hw08h9NIlLqqVHyR=
+jqvGuDXTZ2JDIxyMY_en4bCsVkCzXeboXLlkTwzsCmsPfMR&amp;buildLabel=3Deditors.do=
+cuments-frontend_20221004.02_p2&amp;clientVersion=3D3&amp;emailType=3Dcomme=
+nts&amp;openCommentIds=3DAAAAhyuFsXA&amp;fnpi_AAAAhyuFsXA=3DAAAAhyuFsXA&amp=
+;openCommentIds=3DAAAAhyuFsXE&amp;fnpi_AAAAhyuFsXE=3DAAAAhyuFsXE&amp;openCo=
+mmentIds=3DAAAAhyuFsXM&amp;fnpi_AAAAhyuFsXM=3DAAAAhyuFsXM&amp;openCommentId=
+s=3DAAAAhyuFsYE&amp;fnpi_AAAAhyuFsYE=3DAAAAhyuFsYE&amp;ct_cs=3DEoe9AhXeX7Xs=
+sdVxaNHlSg%3D%3D&amp;isNudge=3Dfalse&amp;hl=3Den&amp;tz=3DAmerica/Chicago&a=
+mp;headRevision=3D2490&amp;context_AAAAhyuFsYE=3DH4sIAAAAAAAA_61SUY7TQAy9ih=
+V-dquGLhJCKLSVEPwhJChcwJnxtEOdmcieUHqbPcueDCfdarXqB4vUj5mMI_v5PfstBwYtR6ZV1=
+aFsY6pL7pu7D49Bm0vJXXNXrZccwUdZVVykOpdw1FJP77oce2p8VGep_WXmCW8C0h7TGlsmKBmK=
+YFLGYsGOlMBjQdB9ZFbA5KE7QsjSkYCQFhwsvQD96UkiJUcQk4E4ISwxbcFKB-dINZism5Czryc=
+UJfkdHdVCYyt_C-2gMVke5DC2yIf0ermYiC0XvR2Odg28XrZyef4tDxyj6qpSY0bJ2HmSehe9p1=
+TnEE6_q_XD_afcdWSKTJqUh_szhwnjEbpFt99KHpKvXeYszasQ6M2799X6J-pex_HY7KLCgWjfP=
+EP4XxaU_BOHcQ75quYgFzvkl_njC1EPQw-HWHZg6m29ZBbosxSFmx_IpPAZdddmFD-HjyFEjqON=
+vmLCrdllM-XOYdQWVWNO5_K5mSzy8RzeXiz-6mJms9mGrFoGVwYh-P72iftF96vOnPPBdo7c7_B=
+lVDcUmFyBb5J_2Zcu-S0yn66_zv8LSTsEAAA&amp;context_AAAAhyuFsXM=3DH4sIAAAAAAAA=
+_8WSz2rbQBDGX2VQoScLp5dS_EdgEkIKzaUtvY93R_Y0q53tzshJbn2N3vIseZQ-SdeyHTDJwVB=
+IDlqk3dV8v_nmm_UB1O4DzasO84pjbZImZ9P9x1LMpJucVc3s5IuBwXOeV8FydfglsFo9vNd2n2=
+jiOLtA5XJ6fndXcSilCWOD_mev1lE0nY2Hndk4lSdwWfpwmqBndafJfaUNbwgkeMiUJJuObyXft=
+EFuFWyNBmss51EMlkQR6I5cb-ShlQxB4qoUzmRuTQrSgnFHz7DfzMvPGP_-_qOw-PL9B7zHLk3h=
+ADes39acEpcezkXt6ASeTHiNIVxz3FJ4NBx81USOW3ZHtOACqs4rdbkMIhN6yvWavadYS9vutqv=
+m8eFcum18ihhme3w4qrEHWKK7WWXpo6-dBMmTd21LHz5-qhq6M-pKDjCS9Ppf-hT9sXpziNgIUC=
+ESefKjoeENZi5y4CkV5pfD_2YpWmwwYMbdeDL96klNp3BVgAkuOZTkb3u44EzO4Bo5vEZmFkWru=
+JiEi9WJskrcYWwpL558BFYtwPv0D-wsUUcvIv4DalYOeR8FAAA&amp;context_AAAAhyuFsXE=
+=3DH4sIAAAAAAAA_8VTy24TQRD8ldYiccrK4YKQ7axkBSGQiIQIgnN7ptfbeHZ6mO514hu_wS3f=
+kk_hSxg_gmQ5B0ug5DCr3d6erqqpmukQQG0d6KLqMS841iZpfD7Zf8zFTPrxedVMT24MDJ7zRRU=
+sVw9bAqvV2_fa1onGjrMLVJrTce9u4naUJowNOOl7VmWJ09G2Mh2lsgL_f6xvRMuwhk-dRIJrDK=
+SQKUk2jgtA_31Q6ymaHhEZDeE0Np7VncblM614RSDB7zno6Ebysg1yo2AdGnRY_kcxmBNFoFtyg=
+5GHVjIEKYTVMpnrighpwbinI9rPZuoHjL9__lKYffzyFV5inybwQG7zBBdQ9aJSl4u0TOgp1x17=
+T7GWtt2Vq-b-7rJkoxhSYDDb_d3BjD30HN1ykWWIvnYSJI9ftC29ev2maq47Tmnj7KWo_RM8RX8=
+I3sBfr54iK1ccNzo8Gm7t10SOW3YHh9rQrVFfkoSRZNBDuvuInQEqRCJP_mw7aYWZSzN4SuWEHw=
+__s6VotsKAGXe6M_0YSE0n8L4QJnjHm-u70fCWMzmDK-TwFGbMCtajOH8AVBG8IW0FAAA&amp;c=
+ontext_AAAAhyuFsXA=3DH4sIAAAAAAAA_8WTwW7bMAyGX4XwrvHSXYohTXxJexiGFkV66FmV6J=
+iLLAqUPM-3vUZvfZY-yp5ktJOgKLJDMAzYwYQkk78-_aKWnYeUB4-rojWypVBmjouLq8PkiXPmd=
+nFRVMuzEz2BI1kVPktxLPGUcjmNyzxEXFgS61GT42nuXnGSStGE6l64pgwbjCx5BmuOAzwKZZT0=
+6-fz23qjdfhk7G5-jdZTQNiYjGk5n1SW86ifJw2dPw_SUbLnIW7wOyUE_KEKFLbQs-xqz32aQWa=
+gYH3nEATLXrnHhK93X25vQLjTGSbAkEnQD2O2sZbblp2yw5F9jGC9SWlVJCuIQdA4lLIh5zCUXN=
+f75aJ6fVlruQoqq5H8-vJO48A_urTV3YMrLXuWxYe6xk-Xn4sq9YhxJFQILRjANiZs31z8KxIM7=
+j1HNQMWyA2CcU4d4QBcQ2CnXpCORRVHL2S6W9DfBgL20GIWsic3-t9a8yYoTgOHDl0bbztvpuMc=
+OwCi8De0-Qqu5SPcGtlpz6bR3ZZS0syTw_xrxkfEnXbWfcP6Ih6MV4v3tuot__ltjOE3hkjUchg=
+EAAA&amp;ts=3D6349955c"><div role=3D"list"><table style=3D"border-collapse:=
+ collapse; width: 100%; background-color: white; text-align: center;" role=
+=3D"presentation"><tr><td style=3D"padding: 24px 0 16px 0;"><table style=3D=
+"border-collapse: collapse;font-family: Roboto, Arial, Helvetica, sans-seri=
+f;hyphens: auto; overflow-wrap: break-word; word-wrap: break-word; word-bre=
+ak: break-word;display: inline-block; width: 90%;max-width: 700px;min-width=
+: 280px; text-align: left;" role=3D"presentation"><tr><td style=3D"padding:=
+ 0;"><div class=3D"flex flex-column flex-space-column-16px"><div><table sty=
+le=3D"width:100%; table-layout:fixed;" role=3D"presentation"><tr><td style=
+=3D"padding: 0;" dir=3D"ltr"><div id=3D"overview-card-contents"><div class=
+=3D"flex flex-column flex-space-column-12px"><div><h1 style=3D"color: #3c40=
+43; font: 400 18px Google Sans, Roboto, Arial, Helvetica, sans-serif; margi=
+n: 0;">New activity in the following document</h1></div><div><div class=3D"=
+flex flex-column flex-space-column-12px"><div id=3D"document-chip-section">=
+<div id=3D"document-chip"><a href=3D"https://docs.google.com/document/d/1X4=
+BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=3Dcomment_email_document=
+&amp;ts=3D6349955c&amp;usp_dm=3Dtrue" target=3D"_blank" style=3D"color: #3c=
+4043; display: inline-block; max-width: 100%; text-decoration: none; vertic=
+al-align: top;border: 1px solid #DADCE0; border-radius: 16px; white-space: =
+nowrap;min-width: 0;"><div style=3D"line-height: 18px; overflow: hidden; te=
+xt-overflow: ellipsis;padding: 6px 12px;"><span style=3D"display: inline-bl=
+ock; vertical-align: top; min-width: 26px; width: 26px;"><amp-img src=3D"ht=
+tps://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x64.png=
+" width=3D"18" height=3D"18" style=3D"vertical-align: top;" role=3D"present=
+ation"></amp-img></span><span style=3D"font: 500 14px/18px Google Sans, Rob=
+oto, Arial, Helvetica, sans-serif; display: inline; letter-spacing: 0.2px;"=
+>Data Analytics Technician - Aubrey</span></div></a></div></div></div></div=
+></div></div></td></tr></table></div><div><table style=3D"width:100%; borde=
+r: 1px solid #dadce0; border-radius: 8px; border-spacing: 0; table-layout:f=
+ixed; border-collapse: separate;" role=3D"presentation"><tr><td style=3D"pa=
+dding: 4.5%;" dir=3D"ltr"><div class=3D"flex flex-column flex-space-column-=
+20px"><div><div><table role=3D"presentation" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"width: 100%"><tr><td style=3D"vertical-align: top; width: 3=
+2px;"><div style=3D"background: #F1F3F4; border-radius: 50%; display: inlin=
+e-block; height: 18px; padding: 7px; width: 18px;"><amp-img src=3D"https://=
+fonts.gstatic.com/s/i/googlematerialicons/comment/v18/gm_grey-48dp/1x/gm_co=
+mment_gm_grey_48dp.png" height=3D"18px" width=3D"18px" aria-hidden=3D"true"=
+ style=3D"flex-shrink: 0;"></amp-img></div></td><td style=3D"vertical-align=
+: top;"><h2 style=3D"color: #3c4043; display: inline-block; font: 400 16px/=
+32px Google Sans, Roboto, Arial, Helvetica, sans-serif; letter-spacing: .1p=
+x; margin: 0 0 0 10px;">4 comments</h2></td></tr></table><div><div style=3D=
+"margin-top: 20px;overflow: visible; line-height: 20px;"><div class=3D"docu=
+ment-content-snippet" style=3D"border: 1px solid #DADCE0; border-radius: 8p=
+x; padding: 12px 16px;hyphens: auto; overflow-wrap: break-word; word-wrap: =
+break-word; word-break: break-word;"><span class=3D"notranslate" style=3D"f=
+ont: 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: 20px; colo=
+r: #3c4043;"><ul style=3D"margin-top:0;margin-bottom:0"><ul style=3D"margin=
+-top:0;margin-bottom:0"><li dir=3D"ltr" style=3D"list-style-type:circle"><p=
+ dir=3D"ltr" style=3D"margin:0"><span>Profit Report, Copy Writers=E2=80=99 =
+Report, Chargeback/Decline Rates</span></p></li></ul><li dir=3D"ltr" style=
+=3D"list-style-type:disc"><p dir=3D"ltr" style=3D"margin:0"><span>Revise ex=
+isting workflows, to include re-writing KNIME routines entirely to accommod=
+ate </span><span class=3D"screenreader-hidden-offscreen">=C2=A0Comment star=
+t=C2=A0</span><span style=3D"background-color:#ffe168">sweeping company cha=
+nges</span><span class=3D"screenreader-hidden-offscreen">=C2=A0Comment end=
+=C2=A0</span><span>, or the addition of nodes in order to report on a new m=
+etric</span></p></li><ul style=3D"margin-top:0;margin-bottom:0"><li dir=3D"=
+ltr" style=3D"list-style-type:circle"><p dir=3D"ltr" style=3D"margin:0"><sp=
+an>Enrich Profit Calculation workflow project; Dr. Mark=E2=80=99s commissio=
+n</span></p></li><li dir=3D"ltr" style=3D"list-style-type:circle"><p dir=3D=
+"ltr" style=3D"margin:0"><span>Weekly Phone Sales reporting</span></p></li>=
+</ul></ul></span></div><div style=3D"height: 18px;"></div><div style=3D"mar=
+gin-top: 0px; word-break: break-word; word-wrap: break-word;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" style=3D"color: #3c40=
+43; width: 100%;"><tr><td style=3D"vertical-align: top; width: 44px;"><amp-=
+img src=3D"https://lh3.googleusercontent.com/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyi=
+zPLunBgWT5EGgilu8tw=3Ds50-c-k-no" alt=3D"" height=3D"32" width=3D"32" style=
+=3D"border-radius: 50%;box-sizing: border-box; display: block;"></amp-img><=
+/td><td><h3 style=3D"display: inline-block; font: 500 14px Google Sans, Rob=
+oto, Arial, Helvetica, sans-serif; letter-spacing: .25px; line-height: 20px=
+; margin: 6px 0 2px 0;">Brett Allcorn</h3> <span style=3D"color: #5F6368; f=
+ont: 400 12px/16px Roboto, Arial, Helvetica, sans-serif; letter-spacing: 0.=
+2px; white-space: nowrap;">=E2=80=A2 11:49 AM, Oct 14 (CDT)</span><h4 style=
+=3D"background: #1a73e8; border-radius: 8px; color: #fff; display: inline-b=
+lock; font: 700 12px/16px Roboto, Arial, Helvetica, sans-serif; margin-bott=
+om: 0; margin-top: 0; margin-left: 10px; padding: 0 6px;">New</h4><div styl=
+e=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: 20px=
+; letter-spacing: .2px;"><div style=3D"margin-top: 6px;" class=3D"notransla=
+te">What are these?</div></div></td></tr></table></div><div style=3D"margin=
+: 10px 0 0 42px; overflow: auto; padding: 2px;"><a href=3D"mailTo:Reply%20%=
+3Cd+AORGpRdtr5Sl9ukkzmTFtubW_3nIqkAj69SQiIA17MlL2UApvB83d33QRRK_yKnRLGhGFBI=
+7eESks98V7noJZznFshWGI7u2c7SQ0QIfqfleUpiWvqLTYArJyJMqrK2_iF8kmaOWpyLCeyJrOG=
+z9-iRCiWitWsnOl5zHCthrH0wSs7Fhjdcy35I@docs.google.com%3E?subject=3DData%20A=
+nalytics%20Technician%20-%20Aubrey" class=3D"material-button material-butto=
+n-transparent" target=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"pa=
+dding: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetica, san=
+s-serif; border: none; border-radius: 18px; box-sizing: border-box; display=
+: inline-block; letter-spacing: .25px; min-height: 36px; text-align: center=
+; text-decoration: none;margin-right: 12px;">Reply</a><a href=3D"https://do=
+cs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?=
+disco=3DAAAAhyuFsXA&amp;usp=3Dcomment_email_discussion&amp;ts=3D6349955c&am=
+p;usp_dm=3Dtrue" class=3D"material-button material-button-transparent" targ=
+et=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"padding: 0 8px;font: =
+500 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-serif; border: no=
+ne; border-radius: 18px; box-sizing: border-box; display: inline-block; let=
+ter-spacing: .25px; min-height: 36px; text-align: center; text-decoration: =
+none;float: right;">Open</a></div></div></div><div style=3D"margin: 18px 0;=
+height: 1px; background-color: #eee;"></div><div><div style=3D"margin-top: =
+20px;overflow: visible; line-height: 20px;"><div class=3D"document-content-=
+snippet" style=3D"border: 1px solid #DADCE0; border-radius: 8px; padding: 1=
+2px 16px;hyphens: auto; overflow-wrap: break-word; word-wrap: break-word; w=
+ord-break: break-word;"><span class=3D"notranslate" style=3D"font: 400 14px=
+ Roboto, Arial, Helvetica, sans-serif; line-height: 20px; color: #3c4043;">=
+<ul style=3D"margin-top:0;margin-bottom:0"><ul style=3D"margin-top:0;margin=
+-bottom:0"><li dir=3D"ltr" style=3D"list-style-type:circle"><p dir=3D"ltr" =
+style=3D"margin:0"><span> commission</span></p></li><li dir=3D"ltr" style=
+=3D"list-style-type:circle"><p dir=3D"ltr" style=3D"margin:0"><span>Weekly =
+Phone Sales reporting adjustments</span></p></li></ul><li dir=3D"ltr" style=
+=3D"list-style-type:disc"><p dir=3D"ltr" style=3D"margin:0"><span>Revive ol=
+d reports/workflows that have not been executed for long stretches of time<=
+/span></p></li><ul style=3D"margin-top:0;margin-bottom:0"><li dir=3D"ltr" s=
+tyle=3D"list-style-type:circle"><p dir=3D"ltr" style=3D"margin:0"><span>Ian=
+=E2=80=99s ALTV &amp; </span><span class=3D"screenreader-hidden-offscreen">=
+=C2=A0Comment start=C2=A0</span><span style=3D"background-color:#ffe168">Sh=
+ipping Cost</span><span class=3D"screenreader-hidden-offscreen">=C2=A0Comme=
+nt end=C2=A0</span><span> workflows</span></p></li></ul><li dir=3D"ltr" sty=
+le=3D"list-style-type:disc"><p dir=3D"ltr" style=3D"margin:0"><span>Mining =
+data for specific </span><span>extemporaneous</span><span> reports, as need=
+ed, for various departments</span></p></li><ul style=3D"margin-top:0;margin=
+-bottom:0"><li dir=3D"ltr" style=3D"list-style-type:circle"><p dir=3D"ltr" =
+style=3D"margin:0"><span>Avalara data requests; House Files for Direct Mail=
+</span></p></li></ul><li dir=3D"ltr" style=3D"list-style-type:disc"><p dir=
+=3D"ltr" style=3D"margin:0"><span>Act </span></p></li></ul></span></div><di=
+v style=3D"height: 18px;"></div><div style=3D"margin-top: 0px; word-break: =
+break-word; word-wrap: break-word;"><table role=3D"presentation" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"color: #3c4043; width: 100%;"><tr><td st=
+yle=3D"vertical-align: top; width: 44px;"><amp-img src=3D"https://lh3.googl=
+eusercontent.com/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyizPLunBgWT5EGgilu8tw=3Ds50-c-=
+k-no" alt=3D"" height=3D"32" width=3D"32" style=3D"border-radius: 50%;box-s=
+izing: border-box; display: block;"></amp-img></td><td><h3 style=3D"display=
+: inline-block; font: 500 14px Google Sans, Roboto, Arial, Helvetica, sans-=
+serif; letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">Bret=
+t Allcorn</h3> <span style=3D"color: #5F6368; font: 400 12px/16px Roboto, A=
+rial, Helvetica, sans-serif; letter-spacing: 0.2px; white-space: nowrap;">=
+=E2=80=A2 11:50 AM, Oct 14 (CDT)</span><h4 style=3D"background: #1a73e8; bo=
+rder-radius: 8px; color: #fff; display: inline-block; font: 700 12px/16px R=
+oboto, Arial, Helvetica, sans-serif; margin-bottom: 0; margin-top: 0; margi=
+n-left: 10px; padding: 0 6px;">New</h4><div style=3D"font: 400 14px Roboto,=
+ Arial, Helvetica, sans-serif; line-height: 20px; letter-spacing: .2px;"><d=
+iv style=3D"margin-top: 6px;" class=3D"notranslate">What is this? I thought=
+ we were getting shipping data directly from TLF now?</div></div></td></tr>=
+</table></div><div style=3D"margin: 10px 0 0 42px; overflow: auto; padding:=
+ 2px;"><a href=3D"mailTo:Reply%20%3Cd+AORGpReGOl6f1UdPIbXzq6fjlTLiX44Ta7f82=
+UgrIZUkpCDbkQ_xb1QRw08M_52VoL5RHXiLK3o1IdvgmJacWlQsEoL7TPgKdxapKXpBt4hZss8S=
+dFycsTeEQzHylgk8kqzTDh4Q-bw81mMnC8RFGgKcEYarOabZrnyNJaqt4IsrO57Ir5iFSqg@doc=
+s.google.com%3E?subject=3DData%20Analytics%20Technician%20-%20Aubrey" class=
+=3D"material-button material-button-transparent" target=3D"_blank" tabindex=
+=3D"0" role=3D"button" style=3D"padding: 0 8px;font: 500 14px/36px Google S=
+ans, Roboto, Arial, Helvetica, sans-serif; border: none; border-radius: 18p=
+x; box-sizing: border-box; display: inline-block; letter-spacing: .25px; mi=
+n-height: 36px; text-align: center; text-decoration: none;margin-right: 12p=
+x;">Reply</a><a href=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86=
+qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXE&amp;usp=3Dcomment_ema=
+il_discussion&amp;ts=3D6349955c&amp;usp_dm=3Dtrue" class=3D"material-button=
+ material-button-transparent" target=3D"_blank" tabindex=3D"0" role=3D"butt=
+on" style=3D"padding: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial,=
+ Helvetica, sans-serif; border: none; border-radius: 18px; box-sizing: bord=
+er-box; display: inline-block; letter-spacing: .25px; min-height: 36px; tex=
+t-align: center; text-decoration: none;float: right;">Open</a></div></div><=
+/div><div style=3D"margin: 18px 0;height: 1px; background-color: #eee;"></d=
+iv><div><div style=3D"margin-top: 20px;overflow: visible; line-height: 20px=
+;"><div class=3D"document-content-snippet" style=3D"border: 1px solid #DADC=
+E0; border-radius: 8px; padding: 12px 16px;hyphens: auto; overflow-wrap: br=
+eak-word; word-wrap: break-word; word-break: break-word;"><span class=3D"no=
+translate" style=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; li=
+ne-height: 20px; color: #3c4043;"><ul style=3D"margin-top:0;margin-bottom:0=
+"><ul style=3D"margin-top:0;margin-bottom:0"><li dir=3D"ltr" style=3D"list-=
+style-type:circle"><p dir=3D"ltr" style=3D"margin:0"><span>adjustments</spa=
+n></p></li></ul><li dir=3D"ltr" style=3D"list-style-type:disc"><p dir=3D"lt=
+r" style=3D"margin:0"><span>Revive old reports/workflows that have not been=
+ executed for long stretches of time</span></p></li><ul style=3D"margin-top=
+:0;margin-bottom:0"><li dir=3D"ltr" style=3D"list-style-type:circle"><p dir=
+=3D"ltr" style=3D"margin:0"><span>Ian=E2=80=99s ALTV &amp; </span><span>Shi=
+pping Cost</span><span> workflows</span></p></li></ul><li dir=3D"ltr" style=
+=3D"list-style-type:disc"><p dir=3D"ltr" style=3D"margin:0"><span>Mining da=
+ta for specific </span><span class=3D"screenreader-hidden-offscreen">=C2=A0=
+Comment start=C2=A0</span><span style=3D"background-color:#ffe168">extempor=
+aneous</span><span class=3D"screenreader-hidden-offscreen">=C2=A0Comment en=
+d=C2=A0</span><span> reports, as needed, for various departments</span></p>=
+</li><ul style=3D"margin-top:0;margin-bottom:0"><li dir=3D"ltr" style=3D"li=
+st-style-type:circle"><p dir=3D"ltr" style=3D"margin:0"><span>Avalara data =
+requests; House Files for Direct Mail</span></p></li></ul><li dir=3D"ltr" s=
+tyle=3D"list-style-type:disc"><p dir=3D"ltr" style=3D"margin:0"><span>Act a=
+s point person for Data Department issues &amp; questions,</span></p></li><=
+/ul></span></div><div style=3D"height: 18px;"></div><div style=3D"margin-to=
+p: 0px; word-break: break-word; word-wrap: break-word;"><table role=3D"pres=
+entation" cellpadding=3D"0" cellspacing=3D"0" style=3D"color: #3c4043; widt=
+h: 100%;"><tr><td style=3D"vertical-align: top; width: 44px;"><amp-img src=
+=3D"https://lh3.googleusercontent.com/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyizPLunBg=
+WT5EGgilu8tw=3Ds50-c-k-no" alt=3D"" height=3D"32" width=3D"32" style=3D"bor=
+der-radius: 50%;box-sizing: border-box; display: block;"></amp-img></td><td=
+><h3 style=3D"display: inline-block; font: 500 14px Google Sans, Roboto, Ar=
+ial, Helvetica, sans-serif; letter-spacing: .25px; line-height: 20px; margi=
+n: 6px 0 2px 0;">Brett Allcorn</h3> <span style=3D"color: #5F6368; font: 40=
+0 12px/16px Roboto, Arial, Helvetica, sans-serif; letter-spacing: 0.2px; wh=
+ite-space: nowrap;">=E2=80=A2 11:50 AM, Oct 14 (CDT)</span><h4 style=3D"bac=
+kground: #1a73e8; border-radius: 8px; color: #fff; display: inline-block; f=
+ont: 700 12px/16px Roboto, Arial, Helvetica, sans-serif; margin-bottom: 0; =
+margin-top: 0; margin-left: 10px; padding: 0 6px;">New</h4><div style=3D"fo=
+nt: 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: 20px; lette=
+r-spacing: .2px;"><div style=3D"margin-top: 6px;" class=3D"notranslate">jus=
+t clarifying the definition of this work... is this the same as ad hoc?</di=
+v></div></td></tr></table></div><div style=3D"margin: 10px 0 0 42px; overfl=
+ow: auto; padding: 2px;"><a href=3D"mailTo:Reply%20%3Cd+AORGpReR4yolyaGUfAw=
+UJItNic7aWGAXZMtaIgDV3_XrIQYppS3N6FF3zTD_mjDoYnLoO6uiqqphGoihNW2_YVJ4Cpuv8e=
+jlCaAgXfPS9RaLtT0B_1BQ0sIFfwFIZxhv4pGUACdfslqIyXpVAtG4kVkcgCmrpxyMIcMP3UMct=
+zHd5Mtaxs_gFW4@docs.google.com%3E?subject=3DData%20Analytics%20Technician%2=
+0-%20Aubrey" class=3D"material-button material-button-transparent" target=
+=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"padding: 0 8px;font: 50=
+0 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-serif; border: none=
+; border-radius: 18px; box-sizing: border-box; display: inline-block; lette=
+r-spacing: .25px; min-height: 36px; text-align: center; text-decoration: no=
+ne;margin-right: 12px;">Reply</a><a href=3D"https://docs.google.com/documen=
+t/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXM&a=
+mp;usp=3Dcomment_email_discussion&amp;ts=3D6349955c&amp;usp_dm=3Dtrue" clas=
+s=3D"material-button material-button-transparent" target=3D"_blank" tabinde=
+x=3D"0" role=3D"button" style=3D"padding: 0 8px;font: 500 14px/36px Google =
+Sans, Roboto, Arial, Helvetica, sans-serif; border: none; border-radius: 18=
+px; box-sizing: border-box; display: inline-block; letter-spacing: .25px; m=
+in-height: 36px; text-align: center; text-decoration: none;float: right;">O=
+pen</a></div></div></div><div style=3D"margin: 18px 0;height: 1px; backgrou=
+nd-color: #eee;"></div><div><div style=3D"margin-top: 20px;overflow: visibl=
+e; line-height: 20px;"><div class=3D"document-content-snippet" style=3D"bor=
+der: 1px solid #DADCE0; border-radius: 8px; padding: 12px 16px;hyphens: aut=
+o; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+;"><span class=3D"notranslate" style=3D"font: 400 14px Roboto, Arial, Helve=
+tica, sans-serif; line-height: 20px; color: #3c4043;"><ul style=3D"margin-t=
+op:0;margin-bottom:0"><li dir=3D"ltr" style=3D"list-style-type:disc"><p dir=
+=3D"ltr" style=3D"margin:0"><span>able to translate these data skills and m=
+y former restaurant experience into creating a successful (food- and servic=
+e-related) business of my own.</span></p></li></ul><br><br><br><br><br><p d=
+ir=3D"ltr" style=3D"margin:0"><span class=3D"screenreader-hidden-offscreen"=
+>=C2=A0Comment start=C2=A0</span><span style=3D"background-color:#ffe168">T=
+asks for this week:</span><span class=3D"screenreader-hidden-offscreen">=C2=
+=A0Comment end=C2=A0</span></p><ol style=3D"margin-top:0;margin-bottom:0"><=
+li dir=3D"ltr" style=3D"list-style-type:decimal"><p dir=3D"ltr" style=3D"ma=
+rgin:0"><span>Keep up with routine reports (Sales Dashboard, Affiliate Mana=
+ger Report, Commission reports, daily reports)</span></p></li><li dir=3D"lt=
+r" style=3D"list-style-type:decimal"><p dir=3D"ltr" style=3D"margin:0"><spa=
+n>***Re-structure Q4 Dashboard</span></p></li><ol style=3D"margin-top:0;mar=
+gin-bottom:0"><li dir=3D"ltr" style=3D"list-style-type:lower-alpha"><p dir=
+=3D"ltr" style=3D"margin:0"><span>Reflect Projected</span></p></li></ol></o=
+l></span></div><div style=3D"height: 18px;"></div><div style=3D"margin-top:=
+ 0px; word-break: break-word; word-wrap: break-word;"><table role=3D"presen=
+tation" cellpadding=3D"0" cellspacing=3D"0" style=3D"color: #3c4043; width:=
+ 100%;"><tr><td style=3D"vertical-align: top; width: 44px;"><amp-img src=3D=
+"https://lh3.googleusercontent.com/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyizPLunBgWT5=
+EGgilu8tw=3Ds50-c-k-no" alt=3D"" height=3D"32" width=3D"32" style=3D"border=
+-radius: 50%;box-sizing: border-box; display: block;"></amp-img></td><td><h=
+3 style=3D"display: inline-block; font: 500 14px Google Sans, Roboto, Arial=
+, Helvetica, sans-serif; letter-spacing: .25px; line-height: 20px; margin: =
+6px 0 2px 0;">Brett Allcorn</h3> <span style=3D"color: #5F6368; font: 400 1=
+2px/16px Roboto, Arial, Helvetica, sans-serif; letter-spacing: 0.2px; white=
+-space: nowrap;">=E2=80=A2 11:54 AM, Oct 14 (CDT)</span><h4 style=3D"backgr=
+ound: #1a73e8; border-radius: 8px; color: #fff; display: inline-block; font=
+: 700 12px/16px Roboto, Arial, Helvetica, sans-serif; margin-bottom: 0; mar=
+gin-top: 0; margin-left: 10px; padding: 0 6px;">New</h4><div style=3D"font:=
+ 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: 20px; letter-s=
+pacing: .2px;"><div style=3D"margin-top: 6px;" class=3D"notranslate">this l=
+ooks great, thanks</div></div></td></tr></table></div><div style=3D"margin:=
+ 10px 0 0 42px; overflow: auto; padding: 2px;"><a href=3D"mailTo:Reply%20%3=
+Cd+AORGpRcjwSLJKqiSC1iePWA2kCkEkOwU10GH8D_n_deKrSlVDj0Svu580X7uMe2NBX3o1URN=
+HdT2lcS-4b4saPKNMdazblEWXxbT28V7qLvVzYnY042PRNbSWh61xLNv6DP4aegphibBOyCsDAp=
+JQkcoYRJow5KOmwejXC4EXEmpIkFFsqPXZVM@docs.google.com%3E?subject=3DData%20An=
+alytics%20Technician%20-%20Aubrey" class=3D"material-button material-button=
+-transparent" target=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"pad=
+ding: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetica, sans=
+-serif; border: none; border-radius: 18px; box-sizing: border-box; display:=
+ inline-block; letter-spacing: .25px; min-height: 36px; text-align: center;=
+ text-decoration: none;margin-right: 12px;">Reply</a><a href=3D"https://doc=
+s.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?d=
+isco=3DAAAAhyuFsYE&amp;usp=3Dcomment_email_discussion&amp;ts=3D6349955c&amp=
+;usp_dm=3Dtrue" class=3D"material-button material-button-transparent" targe=
+t=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"padding: 0 8px;font: 5=
+00 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-serif; border: non=
+e; border-radius: 18px; box-sizing: border-box; display: inline-block; lett=
+er-spacing: .25px; min-height: 36px; text-align: center; text-decoration: n=
+one;float: right;">Open</a></div></div></div></div></div></div></td></tr></=
+table></div></div><table style=3D"border-collapse: collapse; width: 100%;" =
+role=3D"presentation"><tr><td style=3D"padding: 24px 4.5%"><table style=3D"=
+border-collapse: collapse; width: 100%;" dir=3D"ltr"><tr><td style=3D"paddi=
+ng: 0;font-family: Roboto, Arial, Helvetica, sans-serif; color: #5F6368; wi=
+dth: 100%; font-size: 12px; line-height: 16px; min-height: 40px; letter-spa=
+cing: .3px;"><p style=3D"margin: 0; padding: 0;">Google LLC, 1600 Amphithea=
+tre Parkway, Mountain View, CA 94043, USA<br><br>You have received this ema=
+il because you are a participant in the updated items or subscribed to noti=
+fications on <span class=3D"notranslate"><a href=3D"https://docs.google.com=
+/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=3Dcomment=
+_email_document&amp;ts=3D6349955c&amp;usp_dm=3Dtrue" target=3D"_blank" styl=
+e=3D"color: #1a73e8; text-decoration: none;">Data Analytics Technician - Au=
+brey</a></span>. <a target=3D"_blank" style=3D"color: #1a73e8; text-decorat=
+ion: none;" href=3D"https://docs.google.com/document/u/11415892716336493500=
+5/docos/notify?ouid=3D114158927163364935005&amp;id=3D1X4BX_UT-V2WzR86qL1XWP=
+EIqKV9Dhb-1D5gC8r6Nqd4&amp;title=3DData+Analytics+Technician+-+Aubrey&amp;r=
+esourcekey">Change what Google sends you</a>. You cannot reply to this emai=
+l.</p></td><td style=3D"padding: 0;padding-left: 20px; min-width: 96px"><am=
+p-img src=3D"https://www.gstatic.com/images/branding/googlelogo/2x/googlelo=
+go_tm_black54_color_96x40dp.png" width=3D"96px" height=3D"40px"></amp-img><=
+/td></tr></table></td></tr></table></td></tr></table></td></tr></table></di=
+v><template type=3D"amp-mustache">{{#eventInfos}}<table style=3D"border-col=
+lapse: collapse; width: 100%; background-color: white; text-align: center;"=
+ role=3D"presentation"><tr><td style=3D"padding: 24px 0 16px 0;"><table sty=
+le=3D"border-collapse: collapse;font-family: Roboto, Arial, Helvetica, sans=
+-serif;hyphens: auto; overflow-wrap: break-word; word-wrap: break-word; wor=
+d-break: break-word;display: inline-block; width: 90%;max-width: 700px;min-=
+width: 280px; text-align: left;" role=3D"presentation"><tr><td style=3D"pad=
+ding: 0;"><div class=3D"flex flex-column flex-space-column-16px"><div><tabl=
+e style=3D"width:100%; table-layout:fixed;" role=3D"presentation"><tr><td s=
+tyle=3D"padding: 0;" dir=3D"ltr"><div id=3D"overview-card-contents"><div cl=
+ass=3D"flex flex-column flex-space-column-12px"><div><h1 style=3D"color: #3=
+c4043; font: 400 18px Google Sans, Roboto, Arial, Helvetica, sans-serif; ma=
+rgin: 0;">New activity in the following document</h1></div><div><div class=
+=3D"flex flex-column flex-space-column-12px"><div id=3D"document-chip-secti=
+on"><div id=3D"document-chip"><a href=3D"https://docs.google.com/document/d=
+/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=3Dcomment_email_docu=
+ment&amp;ts=3D6349955c&amp;usp_dm=3Dtrue" target=3D"_blank" style=3D"color:=
+ #3c4043; display: inline-block; max-width: 100%; text-decoration: none; ve=
+rtical-align: top;border: 1px solid #DADCE0; border-radius: 16px; white-spa=
+ce: nowrap;min-width: 0;"><div style=3D"line-height: 18px; overflow: hidden=
+; text-overflow: ellipsis;padding: 6px 12px;"><span style=3D"display: inlin=
+e-block; vertical-align: top; min-width: 26px; width: 26px;"><amp-img src=
+=3D"https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x=
+64.png" width=3D"18" height=3D"18" style=3D"vertical-align: top;" role=3D"p=
+resentation"></amp-img></span><span style=3D"font: 500 14px/18px Google San=
+s, Roboto, Arial, Helvetica, sans-serif; display: inline; letter-spacing: 0=
+.2px;">Data Analytics Technician - Aubrey</span></div></a></div>{{#subscrip=
+tions}}<div id=3D"subscription-accordion" role=3D"button" tabindex=3D"0" ar=
+ia-label=3D"Notification settings" aria-controls=3D"subscription-section" a=
+ria-expanded=3D"false" data-amp-bind-aria-expanded=3D"!!(subscriptions &amp=
+;&amp; subscriptions.expanded) ? 'true' : 'false'" on=3D"tap: AMP.setState(=
+{subscriptions: {expanded: !!!(subscriptions &amp;&amp; subscriptions.expan=
+ded)}})"><div class=3D"flex align-center flex-space-row-8px"><div id=3D"sub=
+scription-accordion-icon" aria-hidden=3D"true" class=3D"stack comments-{{co=
+mments.value}} {{#edits}}edits-{{value}}{{/edits}}{{^edits}}edits-disabled{=
+{/edits}}" data-amp-bind-class=3D"'stack comments-' + ( (subscriptions &amp=
+;&amp; subscriptions.comments &amp;&amp; subscriptions.comments.current) ||=
+ &#39;{{comments.value}}&#39; ) +{{#edits}}' edits-' + ( (subscriptions &am=
+p;&amp; subscriptions.edits &amp;&amp; subscriptions.edits.current) || &#39=
+;{{edits.value}}&#39; ){{/edits}}{{^edits}}' edits-disabled'{{/edits}}"><am=
+p-img id=3D"subscription-accordion-icon-all" src=3D"https://fonts.gstatic.c=
+om/s/i/googlematerialicons/notifications_active/v11/gm_grey-48dp/2x/gm_noti=
+fications_active_gm_grey_48dp.png" width=3D"24" height=3D"24"></amp-img><am=
+p-img id=3D"subscription-accordion-icon-important" src=3D"https://fonts.gst=
+atic.com/s/i/googlematerialicons/notifications/v13/gm_grey-48dp/2x/gm_notif=
+ications_gm_grey_48dp.png" width=3D"24" height=3D"24"></amp-img><amp-img id=
+=3D"subscription-accordion-icon-none" src=3D"https://fonts.gstatic.com/s/i/=
+googlematerialicons/notifications_off/v10/gm_grey-48dp/2x/gm_notifications_=
+off_gm_grey_48dp.png" width=3D"24" height=3D"24"></amp-img></div><div id=3D=
+"subscription-accordion-text" aria-hidden=3D"true">Notification settings</d=
+iv><div id=3D"subscription-accordion-arrow" class=3D"stack" aria-hidden=3D"=
+true"><amp-img src=3D"https://fonts.gstatic.com/s/i/googlematerialicons/exp=
+and_more/v12/gm_grey-48dp/2x/gm_expand_more_gm_grey_48dp.png" width=3D"24" =
+height=3D"24" data-amp-bind-class=3D"!!(subscriptions &amp;&amp; subscripti=
+ons.expanded) ? 'hidden' : 'visible'"></amp-img><amp-img src=3D"https://fon=
+ts.gstatic.com/s/i/googlematerialicons/expand_less/v10/gm_grey-48dp/2x/gm_e=
+xpand_less_gm_grey_48dp.png" width=3D"24" height=3D"24" class=3D"hidden" da=
+ta-amp-bind-class=3D"!!(subscriptions &amp;&amp; subscriptions.expanded) ? =
+'visible' : 'hidden'"></amp-img></div></div></div>{{/subscriptions}}</div>{=
+{#subscriptions}}<div id=3D"subscription-section" role=3D"region" aria-labe=
+lledby=3D"subscription-accordion" class=3D"none" data-amp-bind-class=3D"!!(=
+subscriptions &amp;&amp; subscriptions.expanded) ? 'block' : 'none'"><div s=
+tyle=3D"margin: 18px 0;height: 1px; background-color: #eee;"></div><div id=
+=3D"subscription-controls">{{#comments}}<form id=3D"comments-subscription-f=
+orm" class=3D"subscription-form" action-xhr=3D"https://docs.google.com/docu=
+ment/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/dynamicmail/subscribe?e=
+mailToken=3DAORGpRemmczKAK8_bsGjT9AGw8mErNi78-OpU6e8TQprdHK8r986kGGaDxYQ51Q=
+vG5tkgB7izaBI7hw08h9NIlLqqVHyRjqvGuDXTZ2JDIxyMY_en4bCsVkCzXeboXLlkTwzsCmsPf=
+MR&amp;buildLabel=3Deditors.documents-frontend_20221004.02_p2&amp;clientVer=
+sion=3D3&amp;emailType=3Dcomments&amp;ts=3D6349955c" method=3D"post" on=3D"=
+submit-success: AMP.setState({subscriptions: {comments: {next: null}}}); su=
+bmit-error: AMP.setState({subscriptions: {comments: {current: subscriptions=
+.comments.previous, next: null}, error: true}});"><input type=3D"hidden" na=
+me=3D"type" value=3D"comments"><input type=3D"hidden" name=3D"value" data-a=
+mp-bind-value=3D"subscriptions.comments.next"><label for=3D"comments-subscr=
+iption-native-select"><span>Comments and tasks</span><span class=3D"subscri=
+ption-measuring-label" aria-hidden=3D"true">Comments and tasks<br>Edits</sp=
+an></label><div id=3D"comments-subscription-select" class=3D"subscription-s=
+elect"><select id=3D"comments-subscription-native-select" class=3D"subscrip=
+tion-native-select" on=3D"change: AMP.setState({subscriptions: {comments: {=
+previous: ( (subscriptions &amp;&amp; subscriptions.comments &amp;&amp; sub=
+scriptions.comments.current) || &#39;{{comments.value}}&#39; ), current: ev=
+ent.value, next: event.value}, error: false}}),comments-subscription-form.s=
+ubmit;" data-amp-bind-disabled=3D"!!(subscriptions &amp;&amp; ( (subscripti=
+ons.comments &amp;&amp; subscriptions.comments.next) || (subscriptions.edit=
+s &amp;&amp; subscriptions.edits.next) ))">{{#options.all}}<option value=3D=
+"all" data-amp-bind-disabled=3D"!!(subscriptions &amp;&amp; ( (subscription=
+s.comments &amp;&amp; subscriptions.comments.next) || (subscriptions.edits =
+&amp;&amp; subscriptions.edits.next) ))" selected data-amp-bind-selected=3D=
+"( (subscriptions &amp;&amp; subscriptions.comments &amp;&amp; subscription=
+s.comments.current) || &#39;{{comments.value}}&#39; ) =3D=3D 'all'">All</op=
+tion>{{/options.all}}{{^options.all}}<option value=3D"all" data-amp-bind-di=
+sabled=3D"!!(subscriptions &amp;&amp; ( (subscriptions.comments &amp;&amp; =
+subscriptions.comments.next) || (subscriptions.edits &amp;&amp; subscriptio=
+ns.edits.next) ))" data-amp-bind-selected=3D"( (subscriptions &amp;&amp; su=
+bscriptions.comments &amp;&amp; subscriptions.comments.current) || &#39;{{c=
+omments.value}}&#39; ) =3D=3D 'all'">All</option>{{/options.all}}{{#options=
+.important}}<option value=3D"important" data-amp-bind-disabled=3D"!!(subscr=
+iptions &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptions.comme=
+nts.next) || (subscriptions.edits &amp;&amp; subscriptions.edits.next) ))" =
+selected data-amp-bind-selected=3D"( (subscriptions &amp;&amp; subscription=
+s.comments &amp;&amp; subscriptions.comments.current) || &#39;{{comments.va=
+lue}}&#39; ) =3D=3D 'important'">For you</option>{{/options.important}}{{^o=
+ptions.important}}<option value=3D"important" data-amp-bind-disabled=3D"!!(=
+subscriptions &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptions=
+.comments.next) || (subscriptions.edits &amp;&amp; subscriptions.edits.next=
+) ))" data-amp-bind-selected=3D"( (subscriptions &amp;&amp; subscriptions.c=
+omments &amp;&amp; subscriptions.comments.current) || &#39;{{comments.value=
+}}&#39; ) =3D=3D 'important'">For you</option>{{/options.important}}{{#opti=
+ons.none}}<option value=3D"none" data-amp-bind-disabled=3D"!!(subscriptions=
+ &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptions.comments.nex=
+t) || (subscriptions.edits &amp;&amp; subscriptions.edits.next) ))" selecte=
+d data-amp-bind-selected=3D"( (subscriptions &amp;&amp; subscriptions.comme=
+nts &amp;&amp; subscriptions.comments.current) || &#39;{{comments.value}}&#=
+39; ) =3D=3D 'none'">None</option>{{/options.none}}{{^options.none}}<option=
+ value=3D"none" data-amp-bind-disabled=3D"!!(subscriptions &amp;&amp; ( (su=
+bscriptions.comments &amp;&amp; subscriptions.comments.next) || (subscripti=
+ons.edits &amp;&amp; subscriptions.edits.next) ))" data-amp-bind-selected=
+=3D"( (subscriptions &amp;&amp; subscriptions.comments &amp;&amp; subscript=
+ions.comments.current) || &#39;{{comments.value}}&#39; ) =3D=3D 'none'">Non=
+e</option>{{/options.none}}</select><div class=3D"subscription-custom-selec=
+t" aria-hidden=3D"true" data-amp-bind-class=3D"'subscription-custom-select'=
+ + (!!(subscriptions &amp;&amp; ( (subscriptions.comments &amp;&amp; subscr=
+iptions.comments.next) || (subscriptions.edits &amp;&amp; subscriptions.edi=
+ts.next) )) ? ' disabled' : '')"><div class=3D"subscription-custom-select-l=
+abels"><span class=3D"{{#options.all}}inline{{/options.all}}{{^options.all}=
+}none{{/options.all}}" data-amp-bind-class=3D"( (subscriptions &amp;&amp; s=
+ubscriptions.comments &amp;&amp; subscriptions.comments.current) || &#39;{{=
+comments.value}}&#39; ) =3D=3D 'all' ? 'inline' : 'none'">All</span><span c=
+lass=3D"subscription-measuring-label">All</span><span class=3D"{{#options.i=
+mportant}}inline{{/options.important}}{{^options.important}}none{{/options.=
+important}}" data-amp-bind-class=3D"( (subscriptions &amp;&amp; subscriptio=
+ns.comments &amp;&amp; subscriptions.comments.current) || &#39;{{comments.v=
+alue}}&#39; ) =3D=3D 'important' ? 'inline' : 'none'">For you</span><span c=
+lass=3D"subscription-measuring-label">For you</span><span class=3D"{{#optio=
+ns.none}}inline{{/options.none}}{{^options.none}}none{{/options.none}}" dat=
+a-amp-bind-class=3D"( (subscriptions &amp;&amp; subscriptions.comments &amp=
+;&amp; subscriptions.comments.current) || &#39;{{comments.value}}&#39; ) =
+=3D=3D 'none' ? 'inline' : 'none'">None</span><span class=3D"subscription-m=
+easuring-label">None</span></div><div class=3D"subscription-custom-select-a=
+rrow">&nbsp;</div></div></div></form>{{/comments}}{{#edits}}<form id=3D"edi=
+ts-subscription-form" class=3D"subscription-form" action-xhr=3D"https://doc=
+s.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/dynami=
+cmail/subscribe?emailToken=3DAORGpRemmczKAK8_bsGjT9AGw8mErNi78-OpU6e8TQprdH=
+K8r986kGGaDxYQ51QvG5tkgB7izaBI7hw08h9NIlLqqVHyRjqvGuDXTZ2JDIxyMY_en4bCsVkCz=
+XeboXLlkTwzsCmsPfMR&amp;buildLabel=3Deditors.documents-frontend_20221004.02=
+_p2&amp;clientVersion=3D3&amp;emailType=3Dcomments&amp;ts=3D6349955c" metho=
+d=3D"post" on=3D"submit-success: AMP.setState({subscriptions: {edits: {next=
+: null}}}); submit-error: AMP.setState({subscriptions: {edits: {current: su=
+bscriptions.edits.previous, next: null}, error: true}});"><input type=3D"hi=
+dden" name=3D"type" value=3D"edits"><input type=3D"hidden" name=3D"value" d=
+ata-amp-bind-value=3D"subscriptions.edits.next"><label for=3D"edits-subscri=
+ption-native-select"><span>Edits</span><span class=3D"subscription-measurin=
+g-label" aria-hidden=3D"true">Comments and tasks<br>Edits</span></label><di=
+v id=3D"edits-subscription-select" class=3D"subscription-select"><select id=
+=3D"edits-subscription-native-select" class=3D"subscription-native-select" =
+on=3D"change: AMP.setState({subscriptions: {edits: {previous: ( (subscripti=
+ons &amp;&amp; subscriptions.edits &amp;&amp; subscriptions.edits.current) =
+|| &#39;{{edits.value}}&#39; ), current: event.value, next: event.value}, e=
+rror: false}}),edits-subscription-form.submit;" data-amp-bind-disabled=3D"!=
+!(subscriptions &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptio=
+ns.comments.next) || (subscriptions.edits &amp;&amp; subscriptions.edits.ne=
+xt) ))">{{#options.true}}<option value=3D"true" data-amp-bind-disabled=3D"!=
+!(subscriptions &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptio=
+ns.comments.next) || (subscriptions.edits &amp;&amp; subscriptions.edits.ne=
+xt) ))" selected data-amp-bind-selected=3D"( (subscriptions &amp;&amp; subs=
+criptions.edits &amp;&amp; subscriptions.edits.current) || &#39;{{edits.val=
+ue}}&#39; ) =3D=3D 'true'">Added or removed content</option>{{/options.true=
+}}{{^options.true}}<option value=3D"true" data-amp-bind-disabled=3D"!!(subs=
+criptions &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptions.com=
+ments.next) || (subscriptions.edits &amp;&amp; subscriptions.edits.next) ))=
+" data-amp-bind-selected=3D"( (subscriptions &amp;&amp; subscriptions.edits=
+ &amp;&amp; subscriptions.edits.current) || &#39;{{edits.value}}&#39; ) =3D=
+=3D 'true'">Added or removed content</option>{{/options.true}}{{#options.fa=
+lse}}<option value=3D"false" data-amp-bind-disabled=3D"!!(subscriptions &am=
+p;&amp; ( (subscriptions.comments &amp;&amp; subscriptions.comments.next) |=
+| (subscriptions.edits &amp;&amp; subscriptions.edits.next) ))" selected da=
+ta-amp-bind-selected=3D"( (subscriptions &amp;&amp; subscriptions.edits &am=
+p;&amp; subscriptions.edits.current) || &#39;{{edits.value}}&#39; ) =3D=3D =
+'false'">None</option>{{/options.false}}{{^options.false}}<option value=3D"=
+false" data-amp-bind-disabled=3D"!!(subscriptions &amp;&amp; ( (subscriptio=
+ns.comments &amp;&amp; subscriptions.comments.next) || (subscriptions.edits=
+ &amp;&amp; subscriptions.edits.next) ))" data-amp-bind-selected=3D"( (subs=
+criptions &amp;&amp; subscriptions.edits &amp;&amp; subscriptions.edits.cur=
+rent) || &#39;{{edits.value}}&#39; ) =3D=3D 'false'">None</option>{{/option=
+s.false}}</select><div class=3D"subscription-custom-select" aria-hidden=3D"=
+true" data-amp-bind-class=3D"'subscription-custom-select' + (!!(subscriptio=
+ns &amp;&amp; ( (subscriptions.comments &amp;&amp; subscriptions.comments.n=
+ext) || (subscriptions.edits &amp;&amp; subscriptions.edits.next) )) ? ' di=
+sabled' : '')"><div class=3D"subscription-custom-select-labels"><span class=
+=3D"{{#options.true}}inline{{/options.true}}{{^options.true}}none{{/options=
+.true}}" data-amp-bind-class=3D"( (subscriptions &amp;&amp; subscriptions.e=
+dits &amp;&amp; subscriptions.edits.current) || &#39;{{edits.value}}&#39; )=
+ =3D=3D 'true' ? 'inline' : 'none'">Added or removed content</span><span cl=
+ass=3D"subscription-measuring-label">Added or removed content</span><span c=
+lass=3D"{{#options.false}}inline{{/options.false}}{{^options.false}}none{{/=
+options.false}}" data-amp-bind-class=3D"( (subscriptions &amp;&amp; subscri=
+ptions.edits &amp;&amp; subscriptions.edits.current) || &#39;{{edits.value}=
+}&#39; ) =3D=3D 'false' ? 'inline' : 'none'">None</span><span class=3D"subs=
+cription-measuring-label">None</span></div><div class=3D"subscription-custo=
+m-select-arrow">&nbsp;</div></div></div></form>{{/edits}}<span id=3D"subscr=
+iption-controls-notice" class=3D"none" data-amp-bind-class=3D"subscriptions=
+ && subscriptions.error ? 'block' : 'none'">Something went wrong, please re=
+try</span></div></div>{{/subscriptions}}</div></div></div></div></td></tr><=
+/table></div><div><table style=3D"width:100%; border: 1px solid #dadce0; bo=
+rder-radius: 8px; border-spacing: 0; table-layout:fixed; border-collapse: s=
+eparate;" role=3D"presentation"><tr><td style=3D"padding: 4.5%;" dir=3D"ltr=
+"><div class=3D"flex flex-column flex-space-column-20px"><div><div><table r=
+ole=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 10=
+0%"><tr><td style=3D"vertical-align: top; width: 32px;"><div style=3D"backg=
+round: #F1F3F4; border-radius: 50%; display: inline-block; height: 18px; pa=
+dding: 7px; width: 18px;"><amp-img src=3D"https://fonts.gstatic.com/s/i/goo=
+glematerialicons/comment/v18/gm_grey-48dp/1x/gm_comment_gm_grey_48dp.png" h=
+eight=3D"18px" width=3D"18px" aria-hidden=3D"true" style=3D"flex-shrink: 0;=
+"></amp-img></div></td><td style=3D"vertical-align: top;"><h2 style=3D"colo=
+r: #3c4043; display: inline-block; font: 400 16px/32px Google Sans, Roboto,=
+ Arial, Helvetica, sans-serif; letter-spacing: .1px; margin: 0 0 0 10px;">4=
+ comments</h2></td></tr></table><div class=3D"discussions-container">{{#ope=
+nCommentsAndTodos}}<div id=3D"discussion-{{docoId}}" style=3D"overflow: vis=
+ible; line-height: 20px;">{{^isDeleted}}{{#htmlQuote}}<div class=3D"documen=
+t-content-snippet" style=3D"border: 1px solid #DADCE0; border-radius: 8px; =
+padding: 12px 16px;hyphens: auto; overflow-wrap: break-word; word-wrap: bre=
+ak-word; word-break: break-word;"><span class=3D"notranslate" style=3D"font=
+: 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: 20px; color: =
+#3c4043;">{{{htmlQuote}}}</span></div><div style=3D"height: 18px;"></div>{{=
+/htmlQuote}}{{#posts}}<div class=3D"{{#isHeadPost}}head-post{{/isHeadPost}}=
+{{^isHeadPost}}reply-post{{/isHeadPost}}"><table role=3D"presentation" cell=
+padding=3D"0" cellspacing=3D"0" style=3D"width: 100%;" class=3D"{{#isNew}}p=
+ost-dark-text{{/isNew}}{{^isNew}}post-light-text{{/isNew}}"><tr><td style=
+=3D"vertical-align: top; width: 44px;"><amp-img src=3D"{{authorPhotoUrl}}" =
+alt=3D"" height=3D"32" width=3D"32" style=3D"border-radius: 50%;box-sizing:=
+ border-box; display: block;"></amp-img></td><td><h3 style=3D"display: inli=
+ne-block; font: 500 14px Google Sans, Roboto, Arial, Helvetica, sans-serif;=
+ letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">{{authorNa=
+me}}</h3>{{#creationTime}} <span style=3D"color: #5F6368; font: 400 12px/16=
+px Roboto, Arial, Helvetica, sans-serif; letter-spacing: 0.2px; white-space=
+: nowrap;">=E2=80=A2 {{creationTime}}</span>{{/creationTime}}{{#isNew}}<h4 =
+style=3D"background: #1a73e8; border-radius: 8px; color: #fff; display: inl=
+ine-block; font: 700 12px/16px Roboto, Arial, Helvetica, sans-serif; margin=
+-bottom: 0; margin-top: 0; margin-left: 10px; padding: 0 6px;">New</h4>{{/i=
+sNew}}<div style=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; li=
+ne-height: 20px; letter-spacing: .2px;">{{#htmlBody}}<div style=3D"margin-t=
+op: 6px;" class=3D"notranslate">{{{htmlBody}}}</div>{{/htmlBody}}{{#htmlAct=
+ionText}}<div style=3D"margin-top: 6px;"><i>{{{htmlActionText}}}</i></div>{=
+{/htmlActionText}}{{#showCopiedText}}<div style=3D"margin: 18px 0;height: 1=
+px; background-color: #eee;"></div><div style=3D"color: #3c4043; font: ital=
+ic 14px Roboto, Arial, Helvetica, sans-serif; margin: 18px 0 6px 0; width: =
+100%;">Comments above copied from original document</div>{{/showCopiedText}=
+}</div></td></tr></table></div>{{/posts}}{{/isDeleted}}{{#isDeleted}}<div s=
+tyle=3D"color: #3c4043; font: italic 14px Roboto, Arial, Helvetica, sans-se=
+rif; margin: 0 0 6px 0; width: 100%;">Comment was deleted</div>{{/isDeleted=
+}}{{#canResolve}}<form id=3D"resolve-form-{{docoId}}" method=3D"post" actio=
+n-xhr=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb=
+-1D5gC8r6Nqd4/dynamicmail/resolve?emailToken=3DAORGpRemmczKAK8_bsGjT9AGw8mE=
+rNi78-OpU6e8TQprdHK8r986kGGaDxYQ51QvG5tkgB7izaBI7hw08h9NIlLqqVHyRjqvGuDXTZ2=
+JDIxyMY_en4bCsVkCzXeboXLlkTwzsCmsPfMR&amp;buildLabel=3Deditors.documents-fr=
+ontend_20221004.02_p2&amp;clientVersion=3D3&amp;emailType=3Dcomments&amp;ts=
+=3D6349955c" on=3D"submit-success: discussionList.refresh, AMP.setState({sc=
+ope: {'pendingReply{{docoId}}': false}, pendingReplies: {'{{docoId}}': ''},=
+ cachedReplies: {'{{docoId}}': ''}}); submit: discussion-{{docoId}}.toggleC=
+lass('class' =3D 'resolving-discussion'), AMP.setState({scope: {'replyButto=
+n{{docoId}}Disabled': true, 'pendingReply{{docoId}}': true}, cachedReplies:=
+ pendingReplies}); submit-error: discussion-{{docoId}}.toggleClass('class' =
+=3D 'submit-error', force=3Dtrue), discussion-{{docoId}}.toggleClass('class=
+' =3D 'resolving-discussion'), AMP.setState({scope: {'replyButton{{docoId}}=
+Disabled': pendingReplies['{{docoId}}'] =3D=3D null || pendingReplies['{{do=
+coId}}'] =3D=3D '', 'pendingReply{{docoId}}': false}});"><div submit-succes=
+s template=3D"inline-action-post"></div><input type=3D"hidden" name=3D"repl=
+yText" data-amp-bind-value=3D"pendingReplies['{{docoId}}']"><input type=3D"=
+hidden" name=3D"commentId" value=3D"{{docoId}}"><input type=3D"hidden" name=
+=3D"clientId" value=3D"{{replyClientId}}"></form>{{/canResolve}}{{#canReply=
+}}<form id=3D"reply-form-{{docoId}}" method=3D"post" autocomplete=3D"off" a=
+ction-xhr=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV=
+9Dhb-1D5gC8r6Nqd4/dynamicmail/reply?emailToken=3DAORGpRemmczKAK8_bsGjT9AGw8=
+mErNi78-OpU6e8TQprdHK8r986kGGaDxYQ51QvG5tkgB7izaBI7hw08h9NIlLqqVHyRjqvGuDXT=
+Z2JDIxyMY_en4bCsVkCzXeboXLlkTwzsCmsPfMR&amp;buildLabel=3Deditors.documents-=
+frontend_20221004.02_p2&amp;clientVersion=3D3&amp;emailType=3Dcomments&amp;=
+ts=3D6349955c" custom-validation-reporting=3D"as-you-go" on=3D"submit-succe=
+ss: discussionList.refresh, AMP.setState({scope: {'pendingReply{{docoId}}':=
+ false}, pendingReplies: {'{{docoId}}': ''}, cachedReplies: {'{{docoId}}': =
+''}}); submit: discussion-{{docoId}}.toggleClass('class' =3D 'submitting-re=
+ply'), AMP.setState({scope: {'replyButton{{docoId}}Disabled': true, 'pendin=
+gReply{{docoId}}': true}, cachedReplies: pendingReplies}); submit-error: di=
+scussion-{{docoId}}.toggleClass('class' =3D 'submit-error', force=3Dtrue), =
+discussion-{{docoId}}.toggleClass('class' =3D 'submitting-reply'), AMP.setS=
+tate({scope: {'replyButton{{docoId}}Disabled': false, 'pendingReply{{docoId=
+}}': false}}); valid: AMP.setState({scope: {'replyButton{{docoId}}Disabled'=
+: false}}); invalid: AMP.setState({scope: {'replyButton{{docoId}}Disabled':=
+ true}});"><div submit-success template=3D"inline-action-post"></div><div c=
+lass=3D"reply-form-textarea" style=3D"margin-top: 12px; word-break: break-w=
+ord; word-wrap: break-word;"><table role=3D"presentation" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width: 100%;"><tr><td style=3D"vertical-align: =
+top; width: 44px; padding-top: 11px;"><amp-img src=3D"{{requestor.photoUrl}=
+}" alt=3D"" height=3D"32" width=3D"32" style=3D"border-radius: 50%;box-sizi=
+ng: border-box; display: block;"></amp-img></td><td><textarea autoexpand st=
+yle=3D"font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 14px; =
+background-color: #f8f9fa; border-radius: 4px 4px 0 0; box-sizing: border-b=
+ox; color: #3c4043; height: 54px; letter-spacing: .2px; line-height: 20px; =
+outline: none; padding: 16px 10px; resize: none; width: 100%; word-break: b=
+reak-word; vertical-align: top;" class=3D"material-text-input" name=3D"repl=
+yText" autocomplete=3D"off" placeholder=3D"Reply" maxlength=3D"2048" on=3D"=
+input-throttled: AMP.setState({pendingReplies: {'{{docoId}}': event.value}}=
+);" data-amp-bind-text=3D"cachedReplies['{{docoId}}'] || ''" data-amp-bind-=
+disabled=3D"scope['pendingReply{{docoId}}']" pattern=3D".*\S+.*" aria-label=
+=3D"Reply" required></textarea><input type=3D"hidden" name=3D"commentId" va=
+lue=3D"{{docoId}}"><input type=3D"hidden" name=3D"clientId" value=3D"{{repl=
+yClientId}}"></td></tr></table></div></form>{{/canReply}}<div style=3D"marg=
+in: 10px 0 0 42px; overflow: auto; padding: 2px;">{{#canReply}}<input id=3D=
+"discussion-reply-button-{{docoId}}" type=3D"submit" style=3D"padding: 0 8p=
+x;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-serif; bo=
+rder: none; border-radius: 18px; box-sizing: border-box; display: inline-bl=
+ock; letter-spacing: .25px; min-height: 36px; text-align: center; text-deco=
+ration: none;margin-right: 12px;" role=3D"button" on=3D"tap:reply-form-{{do=
+coId}}.submit()" class=3D"material-button material-button-transparent" valu=
+e=3D"Reply" title=3D"Reply to comment" disabled data-amp-bind-disabled=3D"s=
+cope['replyButton{{docoId}}Disabled']" tabindex=3D"0">{{/canReply}}{{#canRe=
+solve}}<input id=3D"discussion-resolve-button-{{docoId}}" type=3D"submit" s=
+tyle=3D"padding: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helv=
+etica, sans-serif; border: none; border-radius: 18px; box-sizing: border-bo=
+x; display: inline-block; letter-spacing: .25px; min-height: 36px; text-ali=
+gn: center; text-decoration: none;margin-right: 12px;" role=3D"button" on=
+=3D"tap:resolve-form-{{docoId}}.submit()" class=3D"material-button material=
+-button-transparent resolve-button" value=3D"{{#isTodo}}Mark as done{{/isTo=
+do}}{{^isTodo}}Resolve{{/isTodo}}" title=3D"{{#isTodo}}Mark action item as =
+done{{/isTodo}}{{^isTodo}}Mark as resolved{{/isTodo}}" tabindex=3D"0">{{/ca=
+nResolve}}<a id=3D"discussion-open-button-{{docoId}}" href=3D"{{discussionL=
+ink}}" class=3D"material-button material-button-transparent discussion-open=
+-button" target=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"padding:=
+ 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-seri=
+f; border: none; border-radius: 18px; box-sizing: border-box; display: inli=
+ne-block; letter-spacing: .25px; min-height: 36px; text-align: center; text=
+-decoration: none;">Open</a></div><div style=3D"color: #d93025; font: 14px =
+Roboto, Arial, Helvetica, sans-serif; height: 36px; line-height: 36px; lett=
+er-spacing: 0.25px; margin-left: 36px; padding-left: 8px;" class=3D"reply-e=
+rror-text">Something went wrong, please retry</div></div>{{/openCommentsAnd=
+Todos}}</div></div></div></div></td></tr></table></div></div><table style=
+=3D"border-collapse: collapse; width: 100%;" role=3D"presentation"><tr><td =
+style=3D"padding: 24px 4.5%"><table style=3D"border-collapse: collapse; wid=
+th: 100%;" dir=3D"ltr"><tr><td style=3D"padding: 0;font-family: Roboto, Ari=
+al, Helvetica, sans-serif; color: #5F6368; width: 100%; font-size: 12px; li=
+ne-height: 16px; min-height: 40px; letter-spacing: .3px;"><p style=3D"margi=
+n: 0; padding: 0;">Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA=
+ 94043, USA<br><br>You have received this email because you are a participa=
+nt in the updated items or subscribed to notifications on <span class=3D"no=
+translate"><a href=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL=
+1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=3Dcomment_email_document&amp;ts=3D63499=
+55c&amp;usp_dm=3Dtrue" target=3D"_blank" style=3D"color: #1a73e8; text-deco=
+ration: none;">Data Analytics Technician - Aubrey</a></span>. <a target=3D"=
+_blank" style=3D"color: #1a73e8; text-decoration: none;" href=3D"https://do=
+cs.google.com/document/u/114158927163364935005/docos/notify?ouid=3D11415892=
+7163364935005&amp;id=3D1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4&amp;tit=
+le=3DData+Analytics+Technician+-+Aubrey&amp;resourcekey">Change what Google=
+ sends you</a>. You cannot reply to this email.</p></td><td style=3D"paddin=
+g: 0;padding-left: 20px; min-width: 96px"><amp-img src=3D"https://www.gstat=
+ic.com/images/branding/googlelogo/2x/googlelogo_tm_black54_color_96x40dp.pn=
+g" width=3D"96px" height=3D"40px"></amp-img></td></tr></table></td></tr></t=
+able></td></tr></table></td></tr></table>{{/eventInfos}}</template></amp-li=
+st></div></body></html>
+--0000000000004e8c4905eb018ba2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div itemscope itemtype=3D"http://schema.org/EmailMessage" style=3D"font: 1=
+4px Roboto, Arial, Helvetica, sans-serif;"><div itemprop=3D"about" itemscop=
+e itemtype=3D"http://schema.org/CreativeWork"><meta itemprop=3D"name" conte=
+nt=3D"Data Analytics Technician - Aubrey"><meta itemprop=3D"url" content=3D=
+"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r=
+6Nqd4/edit?usp=3Dcomment_email_document&amp;ts=3D6349955c"><table style=3D"=
+border-collapse: collapse; width: 100%; background-color: white; text-align=
+: center;" role=3D"presentation"><tr><td style=3D"padding: 24px 0 16px 0;">=
+<table style=3D"border-collapse: collapse;font-family: Roboto, Arial, Helve=
+tica, sans-serif;hyphens: auto; overflow-wrap: break-word; word-wrap: break=
+-word; word-break: break-word;display: inline-block; width: 90%;max-width: =
+700px;min-width: 280px; text-align: left;" role=3D"presentation"><tr><td st=
+yle=3D"padding: 0;"><div><div><table style=3D"width:100%; table-layout:fixe=
+d;" role=3D"presentation"><tr><td style=3D"padding: 0;" dir=3D"ltr"><div id=
+=3D"overview-card-contents"><div><div><h1 style=3D"color: #3c4043; font: 40=
+0 18px Google Sans, Roboto, Arial, Helvetica, sans-serif; margin: 0;">New a=
+ctivity in the following document</h1></div><div style=3D"margin-top: 12px;=
+"><div><div><div id=3D"document-chip-section"><div id=3D"document-chip"><a =
+href=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-=
+1D5gC8r6Nqd4/edit?usp=3Dcomment_email_document&amp;ts=3D6349955c&amp;usp_dm=
+=3Dfalse" target=3D"_blank" style=3D"color: #3c4043; display: inline-block;=
+ max-width: 100%; text-decoration: none; vertical-align: top;border: 1px so=
+lid #DADCE0; border-radius: 16px; white-space: nowrap;min-width: 0;"><div s=
+tyle=3D"line-height: 18px; overflow: hidden; text-overflow: ellipsis;paddin=
+g: 6px 12px;"><span style=3D"display: inline-block; vertical-align: top; mi=
+n-width: 26px; width: 26px;"><img src=3D"https://ssl.gstatic.com/docs/docli=
+st/images/mediatype/icon_1_document_x64.png" width=3D"18" height=3D"18" sty=
+le=3D"vertical-align: top;" role=3D"presentation"></span><span style=3D"fon=
+t: 500 14px/18px Google Sans, Roboto, Arial, Helvetica, sans-serif; display=
+: inline; letter-spacing: 0.2px;">Data Analytics Technician - Aubrey</span>=
+</div></a></div></div></div></div></div></div></div></td></tr></table></div=
+><div style=3D"margin-top: 16px;"><table style=3D"width:100%; border: 1px s=
+olid #dadce0; border-radius: 8px; border-spacing: 0; table-layout:fixed; bo=
+rder-collapse: separate;" role=3D"presentation"><tr><td style=3D"padding: 4=
+.5%;" dir=3D"ltr"><div><div><div><table role=3D"presentation" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"width: 100%"><tr><td style=3D"vertical-al=
+ign: top; width: 32px;"><div style=3D"background: #F1F3F4; border-radius: 5=
+0%; display: inline-block; height: 18px; padding: 7px; width: 18px;"><img s=
+rc=3D"https://fonts.gstatic.com/s/i/googlematerialicons/comment/v18/gm_grey=
+-48dp/1x/gm_comment_gm_grey_48dp.png" height=3D"18px" width=3D"18px" aria-h=
+idden=3D"true" style=3D"flex-shrink: 0;"></div></td><td style=3D"vertical-a=
+lign: top;"><h2 style=3D"color: #3c4043; display: inline-block; font: 400 1=
+6px/32px Google Sans, Roboto, Arial, Helvetica, sans-serif; letter-spacing:=
+ .1px; margin: 0 0 0 10px;">4 comments</h2></td></tr></table><div itemprop=
+=3D"action" itemscope itemtype=3D"http://schema.org/ViewAction"><meta itemp=
+rop=3D"url" content=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86q=
+L1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXA&amp;usp=3Dcomment_emai=
+l_discussion&amp;ts=3D6349955c"><meta itemprop=3D"name" content=3D"Open Dis=
+cussion"></div><div><div style=3D"margin-top: 20px;overflow: visible; line-=
+height: 20px;"><div class=3D"document-content-snippet" style=3D"border: 1px=
+ solid #DADCE0; border-radius: 8px; padding: 12px 16px;hyphens: auto; overf=
+low-wrap: break-word; word-wrap: break-word; word-break: break-word;"><span=
+ class=3D"notranslate" style=3D"font: 400 14px Roboto, Arial, Helvetica, sa=
+ns-serif; line-height: 20px; color: #3c4043;">sweeping company changes</spa=
+n></div><div style=3D"height: 18px;"></div><div style=3D"margin-top: 0px; w=
+ord-break: break-word; word-wrap: break-word;"><table role=3D"presentation"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"color: #3c4043; width: 100%;"=
+><tr><td style=3D"vertical-align: top; width: 44px;"><img src=3D"https://lh=
+3.googleusercontent.com/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyizPLunBgWT5EGgilu8tw=
+=3Ds50-c-k-no" alt=3D"" height=3D"32" width=3D"32" style=3D"border-radius: =
+50%;box-sizing: border-box; display: block;"></td><td><h3 style=3D"display:=
+ inline-block; font: 500 14px Google Sans, Roboto, Arial, Helvetica, sans-s=
+erif; letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">Brett=
+ Allcorn</h3> <span style=3D"color: #5F6368; font: 400 12px/16px Roboto, Ar=
+ial, Helvetica, sans-serif; letter-spacing: 0.2px; white-space: nowrap;">=
+=E2=80=A2 11:49 AM, Oct 14 (CDT)</span><h4 style=3D"background: #1a73e8; bo=
+rder-radius: 8px; color: #fff; display: inline-block; font: 700 12px/16px R=
+oboto, Arial, Helvetica, sans-serif; margin-bottom: 0; margin-top: 0; margi=
+n-left: 10px; padding: 0 6px;">New</h4><div style=3D"font: 400 14px Roboto,=
+ Arial, Helvetica, sans-serif; line-height: 20px; letter-spacing: .2px;"><d=
+iv style=3D"margin-top: 6px;" class=3D"notranslate">What are these?</div></=
+div></td></tr></table></div><div style=3D"margin: 10px 0 0 42px; overflow: =
+auto; padding: 2px;"><a href=3D"mailTo:Reply%20%3Cd+AORGpRdtr5Sl9ukkzmTFtub=
+W_3nIqkAj69SQiIA17MlL2UApvB83d33QRRK_yKnRLGhGFBI7eESks98V7noJZznFshWGI7u2c7=
+SQ0QIfqfleUpiWvqLTYArJyJMqrK2_iF8kmaOWpyLCeyJrOGz9-iRCiWitWsnOl5zHCthrH0wSs=
+7Fhjdcy35I@docs.google.com%3E?subject=3DData%20Analytics%20Technician%20-%2=
+0Aubrey" class=3D"material-button material-button-transparent" target=3D"_b=
+lank" tabindex=3D"0" role=3D"button" style=3D"padding: 0 8px;font: 500 14px=
+/36px Google Sans, Roboto, Arial, Helvetica, sans-serif; border: none; bord=
+er-radius: 18px; box-sizing: border-box; display: inline-block; letter-spac=
+ing: .25px; min-height: 36px; text-align: center; text-decoration: none;bac=
+kground-color: transparent; color: #1a73e8; cursor: pointer;margin-right: 1=
+2px;">Reply</a><a href=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR=
+86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXA&amp;usp=3Dcomment_e=
+mail_discussion&amp;ts=3D6349955c&amp;usp_dm=3Dfalse" class=3D"material-but=
+ton material-button-transparent" target=3D"_blank" tabindex=3D"0" role=3D"b=
+utton" style=3D"padding: 0 8px;font: 500 14px/36px Google Sans, Roboto, Ari=
+al, Helvetica, sans-serif; border: none; border-radius: 18px; box-sizing: b=
+order-box; display: inline-block; letter-spacing: .25px; min-height: 36px; =
+text-align: center; text-decoration: none;background-color: transparent; co=
+lor: #1a73e8; cursor: pointer;float: right;">Open</a></div></div></div><div=
+ itemprop=3D"action" itemscope itemtype=3D"http://schema.org/ViewAction"><m=
+eta itemprop=3D"url" content=3D"https://docs.google.com/document/d/1X4BX_UT=
+-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXE&amp;usp=3Dcom=
+ment_email_discussion&amp;ts=3D6349955c"><meta itemprop=3D"name" content=3D=
+"Open Discussion"></div><div style=3D"margin: 18px 0;height: 1px; backgroun=
+d-color: #eee;"></div><div><div style=3D"margin-top: 20px;overflow: visible=
+; line-height: 20px;"><div class=3D"document-content-snippet" style=3D"bord=
+er: 1px solid #DADCE0; border-radius: 8px; padding: 12px 16px;hyphens: auto=
+; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;=
+"><span class=3D"notranslate" style=3D"font: 400 14px Roboto, Arial, Helvet=
+ica, sans-serif; line-height: 20px; color: #3c4043;">Shipping Cost</span></=
+div><div style=3D"height: 18px;"></div><div style=3D"margin-top: 0px; word-=
+break: break-word; word-wrap: break-word;"><table role=3D"presentation" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"color: #3c4043; width: 100%;"><tr=
+><td style=3D"vertical-align: top; width: 44px;"><img src=3D"https://lh3.go=
+ogleusercontent.com/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyizPLunBgWT5EGgilu8tw=3Ds50=
+-c-k-no" alt=3D"" height=3D"32" width=3D"32" style=3D"border-radius: 50%;bo=
+x-sizing: border-box; display: block;"></td><td><h3 style=3D"display: inlin=
+e-block; font: 500 14px Google Sans, Roboto, Arial, Helvetica, sans-serif; =
+letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">Brett Allco=
+rn</h3> <span style=3D"color: #5F6368; font: 400 12px/16px Roboto, Arial, H=
+elvetica, sans-serif; letter-spacing: 0.2px; white-space: nowrap;">=E2=80=
+=A2 11:50 AM, Oct 14 (CDT)</span><h4 style=3D"background: #1a73e8; border-r=
+adius: 8px; color: #fff; display: inline-block; font: 700 12px/16px Roboto,=
+ Arial, Helvetica, sans-serif; margin-bottom: 0; margin-top: 0; margin-left=
+: 10px; padding: 0 6px;">New</h4><div style=3D"font: 400 14px Roboto, Arial=
+, Helvetica, sans-serif; line-height: 20px; letter-spacing: .2px;"><div sty=
+le=3D"margin-top: 6px;" class=3D"notranslate">What is this? I thought we we=
+re getting shipping data directly from TLF now?</div></div></td></tr></tabl=
+e></div><div style=3D"margin: 10px 0 0 42px; overflow: auto; padding: 2px;"=
+><a href=3D"mailTo:Reply%20%3Cd+AORGpReGOl6f1UdPIbXzq6fjlTLiX44Ta7f82UgrIZU=
+kpCDbkQ_xb1QRw08M_52VoL5RHXiLK3o1IdvgmJacWlQsEoL7TPgKdxapKXpBt4hZss8SdFycsT=
+eEQzHylgk8kqzTDh4Q-bw81mMnC8RFGgKcEYarOabZrnyNJaqt4IsrO57Ir5iFSqg@docs.goog=
+le.com%3E?subject=3DData%20Analytics%20Technician%20-%20Aubrey" class=3D"ma=
+terial-button material-button-transparent" target=3D"_blank" tabindex=3D"0"=
+ role=3D"button" style=3D"padding: 0 8px;font: 500 14px/36px Google Sans, R=
+oboto, Arial, Helvetica, sans-serif; border: none; border-radius: 18px; box=
+-sizing: border-box; display: inline-block; letter-spacing: .25px; min-heig=
+ht: 36px; text-align: center; text-decoration: none;background-color: trans=
+parent; color: #1a73e8; cursor: pointer;margin-right: 12px;">Reply</a><a hr=
+ef=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D=
+5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXE&amp;usp=3Dcomment_email_discussion&amp;=
+ts=3D6349955c&amp;usp_dm=3Dfalse" class=3D"material-button material-button-=
+transparent" target=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"padd=
+ing: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-=
+serif; border: none; border-radius: 18px; box-sizing: border-box; display: =
+inline-block; letter-spacing: .25px; min-height: 36px; text-align: center; =
+text-decoration: none;background-color: transparent; color: #1a73e8; cursor=
+: pointer;float: right;">Open</a></div></div></div><div itemprop=3D"action"=
+ itemscope itemtype=3D"http://schema.org/ViewAction"><meta itemprop=3D"url"=
+ content=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9=
+Dhb-1D5gC8r6Nqd4/edit?disco=3DAAAAhyuFsXM&amp;usp=3Dcomment_email_discussio=
+n&amp;ts=3D6349955c"><meta itemprop=3D"name" content=3D"Open Discussion"></=
+div><div style=3D"margin: 18px 0;height: 1px; background-color: #eee;"></di=
+v><div><div style=3D"margin-top: 20px;overflow: visible; line-height: 20px;=
+"><div class=3D"document-content-snippet" style=3D"border: 1px solid #DADCE=
+0; border-radius: 8px; padding: 12px 16px;hyphens: auto; overflow-wrap: bre=
+ak-word; word-wrap: break-word; word-break: break-word;"><span class=3D"not=
+ranslate" style=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; lin=
+e-height: 20px; color: #3c4043;">extemporaneous</span></div><div style=3D"h=
+eight: 18px;"></div><div style=3D"margin-top: 0px; word-break: break-word; =
+word-wrap: break-word;"><table role=3D"presentation" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"color: #3c4043; width: 100%;"><tr><td style=3D"verti=
+cal-align: top; width: 44px;"><img src=3D"https://lh3.googleusercontent.com=
+/a-/ACNPEu8NyyheoqXc8SIm7ZhRCyizPLunBgWT5EGgilu8tw=3Ds50-c-k-no" alt=3D"" h=
+eight=3D"32" width=3D"32" style=3D"border-radius: 50%;box-sizing: border-bo=
+x; display: block;"></td><td><h3 style=3D"display: inline-block; font: 500 =
+14px Google Sans, Roboto, Arial, Helvetica, sans-serif; letter-spacing: .25=
+px; line-height: 20px; margin: 6px 0 2px 0;">Brett Allcorn</h3> <span style=
+=3D"color: #5F6368; font: 400 12px/16px Roboto, Arial, Helvetica, sans-seri=
+f; letter-spacing: 0.2px; white-space: nowrap;">=E2=80=A2 11:50 AM, Oct 14 =
+(CDT)</span><h4 style=3D"background: #1a73e8; border-radius: 8px; color: #f=
+ff; display: inline-block; font: 700 12px/16px Roboto, Arial, Helvetica, sa=
+ns-serif; margin-bottom: 0; margin-top: 0; margin-left: 10px; padding: 0 6p=
+x;">New</h4><div style=3D"font: 400 14px Roboto, Arial, Helvetica, sans-ser=
+if; line-height: 20px; letter-spacing: .2px;"><div style=3D"margin-top: 6px=
+;" class=3D"notranslate">just clarifying the definition of this work... is =
+this the same as ad hoc?</div></div></td></tr></table></div><div style=3D"m=
+argin: 10px 0 0 42px; overflow: auto; padding: 2px;"><a href=3D"mailTo:Repl=
+y%20%3Cd+AORGpReR4yolyaGUfAwUJItNic7aWGAXZMtaIgDV3_XrIQYppS3N6FF3zTD_mjDoYn=
+LoO6uiqqphGoihNW2_YVJ4Cpuv8ejlCaAgXfPS9RaLtT0B_1BQ0sIFfwFIZxhv4pGUACdfslqIy=
+XpVAtG4kVkcgCmrpxyMIcMP3UMctzHd5Mtaxs_gFW4@docs.google.com%3E?subject=3DDat=
+a%20Analytics%20Technician%20-%20Aubrey" class=3D"material-button material-=
+button-transparent" target=3D"_blank" tabindex=3D"0" role=3D"button" style=
+=3D"padding: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetic=
+a, sans-serif; border: none; border-radius: 18px; box-sizing: border-box; d=
+isplay: inline-block; letter-spacing: .25px; min-height: 36px; text-align: =
+center; text-decoration: none;background-color: transparent; color: #1a73e8=
+; cursor: pointer;margin-right: 12px;">Reply</a><a href=3D"https://docs.goo=
+gle.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?disco=
+=3DAAAAhyuFsXM&amp;usp=3Dcomment_email_discussion&amp;ts=3D6349955c&amp;usp=
+_dm=3Dfalse" class=3D"material-button material-button-transparent" target=
+=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"padding: 0 8px;font: 50=
+0 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-serif; border: none=
+; border-radius: 18px; box-sizing: border-box; display: inline-block; lette=
+r-spacing: .25px; min-height: 36px; text-align: center; text-decoration: no=
+ne;background-color: transparent; color: #1a73e8; cursor: pointer;float: ri=
+ght;">Open</a></div></div></div><div itemprop=3D"action" itemscope itemtype=
+=3D"http://schema.org/ViewAction"><meta itemprop=3D"url" content=3D"https:/=
+/docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/ed=
+it?disco=3DAAAAhyuFsYE&amp;usp=3Dcomment_email_discussion&amp;ts=3D6349955c=
+"><meta itemprop=3D"name" content=3D"Open Discussion"></div><div style=3D"m=
+argin: 18px 0;height: 1px; background-color: #eee;"></div><div><div style=
+=3D"margin-top: 20px;overflow: visible; line-height: 20px;"><div class=3D"d=
+ocument-content-snippet" style=3D"border: 1px solid #DADCE0; border-radius:=
+ 8px; padding: 12px 16px;hyphens: auto; overflow-wrap: break-word; word-wra=
+p: break-word; word-break: break-word;"><span class=3D"notranslate" style=
+=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; line-height: 20px;=
+ color: #3c4043;">Tasks for this week:</span></div><div style=3D"height: 18=
+px;"></div><div style=3D"margin-top: 0px; word-break: break-word; word-wrap=
+: break-word;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"color: #3c4043; width: 100%;"><tr><td style=3D"vertical-ali=
+gn: top; width: 44px;"><img src=3D"https://lh3.googleusercontent.com/a-/ACN=
+PEu8NyyheoqXc8SIm7ZhRCyizPLunBgWT5EGgilu8tw=3Ds50-c-k-no" alt=3D"" height=
+=3D"32" width=3D"32" style=3D"border-radius: 50%;box-sizing: border-box; di=
+splay: block;"></td><td><h3 style=3D"display: inline-block; font: 500 14px =
+Google Sans, Roboto, Arial, Helvetica, sans-serif; letter-spacing: .25px; l=
+ine-height: 20px; margin: 6px 0 2px 0;">Brett Allcorn</h3> <span style=3D"c=
+olor: #5F6368; font: 400 12px/16px Roboto, Arial, Helvetica, sans-serif; le=
+tter-spacing: 0.2px; white-space: nowrap;">=E2=80=A2 11:54 AM, Oct 14 (CDT)=
+</span><h4 style=3D"background: #1a73e8; border-radius: 8px; color: #fff; d=
+isplay: inline-block; font: 700 12px/16px Roboto, Arial, Helvetica, sans-se=
+rif; margin-bottom: 0; margin-top: 0; margin-left: 10px; padding: 0 6px;">N=
+ew</h4><div style=3D"font: 400 14px Roboto, Arial, Helvetica, sans-serif; l=
+ine-height: 20px; letter-spacing: .2px;"><div style=3D"margin-top: 6px;" cl=
+ass=3D"notranslate">this looks great, thanks</div></div></td></tr></table><=
+/div><div style=3D"margin: 10px 0 0 42px; overflow: auto; padding: 2px;"><a=
+ href=3D"mailTo:Reply%20%3Cd+AORGpRcjwSLJKqiSC1iePWA2kCkEkOwU10GH8D_n_deKrS=
+lVDj0Svu580X7uMe2NBX3o1URNHdT2lcS-4b4saPKNMdazblEWXxbT28V7qLvVzYnY042PRNbSW=
+h61xLNv6DP4aegphibBOyCsDApJQkcoYRJow5KOmwejXC4EXEmpIkFFsqPXZVM@docs.google.=
+com%3E?subject=3DData%20Analytics%20Technician%20-%20Aubrey" class=3D"mater=
+ial-button material-button-transparent" target=3D"_blank" tabindex=3D"0" ro=
+le=3D"button" style=3D"padding: 0 8px;font: 500 14px/36px Google Sans, Robo=
+to, Arial, Helvetica, sans-serif; border: none; border-radius: 18px; box-si=
+zing: border-box; display: inline-block; letter-spacing: .25px; min-height:=
+ 36px; text-align: center; text-decoration: none;background-color: transpar=
+ent; color: #1a73e8; cursor: pointer;margin-right: 12px;">Reply</a><a href=
+=3D"https://docs.google.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5g=
+C8r6Nqd4/edit?disco=3DAAAAhyuFsYE&amp;usp=3Dcomment_email_discussion&amp;ts=
+=3D6349955c&amp;usp_dm=3Dfalse" class=3D"material-button material-button-tr=
+ansparent" target=3D"_blank" tabindex=3D"0" role=3D"button" style=3D"paddin=
+g: 0 8px;font: 500 14px/36px Google Sans, Roboto, Arial, Helvetica, sans-se=
+rif; border: none; border-radius: 18px; box-sizing: border-box; display: in=
+line-block; letter-spacing: .25px; min-height: 36px; text-align: center; te=
+xt-decoration: none;background-color: transparent; color: #1a73e8; cursor: =
+pointer;float: right;">Open</a></div></div></div></div></div></div></td></t=
+r></table></div></div><table style=3D"border-collapse: collapse; width: 100=
+%;" role=3D"presentation"><tr><td style=3D"padding: 24px 4.5%"><table style=
+=3D"border-collapse: collapse; width: 100%;" dir=3D"ltr"><tr><td style=3D"p=
+adding: 0;font-family: Roboto, Arial, Helvetica, sans-serif; color: #5F6368=
+; width: 100%; font-size: 12px; line-height: 16px; min-height: 40px; letter=
+-spacing: .3px;"><p style=3D"margin: 0; padding: 0;">Google LLC, 1600 Amphi=
+theatre Parkway, Mountain View, CA 94043, USA<br><br>You have received this=
+ email because you are a participant in the updated items or subscribed to =
+notifications on <span class=3D"notranslate"><a href=3D"https://docs.google=
+.com/document/d/1X4BX_UT-V2WzR86qL1XWPEIqKV9Dhb-1D5gC8r6Nqd4/edit?usp=3Dcom=
+ment_email_document&amp;ts=3D6349955c&amp;usp_dm=3Dfalse" target=3D"_blank"=
+ style=3D"color: #1a73e8; text-decoration: none;">Data Analytics Technician=
+ - Aubrey</a></span>. <a target=3D"_blank" style=3D"color: #1a73e8; text-de=
+coration: none;" href=3D"https://docs.google.com/document/u/114158927163364=
+935005/docos/notify?ouid=3D114158927163364935005&amp;id=3D1X4BX_UT-V2WzR86q=
+L1XWPEIqKV9Dhb-1D5gC8r6Nqd4&amp;title=3DData+Analytics+Technician+-+Aubrey&=
+amp;resourcekey">Change what Google sends you</a>. You cannot reply to this=
+ email.</p></td><td style=3D"padding: 0;padding-left: 20px; min-width: 96px=
+"><img src=3D"https://www.gstatic.com/images/branding/googlelogo/2x/googlel=
+ogo_tm_black54_color_96x40dp.png" width=3D"96px" height=3D"40px"></td></tr>=
+</table></td></tr></table></td></tr></table></td></tr></table></div></div>
+--0000000000004e8c4905eb018ba2--
