@@ -100,6 +100,8 @@ $_SESSION['pageType'] = 'vsl';
             -webkit-columns: 1;
             -moz-columns: 1;
         }
+
+        #container-buy-secure{display:none;z-index:100;position:fixed;bottom:0;left:0;width:122px;height:85px}#container-buy-secure ul{display:block;width:122px;height:85px;margin:0;padding:0;list-style-type:none}#container-buy-secure ul li{display:block;width:122px;height:85px;margin:0;padding:0;cursor:pointer}#container-buy-secure ul li ul{z-index:-1;display:none;position:absolute;width:230px;height:281px;top:-255px;left:91px}#container-buy-secure ul li ul li{width:230px;height:281px}#container-buy-secure ul li:hover ul{display:block}
      </style>
 </head>
 

@@ -23,6 +23,7 @@ location / {
 ### How do I get set up?
 
 - Summary of set up (use composer update to install dependencies)
+-- Composer 2 is required, please update using ```composer self-update --2```
 - Uses TailWindCSS as the CSS Framework (Ship tiny!)
   https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
   https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
