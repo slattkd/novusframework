@@ -131,6 +131,19 @@ $_SESSION['pageType'] = 'vsl';
     </div><!-- end .gabwrap -->
 <?php } ?>
 
+<div id="container-buy-secure">
+    <ul>
+        <li>
+            <img src="https://s3.amazonaws.com/5gm/seal-min.png" width="122" height="85" id="buy-secure-seal" alt="seal" />
+            <ul>
+                <li>
+                    <img src="https://s3.amazonaws.com/5gm/popup.png" width="230" height="281" id="buy-secure-popup" alt="secure" />
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
 <div class="container-md mx-auto" style="background-color: #C90000;">
     <?php video('includes/player', $vidcode, $droptime, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>
 </div>
