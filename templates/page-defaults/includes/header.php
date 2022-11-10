@@ -39,7 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Javascript -->
 <script src="//unpkg.com/alpinejs" defer></script>
-<!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.js"></script>-->
+<!-- <script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery.js"></script> -->
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/jquery-ui.min.js"></script>-->
 <!--<script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/fadeInOut-gm601.js"></script>-->
 <script src="//<?php echo $_SERVER['HTTP_HOST']?>/js/pristine.min.js" defer></script>

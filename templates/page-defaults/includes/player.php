@@ -82,4 +82,9 @@ const overlay = document.getElementById('video-overlay');
 function clickOverlay() {
     overlay.classList.add('invisible');
 }
+
+
+window.addEventListener('click', ()=> {
+    clickOverlay();
+}, {once : true});
 </script>

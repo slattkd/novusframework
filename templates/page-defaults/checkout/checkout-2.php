@@ -1,12 +1,11 @@
 <?php
-error_reporting(1);
-
+error_reporting(0);
+session_start();
 header("Cache-Control: max-age=300, must-revalidate");
 date_default_timezone_set("America/New_York");
-
 $querystring = "";
 if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
-        $querystring = "?" . $_SERVER['QUERY_STRING'];
+	$querystring = "?" . $_SERVER['QUERY_STRING'];
 }
 
 $kount_session = str_replace('.', '', microtime(true));
@@ -62,6 +61,12 @@ if (isset($_GET['blog'])) {
 	$c3 = '';
 }
 
+$clickid = $_COOKIE['cidcookie'];
+if ($clickid == '') {
+	$clickid = @$_GET['cid'];
+}
+
+
 if ($_POST) {
 	$pid = $_POST['pid'];
 	$add1 = $_POST['add1']; //superlube
@@ -75,11 +80,18 @@ if ($_POST) {
 	$add2 = $_SESSION['add2'];
 }
 
+if ($_GET['a'] == 1798) {
+	$mailer = 1;
+	if ($pid == 9) {
+		$pid = 451;
+	}
+}
+
 $_SESSION['pid'] = $pid;
 
 $formID = 1;
 
-
+require_once('../ll/settings.php');
 $s = 1;
 $customLabel = '';
 $untaxableAmount = 0;
@@ -258,7 +270,12 @@ switch ($pid) {
 		$_SESSION['core'] = '3';
 		break;
 }
-
+if ($_GET['a'] == 1798) {
+	if ($pid == 4) {
+		$shippingId = '12';
+		$ship  = '<p class="price-sum"><span id="shipsum"><strike>$7.95</strike> <span class="price-free">FREE!</span></span></p>';
+	}
+}
 switch ($add1) {  //superlube
 	case 0:
 		$superlube = '';
@@ -319,6 +336,34 @@ switch ($add2) {   //37 Sex Positions
 		break;
 }
 
+//Affiliate Pixel - Optimize Bros
+if ($_GET['a'] == '186') {
+	header("Content-Length: " . ob_get_length());
+	header("Connection: close");
+	ob_end_flush();
+	ob_flush();
+	flush();
+
+	if (isset($_GET['s2']) && $_GET['s2'] != '') {
+		$url = 'https://hlrke.voluumtrk2.com/postback?cid=' . $_GET['s2'] . '&txid=GDC-35&et=cart';
+
+		//open connection
+		$ch = curl_init();
+
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch, CURLOPT_URL, $url);
+		//curl_setopt($ch,CURLOPT_POST, count($fields));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+
+		//execute post
+		$result = curl_exec($ch);
+
+		//close connection
+		curl_close($ch);
+	}
+}
+//End Affiliate Pixel		
+
 //Decline Message Logic
 $timenow = date("H:i:s");
 $timeopen = date("08:00:00");
@@ -347,206 +392,10 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 <html lang="en">
 
 <head>
-    <?php template("includes/header"); ?>
-    <title>5GMALE - Secure Checkout</title>
-</head>
+  <?php template("includes/header"); ?>
+  <title>5GMALE - Secure Checkout</title>
 
-<style>
-body {
-	background-color: white;
-}
-    .condensed {
-				font-family: 'Open Sans Condensed', sans-serif;
-			}
-			#btn-one, #btn-two, #btn-three, #btn-four {
-				font-family: HelveticaNeueLTStd-HvCnO,sans-serif;
-				background: #ffffce;
-				background: -moz-linear-gradient(top,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-				background: -webkit-linear-gradient(top,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-				background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffce', endColorstr='#e75f01', GradientType=0);
-				border: solid 3px #994000;
-				font-size: 30px;
-				text-shadow: 0.5px 0.9px 1px #fffa65;
-				color: #10284c;
-				border-radius: 6px;
-				margin-top: 15px;
-				line-height: 1;
-				padding: 18px 12px 18px;
-				font-style: italic;
-				font-weight: bold;
-				margin: 10px 0px 0px 0px;
-				text-align: center;
-				cursor: pointer!important;
-		}
-		.protection-list p {
-    	margin-left: 0;
-		}
-
-		.truck {
-			width: 40px;
-			height: 40px;
-			object-fit: contain;
-		}
-
-		.card.selected {
-			background-color: #fffee6;
-			margin-left: 0.5rem;
-			margin-right: 0.5rem;
-			border: 5px solid #f16521;
-		}
-
-		.card.selected select {
-			display: flex;
-			margin-right: auto;
-			width: auto;
-		}
-
-		.card.selected .bg-gray-100 {
-			background-color: #fdfac3;
-		}
-
-		.card.selected .gradient {
-			display: flex;
-		}
-
-		.card.selected .option-txt {
-			color: #f26522;
-		}
-
-		.button_buy {
-			color: #fefefe;
-			font-size: 36px;
-			line-height: 1.176;
-			text-decoration: none;
-			text-transform: uppercase;
-			font-weight: 600;
-			letter-spacing: 0;
-			border-radius: 4em;
-			padding: 15px 0px;
-			margin: 1em 0;
-			background-color: #62b218 !important;
-			min-width: 290px;
-			min-height: 60px;
-			outline: none !important;
-			display: block;
-			max-width: 245px;
-			margin: 0 auto;
-			text-align: center;
-			border: 1px solid #62b218;
-		}
-		.bogo {
-			position: relative;
-			background-color: #FDD20EFF;
-			margin: 1rem -1rem;
-			padding: 0.5rem;
-		}
-		.bogo span {
-			font-size: 27px;
-			color: #E10600;
-			text-align: center;
-			font-weight: bold;
-		}
-		#bogo-1 img {
-			max-height: 120px;
-			max-width: 30%;
-			position: absolute;
-			bottom: 0px;
-			right: 0px;
-			left: unset;
-			top: unset;
-			z-index: 1;
-			transform: translateY(15%);
-			object-fit: contain;
-		}
-
-		#bogo-1 img.bottle-1 {
-			width: 15%;
-			bottom: 5px;
-		}
-		#bogo-1 img.bottle-3 {
-			width: 25%;
-			bottom: 8px;
-		}
-		#bogo-1 img.bottle-6 {
-			width: 28%;
-			bottom: 4px;
-		}
-		.gradient {
-			background: linear-gradient(to right, rgba(252,244,173,1) 0%, rgba(249,224,101,1) 32%, rgba(246,209,45,1) 51%, rgba(246,210,45,1) 71%, rgba(246,210,45,1) 100%);
-		}
-
-		.protection-list p {
-			background: url(/images/blue-check.png) no-repeat;
-			padding-left: 30px;
-			font-size: 18px;
-			color: #000;
-			line-height: 18px;
-			margin-left: 22px;
-			margin-bottom: 13px;
-		}
-
-		.protect-title {
-			font-size: 30px;
-			line-height: 33px;
-			padding-left: 16px;
-			font-weight: bold;
-			color: #348FD4;
-			padding-top: 3px;
-		}
-		.phone {
-			background-image: url("data:image/svg+xml,%3Csvg width='50px' height='50px' version='1.1' viewBox='0 0 752 752' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m194.68 332.62s-12.801-39.82-5.6875-78.219c5.6875-36.977 25.598-51.199 31.289-55.465 5.6875-2.8438 14.223-8.5312 14.223-8.5312s9.957-9.957 21.332 2.8438c11.379 11.379 63.996 65.418 63.996 65.418s9.957 11.379 1.4219 22.754c-8.5312 9.957-38.398 39.82-38.398 39.82 12.801 48.355 99.551 135.11 147.91 147.91 0 0 29.867-28.441 41.242-36.977 9.957-8.5312 21.332 1.4219 21.332 1.4219s54.043 51.199 66.84 62.574c11.379 12.801 1.4219 21.332 1.4219 21.332s-4.2656 9.957-8.5312 14.223c-2.8438 5.6875-18.488 25.598-55.465 32.711-36.977 5.6875-78.219-7.1094-78.219-7.1094-85.328-34.133-190.57-137.95-224.7-224.7z' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
-			background-size: contain;
-			background-position: center center;
-			background-repeat:no-repeat;
-			width: 35px;
-			height: 35px;
-		}
-            #countdown {
-                padding: 0 16px;
-                border: none;
-            }
-
-            .newbuy {
-                color: #fefefe!important;
-                font-size: 36px!important;
-                line-height: 1.176!important;
-                text-decoration: none!important;
-                text-transform: uppercase!important;
-                font-weight: 700!important;
-                letter-spacing: 0!important;
-                border-radius: 4em!important;
-                padding: 15px 20px!important;
-                margin: 1em 0!important;
-                background-color: #62b218!important;
-                min-width: 400px!important;
-                min-height: 81px!important;
-                outline: none !important;
-                display: flex!important;
-                justify-content: center;
-                text-align: center;
-                margin: 0 auto!important;
-                text-align: center!important;
-                border: 1px solid #62b218!important;
-                margin-bottom: 9px!important;
-            }
-            .protect-title {
-                    font-size: 30px;
-                    line-height: 33px;
-                    padding-left: 16px;
-                    font-weight: bold;
-                    color: #348FD4;
-                    padding-top: 3px;
-            }
-            .protection-list p {
-                    background: url(/images/blue-check.png) no-repeat;
-                    padding-left: 30px;
-                    font-size: 18px;
-                    color: #000;
-                    line-height: 18px;
-                    margin-left: 22px;
-                    margin-bottom: 13px;
-            }
+	<style>
 		#countdown {
 			padding: 0 16px;
 			border: none;
@@ -586,7 +435,7 @@ body {
 		}
 
 		.protection-list p {
-			background: url(/images/blue-check.png) no-repeat;
+			background: url(./assets/images/checkout/blue-check.png) no-repeat;
 			padding-left: 30px;
 			font-size: 18px;
 			color: #000;
@@ -654,15 +503,27 @@ body {
 			transition: all 200ms ease-in-out;
 		}
 	</style>
+</head>
+
+<!-- BODY START HERE -->
+<!-- BODY START HERE -->
+<!-- BODY START HERE -->
+<!-- BODY START HERE -->
+<!-- BODY START HERE -->
+<!-- BODY START HERE -->
 
 <body>
-<div class="flex justify-center flex-nowrap bg-red-900 text-white p-3 text-center text-sm" style="position: sticky;top: 0;z-index: 1000; filter: saturate(1.8)">
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7RRXPJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<div class="flex justify-center flex-nowrap bg-red-900 text-white p-3 text-center text-sm" style="position: sticky;top: 0;z-index: 1000; filter: saturate(1.8)">
 		<div>Your Discount Is Being Held For <span id="countdown-timer" class="ml-2"></span><span id="ms"></span>, Until It Is Given To The Next Man Waiting In Line</div>
 	</div>
 	<header class="flex justify-center bg-lime-600 p-2">
 		<div class="flex flex-wrap bg-white rounded px-4 py-1 text-lime-600 items-center text-center text-lg">
 			<div class="flex flex-nowrap items-center mx-auto">
-				<img class="mr-2 mb-1" src="/images/green-lock-icon.gif" width="20px" height="20px" />
+				<img class="mr-2 mb-1" src="./assets/images/checkout/green-lock-icon.gif" width="20px" height="20px" />
 				<div>SECURE | </div>
 			</div>
 			<div class="mx-auto ml-1 grow">You Are On A 256-Bit Secure Order Page</div>
@@ -673,7 +534,7 @@ body {
 		<div class="content px-5">
 			<div class="flex justify-center w-full">
 				<div class="flex flex-wrap items-center">
-					<img class="mx-auto" src="/images/snm-logo.gif" style="height: 25px" />
+					<img class="mx-auto" src="./assets/images/checkout/snm-logo.gif" style="height: 25px" />
 					<?php if ($csactive == 1) : ?>
 						<div class="flex flex-nowrap mx-auto items-center">
 							<!-- <div class="phone ml-2"></div> -->
@@ -691,7 +552,7 @@ body {
 			</div>
 			<div class="flex flex-col w-full mt-7 -mb-5 lg:w-1/2 lg:ml-auto text-red-700">
 				<h3 class="flex justify-center font-bold text-4xl mb-1">GET STARTED</h3>
-				<div class="flex justify-center"><img src="/images/black-arrow.png" /></div>
+				<div class="flex justify-center"><img src="./assets/images/checkout/black-arrow.png" /></div>
 			</div>
 			<!-- <section class="flex flex-wrap md:flex-nowrap w-full columns-1 md:columns-2 gap-5 mt-5"> -->
 			<section class="grid grid-cols-1 lg:grid-cols-2 gap-x-3 items-stretch mt-5">
@@ -752,7 +613,7 @@ body {
 
 					<div class="flex items-center mb-3">
 						<div class="icon mr-3">
-							<img src="/images/truch-icon-green.png" alt="truck" style="object-fit: contain; width: 100px; height: 100px;">
+							<img src="./assets/images/checkout/truch-icon-green.png" alt="truck" style="object-fit: contain; width: 100px; height: 100px;">
 						</div>
 						<div class="text-lime-500 mt-4">
 							<p class="delivery-truck" style="color: #40a900!important;">
@@ -779,7 +640,7 @@ body {
 					</div>
 					<div class="flex items-center border-t">
 						<div class="icon mr-3">
-							<img src="/images/90-day-green.png" alt="90 day seal" style="object-fit: contain; width: 100px; height: 100px;">
+							<img src="./assets/images/checkout/90-day-green.png" alt="90 day seal" style="object-fit: contain; width: 100px; height: 100px;">
 						</div>
 						<div class="text-lime-500 mt-4" style="color: #40a900!important;">
 							Try 5G Male PLUS <strong>Risk FREE</strong> Until <strong>Thursday, November 10th, 2022</strong> With Our 90-Day Guarantee
@@ -797,13 +658,13 @@ body {
 							<div class="flex flex-col pr-5">
 								<p class="guarantee-txts">
 									I understand that I have 90 days - thats <strong>THREE FULL MONTHS</strong> - to try out 5G Male PLUS and make sure I love it.
-									<img src="/images/90-day-icon.png" alt="90 day guarantee" class="pt-3" style="width: auto; max-width: 200px;float:right">
+									<img src="./assets/images/90-day-icon.png" alt="90 day guarantee" class="pt-3" style="width: auto; max-width: 200px;float:right">
 									And any time I want, I can call support at <strong>1-800-251-9316</strong> or email <strong>support@5gmale.com</strong>, 24 hours a day, 7 days a week to request a refund, with no questions asked and no hassles!<br><strong id="guarantee">GUARANTEED BY:</strong>
 								</p>
-								<img src="/images/ryan-sign.png" alt="ryan signature" style="max-width: 200px;mix-blend-mode: multiply;">
+								<img src="./assets/images/ryan-sign.png" alt="ryan signature" style="max-width: 200px;">
 							</div>
 							<!-- <div class="flex flex-col justify-center mx-auto mb-4">
-							<img src="/images/90-day-icon.png" alt="90 day guarantee" style="width: auto; max-width: 200px;">
+							<img src="./assets/images/90-day-icon.png" alt="90 day guarantee" style="width: auto; max-width: 200px;">
 							</div> -->
 						</div>
 						<div class="flex justify-center">
@@ -813,7 +674,7 @@ body {
 					<div class="w-auto pl-5  my-5 mx-auto">
 						<div class="flex flex-col w-auto protection-section">
 							<div class="flex mb-2" style="width:58px; height: auto">
-								<img src="/images/blue-shield.png" style="width: 58px;height: 70px;">
+								<img src="./assets/images/blue-shield.png" style="width: 58px;height: 70px;">
 								<p class="protect-title">BUYER<br>PROTECTION</p>
 							</div>
 
@@ -827,7 +688,7 @@ body {
 						</div>
 					</div>
 				</div>
-                <div class="w-full my-4 md:my-0"> 
+				<div class="w-full my-4 md:my-0">
 
 					<div class="flex flex-col bg-gray-100 border px-4">
 						<div class="flex justify-center text-2xl font-semibold my-4">Enter <span class="underline font-bold mx-2">BILLING</span> Address</div>
@@ -1067,11 +928,11 @@ body {
 
 								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="/tailwind/terms-t.php">Terms and Conditions</a></p>
 								<div class="flex w-full justify-center">
-									<button name="next-button" id="next-button" type="submit" class="w-full newbuy text-3xl" onclick="validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
+									<button name="next-button" id="next-button" type="submit" class="w-full newbuy text-3xl" onclick="return validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
 								</div>
 
 								<div class="flex w-full justify-center items-center text-center" style="color:#3fa900">
-									<div><img src="/images/lock-green-step2.png" alt="lock icon"></div>
+									<div><img src="./assets/images/checkout/lock-green-step2.png" alt="lock icon"></div>
 									<div class="ml-2 text-lime-600 text-xl font-semibold"> 256-BIT Secure Transaction</div>
 								</div>
 								<div class="flex w-full text-center justify-center mt-3">
@@ -1085,7 +946,7 @@ body {
 					</div>
 					<div class="flex justify-center my-4 mt-6">
 						<div class="flex w-full">
-							<img class="w-auto mx-auto" src="/images/norton-guarantee-large.gif" alt="Norton Shopping Guarantee">
+							<img class="w-auto mx-auto" src="./assets/images/checkout/norton-guarantee-large.gif" alt="Norton Shopping Guarantee">
 						</div>
 					</div>
 					<div class="flex justify-center my-3">
@@ -1105,13 +966,15 @@ body {
 						</div>
 					</div>
 
+
+
 				</div>
 			</section>
 
 			<div class="flex flex-col w-full mt-11">
 				<p class="text-center text-sm text-gray-400">Certified As Secure &amp; Trustworthy By The Leading Companies:</p>
 				<div class="flex mt-3">
-					<img class="mx-auto w-full" src="/images/security-icons.gif" style="max-width: 800px;">
+					<img class="mx-auto w-full" src="./assets/images/security-icons.gif" style="max-width: 800px;">
 				</div>
 			</div>
 
@@ -1123,26 +986,36 @@ body {
 		</div>
 	</div>
 
+
+
 </body>
-
-
-
-
+<!-- BODY CLOSE HERE -->
+<!-- BODY CLOSE HERE -->
+<!-- BODY CLOSE HERE -->
+<!-- BODY CLOSE HERE -->
+<!-- BODY CLOSE HERE -->
+<!-- BODY CLOSE HERE -->
 
 
 <?php
 // declare modal variables (requires basic_modal.js)
-$modal_id = 'mouseModal';
-$modal_title = "WAIT! DO NOT LEAVE THIS PAGE!";
+$modal_id = 'timerModal';
+$modal_title = "IMPORTANT:";
 $modal_body = '
-<div class="modalsubheader text-center my-2">IT COULD CAUSE ERRORS IN YOUR ORDER</div>
-<div class="text-sm text-center my-2">Do not hit the back button or close your browser.
-<br>Click <span class="font-bold">"FINISH CUSTOMIZING MY ORDER"</span> below and <span style="text-decoration: underline;font-weight:bold;">make your decision on this page</span>.</div>
-';
-$modal_footer = '<button id="modalbutton" type="button" class="modalbutton w-full bg-blue-600 p-3 rounded text-white">FINISH CUSTOMIZING MY ORDER</button>';
-modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer);
+	<h1 class="font-bold text-2xl modal-headline">Time Has Expired!</h1>
+	<p>Your 5G Male discount is no longer being held! Please <strong>secure your discount package now</strong> before your spot is given away to the next man in line...</p>
+	';
+$modal_footer = '<button id="modalbutton" class="clickable w-full bg-blue-600 p-3 rounded text-white" aria-hidden="true">YES, Complete My Order!</button>';
+include($_SERVER['DOCUMENT_ROOT'] . '/tailwind/shared/components/basic_modal.php');
 ?>
 
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/vendor/jquery.fancybox.pack.js"></script>
+<script src="js/ouibounce.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script>
 	var hasScrolledToError = false;
 	window.onload = () => {
@@ -1246,7 +1119,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 
 			document.querySelector('.error-missing').remove();
 			var firstName = document.getElementById('FirstName');
-			console.log('wtf is this', $);
 			if ($.trim(firstName.value) == "") {
 				ok = false;
 				addErrorMessageAbove(firstName, "Please enter a valid first name");
@@ -1428,7 +1300,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 			console.log("count down error: container does not exist: " + strContainerID +
 				"\nmake sure html element with this ID exists");
 		} else {
-			$_countDownContainer = document.getElementById(strContainerID);
+			$_countDownContainer = $(document.getElementById(strContainerID));
 			//the ATimer below works with time values in milliseconds
 			//the "20" will update display ever 20 milliseconds, as fast as screen refreshes
 			$_countDownContainer.classList.remove("warn");
@@ -1565,13 +1437,13 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 	var _untaxable = <?php echo $untaxableAmount; ?>;
 
 	function solveprice() {
-		// var subtotal = parseFloat(document.getElementById('subtotalPrice').textContent).toFixed(2);
+		var subtotal = parseFloat(document.getElementById('subtotalPrice').textContent).toFixed(2);
 		var superLube = 0;
-		if (document.getElementById('superlube')) {
+		if (document.getElementById('superlube').length) {
 			superLube = parseFloat(document.getElementById('superlube').textContent);
 		}
 		var sexPositions = 0;
-		if (document.getElementById('sexpositions')) {
+		if (document.getElementById('sexpositions').length) {
 			sexPositions = parseFloat(document.getElementById('sexpositions').textContent);
 		}
 		var shippingCost = 0;
@@ -1645,7 +1517,13 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		}
 
 	}
+</script>
 
+
+
+<script type="text/javascript" src="js/stop-pop.min2.js"></script>
+
+<script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function() {
 		document.getElementById('applyCoupon').addEventListener('click', function() {
 			var couponText = document.getElementById('couponCode').value;
@@ -1717,10 +1595,5 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 	/*]]>*/
 </script>
 <!-- End of gothamclub Zendesk Widget script -->
-
-<?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-} ?>
 
 </html>

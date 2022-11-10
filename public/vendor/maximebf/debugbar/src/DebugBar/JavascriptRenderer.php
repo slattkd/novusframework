@@ -954,9 +954,9 @@ class JavascriptRenderer
             $html .= $content . "\n";
         }
 
-        // if ($this->enableJqueryNoConflict && !$this->useRequireJs) {
-        //     $html .= '<script type="text/javascript"' . $nonce . '>jQuery.noConflict(true);</script>' . "\n";
-        // }
+        if ($this->enableJqueryNoConflict && !$this->useRequireJs) {
+            $html .= '<script type="text/javascript"' . $nonce . '>jQuery.noConflict(true);</script>' . "\n";
+        }
 
         return $html;
     }

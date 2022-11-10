@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if( isset($_SESSION['assessment']) ) {
     $assessment = unserialize($_SESSION['assessment']);
     if( isset($assessment['customer_email']) && filter_var($assessment['customer_email'], FILTER_VALIDATE_EMAIL) ) {
@@ -41,11 +42,11 @@ if ((@$_SESSION['s1'] == '335059') || (@$_SESSION['s1'] == '704154')) {
 
 
 //Setup Countdown Timer
-if (!isset($_SESSION['timer-gm'])) {
-    $_SESSION['timer-gm'] = time();
-}
 $timerCheck = time() - $_SESSION['timer-gm'];
 if ($timerCheck < 0) {
+    $_SESSION['timer-gm'] = time();
+}
+if (!isset($_SESSION['timer-gm'])) {
     $_SESSION['timer-gm'] = time();
 }
 $timerDelay = time() - $_SESSION['timer-gm'];
@@ -82,130 +83,147 @@ if (in_array($dayname, $daysclosed)) {
         <title>5GMALE - Secure Order</title>
 
         <style>
-            .condensed {
-                font-family: 'Open Sans Condensed', sans-serif;
+            body {
+                background-color: white;
             }
             #btn-one, #btn-two, #btn-three, #btn-four {
-                font-family: HelveticaNeueLTStd-HvCnO,sans-serif;
-                background: #ffffce;
-                background: -moz-linear-gradient(top,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-                background: -webkit-linear-gradient(top,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-                background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffce', endColorstr='#e75f01', GradientType=0);
-                border: solid 3px #994000;
-                font-size: 30px;
-                text-shadow: 0.5px 0.9px 1px #fffa65;
-                color: #10284c;
-                border-radius: 6px;
-                margin-top: 15px;
-                line-height: 1;
-                padding: 18px 12px 18px;
-                font-style: italic;
-                font-weight: bold;
-                margin: 10px 0px 0px 0px;
+				font-family: HelveticaNeueLTStd-HvCnO,sans-serif;
+				background: #ffffce;
+				background: -moz-linear-gradient(top,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
+				background: -webkit-linear-gradient(top,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
+				background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffce', endColorstr='#e75f01', GradientType=0);
+				border: solid 3px #994000;
+				font-size: 30px;
+				text-shadow: 0.5px 0.9px 1px #fffa65;
+				color: #10284c;
+				border-radius: 6px;
+				margin-top: 15px;
+				line-height: 1;
+				padding: 18px 12px 18px;
+				font-style: italic;
+				font-weight: bold;
+				margin: 10px 0px 0px 0px;
+				text-align: center;
+				cursor: pointer!important;
+		    }
+		    .protection-list p {
+                margin-left: 0;
+            }
+            .truck {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+            }
+            .card.selected {
+                background-color: #fffee6;
+                                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                border: 5px solid #f16521;
+            }
+            .card.selected select {
+                display: flex;
+                margin-right: auto;
+                width: auto;
+            }
+            .card.selected .bg-gray-100 {
+                background-color: #fdfac3;
+            }
+            .card.selected .gradient {
+                display: flex;
+            }
+            .card.selected .option-txt {
+                color: #f26522;
+            }
+            .button_buy {
+                color: #fefefe;
+                font-size: 36px;
+                line-height: 1.176;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 600;
+                letter-spacing: 0;
+                border-radius: 4em;
+                padding: 15px 0px;
+                margin: 1em 0;
+                background-color: #62b218 !important;
+                min-width: 290px;
+                min-height: 60px;
+                outline: none !important;
+                display: block;
+                max-width: 245px;
+                margin: 0 auto;
                 text-align: center;
-                cursor: pointer!important;
-        }
-        .protection-list p {
-        margin-left: 0;
-        }
+                border: 1px solid #62b218;
+            }
+            .bogo {
+                position: relative;
+                background-color: #FDD20EFF;
+                margin: 1rem -1rem;
+                padding: 0.5rem;
+            }
+            .bogo span {
+                font-size: 27px;
+                color: #E10600;
+                text-align: center;
+                font-weight: bold;
+            }
+            #bogo-1 img {
+                max-height: 120px;
+                max-width: 30%;
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                left: unset;
+                top: unset;
+                z-index: 1;
+                transform: translateY(15%);
+                object-fit: contain;
+            }
+            #bogo-1 img.bottle-1 {
+                width: 15%;
+                bottom: 5px;
+            }
+            #bogo-1 img.bottle-3 {
+                width: 25%;
+                bottom: 8px;
+            }
+            #bogo-1 img.bottle-6 {
+                width: 28%;
+                bottom: 4px;
+            }
+            .gradient {
+                background: linear-gradient(to right, rgba(252,244,173,1) 0%, rgba(249,224,101,1) 32%, rgba(246,209,45,1) 51%, rgba(246,210,45,1) 71%, rgba(246,210,45,1) 100%);
+            }
+            .protection-list p {
+                background: url(https://s3.amazonaws.com/5gm/checkout/blue-check.png) no-repeat;
+                padding-left: 30px;
+                font-size: 18px;
+                color: #000;
+                line-height: 18px;
+                margin-left: 22px;
+                margin-bottom: 13px;
+            }
+            .protect-title {
+                font-size: 30px;
+                line-height: 33px;
+                padding-left: 16px;
+                font-weight: bold;
+                color: #348FD4;
+                padding-top: 3px;
+            }
+            .phone {
+                background-image: url("data:image/svg+xml,%3Csvg width='50px' height='50px' version='1.1' viewBox='0 0 752 752' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m194.68 332.62s-12.801-39.82-5.6875-78.219c5.6875-36.977 25.598-51.199 31.289-55.465 5.6875-2.8438 14.223-8.5312 14.223-8.5312s9.957-9.957 21.332 2.8438c11.379 11.379 63.996 65.418 63.996 65.418s9.957 11.379 1.4219 22.754c-8.5312 9.957-38.398 39.82-38.398 39.82 12.801 48.355 99.551 135.11 147.91 147.91 0 0 29.867-28.441 41.242-36.977 9.957-8.5312 21.332 1.4219 21.332 1.4219s54.043 51.199 66.84 62.574c11.379 12.801 1.4219 21.332 1.4219 21.332s-4.2656 9.957-8.5312 14.223c-2.8438 5.6875-18.488 25.598-55.465 32.711-36.977 5.6875-78.219-7.1094-78.219-7.1094-85.328-34.133-190.57-137.95-224.7-224.7z' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
+                background-size: contain;
+                background-position: center center;
+                background-repeat:no-repeat;
+                width: 35px;
+                height: 35px;
+            }
 
-        .truck {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .card.selected {
-            background-color: #fffee6;
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-            border: 5px solid #f16521;
-        }
-
-        .card.selected select {
-            display: flex;
-            margin-right: auto;
-            width: auto;
-        }
-
-        .card.selected .bg-gray-100 {
-            background-color: #fdfac3;
-        }
-
-        .card.selected .gradient {
-            display: flex;
-        }
-
-        .card.selected .option-txt {
-            color: #f26522;
-        }
-
-        .button_buy {
-            color: #fefefe;
-            font-size: 36px;
-            line-height: 1.176;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 0;
-            border-radius: 4em;
-            padding: 15px 0px;
-            margin: 1em 0;
-            background-color: #62b218 !important;
-            min-width: 290px;
-            min-height: 60px;
-            outline: none !important;
-            display: block;
-            max-width: 245px;
-            margin: 0 auto;
-            text-align: center;
-            border: 1px solid #62b218;
-        }
-        .bogo {
-            position: relative;
-            background-color: #FDD20EFF;
-            margin: 1rem -1rem;
-            padding: 0.5rem;
-        }
-        .bogo span {
-            font-size: 27px;
-            color: #E10600;
-            text-align: center;
-            font-weight: bold;
-        }
-        #bogo-1 img {
-            max-height: 120px;
-            max-width: 20%;
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            left: unset;
-            top: unset;
-            z-index: 1;
-            transform: translateY(15%);
-        }
-        .gradient {
-            background: linear-gradient(to right, rgba(252,244,173,1) 0%, rgba(249,224,101,1) 32%, rgba(246,209,45,1) 51%, rgba(246,210,45,1) 71%, rgba(246,210,45,1) 100%);
-        }
-
-        .protection-list p {
-            background: url(/images/blue-check.png) no-repeat;
-            padding-left: 30px;
-            font-size: 18px;
-            color: #000;
-            line-height: 18px;
-            margin-left: 22px;
-            margin-bottom: 13px;
-        }
-
-        .protect-title {
-            font-size: 30px;
-            line-height: 33px;
-            padding-left: 16px;
-            font-weight: bold;
-            color: #348FD4;
-            padding-top: 3px;
+        .check-list {
+            background: transparent;
+            padding-left: 0px;
         }
         </style>
 
@@ -222,181 +240,186 @@ if (in_array($dayname, $daysclosed)) {
             </span>
         </div>
     </header>
-    <div class="container-md mx-auto py-8" style="max-width: 960px">
+    <div class="container container-md mx-auto py-8" style="max-width: 960px !important">
         <div class="content px-5">
-            <section class="flex flex-column w-full flex-wrap">
-                <div class="flex justify-center w-full">
-                    <div class="flex flex-wrap">
-                        <img class="mx-auto" src="/images/snm-logo.gif" style="height: 30px"/>
-                        <?php if($csactive == 1): ?>
-                            <div class="flex flex-nowrap mx-auto">
-                            <img src="/images/phone.png" alt="phone" style="margin-left: -8px; height: 30px">
-                            <span style="font-size: 18px;">Call <a href="tel:1-800-214-5604">1-800-214-5604</a> Now To Speak To A Product Specialist!</span>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <div class="flex flex-wrap md:flex-nowrap w-full mt-11 md:pl-12">
-                    <div class="flex-none w-full md:w-auto">
-                    <img class="w-auto mx-auto" src="/images/bottle-image-90days.gif" alt="">
-                    </div>
-
-                    <div class="flex grow lg:pl-12">
-                        <div class="flex flex-col">
-                            <div class="text-center md:-ml-28 mb-2">
-                                <h1 class="text-red-700 text-5xl font-bold condensed">Step 1: Get My Discount Now</h1>
-                            </div>
-                            <div class="text-center md:-ml-28 mb-3 text-xl condensed">
-                                <h2 style="margin-top: 0">The More You Buy The More You Save!</h2>
-                            </div>
-                            <div class="flex md:justify-start flex-wrap check-list">
-                                <p class="width-auto mx-auto mb-2 md:w-1/2">Get Harder, Longer Lasting Erections</p>
-                                <p class="w-auto mx-auto mb-2 md:w-1/2">Feel Incredible In Bed</p>
-                                <p class="w-auto mx-auto mb-2 md:w-1/2">Regain Energy, Stamina, & Sex Drive</p>
-                                <p class="w-auto mx-auto mb-2 md:w-1/2">Go All Night & Drive Any Woman Wild!</p>
-                            </div>
-                            <div class="flex justify-around flex-wrap mt-5 items-center text-left text-center md:text-left">
-                                <div class="w-full md:w-1/2 stock-container">
-                                    <div class="text-sm">
-                                        <strong>AVAILABILITY:</strong> <span class="bg-green-600 text-white px-2 py-1">IN STOCK!</span>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-1/2 font-bold">
-                                    <div class="flex flex-wrap items-center justify-center md:justify-start">
-                                        <span class="text-s mr-2" style="white-space: no-wrap">Your spot is held for:</span>
-                                        <div class="flex">
-                                            <span id="countdown" class="border border-2 border-red-600 font-red-600 px-2 mr-2"></span>
-                                            <span id="ms"></span>
-                                            <img src="/images/red-clock.gif" alt="clock" style="object-fit: contain;" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col w-full mt-0 md:-mt-12 mb-0">
-                    <h3 class="flex justify-center font-extrabold text-3xl mb-0 condensed">Choose Your Discount</h3>
-                    <div class="flex justify-center mb-1 text-green-500 text-lg items-center">
-                        <img class="mr-2 truck" src="/images/truck-green.gif" />
-                        Ultra-Fast Shipping Within Just 12 Hours On Week Days
-                    </div>
-                    <div class="flex justify-center"><img src="/images/black-arrow.gif" /></div>
-                </div>
-            </section>
-            <section id="cta" class="flex flex-col w-full flex-wrap justify-center mt-2">
-                <!-- card one -->
-                <div class="card flex flex-wrap border border-gray-300 mx-10">
-                    <div class="w-full md:w-auto grow flex flex-col justify-between p-4">
-                        <p class="option-txt text-gray-400 text-lg font-bold">STARTER OPTION</p>
-                        <p class="text-4xl font-bold" style="color:#000">1 MONTH SUPPLY</p>
-                        <div id="bogo-1" class="bogo pl-5">
-                            <span>LIMITED TIME OFFER:</span>
-                            <p>1 FREE BOTTLE WITH PURCHASE!</p>
-                            <img src="/images/5GM1x-m.png" alt="1 bottle" class="hidden sm:block">
-                        </div>
-                        <div class="flex justify-between text-xl">
-                            <p class="text-gray-400"><strike>Retail: $180.00</strike></p>
-                            <p>You Pay $69.95</p>
-                        </div>
-                        <p class="text-3xl text-red-500 font-semibold my-2">Save $110.05 Today!</p>
-                        <select name="pmt_plan" id="select-ship" data-ce-key="81" class="border px-2 py-2 hidden">
-                            <option value="4" data-ce-key="82">90 Day Auto-Refill</option>
-                            <option value="3" data-ce-key="83">One-Time Purchase</option>
-                        </select>
-                    </div>
-                    <div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
-                        <div class="text-center w-full text-green-500 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
-                        <form action="/checkout/onepage.php" method="POST">
-                            <input type="hidden" id="pid1" name="pid" value="952">
-                            <input type="hidden" class="add1" name="add1" value="0">
-                            <input type="hidden" class="add2" name="add2" value="0">
-                            <input class="button_buy" type="submit" value="CHOOSE">
-                        </form>
-                        <p class="text-xl font-bold text-green-500 mt-3"><span class="text-red-400">61% OFF</span> + $6.95 USA Shipping</p>
-                        <p class="text-gray-600">(With 30-Day Auto Ship)</p>
-                        <div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
-                            <img class="mr-2" src="/images/head-icon.png" alt="person icon">
-                            <span>63 other men grabbed this deal today</span>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- card two -->
-                <div class="card selected flex flex-wrap border-2 border-gray-300 mx-10">
-                    <div class="w-full md:w-auto grow flex flex-col justify-between p-4">
-                        <p class="option-txt text-gray-400 text-lg font-bold">MOST POPULAR</p>
-                        <p class="text-4xl font-bold" style="color:#000">3 MONTH SUPPLY</p>
-                        <div id="bogo-1" class="bogo pl-5">
-                            <span>LIMITED TIME OFFER:</span>
-                            <p>3 FREE BOTTLES WITH PURCHASE!</p>
-                            <img src="/images/5GM3x-m.png" alt="3 bottle" class="hidden sm:block">
-                        </div>
-                        <div class="flex justify-between text-xl">
-                            <p class="text-gray-400"><strike>Retail: $540.00</strike></p>
-                            <p>You Pay $179.00</p>
-                        </div>
-                        <p class="text-3xl text-red-500 font-semibold my-2">Save $361.00 Today!</p>
-                        <select name="pmt_plan" id="select-ship" data-ce-key="81" class="border px-2 py-2 hidden">
-                            <option value="4" data-ce-key="82">90 Day Auto-Refill</option>
-                            <option value="3" data-ce-key="83">One-Time Purchase</option>
-                        </select>
-                    </div>
-                    <div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
-                        <div class="text-center w-full text-green-500 font-bold text-2xl">JUST $59.67 PER BOTTLE!</div>
-                        <form action="/checkout/onepage.php" method="POST">
-                            <input type="hidden" id="pid2" name="pid" value="954">
-                            <input type="hidden" class="add1" name="add1" value="0">
-                            <input type="hidden" class="add2" name="add2" value="0">
-                            <input class="button_buy" type="submit" value="CHOOSE">
-                        </form>
-                        <p class="text-xl font-bold text-green-500 mt-3"><span class="text-red-400">67% OFF</span> + FREE Shipping</p>
-                        <p class="text-gray-600">(With 30-Day Auto Ship)</p>
-                        <div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
-                            <img class="mr-2" src="/images/head-icon.png" alt="person icon">
-                            <span>63 other men grabbed this deal today</span>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- card three -->
-                <div class="card flex flex-wrap border border-gray-300 mx-10">
-                    <div class="w-full md:w-auto grow flex flex-col justify-between p-4">
-                        <p class="option-txt text-gray-400 text-lg font-bold">BIGGEST DISCOUNT</p>
-                        <p class="text-4xl font-bold" style="color:#000">6 MONTH SUPPLY</p>
-                        <div id="bogo-1" class="bogo pl-5">
-                            <span>LIMITED TIME OFFER:</span>
-                            <p>6 FREE BOTTLES WITH PURCHASE!</p>
-                            <img src="/images/5GM6x-m.png" alt="6 bottle" class="hidden sm:block">
-                        </div>
-                        <div class="flex justify-between text-xl">
-                            <p class="text-gray-400"><strike>Retail: $1080.00</strike></p>
-                            <p>You Pay $297.00</p>
-                        </div>
-                        <p class="text-3xl text-red-500 font-semibold my-2">Save $783.00 Today!</p>
-                        <select name="pmt_plan" id="select-ship" data-ce-key="81" class="border px-2 py-2 hidden">
-                            <option value="4" data-ce-key="82">90 Day Auto-Refill</option>
-                            <option value="3" data-ce-key="83">One-Time Purchase</option>
-                        </select>
-                    </div>
-                    <div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
-                        <div class="text-center w-full text-green-500 font-bold text-2xl">JUST $49.50 PER BOTTLE!</div>
-                        <form action="/checkout/onepage.php.php" method="POST">
-                            <input type="hidden" id="pid3" name="pid" value="955">
-                            <input type="hidden" class="add1" name="add1" value="0">
-                            <input type="hidden" class="add2" name="add2" value="0">
-                            <input class="button_buy" type="submit" value="CHOOSE">
-                        </form>
-                        <p class="text-xl font-bold text-green-500 mt-3"><span class="text-red-400">72% OFF</span> + FREE Shipping</p>
-                        <p class="text-gray-600">(With 30-Day Auto Ship)</p>
-                        <div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
-                            <img class="mr-2" src="/images/head-icon.png" alt="person icon">
-                            <span>63 other men grabbed this deal today</span>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
+        <section class="flex flex-column w-full flex-wrap">
+				<div class="flex justify-center w-full text-center" style="z-index: 10">
+					<div class="flex flex-wrap items-center">
+						<img class="mx-auto" src="https://s3.amazonaws.com/5gm/checkout/snm-logo.gif" style="height: 25px"/>
+						<?php if($csactive == 1): ?>
+							<div class="flex justify-center text-center flex-nowrap mx-auto items-center w-full">
+							<!-- <div class="phone"></div> -->
+							<img class="ml-2" src="../images/phone.png" alt="phone icon">
+							<span class="" style="font-size: 18px;">Call <a href="tel:1-800-214-5604">1-800-214-5604</a> Now To Speak To A Product Specialist!</span>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
+				<div class="flex flex-wrap md:flex-nowrap w-full mt-4">
+					<div class="flex-none w-full md:w-auto mt-0 md:-mt-11">
+					<img class="w-auto mx-auto" src="../images/bottle-image-90days.gif" alt="">
+					</div>
+					
+					<div class="flex grow lg:pl-12">
+						<div class="flex flex-col mx-auto">
+							<div class="text-center md:-ml-28 mb-2">
+								<h1 class="text-red-700 text-5xl font-bold condensed">Step 1: Get My Discount Now</h1>
+							</div>
+							<div class="text-center md:-ml-28 mb-3 text-3xl condensed">
+								<h2 style="margin-top: 0">The More You Buy The More You Save!</h2>
+							</div>
+							<div class="flex flex-col md:flex-row w-auto mx-auto flex-wrap check-list my-4 md:my-0">
+								<p class="flex items-center mb-2 md:w-1/2">
+								 <img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
+								Get Harder, Longer Lasting Erections</p>
+								<p class="flex items-center mb-2 md:w-1/2">
+								<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
+								Feel Incredible In Bed</p>
+								<p class="flex items-center mb-2 md:w-1/2">
+								<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
+								Regain Energy, Stamina, & Sex Drive</p>
+								<p class="flex items-center mb-2 md:w-1/2">
+								<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
+								Go All Night & Drive Any Woman Wild!</p>
+							</div>
+							<div class="flex justify-around flex-wrap mt-0 items-center text-left text-center md:text-left">
+								<div class="w-full md:w-1/2 stock-container">
+									<div class="text-sm">
+										<strong>AVAILABILITY:</strong> <span class="bg-lime-600 text-white px-2 py-1">IN STOCK!</span>
+									</div>
+								</div>
+								<div class="w-full md:w-1/2 font-bold">
+									<div class="flex items-center justify-center md:justify-start mt-2">
+										<span class="text-s mr-2" style="white-space: nowrap">Your spot is held for:</span>
+										<div class="flex">
+											<span id="countdown" class="border border-2 border-red-600 text-red-600 text-2xl px-4 py-1 mr-2">00:<span id="ms">00</span></span>
+											<img src="https://s3.amazonaws.com/5gm/checkout/red-clock.gif" alt="clock" style="object-fit: contain;" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col w-full mt-6 md:-mt-4 mb-0">
+					<h3 class="flex justify-center font-extrabold text-4xl mb-0 condensed">Choose Your Discount</h3>
+					<div class="flex justify-center mb-1 text-lime-600 text-lg items-center">
+						<img class="mr-2 truck" src="https://s3.amazonaws.com/5gm/checkout/truck-green.gif" />
+						Ultra-Fast Shipping Within Just 12 Hours On Week Days
+					</div>
+					<div class="flex justify-center"><img src="https://s3.amazonaws.com/5gm/checkout/black-arrow.gif" /></div>
+				</div>
+			</section>
+            <section id="cta" class="flex flex-col w-full flex-wrap justify-center mt-2 discount-section">
+				<!-- card one -->
+				<div class="card flex flex-wrap md:flex-nowrap border border-gray-300 mx-10">
+					<div class="w-full md:w-auto grow flex flex-col justify-between p-4">
+						<p class="option-txt text-gray-400 text-lg font-bold">STARTER OPTION</p>
+						<p class="text-4xl font-bold" style="color:#000">1 MONTH SUPPLY</p>
+						<div id="bogo-1" class="bogo pl-5">
+							<span>LIMITED TIME OFFER:</span> 
+							<p>1 FREE BOTTLE WITH PURCHASE!</p>
+                            <img src="../../../images/5GM1x-m.png" alt="1 bottle" class="hidden sm:block bottle-1">
+						</div>
+						<div class="flex justify-between text-xl">
+							<p class="text-gray-400"><strike>Retail: $180.00</strike></p>
+							<p>You Pay $69.95</p>
+						</div>
+						<p class="text-3xl text-red-500 font-semibold my-2">Save $110.05 Today!</p>
+						<select name="pmt_plan" id="select-ship" data-ce-key="81" class="border px-2 py-2 hidden">
+							<option value="4" data-ce-key="82">90 Day Auto-Refill</option>
+							<option value="3" data-ce-key="83">One-Time Purchase</option>
+						</select>
+					</div>
+					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
+						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
+						<form action="/checkout/onepage.php" method="POST">
+							<input type="hidden" id="pid1" name="prodtype" value="1">
+							<input type="hidden" class="add1" name="add1" value="0">
+							<input type="hidden" class="add2" name="add2" value="0">
+							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+						</form>
+						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">61% OFF</span> + $6.95 USA Shipping</p>
+						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
+						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
+							<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/head-icon.png" alt="person icon">
+							<span>63 other men grabbed this deal today</span>
+						</div>
+					</div>
+				</div>
+				<!-- card two -->
+				<div class="card selected flex flex-wrap md:flex-nowrap border-2 border-gray-300 mx-10">
+					<div class="w-full md:w-auto grow flex flex-col justify-between p-4">
+						<p class="option-txt text-gray-400 text-lg font-bold">MOST POPULAR</p>
+						<p class="text-4xl font-bold" style="color:#000">3 MONTH SUPPLY</p>
+						<div id="bogo-1" class="bogo pl-5">
+							<span>LIMITED TIME OFFER:</span> 
+							<p>3 FREE BOTTLES WITH PURCHASE!</p>
+							<img src="../../../images/5GM3x-m.png" alt="3 bottle" class="hidden sm:block bottle-3">
+						</div>
+						<div class="flex justify-between text-xl">
+							<p class="text-gray-400"><strike>Retail: $540.00</strike></p>
+							<p>You Pay $179.00</p>
+						</div>
+						<p class="text-3xl text-red-500 font-semibold my-2">Save $361.00 Today!</p>
+						<select name="pmt_plan" id="select-ship" data-ce-key="81" class="border px-2 py-2 hidden">
+							<option value="4" data-ce-key="82">90 Day Auto-Refill</option>
+							<option value="3" data-ce-key="83">One-Time Purchase</option>
+						</select>
+					</div>
+					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
+						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $59.67 PER BOTTLE!</div>
+						<form action="/checkout/onepage.php" method="POST">
+							<input type="hidden" id="pid1" name="prodtype" value="1">
+							<input type="hidden" class="add1" name="add1" value="0">
+							<input type="hidden" class="add2" name="add2" value="0">
+							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+						</form>
+						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">67% OFF</span> + FREE Shipping</p>
+						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
+						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
+							<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/head-icon.png" alt="person icon">
+							<span>63 other men grabbed this deal today</span>
+						</div>
+					</div>
+				</div>
+				<!-- card three -->
+				<div class="card flex flex-wrap md:flex-nowrap border border-gray-300 mx-10">
+					<div class="w-full md:w-auto grow flex flex-col justify-between p-4">
+						<p class="option-txt text-gray-400 text-lg font-bold">BIGGEST DISCOUNT</p>
+						<p class="text-4xl font-bold" style="color:#000">6 MONTH SUPPLY</p>
+						<div id="bogo-1" class="bogo pl-5">
+							<span>LIMITED TIME OFFER:</span> 
+							<p>6 FREE BOTTLES WITH PURCHASE!</p>
+							<img src="../../../images/5GM6x-m.png" alt="6 bottle" class="hidden sm:block bottle-6">
+						</div>
+						<div class="flex justify-between text-xl">
+							<p class="text-gray-400"><strike>Retail: $1080.00</strike></p>
+							<p>You Pay $297.00</p>
+						</div>
+						<p class="text-3xl text-red-500 font-semibold my-2">Save $783.00 Today!</p>
+						<select name="pmt_plan" id="select-ship" data-ce-key="81" class="border px-2 py-2 hidden">
+							<option value="4" data-ce-key="82">90 Day Auto-Refill</option>
+							<option value="3" data-ce-key="83">One-Time Purchase</option>
+						</select>
+					</div>
+					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
+						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $49.50 PER BOTTLE!</div>
+						<form action="/checkout/onepage.php" method="POST">
+							<input type="hidden" id="pid1" name="prodtype" value="1">
+							<input type="hidden" class="add1" name="add1" value="0">
+							<input type="hidden" class="add2" name="add2" value="0">
+							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+						</form>
+						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">72% OFF</span> + FREE Shipping</p>
+						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
+						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
+							<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/head-icon.png" alt="person icon">
+							<span>63 other men grabbed this deal today</span>
+						</div>
+					</div>
+				</div>
+			</section>
             <div class="flex justify-center mt-11">
                 <p class="text-3xl text-center mb-4 condensed">
                 Get A Special <strong>One-Time Only Discount</strong> On These Recommended Upgrades & Give Her <strong>Even Better Orgasms</strong>
@@ -418,7 +441,7 @@ if (in_array($dayname, $daysclosed)) {
                 </div>
                 <div class="flex flex-wrap p-4">
                     <div class="w-1/6 text-center">
-                        <input class="addOns" type="checkbox" name="add2" id="addon2" value="1" onchange="add2()">
+                        <input class="addOns" type="checkbox" name="add2" id="addon2" value="1">
                     </div>
                     <div class="w-5/6">
                     <p><strong>37 Sex Positions That Give Her Explosive Orgasms.</strong> This X-rated blackbook of sex positions will show you the BEST positions to make your girl orgasm HARD, including positions for G-Spot AND squirting orgasms. Most men have no idea about these positions, so women will be THRILLED when you try them. This master class comes complete with video demonstrations on real girls, so you can see step-by-step exactly what to do and have your girl screaming your name in bed all night! You get HALF off it you add it to your order today. <span style="color:#d70000;"><strong>(SAVE 66%. Normally $60.00, today just $19.95)</strong></span> <strong>One-time-only deal.</strong></p>
@@ -426,21 +449,15 @@ if (in_array($dayname, $daysclosed)) {
                 </div>
             </section>
             <div class="flex justify-content-center">
-                <div class="flex flex-col">
-                    <p class="text-lg text-center my-5">
-                    Each bottle contains 30 capsules. While 1 capsule per day will deliver strong results, it’s recommended you take 2-3 capsules per day if you want even stronger results.
-                    </p>
-                    <div class="mt-5">
-                        <p class="text-center">Certified As Secure &amp; Trustworthy By The Leading Companies:</p>
-                        <div class="flex">
-                            <img class="mx-auto w-full" src="/images/security-icons.gif" style="max-width: 800px;">
-                        </div>
-                    </div>
-                    <div class="mt-7 text-4xl text-center">
-                    <h3>Your Purchase Today Is Fully Protected By Our<br> <strong>90-DAY MONEY BACK GUARANTEE!</strong></h3>
-                    </div>
-                </div>
-            </div>
+				<div class="flex flex-col">
+					<p class="text-lg text-center my-5">
+					Each bottle contains 30 capsules. While 1 capsule per day will deliver strong results, it’s recommended you take 2-3 capsules per day if you want even stronger results.
+					</p>
+					<div class="mt-7 text-4xl text-center">
+					<h3>Your Purchase Today Is Fully Protected By Our<br> <strong>90-DAY MONEY BACK GUARANTEE!</strong></h3>
+					</div>
+				</div>
+			</div>
             <section class="flex w-full flex-wrap my-7">
                 <div class="w-full md:w-2/3 bg-yellow-100 border p-5">
                     <div class="flex flex-wrap-reverse md:flex-nowrap">
@@ -543,13 +560,26 @@ if (in_array($dayname, $daysclosed)) {
                     </div>
 
                     <div class="flex flex-wrap justify-center items-center mb-7">
-                        <div class="text-2xl text-center text-gray-400 mx-3"><strike>Total Value: $336.50</strike></div>
-                        <div class="text-2xl font-bold text-center text-lime-500 mx-3"><strong >All This Is Yours <u>FREE</u> Today!</strong></div>
-                    </div>
+						<div class="text-3xl text-center text-gray-400 mx-3"><strike>Total Value: $336.50</strike></div>
+						<div class="text-3xl font-semibold text-center text-lime-600 mx-3">All This Is Yours <u>FREE</u> Today!</div>
+					</div>
 
                 </div>
             </section>
             <section class="flex flex-col w-full mt-7">
+                <div class="">
+                    <p class="text-center text-sm text-gray-400 mb-2">Certified As Secure &amp; Trustworthy By The Leading Companies:</p>
+                    <div class="flex">
+                        <img class="mx-auto w-full" src="https://s3.amazonaws.com/5gm/sec-icons-new.jpg" style="max-width: 600px;">
+                    </div>
+                    <div class="flex justify-center text-4xl mt-8 mb-4 text-center condensed">
+                        <h3>Top Rated By The Better Business Bureau!</strong></h3>
+                    </div>
+                    <p class="text-center text-sm my-2">Buy with <strong>confidence</strong>. See real, <strong>positive</strong> reviews from customers who love 5G Male. We’re <strong>top-rated</strong> with over 30,000 happy customers around the world.</p>
+                    <div class="flex">
+                        <img class="mx-auto w-full" src="https://flora-spring.s3.amazonaws.com/BBB-Icon.jpg" alt="bbb logo" style="max-width: 400px;">
+                    </div>
+                </div>
                 <div class="flex justify-center text-3xl mt-7 mb-4 text-center">
                     <h3>Top Reviews of 5G Male From <strong>Recent Buyers...</strong></h3>
                 </div>
@@ -687,16 +717,16 @@ if (in_array($dayname, $daysclosed)) {
                 </div>
             </section>
             <section>
-                <div class="hidden md:flex justify-center text-center">
-                <h3 class="condensed text-3xl mb-5">A Part of Your Order Is Donated To These Brave Veterans</h3>
-                </div>
-                <p class="hidden md:flex w-full text-center my-3 text-sm">Part of your 5G Male order today will be donated to The Wounded Warrior Project to help support a veteran like Dave. <br> <span class="veteran-link" style="cursor:pointer;"><u>Click Here To Order Now</u></span>.</p>
-                <div class="hidden md:flex justify-center px-20">
-                    <img class="w-auto" src="/images/veteran-warriors.jpg" alt="Wounded Warrior Project">
-                </div>
-            </section>
+				<div class="hidden md:flex justify-center text-center">
+				<h3 class="condensed text-3xl mb-5">A Part of Your Order Is Donated To These Brave Veterans</h3>
+				</div>
+				<p class="hidden md:flex md:flex-col w-full text-center my-3 text-sm">Part of your 5G Male order today will be donated to The Wounded Warrior Project to help support a veteran like Dave. <br> <span class="veteran-link w-full mx-auto text-center" style="cursor:pointer;"><u>Click Here To Order Now</u>.</span></p>
+				<div class="hidden md:flex justify-center px-20">
+					<img class="w-auto" src="https://5gm.s3.amazonaws.com/veteran-warriors.jpg" alt="Wounded Warrior Project">
+				</div>
+			</section>
             <section class="flex flex-col w-full mt-11">
-            <div class="flex justify-center text-3xl condensed"> <h2 class="mt-0">Here Are The Most <strong>Frequently Asked Questions</strong> We Get...</h2> </div>
+            <div class="flex justify-center text-center text-3xl condensed"> <h2 class="mt-0">Here Are The Most <strong>Frequently Asked Questions</strong> We Get...</h2> </div>
             <?php template("includes/basicFaq"); ?>
 
             </section>
@@ -705,28 +735,39 @@ if (in_array($dayname, $daysclosed)) {
             </div>
 
             <div class="flex justify-center flex-wrap mb-4 text-center">
-                    <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="terms.php">Terms and Conditions</a> &nbsp;
-                    <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="privacy.php">Privacy Policy</a> &nbsp;
-                    <a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a>
+                    <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="terms.php">Terms and Conditions</a> &nbsp;
+                    <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="privacy.php">Privacy Policy</a> &nbsp;
+                    <a class="mx-3 clickable" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a>
             </div>
         </div>
     </div>
-</body>
-
-<div class="flex justify-center sticky-timer" style="display:none;">
+    <div class="flex justify-center sticky-timer" style="display:none;">
         <p>Your Discount Is Being Held For <span id="countdown-sticky"></span><span id="ms"></span>, Until It Is Given To The Next Man Waiting In Line</p>
     </div>
+</body>
+
+    
 
 
 
 
 
                 <!-- id secure-scroll -->
-    <div id="floatButton" class="flex justify-center md:justify-end w-full p-3 floating-btn">
+    <!-- <div id="floatButton" class="flex justify-center md:justify-end w-full p-3 floating-btn">
         <span id="buy-btn" style="display: none;" class="button w-auto">
             Secure My Order
         </span>
-    </div>
+    </div> -->
+
+    <?php
+    $button_text = 'Secure My Order';
+    $scroll_id = 'cta';
+	floatButton(
+    'includes/floatButton',
+    $button_text,
+    $scroll_id
+    );
+	?>
 
 
     <?php
@@ -740,7 +781,7 @@ if (in_array($dayname, $daysclosed)) {
     $modal_footer = '
     <div id="modalButton" class="w-full text-center"><button style="font-size: 30px;font-weight: bold;color: #fff;border: none;background-color: #78A300;padding: 5px 25px;margin-top:15px;">YES, Complete My Order!</button></div>
     ';
-	template("includes/basicModal");
+    modal('includes/basicModal', $modal_id, $modal_title, $modal_body, $modal_footer);
     ?>
 
 
@@ -756,38 +797,14 @@ if (in_array($dayname, $daysclosed)) {
         <div class="text-center my-2" <strong>A SPECIAL DEAL</strong> For You! Pay just <strong>$23.95 today</strong> or pay using <strong>PayPal</strong>.</div>
     ';
     $modal_footer = '
-    <div class="w-full text-center"><a href="alt-checkout-5gm.php<?php echo trim(@$querystring); ?>"><button style="font-size: 30px;font-weight: bold;color: #fff;border: none;background-color: #78A300 !important;;padding: 5px 25px;margin-top:15px;">CONTINUE</button></a></div>
+    <div class="w-full text-center"><a href="order.php<?php echo trim(@$querystring); ?>"><button class="clickable" style="font-size: 30px;font-weight: bold;color: #fff;border: none;background-color: #78A300 !important;padding: 5px 25px;margin-top:15px;">CONTINUE</button></a></div>
     ';
-    template("includes/basicModal");
+    modal('includes/basicModal', $modal_id, $modal_title, $modal_body, $modal_footer);
     ?>
 
     <!-- modal and floating button functionality -->
     <script>
-        var scrollPos = window.pageYOffset;
-        const docHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        // element to scroll to
-        const scrollElement = document.getElementById('cta');
-        // flaoting button to hide/show on scroll
-        const dynamicElement = document.getElementById('buy-btn');
-        window.onscroll = ()=> {
-            let currentScrollPos = window.pageYOffset;
-            let viewportOffset = scrollElement.getBoundingClientRect();
-            let elTop = viewportOffset.top;
-            let elBottom = viewportOffset.bottom;
-            let elScrollTop = scrollElement.scrollTop;
-            if (elTop < windowHeight) {
-                dynamicElement.style.display = "none";
-            } else {
-                dynamicElement.style.display = "block";
-            }
-
-        }
-
-        // scroll to element via floating button
-        dynamicElement.addEventListener('click', function() {
-            scrollElement.scrollIntoView({ behavior: 'smooth', block: 'end'});
-        })
+        
 
         // modal on mouseleave
         document.documentElement.addEventListener('mouseleave', () => {
@@ -798,103 +815,86 @@ if (in_array($dayname, $daysclosed)) {
         window.addEventListener('popstate', function(e) {
             window.modalHandler('mouseModal', true);
         });
+        window.onbeforeunload = function() {
+            window.modalHandler('mouseModal', true);
+        }
     </script>
 
-      <script>
-      $( document ).ready(function() {
-        $('.customer_email').val(sessionStorage.getItem("customer_email"));
-        $( function() {
-            $( "#accordion" ).accordion({
-              active: false,
-              collapsible: true
-            });
-          } );
+    <script>
+    window.addEventListener("DOMContentLoaded", function() {
 
-        $("#btn-four").click(function(e){
+        const discountSection = document.getElementById("cta");
+        // const email = document.querySelector(".customer_email");
+        // email.val(sessionStorage.getItem("customer_email"));
+
+        // no btn-four id on any element
+
+
+        document.getElementById("click-to-choose").addEventListener('click', function(e){
             e.preventDefault();
-            $('html, body').animate({
-                    scrollTop: 0
-            }, 1000);
-            $("#runOutModal").hide();
-            $("body").removeClass("modal-open");
-            $('#noise').get(0).pause();
+            window.scrollTo({top: discountSection.offsetTop});
         });
 
-
-        $("#click-to-choose").click(function(e){
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop: 0
-            }, 1000);
+        document.querySelector(".veteran-link").addEventListener('click', function() {
+            window.scrollTo({top: discountSection.offsetTop});
         });
 
-        //scroll back to options
-        $("#secure-scroll button").click(function() {
-            $('html,body').animate({
-                scrollTop: $(".discount-section").offset().top},
-                'slow');
+        document.getElementById("six-package").addEventListener('click', function() {
+            window.scrollTo({top: discountSection.offsetTop});
         });
 
-        $(".veteran-link").click(function() {
-            $('html,body').animate({
-                scrollTop: $(".discount-section").offset().top},
-                'slow');
+        
+        window.addEventListener('scroll', function(){
+            var container = document.querySelector(".stock-container");
+            let sc = (window.scrollTop > (container.offsetTop + container.offsetHeight));
+            document.querySelector(".sticky-timer").style.display = sc ? 'flex' : 'none';
         });
 
-        $("#six-package").click(function() {
-            $('html,body').animate({
-                scrollTop: $(".discount-section").offset().top},
-                'slow');
+        const addOns = document.querySelector(".addOns");
+        addOns.addEventListener('change', function() {
+            if(document.getElementById('addon2').checked) {
+                document.querySelector(".add2").value = '1';
+            }else{
+                document.querySelector(".add2").value = '0';
+            }
+            if(document.getElementById("addon1").value == '1'){
+                document.querySelector(".add1").value = '1';
+            }
+            if(document.getElementById("addon1").value == '2'){
+                document.querySelector(".add1").value = '2';
+            }
+            if(document.getElementById("addon1").value == '3'){
+                document.querySelector(".add1").value = '3';
+            }
+            if(document.getElementById("addon1").value == '0'){
+                document.querySelector(".add1").value = '0';
+            }
+        })
+
+          const ship = document.getElementById("select-ship");
+          ship.addEventListener('change', function(){
+            if(ship.value == '2'){
+                document.getElementById("pid2").value = '954';
+            }
+            if(ship.value == '3'){
+                document.getElementById("pid2").value = '953';
+            }
         });
 
-        //show sticky countdown
-        $(document).scroll(function(){
-            var sc = ($(document).scrollTop() > ($('.stock-container').offset().top+$('.stock-container').height()));
-            $('.sticky-timer').css('display', sc?'':'none')
-        });
-
-          $('.addOns').change(function(){
-                  if(document.getElementById('addon2').checked) {
-                      $(".add2").val('1');
-                   }else{
-                     $(".add2").val('0');
-                   }
-                  if($('#addon1').val() == '1'){
-                       $(".add1").val('1');
-                  }
-                  if($('#addon1').val() == '2'){
-                       $(".add1").val('2');
-                  }
-                  if($('#addon1').val() == '3'){
-                       $(".add1").val('3');
-                  }
-                  if($('#addon1').val() == '0'){
-                       $(".add1").val('0');
-                  }
-          });
-
-          $('#select-ship').change(function(){
-                if($('#select-ship').val() == '2'){
-                 $('#pid2').val('954');
-              }
-                   if($('#select-ship').val() == '3'){
-                 $('#pid2').val('953');
-              }
-
-        });
-
-        $(".fancybox").fancybox({
-            'width': 560,
-            'height': 340,
-            'autoDimensions': false
-        });
+        // TODO: replace with modal (need lg option)
+        // const popup = document.querySelector('.fancybox');
+        // popup.fancybox({
+        //     'width': 560,
+        //     'height': 340,
+        //     'autoDimensions': false
+        // });
 
         <?php if($timerCheck < 0) { ?>
             console.log("timer is < 0");
         <?php } else { ?>
             console.log("timer is > 0");
         <?php } ?>
-      });
+    });
     </script>
 
     <script>
@@ -925,10 +925,10 @@ if (in_array($dayname, $daysclosed)) {
                 console.log("count down error: container does not exist: " + strContainerID +
                         "\nmake sure html element with this ID exists");
             } else {
-                $_countDownContainer = $(document.getElementById(strContainerID));
+                $_countDownContainer = document.getElementById(strContainerID);
                 //the ATimer below works with time values in milliseconds
                 //the "20" will update display ever 20 milliseconds, as fast as screen refreshes
-                $_countDownContainer.removeClass("warn");
+                $_countDownContainer.classList.remove("warn");
 
                 var timerID = new ATimer(initialValue * 1000, 20, CountDownComplete, CountDownTick);
                 timerID.start();
@@ -939,8 +939,9 @@ if (in_array($dayname, $daysclosed)) {
                 // $('#noise').get(0).pause();
                 // $("#runOutModal").modal('show');
                 // new modal
-                window.modalHandler('runOutModal', true);
                 _countDownContainer.innerHTML = "00:00";
+                window.modalHandler('runOutModal', true);
+                
             }
 
             var flag = 'no';
@@ -1041,14 +1042,17 @@ if (in_array($dayname, $daysclosed)) {
             doStart1();
         }
 
-        $(document).ready(function(){
-        $('#modalbutton').on('click', function(){
-            $('html,body').animate({
-                scrollTop: $(".section-two").offset().top},
-                'slow');
-            $('#runOutModal').modal('hide');
+        window.addEventListener("DOMContentLoaded", function() {
+            var modalButton = document.getElementById("modalbutton");
+            var outModal = document.getElementById("runOutModal");
+            if (modalButton) {
+                modalButton.addEventListener('click', (e) => {
+                    window.scrollToTop();
+                    outModal.modal('hide');
+                });
+            }
+            
         });
-    });
 
     </script>
 
