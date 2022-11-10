@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //Page Specific Variables
 $vidcode = "7meKmRPVlkYdple_";
 $droptime = "2444";
@@ -101,7 +102,12 @@ $_SESSION['pageType'] = 'vsl';
             -moz-columns: 1;
         }
 
-        #container-buy-secure{display:none;z-index:100;position:fixed;bottom:0;left:0;width:122px;height:85px}#container-buy-secure ul{display:block;width:122px;height:85px;margin:0;padding:0;list-style-type:none}#container-buy-secure ul li{display:block;width:122px;height:85px;margin:0;padding:0;cursor:pointer}#container-buy-secure ul li ul{z-index:-1;display:none;position:absolute;width:230px;height:281px;top:-255px;left:91px}#container-buy-secure ul li ul li{width:230px;height:281px}#container-buy-secure ul li:hover ul{display:block}
+        #container-buy-secure{z-index:100;position:fixed;bottom:0;left:0;width:122px;height:85px}
+        #container-buy-secure ul{display:block;width:122px;height:85px;margin:0;padding:0;list-style-type:none}
+        #container-buy-secure ul li{display:block;width:122px;height:85px;margin:0;padding:0;cursor:pointer}
+        #container-buy-secure ul li ul{z-index:-1;display:none;position:absolute;width:230px;height:281px;top:-255px;left:91px}
+        #container-buy-secure ul li ul li{width:230px;height:281px}
+        #container-buy-secure ul li:hover ul{display:block}
      </style>
 </head>
 
@@ -136,10 +142,10 @@ $_SESSION['pageType'] = 'vsl';
 <div id="container-buy-secure">
     <ul>
         <li>
-            <img src="https://s3.amazonaws.com/5gm/seal-min.png" width="122" height="85" id="buy-secure-seal" alt="seal" />
-            <ul>
-                <li>
-                    <img src="https://s3.amazonaws.com/5gm/popup.png" width="230" height="281" id="buy-secure-popup" alt="secure" />
+            <img src="/images/seal-min.png" width="122" height="85" id="buy-secure-seal" alt="seal" />
+			<ul>
+				<li>
+					<img src="/images/popup.png" width="230" height="281" id="buy-secure-popup" alt="secure" />
                 </li>
             </ul>
         </li>
@@ -181,27 +187,43 @@ $_SESSION['pageType'] = 'vsl';
     </div>
 </div>
 
+    <?php
+		$modal_id = 'exitModal';
+		$modal_title = 'WAIT! BEFORE YOU GO...';
+		$modal_body = "<h3>READ THE SHOCKING FREE REPORT INSTEAD OF WATCHING THIS VIDEO NOW...</h3>";
+		$modal_footer = "<div class='stay-btn-cont flex justify-center w-full'>				    
+		<a href='" . $exitlink . "'>
+		<button id='stay-btn' class='focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-green-600 bg-green-500 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm'>CLICK HERE NOW</button>
+		</a>
+		</div>";
+        modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer);
+	?>
+
 <script>
-//possible exit intent replacement
-/*
-window.history.pushState({page: 1}, "", "");
 
-window.onpopstate = function(event) {
-    if(event){
-        window.location.href = '<?php echo $exitlink; ?>';
-        // Code to handle back button or prevent from navigation
-    }
-}
 
-// This only work once there has ben an interaction on the page - a background, click, video play, etc...
-window.onbeforeunload = function() {
-    //ajax load exit page in module (it will show behind the exit prompt dialog)
-    //Placing the actin first will continue loading after the dialog has been addressed.
-    //document.getElementById("container-buy").innerHTML='<object type="text/html" data="privacy.php" ></object>';
-    return "Your work will be lost.";
-};
-*/
-//end possible exit intent replacement
+    // modal on mouseleave
+    document.body.addEventListener('mouseleave', () => {
+        const modalExit = document.getElementById('exitModal');
+        console.log('modal?', modalExit);
+        window.modalHandler('exitModal', true);
+    })
+
+    // modal on navigate away
+    window.addEventListener('popstate', function(e) {
+        window.modalHandler('exitModal', true);
+    });
+    
+
+    function display(element, show) {
+		if (show) {
+			element.classList.remove('hide');
+			element.classList.add('show');
+		} else {
+			element.classList.remove('show');
+			element.classList.add('hide');
+		}
+	}
 </script>
 
 
@@ -236,14 +258,6 @@ window.onbeforeunload = function() {
     document.cookie = "<?php echo $cookie_name ?>=yes; max-age=" + 3600;
 </script>
 <?php } ?>
-
-
-
-
-
-
-
-
 
 
 <?php if ($site['debug'] == true) {

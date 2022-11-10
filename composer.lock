@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43af376a4cd565ee3100d34f360ee930",
+    "content-hash": "36b4cf4fee36cd6972c6ef9fc6ff9cf6",
     "packages": [
         {
             "name": "enqueue/dsn",
