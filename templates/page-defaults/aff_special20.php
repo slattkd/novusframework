@@ -156,9 +156,9 @@ $_SESSION['pageType'] = 'vsl';
     <?php video('includes/player', $vidcode, $droptime, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>
 </div>
 
-<div class="container mx-auto mt-8 p-5 pb-5 bg-white">
+<div class="container-md mx-auto mt-8 p-5 pb-5 bg-white">
     <a id="container-buy" class="img-link mt-5 hidden" href="assessment.php" target="_blank" onclick="hideTimerPopup()">
-        <img class="mx-auto" style="max-width: 350px;" src="/images/animated-button+test.png" alt="">
+        <img class="mx-auto" style="width: 100%;max-width: 400px;" src="/images/animated-button+test.png" alt="">
     </a>
     <div class="mt-5 p-4">
         <p class="text-center text-gray-500 text-xs">
