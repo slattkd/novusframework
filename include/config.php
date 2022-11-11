@@ -162,6 +162,202 @@ $usStates = [
 'WY' => 'Wyoming'
 ];
 
+// Does this need to live in the config, it's a constant and should never change
+$countries = [
+    "AF" => 'Afghanistan',
+    "AL" => 'Albania',
+    "AS" => 'American Samoa',
+    "AD" => 'Andorra',
+    "AI" => 'Anguilla',
+    "AQ" => 'Antarctica',
+    "AG" => 'Antigua and Barbuda',
+    "AR" => 'Argentina',
+    "AM" => 'Armenia',
+    "AW" => 'Aruba',
+    "AU" => 'Australia',
+    "AT" => 'Austria',
+    "AX" => 'Åland Islands',
+    "AZ" => 'Azerbaijan',
+    "BH" => 'Bahrain',
+    "BD" => 'Bangladesh',
+    "BB" => 'Barbados',
+    "BY" => 'Belarus',
+    "BE" => 'Belgium',
+    "BZ" => 'Belize',
+    "BJ" => 'Benin',
+    "BT" => 'Bhutan',
+    "BA" => 'Bosnia and Herzegovina',
+    "BV" => 'Bouvet Island',
+    "BR" => 'Brazil',
+    "IO" => 'British Indian Ocean Territory',
+    "KH" => 'Cambodia',
+    "CM" => 'Cameroon',
+    "CA" => 'Canada',
+    "CV" => 'Cape Verde',
+    "CF" => 'Central African Republic',
+    "CX" => 'Christmas Island',
+    "CC" => 'Cocos (Keeling) Islands',
+    "CO" => 'Colombia',
+    "KM" => 'Comoros',
+    "CK" => 'Cook Islands',
+    "CR" => 'Costa Rica',
+    "HR" => 'Croatia',
+    "CY" => 'Cyprus',
+    "CI" => "Côte D'Ivoire",
+    "DK" => 'Denmark',
+    "DM" => 'Dominica',
+    "DO" => 'Dominican Republic',
+    "SV" => 'El Salvador',
+    "GQ" => 'Equatorial Guinea',
+    "ER" => 'Eritrea',
+    "EE" => 'Estonia',
+    "FK" => 'Falkland Islands',
+    "FO" => 'Faroe Islands',
+    "FI" => 'Finland',
+    "FR" => 'France',
+    "GF" => 'French Guiana',
+    "TF" => 'French Southern Territories',
+    "GE" => 'Georgia',
+    "DE" => 'Germany',
+    "GI" => 'Gibraltar',
+    "GR" => 'Greece',
+    "GL" => 'Greenland',
+    "GD" => 'Grenada',
+    "GP" => 'Guadeloupe',
+    "GU" => 'Guam',
+    "HT" => 'Haiti',
+    "HM" => 'Heard and McDonald Islands',
+    "VA" => 'Holy See (Vatican City State)',
+    "HU" => 'Hungary',
+    "IS" => 'Iceland',
+    "IM" => 'Isle of Man',
+    "IT" => 'Italy',
+    "JP" => 'Japan',
+    "JE" => 'Jersey',
+    "JO" => 'Jordan',
+    "KZ" => 'Kazakhstan',
+    "KI" => 'Kiribati',
+    "KG" => 'Kyrgyzstan',
+    "LV" => 'Latvia',
+    "LS" => 'Lesotho',
+    "LR" => 'Liberia',
+    "LI" => 'Liechtenstein',
+    "MK" => 'Republic of Macedonia',
+    "MW" => 'Malawi',
+    "MT" => 'Malta',
+    "MH" => 'Marshall Islands',
+    "MQ" => 'Martinique',
+    "MU" => 'Mauritius',
+    "YT" => 'Mayotte',
+    "MX" => 'Mexico',
+    "FM" => 'Federated States of Micronesia',
+    "MC" => 'Monaco',
+    "MS" => 'Montserrat',
+    "NR" => 'Nauru',
+    "NL" => 'Netherlands',
+    "AN" => 'Netherlands Antilles',
+    "NZ" => 'New Zealand',
+    "NI" => 'Nicaragua',
+    "NU" => 'Niue',
+    "NF" => 'Norfolk Island',
+    "MP" => 'Northern Mariana Islands',
+    "NO" => 'Norway',
+    "OM" => 'Oman',
+    "PW" => 'Palau',
+    "PN" => 'Pitcairn',
+    "PL" => 'Poland',
+    "PT" => 'Portugal',
+    "PR" => 'Puerto Rico',
+    "QA" => 'Qatar',
+    "RE" => 'Réunion',
+    "SH" => 'St. Helena, Ascension and Tristan Da Cunha',
+    "PM" => 'St. Pierre And Miquelon',
+    "VC" => 'St. Vincent And The Grenedines',
+    "SM" => 'San Marino',
+    "ST" => 'Sao Tome and Principe',
+    "SC" => 'Seychelles',
+    "SL" => 'Sierra Leone',
+    "SG" => 'Singapore',
+    "SK" => 'Slovakia',
+    "SI" => 'Slovenia',
+    "SB" => 'Solomon Islands',
+    "GS" => 'South Georgia and the South Sandwich Islands',
+    "ES" => 'Spain',
+    "SJ" => 'Svalbard And Jan Mayen',
+    "SZ" => 'Swaziland',
+    "SE" => 'Sweden',
+    "CH" => 'Switzerland',
+    "SY" => 'Syrian Arab Republic',
+    "TW" => 'Taiwan',
+    "TJ" => 'Tajikistan',
+    "TH" => 'Thailand',
+    "TG" => 'Togo',
+    "TK" => 'Tokelau',
+    "TO" => 'Tonga',
+    "TM" => 'Turkmenistan',
+    "TC" => 'Turks and Caicos Islands',
+    "TV" => 'Tuvalu',
+    "UG" => 'Uganda',
+    "AE" => 'United Arab Emirates',
+    "GB" => 'United Kingdom',
+    "US" => 'United States',
+    "UM" => 'US Minor Outlying Islands',
+    "UY" => 'Uruguay',
+    "UZ" => 'Uzbekistan',
+    "VU" => 'Vanuatu',
+    "VE" => 'Venezuela',
+    "VN" => 'Vietnam',
+    "VG" => 'Virgin Islands, British',
+    "VI" => 'Virgin Islands, U.S.',
+    "YE" => 'Yemen'
+];
+
+//     <!-- "BS" 'BS' >Bahamas -->
+//     <!-- "BM" 'BM' >Bermuda -->
+//     <!-- "BO" 'BO' >Bolivia -->
+//     <!-- "BN" 'BN' >Brunei Darussalam -->
+//     <!-- "BI" => 'Burundi -->
+//     <!-- "KY" 'KY' >Cayman Islands -->
+//     <!-- "CL" 'CL' >Chile -->
+//     <!-- "CN" 'CN' >China -->
+//     <!-- "CZ" 'CZ' >Czech Republic -->
+//     <!-- "DJ" 'DJ' >Djibouti -->
+//     <!-- "EC" 'EC' >Ecuador -->
+//     <!-- "FJ" 'FJ' >Fiji -->
+//     <!-- "PF" 'PF' >French Polynesia -->
+//     <!-- "GM" => 'Gambia -->
+//     <!-- "GW" => 'Guinea-Bissau -->
+//     <!-- "GY" => 'Guyana -->
+//     <!-- "HN" 'HN' >Honduras -->
+//     <!-- "HK" 'HK' >Hong Kong -->
+//     <!-- "JM" 'JM' >Jamaica -->
+//     <!-- "KW" 'KW' >Kuwait -->
+//     <!-- "LB" 'LB' >Lebanon -->
+//     <!-- "LU" => 'Luxembourg -->
+//     <!-- "MO" 'MO' >Macau -->
+//     <!-- "MV" 'MV' >Maldives -->
+//     <!-- "MD" 'MD' >Moldova -->
+//     <!-- "MN" 'MN' >Mongolia -->
+//     <!-- "MM" 'MM' >Myanmar -->
+//     <!-- "NP" 'NP' >Nepal -->
+//     <!-- "NC" 'NC' >New Caledonia -->
+//     <!-- "PA" 'PA' >Panama -->
+//     <!-- "PG" => 'Papua New Guinea -->
+//     <!-- "PY" => 'Paraguay -->
+//     <!-- "PE" 'PE' >Peru -->
+//     <!-- "PH" 'PH' >Philippines -->
+//     <!-- "RW" => 'Rwanda -->
+//     <!-- "KN" => 'St. Kitts And Nevis -->
+//     <!-- "LC" => 'St. Lucia -->
+//     <!-- "WS" 'WS' >Samoa -->
+//     <!-- "SA" 'SA' >Saudi Arabia -->
+//     <!-- "SN" => 'Senegal -->
+//     <!-- "ZA" 'ZA' >South Africa -->
+//     <!-- "LK" 'LK' >Sri Lanka -->
+//     <!-- "SR" 'SR' >Suriname -->
+//     <!-- "TT" 'TT' >Trinidad and Tobago -->
+//     <!-- "WF" 'WF' >Wallis and Futuna -->
+
 
 
 

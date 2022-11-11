@@ -296,7 +296,7 @@ function floatButton($template, $button_text = null, $scroll_id = null, $templat
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
-function legalLinks($template, $button_text = null, $scroll_id = null, $templatePath = 'templates/page-defaults')
+function legalLinks($template, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;

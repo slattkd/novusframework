@@ -30,7 +30,7 @@
 	var isLoading =  false;
 	function getPage(pageName) {
 		isLoading = true;
-		fetch(`/tailwind/${pageName}`)
+		fetch(`/templates/page-default/${pageName}`)
 		.then(response => response.text())
 		.then((data) => {
 				isLoading = false;

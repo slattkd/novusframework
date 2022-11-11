@@ -1,5 +1,10 @@
 <?php
-error_reporting(1);
+error_reporting(0);
+
+$nextlink = '../process.php' . $querystring;
+$nextpage = '/up1.php';
+$kount_session = str_replace('.', '', microtime(true));
+$prodtype = 6;
 
 header("Cache-Control: max-age=300, must-revalidate");
 date_default_timezone_set("America/New_York");
@@ -827,7 +832,8 @@ body {
 						</div>
 					</div>
 				</div>
-                <div class="w-full my-4 md:my-0"> 
+        <div class="w-full my-4 md:my-0"> 
+				<form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' onSubmit="getDate();" id="step_1" class="col-sm-12">
 
 					<div class="flex flex-col bg-gray-100 border px-4">
 						<div class="flex justify-center text-2xl font-semibold my-4">Enter <span class="underline font-bold mx-2">BILLING</span> Address</div>
@@ -897,7 +903,11 @@ body {
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>"></select>
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>">
+									<?php foreach ($usStates as $key => $value) : ?>
+										<option value="<?= $key;?>"> <?= $value; ?> </option>
+									<?php endforeach; ?>
+								</select>
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -907,7 +917,10 @@ body {
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
 								<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country" data-toggle-element="State" name="country" onchange="solveprice()">
-									<?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/html/billing-countries.php'); ?>
+									<option selected value="US">United States</option>
+									<?php foreach ($countries as $key => $value) : ?>
+										<option value="<?= $key;?>"> <?= $value; ?> </option>
+									<?php endforeach; ?>
 								</select>
 							</div>
 						</div>
@@ -1029,7 +1042,11 @@ body {
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>"></select>
+										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>">
+										<?php foreach ($usStates as $key => $value) : ?>
+											<option value="<?= $key;?>"> <?= $value; ?> </option>
+										<?php endforeach; ?>
+										</select>
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
@@ -1039,7 +1056,11 @@ body {
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
 										<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country2" data-toggle-element="State2" name="shippingcountry" onchange="solveprice()">
-											<?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/html/billing-countries.php'); ?>
+											<option selected value="US">United States</option>
+											<?php foreach ($countries as $key => $value) : ?>
+												<option value="<?= $key;?>"> <?= $value; ?> </option>
+											<?php endforeach; ?>
+											?>
 										</select>
 									</div>
 								</div>
@@ -1116,14 +1137,15 @@ body {
 			</div>
 
 			<div class="flex justify-center flex-wrap mb-4 text-center mt-11">
-				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/terms.php">Terms and Conditions</a> &nbsp;
+				<!-- <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/terms.php">Terms and Conditions</a> &nbsp;
 				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/privacy.php">Privacy Policy</a> &nbsp;
-				<a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a>
+				<a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a> -->
+				<?php legalLinks("includes/legalLinks");?>
 			</div>
 		</div>
 	</div>
 
-	<form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' onSubmit="getDate();" id="step_1" class="col-sm-12">
+		<!-- hidden inputs -->
 		<input type="hidden" name="previous_page" value="checkout/order">
 		<input type="hidden" name="current_page" value="/checkout/onepage">
 		<input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
@@ -1182,7 +1204,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		const billingSame = document.getElementById("bill-same");
 		billingSame.addEventListener('change', function() {
 			const shipAdd = document.querySelector('.shipping-address');
-			console.log(billingSame.checked);
 			if (billingSame.checked) {
 				display(shipAdd, false);
 			} else {
@@ -1197,14 +1218,14 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		});
 
 		//floating red bar
-		// const stickyTimer = document.querySelector('.sticky-timer');
-		// window.onscroll = () => {
-		// 	if (window.scrollTop > 50) {
-		// 		stickyTimer.classList.add('scroll');
-		// 	} else {
-		// 		stickyTimer.classList.remove('scroll');
-		// 	}
-		// };
+		const stickyTimer = document.querySelector('.sticky-timer');
+		window.onscroll = () => {
+			if (window.scrollTop > 50) {
+				stickyTimer.classList.add('scroll');
+			} else {
+				stickyTimer.classList.remove('scroll');
+			}
+		};
 
 		document.getElementById('modalbutton').addEventListener('click', function() {
 			document.getElementById("step_1").scrollIntoView({
