@@ -296,6 +296,17 @@ function floatButton($template, $button_text = null, $scroll_id = null, $templat
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+function legalLinks($template, $button_text = null, $scroll_id = null, $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+    global $products;
+    global $debugbarRenderer;
+    global $debugbar;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
 /*
 function pixelEvent($template, $event, $affid = null)
 {
