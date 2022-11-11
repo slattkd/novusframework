@@ -335,8 +335,8 @@ if (in_array($dayname, $daysclosed)) {
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
 						<form action="/checkout/onepage.php" method="POST">
 							<input type="hidden" id="pid1" name="prodtype" value="1">
-							<input type="hidden" class="add1" name="add1" value="0">
-							<input type="hidden" class="add2" name="add2" value="0">
+							<input type="hidden" class="add1" id="add1" name="add1" value="0">
+							<input type="hidden" class="add2" id="add2" name="add2" value="0">
 							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
 						</form>
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">61% OFF</span> + $6.95 USA Shipping</p>
@@ -428,7 +428,7 @@ if (in_array($dayname, $daysclosed)) {
             <section class="flex flex-column w-full flex-wrap bg-yellow-100 p-3 border border-black rounded">
                 <div class="flex flex-wrap p-4">
                     <div class="w-1/6 text-center">
-                        <select class="border" name="add1" id="addon1" onchange="add1()">
+                        <select class="border" name="add1" id="addon1">
                             <option value="0" selected="">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -744,7 +744,7 @@ if (in_array($dayname, $daysclosed)) {
     <div class="flex justify-center sticky-timer" style="display:none;">
         <p>Your Discount Is Being Held For <span id="countdown-sticky"></span><span id="ms"></span>, Until It Is Given To The Next Man Waiting In Line</p>
     </div>
-</body>
+
 
     
 
@@ -762,11 +762,7 @@ if (in_array($dayname, $daysclosed)) {
     <?php
     $button_text = 'Secure My Order';
     $scroll_id = 'cta';
-	floatButton(
-    'includes/floatButton',
-    $button_text,
-    $scroll_id
-    );
+	floatButton('includes/floatButton',$button_text,$scroll_id);
 	?>
 
 
@@ -807,20 +803,20 @@ if (in_array($dayname, $daysclosed)) {
         
 
         // modal on mouseleave
-        document.documentElement.addEventListener('mouseleave', () => {
+        window.addEventListener('mouseleave', () => {
             window.modalHandler('mouseModal', true);
         })
 
         // modal on navigate away
         window.addEventListener('popstate', function(e) {
+            window.onbeforeunload = function() { return "Your work will be lost."; };
             window.modalHandler('mouseModal', true);
         });
         window.onbeforeunload = function() {
+            window.onbeforeunload = function() { return "Your work will be lost."; };
             window.modalHandler('mouseModal', true);
         }
-    </script>
 
-    <script>
     window.addEventListener("DOMContentLoaded", function() {
 
         const discountSection = document.getElementById("cta");
@@ -940,7 +936,9 @@ if (in_array($dayname, $daysclosed)) {
                 // $("#runOutModal").modal('show');
                 // new modal
                 _countDownContainer.innerHTML = "00:00";
-                window.modalHandler('runOutModal', true);
+                setTimeout(() => {
+                    window.modalHandler('runOutModal', true);
+                }, "1000")
                 
             }
 
@@ -1053,6 +1051,8 @@ if (in_array($dayname, $daysclosed)) {
             }
             
         });
+
+        
 
     </script>
 

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+
   window.modalHandler = function(id, val) {
     let modal = document.getElementById(id);
     if (val) {
@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })();
   }
 
-  function closeAll() {
+  window.closeAll = function() {
     const modals = document.querySelectorAll('.modal-position');
     modals.forEach(modal => fadeOut(modal));
     document.body.style.overflow = 'auto';
   }
-}, false);
+

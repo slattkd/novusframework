@@ -274,7 +274,18 @@ function video($template, $videoID = null, $dropTime = null, $overlay = null, $v
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
-function modal($template, $modal_id = null, $modal_title = null, $modal_body = null, $modal_footer = null, $templatePath = 'templates/page-defaults')
+function modal($template, $modal_id = null, $modal_title = null, $modal_body = null, $modal_footer = null, $max_width = null, $height = null, $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+    global $products;
+    global $debugbarRenderer;
+    global $debugbar;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
+function floatButton($template, $button_text = null, $scroll_id = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;
