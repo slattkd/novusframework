@@ -49,6 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- CSS -->
 <script src="https://cdn.tailwindcss.com"></script>  <!-- Should not be needed for production -->
+<link rel="stylesheet" href="/css/legal-copy.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/css/base.css" media="print" onload="this.media='all'">
 
 <!-- Next 4 from order.php -->

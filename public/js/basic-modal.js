@@ -1,7 +1,7 @@
 
   window.modalHandler = function(id, val) {
     let modal = document.getElementById(id);
-    if (val) {
+    if (val && modal) {
         fadeIn(modal, 'flex');
         document.body.style.overflow = 'hidden';
         const background = document.querySelector('.modal-position');
@@ -14,25 +14,27 @@
 
   function fadeOut(el) {
     el.style.opacity = 1;
-    (function fade() {
+    function fade() {
         if ((el.style.opacity -= 0.1) < 0) {
             el.style.display = "none";
         } else {
             requestAnimationFrame(fade);
         }
-    })();
+    }
+    fade();
   }
 
   function fadeIn(el, display) {
     el.style.opacity = 0;
     el.style.display = display || "flex";
-    (function fade() {
+    function fade() {
         let val = parseFloat(el.style.opacity);
         if (!((val += 0.2) > 1)) {
             el.style.opacity = val;
             requestAnimationFrame(fade);
         }
-    })();
+    }
+    fade();
   }
 
   window.closeAll = function() {

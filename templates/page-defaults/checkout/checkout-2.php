@@ -1430,7 +1430,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/tailwind/shared/components/basic_modal.php
 	<img width=1 height=1 src="https://gdc.sticky.io/pixel.php?t=gif&campaign_id=1&sessionId=<?= $kount_session ?>>" />
 </iframe>
 <!--/KOUNT PIXEL-->
-<script src="js/regions.js"></script>
+
 <script>
 	var _orderSubTotal = 0;
 	var _shippingPrice = 0;

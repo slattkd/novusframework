@@ -11,14 +11,9 @@ $co['state'] = 'NY';
 
 <!DOCTYPE html>
 <html>
-<head>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link href="./shared/css/base.css" rel="stylesheet">
-	<link href="./shared/css/legal-copy.css" rel="stylesheet">
-</head>
+
 		
-		<div class="content px-2">	
+		<div class="content px-2 text-left">	
 			<h1>Terms &amp; Conditions</h1>
 			<p>Effective Date: May 2020</p>
 

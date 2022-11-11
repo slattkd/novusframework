@@ -1,24 +1,9 @@
-<?php
-$co['name'] = 'Supernatural Man, LLC';
-$co['email'] = 'support@becomesupernatural.com';
-$co['phone'] = '1-800-251-9316';
-$co['address1'] = '300 Main St';
-$co['address2'] = '(Suite 1303)';
-$co['cityzip'] = 'Madison, NJ  07940';
-$co['city'] = 'New York';
-$co['state'] = 'NY';	
-?>
+
 
 <!DOCTYPE html>
 <html>
-<head>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link href="./shared/css/base.css" rel="stylesheet">
-	<link href="./shared/css/legal-copy.css" rel="stylesheet">
-</head>
 		
-<div class="content px-2">	
+<div class="content px-2 text-left">	
 
 <h1 class="">Return Policy</h1>
 

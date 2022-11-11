@@ -7,7 +7,7 @@ $kount_session = str_replace('.', '', microtime(true));
 $prodtype = 6;
 
 
-$dateInFuture = strtotime("2022-11-12");
+$dateInFuture = strtotime("2022-11-13");
 $dateString = intval($dateInFuture);
 $futureDate = date("m/d/Y", $dateString);
 $displayDeadline = date("F j, Y, g:i a", $dateString);
@@ -670,7 +670,7 @@ body {
 <div class="flex justify-center flex-nowrap bg-red-900 text-white p-3 text-center text-sm" style="position: sticky;top: 0;z-index: 1000; filter: saturate(1.8)">
 		<div class="flex">Your Discount Is Being Held For 
 			<span id="countdown-timer" class="ml-1">
-				<div id="clock1" class="font-bold text-white"> [clock1]</div>
+				<div id="clock1" class="font-bold text-white">[clock1]</div>
 			</span>
 		, Until It Is Given To The Next Man Waiting In Line
 		</div>
@@ -1184,32 +1184,29 @@ body {
 	</form>
 
 
-
-
-
-
 <?php
 // declare modal variables (requires basic_modal.js)
-$modal_id = 'mouseModal';
-$modal_title = "WAIT! DO NOT LEAVE THIS PAGE!";
+$modal_id = 'timerModal';
+$modal_title = "IMPORTANT:";
 $modal_body = '
-<div class="modalsubheader text-center my-2">IT COULD CAUSE ERRORS IN YOUR ORDER</div>
-<div class="text-sm text-center my-2">Do not hit the back button or close your browser.
-<br>Click <span class="font-bold">"FINISH CUSTOMIZING MY ORDER"</span> below and <span style="text-decoration: underline;font-weight:bold;">make your decision on this page</span>.</div>
-';
-$modal_footer = '<button id="modalbutton" type="button" class="modalbutton w-full bg-blue-600 p-3 rounded text-white">FINISH CUSTOMIZING MY ORDER</button>';
+	<h1 class="font-bold text-2xl modal-headline">Time Has Expired!</h1>
+	<p>Your 5G Male discount is no longer being held! Please <strong>secure your discount package now</strong> before your spot is given away to the next man in line...</p>
+	';
+$modal_footer = '<button id="modalbutton" onclick="closeAll()" class="clickable w-full bg-blue-600 p-3 rounded text-white" aria-hidden="true">YES, Complete My Order!</button>';
 modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer);
 ?>
 
 <script>
 	var hasScrolledToError = false;
-	window.onload = () => {
+	document.addEventListener('DOMContentLoaded', function() {
 		solveprice();
 		setupFormValidation();
 
 		//show or hide shipping address
 		const billingSame = document.getElementById("bill-same");
+		
 		billingSame.addEventListener('change', function() {
+		
 			const shipAdd = document.querySelector('.shipping-address');
 			if (billingSame.checked) {
 				display(shipAdd, false);
@@ -1217,6 +1214,27 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 				display(shipAdd, true);
 			}
 		});
+
+		function copyBillingInputValue() {
+			// Check to Copy values to billing
+			var isChecked = billingSame.checked;
+			if(isChecked){ //checked
+					let billingAddress1 = document.getElementById('StreetAddress1').value;
+					document.getElementById('Address2Street1').value = billingAddress1;
+					let billingAddress2 = document.getElementById('StreetAddress2').value;
+					document.getElementById('Address2Street2').value = billingAddress2;
+					let billingCity = document.getElementById('City').value;
+					document.getElementById('City2').value = billingCity;
+					let billingState = document.getElementById('State').value;
+					document.getElementById('State2').value = billingState;
+					let billingCountry = document.getElementById('Country').value;
+					document.getElementById('Country2').value = billingCountry;
+					let billingPostal = document.getElementById('PostalCode').value;
+					document.getElementById('PostalCode2').value = billingPostal;
+			}else{ //unchecked
+				return;
+			}
+		}
 
 
 		const city = document.getElementById("City");
@@ -1245,7 +1263,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 			setTimeout(rebindStateEvents, 100);
 		});
 		setTimeout(rebindStateEvents, 100);
-	};
+	});
 
 	function rebindStateEvents() {
 		document.getElementById("State").addEventListener('change', function() {
@@ -1290,7 +1308,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 
 			document.querySelector('.error-missing').remove();
 			var firstName = document.getElementById('FirstName');
-			console.log('wtf is this', $);
+			
 			if ($.trim(firstName.value) == "") {
 				ok = false;
 				addErrorMessageAbove(firstName, "Please enter a valid first name");
@@ -1423,186 +1441,15 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		target.after("<p class='error-missing' style='display: block;'>" + message + "</p>");
 	}
 
-	function getDate() {
-		var now = new Date();
-		var year = now.getFullYear();
-		var month = now.getMonth() + 1;
-		var day = now.getDate();
-		var hour = now.getHours();
-		var minute = now.getMinutes();
-		var second = now.getSeconds();
-
-		if (month.toString().length == 1) {
-			var month = '0' + month;
-		}
-		if (day.toString().length == 1) {
-			var day = '0' + day;
-		}
-		if (hour.toString().length == 1) {
-			var hour = '0' + hour;
-		}
-		if (minute.toString().length == 1) {
-			var minute = '0' + minute;
-		}
-		if (second.toString().length == 1) {
-			var second = '0' + second;
-		}
-		var dateTime = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
-		document.getElementById('customer_time').value = dateTime;
-	}
 </script>
 
-<!-- countdown timer -->
-<script>
-	var WARNING_THRESHOLD = 1 * 60 * 1000; //1 minute (in milliseconds)
-
-	function doStart() {
-		// todo: get this to start from time left from other page
-		var id = "countdown-timer";
-		var i = 900 - <?php echo $timerDelay; ?>; //duration in seconds (10 minutes)
-
-		ActivateCountDown(id, i);
-	}
-
-	function ActivateCountDown(strContainerID, initialValue) {
-		var _countDownContainer = document.getElementById(strContainerID);
-		var $_countDownContainer;
-
-		if (!_countDownContainer) {
-			console.log("count down error: container does not exist: " + strContainerID +
-				"\nmake sure html element with this ID exists");
-		} else {
-			$_countDownContainer = document.getElementById(strContainerID);
-			//the ATimer below works with time values in milliseconds
-			//the "20" will update display ever 20 milliseconds, as fast as screen refreshes
-			$_countDownContainer.classList.remove("warn");
-			var timerID = new ATimer(initialValue * 1000, 20, CountDownComplete, CountDownTick);
-			timerID.start();
-		}
-
-		function CountDownComplete() {
-			//alert("Your time is up!");
-			// document.getElementById('noise').get(0).pause();
-			// document.getElementById("runOutModal").modal('show');
-			if (window.modalHandler) {
-				modalHandler('timerModal', true);
-			}
-			_countDownContainer.innerHTML = "00:00";
-		}
-
-		var flag = 'no';
-
-		function CountDownTick(remaining) {
-			//console.log(flag);
-			if (flag == 'no') {
-				if (remaining < WARNING_THRESHOLD) {
-					//document.getElementById("runOutModal").modal('show');
-					// document.getElementById('noise').play();
-					flag = 'yes';
-					//console.log(flag);
-				}
-			}
-			SetCountdownText(remaining);
-		}
-
-		function SetCountdownText(remaining) {
-			_countDownContainer.innerHTML = remaining.millisecondsToHundredthsString();
-		}
-	}
-
-	//(2) Helpers
-	Number.prototype.millisecondsToHundredthsString = function() {
-		/// <summary>Convert number of milliseconds into text with format MM:SS:hh</summary>
-		/// <param name="this">Number of milliseconds</param>
-		/// <returns type="Text" >Duration, text in format MM:SS:hh</<returns>
-		var partMultipliers = [{
-			d: 60000,
-			p: 100
-		}, {
-			d: 1000,
-			p: 100
-		}];
-		var remainder = parseInt(this);
-		return partMultipliers.reduce(function(prev, m, idx) {
-			var quotient = Math.floor(remainder / m.d); //m.d is divisor
-			remainder -= (quotient * m.d);
-			return prev + ((idx == 0) ? "" : ":") + (quotient + m.p).toString().substr(1); //m.p is a framer
-		}, "");
-	};
-
-	String.prototype.toMilliseconds = function() {
-		/// <summary>Convert from string to number of milliseconds</summary>
-		/// <param name="this">Duration, text in format MM:SS:mmm (mmm is milliseconds)</param>
-		/// <returns type="Number">Number of milliseconds</returns>
-		var partMultipliers = [1, 1000];
-		var parts = this.split(":").reverse();
-		return milliseconds = parts.reduce(function(prev, part, idx) {
-			var res = (parseInt(part) * partMultipliers[idx]);
-			return prev + res;
-		}, 0);
-	};
-
-	//(3) Custom "ATimer" Class 
-	function ATimer(milliseconds, optionalPeriod, optionalCallback, optionalUpdateCallback) {
-		//ensure this runs as a new instance upon each instantiation
-		if (typeof ATimer != "function") return new ATimer.call(this, arguments);
-
-		//PRIVATE properties...
-		var timerInstance, duration = milliseconds,
-			period = 20,
-			count = 0,
-			chunks, completer, updater;
-		var self = this;
-		if (typeof optionalPeriod == "number") {
-			period = optionalPeriod;
-			completer = optionalCallback;
-			updater = optionalUpdateCallback;
-		} else {
-			completer = arguments[1];
-			updater = arguments[2];
-		}
-		chunks = Math.floor(duration / period);
-
-		//PRIVATE functions...
-		function chunkComplete() {
-			if (count++ >= chunks) {
-				if (completer) completer.call(self, chunks, count); //do callback, if supplied
-			} else {
-				var curr = new Date().getTime();
-				var diff = (curr - start) - (count * period);
-				var remaining = Math.max(0, (duration - (curr - start)));
-				timerInstance = window.setTimeout(chunkComplete, (period - diff));
-				if (updater) updater.call(self, remaining); //do callback, if supplied
-			}
-		}
-		return {
-
-			//PUBLIC functions...
-			start: function() {
-				timerInstance = window.setTimeout(chunkComplete, period);
-				start = new Date().getTime();
-			},
-			cancel: function() {
-				if (timerInstance) window.clearTimeout(timerInstance);
-			}
-		};
-	}
-
-	if (sessionStorage.getItem("is_timer_complete") == "yes") {
-		document.getElementById("countdown-timer").innerHTML = "00:00";
-		// document.getElementById("runOutModal").modal('show');
-		modalHandler('timerModal', true);
-	} else {
-		doStart();
-	}
-</script>
 
 <!--KOUNT PIXEL-->
 <iframe width=1 height=1 frameborder=0 scrolling=no src="https://gdc.sticky.io/pixel.php?t=htm&campaign_id=1&sessionId=<?= $kount_session ?>">
 	<img width=1 height=1 src="https://gdc.sticky.io/pixel.php?t=gif&campaign_id=1&sessionId=<?= $kount_session ?>>" />
 </iframe>
 <!--/KOUNT PIXEL-->
-<script src="js/regions.js"></script>
+
 <script>
 	var _orderSubTotal = 0;
 	var _shippingPrice = 0;
@@ -1623,7 +1470,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		var shippingCost = 0;
 
 		var productId = document.getElementById('product-id').value;
-		// console.log('productid: ' + productId);
+		
 		if (productId == 4 || productId == 373 || productId == 952 || productId == 956) {
 			if (document.getElementById("bill-same").checked) {
 				if (document.getElementById("Country").value != 'US') {
@@ -1742,31 +1589,56 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 			element.classList.add('hide');
 		}
 	}
-</script>
 
 
-<!-- Start of gothamclub Zendesk Widget script -->
-<script>
-	/*<![CDATA[*/
-	window.zEmbed || function(e, t) {
-		var n, o, d, i, s, a = [],
-			r = document.createElement("iframe");
-		window.zEmbed = function() {
-			a.push(arguments)
-		}, window.zE = window.zE || window.zEmbed, r.src = "javascript:false", r.title = "", r.role = "presentation", (r.frameElement || r).style.cssText = "display: none", d = document.getElementsByTagName("script"), d = d[d.length - 1], d.parentNode.insertBefore(r, d), i = r.contentWindow, s = i.document;
-		try {
-			o = s
-		} catch (e) {
-			n = document.domain, r.src = 'javascript:var d=document.open();d.domain="' + n + '";void(0);', o = s
-		}
-		o.open()._l = function() {
-			var e = this.createElement("script");
-			n && (this.domain = n), e.id = "js-iframe-async", e.src = "https://assets.zendesk.com/embeddable_framework/main.js", this.t = +new Date, this.zendeskHost = "gothamclub.zendesk.com", this.zEQueue = a, this.body.appendChild(e)
-		}, o.write('<body onload="document._l();">'), o.close()
-	}();
-	/*]]>*/
+	window.onload = ()=> {
+
+		// Prsitine Config
+		let defaultConfig = {
+				// class of the parent element where the error/success class is added
+				classTo: 'flex',
+				errorClass: 'has-danger',
+				successClass: 'has-success',
+				// class of the parent element where error text element is appended
+				errorTextParent: 'flex',
+				// type of element to create for the error text
+				errorTextTag: 'div',
+				// class of the error text element
+				errorTextClass: 'text-help text-red-600 font-medium text-sm'
+		};
+
+		var form = document.getElementById("step_1");
+		var pristine = new Pristine(form, defaultConfig);
+
+		form.addEventListener('submit', function (e) {
+				// disable checkout button
+				var checkout = document.getElementById('next-button');
+				checkout.disabled = true;
+				checkout.innerText = "Confirming Payment...";
+
+				// Check to copy values
+				copyBillingInputValue();
+
+				var valid = pristine.validate(); // returns true or false
+
+				if(!pristine.validate()){
+					e.preventDefault();
+					var firstError = document.querySelector('.has-danger');
+					firstError.scrollIntoView({behavior: "smooth", block: "end"});
+					checkout.disabled = false;
+					checkout.innerText = "Complete Purchase";
+				}
+
+				//var age = document.querySelector('input[name="age"]:checked').value;
+				//var weeklysex = document.querySelector('input[name="weeklysex"]:checked').value;
+				//var stayhard = document.querySelector('input[name="stayhard"]:checked').value;
+				//sessionStorage.setItem("customer_email", $(this).value);
+		});
+	};
+
+	
 </script>
-<!-- End of gothamclub Zendesk Widget script -->
+
 
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
@@ -1786,8 +1658,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
   	Modified by:	Tilesh Khatri
   */
   
-  function StartCountDown(myDiv,myTargetDate)
-  {
+  function StartCountDown(myDiv,myTargetDate) {
     var dthen	= new Date(myTargetDate);
     var dnow	= new Date();
     ddiff		= new Date(dthen-dnow);
@@ -1795,8 +1666,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
     CountBack(myDiv,gsecs);
   }
   
-  function Calcage(secs, num1, num2)
-  {
+  function Calcage(secs, num1, num2) {
     s = ((Math.floor(secs/num1))%num2).toString();
     if (s.length < 2) 
     {	
@@ -1805,23 +1675,23 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
     return (s);
   }
   
-  function CountBack(myDiv, secs)
-  {
+  function CountBack(myDiv, secs) {
     var DisplayStr;
     var DisplayFormat = "%%D%% Days %%H%%:%%M%%:%%S%%";
     DisplayStr = DisplayFormat.replace(/%%D%%/g,	Calcage(secs,86400,100000));
     DisplayStr = DisplayStr.replace(/%%H%%/g,		Calcage(secs,3600,24));
     DisplayStr = DisplayStr.replace(/%%M%%/g,		Calcage(secs,60,60));
-    DisplayStr = DisplayStr.replace(/%%S%%/g,		Calcage(secs,1,60));
-    if(secs > 0)
-    {	
-      document.getElementById(myDiv).innerHTML = DisplayStr;
-      setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990);
-    }
-    else
-    {
-      document.getElementById(myDiv).innerHTML = "EXPIRED";
-    }
+		DisplayStr = DisplayStr.replace(/%%S%%/g,		Calcage(secs,1,60));
+		const insertElement = document.getElementById(myDiv);
+		// if (insertElement) {
+			if(secs > 0) {	
+				insertElement.innerHTML = DisplayStr;
+				setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990);
+			} 
+			else {
+				insertElement.innerHTML = "EXPIRED";
+			}
+		
   }
 
 </script>

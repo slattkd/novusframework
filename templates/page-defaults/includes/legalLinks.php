@@ -30,7 +30,7 @@
 	var isLoading =  false;
 	function getPage(pageName) {
 		isLoading = true;
-		fetch(`/templates/page-default/${pageName}`)
+		fetch(`/${pageName}`)
 		.then(response => response.text())
 		.then((data) => {
 				isLoading = false;
