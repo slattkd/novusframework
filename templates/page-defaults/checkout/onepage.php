@@ -6,6 +6,12 @@ $nextpage = '/up1.php';
 $kount_session = str_replace('.', '', microtime(true));
 $prodtype = 6;
 
+
+$dateInFuture = strtotime("2022-11-12");
+$dateString = intval($dateInFuture);
+$futureDate = date("m/d/Y", $dateString);
+$displayDeadline = date("F j, Y, g:i a", $dateString);
+
 header("Cache-Control: max-age=300, must-revalidate");
 date_default_timezone_set("America/New_York");
 
@@ -662,7 +668,12 @@ body {
 
 <body>
 <div class="flex justify-center flex-nowrap bg-red-900 text-white p-3 text-center text-sm" style="position: sticky;top: 0;z-index: 1000; filter: saturate(1.8)">
-		<div>Your Discount Is Being Held For <span id="countdown-timer" class="ml-2"></span><span id="ms"></span>, Until It Is Given To The Next Man Waiting In Line</div>
+		<div class="flex">Your Discount Is Being Held For 
+			<span id="countdown-timer" class="ml-1">
+				<div id="clock1" class="font-bold text-white"> [clock1]</div>
+			</span>
+		, Until It Is Given To The Next Man Waiting In Line
+		</div>
 	</div>
 	<header class="flex justify-center bg-lime-600 p-2">
 		<div class="flex flex-wrap bg-white rounded px-4 py-1 text-lime-600 items-center text-center text-lg">
@@ -757,37 +768,34 @@ body {
 
 					<div class="flex items-center mb-3">
 						<div class="icon mr-3">
-							<img src="/images/truch-icon-green.png" alt="truck" style="object-fit: contain; width: 100px; height: 100px;">
+							<img src="/images/truch-icon-green.png" alt="truck" style="object-fit: contain; width: 70px; height: 70px;">
 						</div>
-						<div class="text-lime-500 mt-4">
-							<p class="delivery-truck" style="color: #40a900!important;">
-
-								<script language="JavaScript">
-									TargetDate = "<?php echo date("m/d/Y"); ?> 04:00 PM UTC-0500 ";
-									BackColor = "transparent";
-									ForeColor = "#40a900";
-									CountActive = true;
-									CountStepper = -1;
-									LeadingZero = true;
-									DisplayFormat = "Order In The Next %%H%% Hours, %%M%% Minutes, %%S%% Seconds";
-									FinishMessage = "<strong>After 4PM (EST)</strong>";
-								</script>
-								<script language="JavaScript" src="//scripts.hashemian.com/js/countdown.js"></script>
-
-								To Be Shipped <strong><?php if (date('H') >= 16) {
-																				echo 'First Thing 9AM Tomorrow!';
-																			} else {
-																				echo 'Today!';
-																			} ?></strong>
-							</p>
+						<div class="text-lime-500 mt-4 grow">
+						<div class="flex">
+							<div>
+								Order In The Next
+							</div>
+							
+							<div id="clock2" class="font-bold ml-1">[clock2]</div> 
 						</div>
+							 
+							 
+							 To Be Shipped 
+							 <?php if (date('H') >= 16) {
+									echo 'First Thing 9AM Tomorrow!';
+								} else {
+									echo 'Today!';
+								} ?>
+						</div>
+
+						
 					</div>
 					<div class="flex items-center border-t">
 						<div class="icon mr-3">
 							<img src="/images/90-day-green.png" alt="90 day seal" style="object-fit: contain; width: 100px; height: 100px;">
 						</div>
 						<div class="text-lime-500 mt-4" style="color: #40a900!important;">
-							Try 5G Male PLUS <strong>Risk FREE</strong> Until <strong>Thursday, November 10th, 2022</strong> With Our 90-Day Guarantee
+							Try 5G Male PLUS <strong>Risk FREE</strong> Until <strong><?php echo $displayDeadline; ?></strong> With Our 90-Day Guarantee
 						</div>
 					</div>
 
@@ -858,11 +866,10 @@ body {
 								<label for="Email" class="text-sm">Email:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="email" name="email" id="Email" value="<?php if (@$_SESSION["email"] != "") {
-																																															echo @$_SESSION["email"];
-																																														} else {
-																																															echo $_POST['customer_email'];
-																																														} ?>" onchange="">
+							<?php 
+								$inputEmail = @$_SESSION["email"] != '' ? @$_SESSION["email"] : $_POST['customer_email'];
+							?>
+								<input class="w-full px-1 py-2" type="email" name="email" id="Email" value="<?= $inputEmail; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -1216,16 +1223,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		city.addEventListener('keyup', function() {
 			document.getElementById("order-city").textContent = city.value;
 		});
-
-		//floating red bar
-		const stickyTimer = document.querySelector('.sticky-timer');
-		window.onscroll = () => {
-			if (window.scrollTop > 50) {
-				stickyTimer.classList.add('scroll');
-			} else {
-				stickyTimer.classList.remove('scroll');
-			}
-		};
 
 		document.getElementById('modalbutton').addEventListener('click', function() {
 			document.getElementById("step_1").scrollIntoView({
@@ -1777,4 +1774,55 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 } ?>
 
 </body>
+<script language="JavaScript">
+
+// set individual clock values here
+  StartCountDown("clock1","<?php echo $futureDate; ?> 04:00 PM UTC-0500 ")
+  StartCountDown("clock2","<?php echo $futureDate; ?> 04:00 PM UTC-0500 ")
+  
+  /*
+  	Author:		Robert Hashemian (http://www.hashemian.com/)
+  	Modified by:	Munsifali Rashid (http://www.munit.co.uk/)
+  	Modified by:	Tilesh Khatri
+  */
+  
+  function StartCountDown(myDiv,myTargetDate)
+  {
+    var dthen	= new Date(myTargetDate);
+    var dnow	= new Date();
+    ddiff		= new Date(dthen-dnow);
+    gsecs		= Math.floor(ddiff.valueOf()/1000);
+    CountBack(myDiv,gsecs);
+  }
+  
+  function Calcage(secs, num1, num2)
+  {
+    s = ((Math.floor(secs/num1))%num2).toString();
+    if (s.length < 2) 
+    {	
+      s = num1 != 86400 ? "0" + s : s;
+    }
+    return (s);
+  }
+  
+  function CountBack(myDiv, secs)
+  {
+    var DisplayStr;
+    var DisplayFormat = "%%D%% Days %%H%%:%%M%%:%%S%%";
+    DisplayStr = DisplayFormat.replace(/%%D%%/g,	Calcage(secs,86400,100000));
+    DisplayStr = DisplayStr.replace(/%%H%%/g,		Calcage(secs,3600,24));
+    DisplayStr = DisplayStr.replace(/%%M%%/g,		Calcage(secs,60,60));
+    DisplayStr = DisplayStr.replace(/%%S%%/g,		Calcage(secs,1,60));
+    if(secs > 0)
+    {	
+      document.getElementById(myDiv).innerHTML = DisplayStr;
+      setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990);
+    }
+    else
+    {
+      document.getElementById(myDiv).innerHTML = "EXPIRED";
+    }
+  }
+
+</script>
 </html>
