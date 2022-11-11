@@ -794,13 +794,13 @@ body {
 
 					<div class="w-full bg-yellow-100 border p-5 my-5">
 						<div class="flex flex-wrap-reverse lg:flex-nowrap">
-							<div class="flex flex-col pr-5">
+							<div class="flex flex-col">
 								<p class="guarantee-txts">
 									I understand that I have 90 days - thats <strong>THREE FULL MONTHS</strong> - to try out 5G Male PLUS and make sure I love it.
-									<img src="/images/90-day-icon.png" alt="90 day guarantee" class="pt-3" style="width: auto; max-width: 200px;float:right">
+									<img src="/images/90-day-icon.png" alt="90 day guarantee" class="pt-3" style="width: auto; max-width: 175px;float:right">
 									And any time I want, I can call support at <strong>1-800-251-9316</strong> or email <strong>support@5gmale.com</strong>, 24 hours a day, 7 days a week to request a refund, with no questions asked and no hassles!<br><strong id="guarantee">GUARANTEED BY:</strong>
 								</p>
-								<img src="/images/ryan-sign.png" alt="ryan signature" style="max-width: 200px;mix-blend-mode: multiply;">
+								<img src="/images/ryan-sign.png" alt="ryan signature" style="max-width: 175px;mix-blend-mode: multiply;">
 							</div>
 							<!-- <div class="flex flex-col justify-center mx-auto mb-4">
 							<img src="/images/90-day-icon.png" alt="90 day guarantee" style="width: auto; max-width: 200px;">
@@ -991,13 +991,13 @@ body {
 						<div class="flex flex-wrap items-center my-4 text-center justify-center">
 							<p class="text-2xl font-semibold" style="margin-bottom: 0.5rem">Enter Your <span class="underline font-bold mx-2">SHIPPING</span> Adress</p>
 							<div class="flex flex-nowrap justify-center">
-								<input type="checkbox" checked name="billingSameAsShipping" id="bill-same" onchange="solveprice()" />
+								<input type="checkbox" checked name="billingSameAsShipping" id="bill-same"/>
 								<label class="ml-2">Shipping address same as billing address?</label>
 							</div>
 
 						</div>
 						<section>
-							<div class="shipping-address" style="display:none;">
+							<div class="shipping-address hide">
 
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
@@ -1116,14 +1116,43 @@ body {
 			</div>
 
 			<div class="flex justify-center flex-wrap mb-4 text-center mt-11">
-				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="/tailwind/terms.php">Terms and Conditions</a> &nbsp;
-				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="/tailwind/privacy.php">Privacy Policy</a> &nbsp;
+				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/terms.php">Terms and Conditions</a> &nbsp;
+				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/privacy.php">Privacy Policy</a> &nbsp;
 				<a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a>
 			</div>
 		</div>
 	</div>
 
-</body>
+	<form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' onSubmit="getDate();" id="step_1" class="col-sm-12">
+		<input type="hidden" name="previous_page" value="checkout/order">
+		<input type="hidden" name="current_page" value="/checkout/onepage">
+		<input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
+		<input type="hidden" name="product_id" id='product_id'  value="<?php echo $pid; ?>">
+		<input type="hidden" name="form_id" value="step_<?php echo $s; ?>">
+		<input type="hidden" name="step" value="<?php echo $s; ?>">
+		<input type="hidden" name="AFFID" value="<?php echo $affid; ?>">
+		<input type="hidden" name="AFID" value="<?php echo @$_SESSION['vwovar']; ?>">
+		<input type="hidden" name="C1" value="<?php echo @$c1; ?>">
+		<input type="hidden" name="C2" value="<?php echo @$c2; ?>">
+		<input type="hidden" name="C3" value="<?php echo @$c3; ?>">
+		<input type="hidden" name="utm_source" value="<?php echo @$_GET['utm_source']; ?>">
+		<input type="hidden" name="utm_medium" value="<?php echo @$_GET['utm_medium']; ?>">
+		<input type="hidden" name="utm_campaign" value="<?php echo @$_GET['utm_campaign']; ?>">
+		<input type="hidden" name="utm_term" value="<?php echo @$_GET['utm_term']; ?>">
+		<input type="hidden" name="utm_content" value="<?php echo @$_GET['utm_content']; ?>">
+		<input type="hidden" name="click_id" value="<?php echo @$clickid; ?>">
+		<input type="hidden" name="notes" value="<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>">
+		<input type="hidden" name="shipping_id" id="shipping_id" value="<?php echo $shippingId; ?>">
+		<input type="hidden" name="newform" value="yes">
+		<input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265,142<?php echo $add1pid;?><?php echo $add2pid;?>">
+		<input type="hidden" name="upsellCount" value="1">
+		<input type="hidden" name="customer_time" id="customer_time"  value="">
+		<input type="hidden" name="eftid" id="eftid"  value="">
+		<input type="hidden" name="sessionId" value="<?php echo $kount_session; ?>">
+		<input type="hidden" name="fid" id="fid" value="<?php echo $formID; ?>" class="hidden" />
+		<input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo $site['campaign'] ?>">
+		<input type="hidden" name="37positions" id="37positions" value="<?php echo $thirtyseven; ?>">
+	</form>
 
 
 
@@ -1153,6 +1182,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		const billingSame = document.getElementById("bill-same");
 		billingSame.addEventListener('change', function() {
 			const shipAdd = document.querySelector('.shipping-address');
+			console.log(billingSame.checked);
 			if (billingSame.checked) {
 				display(shipAdd, false);
 			} else {
@@ -1160,12 +1190,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 			}
 		});
 
-		document.querySelector(".fancybox").fancybox({
-			'width': 560,
-			'height': 340,
-			'autoDimensions': false,
-			'margin': [60, 20, 20, 20]
-		});
 
 		const city = document.getElementById("City");
 		city.addEventListener('keyup', function() {
@@ -1173,14 +1197,14 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		});
 
 		//floating red bar
-		const stickyTimer = document.querySelector('.sticky-timer');
-		window.onscroll = () => {
-			if (window.scrollTop > 50) {
-				stickyTimer.classList.add('scroll');
-			} else {
-				stickyTimer.classList.remove('scroll');
-			}
-		};
+		// const stickyTimer = document.querySelector('.sticky-timer');
+		// window.onscroll = () => {
+		// 	if (window.scrollTop > 50) {
+		// 		stickyTimer.classList.add('scroll');
+		// 	} else {
+		// 		stickyTimer.classList.remove('scroll');
+		// 	}
+		// };
 
 		document.getElementById('modalbutton').addEventListener('click', function() {
 			document.getElementById("step_1").scrollIntoView({
@@ -1216,6 +1240,8 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 	}
 
 	function calculateTax() {
+		// bypass for testing
+		return;
 		// let estRate = 0.08875;
 		let estRate = 0;
 		let state = (document.getElementById("bill-same").checked) ? document.getElementById("State").value : document.getElementById("State2").value;
@@ -1565,6 +1591,8 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 	var _untaxable = <?php echo $untaxableAmount; ?>;
 
 	function solveprice() {
+		// bypass for testing
+		return;
 		// var subtotal = parseFloat(document.getElementById('subtotalPrice').textContent).toFixed(2);
 		var superLube = 0;
 		if (document.getElementById('superlube')) {
@@ -1647,39 +1675,43 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 	}
 
 	document.addEventListener("DOMContentLoaded", function() {
-		document.getElementById('applyCoupon').addEventListener('click', function() {
-			var couponText = document.getElementById('couponCode').value;
-			if (couponText.trim().toLowerCase() == 'youtube') {
-				document.getElementById('couponCode').value = 'youtube';
-				display(document.getElementById('couponSuccess'), true);
-				display(document.getElementById('couponError'), false);
-				display(document.getElementById('couponField'), false);
+		const coupon = document.getElementById('applyCoupon');
+		if (coupon) {
+			coupon.addEventListener('click', function() {
+				var couponText = coupon.value;
+				if (couponText.trim().toLowerCase() == 'youtube') {
+					document.getElementById('couponCode').value = 'youtube';
+					display(document.getElementById('couponSuccess'), true);
+					display(document.getElementById('couponError'), false);
+					display(document.getElementById('couponField'), false);
 
-				var productId = document.getElementById('product-id');
+					var productId = document.getElementById('product-id');
 
-				switch (productId) {
-					case '4':
-						productId.value = 373;
-						break;
-					case '9':
-						productId.value = 378;
-						break;
-					case '5':
-						productId.value = 374;
-						break;
-					case '8':
-						productId.value = 377;
-						break;
+					switch (productId) {
+						case '4':
+							productId.value = 373;
+							break;
+						case '9':
+							productId.value = 378;
+							break;
+						case '5':
+							productId.value = 374;
+							break;
+						case '8':
+							productId.value = 377;
+							break;
+					}
+					//if the case is qty1 (either pid 4 or 373) you need to add tax/shipping into the grand total - subtotal looks good - this is in solveprice() - harness that for this  
+					document.getElementById('subtotalPrice').textContent = (parseFloat(document.getElementById('subtotalPrice').textContent) * .85).toFixed(2);
+					solveprice();
+					calculateTax();
+				} else {
+					display(document.getElementById('couponSuccess'), false);
+					display(document.getElementById('couponError'), true);
 				}
-				//if the case is qty1 (either pid 4 or 373) you need to add tax/shipping into the grand total - subtotal looks good - this is in solveprice() - harness that for this  
-				document.getElementById('subtotalPrice').textContent = (parseFloat(document.getElementById('subtotalPrice').textContent) * .85).toFixed(2);
-				solveprice();
-				calculateTax();
-			} else {
-				display(document.getElementById('couponSuccess'), false);
-				display(document.getElementById('couponError'), true);
-			}
-		});
+			});
+		}
+		
 	});
 
 	// replacement for .show() .hide()
@@ -1723,4 +1755,5 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
     template('debug', null, null, 'debug');
 } ?>
 
+</body>
 </html>
