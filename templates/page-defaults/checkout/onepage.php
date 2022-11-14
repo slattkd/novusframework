@@ -270,6 +270,8 @@ switch ($pid) {
 		break;
 }
 
+$totalPrice = intval($price) + intval($ship);
+
 switch ($add1) {  //superlube
 	case 0:
 		$superlube = '';
@@ -722,7 +724,7 @@ body {
 						</li> -->
 							<li class="flex justify-between items-center border-b flex-wrap py-2">
 								<div class="w-full md:w-2/3">5G Male PLUS (<?php echo $productLabel; ?>)</div>
-								<div class="text-lg text-gray-300 font-semibold">$69.95<span class="text-lime-500 font-bold ml-2 invisible">FREE!</span></div>
+								<div class="text-lg text-gray-300 font-semibold">$<?php echo $price; ?><span class="text-lime-500 font-bold ml-2 invisible">FREE!</span></div>
 							</li>
 							<li class="flex justify-between items-center border-b flex-wrap py-2">
 								<div class="w-full md:w-2/3">5G Enhancement Bible</div>
@@ -841,7 +843,7 @@ body {
 					</div>
 				</div>
         <div class="w-full my-4 md:my-0"> 
-				<form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' id="step_1" class="col-sm-12">
+				<form action="../process.php<?php echo trim(@$querystring); ?>"  method='POST' id="step_1" class="col-sm-12">
 
 					<div class="flex flex-col bg-gray-100 border px-4">
 						<div class="flex justify-center text-2xl font-semibold my-4">Enter <span class="underline font-bold mx-2">BILLING</span> Address</div>
@@ -866,10 +868,7 @@ body {
 								<label for="Email" class="text-sm">Email:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-							<?php 
-								$inputEmail = @$_SESSION["email"] != '' ? @$_SESSION["email"] : $_POST['customer_email'];
-							?>
-								<input class="w-full px-1 py-2" type="email" name="email" id="Email" value="<?= $inputEmail; ?>" onchange="">
+								<input class="w-full px-1 py-2" type="email" name="email" id="Email" value="<?php echo @$_SESSION["email"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -1087,13 +1086,13 @@ body {
 								<div id="totalPricePay" class="flex w-full items-center justify-around">
 									<div class="text-xl font-semibold">You Pay Just</div>
 									<div class="flex items-center">
-										<div id="totalPricePayValue" class="text-xl font-semibold mr-2">$<?php echo number_format($finalTotalPrice, 2, '.', ''); ?></div>
+										<div id="totalPricePayValue" class="text-xl font-semibold mr-2">$<?php echo number_format($totalPrice, 2, '.', ''); ?></div>
 										<div id="totalDiscount">(<?php echo $discount; ?>% OFF)</div>
 									</div>
 
 								</div>
 
-								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="/tailwind/terms-t.php">Terms and Conditions</a></p>
+								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="terms.php">Terms and Conditions</a></p>
 								<div class="flex w-full justify-center">
 									<button name="next-button" id="next-button" type="submit" class="w-full newbuy text-3xl" onclick="validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
 								</div>
