@@ -1,6 +1,8 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 var_dump($_POST);
+
+$url = $_POST['next_page'];
 
 $nextlink = '/process.php' . $querystring;
 $next_page = '/up1.php';
@@ -843,7 +845,7 @@ body {
 					</div>
 				</div>
         <div class="w-full my-4 md:my-0"> 
-				<form action="../process.php<?php echo trim(@$querystring); ?>"  method='POST' id="step_1" class="col-sm-12">
+				<form action="/up/upsell-6-month-supply"  method='POST' id="step_1" class="col-sm-12">
 
 					<div class="flex flex-col bg-gray-100 border px-4">
 						<div class="flex justify-center text-2xl font-semibold my-4">Enter <span class="underline font-bold mx-2">BILLING</span> Address</div>
@@ -1427,7 +1429,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 				StopExit = true;
 				display(document.getElementById('next-button'), false);
 				console.log(ok);
-				// document.getElementById("step_1").submit();
+				document.getElementById("step_1").submit();
 				return true;
 			} else {
 				display(document.querySelector('.error-missing'), true);

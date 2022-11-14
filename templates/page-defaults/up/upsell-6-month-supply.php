@@ -205,7 +205,7 @@ if (isset($_SESSION['step_1_orderId'])) {
                 </div>
                 <p class="w-full pb-3 text-center text-3xl">Watch This Short Presentation To Get Started With 5G Male And Secure An <strong>Additional 65% OFF</strong>…</p>
                 <!-- <p class="w-full pb-3 text-center text-lg">Tap The Video Below To Play</p> -->
-                <div class="flex justify-center w-full my-5 upsell">
+                <div class="flex flex-col justify-center w-full my-5 upsell">
                       <?php video('includes/player', $vidcode, $droptime);?>
                 </div>
                 <div class="w-full pb-3 text-center">

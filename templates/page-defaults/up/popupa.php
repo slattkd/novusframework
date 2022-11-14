@@ -20,63 +20,63 @@ $_SESSION['pageType'] = 'dn0';
     <link rel="shortcut icon" href="https://s3.amazonaws.com/sec-image/upsells/skeletonkey/lock.png" type="image/png" />
 
     <style>
-        .wait {font-size: 118px;}
-        .popup-btn{
+		.wait {font-size: 118px;}
+		.popup-btn{
+			
+			background: none!important;
+			border: none!important;
+			box-shadow: none!important;
+		}
+		
+		.popup-btn img{
+			width: 95%;
+			max-width: 288px;
+		}
+		.headline {
+			font-size: 28px !important;
+		}
 
-            background: none!important;
-            border: none!important;
-            box-shadow: none!important;
-        }
-
-        .popup-btn img{
-            width: 95%;
-            max-width: 288px;
-        }
-        .headline {
-            font-size: 28px !important;
-        }
-
-
-            .buttons-wrap {
-                width: 100%;
-                padding: 0px;
-                margin: 0 auto;
-            }
-
-            .buttons-left {
-                width: 47%;
-                float: left;
-            }
-            .buttons-right {
-                width: 47%;
-                float: right;
-            }
-
-            .clear { clear: both; }
-
-            .button-wrap img {
-                display: block;
-            }
-
-            .w100 {
-                width: 100%;
-            }
-
-            .buttons-left a:hover, .buttons-right a:hover {
-                 color: #82c213 !important;
-                 text-decoration: none;
-            }
-
-            .buttons-left a {
-                display: block;
-                margin-bottom: 20px;
-            }
-
-
-            .buttons-right a {
-                display: block;
-                margin-bottom: 20px;
-                }
+			
+			.buttons-wrap {
+				width: 100%;
+				padding: 0px;
+				margin: 0 auto;
+			}
+			
+			.buttons-left {
+				width: 47%;
+				float: left;
+			}
+			.buttons-right {
+				width: 47%;
+				float: right;
+			}
+			
+			.clear { clear: both; }
+			
+			.button-wrap img {
+				display: block;
+			}
+			
+			.w100 {
+				width: 100%;
+			}
+			
+			.buttons-left a:hover, .buttons-right a:hover {
+				 color: #82c213 !important;
+				 text-decoration: none;
+			}
+			
+			.buttons-left a {
+				display: block;
+				margin-bottom: 20px;
+			}
+			
+			
+			.buttons-right a {
+				display: block;
+				margin-bottom: 20px;
+				}
 
             .price {
                 padding-bottom: 15px;
@@ -89,57 +89,60 @@ $_SESSION['pageType'] = 'dn0';
                 border-width: 0;
                 border-style: none;
             }
-        @media(max-width:767px){
-                .lefts {
-                    width:100%
-                }
-                .popup-btn{ position: relative; left: -10px; }
-                .wait{
-                    font-size: 50px!important;
-                    margin-top: 15px;
-                    }
-                .color-black, .buy_button {
-                    font-size: 20px !important;
-                }
+		@media(max-width:767px){
+				.lefts {
+					width:100%
+				}
+				.popup-btn{ position: relative; left: -10px; }
+				.wait{
+					font-size: 50px!important;
+					margin-top: 15px;
+					}
+				.color-black, .buy_button {
+					font-size: 20px !important;
+				}
 
+				
+			.buttons-left {
+				width: 100%;
+				float: none;
+			}
+			.buttons-right {
+				width: 100%;
+				float: none;
+			}
+			.buttons-left a {
+				display: inline;
+				margin-bottom: 0px;
+			}
+			.buttons-right a {
+				display: inline;
+				margin-bottom: 0px;
+				}
+			}
+			
+			@media(max-width:370px){
+				.buttons-wrap p {
+					padding-bottom: 20px;
+				}
+				
+				.guarantee {
+					padding-top: 20px;
+				}
+			}
 
-            .buttons-left {
-                width: 100%;
-                float: none;
-            }
-            .buttons-right {
-                width: 100%;
-                float: none;
-            }
-            .buttons-left a {
-                display: inline;
-                margin-bottom: 0px;
-            }
-            .buttons-right a {
-                display: inline;
-                margin-bottom: 0px;
-                }
-            }
+			input[type="checkbox"] {
+				filter: unset;
+			}
 
-            @media(max-width:370px){
-                .buttons-wrap p {
-                    padding-bottom: 20px;
-                }
-
-                .guarantee {
-                    padding-top: 20px;
-                }
+			input[type="checkbox"]:checked {
+				filter: brightness(120%) hue-rotate(-51deg) saturate(53%) contrast(300%);
             }
-
-            input[type="checkbox"] {
-                filter: unset;
-            }
-
-            input[type="checkbox"]:checked {
-                filter: brightness(120%) hue-rotate(-51deg) saturate(53%) contrast(300%);
-            }
-
-    </style>
+            
+            /* condensed upsell css */
+            body{padding:0;margin:0;color:#000;background-color:#eee}.main_container{padding:0;margin:25px auto;overflow:auto;width:680px}.slpage{padding:0 0 20px 0;overflow:hidden;width:100%}.letter-body{position:relative;clear:both;padding:15px 50px;margin:15px auto;float:none;border-radius:5px;border-width:3px 1px 1px;border-style:solid;border-color:#d81e00 #000 #000;background-color:#fff}p{margin:0;padding:0}.p1{font-family:Arial,Verdana,sans-serif;color:#000;text-align:center;font-size:16px;margin:20px 0}.p3{font-family:Arial,sans-serif;font-size:14px;line-height:130%;text-indent:0!important}.p4{font-weight:700;font-size:20px;color:#d81e00}.centered{text-align:center}.color-black{color:#000}#guarantee-image-2{float:left;margin-right:20px}.buy_box{border:4px dashed #c90000;width:80%;margin:40px auto;float:none}#letter_body{margin:0;padding:10px 0}@media (max-width:800px){.letter-body{padding:20px}.p1{text-indent:0}}@media (max-width:460px){.p3{font-size:22px}.main_container{padding:0;padding-top:10px;width:100%;margin:0}.letter-body{margin:0;padding:4px;width:100%}.slpage{padding:20px 0 20px 0;width:100%;float:none;margin:0}.buy_box{width:95%}}@media (max-width:920px){.main_container{width:96%;margin:0 auto}.buy_box{width:90%}}
+			
+	</style>
 </head>
 
 <body>
