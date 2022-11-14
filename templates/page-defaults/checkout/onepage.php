@@ -761,7 +761,7 @@ body {
 							</li>
 							<li class="flex justify-between items-center flex-wrap py-3">
 								<div class="orders font-semibold ">Today You Pay Only</div>
-								<div class="font-bold">$69.95</div>
+								<div class="font-bold">$<?php echo $finalPrice; ?></div>
 							</li>
 						</ul>
 					</div>
@@ -841,7 +841,7 @@ body {
 					</div>
 				</div>
         <div class="w-full my-4 md:my-0"> 
-				<form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' onSubmit="getDate();" id="step_1" class="col-sm-12">
+				<form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' id="step_1" class="col-sm-12">
 
 					<div class="flex flex-col bg-gray-100 border px-4">
 						<div class="flex justify-center text-2xl font-semibold my-4">Enter <span class="underline font-bold mx-2">BILLING</span> Address</div>
@@ -850,7 +850,7 @@ body {
 								<label for="FirstName" class="text-sm">First Name:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="firstName" id="FirstName" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -858,7 +858,7 @@ body {
 								<label for="LastName" class="text-sm">Last Name:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="last_name" id="LastName" value="<?php if (@$_SESSION["lastname"]) echo @$_SESSION["lastname"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="lastName" id="LastName" value="<?php if (@$_SESSION["lastName"]) echo @$_SESSION["lastname"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -885,7 +885,7 @@ body {
 								<label for="StreetAddress1" class="text-sm">Address:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="address" type="text" id="StreetAddress1" value="<?php echo @$_SESSION["billingaddress1"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingAddress1" type="text" id="StreetAddress1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -893,7 +893,7 @@ body {
 								<label for="FirstName" class="text-sm">Address Cont'd:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="address2" type="text" id="StreetAddress2" value="<?php echo @$_SESSION["billingaddress2"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingAddress2" type="text" id="StreetAddress2" value="<?php echo @$_SESSION["billingAddress2"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -901,7 +901,7 @@ body {
 								<label for="FirstName" class="text-sm">City:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="city" type="text" id="City" value="<?php echo @$_SESSION["billingcity"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingCity" type="text" id="City" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -910,7 +910,7 @@ body {
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>">
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
 									<?php foreach ($usStates as $key => $value) : ?>
 										<option value="<?= $key;?>"> <?= $value; ?> </option>
 									<?php endforeach; ?>
@@ -923,7 +923,7 @@ body {
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country" data-toggle-element="State" name="country" onchange="solveprice()">
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country" data-toggle-element="State" name="billingCountry" value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
 									<option selected value="US">United States</option>
 									<?php foreach ($countries as $key => $value) : ?>
 										<option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -936,7 +936,7 @@ body {
 								<label for="PostalCode" class="text-sm">Postal Code:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="zip" type="text" id="PostalCode" maxlength="12" value="<?php echo @$_SESSION['billingpostal']; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingZip" type="text" id="PostalCode" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-col w-full my-5">
@@ -954,7 +954,7 @@ body {
 								<label for="cc_no" class="text-sm">Card Number:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="cc_no" id="cc_no" maxlength="19" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="creditCardNumber" id="cc_no" maxlength="19" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -965,7 +965,7 @@ body {
 								<div class="w-full columns-2 gap-3">
 									<div class="w-full border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="w-full px-1 py-2" id="cc_exp_mo" name="expmonth">
+										<select class="w-full px-1 py-2" id="cc_exp_mo" name="expMonth">
 											<option value="01">01</option>
 											<option value="02">02</option>
 											<option value="03">03</option>
@@ -982,7 +982,7 @@ body {
 									</div>
 									<div class="w-full border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="w-full px-1 py-2" id="cc_exp_yr" name="expyear">
+										<select class="w-full px-1 py-2" id="cc_exp_yr" name="expYear">
 											<option value="02">2022</option>
 											<option value="03">2023</option>
 											<option value="04">2024</option>
@@ -1005,13 +1005,13 @@ body {
 								<label for="ccv" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="cc_ccv" id="ccv" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="ccCCV" id="ccv" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center my-4 text-center justify-center">
 							<p class="text-2xl font-semibold" style="margin-bottom: 0.5rem">Enter Your <span class="underline font-bold mx-2">SHIPPING</span> Adress</p>
 							<div class="flex flex-nowrap justify-center">
-								<input type="checkbox" checked name="billingSameAsShipping" id="bill-same"/>
+								<input type="checkbox" checked name="billingSameAsShipping" id="bill-same" value="<?php echo @$_SESSION['billingSameAsShipping']; ?>"/>
 								<label class="ml-2">Shipping address same as billing address?</label>
 							</div>
 
@@ -1024,7 +1024,7 @@ body {
 										<label for="Address2Street1" class="text-sm">Address:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" name="shippingaddress1" type="text" id="Address2Street1" value="<?php echo @$_SESSION["shippingaddress1"]; ?>">
+										<input class="w-full px-1 py-2" name="shippingAddress1" type="text" id="Address2Street1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
@@ -1032,7 +1032,7 @@ body {
 										<label for="Address2Street2" class="text-sm">Address Cont'd:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" name="shippingaddress2" type="text" id="Address2Street2" value="<?php echo @$_SESSION["shippingaddress2"]; ?>">
+										<input class="w-full px-1 py-2" name="shippingAddress2" type="text" id="Address2Street2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
@@ -1040,7 +1040,7 @@ body {
 										<label for="City2" class="text-sm">City:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" name="shippingcity" type="text" id="City2" size="25" value="<?php echo @$_SESSION["shippingcity"]; ?>">
+										<input class="w-full px-1 py-2" name="shippingCity" type="text" id="City2" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
@@ -1049,7 +1049,7 @@ body {
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>">
+										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
 										<?php foreach ($usStates as $key => $value) : ?>
 											<option value="<?= $key;?>"> <?= $value; ?> </option>
 										<?php endforeach; ?>
@@ -1062,7 +1062,7 @@ body {
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country2" data-toggle-element="State2" name="shippingcountry" onchange="solveprice()">
+										<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country2" data-toggle-element="State2" name="shippingCountry" onchange="solveprice()">
 											<option selected value="US">United States</option>
 											<?php foreach ($countries as $key => $value) : ?>
 												<option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -1076,7 +1076,7 @@ body {
 										<label for="PostalCode2" class="text-sm">Postal Code:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" type="text" name="shippingzip" type="text" id="PostalCode2" value="<?php echo @$_SESSION["shippingzip"]; ?>">
+										<input class="w-full px-1 py-2" type="text" name="shippingZip" type="text" id="PostalCode2" value="<?php echo @$_SESSION["shippingZip"]; ?>">
 									</div>
 								</div>
 

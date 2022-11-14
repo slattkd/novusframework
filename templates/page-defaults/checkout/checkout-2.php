@@ -758,7 +758,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>"></select>
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>"></select>
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -767,7 +767,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country" data-toggle-element="State" name="country" onchange="solveprice()">
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country" data-toggle-element="State" name="shippingCountry" onchange="solveprice()">
 									<?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/html/billing-countries.php'); ?>
 								</select>
 							</div>
@@ -890,7 +890,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingstate" data-selected="<?php echo @$_SESSION["shippingstate"]; ?>"></select>
+										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>"></select>
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">

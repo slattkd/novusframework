@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
 $logger->info('Processing Checkout');
 debugMessage("Processing Checkout");
 
@@ -13,44 +13,15 @@ $logger->info('Posted Values: ' . $postArray);
 
 $sticky = new sticky();
 
-/*
-$orderValidation = new OrderValidation();
-
-if (isset($_POST['validation'])) {
-    logger->info('Checking Validation');
-    $validationClass = $_POST['validation'];
-    if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/shared/scripts/{$validationClass}OrderValidation.php")) {
-        require_once($_SERVER['DOCUMENT_ROOT'] . "/shared/scripts/{$validationClass}OrderValidation.php");
-        $classString = $validationClass . 'OrderValidation';
-        $orderValidation = new $classString();
-    }
-}
-
-$orderValidation->validate($_POST);
-
-$_SESSION['product_id'] = $_POST['product_id'];
-$_SESSION['baseprice'] = $_POST['baseprice'];
-
-if ($orderValidation->hasErrors()) {
-    $_SESSION['llerror'] = 1;
-    $_SESSION['formerrors'] = $orderValidation->errors;
-    $_SESSION['formpost'] = serialize($_POST);
-    $url = $_POST['current_page'];
-    $logger->info(json_encode($orderValidation->errors));
-    header("Location: " . $url . $querystring);
-    die();
-}
-*/
 
 //Add Timer Function, output on system.log
 $response = $sticky->newOrder($_POST);
 $logger->info('Sticky New Order Response: ' . json_encode($response));
 
 $res = explode('&', $response);
-$sessionFields = [ 'first_name', 'last_name', 'email', 'phone', 'shippingAddress1',
+$sessionFields = [ 'firstName', 'lastName', 'email', 'phone', 'shippingAddress1',
                     'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
-                    'billingFirstName', 'billingLastName', 'billingAddress1', 'billingCountry',
-                    'billingCity', 'billingState', 'billingZip' ];
+                    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip' ];
 
 foreach ($sessionFields as $sessionField) {
     $_SESSION[$sessionField] = $_POST[$sessionField];
@@ -129,7 +100,7 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
         $_SESSION['llerror'] = 1;
         $errorMsg = explode("=", $res[2]);
         $_SESSION['formError'] = utf8_decode(urldecode($errorMsg[1]));
-        $logger->info($errorMsg);
+        $logger->info($_SESSION['formError']);
     }
 
 
