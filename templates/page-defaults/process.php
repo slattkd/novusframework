@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 $logger->info('Processing Checkout');
 debugMessage("Processing Checkout");
 

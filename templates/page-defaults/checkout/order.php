@@ -155,6 +155,12 @@ if (in_array($dayname, $daysclosed)) {
                 margin: 0 auto;
                 text-align: center;
                 border: 1px solid #62b218;
+                cursor: pointer;
+                transition: all 250ms ease-in-out;
+            }
+
+            .button_buy:hover {
+                opacity: 0.75;
             }
             .bogo {
                 position: relative;

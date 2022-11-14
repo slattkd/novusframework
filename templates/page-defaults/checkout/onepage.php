@@ -951,15 +951,15 @@ body {
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="FirstName" class="text-sm">Card Number:</label>
+								<label for="cc_no" class="text-sm">Card Number:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="cc_no" id="cc_no" maxlength="19" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="FirstName" class="text-sm">Exp Date:</label>
+								<label for="cc_exp_mo" class="text-sm">Exp Date:</label>
 							</div>
 							<div class="w-full md:w-2/3 ">
 								<div class="w-full columns-2 gap-3">
@@ -1002,10 +1002,10 @@ body {
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-1/3">
-								<label for="FirstName" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
+								<label for="ccv" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="cc_ccv" id="ccv" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center my-4 text-center justify-center">

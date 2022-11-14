@@ -1,10 +1,9 @@
 <?php
-session_start();
 date_default_timezone_set( "America/New_York" );
-error_reporting(0);
+// error_reporting(0);
 //require_once($_SERVER['DOCUMENT_ROOT'].'/shared-gm/site.php');
-	include('config.php');
-	include('inc/class.cart.php');
+	// include('config.php');
+	// include('inc/class.cart.php');
 
 $_SESSION['o'] = $_GET['o'];
 $_SESSION['r'] = $_GET['r'];
@@ -24,14 +23,11 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/pixelhead.php'); ?>
+    <?php template("includes/header"); ?>
   <title><?php echo $company->name; ?></title>
-  <meta name="google-site-verification" content="dkgity5MUDLaGEc6Qfixegc7Sg24QkJfi73InFcZGAM" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-  <link rel="stylesheet" href="../tailwind/shared/css/base.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+
 
   <style>
     .bg-image {
@@ -52,8 +48,6 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
   </style>
 </head>
 <body>
-<?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/pixelbody.php'); ?>
-<?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/header.php'); ?>
 
 <div class="">
 	<div class="flex justify-center md:justify-end bg-image">
@@ -61,7 +55,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 			<div class="bg-gray-600 font-bold text-3xl text-white p-3 px-4">BECOME SUPERNATURAL</div>
 			<div class="font-semibold text-xl text-white py-5">SUPERIOR NATURAL ENERGY FOR TODAY’S MAN</div>
 			<div>
-				<a href="/tailwind/5gmale-t.php">
+				<a href="/sl-5gmale.php">
 				<button class="w-auto bg-black border border-transparent py-2 px-3 text-base text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 hover:bg-gray-800">
               SHOP NOW</button>
 					</a>
@@ -82,7 +76,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               Learn about Supernatural Man
             </p>
-				 <a href="/tailwind/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
 
           <div class="flex flex-col">
@@ -94,7 +88,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               We have helped thousands of men with these issues.
             </p>
-				 <a href="/tailwind/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
 
 			  <div class="flex flex-col">
@@ -106,7 +100,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               We have a variety of products that can help your needs.
             </p>
-				 <a href="/tailwind/5gmale-t.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/sl-5gmale.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
 
           <div class="flex flex-col">
@@ -118,7 +112,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               We’re here to Help.
             </p>
-				 <a href="/tailwind/support.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/support.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
         </div>
       </section>
@@ -139,6 +133,5 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 </div>
 
 
-<?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/footer.php'); ?>
 </body>
 </html>
