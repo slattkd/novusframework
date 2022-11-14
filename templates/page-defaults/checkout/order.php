@@ -1,6 +1,8 @@
 <?php
 error_reporting(0);
 
+$url = $_POST['next_page'];
+
 // from assessment
 // age: 35-44
 // weeklysex: 1-3
@@ -347,9 +349,9 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
-						<form action="/checkout/onepage.php" method="POST">
-							<input type="hidden" id="pid1" name="prodtype" value="1">
-							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+						<form action="/checkout/onepage.php" id="product-form" method="POST">
+							<input type="hidden" id="pid1" name="prodtype" value="4">
+							<input id="pid-input" class="button_buy clickable" type="button" onclick="updatePID(4)" value="CHOOSE">
 
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">61% OFF</span> + $6.95 USA Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
@@ -381,7 +383,7 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $59.67 PER BOTTLE!</div>
-                            <input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+                            <input class="button_buy clickable" type="button" onclick="updatePID(5)" value="CHOOSE">
                             
 
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">67% OFF</span> + FREE Shipping</p>
@@ -414,7 +416,7 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $49.50 PER BOTTLE!</div>
-                            <input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+                            <input class="button_buy clickable" type="button" onclick="updatePID(662)" value="CHOOSE">
                             
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">72% OFF</span> + FREE Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
@@ -823,6 +825,14 @@ if (in_array($dayname, $daysclosed)) {
             window.modalHandler('mouseModal', true);
         }
 
+        function updatePID(pid) {
+            const form = document.getElementById('product-form');
+            console.log(form);
+            const pidInput = document.getElementById('pid-input');
+            pidInput.value = pid;
+            form.submit();
+        }
+
     window.addEventListener("DOMContentLoaded", function() {
 
         const discountSection = document.getElementById("cta");
@@ -854,22 +864,11 @@ if (in_array($dayname, $daysclosed)) {
 
         const addOns = document.querySelector(".addOns");
         addOns.addEventListener('change', function() {
-            if(document.getElementById('addon2').checked) {
-                document.querySelector(".add2").value = '1';
+            const addOn2 = document.getElementById('addon2');
+            if(addOn2.checked) {
+                addOn2.value = '1';
             }else{
-                document.querySelector(".add2").value = '0';
-            }
-            if(document.getElementById("addon1").value == '1'){
-                document.querySelector(".add1").value = '1';
-            }
-            if(document.getElementById("addon1").value == '2'){
-                document.querySelector(".add1").value = '2';
-            }
-            if(document.getElementById("addon1").value == '3'){
-                document.querySelector(".add1").value = '3';
-            }
-            if(document.getElementById("addon1").value == '0'){
-                document.querySelector(".add1").value = '0';
+                addOn2.value = '0';
             }
         })
 

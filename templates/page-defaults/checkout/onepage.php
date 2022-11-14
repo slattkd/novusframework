@@ -1,12 +1,10 @@
 <?php
-error_reporting(0);
-
+// error_reporting(0);
 var_dump($_POST);
 
-$nextlink = '../process.php' . $querystring;
+$nextlink = '/process.php' . $querystring;
 $next_page = '/up1.php';
 $kount_session = str_replace('.', '', microtime(true));
-$prodtype = 6;
 
 
 $dateInFuture = strtotime("2022-11-13");
@@ -76,7 +74,7 @@ if (isset($_GET['blog'])) {
 }
 
 if ($_POST) {
-	$pid = $_POST['pid'];
+	$pid = $_POST['prodtype'];
 	$add1 = $_POST['add1']; //superlube
 	$add2 = $_POST['add2'];  //37 Sex Positions
 	$_SESSION['pid'] = $pid;
