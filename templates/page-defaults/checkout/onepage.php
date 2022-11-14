@@ -2,7 +2,7 @@
 error_reporting(0);
 
 $nextlink = '../process.php' . $querystring;
-$nextpage = '/up1.php';
+$next_page = '/up1.php';
 $kount_session = str_replace('.', '', microtime(true));
 $prodtype = 6;
 
@@ -1004,7 +1004,7 @@ body {
 								<label for="ccv" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="ccCCV" id="ccv" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="ccv" id="ccv" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center my-4 text-center justify-center">
@@ -1094,7 +1094,7 @@ body {
 
 								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="terms.php">Terms and Conditions</a></p>
 								<div class="flex w-full justify-center">
-									<button name="next-button" id="next-button" type="submit" class="w-full newbuy text-3xl" onclick="validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
+									<button name="next-button" id="next-button" class="w-full newbuy text-3xl" onclick="validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
 								</div>
 
 								<div class="flex w-full justify-center items-center text-center" style="color:#3fa900">
@@ -1238,7 +1238,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 
 		const city = document.getElementById("City");
 		city.addEventListener('keyup', function() {
-			document.getElementById("order-city").textContent = city.value;
+			document.getElementById("City").textContent = city.value;
 		});
 
 		document.getElementById('modalbutton').addEventListener('click', function() {
@@ -1426,7 +1426,8 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 			if (ok) {
 				StopExit = true;
 				display(document.getElementById('next-button'), false);
-				document.getElementById("step_1").submit();
+				console.log(ok);
+				// document.getElementById("step_1").submit();
 				return true;
 			} else {
 				display(document.querySelector('.error-missing'), true);
@@ -1580,13 +1581,16 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 
 	// replacement for .show() .hide()
 	function display(element, show) {
-		if (show) {
-			element.classList.remove('hide');
-			element.classList.add('show');
-		} else {
-			element.classList.remove('show');
-			element.classList.add('hide');
+		if (element) {
+			if (show) {
+				element.classList.remove('hide');
+				element.classList.add('show');
+			} else {
+				element.classList.remove('show');
+				element.classList.add('hide');
+			}
 		}
+		
 	}
 
 
