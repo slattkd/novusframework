@@ -6,6 +6,8 @@ $droptime = "2444";
 $cookie_name = "returning_user";
 $cookie_value = "yes";
 
+$exitlink = 'sl-5gmale.php'.$querystring;
+
 //PageType Override
 $_SESSION['pageType'] = 'vsl';
 
