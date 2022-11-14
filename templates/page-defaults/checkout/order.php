@@ -1,5 +1,13 @@
 <?php
 error_reporting(0);
+
+// from assessment
+// age: 35-44
+// weeklysex: 1-3
+// stayhard: 30-60m
+// customer_email: test@test.com
+// submit: Next Step
+
 if( isset($_SESSION['assessment']) ) {
     $assessment = unserialize($_SESSION['assessment']);
     if( isset($assessment['customer_email']) && filter_var($assessment['customer_email'], FILTER_VALIDATE_EMAIL) ) {
@@ -341,10 +349,8 @@ if (in_array($dayname, $daysclosed)) {
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
 						<form action="/checkout/onepage.php" method="POST">
 							<input type="hidden" id="pid1" name="prodtype" value="1">
-							<input type="hidden" class="add1" id="add1" name="add1" value="0">
-							<input type="hidden" class="add2" id="add2" name="add2" value="0">
 							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
-						</form>
+
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">61% OFF</span> + $6.95 USA Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
 						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
@@ -375,12 +381,9 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $59.67 PER BOTTLE!</div>
-						<form action="/checkout/onepage.php" method="POST">
-							<input type="hidden" id="pid1" name="prodtype" value="1">
-							<input type="hidden" class="add1" name="add1" value="0">
-							<input type="hidden" class="add2" name="add2" value="0">
-							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
-						</form>
+                            <input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+                            
+
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">67% OFF</span> + FREE Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
 						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
@@ -411,12 +414,8 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $49.50 PER BOTTLE!</div>
-						<form action="/checkout/onepage.php" method="POST">
-							<input type="hidden" id="pid1" name="prodtype" value="1">
-							<input type="hidden" class="add1" name="add1" value="0">
-							<input type="hidden" class="add2" name="add2" value="0">
-							<input class="button_buy" type="submit" class="clickable" value="CHOOSE">
-						</form>
+                            <input class="button_buy" type="submit" class="clickable" value="CHOOSE">
+                            
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">72% OFF</span> + FREE Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
 						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
@@ -453,6 +452,7 @@ if (in_array($dayname, $daysclosed)) {
                     <p><strong>37 Sex Positions That Give Her Explosive Orgasms.</strong> This X-rated blackbook of sex positions will show you the BEST positions to make your girl orgasm HARD, including positions for G-Spot AND squirting orgasms. Most men have no idea about these positions, so women will be THRILLED when you try them. This master class comes complete with video demonstrations on real girls, so you can see step-by-step exactly what to do and have your girl screaming your name in bed all night! You get HALF off it you add it to your order today. <span style="color:#d70000;"><strong>(SAVE 66%. Normally $60.00, today just $19.95)</strong></span> <strong>One-time-only deal.</strong></p>
                     </div>
                 </div>
+                </form>
             </section>
             <div class="flex justify-content-center">
 				<div class="flex flex-col">

@@ -1,6 +1,8 @@
 <?php
 error_reporting(0);
 
+var_dump($_POST);
+
 $nextlink = '../process.php' . $querystring;
 $next_page = '/up1.php';
 $kount_session = str_replace('.', '', microtime(true));
