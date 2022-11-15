@@ -33,6 +33,9 @@ $complete = array(
 $complete['campaign_id'] = 1;
 $results = $sticky->api(2, $complete);
 
+var_dump($complete['criteria']);
+var_dump($results);
+
 echo $_SESSION['orderId'].'<br>';
 echo $_SESSION['customerId'];
 echo "<pre>";
@@ -187,10 +190,6 @@ $firedl = 0;
 
 <body class="bg-gray-100">
 
-	<?php
-	// @dane - I dont think this is needed on the basic VSL checkout
-	// template("includes/header");
-	?>
     <div class="container container-vsl mx-auto py-20 px-5 md:px-8 min-h-screen">
         <div class="content">
             <div class="flex justify-center mb-3">
@@ -204,7 +203,7 @@ $firedl = 0;
                 <div class="columns-3xs ...">
                     <div class="flex flex-col p-3">
                         <h4 class=" text-xl font-semibold">Shipping Address</h4>
-                        <?php echo $items[$orderid]['shipping_street_address']; ?><br>
+                        <?php echo $items[$orderid]['shippingAddress']; ?><br>
                         <?php if ($items[$orderid]['shipping_street_address2'] != "") {
                             echo $items[$orderid]['shipping_street_address2'] . '<br>' . '';
                         } ?>
@@ -246,7 +245,7 @@ $firedl = 0;
                             echo '
                             <div class="flex justify-between px-3 py-2">
                             <div class="text">' . $item['products[0][name]'] . '</div>
-                            <div class="price text-right">$ ' . money_format('%i', $item['products[0][price]']) . '</div>
+                            <div class="price text-right">$ ' . number_format((float)$item['products[0][price]'], 2, '.', '') . '</div>
                             </div>
                             ';
 
@@ -314,15 +313,17 @@ $firedl = 0;
 
                 <div class="flex justify-between px-3 py-2">
                     <div class="text">Shipping</div>
-                    <div class="price text-right">$ <?php echo money_format('%i', $shippingTotal1); ?></div>
+                    <!-- number_format((float)$grand_total, 2, '.', '') -->
+                    <!-- money_format('%i', $grand_total) -->
+                    <div class="price text-right">$ <?php echo number_format((float)$shippingTotal1, 2, '.', ''); ?></div>
                 </div>
                 <div class="flex justify-between px-3 py-2">
                     <div class="text">Sales Tax</div>
-                    <div class="price text-right">$ <?php echo money_format('%i', $total_tax); ?></div>
+                    <div class="price text-right">$ <?php echo number_format((float)$total_tax, 2, '.', ''); ?></div>
                 </div>
                 <div class="flex justify-between px-3 py-2">
                     <div class="text">Total</div>
-                    <div class="price text-right ext-xl font-semibold">$ <?php echo money_format('%i', $grand_total); ?></div>
+                    <div class="price text-right ext-xl font-semibold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
                 </div>
 
                 <div class="w-full py-2 text-right"><a href="http://members.supernaturalman.com/login" target="_blank">Click Here to Members Area</a></div>
@@ -349,13 +350,14 @@ $firedl = 0;
                 Need help? <a class="clickable underline" href="mailto:support@5gmale.com" target="_blank">Contact us</a>
             </div>
             <div class="flex">
-                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/refund_policy.php" target="_blank">Refund Policy</a></div>
+                    <!-- <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/refund_policy.php" target="_blank">Refund Policy</a></div>
                     <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/privacy_policy.php" target="_blank">Privacy Policy</a></div>
-                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/terms_of_service.php" target="_blank">Terms of service</a></div>
+                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/terms_of_service.php" target="_blank">Terms of service</a></div> -->
+                    <?php legalLinks("includes/legalLinks");?>
             </div>
         </div>
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT'].'/tailwind/shared/components/footer.php'); ?>
 </body>
+<?php template("includes/footer"); ?>
 
 </html>

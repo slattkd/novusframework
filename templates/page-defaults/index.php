@@ -48,7 +48,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
   </style>
 </head>
 <body>
-<?php include($_SERVER['DOCUMENT_ROOT'].'/templates/page-defaults/includes/basicHeader.php'); ?>
+<?php template("includes/basicHeader"); ?>
 
 <div class="">
 	<div class="flex justify-center md:justify-end bg-image">
@@ -133,6 +133,6 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 		</section>
 </div>
 
-<?php include($_SERVER['DOCUMENT_ROOT'].'/templates/page-defaults/includes/basicFooter.php'); ?>
+<?php template("includes/footer"); ?>
 </body>
 </html>

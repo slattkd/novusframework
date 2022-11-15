@@ -92,36 +92,132 @@ foreach ($arr_browsers as $browser) {
 <!--End SNM Google Analytics-->
 		
 	<style>
-		body {
-			font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
-			background-color: #e3e3e3;
-		}
-
-		.content h2 {
-			line-height: 1.5em;
-		}
-
-		.buy_button {
-			font-weight: bold;
-			background-color: #82c213;
-			color: #fff;
-			font-size: 25px;
-			border: 1px solid #000;
-			padding: 15px 10px;
-			border-radius: 4px;
-			text-shadow: 1px 1px #000;
-			box-shadow: 1px 1px 2px #888888;
-			text-decoration: none;
-			transform: all 200ms ease-in-out;
-		}
+		.p1, .color-black {
+				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif !important;
+			}
 		
-		.buy_button:hover {
-			background-color: transparent;
-			border: 2px solid #82c213;
-			color: #82c213;
-			text-decoration: none;
-			text-shadow: none;
-		}
+			.p1, .color-black {
+				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif !important;
+			}
+		
+			.p4 {
+				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+				font-size: 26px;
+				font-weight: 400;
+			}
+			
+			.p3 {
+				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+			}
+			
+			#cboxOverlay {
+				background: #000 !important;
+			}
+			
+			#cboxClose{
+				top: 0px;
+				    background: url(../../upsells/5gmale/colorbox/images/controls.png) no-repeat -25px 0 !important;
+			}
+			
+			.buy_button {
+					font-weight: bold;
+				    background-color: #82c213;
+				    color: #fff;
+				    font-size: 25px;
+				    border: 1px solid #000;
+				    padding: 15px 10px;
+				    border-radius: 4px;
+				    text-shadow: 1px 1px #000;
+				    box-shadow: 1px 1px 2px #888888;
+				    text-decoration: none;
+			}
+			
+			.buy_button:hover {
+				background-color: transparent;
+				    border: 2px solid #82c213;
+				    color: #82c213;
+				    text-decoration: none;
+				    text-shadow: none;
+			}
+			
+			.main-pop h1 {
+				color: #cc0300;
+				font-size: 60px;
+				text-align: center;
+				margin-top: -20px;
+				margin-bottom: 5px;
+			}
+			.modal-title {
+				position: relative;
+				padding: 12px !important;
+			}
+			p#close-btn {
+				position: absolute;
+				top: 3px;
+				right: 8px;
+				color: #fff;
+				font-weight: bold;
+				font-size: 17px;
+				cursor: pointer
+			}
+			.main-pop h3 {
+				text-align: center;
+				font-size: 27px !important;
+				line-height: 37px;
+				font-weight: normal;
+				margin-top: -15px;
+				color: #000 !important;
+			}
+			.stay-btn-cont, .leave-btn-cont {
+				width: 48%;
+				float: left;
+			}
+			#stay-btn, #leave-btn {
+				font-size: 30px;
+				font-weight: bold;
+				color: #fff;
+				border: none;
+				background: green;
+				padding: 12px 25px;
+				margin-top: 15px;
+				width: 90%;
+				cursor: pointer;
+			}
+			#leave-btn {
+				margin-left: 20px;
+				background: #cc0300;
+			}
+			#ouibounce-modal .modal-footer {
+				border-top: none !important;
+			}
+			.options {
+				width: 100%;
+				float: left;
+				border: 3px dashed red;
+				padding-bottom: 35px;
+				padding-top: 15px;
+			}
+			.option2 {
+				margin-top: 30px;
+			}
+          
+			@media(max-width:767px){
+				.lefts {
+					width:100%
+				}
+				
+				.guarantee {
+					margin-top: 20px;
+				}
+				
+				.buy_button {
+					font-size: 23px;
+				}
+
+                .fancybox-opened {
+                    width: 90% !important;
+                }
+			}
 		
 	</style>
 </head>

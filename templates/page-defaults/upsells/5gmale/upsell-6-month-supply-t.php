@@ -245,6 +245,23 @@ if (isset($_SESSION['step_1_orderId'])) {
 		body {
 			background-color: #e3e3e3;
 		}
+
+		#progress-bar {
+			width: 0;
+		}
+
+		#progress-bar.grow {
+			transition: width 1s ease-in-out;
+			animation: grow 1s ease-in;
+		}
+		@keyframes grow {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 100%;
+			}
+		}
 	</style>
 
 	<!-- Start Visual Website Optimizer Asynchronous Code -->
