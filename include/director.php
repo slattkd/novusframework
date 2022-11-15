@@ -39,8 +39,8 @@ if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
 $_SESSION['url']      = $url;
 $_SESSION['slug']     = $slug;
 $_SESSION['pageType'] = pathinfo($slug, PATHINFO_FILENAME);
-$_SESSION['last']     = $_SESSION['url']; //<-- this will redirect to the process.php as it stands, and causes a loop ooops.
-
+// $_SESSION['last']     = $_SESSION['url']; //<-- this will redirect to the process.php as it stands, and causes a loop ooops.
+$_SESSION['last']     = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
 
 // Get Users IP for logging
 //$ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR']; : $_SERVER['REMOTE_ADDR']);

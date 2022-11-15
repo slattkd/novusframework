@@ -1,3 +1,6 @@
+<?php
+$product = reset($products['products']);
+?>
 <html>
     <head>
         <?php template('includes/header'); ?>
@@ -13,7 +16,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 p-4">
                     <h2>A Special Deal For New Customers Only!</h2>
-                    <?php echo $site['products'][0]['product_name'];?>
+                    <?php echo $product['product_name'];?>
                     <img src="/images/releaseswitchadvanced-6bottle.png" alt="Release Switch Advanced - 6 Bottles">
                 </div>
                 <div class="w-full md:w-1/2 p-4">
@@ -37,7 +40,10 @@
         </section>
         
         <?php template('includes/footer'); ?>
-        <?php if ($site['debug'] == true) {template('debug', 'debug'); } ?>
+        <?php if ($site['debug'] == true) {
+        // Show Debug bar only on whitelisted domains.
+        template('debug', null, null, 'debug');
+        } ?>
     </body>
 </html>
 
