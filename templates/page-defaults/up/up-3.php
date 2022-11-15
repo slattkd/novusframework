@@ -11,7 +11,7 @@ $product = reset($products['products']);
         <section class="max-w-5xl mx-auto bg-white shadow-md mt-6">
             <h1>UP3</h1>
             <a href="/thanks">Next Page</a>
-            <a href="/up2">Previous Page</a>
+            <a href="/up-2">Previous Page</a>
 
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 p-4">

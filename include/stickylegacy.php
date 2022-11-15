@@ -30,7 +30,7 @@ class sticky
         $campaign_id = (isset($posted['campaign_id'])) ? $posted['campaign_id'] : '';
         $productId = (isset($posted['product_id'])) ? $posted['product_id'] : '';
         $product_qty = (isset($posted['product_qty'])) ? $posted['product_qty'] : '1';
-        $shippingId = (isset($posted['shipping_id'])) ? $posted['shipping_id'] : '';
+        $shipping_id = (isset($posted['shipping_id'])) ? $posted['shipping_id'] : '';
 
         $fields_fname = (isset($posted['firstName'])) ? $posted['firstName'] : '';
         $fields_lname = (isset($posted['lastName'])) ? $posted['lastName'] : '';
@@ -123,7 +123,7 @@ class sticky
                      'sessionId' =>  $sessionId,
                      'tranType' =>  'Sale',
                      'productId' =>  $productId,
-                     'shippingId' =>  $shippingId,
+                     'shipping_id' =>  $shipping_id,
                      'upsellCount' =>  $upsellCount,
                      'upsellProductIds' =>  $upsellProductIds,
                      'billingSameAsShipping' =>  $billingSameAsShipping,

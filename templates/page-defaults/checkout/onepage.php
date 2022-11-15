@@ -1,6 +1,5 @@
 <?php
 error_reporting(0);
-var_dump($_POST);
 
 $url = $_POST['next_page'];
 
@@ -933,7 +932,7 @@ body {
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="billingCountry" data-toggle-element="State" name="billingCountry" value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="billingCountry" name="billingCountry" value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
 									<option selected value="US">United States</option>
 									<?php foreach ($countries as $key => $value) : ?>
 										<option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -1262,8 +1261,8 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		return;
 		// let estRate = 0.08875;
 		let estRate = 0;
-		let state = (document.getElementById("bill-same").checked) ? document.getElementById("State").value : document.getElementById("State2").value;
-		let country = (document.getElementById("bill-same").checked) ? document.getElementById("Country").value : document.getElementById("Country2").value;
+		let state = (document.getElementById("bill-same").checked) ? document.getElementById("billingState").value : document.getElementById("shippingState").value;
+		let country = (document.getElementById("bill-same").checked) ? document.getElementById("billingCountry").value : document.getElementById("shippingCountry").value;
 
 		if (state == "NY" && country == "US") {
 			let taxTotal = parseFloat(((_orderSubTotal - _untaxable) * estRate)).toFixed(2);
@@ -1315,7 +1314,7 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		
 		if (productId == 4 || productId == 373 || productId == 952 || productId == 956) {
 			if (document.getElementById("bill-same").checked) {
-				if (document.getElementById("Country").value != 'US') {
+				if (document.getElementById("billingCountry").value != 'US') {
 					document.getElementById("shipsum").textContent = "$14.95";
 					document.getElementById("shippingId").value = "4";
 					document.getElementById("upsellProductIds").value = "87,102,265";
@@ -1336,11 +1335,10 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 														} else {
 															echo '6.95';
 														} ?>;
-
 				}
 			} else {
 
-				if (document.getElementById("Country2").value != 'US') {
+				if (document.getElementById("shippingCountry").value != 'US') {
 					document.getElementById("shipsum").textContent = "$14.95";
 					document.getElementById("shippingId").value = "4";
 					document.getElementById("upsellProductIds").value = "87,102,265";
@@ -1370,12 +1368,12 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 
 		if (productId == 373 || productId == 5 || productId == 374 || productId == 8 || productId == 377 || productId == 9 || productId == 378) {
 			if (document.getElementById("bill-same").checked) {
-				if (document.getElementById("Country").value != 'US') {
+				if (document.getElementById("billingCountry").value != 'US') {
 
 				} else {}
 			} else {
 
-				if (document.getElementById("Country2").value != 'US') {} else {}
+				if (document.getElementById("shippingCountry").value != 'US') {} else {}
 			}
 		}
 

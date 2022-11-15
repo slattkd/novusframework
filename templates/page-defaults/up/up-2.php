@@ -10,8 +10,8 @@ $product = reset($products['products']);
         <?php template('includes/navigation'); ?>
         <section class="max-w-5xl mx-auto bg-white shadow-md mt-6">
             <h1>UP2</h1>
-            <a href="/up3">Next Page</a>
-            <a href="/up1">Previous Page</a>
+            <a href="/up-3">Next Page</a>
+            <a href="/up-1">Previous Page</a>
 
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 p-4">

@@ -11,7 +11,7 @@ $product = reset($products['products']);
         <?php template('includes/navigation'); ?>
         <section class="max-w-5xl mx-auto bg-white shadow-md mt-6">
             <h1>UP1</h1>
-            <a href="/up2">Next Page</a>
+            <a href="/up-2">Next Page</a>
             <a href="/checkout">Previous Page</a>
             <a href="/dn1">Downsell</a>
 

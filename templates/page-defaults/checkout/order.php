@@ -256,7 +256,7 @@ if (in_array($dayname, $daysclosed)) {
             </span>
         </div>
     </header>
-    <div class="container container-md mx-auto py-8" style="max-width: 960px !important">
+    <div class="container container-md mx-auto py-8 pb-20" style="max-width: 960px !important">
         <div class="content px-5">
         <section class="flex flex-column w-full flex-wrap">
 				<div class="flex justify-center w-full text-center" style="z-index: 10">
@@ -743,9 +743,10 @@ if (in_array($dayname, $daysclosed)) {
             </div>
 
             <div class="flex justify-center flex-wrap mb-4 text-center">
-                    <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="terms.php">Terms and Conditions</a> &nbsp;
+                    <!-- <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="terms.php">Terms and Conditions</a> &nbsp;
                     <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="privacy.php">Privacy Policy</a> &nbsp;
-                    <a class="mx-3 clickable" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a>
+                    <a class="mx-3 clickable" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a> -->
+                    <?php legalLinks("includes/legalLinks");?>
             </div>
         </div>
     </div>
