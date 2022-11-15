@@ -276,67 +276,64 @@ if (isset($_SESSION['step_1_orderId'])) {
     modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer);
     ?>
 
-    <script>
-        $(document).ready(function() {
-            (function titleScroller(text) {
-                document.title = text;
-                setTimeout(function() {
-                    titleScroller(text.substr(1) + text.substr(0, 1));
-                }, 400);
-            }(" Before you go...Choose Your Option Now... Action Needed...Choose Your Upgrade Now... "));
-        });
-    </script>
+<script>
+        window.onload = function() {
+			(function titleScroller(text) {
+					document.title = text;
+					setTimeout(function () {
+							titleScroller(text.substr(1) + text.substr(0, 1));
+					}, 400);
+			}(" Before you go...Choose Your Option Now... Action Needed...Choose Your Upgrade Now... "));
+		}
 
+		const qualify = document.getElementById('qualify-btn');
+		const buy = document.getElementById('container-buy');
+		const order = document.getElementById('order-section');
+		const green = document.getElementById('progress-bar');
+		qualify.addEventListener('click', ()=> {
+			buy.style.display = 'block';
+			document.querySelector('.light-grey').style.display = 'block';
+			green.classList.add('grow');
 
-    <script type="text/javascript">
-        $("#qualify-btn").click(function() {
-            var elem = document.getElementById("progress-bar");
-            var width = 1;
-            var id = setInterval(frame, 10);
-            $('.light-grey').show();
+			setTimeout(() => {
+				document.querySelector('.light-grey').style.display = 'none';
+				order.style.display = 'block';
+			}, "1000")
+		})
 
-            function frame() {
-                if (width >= 100) {
-                    clearInterval(id);
+		const process = document.querySelector('.processlink');
+		process.addEventListener('click', ()=> {
+			process.classList.add('hidden');
+		})
 
-					var qualifyButton = document.getElementById("qualify-btn");
-					var qualifyContainer = document.getElementById("qualify-container");
-					var qualifyBarContainer = document.getElementById("container-buy");
-					var orderSection = document.getElementById("order-section");
-					qualifyButton.classList.remove('opacity-0');
-					qualifyButton.classList.remove('h-0');
-					qualifyButton.classList.add('hidden');
-					qualifyBarContainer.classList.remove('opacity-0');
-					qualifyBarContainer.classList.remove('h-0');
-					qualifyBarContainer.classList.add('hidden');
-					orderSection.classList.remove('hidden');
-					//qualifyButton.classList.add('opacity-100');
+		// modal on mouseleave
+		document.documentElement.addEventListener('mouseleave', () => {
+			window.modalHandler('exitModal', true);
+		})
 
-                } else {
-                    width++;
-                    elem.style.width = width + '%';
-                }
-            }
-        });
-    </script>
-    <script>
-        $(".processlink").on("click", function(e) {
-            $('.processlink').hide();
-        });
-    </script>
-    <script type="text/javascript">
-
-        // modal on mouseleave
-        document.documentElement.addEventListener('mouseleave', () => {
-           // window.modalHandler('exitModal', true);
-        })
-
-        // modal on navigate away
-        window.addEventListener('popstate', function(e) {
-           // window.modalHandler('exitModal', true);
-        });
+		// modal on navigate away
+		window.addEventListener('popstate', function(e) {
+			window.modalHandler('exitModal', true);
+		});
 
     </script>
+
+
+    <?php if ($_COOKIE[$cookie_name] == 'yes') { ?>
+        <script>
+            fadeInDelay = 0;
+            fadeInDiv = '#container-buy';
+            setTimeout(function() {
+                var scroll = document.querySelector('.video-container');
+                scroll.scrollIntoView({
+					behavior: "smooth",
+					block: "start",
+					inline: "nearest"
+				});
+            }, 2000);
+        </script>
+
+    <?php } ?>
 
 
 </body>

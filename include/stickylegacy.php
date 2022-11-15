@@ -32,8 +32,8 @@ class sticky
         $product_qty = (isset($posted['product_qty'])) ? $posted['product_qty'] : '1';
         $shippingId = (isset($posted['shipping_id'])) ? $posted['shipping_id'] : '';
 
-        $fields_fname = (isset($posted['first_name'])) ? $posted['first_name'] : '';
-        $fields_lname = (isset($posted['last_name'])) ? $posted['last_name'] : '';
+        $fields_fname = (isset($posted['firstName'])) ? $posted['firstName'] : '';
+        $fields_lname = (isset($posted['lastName'])) ? $posted['lastName'] : '';
 
         $shippingAddress1 = (isset($posted['shippingAddress1'])) ? $posted['shippingAddress1'] : '';
         $shippingAddress2 = (isset($posted['shippingAddress2'])) ? $posted['shippingAddress2'] : '';
@@ -54,7 +54,7 @@ class sticky
 
         $creditCardType = $this->detectCardType($posted['creditCardNumber']);
         $creditCardNumber = (isset($posted['creditCardNumber'])) ? $posted['creditCardNumber'] : '';
-        $expirationDate = (isset($posted['expmonth']) && isset($posted['expyear'])) ? $posted['expmonth'] . $posted['expyear'] : '';
+        $expirationDate = (isset($posted['expMonth']) && isset($posted['expYear'])) ? $posted['expMonth'] . $posted['expYear'] : '';
         $cvv = (isset($posted['cvv'])) ? $posted['cvv'] : '';
         $utm_source = (isset($posted['utm_source'])) ? $posted['utm_source'] : '';
         $utm_medium = (isset($posted['utm_medium'])) ? $posted['utm_medium'] : '';

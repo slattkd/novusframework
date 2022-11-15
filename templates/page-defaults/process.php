@@ -23,6 +23,7 @@ $sessionFields = [ 'firstName', 'lastName', 'email', 'phone', 'shippingAddress1'
                     'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
                     'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip' ];
 
+
 foreach ($sessionFields as $sessionField) {
     $_SESSION[$sessionField] = $_POST[$sessionField];
 }
@@ -211,7 +212,7 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
             break;
         case 800:
             $reason1 = str_replace("errorMessage=", "", $res[3]);
-            $reason2 = preg_replace('/[\s\+]/', " ", $reason1);
+            $reason2 = preg_replace('/[\s\+\%]/', " ", $reason1);
             $_SESSION['formerrors'] = [$reason2];
             break;
         default:

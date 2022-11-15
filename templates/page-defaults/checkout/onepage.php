@@ -845,16 +845,25 @@ body {
 					</div>
 				</div>
         <div class="w-full my-4 md:my-0"> 
-				<form action="/up/upsell-6-month-supply"  method='POST' id="step_1" class="col-sm-12">
+					
 
 					<div class="flex flex-col bg-gray-100 border px-4">
 						<div class="flex justify-center text-2xl font-semibold my-4">Enter <span class="underline font-bold mx-2">BILLING</span> Address</div>
+						<?php
+						if (isset($_SESSION['formerrors'])) {
+								?>
+								<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded relative" role="alert">
+									<strong class="font-bold">Whoops, something didn't go right - Error Code: <?php echo $_SESSION['llerrorcode'] ?></strong>
+									<span class="block sm:inline"><?php echo $_SESSION['formError'] ?></span>
+								</div>
+						<?php } ?>
+          <form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' id="step_1" class="col-sm-12">
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
 								<label for="FirstName" class="text-sm">First Name:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="firstName" id="FirstName" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="firstName" id="FirstName" value="<?php echo @$_SESSION["firstName"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -862,7 +871,7 @@ body {
 								<label for="LastName" class="text-sm">Last Name:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="lastName" id="LastName" value="<?php if (@$_SESSION["lastName"]) echo @$_SESSION["lastname"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="lastName" id="LastName" value="<?php @$_SESSION["lastName"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -883,35 +892,35 @@ body {
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="StreetAddress1" class="text-sm">Address:</label>
+								<label for="billingAddress1" class="text-sm">Address:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingAddress1" type="text" id="StreetAddress1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingAddress1" type="text" id="billingAddress1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="FirstName" class="text-sm">Address Cont'd:</label>
+								<label for="billingAddress2" class="text-sm">Address Cont'd:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingAddress2" type="text" id="StreetAddress2" value="<?php echo @$_SESSION["billingAddress2"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingAddress2" type="text" id="billingAddress2" value="<?php echo @$_SESSION["billingAddress2"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="FirstName" class="text-sm">City:</label>
+								<label for="billingCity" class="text-sm">City:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingCity" type="text" id="City" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingCity" type="text" id="billingCity" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="FirstName" class="text-sm">State/Province:</label>
+								<label for="billingState" class="text-sm">State/Province:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="State" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
 									<?php foreach ($usStates as $key => $value) : ?>
 										<option value="<?= $key;?>"> <?= $value; ?> </option>
 									<?php endforeach; ?>
@@ -920,11 +929,11 @@ body {
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="FirstName" class="text-sm">Country:</label>
+								<label for="billingCountry" class="text-sm">Country:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
 								<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-								<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country" data-toggle-element="State" name="billingCountry" value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
+								<select class="inf-select default-input sale-text w-full px-1 py-2" id="billingCountry" data-toggle-element="State" name="billingCountry" value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
 									<option selected value="US">United States</option>
 									<?php foreach ($countries as $key => $value) : ?>
 										<option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -934,10 +943,10 @@ body {
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full w-1/3">
-								<label for="PostalCode" class="text-sm">Postal Code:</label>
+								<label for="billingZip" class="text-sm">Postal Code:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingZip" type="text" id="PostalCode" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
+								<input class="w-full px-1 py-2" name="billingZip" type="text" id="billingZip" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-col w-full my-5">
@@ -955,7 +964,7 @@ body {
 								<label for="cc_no" class="text-sm">Card Number:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="creditCardNumber" id="cc_no" maxlength="19" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="creditCardNumber" id="cc_no" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -984,17 +993,17 @@ body {
 									<div class="w-full border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
 										<select class="w-full px-1 py-2" id="cc_exp_yr" name="expYear">
-											<option value="02">2022</option>
-											<option value="03">2023</option>
-											<option value="04">2024</option>
-											<option value="05">2025</option>
-											<option value="06">2026</option>
-											<option value="07">2027</option>
-											<option value="08">2028</option>
-											<option value="09">2029</option>
-											<option value="10">2030</option>
-											<option value="11">2031</option>
-											<option value="12">2032</option>
+											<option value="22">2022</option>
+											<option value="23">2023</option>
+											<option value="24">2024</option>
+											<option value="25">2025</option>
+											<option value="26">2026</option>
+											<option value="27">2027</option>
+											<option value="28">2028</option>
+											<option value="29">2029</option>
+											<option value="30">2030</option>
+											<option value="31">2031</option>
+											<option value="32">2032</option>
 										</select>
 									</div>
 								</div>
@@ -1003,10 +1012,10 @@ body {
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-1/3">
-								<label for="ccv" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
+								<label for="cvv" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="ccv" id="ccv" value="" onchange="">
+								<input class="w-full px-1 py-2" type="text" name="cvv" id="cvv" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center my-4 text-center justify-center">
@@ -1022,35 +1031,35 @@ body {
 
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
-										<label for="Address2Street1" class="text-sm">Address:</label>
+										<label for="shipingAddress1" class="text-sm">Address:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" name="shippingAddress1" type="text" id="Address2Street1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
+										<input class="w-full px-1 py-2" name="shippingAddress1" type="text" id="shippingAddress1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
-										<label for="Address2Street2" class="text-sm">Address Cont'd:</label>
+										<label for="shippingAddress2" class="text-sm">Address Cont'd:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" name="shippingAddress2" type="text" id="Address2Street2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
+										<input class="w-full px-1 py-2" name="shippingAddress2" type="text" id="shippingAddress2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
-										<label for="City2" class="text-sm">City:</label>
+										<label for="shippingCity" class="text-sm">City:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" name="shippingCity" type="text" id="City2" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
+										<input class="w-full px-1 py-2" name="shippingCity" type="text" id="shippingCity" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
 									</div>
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
-										<label for="State2" class="text-sm">State/Province:</label>
+										<label for="shippingState" class="text-sm">State/Province:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="inf-select default-input sale-text w-full px-1 py-2" id="State2" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
+										<select class="inf-select default-input sale-text w-full px-1 py-2" id="shippingState" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
 										<?php foreach ($usStates as $key => $value) : ?>
 											<option value="<?= $key;?>"> <?= $value; ?> </option>
 										<?php endforeach; ?>
@@ -1059,11 +1068,11 @@ body {
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
-										<label for="Country2" class="text-sm">Country:</label>
+										<label for="shippingCountry" class="text-sm">Country:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
 										<!-- <input class="w-full px-1 py-2" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-										<select class="inf-select default-input sale-text w-full px-1 py-2" id="Country2" data-toggle-element="State2" name="shippingCountry" onchange="solveprice()">
+										<select class="inf-select default-input sale-text w-full px-1 py-2" id="shippingCountry" name="shippingCountry" onchange="solveprice()">
 											<option selected value="US">United States</option>
 											<?php foreach ($countries as $key => $value) : ?>
 												<option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -1074,10 +1083,10 @@ body {
 								</div>
 								<div class="flex flex-wrap items-center mb-4">
 									<div class="w-full w-1/3">
-										<label for="PostalCode2" class="text-sm">Postal Code:</label>
+										<label for="shippingZip" class="text-sm">Postal Code:</label>
 									</div>
 									<div class="w-full md:w-2/3 border border-gray-400">
-										<input class="w-full px-1 py-2" type="text" name="shippingZip" type="text" id="PostalCode2" value="<?php echo @$_SESSION["shippingZip"]; ?>">
+										<input class="w-full px-1 py-2" type="text" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
 									</div>
 								</div>
 
@@ -1096,7 +1105,7 @@ body {
 
 								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="terms.php">Terms and Conditions</a></p>
 								<div class="flex w-full justify-center">
-									<button name="next-button" id="next-button" class="w-full newbuy text-3xl" onclick="validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
+									<button name="next-button" id="next-button" class="w-full newbuy text-3xl" value="COMPLETE PURCHASE">Complete Purchase</button>
 								</div>
 
 								<div class="flex w-full justify-center items-center text-center" style="color:#3fa900">
@@ -1154,6 +1163,7 @@ body {
 	</div>
 
 		<!-- hidden inputs -->
+		<!-- /process-up/?pid=#&buy=1&next=url -->
 		<input type="hidden" name="previous_page" value="checkout/order">
 		<input type="hidden" name="current_page" value="/checkout/onepage">
 		<input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
@@ -1201,7 +1211,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 	var hasScrolledToError = false;
 	document.addEventListener('DOMContentLoaded', function() {
 		solveprice();
-		setupFormValidation();
 
 		//show or hide shipping address
 		const billingSame = document.getElementById("bill-same");
@@ -1216,31 +1225,10 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 			}
 		});
 
-		function copyBillingInputValue() {
-			// Check to Copy values to billing
-			var isChecked = billingSame.checked;
-			if(isChecked){ //checked
-					let billingAddress1 = document.getElementById('StreetAddress1').value;
-					document.getElementById('Address2Street1').value = billingAddress1;
-					let billingAddress2 = document.getElementById('StreetAddress2').value;
-					document.getElementById('Address2Street2').value = billingAddress2;
-					let billingCity = document.getElementById('City').value;
-					document.getElementById('City2').value = billingCity;
-					let billingState = document.getElementById('State').value;
-					document.getElementById('State2').value = billingState;
-					let billingCountry = document.getElementById('Country').value;
-					document.getElementById('Country2').value = billingCountry;
-					let billingPostal = document.getElementById('PostalCode').value;
-					document.getElementById('PostalCode2').value = billingPostal;
-			}else{ //unchecked
-				return;
-			}
-		}
 
-
-		const city = document.getElementById("City");
+		const city = document.getElementById("shippingCity");
 		city.addEventListener('keyup', function() {
-			document.getElementById("City").textContent = city.value;
+			document.getElementById("shippingCity").textContent = city.value;
 		});
 
 		document.getElementById('modalbutton').addEventListener('click', function() {
@@ -1256,21 +1244,14 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 
 		});
 
-		// When the country changes, state is changed to/from a textbox / dropdown and events must be re-bound
-		document.getElementById("Country").addEventListener('change', function() {
-			setTimeout(rebindStateEvents, 100);
-		});
-		document.getElementById("Country2").addEventListener('change', function() {
-			setTimeout(rebindStateEvents, 100);
-		});
 		setTimeout(rebindStateEvents, 100);
 	});
 
 	function rebindStateEvents() {
-		document.getElementById("State").addEventListener('change', function() {
+		document.getElementById("billingState").addEventListener('change', function() {
 			calculateTax();
 		});
-		document.getElementById("State2").addEventListener('change', function() {
+		document.getElementById("shippingState").addEventListener('change', function() {
 			calculateTax();
 		});
 		calculateTax();
@@ -1301,147 +1282,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		}
 	}
 
-	function setupFormValidation() {
-		window.validateForm = function() {
-			var ok = true;
-			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			hasScrolledToError = false;
-
-			document.querySelector('.error-missing').remove();
-			var firstName = document.getElementById('FirstName');
-			
-			if ($.trim(firstName.value) == "") {
-				ok = false;
-				addErrorMessageAbove(firstName, "Please enter a valid first name");
-				firstName.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var lastName = document.getElementById('LastName');
-			if ($.trim(lastName.value) == "") {
-				ok = false;
-				addErrorMessageAbove(lastName, "Please enter a valid last name");
-				lastName.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var phone = document.getElementById('Phone');
-			if ($.trim(phone.value) == "") {
-				ok = false;
-				addErrorMessageAbove(phone, "Please enter a valid phone number");
-				phone.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var email = document.getElementById('Email');
-			var emailcheck = email.value;
-			if ($.trim(email.value) == "") {
-				ok = false;
-				addErrorMessageAbove(email, "Please enter a valid email");
-				email.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			if (!emailcheck.match(re)) {
-				ok = false;
-				addErrorMessageAbove(email, "Please enter a valid email");
-				email.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-
-			var streetAddress1 = document.getElementById('StreetAddress1');
-			if ($.trim(streetAddress1.value) == "") {
-				ok = false;
-				addErrorMessageAbove(streetAddress1, "Please enter a valid street address");
-				streetAddress1.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var city = document.getElementById('City');
-			if ($.trim(city.value) == "") {
-				ok = false;
-				addErrorMessageAbove(city, "Please enter a valid city");
-				city.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var state = document.getElementById('State');
-			if ($.trim(state.value) == "") {
-				ok = false;
-				addErrorMessageAbove(state, "Please enter a valid state");
-				state.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var postalCode = document.getElementById('PostalCode');
-			if ($.trim(postalCode.value) == "") {
-				ok = false;
-				addErrorMessageAbove(postalCode, "Please enter a valid zip code");
-				postalCode.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-
-
-			var ccNo = document.getElementById('cc_no');
-			if ($.trim(ccNo.value) == "") {
-				ok = false;
-				addErrorMessageAbove(ccNo, "Please enter a valid credit card number");
-				ccNo.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-			var cvv = document.getElementById('cvv');
-			if ($.trim(cvv.value) == "") {
-				ok = false;
-				addErrorMessageAbove(cvv, "Please enter a valid CVV");
-				cvv.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-			}
-
-
-
-			if (ok) {
-				StopExit = true;
-				display(document.getElementById('next-button'), false);
-				console.log(ok);
-				document.getElementById("step_1").submit();
-				return true;
-			} else {
-				display(document.querySelector('.error-missing'), true);
-				display(document.getElementById('next-button'), true);
-				return false;
-			}
-		}
-	}
-
-	function addErrorMessageAbove(target, message) {
-		target.after("<p class='error-missing' style='display: block;'>" + message + "</p>");
-	}
 
 </script>
 
@@ -1595,52 +1435,6 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 		
 	}
 
-
-	window.onload = ()=> {
-
-		// Prsitine Config
-		let defaultConfig = {
-				// class of the parent element where the error/success class is added
-				classTo: 'flex',
-				errorClass: 'has-danger',
-				successClass: 'has-success',
-				// class of the parent element where error text element is appended
-				errorTextParent: 'flex',
-				// type of element to create for the error text
-				errorTextTag: 'div',
-				// class of the error text element
-				errorTextClass: 'text-help text-red-600 font-medium text-sm'
-		};
-
-		var form = document.getElementById("step_1");
-		var pristine = new Pristine(form, defaultConfig);
-
-		form.addEventListener('submit', function (e) {
-				// disable checkout button
-				var checkout = document.getElementById('next-button');
-				checkout.disabled = true;
-				checkout.innerText = "Confirming Payment...";
-
-				// Check to copy values
-				copyBillingInputValue();
-
-				var valid = pristine.validate(); // returns true or false
-
-				if(!pristine.validate()){
-					e.preventDefault();
-					var firstError = document.querySelector('.has-danger');
-					firstError.scrollIntoView({behavior: "smooth", block: "end"});
-					checkout.disabled = false;
-					checkout.innerText = "Complete Purchase";
-				}
-
-				//var age = document.querySelector('input[name="age"]:checked').value;
-				//var weeklysex = document.querySelector('input[name="weeklysex"]:checked').value;
-				//var stayhard = document.querySelector('input[name="stayhard"]:checked').value;
-				//sessionStorage.setItem("customer_email", $(this).value);
-		});
-	};
-
 	
 </script>
 
@@ -1651,6 +1445,74 @@ modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer
 } ?>
 
 </body>
+
+	<!-- Novus Script -->
+	<script type="text/javascript">
+			window.onload = function () {
+					// Prsitine Config
+					let defaultConfig = {
+							// class of the parent element where the error/success class is added
+							classTo: 'flex',
+							errorClass: 'has-danger',
+							successClass: 'has-success',
+							// class of the parent element where error text element is appended
+							errorTextParent: 'flex',
+							// type of element to create for the error text
+							errorTextTag: 'div',
+							// class of the error text element
+							errorTextClass: 'text-help text-red-600 font-medium text-sm'
+					};
+					var form = document.getElementById("step_1");
+					var pristine = new Pristine(form, defaultConfig);
+					form.addEventListener('submit', function (e) {
+							// disable checkout button
+							// e.preventDefault();
+							var checkout = document.getElementById('next-button');
+							checkout.disabled = true;
+							checkout.innerText = "Confirming Payment...";
+							// Check to copy values
+							copyBillingInputValue();
+							
+							var valid = pristine.validate(); // returns true or false
+							if(!valid){
+								e.preventDefault();
+								var firstError = document.querySelector('.has-danger');
+								firstError.scrollIntoView({behavior: "smooth", block: "end"});
+								checkout.disabled = false;
+								checkout.innerText = "Complete Purchase";
+							}
+							//var age = document.querySelector('input[name="age"]:checked').value;
+							//var weeklysex = document.querySelector('input[name="weeklysex"]:checked').value;
+							//var stayhard = document.querySelector('input[name="stayhard"]:checked').value;
+							//sessionStorage.setItem("customer_email", $(this).val());
+					});
+			};
+
+		function copyBillingInputValue() {
+			// Check to Copy values to billing
+			const billingSame = document.getElementById('bill-same');
+			isChecked = billingSame.checked;
+			if(isChecked){ //checked
+				
+					let billingAddress1 = document.getElementById('billingAddress1').value;
+					document.getElementById('shippingAddress1').value = billingAddress1;
+					let billingAddress2 = document.getElementById('billingAddress2').value;
+					document.getElementById('shippingAddress2').value = billingAddress2;
+					let billingCity = document.getElementById('billingCity').value;
+					document.getElementById('shippingCity').value = billingCity;
+					let billingState = document.getElementById('billingState').value;
+					document.getElementById('shippingState').value = billingState;
+					let billingCountry = document.getElementById('billingCountry').value;
+					document.getElementById('shippingCountry').value = billingCountry;
+					let billingZip = document.getElementById('billingZip').value;
+					document.getElementById('shippingZip').value = billingZip;
+			}else{ //unchecked
+				return;
+			}
+		}
+		</script>
+		<!-- END Novus Script -->
+
 <script language="JavaScript">
 
 // set individual clock values here
