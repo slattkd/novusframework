@@ -134,7 +134,7 @@ PageTypes can be overridden on a page by page basis, by overriding the "pageType
 ```$_SESSION['pageType'] = 'vsl';```
 
 ## Video Embeds
-NOTE: Vidalytics uses a "Smart Autoplay" feature, which follows chrome srules and will autoplay videos ONLY if.
+NOTE: Vidalytics uses a "Smart Autoplay" feature, which follows chromes rules and will autoplay videos ONLY if.
 1. The user has already interacted with page.
 2. The user has previously played a video with sound.
 

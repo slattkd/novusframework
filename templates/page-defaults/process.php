@@ -39,6 +39,7 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
     $product_name   = explode("=", $res[12]);
     $product_price    = explode("=", $res[6]);
     $_SESSION['orderId']        = $oid_res[1];
+    $_SESSION['order_id']       = $oid_res[1];
     $_SESSION['customerId']     = $cus_res[1];
     $_SESSION['orderTest']      = $test_order[1];
     $_SESSION['orderTotal']     = $order_total[1];
