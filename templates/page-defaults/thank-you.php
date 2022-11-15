@@ -30,10 +30,10 @@ $complete = array(
 );
 
 //Allow more than one campaign to display
-$complete['campaign_id'] = 1;
+$complete['campaign_id'] = $site['campaign'];
 $results = $sticky->api(2, $complete);
 
-var_dump($complete['criteria']);
+var_dump($complete);
 var_dump($results);
 
 echo $_SESSION['orderId'].'<br>';
@@ -41,7 +41,7 @@ echo $_SESSION['customerId'];
 echo "<pre>";
 echo json_encode(json_decode($results['data']), JSON_PRETTY_PRINT);
 echo "</pre>";
-//print_r($results);
+print_r($results);
 
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
