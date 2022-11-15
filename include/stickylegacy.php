@@ -30,7 +30,7 @@ class sticky
         $campaign_id = (isset($posted['campaign_id'])) ? $posted['campaign_id'] : '';
         $productId = (isset($posted['product_id'])) ? $posted['product_id'] : '';
         $product_qty = (isset($posted['product_qty'])) ? $posted['product_qty'] : '1';
-        $shipping_id = (isset($posted['shipping_id'])) ? $posted['shipping_id'] : '';
+        $shippingId = (isset($posted['shippingId'])) ? $posted['shippingId'] : '';
 
         $fields_fname = (isset($posted['firstName'])) ? $posted['firstName'] : '';
         $fields_lname = (isset($posted['lastName'])) ? $posted['lastName'] : '';
@@ -123,7 +123,7 @@ class sticky
                      'sessionId' =>  $sessionId,
                      'tranType' =>  'Sale',
                      'productId' =>  $productId,
-                     'shipping_id' =>  $shipping_id,
+                     'shippingId' =>  $shippingId,
                      'upsellCount' =>  $upsellCount,
                      'upsellProductIds' =>  $upsellProductIds,
                      'billingSameAsShipping' =>  $billingSameAsShipping,
@@ -226,7 +226,7 @@ class sticky
         $campaign_id = (isset($posted['campaign_id'])) ? $posted['campaign_id'] : '';
         $productId = (isset($posted['product_id'])) ? $posted['product_id'] : '';
         $product_qty = (isset($posted['product_qty'])) ? $posted['product_qty'] : '1';
-        $shippingId = (isset($posted['shipping_id'])) ? $posted['shipping_id'] : '';
+        $shippingId = (isset($posted['shippingId'])) ? $posted['shippingId'] : '';
 
         $fields_fname = (isset($posted['first_name'])) ? $posted['first_name'] : '';
         $fields_lname = (isset($posted['last_name'])) ? $posted['last_name'] : '';
@@ -369,7 +369,7 @@ class sticky
         global $campaign;
         $campaign_id = $campaign[1]->campid;
         $orderId = $_SESSION['order_id'];
-        $shipping_id = $freeshipping[1]->freeshipid;
+        $shippingId = $freeshipping[1]->freeshipid;
         $product_id = $up[$posted['up']]->option[$posted['buy']]->sticky_product_id;
         $fields = array('username' =>  $this->sticky_username,
                     'password' =>  $this->sticky_password,
@@ -377,7 +377,7 @@ class sticky
                     'previousOrderId' =>  $orderId,
                     'productId' =>  $product_id,
                     'campaignId' =>  $campaign_id,
-                    'shippingId' =>  $shipping_id,
+                    'shippingId' =>  $shippingId,
                     'product_qty_' . $product_id =>  1
                     );
 
