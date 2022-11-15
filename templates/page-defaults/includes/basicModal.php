@@ -35,11 +35,15 @@
         transition: all 200ms ease-in-out;
         /* initial state */
         opacity: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
         display: none;
         background-color: rgba(0,0,0,0.75);
     }
 </style>
-<div class="modal-position sans" id="<?= $modal_id; ?>">
+<div class="modal-position sans" id="<?= $modal_id; ?>" style="margin-left: 0">
     <div role="alert" class="container mx-auto w-11/12 md:w-2/3 center-modal max-w-lg <?php echo !empty($max_width) ? 'max-w-' . $max_width : ''; ?>">
         <div class="flex flex-col relative py-8 px-5 pb-4 md:px-10 bg-white shadow-md rounded border border-gray-400 h-auto <?php echo !empty($height) ? 'h-' . $height : ''; ?>" style="max-height: 90vh">
             <div class="title" style="margin-top: -1rem">

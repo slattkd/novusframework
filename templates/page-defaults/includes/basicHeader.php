@@ -34,15 +34,15 @@
     <div class="container container-md mx-auto px-5">
       <div class="relative flex items-center h-16">
         <div class="flex items-center justify-between w-full px-0">
-          <a class="flex-shrink-0" href="/tailwind/index.php">
+          <a class="flex-shrink-0" href="/index.php">
             <img class="" src="/images/snm-logo.gif" alt="Supernatural Logo" style="max-width:250px;height:auto;">
           </a>
           <div class="hidden md:block md:ml-auto">
             <div class="flex">
-              <a href="/tailwind/5gmale-t.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> Shop </a>
-              <a href="/tailwind/about.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> About </a>
-                            <a href="/tailwind/support.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> Support </a>
-                            <a href="/tailwind/cart-t.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> Cart </a>
+              <a href="/sl-5gmale.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> Shop </a>
+              <a href="/about.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> About </a>
+                            <a href="/support.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> Support </a>
+                            <a href="/cart.php" class="ml-4 px-3 py-2 text-sm uppercase leading-5 text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 "> Cart </a>
             </div>
           </div>
                 </div>
@@ -61,10 +61,10 @@
     </div>
     <div id="drop-menu" class="hidden md:hidden container px-5">
       <div class="px-2 pt-2 pb-3">
-        <a href="/tailwind/5gmale-t.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Shop </a>
-        <a href="/tailwind/about.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About </a>
-        <a href="/tailwind/support.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Support </a>
-        <a href="/tailwind/cart-t.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Cart </a>
+        <a href="/sl-5gmale.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Shop </a>
+        <a href="/about.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About </a>
+        <a href="/support.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Support </a>
+        <a href="/cart.php" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Cart </a>
       </div>
     </div>
   </div>

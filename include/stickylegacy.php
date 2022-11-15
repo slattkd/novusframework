@@ -449,8 +449,6 @@ class sticky
         curl_setopt($ch, CURLOPT_TIMEOUT, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-
-        var_dump($url);
         
         $buffer = curl_exec($ch);
         curl_close($ch);

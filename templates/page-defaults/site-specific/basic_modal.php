@@ -25,6 +25,10 @@
         /* initial state */
         opacity: 0;
         display: none;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
         background-color: rgba(0,0,0,0.75);
     }
 </style>
