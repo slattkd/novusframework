@@ -490,6 +490,5 @@ $firedl = 0;
         </div>
     </div>
 </body>
-<?php template("includes/footer"); ?>
 
 </html>
