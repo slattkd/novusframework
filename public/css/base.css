@@ -39,6 +39,11 @@ body {
   }
 }
 
+@media screen and (min-width: 951px) {
+  .container-sm {
+    max-width: 950px !important;
+  }
+}
 
 .clickable {
   cursor: pointer;

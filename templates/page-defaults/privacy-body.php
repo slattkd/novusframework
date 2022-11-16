@@ -1,14 +1,3 @@
-<?php
-$co['name'] = 'Supernatural Man, LLC';
-$co['email'] = 'support@becomesupernatural.com';
-$co['phone'] = '1-800-251-9316';
-$co['address1'] = '300 Main St';
-$co['address2'] = '(Suite 1303)';
-$co['cityzip'] = 'Madison, NJ  07940';
-$co['city'] = 'New York';
-$co['state'] = 'NY';	
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +6,7 @@ $co['state'] = 'NY';
 <h1 class="page-title">PRIVACY POLICY</h1>
 <p>Effective Date: April 2020</p>
 
-<p>The following Privacy Policy governs the online information collection practices of <?php echo $co['name']; ?> of ("we" or "us"). Specifically, it outlines the types of information that we gather about you while you are using the <?php echo $_SERVER['HTTP_HOST']; ?> website (the "Site"), and the ways in which we use this information. This Privacy Policy, including our children's privacy statement, does not apply to any information you may provide to us or that we may collect offline and/or through other means (for example, at a live event, via telephone, or through the mail).</p>	
+<p>The following Privacy Policy governs the online information collection practices of <?php echo $company['name']; ?> of ("we" or "us"). Specifically, it outlines the types of information that we gather about you while you are using the <?php echo $_SERVER['HTTP_HOST']; ?> website (the "Site"), and the ways in which we use this information. This Privacy Policy, including our children's privacy statement, does not apply to any information you may provide to us or that we may collect offline and/or through other means (for example, at a live event, via telephone, or through the mail).</p>	
 <p>Please read this Privacy Policy carefully. By visiting and using the Site, you agree that your use of our Site, and any dispute over privacy, is governed by this Privacy Policy. Because the Web is an evolving medium, we may need to change our Privacy Policy at some point in the future, in which case we'll post the changes to this Privacy Policy on this website and update the Effective Date of the policy to reflect the date of the changes. By continuing to use the Site after we post any such changes, you accept the Privacy Policy as modified.</p>
 
 <h2>How We Collect and Use Information</h2>
@@ -56,13 +45,13 @@ $co['state'] = 'NY';
 <p>The GDPR took effect on May 25, 2018, and is intended to protect the data of European Union (EU) citizens.</p> 
 <p>As a company that markets its site, content, products and/or services online we do not specifically target our marketing to the EU or conduct business in or to the EU in any meaningful way. If the data that you provide to us in the course of your use of our site, content, products and/or services is governed by GDPR, we will abide by the relevant portions of the Regulation.</p>
 <p>If you are a resident of the European Economic Area (EEA), or are accessing this site from within the EEA, you may have the right to request: access to, correction of, deletion of; portability of; and restriction or objection to processing, of your personal data, from us. This includes the "right to be forgotten."</p>
-<p>To make any of these requests, please contact our GDPR contact: <?php echo $co['email']; ?></p>
+<p>To make any of these requests, please contact our GDPR contact: <?php echo $company['email']; ?></p>
 
 <h2>California Consumer Privacy Act (CCPA)</h2>
 <p>The CCPA took effect on January 1, 2020, and is intended to protect the personal information of California residents.</p>
 <p>The CCPA has certain threshold requirements which a company must meet in order to be required to comply with its provisions.  Upon information and belief, our company does not meet those thresholds.  In the event of a change in our status, and if the data that you provide in the course of your use of our site, content, products and/or services is governed by CCPA, we will abide by the relevant portions of the Act.</p>
 <p>If you are a resident of the state of California, you may have the right to: request disclosure of the personal information we have collected about you and the types of third parties with whom it has been shared; request a portable copy of your information; opt out from marketing messages or the sale of your information to third parties; and request deletion of your personal information.</p>
-<p>To make these requests, please contact our CCPA contact at <?php echo $co['email']; ?>.</p> 
+<p>To make these requests, please contact our CCPA contact at <?php echo $company['email']; ?>.</p> 
 
 <h2>Children's Privacy Statement</h2>
 <p>This children's privacy statement explains our practices with respect to the online collection and use of personal information from children under the age of thirteen, and provides important information regarding their rights under federal law with respect to such information.</p>
@@ -78,7 +67,7 @@ Because we do not collect any personally identifiable information from children 
 <h2>Disclaimer</h2>
 <p>This policy may be changed at any time at our discretion. If we should update this policy, we will post the updates to this page on our Website.</p>
 <p>If you have any questions or concerns regarding our privacy policy please direct them to:</p>
-<p><?php echo $co['email']; ?></p>
+<p><?php echo $company['email']; ?></p>
 
 </div>
 	

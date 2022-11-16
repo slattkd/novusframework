@@ -3,6 +3,7 @@
 
 
 <div class="flex w-100">
+	<!-- <div class="underline text-gray-600 hover:text-gray-400 ease-in-out duration-200 visited:text-purple-700 mx-2 cursor-pointer" onclick="getPage('support-body.php')">Support </div> -->
 	<div class="underline text-gray-600 hover:text-gray-400 ease-in-out duration-200 visited:text-purple-700 mx-2 cursor-pointer" onclick="getPage('terms-body.php')">Terms & Conditions</div>
 	<div class="underline text-gray-600 hover:text-gray-400 ease-in-out duration-200 visited:text-purple-700 mx-2 cursor-pointer" onclick="getPage('privacy-body.php')">Privacy Policy</div>
 	<div class="underline text-gray-600 hover:text-gray-400 ease-in-out duration-200 visited:text-purple-700 mx-2 cursor-pointer" onclick="getPage('returns-body.php')">Return Policy</div>

@@ -211,7 +211,7 @@ $_SESSION['pageType'] = 'vsl';
             <li><a href="/step/terms.html" target="_blank">Terms and Conditions</a></li>
             <li><span id="afflink" style="display: inline-block;">
                     <a href="https://partners.pineapple.co/affiliate-signup/" target="_blank">Affiliate Signup</a></span>
-            </li>
+</li>
             <li>
                 <span id="click-ref" class="link">References</span>
 
