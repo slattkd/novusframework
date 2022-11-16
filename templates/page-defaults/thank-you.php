@@ -29,9 +29,15 @@ $complete = array(
     'search_type' => 'all'
 );
 
+$completeArray = print_r($complete, true);
+$logger->info('Thank You Receipt Post: ' . $completeArray);
+
 //Allow more than one campaign to display
 $complete['campaign_id'] = $site['campaign'];
 $results = $sticky->api(2, $complete);
+
+$resultsArray = print_r($results, true);
+$logger->info('Thank You Receipt: ' . $resultsArray);
 $products = $results['data'];
 
 $items = json_decode($results['data'], true);
@@ -212,7 +218,7 @@ $firedl = 0;
     <div class="container container-vsl mx-auto py-20 px-5 md:px-8 min-h-screen">
         <div class="content">
             <div class="flex justify-center mb-3">
-                <h1 class="text-gray-500 text-2xl font-bold"><span class="checkmark mr-2"aria-hidden="true"></span> Thank you <?php echo $_SESSION["first_name"]; ?>!</h1>
+                <h1 class="text-gray-500 text-2xl font-bold"><span class="checkmark mr-2"aria-hidden="true"></span> Thank you <?php echo @$_SESSION["first_name"]; ?>!</h1>
             </div>
 
             <div class="flex w-full flex-col bg-white p-4 px-6 border rounded border-black">
@@ -357,20 +363,20 @@ $firedl = 0;
 					<div class="flex w-full flex-col">
 						<div class="title text-center text-red-600 font-semibold font-2xl">
 						</div>
-					</div>	
+					</div>
 				</section>
 
 				<section>
 				<div class="additional-products">
 				<div class="prod1">
 					<h4 class="red text-center">
-						
+
                         <em>"Cum On Me, Please!!"</em>
                         <br>
                         Hot Girls Secretly LOVE Big Loads… Do NOT Disappoint Her!
                         <br>
                         Shoot 4x Bigger Loads With Volumizer
-                    
+
 					</h4>
 
 					<div class="float-left w-full md:w-3/5 p-r md:pr-4">
@@ -382,7 +388,7 @@ $firedl = 0;
 					</div>
 
 					<div class="float-right w-full md:w-2/5"><img class="mx-auto md:m-0" src="//5gm.s3.amazonaws.com/new/volumizer+250+px.jpg"></div>
-					
+
 					<div class="bottom w-full">
 						<div class="main-button text-center pb-3">
 							<button id="prod1-btn" class="w-full">Yes, turn her into your personal cumslut now!</button>
@@ -417,7 +423,7 @@ $firedl = 0;
 						<p class="copy">You will never see this offer again so do not miss out. </p>
 					</div>
 					<div class="float-right w-full md:w-2/5"><img class="mx-auto md:m-0" src="//5gm.s3.amazonaws.com/new/t3+250+px.jpg"></div>
-					
+
 					<div class="bottom w-full">
 						<div class="main-button text-center pb-3">
 							<button id="prod2-btn" class="w-full">Yes, I want to experience my prime again!</button>
@@ -451,7 +457,7 @@ $firedl = 0;
 
 						<p class="copy">Click the button below and get 3 Bottles of O.X Gel for a mere $59.95 (She’ll be thankful you stocked up). This is the lowest price you’ll see on O.X. Gel from now on… and you’ll <em>never</em> see a price this low again:</p>
 					</div>
-					
+
 					<div class="float-right w-full md:w-2/5"><img class="mx-auto md:m-0" src="//5gm.s3.amazonaws.com/new/ox+gel+250+px.jpg"></div>
 
 					<div class="bottom w-full">

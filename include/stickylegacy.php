@@ -448,7 +448,7 @@ class sticky
 
         if( $type <='1'||!$type) $type='transact.php';
         else $type='membership.php';
-        $url = $site['stickyUrl'] . 'admin/'.$type;
+        $url = 'https://' . $this->sticky_instance . '/admin/' . $type;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -471,7 +471,7 @@ class sticky
                 $results[$line[0]] = urldecode($line[1]);
             }
         }
-        if ($results['errorFound'] == 1 && !$_SESSION['customer']['transactionId']) {
+        if (@$results['errorFound'] == 1 && !$_SESSION['customer']['transactionId']) {
             if ($results['responseCode'] == 500) {
                 return array('error' => $results['responseCode'] . "-" . $results['declineReason']);
             } else {
