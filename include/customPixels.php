@@ -161,7 +161,6 @@ switch ($pageType) {
             });
         </script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-688388232"></script>
-        <!-- Global site tag (gtag.js) - Google Ads: 761912273 -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-761912273"></script>
 
         <!-- Event snippet for Website sale conversion page -->
@@ -212,8 +211,8 @@ switch ($pageType) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM<?php echo $pageType;?>',
-            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
-            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+            'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
+            'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
             'transactionProducts': [{
                 'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
@@ -231,8 +230,8 @@ switch ($pageType) {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'GTM<?php echo $pageType;?>',
-                'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
-                'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+                'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
+                'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
                 'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
                 'transactionProducts': [{
                     'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
@@ -245,18 +244,6 @@ switch ($pageType) {
 
         </script>
 
-        <!-- TruConversion for 5gmale.com -->
-        <script type="text/javascript">
-            var _tip = _tip || [];
-            (function(d,s,id){
-              var js, tjs = d.getElementsByTagName(s)[0];
-              if(d.getElementById(id)) { return; }
-              js = d.createElement(s); js.id = id;
-              js.async = true;
-              js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
-              tjs.parentNode.insertBefore(js, tjs);
-            }(document, 'script', 'ti-js'));
-        </script>
         <?php
         break;
     case "up4":
@@ -265,8 +252,8 @@ switch ($pageType) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM<?php echo $pageType;?>',
-            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
-            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
+            'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
+            'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
             'transactionProducts': [{
                 'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
@@ -277,21 +264,7 @@ switch ($pageType) {
         });
         </script>
 
-        <!-- TruConversion for 5gmale.com -->
-        <script type="text/javascript">
-            var _tip = _tip || [];
-            (function(d, s, id) {
-                var js, tjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
-                tjs.parentNode.insertBefore(js, tjs);
-            }(document, 'script', 'ti-js'));
-        </script>
+
         <?php
         break;
     case "upinterstitial":

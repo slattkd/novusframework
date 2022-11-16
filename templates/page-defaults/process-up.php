@@ -64,17 +64,41 @@ if ($_SESSION['buy'] == 1) {
     $response    = $sticky->newOrderCardOnFile($params);
     $res         = explode('&', $response);
 
-    //echo '<pre>'; print_r($res); die();
+    /*
+    0 errorFound=0
+    1 &responseCode=100
+    2 &transactionID=Not Available
+    3 &customerId=282249
+    4 &authId=Not Available
+    5 &orderId=52821677
+    6 &orderTotal=297.00
+    7 &orderSalesTaxPercent=0.00&
+    8 orderSalesTaxAmount=0.00
+    9 &test=1
+    10 &gatewayId=22
+    11 &prepaid_match=0
+    12 &line_items[0][product_id]=250
+    13 &line_items[0][variant_id]=0
+    14 &line_items[0][quantity]=1
+    15 &line_items[0][subscription_id]=7724f989ca9e1ccc4d6d82e1bfb55876
+    16 &gatewayCustomerService=800-253-8173
+    17 &gatewayDescriptor=Revival Point
+    18 &subscription_id[250]=7724f989ca9e1ccc4d6d82e1bfb55876
+    19 &resp_msg=Approved
+    */
 
+    $logger->info('Upsell Response: ' . print_r($response, true));
 
     if ($res[1] == 'responseCode=100') {
         //The order was successful. Save the order ID
         $oid_res    = explode("=", $res[5]);
+        $oid_tot    = explode("=", $res[6]);
        // $_SESSION['step_' . $_SESSION['pid'] . '_orderId'] = $oid_res[1];
        // $_SESSION['step_' . $_SESSION['pid']] = $_GET['buy'];
         $getid = 'bought_' . $_SESSION['pid'];
         $_SESSION[$getid] = 1;
         $_SESSION['lastOrderId'] = $oid_res[1];
+        $_SESSION['lastOrderTotal'] = $oid_tot[1];
 
         //Process to the next page in the funnel regardless of InsureShip success
         $logger->info('Order Success - sending to next page:' . $_GET['next']);
@@ -83,7 +107,6 @@ if ($_SESSION['buy'] == 1) {
     } else {
         $_SESSION['declineup'] = 1;
         //The order was declined. Return the customer to the last page
-        $logger->info('Order Declined Reason:' . $response);
         $logger->info('Order Declined - sending back to:' . $_SESSION['last']);
         header("location: " . $_SESSION['last']);
         exit();
