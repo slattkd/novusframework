@@ -111,6 +111,14 @@ $_SESSION['pageType'] = 'vsl';
             display: none;
             width: 140px;
             height: 140px;
+            align-self: center;
+            margin-left: -140px;
+        }
+
+        @media screen and (min-width: 769px) {
+            .left-of-button {
+                display: flex;
+            }
         }
 
         #guarantee {
@@ -141,6 +149,7 @@ $_SESSION['pageType'] = 'vsl';
         background: url('https://s3.amazonaws.com/5gm/5gsciencecomp.jpg') repeat!important;
         background-size: cover!important;
         background-position: top!important;
+        padding-top: 40px;
     }
 </style>
 <?php } ?>
@@ -174,7 +183,7 @@ $_SESSION['pageType'] = 'vsl';
     </ul>
 </div>
 
-<div class="container-md mx-auto" style="background-color: #C90000;">
+<div class="container-md mx-auto mt-22" style="background-color: #C90000;">
     <?php video('includes/player', $vidcode, $droptime, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>
 </div>
 
@@ -184,7 +193,7 @@ $_SESSION['pageType'] = 'vsl';
     <a id="container-buy" class="col-md-8 img-link mt-5 hidden" href="assessment" target="_blank" onclick="hideTimerPopup()">
         <img class="mx-auto" style="width: 100%;max-width: 400px;" src="/images/animated-button+test.png" alt="see if you qualify">
     </a>
-    <!-- <img class="left-of-button" src="/images/90-day-icon.png" alt="90 day guarantee"> -->
+    <img class="left-of-button" src="/images/90-day-icon.png" alt="90 day guarantee">
     </div>
     
     
@@ -210,7 +219,7 @@ $_SESSION['pageType'] = 'vsl';
             </li>
         </ul>
         <p class="mt-5" style="text-align: center; font-size: 12px; color: #737373;">
-          &copy; <?php echo $company['name'] ?> All rights reserved.
+          &copy; <?php echo $company['name'] . ' ' . date("Y"); ?> All rights reserved.
       </p>
     </div>
 </div>
