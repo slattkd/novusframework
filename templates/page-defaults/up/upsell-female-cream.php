@@ -107,7 +107,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
 
 <body>
     <div class="container-vsl mx-auto py-8 serif" style="max-width: 680px;">
-        <div class="content mx-1">
+        <div class="conten mx-1">
             <section>
                 <?php
                     $current_step = 2;

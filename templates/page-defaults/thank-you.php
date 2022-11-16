@@ -11,6 +11,8 @@
   8. dn1, dn2, dn3
   9. receipt
 */
+// error_reporting(0);
+
 $_SESSION['pageType'] = 'receipt';
 
 $orderid = $_SESSION['orderId'];
@@ -32,6 +34,7 @@ $complete = array(
 //Allow more than one campaign to display
 $complete['campaign_id'] = $site['campaign'];
 $results = $sticky->api(2, $complete);
+var_dump($results);
 $products = $results['data'];
 
 $items = json_decode($results['data'], true);

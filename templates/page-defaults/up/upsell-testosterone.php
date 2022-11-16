@@ -45,7 +45,7 @@ $newflow = 0;
 
 
 <div class="container container-vsl mx-auto min-h-screen py-8 serif" style="max-width: 680px">
-        <div class="content px-1">
+        <div class="conten px-1">
             <section>
                 <?php
                     $current_step = 2;

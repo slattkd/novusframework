@@ -190,23 +190,17 @@ $_SESSION['pageType'] = 'dn4';
          </style>
      </head>
 
-            <section>
-                <?php
-                       $current_step = 2;
-                       template('includes/step_bar', null, $current_step);
-                ?>
-             </section>
  <body>
 
 
  <div class="container container-vsl mx-auto py-8">
 		<div class="content px-1">
-			<section>
-				<?php
-				$current_step = 2;
-				stepBar('includes/stepBar', $current_step); 
-				?>
-			</section>
+            <section>
+                <?php
+                     $current_step = 2;
+                     template('includes/step_bar', null, $current_step);
+                ?>
+             </section>
 
 
 
