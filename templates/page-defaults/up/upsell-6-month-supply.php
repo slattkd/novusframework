@@ -208,7 +208,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 <!-- HTML code from Bootply.com editor -->
 
 <body class="serif">
-    <div class="container-vsl mx-auto py-8" style="max-width: 950px">
+    <div class="container container-sm mx-auto py-8">
         <div class="conten px-1 md:px-5">
             <section>
                 <?php
