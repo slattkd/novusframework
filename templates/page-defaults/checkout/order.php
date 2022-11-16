@@ -1,6 +1,11 @@
 <?php
 error_reporting(0);
 
+$dateInFuture = strtotime("2022-11-13");
+$dateString = intval($dateInFuture);
+$futureDate = date("m/d/Y", $dateString);
+$displayDeadline = date("F j, Y, g:i a", $dateString);
+
 $url = $_POST['next_page'];
 
 // from assessment
@@ -93,9 +98,6 @@ if (in_array($dayname, $daysclosed)) {
         <title>5GMALE - Secure Order</title>
 
         <style>
-            body {
-                background-color: white;
-            }
             #btn-one, #btn-two, #btn-three, #btn-four {
 				font-family: HelveticaNeueLTStd-HvCnO,sans-serif;
 				background: #ffffce;
@@ -165,12 +167,6 @@ if (in_array($dayname, $daysclosed)) {
                 margin: 0 auto;
                 text-align: center;
                 border: 1px solid #62b218;
-                cursor: pointer;
-                transition: all 250ms ease-in-out;
-            }
-
-            .button_buy:hover {
-                opacity: 0.75;
             }
             .bogo {
                 position: relative;
@@ -237,15 +233,20 @@ if (in_array($dayname, $daysclosed)) {
                 height: 35px;
             }
 
-        .check-list {
-            background: transparent;
-            padding-left: 0px;
-        }
         </style>
+        
 
     </head>
 
 <body>
+    <div class="flex justify-center flex-nowrap bg-red-900 text-white p-3 text-center text-sm" style="position: sticky;top: 0;z-index: 1000; filter: saturate(1.8)">
+		<div class="flex">Your Discount Is Being Held For 
+			<span id="countdown-timer" class="ml-1">
+				<div id="clock1" class="font-bold text-white">EXPIRED</div>
+			</span>
+		, Until It Is Given To The Next Man Waiting In Line
+		</div>
+	</div>
     <header class="flex justify-center bg-green-500 p-2" style="background: #40A900;">
         <div class="flex flex-wrap bg-white rounded px-4 py-2 text-green-500 items-center text-center">
                 <div class="flex flex-nowrap items-center mx-auto text-lg">
@@ -257,7 +258,7 @@ if (in_array($dayname, $daysclosed)) {
         </div>
     </header>
     <div class="container container-md mx-auto py-8 pb-20" style="max-width: 960px !important">
-        <div class="content px-5">
+        <div class="conten px-5">
         <section class="flex flex-column w-full flex-wrap">
 				<div class="flex justify-center w-full text-center" style="z-index: 10">
 					<div class="flex flex-wrap items-center">
@@ -266,7 +267,7 @@ if (in_array($dayname, $daysclosed)) {
 							<div class="flex justify-center text-center flex-nowrap mx-auto items-center w-full">
 							<!-- <div class="phone"></div> -->
 							<img class="ml-2" src="../images/phone.png" alt="phone icon">
-							<span class="" style="font-size: 18px;">Call <a href="tel:1-800-214-5604">1-800-214-5604</a> Now To Speak To A Product Specialist!</span>
+							<span class="" style="font-size: 18px;">Call <a href="tel:<?= $company['phone'];?>"><?= $company['phone'];?></a> Now To Speak To A Product Specialist!</span>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -285,16 +286,16 @@ if (in_array($dayname, $daysclosed)) {
 								<h2 style="margin-top: 0">The More You Buy The More You Save!</h2>
 							</div>
 							<div class="flex flex-col md:flex-row w-auto mx-auto flex-wrap check-list my-4 md:my-0">
-								<p class="flex items-center mb-2 md:w-1/2">
+								<p class="flex items-center mb-1 md:w-1/2">
 								 <img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
 								Get Harder, Longer Lasting Erections</p>
-								<p class="flex items-center mb-2 md:w-1/2">
+								<p class="flex items-center mb-1 md:w-1/2">
 								<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
 								Feel Incredible In Bed</p>
-								<p class="flex items-center mb-2 md:w-1/2">
+								<p class="flex items-center mb-1 md:w-1/2">
 								<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
 								Regain Energy, Stamina, & Sex Drive</p>
-								<p class="flex items-center mb-2 md:w-1/2">
+								<p class="flex items-center mb-1 md:w-1/2">
 								<img class="mr-2" src="https://s3.amazonaws.com/5gm/checkout/check-green.png" alt="check">
 								Go All Night & Drive Any Woman Wild!</p>
 							</div>
@@ -308,7 +309,7 @@ if (in_array($dayname, $daysclosed)) {
 									<div class="flex items-center justify-center md:justify-start mt-2">
 										<span class="text-s mr-2" style="white-space: nowrap">Your spot is held for:</span>
 										<div class="flex">
-											<span id="countdown" class="border border-2 border-red-600 text-red-600 text-2xl px-4 py-1 mr-2">00:<span id="ms">00</span></span>
+											<span id="countdown" class="border border-2 border-red-600 text-red-600 text-2xl px-4 py-1 mr-2"> <div id="clock2"></div></span>
 											<img src="https://s3.amazonaws.com/5gm/checkout/red-clock.gif" alt="clock" style="object-fit: contain;" />
 										</div>
 									</div>
@@ -328,7 +329,7 @@ if (in_array($dayname, $daysclosed)) {
 			</section>
             <section id="cta" class="flex flex-col w-full flex-wrap justify-center mt-2 discount-section">
 				<!-- card one -->
-				<div class="card flex flex-wrap md:flex-nowrap border border-gray-300 mx-10">
+				<div class="card flex flex-wrap md:flex-nowrap border border-gray-300 mx-3 md:mx-10">
 					<div class="w-full md:w-auto grow flex flex-col justify-between p-4">
 						<p class="option-txt text-gray-400 text-lg font-bold">STARTER OPTION</p>
 						<p class="text-4xl font-bold" style="color:#000">1 MONTH SUPPLY</p>
@@ -349,7 +350,7 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
-						<form action="/checkout/onepage.php" id="product-form" method="POST">
+						<form action="/checkout/onepage" id="product-form" method="POST">
 							<input type="hidden" id="pid1" name="prodtype" value="4">
 							<input id="pid-input" class="button_buy clickable" type="button" onclick="updatePID(4)" value="CHOOSE">
 
@@ -362,7 +363,7 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 				</div>
 				<!-- card two -->
-				<div class="card selected flex flex-wrap md:flex-nowrap border-2 border-gray-300 mx-10">
+				<div class="card selected flex flex-wrap md:flex-nowrap border-2 border-gray-300 mx-3 md:mx-10">
 					<div class="w-full md:w-auto grow flex flex-col justify-between p-4">
 						<p class="option-txt text-gray-400 text-lg font-bold">MOST POPULAR</p>
 						<p class="text-4xl font-bold" style="color:#000">3 MONTH SUPPLY</p>
@@ -395,7 +396,7 @@ if (in_array($dayname, $daysclosed)) {
 					</div>
 				</div>
 				<!-- card three -->
-				<div class="card flex flex-wrap md:flex-nowrap border border-gray-300 mx-10">
+				<div class="card flex flex-wrap md:flex-nowrap border border-gray-300 mx-3 md:mx-10">
 					<div class="w-full md:w-auto grow flex flex-col justify-between p-4">
 						<p class="option-txt text-gray-400 text-lg font-bold">BIGGEST DISCOUNT</p>
 						<p class="text-4xl font-bold" style="color:#000">6 MONTH SUPPLY</p>
@@ -743,15 +744,12 @@ if (in_array($dayname, $daysclosed)) {
             </div>
 
             <div class="flex justify-center flex-wrap mb-4 text-center">
-                    <!-- <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="terms.php">Terms and Conditions</a> &nbsp;
-                    <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="privacy.php">Privacy Policy</a> &nbsp;
+                    <!-- <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="terms">Terms and Conditions</a> &nbsp;
+                    <a class="mx-3 clickable" style="color:#000;text-decoration:underline;" target="_blank" href="privacy">Privacy Policy</a> &nbsp;
                     <a class="mx-3 clickable" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a> -->
                     <?php legalLinks("includes/legalLinks");?>
             </div>
         </div>
-    </div>
-    <div class="flex justify-center sticky-timer" style="display:none;">
-        <p>Your Discount Is Being Held For <span id="countdown-sticky"></span><span id="ms"></span>, Until It Is Given To The Next Man Waiting In Line</p>
     </div>
 
 
@@ -855,14 +853,7 @@ if (in_array($dayname, $daysclosed)) {
         document.getElementById("six-package").addEventListener('click', function() {
             window.scrollTo({top: discountSection.offsetTop});
         });
-
         
-        window.addEventListener('scroll', function(){
-            var container = document.querySelector(".stock-container");
-            let sc = (window.scrollTop > (container.offsetTop + container.offsetHeight));
-            document.querySelector(".sticky-timer").style.display = sc ? 'flex' : 'none';
-        });
-
         const addOns = document.querySelector(".addOns");
         addOns.addEventListener('change', function() {
             const addOn2 = document.getElementById('addon2');
@@ -1109,4 +1100,53 @@ function cidgrab() {
         template('debug', null, null, 'debug');
     } ?>
     </body>
+<script language="JavaScript">
+
+// set individual clock values here
+  StartCountDown("clock1","<?php echo $futureDate; ?> 04:00 PM UTC-0500 ")
+  StartCountDown("clock2","<?php echo $futureDate; ?> 04:00 PM UTC-0500 ")
+  
+  /*
+  	Author:		Robert Hashemian (http://www.hashemian.com/)
+  	Modified by:	Munsifali Rashid (http://www.munit.co.uk/)
+  	Modified by:	Tilesh Khatri
+  */
+  
+  function StartCountDown(myDiv,myTargetDate) {
+    var dthen	= new Date(myTargetDate);
+    var dnow	= new Date();
+    ddiff		= new Date(dthen-dnow);
+    gsecs		= Math.floor(ddiff.valueOf()/1000);
+    CountBack(myDiv,gsecs);
+  }
+  
+  function Calcage(secs, num1, num2) {
+    s = ((Math.floor(secs/num1))%num2).toString();
+    if (s.length < 2) 
+    {	
+      s = num1 != 86400 ? "0" + s : s;
+    }
+    return (s);
+  }
+  
+  function CountBack(myDiv, secs) {
+    var DisplayStr;
+    var DisplayFormat = "%%D%% Days %%H%%:%%M%%:%%S%%";
+    DisplayStr = DisplayFormat.replace(/%%D%%/g,	Calcage(secs,86400,100000));
+    DisplayStr = DisplayStr.replace(/%%H%%/g,		Calcage(secs,3600,24));
+    DisplayStr = DisplayStr.replace(/%%M%%/g,		Calcage(secs,60,60));
+		DisplayStr = DisplayStr.replace(/%%S%%/g,		Calcage(secs,1,60));
+		const insertElement = document.getElementById(myDiv);
+		// if (insertElement) {
+			if(secs > 0) {	
+				insertElement.innerHTML = DisplayStr;
+				setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990);
+			} 
+			else {
+				insertElement.innerHTML = "EXPIRED";
+			}
+		
+  }
+
+</script>
 </html>

@@ -57,6 +57,8 @@ $_SESSION['pageType'] = 'vsl';
         .video-container {
             position: relative;
             border: 1px solid grey;
+            aspect-ratio: 16/9;
+            width: 100%;
         }
 
         .click-to-play {
@@ -103,6 +105,17 @@ $_SESSION['pageType'] = 'vsl';
             columns: 1;
             -webkit-columns: 1;
             -moz-columns: 1;
+        }
+
+        #guarantee {
+            clear: right;
+            float: right;
+            width: 143px;
+            height: 167px;
+            background-image: url(/images/animated-button+test.png);
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            margin-top: 35px;
         }
 
         #container-buy-secure{z-index:100;position:fixed;bottom:0;left:0;width:122px;height:85px}
@@ -160,9 +173,15 @@ $_SESSION['pageType'] = 'vsl';
 </div>
 
 <div class="container-md mx-auto mt-8 p-5 pb-5 bg-white">
-    <a id="container-buy" class="img-link mt-5 hidden" href="assessment.php" target="_blank" onclick="hideTimerPopup()">
-        <img class="mx-auto" style="width: 100%;max-width: 400px;" src="/images/animated-button+test.png" alt="">
+
+    <div class="flex">
+    <a id="container-buy" class="col-md-8 img-link mt-5 hidden" href="assessment" target="_blank" onclick="hideTimerPopup()">
+        <img class="mx-auto" style="width: 100%;max-width: 400px;" src="/images/animated-button+test.png" alt="see if you qualify">
     </a>
+    <img class="left-of-button" src="/images/90-day-icon.png" alt="90 day guarantee">
+    </div>
+    
+    
     <div class="mt-5 p-4">
         <p class="text-center text-gray-500 text-xs">
             These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
@@ -172,8 +191,8 @@ $_SESSION['pageType'] = 'vsl';
     </div>
     <div class="mt-5">
         <ul class="links">
-            <li><a href="//supernaturalman.com/support.php" target="_blank">Support</a></li>
-            <li><a href="/policy/privacy_policy.php" target="_blank">Privacy Policy</a></li>
+            <li><a href="//supernaturalman.com/support" target="_blank">Support</a></li>
+            <li><a href="/policy/privacy_policy" target="_blank">Privacy Policy</a></li>
             <li><a href="/step/terms.html" target="_blank">Terms and Conditions</a></li>
             <li><span id="afflink" style="display: inline-block;">
                     <a href="https://partners.pineapple.co/affiliate-signup/" target="_blank">Affiliate Signup</a></span>

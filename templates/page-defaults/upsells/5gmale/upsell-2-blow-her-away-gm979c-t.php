@@ -361,7 +361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div>
 					<img class="float-right mb-5 ml-5 w-full mx-auto md:w-1/2" style="max-width: 350px;" src="https://s3.amazonaws.com/5gmale/male-repro.jpg" alt="male reproductive diagram" />
 					<p class=" pb-3">These <strong>“Genesis”</strong> ingredients are the ingredients that help your body create more semen.</p>
-					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong style="#D81E00">as low at 10%</strong>)… </p>
+					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong style="color:#D81E00">as low at 10%</strong>)… </p>
 					<p class=" pb-3">Resulting in a <strong>measly dribble</strong> when you finish…</p>
 					<p class=" pb-3">Once the “Genesis” ingredients enter your body… and are absorbed into your blood steam… they are then used by your testicles to fuel <strong>MASSIVE semen production</strong>…</p>
 					</div>
@@ -493,7 +493,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</section>
 
 				<div class="flex w-full justify-center py-7">
-					<p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="downsell-3.php" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</p>
+					<p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="downsell-3" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</p>
 				</div>
 				<div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-10 pt-3 sans uppercase"> Supernatural Man LLC </div>
 			</div>

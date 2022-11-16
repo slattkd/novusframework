@@ -327,7 +327,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
                     </div>
 
                     <div class="flex w-full justify-center py-7">
-                    <p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="//<?php echo $_SERVER['HTTP_HOST']?>/dn/downsell-4.php" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</p>
+                    <p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="//<?php echo $_SERVER['HTTP_HOST']?>/dn/downsell-4" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</p>
                     </div>
                     <div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-10 pt-3 sans uppercase"> Supernatural Man LLC </div>
 

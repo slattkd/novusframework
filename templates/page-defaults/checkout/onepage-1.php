@@ -477,7 +477,7 @@ error_reporting(0);
         </div>
         <div class="p-4 text-gray-600">
           <label for="termsagree">
-						<input type="checkbox" value="1" id="termsagree" name="termsagree" class="clickable">  By clicking this button I agree to the <a href="/tailwind/terms.php" target="_blank" class="underline text-blue-800 clickable">terms and conditions</a> and <a href="/tailwind/privacy.php" target="_blank" class="underline text-blue-800 clickable">privacy policy</a> including allowing my card to be charged $<span class="totaldue">0.00</span> today, and <br>
+						<input type="checkbox" value="1" id="termsagree" name="termsagree" class="clickable">  By clicking this button I agree to the <a href="/tailwind/terms" target="_blank" class="underline text-blue-800 clickable">terms and conditions</a> and <a href="/tailwind/privacy" target="_blank" class="underline text-blue-800 clickable">privacy policy</a> including allowing my card to be charged $<span class="totaldue">0.00</span> today, and <br>
 						<p>Your Card Will Be Billed As Supernaturalman</p>
 					</label>
         </div>

@@ -5,10 +5,10 @@
     <title><?php echo $company['name'] ?> Privacy Policy</title>
 </head>
 
-<body class="bg-blue">
-    <?php template('includes/navigation'); ?>
-    <section class="max-w-5xl mx-auto bg-white shadow-md mt-6">
-        <div class="flex flex-wrap prose justify-center max-w-max">
+<body>
+    <?php template('includes/basicHeader'); ?>
+    <div class="container mx-auto py-8">	
+		<div class="content px-5">
             <div class="w-full md:w-full p-4">
 
                 <h1>Privacy Policy</h1>
@@ -82,7 +82,7 @@
 
 
         </div>
-    </section>
+    </div>
 
     <?php template('includes/footer'); ?>
     <?php if ($site['debug'] == true) {

@@ -1,36 +1,19 @@
-<?php
-session_start();
-date_default_timezone_set( "America/New_York" );
-error_reporting(0);
-	include('config.php');
-	include('inc/class.cart.php');	
-?>
 <!DOCTYPE html>
 <html>
 <head>
-<?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/pixelhead.php'); ?>
-<meta charset="UTF-8">
-<title><?php echo $company->name; ?> | About</title>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="../shared/css/base.css" rel="stylesheet">
-<link href="../shared/css/legal-copy.css" rel="stylesheet">
+    <?php template('includes/header'); ?>
+    <title><?php echo $company['name'] ?> Terms of Service</title>
 </head>
 
 <body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7RRXPJ"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-<?php require_once($_SERVER['DOCUMENT_ROOT'].'/inc/pixelbody.php'); ?>	
-<?php include($_SERVER['DOCUMENT_ROOT'].'/inc/header.php'); ?>
+<?php template('includes/basicHeader'); ?>
 
 <div class="container mx-auto py-8">	
 		<div class="content px-5">	
 
 		<h1 class="">ABOUT US</h1>
 			
-			<h2 class="mb-6" style="margin-top: 1.5rem"><?php echo $company->name; ?>'s Story</h2>
+			<h2 class="mb-6" style="margin-top: 1.5rem"><?php echo $company['name'] ?>'s Story</h2>
 			
 			<p>Supernatural Man was founded in 2016 in New York City, where we found men were feeling less drive and intensity than they used to. We decided to create a natural formula with top quality ingredients to supercharge the energy of guys like you.</p>
 
@@ -65,4 +48,10 @@ error_reporting(0);
 	
 </div><!-- end .container -->
 
-<?php include($_SERVER['DOCUMENT_ROOT'].'/inc/footer.php'); ?>
+<?php template('includes/footer'); ?>
+    <?php if ($site['debug'] == true) {
+        template('debug', 'debug');
+    } ?>
+</body>
+
+</html>

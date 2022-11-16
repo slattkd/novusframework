@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php template('includes/header'); ?>
+    <?php template('includes/basicHeader'); ?>
     <title><?php echo $company['name'] ?> Privacy Policy</title>
 </head>
 

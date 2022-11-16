@@ -209,7 +209,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 
 <body class="serif">
     <div class="container-vsl mx-auto py-8" style="max-width: 950px">
-        <div class="content px-1 md:px-5">
+        <div class="conten px-1 md:px-5">
             <section>
                 <?php
                 $current_step = 2;
@@ -268,7 +268,7 @@ if (isset($_SESSION['step_1_orderId'])) {
                         <div class="flex justify-center my-4 font-bold text-center" style="font-size: 20px;"><em>(It's Recommended You Take This One-Time Discount)</em></div>
                     </div>
 
-                    <p class="centered p8" style="font-size: 15px; color: #8C8C8C;"><a href="popupa.php" class="fancybox fancybox.ajax" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Ryan, give my one-time-only discount away to another man. I understand I will NOT get access to this discount again under any circumstances.</p>
+                    <p class="centered p8" style="font-size: 15px; color: #8C8C8C;"><a href="popupa" class="fancybox fancybox.ajax" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Ryan, give my one-time-only discount away to another man. I understand I will NOT get access to this discount again under any circumstances.</p>
 
                 </section>
 

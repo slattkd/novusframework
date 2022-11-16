@@ -710,7 +710,7 @@ $videoid = '4s1zPOYQz7PkCfgF';
 
 					<p class="mb-3 w-full">To the guys out there like you, who can now benefit from it…</p>
 
-					<p style="class="w-full mb-3 text-2xl"">Let Me Formally Introduce Myself…</p>
+					<p class="w-full mb-3 text-2xl">Let Me Formally Introduce Myself…</p>
 
 					<p class="mb-3 w-full">As I said before, name is Ryan Masters </p>
 
@@ -871,7 +871,7 @@ $videoid = '4s1zPOYQz7PkCfgF';
 
 				<p class="mb-3 w-full">So what we decided to do is… </p>
 
-				<p style="class="w-full mb-3 text-2xl"">We Cut Out The Middleman And Decided To Sell <strong>Straight To You</strong>…</p>
+				<p class="w-full mb-3 text-2xl">We Cut Out The Middleman And Decided To Sell <strong>Straight To You</strong>…</p>
 
 				<p class="mb-3 w-full">Directly through the internet…</p>
 

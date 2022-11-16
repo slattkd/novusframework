@@ -37,7 +37,7 @@
 						<li class="mb-1">
 							<div class="flex items-center">
 								<img src="/images/5g.png" alt="5G Male product bottle" width="45px">
-								<a href="/sl-5gmale.php" target="_blank" class="ml-2 text-gray-400 hover:text-white hover:underline transition duration-150 ease-in-out cursor-pointer">5G Male</a>
+								<a href="/sl-5gmale" target="_blank" class="ml-2 text-gray-400 hover:text-white hover:underline transition duration-150 ease-in-out cursor-pointer">5G Male</a>
 							</div>
 						</li>
 					</ul>
@@ -49,23 +49,23 @@
 					<h3 class="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">Quick Links</h3>
 					<ul>
 						<li class="mb-1">
-							<a href="/index.php" target="_blank"
+							<a href="/index" target="_blank"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">Home</a>
 						</li>
 						<li class="mb-1">
-							<a href="/sl-5gmale.php" target="_blank"
+							<a href="/sl-5gmale" target="_blank"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">Shop</a>
 						</li>
 						<li class="mb-1">
-							<a href="/about.php" target="_blank"
+							<a href="/about" target="_blank"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">About</a>
 						</li>
 						<li class="mb-1">
-							<a href="/support.php" target="_blank"
+							<a href="/support" target="_blank"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">Support</a>
 						</li>
 						<li class="mb-1">
-							<a href="/cart.php" target="_blank"
+							<a href="/cart" target="_blank"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">Cart</a>
 						</li>
 						
@@ -86,7 +86,7 @@
 		<div class="flex flex-wrap items-center justify-center md:justify-between container container-md mx-auto text-sm p-2">
 			
 			<div class="flex items-center mt-4 space-x-6 justify-center">
-				<a href="/support.php" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">CONTACT US</a>
+				<a href="/support" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">CONTACT US</a>
 				<a href="#" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
 					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 						<path fill-rule="evenodd"

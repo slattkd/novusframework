@@ -149,6 +149,28 @@ $_SESSION['pageType'] = 'dn1';
                     width: 90% !important;
                 }
             }
+
+            .buy_button {
+			font-weight: bold;
+			background-color: #82c213;
+			color: #fff;
+			font-size: 25px;
+			border: 1px solid #000;
+			padding: 15px 10px;
+			border-radius: 4px;
+			text-shadow: 1px 1px #000;
+			box-shadow: 1px 1px 2px #888888;
+			text-decoration: none;
+			transform: all 200ms ease-in-out;
+		}
+		
+		.buy_button:hover {
+			background-color: transparent;
+			border: 2px solid #82c213;
+			color: #82c213;
+			text-decoration: none;
+			text-shadow: none;
+		}
             
             /* upsell condensed */
             body{padding:0;margin:0;color:#000;background-color:#eee}.main_container{padding:0;margin:25px auto;overflow:auto;width:680px}.slpage{padding:0 0 20px 0;overflow:hidden;width:100%}.letter-body{position:relative;clear:both;padding:15px 50px;margin:15px auto;float:none;border-radius:5px;border-width:3px 1px 1px;border-style:solid;border-color:#d81e00 #000 #000;background-color:#fff}p{margin:0;padding:0}.p1{font-family:Arial,Verdana,sans-serif;color:#000;text-align:center;font-size:16px;margin:20px 0}.p3{font-family:Arial,sans-serif;font-size:14px;line-height:130%;text-indent:0!important}.p4{font-weight:700;font-size:20px;color:#d81e00}.centered{text-align:center}.color-black{color:#000}#letter_body{margin:0;padding:10px 0}#footer{clear:both;color:silver;margin:80px 0 0;border-top:1px solid #ccc;padding:10px 0 0;text-align:center;text-transform:uppercase}@media (max-width:800px){.letter-body{padding:20px}.p1{text-indent:0}}@media (max-width:460px){.p3{font-size:22px}.main_container{padding:0;padding-top:10px;width:100%;margin:0}.letter-body{margin:0;padding:4px;width:100%}.slpage{padding:20px 0 20px 0;width:100%;float:none;margin:0}}@media (max-width:920px){.main_container{width:96%;margin:0 auto}}
@@ -232,21 +254,15 @@ $_SESSION['pageType'] = 'dn1';
         <p class="p3 centered" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 76% Savings!)</p>
         <p class="p2"><br></p>
         <div class="centered" id="buy-btn2">
-        <center><span><a href="/up/upsell-2-blow-her-away.php/?id=21&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></center>
+        <?php if($newflow) { ?>
+            <div class="flex justify-center mx-auto mt-6"><span><a href="/up/upsell-2-blow-her-away.php/?pid=10&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+        <?php } else { ?>
+            <div class="flex justify-center mx-auto mt-6"><span><a href="/up/upsell-2-blow-her-away.php/?pid=455&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+        <?php } ?>
+        <center><span><a href="/up/upsell-2-blow-her-away.php/?pid=10&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></center>
         </div>
     </div>
     
-    
-    <div class="option2">
-        <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;">6 Bottle Discount</p>
-        <p class="p3 centered" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $419.70</strike></p>
-        <p class="p3 centered" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $97</strong></p>
-        <p class="p3 centered" style="font-weight:600; color:#D81E00; font-size:15px;">(A WHOPPING 78% Savings!)</p>
-        <p class="p2"><br></p>
-        <div class="centered">
-        <center><span><a href="/up/upsell-2-blow-her-away.php?id=21&buy=2" id="upsell-buy" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></center>
-        </div>
-    </div>
 </div>
 
         <div style="clear:both;"></div>
@@ -258,7 +274,7 @@ $_SESSION['pageType'] = 'dn1';
 <p class="p2"><br></p>
 <p class="p2"><br></p>
 
-        <p class = 'centered p8' style="font-size: 13px; color: #8C8C8C;"><a href="/thank-you.php" style="color: #8C8C8C; text-decoration:underline;" class="processlink">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line. </p>
+        <p class = 'centered p8' style="font-size: 13px; color: #8C8C8C;"><a href="/thank-you" style="color: #8C8C8C; text-decoration:underline;" class="processlink">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line. </p>
 </div><!-- end .processblock -->
         <div id="footer"> Supernatural Man LLC </div>
 

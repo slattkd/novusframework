@@ -80,7 +80,9 @@ const overlay = document.getElementById('video-overlay');
 
 // remove video overlay image on click
 function clickOverlay() {
-    overlay.classList.add('invisible');
+    if (overlay) {
+        overlay.classList.add('invisible');
+    }
 }
 
 

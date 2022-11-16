@@ -1,9 +1,6 @@
+
+
 <html>
-
-<?php
-
-
-?>
 <head>
     <?php template('includes/header'); ?>
     <title>10% Off Coupon, One Chance Offer</title>
@@ -13,7 +10,7 @@
 			margin: 0 auto;
 			padding: 0px 5px;
 			border: dashed #ff0000 6px;
-		}
+        }
     </style>
 </head>
 
@@ -34,9 +31,7 @@
                 
                         <form id="discountform" name="discountform" class="button-wrap" method="post" action="<?php echo $nextlink; ?>">
                             <input type="hidden" id="prodtype" name="prodtype" value="<?php echo $prodtype; ?>a">
-                            <input type="submit" id="submitdiscount" name="submit" value="ACTIVATE COUPON NOW!" class="goal5 p-5 px-8 bg-red-600 text-white font-bold text-2xl">
-
-                    
+                            <input type="submit" id="submitdiscount" name="submit" value="ACTIVATE COUPON NOW!" class="goal5 clickable p-5 px-8 bg-red-600 text-white font-bold text-2xl">
                         </form>
                     <p class="font-light mb-3">Recommended For All New Customers</p>
                     
@@ -46,7 +41,7 @@
                     
                     <form id="skipform" name="skipform" method="post" action="<?php echo $nextlink; ?>">
                         <input type="hidden" id="prodtype" name="prodtype" value="<?php echo $prodtype; ?>">
-                        <input type="submit" id="submitskip" name="submit" value="Skip This - I do NOT want 10% OFF my order" class="text-2xl text-slate-600 mt-6 underline">
+                        <input type="submit" id="submitskip" name="submit" value="Skip This - I do NOT want 10% OFF my order" class="text-2xl text-slate-600 mt-6 underline clickable">
 
                     </form>
                     <p>(Note, once you skip this one-time offer, you cannot request this discount again)</p>
@@ -55,9 +50,6 @@
         </div>
     </section>
 
-    <?php if ($site['debug'] == true) {
-        template('debug', 'debug');
-    } ?>
 </body>
 
 </html>

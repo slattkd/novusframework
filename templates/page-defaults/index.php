@@ -56,7 +56,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
 			<div class="bg-gray-600 font-bold text-3xl text-white p-3 px-4">BECOME SUPERNATURAL</div>
 			<div class="font-semibold text-xl text-white py-5">SUPERIOR NATURAL ENERGY FOR TODAY’S MAN</div>
 			<div>
-				<a href="/sl-5gmale.php">
+				<a href="/sl-5gmale">
 				<button class="w-auto bg-black border border-transparent py-2 px-3 text-base text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 hover:bg-gray-800">
               SHOP NOW</button>
 					</a>
@@ -77,7 +77,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               Learn about Supernatural Man
             </p>
-				 <a href="/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/about" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
 
           <div class="flex flex-col">
@@ -89,7 +89,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               We have helped thousands of men with these issues.
             </p>
-				 <a href="/about.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/about" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
 
 			  <div class="flex flex-col">
@@ -101,7 +101,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               We have a variety of products that can help your needs.
             </p>
-				 <a href="/sl-5gmale.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/sl-5gmale" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
 
           <div class="flex flex-col">
@@ -113,7 +113,7 @@ $_SESSION['utm_content'] = $_GET['utm_content'];
             <p class="mt-3 text-base text-gray-300 text-center">
               We’re here to Help.
             </p>
-				 <a href="/support.php" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
+				 <a href="/support" class="flex justify-center underline text-gray-500 text-center clickable pt-4 mt-auto">LEARN MORE</a>
           </div>
         </div>
       </section>

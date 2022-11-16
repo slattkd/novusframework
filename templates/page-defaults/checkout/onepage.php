@@ -523,8 +523,8 @@ body {
 
             .newbuy {
                 color: #fefefe!important;
-                font-size: 36px!important;
-                line-height: 1.176!important;
+                font-size: 34px !important;
+    						line-height: 1.5 !important;
                 text-decoration: none!important;
                 text-transform: uppercase!important;
                 font-weight: 700!important;
@@ -544,14 +544,7 @@ body {
                 border: 1px solid #62b218!important;
                 margin-bottom: 9px!important;
             }
-            .protect-title {
-                    font-size: 30px;
-                    line-height: 33px;
-                    padding-left: 16px;
-                    font-weight: bold;
-                    color: #348FD4;
-                    padding-top: 3px;
-            }
+
             .protection-list p {
                     background: url(/images/blue-check.png) no-repeat;
                     padding-left: 30px;
@@ -566,38 +559,7 @@ body {
 			border: none;
 		}
 
-		.newbuy {
-			color: #fefefe !important;
-			font-size: 36px !important;
-			line-height: 1.176 !important;
-			text-decoration: none !important;
-			text-transform: uppercase !important;
-			font-weight: 700 !important;
-			letter-spacing: 0 !important;
-			border-radius: 4em !important;
-			padding: 15px 20px !important;
-			margin: 1em 0 !important;
-			background-color: #62b218 !important;
-			min-width: 400px !important;
-			min-height: 81px !important;
-			outline: none !important;
-			display: flex !important;
-			justify-content: center;
-			text-align: center;
-			margin: 0 auto !important;
-			text-align: center !important;
-			border: 1px solid #62b218 !important;
-			margin-bottom: 9px !important;
-		}
 
-		.protect-title {
-			font-size: 30px;
-			line-height: 33px;
-			padding-left: 16px;
-			font-weight: bold;
-			color: #348FD4;
-			padding-top: 3px;
-		}
 
 		.protection-list p {
 			background: url(/images/blue-check.png) no-repeat;
@@ -689,7 +651,7 @@ body {
 		</div>
 	</header>
 	<div class="container container-md mx-auto py-6" style="max-width: 960px !important">
-		<div class="content px-5">
+		<div class="conten px-5">
 			<div class="flex justify-center w-full">
 				<div class="flex flex-wrap items-center">
 					<img class="mx-auto" src="/images/snm-logo.gif" style="height: 25px" />
@@ -836,7 +798,7 @@ body {
 							<div class="protection-list" style="clear:both;">
 								<p class="font-bold">Fast Shipping <br><span class="text-sm text-gray-400 font-normal">Your order ships ASAP with tracking info</span></p>
 								<p class="font-bold">24/7 Live Phone Help <br><span class="text-sm text-gray-400 font-normal">Talk to a real, live person any time</span></p>
-								<p class="font-bold">Billed As SNM8002519316 <br><span class="text-sm text-gray-400 font-normal">Discreet billing for your privacy</span></p>
+								<p class="font-bold">Billed As <?php echo $company['billedAs']; ?> <br><span class="text-sm text-gray-400 font-normal">Discreet billing for your privacy</span></p>
 								<p class="font-bold">Privacy Guaranteed <br><span class="text-sm text-gray-400 font-normal">Your information is never shared</span></p>
 								<p class="last-list font-bold">Lowest Price Guaranteed <br><span class="text-sm text-gray-400 font-normal">You will never see this at a lower price</span></p>
 							</div>
@@ -862,7 +824,7 @@ body {
 								<label for="FirstName" class="text-sm">First Name:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="firstName" id="FirstName" value="<?php echo @$_SESSION["firstName"]; ?>" onchange="">
+								<input required class="w-full px-1 py-2" type="text" name="firstName" id="FirstName" required value="<?php echo @$_SESSION["firstName"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -878,7 +840,7 @@ body {
 								<label for="Email" class="text-sm">Email:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="email" name="email" id="Email" value="<?php echo @$_SESSION["email"]; ?>" onchange="">
+								<input required class="w-full px-1 py-2" type="email" name="email" id="Email" value="<?php echo @$_SESSION["email"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -886,7 +848,7 @@ body {
 								<label for="Phone" class="text-sm">Phone:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="tel" name="phone" id="Phone" value="<?php echo @$_SESSION["phone"]; ?>" onchange="">
+								<input required class="w-full px-1 py-2" type="tel" name="phone" id="Phone" value="<?php echo @$_SESSION["phone"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -894,7 +856,7 @@ body {
 								<label for="billingAddress1" class="text-sm">Address:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingAddress1" type="text" id="billingAddress1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
+								<input required class="w-full px-1 py-2" name="billingAddress1" type="text" id="billingAddress1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -910,7 +872,7 @@ body {
 								<label for="billingCity" class="text-sm">City:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingCity" type="text" id="billingCity" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
+								<input required class="w-full px-1 py-2" name="billingCity" type="text" id="billingCity" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -945,7 +907,7 @@ body {
 								<label for="billingZip" class="text-sm">Postal Code:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" name="billingZip" type="text" id="billingZip" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
+								<input required class="w-full px-1 py-2" name="billingZip" type="text" id="billingZip" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-col w-full my-5">
@@ -963,7 +925,7 @@ body {
 								<label for="cc_no" class="text-sm">Card Number:</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="creditCardNumber" id="cc_no" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
+								<input required class="w-full px-1 py-2" type="text" name="creditCardNumber" id="cc_no" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center mb-4">
@@ -1014,7 +976,7 @@ body {
 								<label for="cvv" class="text-sm">CVV(<a class="text-xs" href="https://5gmale.com/step/cardHelp.html" target="_blank">what's this?</a> ):</label>
 							</div>
 							<div class="w-full md:w-2/3 border border-gray-400">
-								<input class="w-full px-1 py-2" type="text" name="cvv" id="cvv" value="" onchange="">
+								<input required class="w-full px-1 py-2" type="text" name="cvv" id="cvv" value="" onchange="">
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center my-4 text-center justify-center">
@@ -1102,7 +1064,7 @@ body {
 
 								</div>
 
-								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="terms.php">Terms and Conditions</a></p>
+								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="terms">Terms and Conditions</a></p>
 								<div class="flex w-full justify-center">
 									<button name="next-button" id="next-button" class="w-full newbuy text-3xl" value="COMPLETE PURCHASE">Complete Purchase</button>
 								</div>
@@ -1153,8 +1115,8 @@ body {
 			</div>
 
 			<div class="flex justify-center flex-wrap mb-4 text-center mt-11">
-				<!-- <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/terms.php">Terms and Conditions</a> &nbsp;
-				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/privacy.php">Privacy Policy</a> &nbsp;
+				<!-- <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/terms">Terms and Conditions</a> &nbsp;
+				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/privacy">Privacy Policy</a> &nbsp;
 				<a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a> -->
 				<?php legalLinks("includes/legalLinks");?>
 			</div>

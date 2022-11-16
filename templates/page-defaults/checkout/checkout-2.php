@@ -926,7 +926,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
 								</div>
 
-								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="/tailwind/terms-t.php">Terms and Conditions</a></p>
+								<p id="terms" class="text-sm text-center text-gray-400 mb-2 mt-4">By clicking the order button I accept the <a target="_blank" class="underline" href="/tailwind/terms-t">Terms and Conditions</a></p>
 								<div class="flex w-full justify-center">
 									<button name="next-button" id="next-button" type="submit" class="w-full newbuy text-3xl" onclick="return validateForm();" value="COMPLETE PURCHASE">Complete Purchase</button>
 								</div>
@@ -979,8 +979,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 			</div>
 
 			<div class="flex justify-center flex-wrap mb-4 text-center mt-11">
-				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="/tailwind/terms.php">Terms and Conditions</a> &nbsp;
-				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="/tailwind/privacy.php">Privacy Policy</a> &nbsp;
+				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="/tailwind/terms">Terms and Conditions</a> &nbsp;
+				<a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox fancybox.ajax" href="/tailwind/privacy">Privacy Policy</a> &nbsp;
 				<a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a>
 			</div>
 		</div>

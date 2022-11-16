@@ -482,9 +482,9 @@ $firedl = 0;
                 Need help? <a class="clickable underline" href="mailto:support@5gmale.com" target="_blank">Contact us</a>
             </div>
             <div class="flex">
-                    <!-- <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/refund_policy.php" target="_blank">Refund Policy</a></div>
-                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/privacy_policy.php" target="_blank">Privacy Policy</a></div>
-                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/terms_of_service.php" target="_blank">Terms of service</a></div> -->
+                    <!-- <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/refund_policy" target="_blank">Refund Policy</a></div>
+                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/privacy_policy" target="_blank">Privacy Policy</a></div>
+                    <div class="px-2 text-sm underline"><a href="http://www.5gmale.com/policy/terms_of_service" target="_blank">Terms of service</a></div> -->
                     <?php legalLinks("includes/legalLinks");?>
             </div>
         </div>

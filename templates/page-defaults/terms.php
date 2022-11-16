@@ -6,7 +6,7 @@
 </head>
 
 <body class="bg-blue">
-    <?php template('includes/navigation'); ?>
+    <?php template('includes/basicHeader'); ?>
     <section class="max-w-5xl mx-auto bg-white shadow-md mt-6">
         <div class="flex flex-wrap prose justify-center max-w-max">
             <div class="w-full md:w-full p-4">

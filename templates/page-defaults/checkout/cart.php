@@ -135,7 +135,7 @@
             <div id="error-wrapper" class="flex flex-col mb-2 text-red-600 text-sm mb-5 hidden">
               <!-- input errors are injected here -->
             </div>
-            <a href="/tailwind/checkout-t.php">
+            <a href="/tailwind/checkout-t">
             <button 
               type="submit" 
               class="w-full bg-green-500 hover:bg-green-600 border border-transparent rounded-md py-3 px-4 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
@@ -143,7 +143,7 @@
             </button>
             </a>
             <div class="flex justify-center text-center mt-6">
-              <a href="/tailwind/5gmale-t.php" class="text-gray-500 hover:underline clickable">Continue Shopping</a>
+              <a href="/tailwind/5gmale-t" class="text-gray-500 hover:underline clickable">Continue Shopping</a>
             </div>
           </div>
         </div>

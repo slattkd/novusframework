@@ -172,121 +172,120 @@ $_SESSION['pageType'] = 'dn2';
                  }
              }
 
+             .buy_button {
+			font-weight: bold;
+			background-color: #82c213;
+			color: #fff;
+			font-size: 25px;
+			border: 1px solid #000;
+			padding: 15px 10px;
+			border-radius: 4px;
+			text-shadow: 1px 1px #000;
+			box-shadow: 1px 1px 2px #888888;
+			text-decoration: none;
+			transform: all 200ms ease-in-out;
+		}
+		
+		.buy_button:hover {
+			background-color: transparent;
+			border: 2px solid #82c213;
+			color: #82c213;
+			text-decoration: none;
+			text-shadow: none;
+		}
+
          </style>
      </head>
  <!-- HTML code from Bootply.com editor -->
 
  <body>
 
- <div class="main_container">
-     <div class="slpage">
-
-             <section>
+ <div class="container container-vsl mx-auto py-8">
+		<div class="conten px-1">
+            <section>
                 <?php
                      $current_step = 2;
                      template('includes/step_bar', null, $current_step);
                 ?>
              </section>
 
-         <div id="letter_body" class=" pr-4 pl-42  md:w-full pr-4 pl-42 flex flex-wrap">
-
-             <div class="letter-body">
-
-                 <!-- PASTE LETTER HERE -->
-
-                     <!--p class="p4 flex-growor-black"><b><span id="upSellName" style="font-size: 17px;"><strong style="color: #D81E00;">WARNING:</strong> <u>Do Not</u> Leave This Page Yet, Your Order Is Not Complete!</span></b></p-->
-                     <p class="p2"><br></p>
-
-                     <p class="p4 centered" style="font-size:55px; line-height: 58px;">Take Just 6 Bottles And Get An Even <strong>BIGGER Discount…</strong></p>
-
-                     <p class="p2"><br></p>
-                     <p class="p3">Hey, it’s Ryan again…</p>
-                     <p class="p2"><br></p>
-
-                     <p class="p3">I understand that $<?php echo $alot; ?> is a lot, but I don’t want you to leave empty handed.</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">I really want to make sure you can shoot thick, roping loads that hot girls absolutely LOVE&hellip; that will keep them coming back for more again and again&hellip;</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">So right now, today only…</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">I’ll send you a smaller, three-bottle supply of Supernatural Man’s Volumizer and give you an <strong><em>even bigger discount</em></strong>.</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">On the last page, you got a 58% OFF discount&hellip;</p>
-                     <p class="p2"><br></p>
-
-                     <?php if($newflow) { ?>
-                         <p class="p4 centered">Now I’ll Drop The Price EVEN MORE… And Give You A <strong>WHOPPING <?php echo $savings; ?>% OFF!</strong></p>
-                     <?php } else { ?>
-                         <p class="p4 centered">Now I’ll Drop The Price EVEN MORE&hellip; And Give You <strong>3 Bottles of Volumizer for just $33.32 each!</strong></p>
-                     <?php } ?>
-
-                     <p class="p2"><br></p>
-                     <p class="p3">You heard right!
-                     <p class="p2"><br></p>
-                     <p class="p3">My marketing department is going to be furious about this… </p>
-                     <p class="p2"><br></p>
-                     <p class="p3">But because you’re a new customer I want to make sure you’re taken care of… and I know you’re going to be ordering A LOT more of this because I’ve seen how it works…</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">And I’d really be disappointed if you started getting all these killer results… </p>
-                     <p class="p2"><br></p>
-                     <p class="p3">And then, your supply ran out!</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">But this is ONLY available today, <strong>right here</strong> on this page, because you’re a new customer.</p>
-                     <p class="p2"><br></p>
-                     <p class="p3">Once you leave this page, this deal is <strong>gone for good!</strong></p>
-                     <p class="p2"><br></p>
-                     <p class="p3">Make sure you secure your <strong>EXTREME DISCOUNT</strong> now…</p>
-
- <p class="p2"><br></p>
-
- <p class="p4 centered" style="font-size:35px;">Secure Your <strong>EXTREME DISCOUNT</strong> On A <?php echo $supply; ?>-Month Supply of Supernatural Man’s Volumizer And <strong>Get <?php echo $savings; ?>% OFF!</strong></p>
- <p class="p2"><br></p>
- <p class="p3 centered" style="font-size:23px;">Click The Button Below To Get Started Now…</p>
- <p class="p2"><br></p>
-
-     <div class="processblock">
-     <div id="container-buy" style="">
-             <div class="options">
-                 <div class="option1">
-                     <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;"><?php echo $supply; ?> Bottle Discount</p>
-                     <p class="p3 centered" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $<?php echo $normally; ?></strike></p>
-                     <p class="p3 centered" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?php echo $price; ?></strong></p>
-                     <p class="p3 centered" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?php echo $savings; ?>% Savings!)</p>
-                     <p class="p2"><br></p>
-                     <div class="centered" id="buy-btn2">
-                     <?php if($newflow) { ?>
-                         <center><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=738&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></center>
-                     <?php } else { ?>
-                         <center><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=736&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></center>
-                     <?php } ?>
-                     </div>
-                 </div>
-
-             </div>
-
-                     <div style="clear:both;"></div>
-                     <p class="centered flex justify-center"><span><img class="guarantee" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png" style="width:114px; height:112px;margin-top:20px;"></span></p>
-                     <p class="p7 centered" style="font-size: 20px; font-weight:bold;margin-top: 20px;"><em>(It's Recommended You Take This One-Time Discount)</em>
-                     </p>
- </div>
-
- <p class="p2"><br></p>
- <p class="p2"><br></p>
-
-                     <p class = 'centered p8' style="font-size: 13px; color: #8C8C8C;"><a href="//<?php echo $_SERVER['HTTP_HOST']?>/up/upsell-testosterone" style="color: #8C8C8C; text-decoration:underline;" class="processlink">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line. </p>
-     </div><!-- end .processblock -->
-                     <div id="footer"> Supernatural Man LLC </div>
 
 
-                 <!-- // PASTE LETTER HERE -->
+			<div class="flex-flex-col w-full p-3 md:p-5 lg:p-10 bg-white rounded border border-black">
+				<p class="w-full text-center text-5xl text-red-500 mb-6">Take Just 6 Bottles And Get An Even <strong>BIGGER Discount…</strong></p>
+				<div class="flex flex-col w-full">
+					<p class="w-full pb-4">Hey, it’s Ryan again…</p>
+					<p class="w-full pb-4">I understand that $<?php echo $alot; ?> is a lot, but I don’t want you to leave empty handed.</p>
+					<p class="w-full pb-4">I really want to make sure you can shoot thick, roping loads that hot girls absolutely LOVE&hellip; that will keep them coming back for more again and again&hellip;</p>
+					<p class="w-full pb-4">So right now, today only…</p>
+					<p class="w-full pb-4">I’ll send you a smaller, three-bottle supply of Supernatural Man’s Volumizer and give you an <strong><em>even bigger discount</em></strong>.</p>
+					<p class="w-full pb-4">On the last page, you got a 58% OFF discount&hellip;</p>
+				</div>
 
-             </div>
+				<?php if($newflow) { ?>
+					<h2 class="text-red-600 text-2xl text-center my-7">Now I’ll Drop The Price EVEN MORE… And Give You A <strong>WHOPPING <?php echo $savings; ?>% OFF!</strong></h2>
+				<?php } else { ?>
+						<h2 class="text-red-600 text-2xl text-center my-7">Now I’ll Drop The Price EVEN MORE&hellip; And Give You <strong>3 Bottles of Volumizer for just $33.32 each!</strong></h2>
+				<?php } ?>
 
-         </div>
+				<div class="flex flex-col w-full">
+					<p class="w-full pb-4">You heard right!
+					<p class="w-full pb-4">My marketing department is going to be furious about this… </p>
+					<p class="w-full pb-4">But because you’re a new customer I want to make sure you’re taken care of… and I know you’re going to be ordering A LOT more of this because I’ve seen how it works…</p>
+					<p class="w-full pb-4">And I’d really be disappointed if you started getting all these killer results… </p>
+					<p class="w-full pb-4">And then, your supply ran out!</p>
+					<p class="w-full pb-4">But this is ONLY available today, <strong>right here</strong> on this page, because you’re a new customer.</p>
+					<p class="w-full pb-4">Once you leave this page, this deal is <strong>gone for good!</strong></p>
+					<p class="w-full pb-4">Make sure you secure your <strong>EXTREME DISCOUNT</strong> now…</p>
+				</div>
+				<h2 class="text-red-600 text-3xl text-center my-7">
+				Secure Your <strong>EXTREME DISCOUNT</strong> On A <?php echo $supply; ?>-Month Supply of Supernatural Man’s Volumizer And <strong>Get <?php echo $savings; ?>% OFF!</strong>
+				</h2>
+				<div class="text-black text-lg text-center my-5">
+				Click The Button Below To Get Started Now…
+				</div>
 
-     </div>
+				<section class="processblock">
+					<div class="flex-flex-col w-full p-4 border-dashed border-2 border-red-500">
+						<div class="flex flex-col w-auto mx-auto bottle-wrap text-center mb-8">
+							<div class="text-2xl font-bold font-black"><?php echo $supply; ?> Bottle Discount</div>
+							<div class="strike text-gray-400 text-xl line-through">Normally: $<?php echo $normally; ?></div>
+							<div class="text-red-400 text-2xl font-semibold">Today Just $<?php echo $price; ?></div>
+							<div class="text-black text-sm">(A MASSIVE <?php echo $savings; ?>% Savings!)</div>
 
- </div><!-- /.container -->
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=736&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+
+						</div>
+					</div>
+                </section>
+                <!-- <section class="processblock mt-5">
+					<div class="flex-flex-col w-full p-4 border-dashed border-2 border-red-500">
+						<div class="flex flex-col w-auto mx-auto bottle-wrap text-center mb-8">
+							<div class="text-2xl font-bold font-black"><?php echo $supply; ?> Bottle Discount</div>
+							<div class="strike text-gray-400 text-xl line-through">Normally: $<?php echo $normally; ?></div>
+							<div class="text-red-400 text-2xl font-semibold">Today Just $<?php echo $price; ?></div>
+							<div class="text-black text-sm">(A MASSIVE <?php echo $savings; ?>% Savings!)</div>
+
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=738&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+
+						</div>
+					</div>
+				</section> -->
+				<div class="flex justify-center my-10">
+					<img class="mx-auto" src="https://s3.amazonaws.com/5gmale/90-guarantee.jpg" style="max-width: 250px">
+				</div>
+				<div class="flex justify-center w-full text-center text-xl font-bold text-black">
+					<em>(It's Recommended You Take This One-Time Discount)</em>
+				</div>
+				<div class="flex w-full justify-center py-7">
+					<p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="/OCUS/?id=31&buy=0" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line.</p>
+				</div>
+				<div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-10 pt-3 sans uppercase"> Supernatural Man LLC </div>
+
+			</div>
+		</div>
+	</div>
+
 
  <?php
  // declare modal variables (requires basic_modal.js)

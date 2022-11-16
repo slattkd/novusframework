@@ -300,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<em>(It's Recommended You Take This One-Time Discount)</em>
 				</div>
 				<div class="flex w-full justify-center py-7">
-					<p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="downsell-3.php" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line.</p>
+					<p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="downsell-3" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line.</p>
 				</div>
 				<div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-10 pt-3 sans uppercase"> Supernatural Man LLC </div>
 
