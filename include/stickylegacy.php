@@ -363,23 +363,31 @@ class sticky
 
     public function newOrderCardOnFile($posted)
     {
-        global $product;
-        global $up;
-        global $freeshipping;
-        global $campaign;
-        $campaign_id = $campaign[1]->campid;
-        $orderId = $_SESSION['order_id'];
-        $shippingId = $freeshipping[1]->freeshipid;
-        $product_id = $up[$posted['up']]->option[$posted['buy']]->sticky_product_id;
-        $fields = array('username' =>  $this->sticky_username,
-                    'password' =>  $this->sticky_password,
-                    'method' =>  'NewOrderCardOnFile',
-                    'previousOrderId' =>  $orderId,
-                    'productId' =>  $product_id,
-                    'campaignId' =>  $campaign_id,
-                    'shippingId' =>  $shippingId,
-                    'product_qty_' . $product_id =>  1
-                    );
+        global $site;
+
+        //print_r($posted);
+        //echo $posted['pid'];
+
+        $vwoUpsellvar = (isset($_SESSION['vwoupvar'])) ? $_SESSION['vwoupvar'] : 'none';
+        $campaign_id     = $site['campaign'];
+        $orderId         = (isset($_SESSION['orderId'])) ? $_SESSION['orderId'] : $_COOKIE['step_1_orderId'];
+        $shipping_id     = $site['freeship'];
+        $product_id      = $posted['pid'];
+        //$product_price   = $step[$posted['step']]->option[$posted['buy']]->ll_product_price;
+        //$product_qty     = $step[$posted['step']]->option[$posted['buy']]->ll_product_qty;
+
+
+        $fields = array('username'                             => $this->sticky_username,
+                        'password'                             => $this->sticky_password,
+                        'method'                               => 'NewOrderCardOnFile',
+                        'previousOrderId'                      => $orderId,
+                        'productId'                            => $product_id,
+                        'campaignId'                           => $campaign_id,
+                        'shippingId'                           => $shipping_id,
+                        //'dynamic_product_price_' . $product_id => $product_price,
+                        'product_qty_' . $product_id           => 1,
+                        'afid'                                 => $vwoUpsellvar
+                        );
 
         $Curl_Session = curl_init();
         curl_setopt($Curl_Session, CURLOPT_URL, 'https://' . $this->sticky_instance . '/admin/transact.php');
@@ -410,6 +418,8 @@ class sticky
 
     public function api($type = null, $api = null)
     {
+        global $site;
+
         /*
         $api['username'] = $sticky_api_username;
         $api['password'] = $sticky_api_password;
@@ -429,16 +439,16 @@ class sticky
         $url = $sticky_api_instance . '/admin/' . $type;
         */
 
-        $api['username']='5gmale-funnel';
-        $api['password']='MAzpqTRAXa4Dvk';
+        $api['username'] = $site['stickyApi'];
+        $api['password'] = $site['stickyPass'];
 
         $append = '';
         foreach($api as $key => $value) { $append .= '&'.$key.'='.$value; }
         $append = rtrim($append,'&');
 
-        if($type <='1'||!$type) $type='transact.php';
+        if( $type <='1'||!$type) $type='transact.php';
         else $type='membership.php';
-        $url='https://gdc.sticky.io/admin/'.$type;
+        $url = $site['stickyUrl'] . 'admin/'.$type;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -449,7 +459,7 @@ class sticky
         curl_setopt($ch, CURLOPT_TIMEOUT, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        
+
         $buffer = curl_exec($ch);
         curl_close($ch);
         if (empty($buffer)) {

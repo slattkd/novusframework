@@ -79,7 +79,7 @@ $limelight_api_instance     = 'gdc.sticky.io';
 
 // Company Variables
 $company['name'] = 'Supernatural Man LLC';
-$company['billedAs'] = 'SNM8002519316';
+$company['billedAs'] = 'Supernatural Man LLC';
 $company['email'] = 'support@5gmale.com';
 $company['phone'] = '(855) 665-0715';
 $company['address1'] = '5136 W Clifton St';
