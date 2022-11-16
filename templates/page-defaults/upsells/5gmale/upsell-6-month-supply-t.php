@@ -125,7 +125,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 			$gtmname = '5G Male 6x';
 			break;
 	}
-	if (($gtmsku == 952 || $gtmsku == 956) && ($_SESSION['shippingcountry'] != 'US')) {
+	if (($gtmsku == 952 || $gtmsku == 956) && ($_SESSION['shippingCountry'] != 'US')) {
 		$orderamt = '84.90';
 	}
 }

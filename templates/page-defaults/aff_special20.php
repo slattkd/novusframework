@@ -107,6 +107,12 @@ $_SESSION['pageType'] = 'vsl';
             -moz-columns: 1;
         }
 
+        .left-of-button {
+            display: none;
+            width: 140px;
+            height: 140px;
+        }
+
         #guarantee {
             clear: right;
             float: right;
@@ -178,7 +184,7 @@ $_SESSION['pageType'] = 'vsl';
     <a id="container-buy" class="col-md-8 img-link mt-5 hidden" href="assessment" target="_blank" onclick="hideTimerPopup()">
         <img class="mx-auto" style="width: 100%;max-width: 400px;" src="/images/animated-button+test.png" alt="see if you qualify">
     </a>
-    <img class="left-of-button" src="/images/90-day-icon.png" alt="90 day guarantee">
+    <!-- <img class="left-of-button" src="/images/90-day-icon.png" alt="90 day guarantee"> -->
     </div>
     
     
