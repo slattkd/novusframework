@@ -335,9 +335,9 @@ $_SESSION['pageType'] = 'up2';
 								<div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
 									<p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $perbottle; ?> PER BOTTLE</p>
 									<?php if($newflow) { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=24&buy=1&next=up/upsell-testosterone" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=24&buy=1&next=up/upsell-testosterone" onclick="exit=false;">
                                     <?php } else { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=734&buy=1&next=up/upsell-testosterone" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=734&buy=1&next=up/upsell-testosterone" onclick="exit=false;">
                                     <?php } ?>
 									<img src="https://5gm.s3.amazonaws.com/yes-secure-my-discount.png" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding: 10px 0 7px;" alt="secure my discount">
 									</a>
@@ -349,7 +349,7 @@ $_SESSION['pageType'] = 'up2';
 					</section>
 
 				<div class="flex w-full justify-center py-7">
-                <p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="downsell-3" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</p>
+                <p class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="//<?php echo $_SERVER['HTTP_HOST']?>/dn/downsell-3" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</p>
 				</div>
 				<div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-10 pt-3 sans uppercase"> <?php echo $company['name']; ?> </div>
 			</div>

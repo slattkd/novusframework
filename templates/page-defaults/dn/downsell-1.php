@@ -259,7 +259,6 @@ $_SESSION['pageType'] = 'dn1';
         <?php } else { ?>
             <div class="flex justify-center mx-auto mt-6"><span><a href="/up/upsell-2-blow-her-away.php/?pid=455&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
         <?php } ?>
-        <center><span><a href="/up/upsell-2-blow-her-away.php/?pid=10&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></center>
         </div>
     </div>
     

@@ -253,7 +253,7 @@ $_SESSION['pageType'] = 'dn2';
 							<div class="text-red-400 text-2xl font-semibold">Today Just $<?php echo $price; ?></div>
 							<div class="text-black text-sm">(A MASSIVE <?php echo $savings; ?>% Savings!)</div>
 
-								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=736&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=736&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
 
 						</div>
 					</div>
@@ -266,7 +266,7 @@ $_SESSION['pageType'] = 'dn2';
 							<div class="text-red-400 text-2xl font-semibold">Today Just $<?php echo $price; ?></div>
 							<div class="text-black text-sm">(A MASSIVE <?php echo $savings; ?>% Savings!)</div>
 
-								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=738&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=738&buy=1&next=up/upsell-testosterone" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
 
 						</div>
 					</div>

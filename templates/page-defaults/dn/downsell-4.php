@@ -190,23 +190,17 @@ $_SESSION['pageType'] = 'dn4';
          </style>
      </head>
 
-            <section>
-                <?php
-                       $current_step = 2;
-                       template('includes/step_bar', null, $current_step);
-                ?>
-             </section>
  <body>
 
 
  <div class="container container-vsl mx-auto py-8">
 		<div class="content px-1">
-			<section>
-				<?php
-				$current_step = 2;
-				stepBar('includes/stepBar', $current_step); 
-				?>
-			</section>
+            <section>
+                <?php
+                     $current_step = 2;
+                     template('includes/step_bar', null, $current_step);
+                ?>
+             </section>
 
 
 
@@ -253,9 +247,9 @@ $_SESSION['pageType'] = 'dn4';
 							<div class="text-black text-sm">(A MASSIVE <?php echo $savings; ?>% Savings!)</div>
 
 							<?php if($newflow) { ?>
-								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=756&buy=1&next=thank-you" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=756&buy=1&next=thank-you" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
 							<?php } else { ?>
-								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=755&buy=1&next=thank-you" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=755&buy=1&next=thank-you" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
 							<?php } ?>
 
 						</div>

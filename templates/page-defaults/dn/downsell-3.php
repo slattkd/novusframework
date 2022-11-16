@@ -253,9 +253,9 @@ $_SESSION['pageType'] = 'dn3';
 							<div class="text-black text-sm">(A MASSIVE <?php echo $savings; ?>% Savings!)</div>
 
 							<?php if($newflow) { ?>
-								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=752&buy=1&next=up/upsell-final-offer" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=752&buy=1&next=up/upsell-final-offer" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
 							<?php } else { ?>
-								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up?pid=751&buy=1&next=up/upsell-final-offer" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
+								<div class="flex justify-center mx-auto mt-6"><span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=751&buy=1&next=up/upsell-final-offer" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
 							<?php } ?>
 
 						</div>
