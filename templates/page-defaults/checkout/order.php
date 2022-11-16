@@ -234,13 +234,13 @@ if (in_array($dayname, $daysclosed)) {
             }
 
         </style>
-        
+
 
     </head>
 
 <body>
     <div class="flex justify-center flex-nowrap bg-red-900 text-white p-3 text-center text-sm" style="position: sticky;top: 0;z-index: 1000; filter: saturate(1.8)">
-		<div class="flex">Your Discount Is Being Held For 
+		<div class="flex">Your Discount Is Being Held For
 			<span id="countdown-timer" class="ml-1">
 				<div id="clock1" class="font-bold text-white">EXPIRED</div>
 			</span>
@@ -276,7 +276,7 @@ if (in_array($dayname, $daysclosed)) {
 					<div class="flex-none w-full md:w-auto mt-0 md:-mt-11">
 					<img class="w-auto mx-auto" src="../images/bottle-image-90days.gif" alt="">
 					</div>
-					
+
 					<div class="flex grow lg:pl-12">
 						<div class="flex flex-col mx-auto">
 							<div class="text-center md:-ml-28 mb-2">
@@ -334,7 +334,7 @@ if (in_array($dayname, $daysclosed)) {
 						<p class="option-txt text-gray-400 text-lg font-bold">STARTER OPTION</p>
 						<p class="text-4xl font-bold" style="color:#000">1 MONTH SUPPLY</p>
 						<div id="bogo-1" class="bogo pl-5">
-							<span>LIMITED TIME OFFER:</span> 
+							<span>LIMITED TIME OFFER:</span>
 							<p>1 FREE BOTTLE WITH PURCHASE!</p>
                             <img src="../../../images/5GM1x-m.png" alt="1 bottle" class="hidden sm:block bottle-1">
 						</div>
@@ -351,9 +351,8 @@ if (in_array($dayname, $daysclosed)) {
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $69.95 PER BOTTLE!</div>
 						<form action="/checkout/onepage" id="product-form" method="POST">
-							<input type="hidden" id="pid1" name="prodtype" value="4">
-							<input id="pid-input" class="button_buy clickable" type="button" onclick="updatePID(4)" value="CHOOSE">
-
+							<input type="hidden" id="pid-input" name="prodtype" value="4">
+              <input class="button_buy clickable" type="button" onclick="updatePID(4)" value="CHOOSE">
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">61% OFF</span> + $6.95 USA Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
 						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
@@ -368,7 +367,7 @@ if (in_array($dayname, $daysclosed)) {
 						<p class="option-txt text-gray-400 text-lg font-bold">MOST POPULAR</p>
 						<p class="text-4xl font-bold" style="color:#000">3 MONTH SUPPLY</p>
 						<div id="bogo-1" class="bogo pl-5">
-							<span>LIMITED TIME OFFER:</span> 
+							<span>LIMITED TIME OFFER:</span>
 							<p>3 FREE BOTTLES WITH PURCHASE!</p>
 							<img src="../../../images/5GM3x-m.png" alt="3 bottle" class="hidden sm:block bottle-3">
 						</div>
@@ -385,7 +384,7 @@ if (in_array($dayname, $daysclosed)) {
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $59.67 PER BOTTLE!</div>
                             <input class="button_buy clickable" type="button" onclick="updatePID(5)" value="CHOOSE">
-                            
+
 
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">67% OFF</span> + FREE Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
@@ -401,7 +400,7 @@ if (in_array($dayname, $daysclosed)) {
 						<p class="option-txt text-gray-400 text-lg font-bold">BIGGEST DISCOUNT</p>
 						<p class="text-4xl font-bold" style="color:#000">6 MONTH SUPPLY</p>
 						<div id="bogo-1" class="bogo pl-5">
-							<span>LIMITED TIME OFFER:</span> 
+							<span>LIMITED TIME OFFER:</span>
 							<p>6 FREE BOTTLES WITH PURCHASE!</p>
 							<img src="../../../images/5GM6x-m.png" alt="6 bottle" class="hidden sm:block bottle-6">
 						</div>
@@ -418,7 +417,7 @@ if (in_array($dayname, $daysclosed)) {
 					<div class="w-full md:w-auto grow-0 flex flex-col justify-around bg-gray-100 p-4 text-center">
 						<div class="text-center w-full text-lime-600 font-bold text-2xl">JUST $49.50 PER BOTTLE!</div>
                             <input class="button_buy clickable" type="button" onclick="updatePID(662)" value="CHOOSE">
-                            
+
 						<p class="text-xl font-bold text-lime-600 mt-3"><span class="text-red-400">72% OFF</span> + FREE Shipping</p>
 						<p class="text-gray-600">(With 30-Day Auto Ship)</p>
 						<div class="flex mt-4 items-center -mr-4 gradient p-2 hidden">
@@ -753,7 +752,7 @@ if (in_array($dayname, $daysclosed)) {
     </div>
 
 
-    
+
 
 
 
@@ -807,7 +806,7 @@ if (in_array($dayname, $daysclosed)) {
 
     <!-- modal and floating button functionality -->
     <script>
-        
+
 
         // modal on mouseleave
         window.addEventListener('mouseleave', () => {
@@ -826,9 +825,9 @@ if (in_array($dayname, $daysclosed)) {
 
         function updatePID(pid) {
             const form = document.getElementById('product-form');
-            console.log(form);
             const pidInput = document.getElementById('pid-input');
             pidInput.value = pid;
+            window.onbeforeunload = null;
             form.submit();
         }
 
@@ -853,7 +852,7 @@ if (in_array($dayname, $daysclosed)) {
         document.getElementById("six-package").addEventListener('click', function() {
             window.scrollTo({top: discountSection.offsetTop});
         });
-        
+
         const addOns = document.querySelector(".addOns");
         addOns.addEventListener('change', function() {
             const addOn2 = document.getElementById('addon2');
@@ -936,7 +935,7 @@ if (in_array($dayname, $daysclosed)) {
                 setTimeout(() => {
                     window.modalHandler('runOutModal', true);
                 }, "1000")
-                
+
             }
 
             var flag = 'no';
@@ -1046,10 +1045,10 @@ if (in_array($dayname, $daysclosed)) {
                     outModal.modal('hide');
                 });
             }
-            
+
         });
 
-        
+
 
     </script>
 
@@ -1105,13 +1104,13 @@ function cidgrab() {
 // set individual clock values here
   StartCountDown("clock1","<?php echo $futureDate; ?> 04:00 PM UTC-0500 ")
   StartCountDown("clock2","<?php echo $futureDate; ?> 04:00 PM UTC-0500 ")
-  
+
   /*
   	Author:		Robert Hashemian (http://www.hashemian.com/)
   	Modified by:	Munsifali Rashid (http://www.munit.co.uk/)
   	Modified by:	Tilesh Khatri
   */
-  
+
   function StartCountDown(myDiv,myTargetDate) {
     var dthen	= new Date(myTargetDate);
     var dnow	= new Date();
@@ -1119,16 +1118,16 @@ function cidgrab() {
     gsecs		= Math.floor(ddiff.valueOf()/1000);
     CountBack(myDiv,gsecs);
   }
-  
+
   function Calcage(secs, num1, num2) {
     s = ((Math.floor(secs/num1))%num2).toString();
-    if (s.length < 2) 
-    {	
+    if (s.length < 2)
+    {
       s = num1 != 86400 ? "0" + s : s;
     }
     return (s);
   }
-  
+
   function CountBack(myDiv, secs) {
     var DisplayStr;
     var DisplayFormat = "%%D%% Days %%H%%:%%M%%:%%S%%";
@@ -1138,14 +1137,14 @@ function cidgrab() {
 		DisplayStr = DisplayStr.replace(/%%S%%/g,		Calcage(secs,1,60));
 		const insertElement = document.getElementById(myDiv);
 		// if (insertElement) {
-			if(secs > 0) {	
+			if(secs > 0) {
 				insertElement.innerHTML = DisplayStr;
 				setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990);
-			} 
+			}
 			else {
 				insertElement.innerHTML = "EXPIRED";
 			}
-		
+
   }
 
 </script>
