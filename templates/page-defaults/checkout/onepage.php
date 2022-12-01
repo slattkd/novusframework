@@ -1146,30 +1146,30 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         <input type="hidden" name="previous_page" value="checkout/order">
         <input type="hidden" name="current_page" value="/checkout/onepage">
         <input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
-        <input type="hidden" name="product_id" id='product_id'  value="<?php echo $pid; ?>">
-        <input type="hidden" name="form_id" value="step_<?php echo $s; ?>">
-        <input type="hidden" name="step" value="<?php echo $s; ?>">
-        <input type="hidden" name="AFFID" value="<?php echo $affid; ?>">
-        <input type="hidden" name="AFID" value="<?php echo @$_SESSION['vwovar']; ?>">
-        <input type="hidden" name="C1" value="<?php echo @$c1; ?>">
-        <input type="hidden" name="C2" value="<?php echo @$c2; ?>">
-        <input type="hidden" name="C3" value="<?php echo @$c3; ?>">
-        <input type="hidden" name="utm_source" value="<?php echo @$_GET['utm_source']; ?>">
-        <input type="hidden" name="utm_medium" value="<?php echo @$_GET['utm_medium']; ?>">
-        <input type="hidden" name="utm_campaign" value="<?php echo @$_GET['utm_campaign']; ?>">
-        <input type="hidden" name="utm_term" value="<?php echo @$_GET['utm_term']; ?>">
-        <input type="hidden" name="utm_content" value="<?php echo @$_GET['utm_content']; ?>">
-        <input type="hidden" name="click_id" value="<?php echo @$clickid; ?>">
+        <input type="hidden" name="product_id" id='product_id'  value="<?php echo $_SESSION['pid']; ?>">
+        <input type="hidden" name="form_id" value="step_<?php echo $_SESSION['s']; ?>">
+        <input type="hidden" name="step" value="<?php echo $_SESSION['s']; ?>">
+        <input type="hidden" name="AFFID" value="<?php echo $_SESSION['affid']; ?>">
+        <input type="hidden" name="AFID" value="<?php echo $_SESSION['vwovar']; ?>">
+        <input type="hidden" name="C1" value="<?php echo $_SESSION['c1']; ?>">
+        <input type="hidden" name="C2" value="<?php echo $_SESSION['c2']; ?>">
+        <input type="hidden" name="C3" value="<?php echo $_SESSION['c3']; ?>">
+        <input type="hidden" name="utm_source" value="<?php echo $_SESSION['utm_source']; ?>">
+        <input type="hidden" name="utm_medium" value="<?php echo $_SESSION['utm_medium']; ?>">
+        <input type="hidden" name="utm_campaign" value="<?php echo $_SESSION['utm_campaign']; ?>">
+        <input type="hidden" name="utm_term" value="<?php echo $_SESSION['utm_term']; ?>">
+        <input type="hidden" name="utm_content" value="<?php echo $_SESSION['utm_content']; ?>">
+        <input type="hidden" name="click_id" value="<?php echo $_SESSION['clickid']; ?>">
         <input type="hidden" name="notes" value="<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>">
         <input type="hidden" name="shippingId" id="shippingId" value="<?php echo $shippingId; ?>">
         <input type="hidden" name="newform" value="yes">
-        <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265,142<?php echo $add1pid;?><?php echo $add2pid;?>">
+        <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265,142<?php echo $add1pid; ?><?php echo $add2pid; ?> ">
         <input type="hidden" name="upsellCount" value="1">
         <input type="hidden" name="customer_time" id="customer_time"  value="">
         <input type="hidden" name="eftid" id="eftid"  value="">
         <input type="hidden" name="sessionId" value="<?php echo $kount_session; ?>">
         <input type="hidden" name="fid" id="fid" value="<?php echo $formID; ?>" class="hidden" />
-        <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo $site['campaign'] ?>">
+        <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo $site['campaign']; ?>">
         <input type="hidden" name="37positions" id="37positions" value="<?php echo $thirtyseven; ?>">
     </form>
 

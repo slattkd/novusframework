@@ -46,26 +46,29 @@ $_SESSION['last']     = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER
 // Pull Affiliate Id from cookie
 if (isset($_COOKIE['affid'])) {
     $_SESSION['affid'] = $_COOKIE['affid'];
-    $_SESSION['a'] = $_COOKIE['affid'];
+    $_SESSION['a']     = $_COOKIE['affid'];
+} else {
+    $_SESSION['affid'] = $site['defaultAffId'];
+    $_SESSION['a']     = $site['defaultAffId'];
 }
 
 function setSessionVars($encryptedData = null)
 {
     //Check for allowed query string keys, reduces attempts on invalid data.
     $whitelistKeys = [
-        'a','o','r','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
+        'a','o','r','s','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
         'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
         'alink','debug','coupon','vwovar','eftid','pid','up','dn','add1','add2','add3',"buy",
-        "id","pid","last","tid","eftid","next"];
+        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
     foreach ($allowedData as $queryString => $value) {
         // use $queryString to reset values to different session variables or match to query string value
         if ($queryString == 'a') {
             //This will override the previous cookie affid
-            $_SESSION['affid'] = $value ?? null;
-            $_SESSION['a'] = $value ?? null;
-            setCookie('affid', $value, time() + ( 60 * 60 * 24 * 45 ));
+            $_SESSION['affid'] = $value ?? $site['defaultAffId'];
+            $_SESSION['a'] = $value ?? $site['defaultAffId'];
+            setCookie('affid', $_SESSION['a'], time() + ( 60 * 60 * 24 * 45 ));
         }
         if ($queryString == 'pid') {
             $_SESSION['pid'] = $value ?? null;
@@ -87,6 +90,9 @@ function setSessionVars($encryptedData = null)
         }
         if ($queryString == 'o') {
             $_SESSION['o'] = $value ?? null;
+        }
+        if ($queryString == 's') {
+            $_SESSION['s'] = $value ?? null;
         }
         if ($queryString == 's1') {
             $_SESSION['s1'] = $value ?? null;
@@ -149,6 +155,33 @@ function setSessionVars($encryptedData = null)
         }
         if ($queryString == 'last') {
             $_SESSION['last'] = $value ?? $_SESSION['url'];
+        }
+        if ($queryString == 'c1') {
+            $_SESSION['c1'] = $value ?? null;
+        }
+        if ($queryString == 'c2') {
+            $_SESSION['c2'] = $value ?? null;
+        }
+        if ($queryString == 'c3') {
+            $_SESSION['c3'] = $value ?? null;
+        }
+        if ($queryString == 'utm_source') {
+            $_SESSION['utm_source'] = $value ?? null;
+        }
+        if ($queryString == 'utm_medium') {
+            $_SESSION['utm_medium'] = $value ?? null;
+        }
+        if ($queryString == 'utm_campaign') {
+            $_SESSION['utm_campaign'] = $value ?? null;
+        }
+        if ($queryString == 'utm_term') {
+            $_SESSION['utm_term'] = $value ?? null;
+        }
+        if ($queryString == 'utm_content') {
+            $_SESSION['utm_content'] = $value ?? null;
+        }
+        if ($queryString == 'clickid') {
+            $_SESSION['clickid'] = $value ?? null;
         }
        // $_SESSION[$queryString] = $value
     }
