@@ -8,78 +8,23 @@ $next_link = 'checkout/step1';
 //   $pid = $_SESSION['pid'];
 // }
 
+// TODO: get product from SESSION PID
 $pid = 1083; //testing for now
 
-// todo: match pid of product
-switch ($pid) {
-  case 1083:
-    $month = 1;
-    $qty = 2;
-    $price = 39.95;
-    $retail = 59.95;
-    $save = $retail - $price;
-    $per_month = $price / $month;
-    $percent_off = round($save / $retail * 100, 0);
-    $ship  = 6.95;
-    break;
-  case 1084:
-    $month = 3;
-    $qty = 6;
-    $price = 97.00;
-    $retail = 179.85;
-    $save = $retail - $price;
-    $per_month = $price / $month;
-    $percent_off = round($save / $retail * 100, 0);
-    $ship  = 0;
-    break;
-  case 1085:
-    $month = 3;
-    $qty = 6;
-    $price = 167.00;
-    $retail = 359.70;
-    $save = $retail - $price;
-    $per_month = $price / $month;
-    $percent_off = round($save / $retail * 100, 0);
-    $ship  = 0;
-    break;
-}
+// TODO: get any necessary product data from $products
+
 
 $totalPrice = intval($price) + intval($ship);
 
 switch ($pid) {
   case 1083:
     $up_pid = 1086;
-    $up_month = 1;
-    $up_qty = 2;
-    $up_price = 35.95;
-    $up_retail = 59.95;
-    $up_save = $up_retail - $up_price;
-    $up_per_month = $up_price / $up_month;
-    $up_percent_off = round($up_save / $up_retail * 100, 0);
-    $up_ship  = 6.95;
     break;
   case 1084:
     $up_pid = 1088;
-    $up_month = 3;
-    $up_qty = 6;
-    $up_price = 87.30;
-    $up_retail = 179.85;
-    $up_save = $up_retail - $up_price;
-    $up_per_month = $up_price / $up_month;
-    $up_percent_off = round($up_save / $up_retail * 100, 0);
-    $up_ship  = 0;
     break;
   case 1085:
     $up_pid = 1090;
-    $up_month = 3;
-    $up_qty = 6;
-    $up_price = 150.28;
-    $up_retail = 359.70;
-    $up_save = $up_retail - $up_price;
-    $up_per_month = $up_price / $up_month;
-    $up_percent_off = round($up_save / $up_retail * 100, 0);
-    $up_ship  = 0;
-    break;
 }
 
 $up_totalPrice = intval($up_price) + intval($up_ship);

@@ -208,32 +208,32 @@ var_dump($current_product);
   
   <div class="protection-grid flex flex-wrap w-full my-11">
 
-				<div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
-				  <div class="bull blue-q">
-						<div class="mb-5">
-							<h6><strong>Fast Shipping:</strong></h6>
-							<p>3-Day DHL for USA, 8-Day Worldwide</p>
-						</div>
-						<div class="mb-5">
-							<h6><strong>24/7 Live Phone Help</strong></h6>
-							<p>Talk to a real, live customer support specialist at any time</p>
-						</div>	
-					</div>
-				</div>
-				<div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
-				  <div class="bull blue-q">
-						<div class="mb-5">
-							<h6><strong>Privacy Guaranteed</strong></h6>
-							<p>Your information is safe and is never shared</p>
-						</div>
-						<div class="mb-5">
-							<h6><strong>Lowest Price Guaranteed</strong></h6>
-							<p>You will never see this at a lower price, guaranteed.</p>
-						</div>
-					</div>
-				</div>
+      <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
+        <div class="bull blue-q">
+          <div class="mb-5">
+            <h6><strong>Fast Shipping:</strong></h6>
+            <p>3-Day DHL for USA, 8-Day Worldwide</p>
+          </div>
+          <div class="mb-5">
+            <h6><strong>24/7 Live Phone Help</strong></h6>
+            <p>Talk to a real, live customer support specialist at any time</p>
+          </div>	
+        </div>
+      </div>
+      <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
+        <div class="bull blue-q">
+          <div class="mb-5">
+            <h6><strong>Privacy Guaranteed</strong></h6>
+            <p>Your information is safe and is never shared</p>
+          </div>
+          <div class="mb-5">
+            <h6><strong>Lowest Price Guaranteed</strong></h6>
+            <p>You will never see this at a lower price, guaranteed.</p>
+          </div>
+        </div>
+      </div>
 
-		</div>
+  </div>
 
 </div>
 <?php template("includes/rpFooter"); ?>

@@ -13,7 +13,7 @@ $debugCookie = $_COOKIE['debug'] ?? 'no';
 
 
 if (
-    $_SERVER['HTTP_HOST'] == 'totalbrainboost.test' ||
+    // $_SERVER['HTTP_HOST'] == 'totalbrainboost.test' ||
     $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ||
     $debugCookie == 'js6^g1hks92%ks7392hald81^11'
 ) {
@@ -42,12 +42,12 @@ $site['useCake'] = true;
 $site['useEverflow'] = true;
 
 //Campaign Settings
-$site['campaign'] = 1;
+$site['campaign'] = 1; //TODO: update to total brain boost id
 $site['freeship'] = 5;
 $site['defaultAffId'] = 2126;
 
 // Tracking
-$site['GTMContainer'] = 'GTM-T7RRXPJ';
+$site['GTMContainer'] = 'GTM-T7RRXPJ'; //TODO: update to total brain boost id
 $site['googleSiteVerification'] = 'MtiLf9dEfLrFvmiovviCmLHIx4Cc0uD2RGsA72oC29E';
 
 // This URL Key is used to decode the obfuscated URL
@@ -65,7 +65,7 @@ $site['stickyApi']  = 'pineappleapi';
 $site['stickyPass'] = 'nWsw3BzrhnFBkJ';
 $site['stickyUrl']  = 'gdc.sticky.io';
 
-$site['logo'] = '/images/claritynaturals_logo_horizontal.png';
+$site['logo'] = '/images/rp-logo.png';
 $site['imgpath'] = '//s3.amazonaws.com/5gmale/';
 $site['contactlink'] = 'mailto:help@5gmale.com';
 
@@ -80,7 +80,7 @@ $limelight_api_instance     = 'gdc.sticky.io';
 // Company Variables
 $company['name'] = 'Total Brain Boost LLC';
 $company['billedAs'] = 'Total Brain Boost';
-$company['email'] = 'support@5gmale.com';
+$company['email'] = 'support@revivalpoint.com';
 $company['phone'] = '1-800-253-8173';
 $company['address1'] = '13423 Blanco Rd PMB 8024';
 $company['address2'] = '';

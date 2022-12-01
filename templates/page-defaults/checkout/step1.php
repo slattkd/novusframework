@@ -1,6 +1,7 @@
 <?php
 
 $nextlink = '/step2' . $querystring;
+$current_step = 1;
 
 // required PID from post
 if ($_POST) {
@@ -78,7 +79,7 @@ var_dump($current_product);
 
 <div class="flex my-8">
   <?php
-  $current_step = 1;
+  $current_step = 2;
   template("includes/step_bar2");
   ?>
 </div>

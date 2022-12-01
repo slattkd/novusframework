@@ -24,7 +24,7 @@
     <div class=" py-2 border-b bg-white">
       <div class="container container-vsl mx-auto flex justify-between flex-wrap w-full">
       <div class="flex justify-center w-full md:w-auto" style="margin-left: -15px;">
-        <img src="//<?= $_SERVER['HTTP_HOST'];?>/images/rp-logo.png" class="mx-auto" style="max-width:250px">
+        <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:250px">
       </div>
       <div class="flex justify-center items-center w-full md:w-auto">
         <div class="">
