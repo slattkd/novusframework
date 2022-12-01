@@ -79,23 +79,28 @@ var_dump($current_product);
   </style>
 </head>
 
-<body class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0 bg-gray-100">
+<body class=" bg-gray-100">
+<?php template("includes/rpHeader"); ?>
+<div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
-<div class="flex justify-center mt-11">
-<h1 class="text-3xl font-semibold py-0">You’re 3 Steps Away From the Body You Want…</h1>
+<div class="flex justify-center mt-8">
+<h1 class="text-3xl font-semibold py-0">You’re 1 Step Away From the Body You Want…</h1>
 </div>
 
 <div class="flex my-8">
   <?php
-  $current_step = 1;
+  $current_step = 3;
   template("includes/step_bar2");
   ?>
 </div>
 
 
 <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
-  <div class="flex justify-center text-center mb-4">
+  <div class="flex justify-center text-center mb-3">
     <h3 class="text-xl font-semibold">Confirm Your Payment Information</h3>
+  </div>
+  <div class="flex justify-center text-center items-center text-gray-600 text-base mb-3">
+    <div><i class="fas fa-lock"></i> Your order will be processed on our 256-bit secure server</div>
   </div>
 
   <div class="flex">
@@ -151,9 +156,9 @@ var_dump($current_product);
               </div>
 							<div class="w-full mb-3">
                 <div class="w-full w-1/3">
-                    <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
+                    <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV: <a class="text-xs no-underline" href="//<?= $_SERVER['HTTP_HOST'];?>/card-help" target="_blank">what's this?</a> </label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="" required="required">
+								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
 							</div>
 
               <!-- hidden fields -->
@@ -230,5 +235,6 @@ var_dump($current_product);
 
 		</div>
 
-
+</div>
+<?php template("includes/rpFooter"); ?>
 </body>

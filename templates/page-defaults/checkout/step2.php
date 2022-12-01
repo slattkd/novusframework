@@ -68,10 +68,12 @@ var_dump($current_product);
   </style>
 </head>
 
-<body class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0 bg-gray-100">
+<body class=" bg-gray-100">
+<?php template("includes/rpHeader"); ?>
+<div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
-<div class="flex justify-center mt-11">
-<h1 class="text-3xl font-semibold py-0">You’re 3 Steps Away From the Body You Want…</h1>
+<div class="flex justify-center mt-8">
+<h1 class="text-3xl font-semibold py-0">You’re 2 Steps Away From the Body You Want…</h1>
 </div>
 
 <div class="flex my-8">
@@ -84,7 +86,7 @@ var_dump($current_product);
 
 <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
   <div class="flex justify-center text-center mb-4">
-    <h3 class="text-xl font-semibold">Enter Your Contact Information</h3>
+    <h3 class="text-xl font-semibold">Enter Your Billing Information</h3>
   </div>
 
   <div class="flex">
@@ -303,7 +305,8 @@ var_dump($current_product);
 					</div>
 				</div>
 
-		</div>
+    </div>
+  </div>
 
 <script>
   function solvePrice() {

@@ -81,13 +81,12 @@ $limelight_api_instance     = 'gdc.sticky.io';
 $company['name'] = 'Total Brain Boost LLC';
 $company['billedAs'] = 'Total Brain Boost';
 $company['email'] = 'support@5gmale.com';
-$company['phone'] = '(800)251-9316';
-$company['address1'] = '2186 Jackson Keller Rd PMB 3057';
+$company['phone'] = '1-800-253-8173';
+$company['address1'] = '13423 Blanco Rd PMB 8024';
 $company['address2'] = '';
 $company['city'] = 'San Antonio';
 $company['state'] = 'TX';
-$company['zip'] = '78213';
-
+$company['zip'] = '78216';
 
 
 
