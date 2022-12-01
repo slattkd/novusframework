@@ -116,30 +116,12 @@ function perBottle($price, $qty) {
             opacity: 0;
             padding: 0;
             margin: unset;
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             transition: 300ms cubic-bezier(.27, .21, .2, 1.02);
             visibility: hidden;
-            z-index: 105;
             line-height: 1.3em;
             overflow: hidden;
         }
-
-        .vip-pop.is-open {
-            opacity: 1;
-            height: auto;
-            visibility: visible;
-            padding: 1rem !important;
-            margin: 1rem auto;
-            margin-bottom: 2rem;
-            transform: translateY(0px);
-        }
-
-        .vip-pop p {
-            font-size: 13px !important;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
         .vip-pop {
             /* display: none; */
             min-width: 350px;
@@ -150,8 +132,26 @@ function perBottle($price, $qty) {
             padding: 0 1rem;
             background: #fff;
             margin: 0 auto;
-            transition: all 250ms ease-in-out;
         }
+
+        .vip-pop.is-open {
+            opacity: 1;
+            height: auto;
+            visibility: visible;
+            padding: 1rem !important;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            transform: translateY(0px);
+            pointer-events: none;
+        }
+
+        .vip-pop p {
+            font-size: 13px !important;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        
         .order-option-box {
     margin-left: 10px;
     margin-right: 10px;
@@ -176,16 +176,10 @@ function perBottle($price, $qty) {
 
 .order-option-box .order-details-col {
     border-radius: 5px 0 0 5px;
-    -webkit-flex: 1 0 50%;
-    -ms-flex: 1 0 50%;
-    flex: 1 0 50%;
     padding: 20px 50px 15px
 }
 
 .order-option-box .order-cta-col {
-    -webkit-flex: 0 1 420px;
-    -ms-flex: 0 1 420px;
-    flex: 0 1 420px;
     background-color: #f9f9f9;
     border-left: 1px solid #e6e6e6;
     border-radius: 0 5px 5px 0;
@@ -221,6 +215,10 @@ function perBottle($price, $qty) {
 
 .order-option-footer .yt {
     color: #fff56c !important
+}
+
+.txt-blue {
+    color: #0085c6;
 }
     </style>
 
@@ -309,34 +307,45 @@ function perBottle($price, $qty) {
             </div>
         </div>
 
+        <div class="flex justify-center my-4 mt-8">
+            <div class="font-bold text-4xl txt-blue">Choose Your Discount</div>
+        </div>
+
         <div class="flex w-full">
-            <div class="order-option-box order-option-3 fs-2 w-full">
-				<div class="order-option-row">
+            <div class="order-option-box order-option-3 fs-2 w-full shadow-lg mb-3">
+				<div class="order-option-row flex flex-wrap">
 					<div class="order-details-col">
-						<h5 class="flair left str bt ls10">
+						<h5 class="text-2xl txt-blue ls10">
 							DOCTOR RECOMMENDED
 						</h5>
 						<p class="flair-subhead mt0 mb3">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-						<h1 class=" black lh10 left mt0 kilo mb3 ls-10">
-							3 Bottle Supply
+						<h1 class="text-black text-5xl font-bold my-3">
+                            <?= $product2['product_qty']; ?> Bottle Supply
 						</h1>
 
-						<span class="vitD-title">LIMITED TIME OFFER:</span>
-						<p class="vitD-body">1 Free Bottle of Vitamin D3 with Purchase!</p>
+                        <div class="limited-offer py-3">
+						<span class="text-red-700 text-xl font-semibold">LIMITED TIME OFFER:</span>
+                        <p class="text-red-700 font-semibold">1 Free Bottle of Vitamin D3 with Purchase!</p>
+                        </div>
 
-						<p class="price-details larger">
-							<span class="grey">Retail Price: <span class="strike">
+						<div class="flex justify-between border-y-2 py-3">
+                            <div>
+                            <span class="text-gray-600">Retail Price: <span class="line-through">
 								$<?= $product2['product_retail']; ?>
-							</span></span>
-							 You Pay Just <span id="main-price2">$<?= $product2['product_price']; ?></span>
-						</p>
-						<h3 class="left rt str mt0">
+                            </span></span>
+                            </div>
+                            <div>
+                            You Pay Just <span id="main-price2">$<?= $product2['product_price']; ?></span>
+                            </div>
+							 
+                        </div>
+						<h3 class="text-red-700 font-semibold text-3xl mt-2">
 							YOU SAVE <span id="save-price2">$<?= percentOff($product2['product_retail'], $product2['product_price']); ?></span> TODAY!
 						</h3>
 					</div>
-					<div class="order-cta-col">
-						<h3 class="ctr mt2 bt mb4">
+					<div class="order-cta-col flex- flex-col items-center text-center">
+						<h3 class="ctr mt-2 mb-4 txt-blue text-3xl">
 							Just <span id="bottle-price2">$<?= perBottle($product2['product_price'], $product2['product_qty']); ?></span> Per Bottle
 						</h3>
 						
@@ -345,11 +354,11 @@ function perBottle($price, $qty) {
 								<input type="hidden" id="item-name3" name="item-name3" value="Floraspring - 3x">
 								<input type="hidden" id="prod-cost" name="prod-cost" value="<?= $product2['product_price']; ?>">
 								<input type="hidden" id="product-id" name="pid" value="<?= $product2['product_id']; ?>">
-								<span id="button-two"><button id="btn-two" class="cta-button goal3" onclick="addProdToCart(<?= $product2['product_id'].',3,'.$product2['product_price'];?>);return false;"><em>Secure My Order</em></button></span>	
+								<span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable" onclick="addProdToCart(<?= $product2['product_id'].',3,'.$product2['product_price'];?>);return false;"><em>Secure My Order</em></button></span>	
 							</form>
 						<!-- </div> -->
 
-						<h4 class="str reg"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+						<h4 class="font-semibold text-2xl mb-3"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
 						<p class="ctr mt3 mb0 fs16  ">90-DAY MONEY BACK GUARANTEE</p>
 					</div>
 				</div>
@@ -365,7 +374,7 @@ function perBottle($price, $qty) {
         const vipInput = document.getElementById('vip');
         const check = document.querySelector('.checked');
 
-        vip.addEventListener('mouseenter', ()=> {
+        vip.addEventListener('mouseover', ()=> {
             pop.classList.add('is-open');
         })
         vip.addEventListener('mouseleave', ()=> {

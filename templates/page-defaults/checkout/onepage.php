@@ -1054,7 +1054,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                     <div class="font-semibold md:hidden">You Pay</div>
                                     <div class="font-semibold hidden md:block">You Pay Just</div>
                                     <div class="flex items-center">
-                                        <div id="totalPricePayValue" class=" text-red-700 font-semibold mx-2 md:hidden" style="color: #e36500">Just $<?php echo number_format($totalPrice, 2, '.', ''); ?> <span class="text-black">Today!</span></div>
+                                        <div id="totalPricePayValue" class=" text-red-700 font-semibold mx-2 md:hidden" style="color: #e36500"><span id=""></span> Just $<?php echo number_format($totalPrice, 2, '.', ''); ?> <span class="text-black">Today!</span></div>
                                         <div id="totalPricePayValue" class="font-semibold mx-2 hidden md:block">$<?php echo number_format($totalPrice, 2, '.', ''); ?></div>
                                         <div id="totalDiscount" class="hidden font-semibold text-red-700 md:block text-lg">(<?php echo $discount; ?>% OFF)</div>
                                     </div>
@@ -1317,41 +1317,31 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         const shipFree2 = document.getElementById("ship-free2");
         const shipId = document.getElementById("shippingId");
         const upsellIds = document.getElementById("upsellProductIds");
-        if (billSame.checked) {
-            if (billCountry.value == 'US') {
-                shipPrice.innerText = '$6.95';
-                shipPrice2.innerText = '$6.95';
-                shipId.value = '4';
-                upsellIds.value = '87,102,265';
-                _shippingPrice = 6.95;
-            } else {
-                shipPrice.innerText = '$14.95';
-                shipPrice2.innerText = '$14.95';
-                shipId.value = '3';
-                _shippingPrice = 14.95;
-            }
-
+        const finalPrice = document.getElementById('final-price');
+        if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
+            shipPrice.innerText = '$<?= $site['shippingUsCost']; ?>';
+            shipPrice2.innerText = '$<?= $site['shippingUsCost']; ?>';
+            shipId.value = '<?= $site['shippingUs']; ?>';
+            upsellIds.value = '87,102,265';
+            _shippingPrice = <?= $site['shippingUsCost']; ?>;
         } else {
-            if (shipCountry.value == 'US') {
-                shipPrice.innerText = '$6.95';
-                shipPrice2.innerText = '$6.95';
-                shipId.value = '4';
-                upsellIds.value = '87,102,265';
-                _shippingPrice = 6.95;
-            } else {
-                shipPrice.innerText = '$14.95';
-                shipPrice2.innerText = '$14.95';
-                shipId.value = '3';
-                _shippingPrice = 14.95;
-            }
+            shipPrice.innerText = '$<?= $site['shippingIntlCost']; ?>';
+            shipPrice2.innerText = '$<?= $site['shippingIntlCost']; ?>';
+            shipId.value = '<?= $site['shippingIntl']; ?>';
+            _shippingPrice = <?= $site['shippingIntlCost']; ?>;
         }
         if (productId !== '952') {
             shipFree.style.display = 'block';
             shipPrice.style.textDecoration = 'line-through';
             shipFree2.style.display = 'block';
             shipPrice2.style.textDecoration = 'line-through';
-            _shippingPrice = 0;
+            _shippingPrice = <?= $site['shippingFreeCost']; ?>;
+            shipId.value = <?= $site['shippingFree']; ?>;
+        } else {
+            shipFree2.classList.add('invisible');
         }
+        var total = parseFloat(<?php echo $price; ?>) + parseFloat(_shippingPrice);
+        finalPrice.innerText = total.toFixed(2);
         shippingCost = _shippingPrice;
 
         // _orderSubTotal = (parseFloat(<?php echo number_format($totalPrice, 2, '.', ''); ?>) + parseFloat(sexPositions) + parseFloat(superLube) + parseFloat(shippingCost)).toFixed(2);
