@@ -88,7 +88,7 @@ $current_product = $products['products'][$pid];
   </div>
 
   <div class="flex">
-    <form id="step-2" class="mb-0" method="post" action="<?php echo $nextlink; ?>">
+    <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 						
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full mb-3">

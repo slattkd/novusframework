@@ -217,7 +217,7 @@ input[type="checkbox"] {
   border-color: #a88734 #9c7e31 #846a29;
   border-radius: 5px;
   text-shadow: 1px 1px 0 #f9ffac;
-  min-width: 350px;
+  min-width: 320px;
   max-width: 100%;
 }
 .chev-right {
