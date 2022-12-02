@@ -5,7 +5,11 @@ $nextlink = '/checkout/step3' . $querystring;
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
-  $_SESSION['customerEmail'] = $_POST['email'];
+  //$_SESSION['productId'] = $_POST['product_id'];
+  //$_SESSION['customerEmail'] = $_POST['email'];
+  $_SESSION["email"] = $_POST['email'];
+  $_SESSION["firstName"] = $_POST['firstName'];
+  $_SESSION["lastName"] = $_POST['lastName'];
 }
 $pid = $_SESSION['pid'];
 
@@ -91,18 +95,6 @@ $current_product = $products['products'][$pid];
     <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 						
 						<div class="flex flex-wrap items-center mb-4">
-							<div class="w-full mb-3">
-                <div class="w-full w-1/3">
-                    <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
-                </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="" required="required">
-              </div>
-              <div class="w-full mb-3">
-                <div class="w-full w-1/3">
-                    <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
-                </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="" required="required">
-              </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
@@ -176,41 +168,41 @@ $current_product = $products['products'][$pid];
                     <div class="w-full w-1/3">
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
-                      
+
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                       </div>
-                      
+
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
-                      
+
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                       </div>
-                      
+
                           <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                           <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingState" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
                           <?php foreach ($usStates as $key => $value) : ?>
                               <option value="<?= $key;?>"> <?= $value; ?> </option>
                           <?php endforeach; ?>
                           </select>
-                      
+
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                       </div>
-                      
+
                           <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                           <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingCountry" name="shippingCountry" data-toggle-element="shippingState" onchange="solveprice()">
                               <option selected value="US">United States</option>
@@ -219,7 +211,7 @@ $current_product = $products['products'][$pid];
                               <?php endforeach; ?>
                               ?>
                           </select>
-                      
+
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
@@ -243,7 +235,7 @@ $current_product = $products['products'][$pid];
                 <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px;">
               </div>
 						</div>
-            
+
             <!-- email alerts value to post? -->
       <input type="hidden" name="previous_page" value="checkout/step1">
       <input type="hidden" name="current_page" value="/checkout/step2">
@@ -251,8 +243,8 @@ $current_product = $products['products'][$pid];
     </form>
   </div>
 
-  
-  
+
+
 
 </div>
 
@@ -271,8 +263,8 @@ $current_product = $products['products'][$pid];
           We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
         </p>
       </div>
-      
-      
+
+
     </div>
   </div>
 
@@ -280,7 +272,7 @@ $current_product = $products['products'][$pid];
     <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> Buyer Protection</span></h5>
   </div>
 
-  
+
   <div class="protection-grid flex flex-wrap w-full my-11">
 
 				<div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
@@ -292,7 +284,7 @@ $current_product = $products['products'][$pid];
 						<div class="mb-5">
 							<h6><strong>24/7 Live Phone Help</strong></h6>
 							<p>Talk to a real, live customer support specialist at any time</p>
-						</div>	
+						</div>
 					</div>
 				</div>
 				<div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
@@ -405,4 +397,9 @@ $current_product = $products['products'][$pid];
       }
     };
 </script>
+
+    <?php if ($site['debug'] == true) {
+    // Show Debug bar only on whitelisted domains.
+    template('debug', null, null, 'debug');
+    } ?>
 </body>

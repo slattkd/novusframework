@@ -7,6 +7,7 @@ $current_step = 1;
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
+  $_SESSION["shippingId"] = $_POST['shippingId'];
 }
 $pid = $_SESSION['pid'];
 
@@ -252,4 +253,9 @@ $current_product = $products['products'][$pid];
       }
     };
   </script>
+
+  <?php if ($site['debug'] == true) {
+      // Show Debug bar only on whitelisted domains.
+      template('debug', null, null, 'debug');
+  } ?>
 </body>
