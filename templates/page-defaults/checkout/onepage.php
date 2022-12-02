@@ -695,7 +695,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                             </li>
                             <li class="flex justify-between items-center flex-wrap py-3 border-t">
                                 <div class="orders font-semibold ">Today You Pay Only</div>
-                                <div class="font-bold text-red-700">$<?php echo $finalPrice; ?></div>
+                                <!-- final price updates with shipping country info -->
+                                <div class="font-bold text-red-700">$<span id="final-price"><?php echo $finalPrice; ?></span></div>
                             </li>
                             <li class="flex justify-center items-center py-4 md:hidden">
                                 <div class="flex justify-center flex-wrap md:flex-nowrap text-xl font-semibold mx-auto md:mx-0">That's $266.86 of Bonus Gifts, <span class="text-green-600 fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
@@ -1054,8 +1055,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                     <div class="font-semibold md:hidden">You Pay</div>
                                     <div class="font-semibold hidden md:block">You Pay Just</div>
                                     <div class="flex items-center">
-                                        <div id="totalPricePayValue" class=" text-red-700 font-semibold mx-2 md:hidden" style="color: #e36500"><span id=""></span> Just $<?php echo number_format($totalPrice, 2, '.', ''); ?> <span class="text-black">Today!</span></div>
-                                        <div id="totalPricePayValue" class="font-semibold mx-2 hidden md:block">$<?php echo number_format($totalPrice, 2, '.', ''); ?></div>
+                                        <div id="totalPricePayValue" class=" text-red-700 font-semibold mx-2 md:hidden" style="color: #e36500"><span id="total-mobile">$<?php echo $finalPrice; ?><span class="text-black">Today!</span></div>
+                                        <div id="totalPricePayValue" class="font-semibold mx-2 hidden md:block">$<span id="total-desktop"><?php echo $finalPrice; ?></span></div>
                                         <div id="totalDiscount" class="hidden font-semibold text-red-700 md:block text-lg">(<?php echo $discount; ?>% OFF)</div>
                                     </div>
 
@@ -1262,15 +1263,14 @@ $timerDelay = time() - $_SESSION['timer-gm'];
             let taxTotal = parseFloat(((_orderSubTotal - _untaxable) * estRate)).toFixed(2);
             let totalPrice = (parseFloat(_orderSubTotal) + parseFloat(taxTotal)).toFixed(2);
             document.getElementById("sales-tax-value").textContent = "$" + (taxTotal / 1).toFixed(2) + "*";
-            document.getElementById("totalsum").textContent = totalPrice;
-            document.getElementById("totalPricePayValue").textContent = totalPrice;
-
+            // document.getElementById("totalsum").textContent = totalPrice;
+            // document.getElementById("totalPricePayValue").textContent = totalPrice;
             // document.getElementById("sales-tax-notice").show();
         } else {
             document.getElementById("sales-tax-value").textContent = "$0.00";
             let totalPrice = ((_orderSubTotal) / 1).toFixed(2);
-            document.getElementById("totalsum").textContent = totalPrice;
-            document.getElementById("totalPricePayValue").textContent = totalPrice;
+            // document.getElementById("totalsum").textContent = totalPrice;
+            // document.getElementById("totalPricePayValue").textContent = totalPrice;
             display(document.getElementById("sales-tax-notice"), false);
         }
     }
@@ -1318,6 +1318,9 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         const shipId = document.getElementById("shippingId");
         const upsellIds = document.getElementById("upsellProductIds");
         const finalPrice = document.getElementById('final-price');
+        const finalPriceMobile = document.getElementById('total-mobile');
+        const finalPriceDesktop = document.getElementById('total-desktop');
+
         if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
             shipPrice.innerText = '$<?= $site['shippingUsCost']; ?>';
             shipPrice2.innerText = '$<?= $site['shippingUsCost']; ?>';
@@ -1341,7 +1344,11 @@ $timerDelay = time() - $_SESSION['timer-gm'];
             shipFree2.classList.add('invisible');
         }
         var total = parseFloat(<?php echo $price; ?>) + parseFloat(_shippingPrice);
+        console.log(<?php echo $price; ?>);
+        console.log(_shippingPrice);
         finalPrice.innerText = total.toFixed(2);
+        finalPriceMobile.innerText = total.toFixed(2);
+        finalPriceDesktop.innerText = total.toFixed(2);
         shippingCost = _shippingPrice;
 
         // _orderSubTotal = (parseFloat(<?php echo number_format($totalPrice, 2, '.', ''); ?>) + parseFloat(sexPositions) + parseFloat(superLube) + parseFloat(shippingCost)).toFixed(2);
