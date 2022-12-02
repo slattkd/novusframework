@@ -40,9 +40,6 @@
 <link rel="stylesheet" href="/css/main.css?v=2">
 <link rel="stylesheet" href="/css/legal-copy.css?v=2">
 <link rel="stylesheet" href="/css/base.css?v=2">
-<?php if ($_SESSION['slug'] == 'wsl/energy' || $_SESSION['slug'] == 'wsl/memory'): ?>
-    <link rel="stylesheet" href="/css/word-doc.css?v=2">
-<?php endif; ?>
 
 
 <?php if ($site['debug'] !== true) { //Don't need to run this on local?>

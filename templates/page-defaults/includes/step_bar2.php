@@ -71,7 +71,6 @@
 }
 
 </style>
-
   <ul class="steps mx-auto">
     <li class="step <?php if ($current_step >= 1) echo 'on'; ?>">Step 1<span class="hidden md:block">: Contact Information</span></li>
     <li class="step <?php if ($current_step >= 2) echo 'on'; ?>">Step 2<span class="hidden md:block">: Shipping Information</span></li>

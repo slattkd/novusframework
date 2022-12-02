@@ -5,6 +5,7 @@ $nextlink = '/checkout/step3' . $querystring;
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
+  $_SESSION['customerEmail'] = $_POST['email'];
 }
 $pid = $_SESSION['pid'];
 
@@ -87,32 +88,32 @@ $current_product = $products['products'][$pid];
   </div>
 
   <div class="flex">
-    <form id="step-1" class="mb-0" method="post" action="<?php echo $nextlink; ?>">
+    <form id="step-2" class="mb-0" method="post" action="<?php echo $nextlink; ?>">
 						
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
@@ -124,19 +125,19 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                 </div>
-								<select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solvePrice()">
+								<select required class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solvePrice()">
                     <option selected value="US">United States</option>
                     <?php foreach ($countries as $key => $value) : ?>
                         <option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -148,7 +149,7 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="billingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                 </div>
-								<select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
+								<select required class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
                   <?php foreach ($usStates as $key => $value) : ?>
                       <option value="<?= $key;?>"> <?= $value; ?> </option>
                   <?php endforeach; ?>
@@ -159,7 +160,7 @@ $current_product = $products['products'][$pid];
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
               <div class="flex flex-nowrap items-center w-full my-3 ">
-                  <input type="checkbox" checked name="billingSameAsShipping" id="bill-same" value="<?php echo @$_SESSION['billingSameAsShipping']; ?>"/>
+                  <input type="checkbox" checked name="emailAlerts" id="email-alerts" value="<?php echo @$_SESSION['emailAlerts']; ?>"/>
                   <label class="ml-2 text-base"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
               <div class="flex text-sm text-gray-500 my-3">
@@ -235,7 +236,7 @@ $current_product = $products['products'][$pid];
               <input type="hidden" name="product-id" value="<?= $current_product['product_id']; ?>">
 
               <div class="flex justify-center w-full">
-                <button type="submit" id="secureButton" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+                <button type="submit" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
               </div>
 
               <div class="flex justify-center w-full mt-3">
@@ -243,6 +244,7 @@ $current_product = $products['products'][$pid];
               </div>
 						</div>
             
+            <!-- email alerts value to post? -->
       <input type="hidden" name="previous_page" value="checkout/step1">
       <input type="hidden" name="current_page" value="/checkout/step2">
       <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
@@ -352,5 +354,55 @@ $current_product = $products['products'][$pid];
 
       })
   }
+
+  // input validation
+  window.onload = function() {
+      // Prsitine Config
+      let defaultConfig = {
+        // class of the parent element where the error/success class is added
+        classTo: 'input',
+        // class of the parent element where error text element is appended
+        errorTextParent: 'input',
+        // type of element to create for the error text
+        errorTextTag: 'div',
+        // class of the error text element
+        errorTextClass: 'text-help text-red-700 border-red-600 font-medium text-sm'
+      };
+      const submitBtn = document.getElementById('secure-button');
+      const form = document.getElementById('step-2');
+      const pristine = new Pristine(form, defaultConfig);
+      var formValid = false;
+      var firstSubmit = false;
+
+      submitBtn.addEventListener('click', ()=> {
+        firstSubmit = true;
+        formValid = pristine.validate();
+        console.log(formValid);
+        if(formValid) {
+          form.submit();
+        }
+      })
+
+      form.addEventListener("input", function () {
+        if (firstSubmit) {
+          handleValidation();
+        }
+      });
+
+      function handleValidation() {
+        formValid = pristine.validate(); // returns true or false
+        if (!formValid) {
+          e.preventDefault();
+          // submitBtn.disabled = true;
+          var firstError = document.querySelector('.has-danger');
+          firstError.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+          });
+        } else {
+          // submitBtn.disabled = false;
+        }
+      }
+    };
 </script>
 </body>

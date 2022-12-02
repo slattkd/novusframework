@@ -105,6 +105,7 @@
 
 
   </div>
+  <?php template("includes/rpFooter"); ?>
 </body>
 
 </html>

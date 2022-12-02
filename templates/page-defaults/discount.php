@@ -147,5 +147,11 @@ $up_product = $products['products'][$up_pid];
 
 	</div>
 </div>
+
+
+<?php if ($site['debug'] == true) {
+        // Show Debug bar only on whitelisted domains.
+        template('debug', null, null, 'debug');
+    } ?>
 </body>
 </html>

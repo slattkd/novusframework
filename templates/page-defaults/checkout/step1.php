@@ -76,8 +76,7 @@ $current_product = $products['products'][$pid];
 
     <div class="flex my-8">
       <?php
-      $current_step = 2;
-      template("includes/step_bar2");
+      template("includes/step_bar2", null, 2);
       ?>
     </div>
 
@@ -115,7 +114,7 @@ $current_product = $products['products'][$pid];
             <input type="hidden" name="product-id" value="<?= $current_product['product_id']; ?>">
 
             <div class="flex justify-center w-full">
-              <button type="submit" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3" disabled>Next Step <span class="chev-right ml-2"></span></button>
+              <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
             </div>
 
             <div class="flex justify-center w-full mt-3">
@@ -216,24 +215,41 @@ $current_product = $products['products'][$pid];
         // class of the error text element
         errorTextClass: 'text-help text-red-700 border-red-600 font-medium text-sm'
       };
-      var form = document.getElementById("step-1");
-      var pristine = new Pristine(form, defaultConfig);
-      form.addEventListener('submit', function(e) {
-        var submitBtn = document.getElementById('secure-button');
+      const submitBtn = document.getElementById('secure-button');
+      const form = document.getElementById('step-1');
+      const pristine = new Pristine(form, defaultConfig);
+      var formValid = false;
+      var firstSubmit = false;
 
-        var valid = pristine.validate(); // returns true or false
-        if (!valid) {
+      submitBtn.addEventListener('click', ()=> {
+        firstSubmit = true;
+        formValid = pristine.validate();
+        console.log(formValid);
+        if(formValid) {
+          form.submit();
+        }
+      })
+
+      form.addEventListener("input", function () {
+        if (firstSubmit) {
+          handleValidation();
+        }
+      });
+
+      function handleValidation() {
+        formValid = pristine.validate(); // returns true or false
+        if (!formValid) {
           e.preventDefault();
-          submitBtn.disabled = true;
+          // submitBtn.disabled = true;
           var firstError = document.querySelector('.has-danger');
           firstError.scrollIntoView({
             behavior: "smooth",
             block: "end"
           });
         } else {
-          submitBtn.disabled = false;
+          // submitBtn.disabled = false;
         }
-      });
+      }
     };
   </script>
 </body>
