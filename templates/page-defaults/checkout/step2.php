@@ -77,7 +77,7 @@ $current_product = $products['products'][$pid];
 <div class="flex my-8">
   <?php
   $current_step = 2;
-  template("includes/step_bar2");
+  template("includes/step_bar2", null, 2);
   ?>
 </div>
 

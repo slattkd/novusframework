@@ -20,19 +20,8 @@ $current_product = $products['products'][$pid];
   <!-- CSS -->
   <?php template("includes/header"); ?>
         <title>Total Brain boost - Secure Order</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-  <style type="text/css">
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">  <style type="text/css">
 
-
-
-.chev-right {
-  width: 24px;
-  height: 60%;
-  margin-right: -10px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 63.9 122.88' style='enable-background:new 0 0 63.9 122.88' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st0%7Bfill-rule:evenodd;clip-rule:evenodd;%7D%3C/style%3E%3Cg%3E%3Cpolygon fill='%23333' class='st0' points='63.9,61.44 0,122.88 0,0 63.9,61.44'/%3E%3C/g%3E%3C/svg%3E");
-}
 
 .protection-header h5 span {
   -webkit-flex: 0 1 auto;
@@ -87,7 +76,7 @@ $current_product = $products['products'][$pid];
 <div class="flex my-8">
   <?php
   $current_step = 3;
-  template("includes/step_bar2");
+  template("includes/step_bar2", null, 3);
   ?>
 </div>
 
