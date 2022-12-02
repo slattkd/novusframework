@@ -1145,7 +1145,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
         <!-- hidden inputs -->
         <!-- /process-up/?pid=#&buy=1&next=url -->
-        <input type="hidden" name="previous_page" value="checkout/order">
+        <input type="hidden" name="previous_page" value="/checkout/order">
         <input type="hidden" name="current_page" value="/checkout/onepage">
         <input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
         <input type="hidden" name="product_id" id='product_id'  value="<?php echo $_SESSION['pid']; ?>">
