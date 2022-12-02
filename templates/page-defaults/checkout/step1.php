@@ -7,7 +7,7 @@ $current_step = 1;
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
-  $_SESSION["shippingId"] = $_POST['shippingID'];
+  $_SESSION["shippingId"] = $_POST['shippingId'];
 }
 $pid = $_SESSION['pid'];
 
