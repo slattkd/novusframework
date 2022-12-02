@@ -217,7 +217,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="utm_content" value="<?php echo @$_SESSION['utm_content']; ?>">
       <input type="hidden" name="click_id" value="<?php echo @$_SESSION['clickid']; ?>">
       <input type="hidden" name="notes" value="<?php echo @$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>">
-      <input type="hidden" name="shippingId" id="shippingId" value="<?php echo @$shippingId; ?>">
+      <input type="hidden" name="shippingId" id="shippingId" value="<?php echo @$_SESSION['shippingId']; ?>">
       <input type="hidden" name="newform" value="yes">
       <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="">
       <input type="hidden" name="upsellCount" value="0">
