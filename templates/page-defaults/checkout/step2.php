@@ -1,17 +1,14 @@
 <?php
 
-$nextlink = '/step3' . $querystring;
+$nextlink = '/checkout/step3' . $querystring;
 
 // required PID from post
 if ($_POST) {
-  $pid = $_POST['pid'];
-} else {
-  $pid = $_SESSION['pid'];
+  $_SESSION['pid'] = $_POST['product_id'];
 }
+$pid = $_SESSION['pid'];
 
 $current_product = $products['products'][$pid];
-
-var_dump($current_product);
 
 ?>
 
@@ -90,7 +87,7 @@ var_dump($current_product);
   </div>
 
   <div class="flex">
-  <form class="mb-0" id="orderForm" name="orderForm" method="POST" action="/step3" >
+    <form id="step-1" class="mb-0" method="post" action="<?php echo $nextlink; ?>">
 						
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full mb-3">
@@ -245,7 +242,11 @@ var_dump($current_product);
                 <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px;">
               </div>
 						</div>
-  </form>
+            
+      <input type="hidden" name="previous_page" value="checkout/step1">
+      <input type="hidden" name="current_page" value="/checkout/step2">
+      <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
+    </form>
   </div>
 
   
@@ -308,6 +309,7 @@ var_dump($current_product);
     </div>
   </div>
 
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
 <script>
   function solvePrice() {
     console.log('solve country shipping price');
@@ -336,6 +338,19 @@ var_dump($current_product);
             element.classList.add('hide');
         }
     }
+  }
+
+  const isMobile = Math.min(window.innerWidth) < 769;
+  // || navigator.userAgent.indexOf("Mobi") > -1
+
+  if(!isMobile) {
+      const placeholderElements = document.querySelectorAll('input');
+      placeholderElements.forEach(el => {
+          if (el.hasAttribute('placeholder')) {
+              el.removeAttribute('placeholder');
+          }
+
+      })
   }
 </script>
 </body>

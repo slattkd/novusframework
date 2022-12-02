@@ -1,18 +1,12 @@
 <?php
+var_dump($_POST);
 
-$next_link = 'checkout/step1';
+$nextlink = 'checkout/step1' . $querystring;
 
-// if ($_POST) {
-//   $pid = $_POST['pid'];
-// } else {
-//   $pid = $_SESSION['pid'];
-// }
-
-// TODO: get product from SESSION PID
-$pid = 1083; //testing for now
-
-// TODO: get any necessary product data from $products
-
+if ($_POST) {
+  $_SESSION['pid'] = $_POST['product_id'];
+}
+$pid = $_SESSION['pid'];
 
 $totalPrice = intval($price) + intval($ship);
 
@@ -31,7 +25,6 @@ $up_totalPrice = intval($up_price) + intval($up_ship);
 
 $current_product = $products['products'][$pid];
 $up_product = $products['products'][$up_pid];
-
 
 ?>
 
@@ -96,7 +89,6 @@ $up_product = $products['products'][$up_pid];
 		
 		.skip-wrap #submitskip {
 			width: 100%;
-			height: 100%;
 			border: none;
 			background-color: transparent;
 			margin-top: 18px;
@@ -130,9 +122,10 @@ $up_product = $products['products'][$up_pid];
 				<h2>10% OFF INSTANTLY!</h2>
 				<p class="subhead">Get <b>10% OFF FOR LIFE</b> on all orders and easy monthly auto refills plus FREE printed monthly newsletter <b>
 			
-					<form id="discountform" name="discountform" class="button-wrap" method="post" action="<?php echo $next_link; ?>">
-						<input type="hidden" id="item-name" name="item-name" value="<?= $up_product['product_description'];?>">
-						<input type="hidden" id="prod-cost" name="prod-cost" value="<?= $up_product['product_price']; ?>">
+					<form id="discountform" name="discountform" class="button-wrap" method="post" action="<?php echo $nextlink; ?>">
+						<input type="hidden" name="previous_page" value="checkout/order">
+						<input type="hidden" name="current_page" value="/discount">
+						<input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
 						<input type="hidden" id="product-id" name="pid" value="<?= $up_product['product_id']; ?>">
 						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 clickable">
 					</form>
@@ -142,9 +135,10 @@ $up_product = $products['products'][$up_pid];
 			
 			<div class="skip-wrap">
 				
-				<form id="skipform" name="skipform" method="post" action="<?php echo $next_link; ?>">
-					<input type="hidden" id="item-name" name="item-name" value="<?= $current_product['product_description'];?>">
-					<input type="hidden" id="prod-cost" name="prod-cost" value="<?= $up_product['product_price']; ?>">
+				<form id="skipform" name="skipform" method="post" action="<?php echo $nextlink; ?>">
+					<input type="hidden" name="previous_page" value="checkout/order"> 
+					<input type="hidden" name="current_page" value="/discount">
+					<input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
           <input type="hidden" id="product-id" name="pid" value="<?= $current_product['product_id']; ?>">
 					<input type="submit" id="submitskip" name="submit" class="clickable" value="Skip This - I do NOT want 10% OFF my order">
 				</form>

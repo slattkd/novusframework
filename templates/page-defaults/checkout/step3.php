@@ -1,17 +1,14 @@
 <?php
 
-$nextlink = '/step2' . $querystring;
+$nextlink = '/thank-you' . $querystring;
 
 // required PID from post
 if ($_POST) {
-  $pid = $_POST['pid'];
-} else {
-  $pid = $_SESSION['pid'];
+  $_SESSION['pid'] = $_POST['product_id'];
 }
+$pid = $_SESSION['pid'];
 
 $current_product = $products['products'][$pid];
-
-var_dump($current_product);
 
 ?>
 
@@ -104,7 +101,7 @@ var_dump($current_product);
   </div>
 
   <div class="flex">
-  <form class="mb-0" id="orderForm" name="orderForm" method="POST" action="/step2" style="max-width: 100%;">
+    <form id="step-1" class="mb-0" method="post" action="<?php echo $nextlink; ?>" style="max-width: 100%;">
 						
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full mb-3">
@@ -173,7 +170,36 @@ var_dump($current_product);
                 <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px;">
               </div>
 						</div>
-  </form>
+
+      <!-- hidden form fields required for submit -->
+      <input type="hidden" name="previous_page" value="checkout/step2"> 
+      <input type="hidden" name="current_page" value="/checkout/step3">
+      <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
+      <input type="hidden" name="form_id" value="step_<?php echo $_SESSION['s']; ?>">
+      <input type="hidden" name="step" value="<?php echo $_SESSION['s']; ?>">
+      <input type="hidden" name="AFFID" value="<?php echo $_SESSION['affid']; ?>">
+      <input type="hidden" name="AFID" value="<?php echo $_SESSION['vwovar']; ?>">
+      <input type="hidden" name="C1" value="<?php echo $_SESSION['c1']; ?>">
+      <input type="hidden" name="C2" value="<?php echo $_SESSION['c2']; ?>">
+      <input type="hidden" name="C3" value="<?php echo $_SESSION['c3']; ?>">
+      <input type="hidden" name="utm_source" value="<?php echo $_SESSION['utm_source']; ?>">
+      <input type="hidden" name="utm_medium" value="<?php echo $_SESSION['utm_medium']; ?>">
+      <input type="hidden" name="utm_campaign" value="<?php echo $_SESSION['utm_campaign']; ?>">
+      <input type="hidden" name="utm_term" value="<?php echo $_SESSION['utm_term']; ?>">
+      <input type="hidden" name="utm_content" value="<?php echo $_SESSION['utm_content']; ?>">
+      <input type="hidden" name="click_id" value="<?php echo $_SESSION['clickid']; ?>">
+      <input type="hidden" name="notes" value="<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>">
+      <input type="hidden" name="shippingId" id="shippingId" value="<?php echo $shippingId; ?>">
+      <input type="hidden" name="newform" value="yes">
+      <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="">
+      <input type="hidden" name="upsellCount" value="0">
+      <input type="hidden" name="customer_time" id="customer_time"  value="">
+      <input type="hidden" name="eftid" id="eftid"  value="">
+      <input type="hidden" name="sessionId" value="<?php echo $kount_session; ?>">
+      <input type="hidden" name="fid" id="fid" value="<?php echo $formID; ?>" class="hidden" />
+      <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo $site['campaign']; ?>">
+      <input type="hidden" name="37positions" id="37positions" value="<?php echo $thirtyseven; ?>">
+    </form>
   </div>
 
   
@@ -237,4 +263,19 @@ var_dump($current_product);
 
 </div>
 <?php template("includes/rpFooter"); ?>
+
+<script>
+  const isMobile = Math.min(window.innerWidth) < 769;
+  // || navigator.userAgent.indexOf("Mobi") > -1
+
+  if(!isMobile) {
+      const placeholderElements = document.querySelectorAll('input');
+      placeholderElements.forEach(el => {
+          if (el.hasAttribute('placeholder')) {
+              el.removeAttribute('placeholder');
+          }
+
+      })
+  }
+</script>
 </body>

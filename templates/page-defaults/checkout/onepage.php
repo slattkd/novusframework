@@ -1055,6 +1055,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                     <div class="font-semibold md:hidden">You Pay</div>
                                     <div class="font-semibold hidden md:block">You Pay Just</div>
                                     <div class="flex items-center">
+                                        <!-- final price updates with shipping country info -->
                                         <div id="totalPricePayValue" class=" text-red-700 font-semibold mx-2 md:hidden" style="color: #e36500"><span id="total-mobile">$<?php echo $finalPrice; ?><span class="text-black">Today!</span></div>
                                         <div id="totalPricePayValue" class="font-semibold mx-2 hidden md:block">$<span id="total-desktop"><?php echo $finalPrice; ?></span></div>
                                         <div id="totalDiscount" class="hidden font-semibold text-red-700 md:block text-lg">(<?php echo $discount; ?>% OFF)</div>

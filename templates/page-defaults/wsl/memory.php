@@ -8,7 +8,8 @@
   </style>
 </head>
 
-<body class="container container-vsl mx-auto c8 doc-content py-4">
+<body class="bg-gray-100 c8 doc-content py-4">
+  <div class="container container-vsl mx-auto bg-white border-2 p-3 md:p-8 rounded-lg">
   
   <p class="c19 title" id="h.3knlj04pg4ni"><span class="c5">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and 90s&hellip; </span></p>
   <p class="c12 c21"><span class="c0"></span></p>
@@ -108,7 +109,7 @@
     <li class="c4 c7 li-bullet-0"><span class="c0">97% Said They Would Purchase Again</span></li>
   </ul>
   
-  
+</div>
 </body>
 
 </html>
