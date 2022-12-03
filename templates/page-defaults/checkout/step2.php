@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 $nextlink = '/checkout/step3' . $querystring;
 
 // required PID from post
@@ -12,7 +14,7 @@ if ($_POST) {
   $_SESSION["lastName"] = $_POST['lastName'];
 }
 $pid = $_SESSION['pid'];
-
+var_dump($_POST);
 $current_product = $products['products'][$pid];
 
 ?>
@@ -99,31 +101,31 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress2" placeholder="Address 2" value="" required="required">
+								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION['billingAddress2']; ?>" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>" required="required">
               </div>
               <div class="w-full mb-3">
                 <div class="w-full w-1/3">
@@ -169,29 +171,27 @@ $current_product = $products['products'][$pid];
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
 
-                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
+                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                       </div>
-
-                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
+                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
 
-                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
+                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                       </div>
 
-                          <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                          <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingState" name="shippingState" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
+                          <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingState" name="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
                           <?php foreach ($usStates as $key => $value) : ?>
                               <option value="<?= $key;?>"> <?= $value; ?> </option>
                           <?php endforeach; ?>
@@ -203,8 +203,7 @@ $current_product = $products['products'][$pid];
                           <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                       </div>
 
-                          <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                          <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingCountry" name="shippingCountry" data-toggle-element="shippingState" onchange="solveprice()">
+                          <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingCountry" name="shippingCountry" value="<?php echo @$_SESSION["shippingCountry"]; ?>" data-toggle-element="shippingState" onchange="solveprice()">
                               <option selected value="US">United States</option>
                               <?php foreach ($countries as $key => $value) : ?>
                                   <option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -217,7 +216,7 @@ $current_product = $products['products'][$pid];
                       <div class="w-full w-1/3">
                           <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                       </div>
-                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Zip Code" type="text" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
+                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Zip Code" type="text" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
                   </div>
 
               </div>
@@ -225,7 +224,7 @@ $current_product = $products['products'][$pid];
 
               <!-- hidden fields -->
               <!-- <input type="hidden" name="campaign_id" value="5"> -->
-              <input type="hidden" name="product-id" value="<?= $current_product['product_id']; ?>">
+              <input id="product_id" type="hidden" name="product_id" value="<?= $current_product['product_id']; ?>">
 
               <div class="flex justify-center w-full">
                 <button type="submit" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
@@ -240,6 +239,8 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="previous_page" value="checkout/step1">
       <input type="hidden" name="current_page" value="/checkout/step2">
       <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
+      <input type="hidden" id="shippingId" name="shippingId" value="<?= $site['shippingUs']; ?>">
+      <input type="hidden" id="lastName" name="lastName" value="<?= $_SESSION['lastName']; ?>">
     </form>
   </div>
 
@@ -369,8 +370,8 @@ $current_product = $products['products'][$pid];
       submitBtn.addEventListener('click', ()=> {
         firstSubmit = true;
         formValid = pristine.validate();
-        console.log(formValid);
         if(formValid) {
+          copyBillingInputValue();
           form.submit();
         }
       })
@@ -396,6 +397,67 @@ $current_product = $products['products'][$pid];
         }
       }
     };
+
+    function solveprice() {
+        // bypass for testing
+        // return;
+        // var subtotal = parseFloat(document.getElementById('subtotalPrice').textContent).toFixed(2);
+        var superLube = 0;
+        if (document.getElementById('superlube')) {
+            superLube = parseFloat(document.getElementById('superlube').textContent);
+        }
+        var sexPositions = 0;
+        if (document.getElementById('sexpositions')) {
+            sexPositions = parseFloat(document.getElementById('sexpositions').textContent);
+        }
+        var shippingCost = 0;
+
+        var productId = document.getElementById('product_id').value;
+
+        // qty 1 = shipping not frameElement
+
+        const billCountry = document.getElementById("billingCountry");
+        const shipCountry = document.getElementById("shippingCountry");
+        const shipId = document.getElementById("shippingId");
+        const upsellIds = document.getElementById("upsellProductIds");
+
+        if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
+            shipId.value = '<?= $site['shippingUs']; ?>';
+            upsellIds.value = '87,102,265';
+            _shippingPrice = <?= $site['shippingUsCost']; ?>;
+        } else {
+            shipId.value = '<?= $site['shippingIntl']; ?>';
+            _shippingPrice = <?= $site['shippingIntlCost']; ?>;
+        }
+        var total = parseFloat(<?php echo $price; ?>) + parseFloat(_shippingPrice);
+        shippingCost = _shippingPrice;
+
+        // _orderSubTotal = (parseFloat(<?php echo number_format($totalPrice, 2, '.', ''); ?>) + parseFloat(sexPositions) + parseFloat(superLube) + parseFloat(shippingCost)).toFixed(2);
+        copyBilling
+
+    }
+
+    function copyBillingInputValue() {
+      console.log('bill same');
+        // Check to Copy values to billing
+        if(billSame.checked){ //checked
+          console.log('bill same');
+                let billingAddress1 = document.getElementsByName('billingAddress1')[0].value;
+                document.getElementsByName('shippingAddress1')[0].value = billingAddress1;
+                let billingAddress2 = document.getElementsByName('billingAddress2')[0].value;
+                document.getElementsByName('shippingAddress2')[0].value = billingAddress2;
+                let billingCity = document.getElementsByName('billingCity')[0].value;
+                document.getElementsByName('shippingCity')[0].value = billingCity;
+                let billingState = document.getElementsByName('billingState')[0].value;
+                document.getElementsByName('shippingState')[0].value = billingState;
+                let billingCountry = document.getElementsByName('billingCountry')[0].value;
+                document.getElementsByName('shippingCountry')[0].value = billingCountry;
+                let billingZip = document.getElementsByName('billingZip')[0].value;
+                document.getElementsByName('shippingZip')[0].value = billingZip;
+        }else{ //unchecked
+            return;
+        }
+    }
 </script>
 
     <?php if ($site['debug'] == true) {

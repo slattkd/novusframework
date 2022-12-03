@@ -23,7 +23,7 @@ function savedAmt($retail, $price)
 
 function monthAmt($price, $month)
 {
-    return round($price / $month, 2);
+    return number_format($price / $month, 2);
 }
 
 function percentOff($price, $retail)
@@ -235,13 +235,13 @@ if (!isset($_SESSION['vip_discount'])) {
             color: #fff56c !important
         }
 
-        .text-cyan-500 {
+        /* .text-rpblue {
             color: #0085c6;
         }
 
-        .bg-cyan-500 {
+        .bg-rpblue {
             background-color: #0085c6;
-        }
+        } */
 
         .cta-button:hover {
             border-color: #000;
@@ -355,20 +355,20 @@ if (!isset($_SESSION['vip_discount'])) {
         </div><!-- end .vipwrap -->
         <div class="pop-container">
             <div class="vip-pop">
-                <p>By checking the sign up box, you agree to receive a shipment of Floraspring each month. You are authorizing us to charge your credit card monthly, matching the package you have selected. You can stop shipments at any time by calling our customer support team at 1-800-253-8173. Agents are standing by 7 days a week, 24 hours per day, to assist you.</p>
+                <p>By checking the sign up box, you agree to receive a shipment of <?= $company['featuredProduct']; ?> each month. You are authorizing us to charge your credit card monthly, matching the package you have selected. You can stop shipments at any time by calling our customer support team at 1-800-253-8173. Agents are standing by 7 days a week, 24 hours per day, to assist you.</p>
             </div>
         </div>
 
         <div class="flex justify-center my-4 mt-8 hidden md:flex">
-            <div class="font-bold text-4xl text-cyan-500">Choose Your Discount</div>
+            <div class="font-bold text-4xl text-rpblue">Choose Your Discount</div>
         </div>
 
         <div id="single-pay" class="flex flex-col w-full mt-4 md:mt-0">
             <!-- single card 1 -->
-            <div class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
+            <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col p-5 md:p-8 grow md:w-1/2 pt-0 md:pt-8">
-                        <div class="flex justify-center md:justify-left bg-cyan-500 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-cyan-500">
+                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue">
                             DOCTOR RECOMMENDED
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -391,21 +391,21 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
                                 <span class="line-through">$<?= $product2['product_retail']; ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= $product2['product_price']; ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product2['product_price'], $product2['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-cyan-500 md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product2['product_retail'], $product2['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow 5 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-cyan-500 text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product2['product_price'], $product2['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -413,7 +413,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product2['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-cyan-500 md:text-black"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -422,7 +422,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product3['product_id']; ?>, <?= savedAmt($product3['product_retail'], $product3['product_price']); ?>, <?= percentOff($product3['product_price'], $product3['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
-                        <div class="flex justify-center md:justify-left bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-cyan-500">
+                        <div class="flex justify-center md:justify-start bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
                             BIGGEST DISCOUNT
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -445,21 +445,21 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
                                 <span class="line-through">$<?= $product3['product_retail']; ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= $product3['product_price']; ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product3['product_price'], $product3['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-cyan-500 md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product3['product_price'], $product3['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product3['product_price'], $product3['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product3['product_retail'], $product3['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-cyan-500 text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product3['product_price'], $product3['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -467,7 +467,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product3['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-cyan-500 md:text-black"><span id="off-price2"><?= percentOff($product3['product_price'], $product3['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product3['product_price'], $product3['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -476,7 +476,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product1['product_id']; ?>, <?= savedAmt($product1['product_retail'], $product1['product_price']); ?>, <?= percentOff($product1['product_price'], $product1['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
-                        <div class="flex justify-center md:justify-left bg-cyan-500 md:bg-white rounded-t text-xl md:text-2xl ls10 hid -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-cyan-500 hidden">
+                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 hid -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue hidden">
                             DOCTOR RECOMMENDED
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -499,21 +499,21 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
                                 <span class="line-through">$<?= $product1['product_retail']; ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= $product1['product_price']; ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product1['product_price'], $product1['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-cyan-500 md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product1['product_retail'], $product1['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-cyan-500 text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product1['product_price'], $product1['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -521,7 +521,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product1['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-cyan-500 md:text-black"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -533,7 +533,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col p-5 md:p-8 grow md:w-1/2 pt-0 md:pt-8">
-                        <div class="flex justify-center md:justify-left bg-cyan-500 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-cyan-500">
+                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue">
                             DOCTOR RECOMMENDED
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -561,21 +561,21 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
                                 <span class="line-through">$<?= $product5['product_retail']; ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= $product5['product_price']; ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product5['product_price'], $product5['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-cyan-500 md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product5['product_price'], $product5['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product5['product_price'], $product5['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product5['product_retail'], $product5['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow 5 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-cyan-500 text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product5['product_price'], $product5['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -583,7 +583,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product5['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-cyan-500 md:text-black"><span id="off-price2"><?= percentOff($product5['product_price'], $product5['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product5['product_price'], $product5['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -592,7 +592,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product6['product_id']; ?>, <?= savedAmt($product6['product_retail'], $product6['product_price']); ?>, <?= percentOff($product6['product_price'], $product6['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
-                        <div class="flex justify-center md:justify-left bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-cyan-500">
+                        <div class="flex justify-center md:justify-start bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
                             BIGGEST DISCOUNT
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -620,21 +620,21 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
                                 <span class="line-through">$<?= $product6['product_retail']; ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= $product6['product_price']; ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product6['product_price'], $product6['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-cyan-500 md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product6['product_price'], $product6['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product6['product_price'], $product6['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product6['product_retail'], $product6['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-cyan-500 text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product6['product_price'], $product6['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -642,7 +642,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product6['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-cyan-500 md:text-black"><span id="off-price2"><?= percentOff($product6['product_price'], $product6['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product6['product_price'], $product6['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -651,7 +651,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product4['product_id']; ?>, <?= savedAmt($product4['product_retail'], $product4['product_price']); ?>, <?= percentOff($product4['product_price'], $product4['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
-                        <div class="flex justify-center md:justify-left bg-cyan-500 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-cyan-500 hidden">
+                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue hidden">
                             DOCTOR RECOMMENDED
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -679,21 +679,21 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
                                 <span class="line-through">$<?= $product4['product_retail']; ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= $product4['product_price']; ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product4['product_price'], $product4['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-cyan-500 md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product4['product_retail'], $product4['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-cyan-500 text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product4['product_price'], $product4['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -701,7 +701,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product4['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-cyan-500 md:text-black"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -747,6 +747,11 @@ if (!isset($_SESSION['vip_discount'])) {
                 check.classList.add('hidden');
                 showOffers(false);
             }
+        })
+
+        const firstCard = document.getElementById('first-card');
+        document.addEventListener('DOMContentLoaded', ()=> {
+            firstCard.click();
         })
 
         const form = document.getElementById('order-form');

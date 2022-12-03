@@ -1,7 +1,7 @@
 <?php
 
 $nextlink = '/thank-you' . $querystring;
-
+var_dump($_POST);
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
@@ -10,6 +10,7 @@ if ($_POST) {
   $_SESSION["phone"] = $_POST['phone'];
   $_SESSION["shippingAddress1"] = $_POST['shippingAddress1'];
   $_SESSION["shippingCountry"] = $_POST['shippingCountry'];
+  $_SESSION["shippingCity"] = $_POST['shippingCity'];
   $_SESSION["shippingState"] = $_POST['shippingState'];
   $_SESSION["shippingZip"] = $_POST['shippingZip'];
   $_SESSION["billingSameAsShipping"] = $_POST['billingSameAsShipping'];
@@ -18,6 +19,7 @@ if ($_POST) {
   $_SESSION["billingCity"] = $_POST['billingCity'];
   $_SESSION["billingState"] = $_POST['billingState'];
   $_SESSION["billingZip"] = $_POST['billingZip'];
+  $_SESSION["shippingId"] = $_POST['shippingId'];
 }
 $pid = $_SESSION['pid'];
 
@@ -111,7 +113,7 @@ $current_product = $products['products'][$pid];
   <?php } ?>
 
   <div class="flex">
-    <form id="step-1" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>" style="max-width: 100%;">
+    <form id="step-1" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST'];?>/process.php" style="max-width: 100%;">
 						
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="w-full mb-3">
@@ -123,7 +125,7 @@ $current_product = $products['products'][$pid];
               <div class="w-full columns-2 gap-3">
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
-                          <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
+                          <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
                       </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                       <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth">
@@ -143,7 +145,7 @@ $current_product = $products['products'][$pid];
                   </div>
                   <div class="w-full mb-3">
                     <div class="w-full w-1/3">
-                        <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
+                        <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
                     </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                       <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear">
@@ -183,7 +185,7 @@ $current_product = $products['products'][$pid];
 
       <!-- hidden form fields required for submit -->
       <input type="hidden" name="firstName" id="FirstName" value="<?php echo @$_SESSION["firstName"]; ?>">
-      <input type="hidden" name="lastName" id="LastName" value="<?php @$_SESSION["lastName"]; ?>">
+      <input type="hidden" name="lastName" id="LastName" value="<?php echo @$_SESSION["lastName"]; ?>">
       <input type="hidden" name="email" id="Email" value="<?php echo @$_SESSION["email"]; ?>">
       <input type="hidden" name="phone" id="Phone" value="<?php echo @$_SESSION["phone"]; ?>">
       <input type="hidden" name="billingAddress1" id="billingAddress1" value="<?php echo @$_SESSION["billingAddress1"]; ?>">
@@ -203,6 +205,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="previous_page" value="//<?= $_SERVER['HTTP_HOST'];?>/checkout/step2">
       <input type="hidden" name="current_page" value="//<?= $_SERVER['HTTP_HOST'];?>/checkout/step3">
       <input type="hidden" name="next_page" id="next-page" value="/thank-you">
+      <input type="hidden" name="product_id" id='product_id'  value="<?php echo $_SESSION['pid']; ?>">
       <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="AFFID" value="<?php echo @$_SESSION['affid']; ?>">

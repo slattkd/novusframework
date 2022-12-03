@@ -71,6 +71,13 @@ $site['contactlink'] = 'mailto:help@5gmale.com';
 
 $site['orderComplete'] = 'thank-you';
 
+$site['shippingUs'] = 3;
+$site['shippingUsCost'] = 6.95;
+$site['shippingIntl'] = 4;
+$site['shippingIntlCost'] = 14.95;
+$site['shippingFree'] = 5;
+$site['shippingFreeCost'] = 0;
+
 /*
 $limelight_api_username     = '5gmale-funnel';
 $limelight_api_password     = 'MAzpqTRAXa4Dvk';
@@ -80,6 +87,7 @@ $limelight_api_instance     = 'gdc.sticky.io';
 // Company Variables
 $company['name'] = 'Total Brain Boost LLC';
 $company['billedAs'] = 'Total Brain Boost';
+$company['featuredProduct'] = 'Total Brain Boost';
 $company['email'] = 'support@revivalpoint.com';
 $company['phone'] = '1-800-253-8173';
 $company['address1'] = '13423 Blanco Rd PMB 8024';

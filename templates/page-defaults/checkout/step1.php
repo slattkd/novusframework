@@ -7,7 +7,6 @@ $current_step = 1;
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
-  $_SESSION["shippingId"] = $_POST['shippingId'];
 }
 $pid = $_SESSION['pid'];
 
@@ -95,24 +94,24 @@ $current_product = $products['products'][$pid];
               <div class="w-full w-1/3">
                 <label for="email" class="text-sm text-gray-600 hidden md:block">Email:</label>
               </div>
-              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="" required>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="<?php echo @$_SESSION['email']; ?>" required>
             </div>
             <div class="input w-full mb-3">
               <div class="w-full w-1/3">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
-              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="" required>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
             <div class="input w-full mb-3">
               <div class="w-full w-1/3">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>
-              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="" required>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="<?php echo @$_SESSION['lastName']; ?>" required>
             </div>
 
             <!-- hidden fields -->
             <!-- <input type="hidden" name="campaign_id" value="5"> -->
-            <input type="hidden" name="product-id" value="<?= $current_product['product_id']; ?>">
+            <input type="hidden" name="product_id" value="<?= $current_product['product_id']; ?>">
 
             <div class="flex justify-center w-full">
               <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>

@@ -8,6 +8,7 @@ unset($_SESSION['llerrorcode']);
 unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 
+$postArray = print_r($_POST, true);
 $logger->info('Posted Values: ' . $postArray);
 
 $sticky = new sticky();
