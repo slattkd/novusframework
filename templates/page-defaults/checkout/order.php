@@ -449,7 +449,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-4 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                        <div class="flex flex-col items-center flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
                             <div>DOCTOR RECOMMENDED</div>
                             <div class="md:hidden text-sm font-normal">Take 2-3X The Dose To Boost Results…</div>
                         </div>
@@ -619,7 +619,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                        <div class="flex flex-col items-center flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
                             <div>DOCTOR RECOMMENDED</div>
                             <div class="md:hidden text-sm font-normal">Take 2-3X The Dose To Boost Results…</div>
                         </div>
