@@ -793,7 +793,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
     </div>
 
-    <div class="container container-vsl flex flex-col bg-white border-t border-b pt-3 md:hidden">
+    <div class="container container-vsl flex flex-col bg-white border-t border-b pt-3 md:hidden" style="max-width:3000px">
         <div class="flex justify-center mt-2">
             <h3 class="text-red-700 font-semibold text-2xl md:text-3xl md:hidden">You Save <span id="save-price-final">...</span></h3>
         </div>
