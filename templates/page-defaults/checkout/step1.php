@@ -2,7 +2,6 @@
 
 $nextlink = '/checkout/step2' . $querystring;
 $current_step = 1;
-$_SESSION['pageType'] = 'order';
 
 // required PID from post
 if ($_POST) {
@@ -43,7 +42,7 @@ $current_product = $products['products'][$pid];
     </div>
 
 
-    <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
+    <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5 md:px-8">
       <div class="flex justify-center text-center mb-4">
         <h3 class="text-xl md:text-2xl font-semibold">Enter Your Contact Information</h3>
       </div>
@@ -52,19 +51,19 @@ $current_product = $products['products'][$pid];
         <form id="step-1" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 
           <div class="flex flex-wrap items-center mb-4">
-            <div class="input w-full mb-3 md:px-4">
+            <div class="input w-full mb-3">
               <div class="w-full w-1/3">
                 <label for="email" class="text-sm text-gray-600 hidden md:block">Email:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="<?php echo @$_SESSION['email']; ?>" required>
             </div>
-            <div class="input w-full mb-3 md:px-4">
+            <div class="input w-full mb-3">
               <div class="w-full w-1/3">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
-            <div class="input w-full mb-3 md:px-4">
+            <div class="input w-full mb-3">
               <div class="w-full w-1/3">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>

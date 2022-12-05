@@ -311,7 +311,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         Step 1: Get My Discount Below Now...
                     </div>
                     <div class="flex flex-col items-center md:items-start w-full md:w-1/2 mx-auto">
-                        <div class="bull blue-q">
+                        <div class="bull blue-">
                             <div class="mb-5">
                                 <div class="check">Helps reduce calorie absorption*</div>
                             </div>
@@ -321,7 +321,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
                     </div>
                     <div class="flex flex-col items-center md:items-start w-full md:w-1/2 mx-auto">
-                        <div class="bull blue-q">
+                        <div class="bull blue-">
                             <div class="mb-5">
                                 <div class="check">Helps support energy and focus*</div>
                             </div>

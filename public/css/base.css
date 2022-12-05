@@ -285,7 +285,7 @@ input[type="checkbox"] {
     background-color: #006894;
 }
 
-.bull.blue-q div {
+.bull.blue-q div:not(.check) {
   background-image: url(../images/shield.png);
   background-size: 22px auto;
   background-position: left 2px;
