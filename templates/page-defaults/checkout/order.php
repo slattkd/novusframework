@@ -536,7 +536,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product1['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + $6.95 USA Shipping</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -714,7 +714,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product4['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + $6.95 USA Shipping</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>

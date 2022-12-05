@@ -114,7 +114,7 @@ $current_product = $products['products'][$pid];
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
               <div class="flex flex-nowrap items-center w-full my-3 ">
-                  <input type="checkbox" checked name="joinTextAlerts" id="join-text-alerts" value="checked" style="filter: none;"/>
+                  <input type="checkbox" name="joinTextAlerts" id="join-text-alerts" value="checked" style="filter: none;"/>
                   <label class="ml-2 text-base"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
               <div class="flex text-sm text-gray-500 my-3">
@@ -350,15 +350,13 @@ $current_product = $products['products'][$pid];
         shippingCost = _shippingPrice;
 
         // _orderSubTotal = (parseFloat(<?php echo number_format($totalPrice, 2, '.', ''); ?>) + parseFloat(sexPositions) + parseFloat(superLube) + parseFloat(shippingCost)).toFixed(2);
-        copyBilling
+        copyBillingInputValue();
 
     }
 
     function copyBillingInputValue() {
-      console.log('bill same');
         // Check to Copy values to billing
         if(billSame.checked){ //checked
-          console.log('bill same');
                 let billingAddress1 = document.getElementsByName('billingAddress1')[0].value;
                 document.getElementsByName('shippingAddress1')[0].value = billingAddress1;
                 let billingAddress2 = document.getElementsByName('billingAddress2')[0].value;
@@ -400,7 +398,6 @@ $current_product = $products['products'][$pid];
         firstSubmit = true;
         copyBillingInputValue();
         formValid = pristine.validate();
-        console.log(formValid);
         if(formValid) {
           form.submit();
         }

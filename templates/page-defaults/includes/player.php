@@ -83,7 +83,6 @@ function clickOverlay() {
 ?>
 
 function pausePlayer(){
-    console.log('pause');
     var isPauseable = 1;
     vidalyticsPlayerAPI.pause();
 }

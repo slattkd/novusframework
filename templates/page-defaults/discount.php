@@ -1,5 +1,4 @@
 <?php
-//var_dump($_POST);
 
 $nextlink = '//' . $_SERVER['HTTP_HOST'] . '/checkout/step1' . $querystring;
 

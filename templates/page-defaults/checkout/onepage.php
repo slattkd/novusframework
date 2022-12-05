@@ -1345,8 +1345,6 @@ $timerDelay = time() - $_SESSION['timer-gm'];
             shipFree2.classList.add('invisible');
         }
         var total = parseFloat(<?php echo $price; ?>) + parseFloat(_shippingPrice);
-        console.log(<?php echo $price; ?>);
-        console.log(_shippingPrice);
         finalPrice.innerText = total.toFixed(2);
         finalPriceMobile.innerText = total.toFixed(2);
         finalPriceDesktop.innerText = total.toFixed(2);

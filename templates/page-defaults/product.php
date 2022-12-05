@@ -394,7 +394,6 @@ $products_json = json_encode($products);
       selectedProduct = products[selectedIndex];
       
       pidInput.value = selectedProduct.pid;
-      console.log(pidInput);
     }
 
     var productRadios = document.getElementsByName('productSize');
@@ -420,7 +419,6 @@ $products_json = json_encode($products);
         label3.style.display = 'unset';
       }
       pidInput.value = selectedProduct.pid;
-      console.log(pidInput);
     })
 
   </script>
