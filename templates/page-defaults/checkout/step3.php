@@ -348,10 +348,9 @@ $current_product = $products['products'][$pid];
         }
       });
 
-      function handleValidation(e) {
+      function handleValidation() {
         formValid = pristine.validate(); // returns true or false
         if (!formValid) {
-          e.preventDefault();
           // submitBtn.disabled = true;
           var firstError = document.querySelector('.has-danger');
           firstError.scrollIntoView({

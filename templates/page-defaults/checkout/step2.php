@@ -99,13 +99,13 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>">
               </div>
               <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>">
               </div>
               <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
@@ -117,13 +117,13 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>">
               </div>
               <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>" required="required">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>">
               </div>
               <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
@@ -152,7 +152,7 @@ $current_product = $products['products'][$pid];
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
               <div class="flex flex-nowrap items-center w-full my-3 ">
-                  <input type="checkbox" checked name="emailAlerts" id="email-alerts" value="<?php echo @$_SESSION['emailAlerts']; ?>"/>
+                  <input type="checkbox" checked name="joinTextAlerts" id="join-text-alerts" value="<?php echo @$_SESSION['joinTextAlerts']; ?>"/>
                   <label class="ml-2 text-base"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
               <div class="flex text-sm text-gray-500 my-3">
@@ -449,10 +449,9 @@ $current_product = $products['products'][$pid];
         }
       });
 
-      function handleValidation(e) {
+      function handleValidation() {
         formValid = pristine.validate(); // returns true or false
         if (!formValid) {
-          e.preventDefault();
           // submitBtn.disabled = true;
           var firstError = document.querySelector('.has-danger');
           firstError.scrollIntoView({
