@@ -93,7 +93,7 @@ $current_product = $products['products'][$pid];
 
   <div class="flex">
     <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
-						
+
 						<div class="flex flex-wrap items-center mb-4">
               <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
@@ -169,7 +169,7 @@ $current_product = $products['products'][$pid];
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
 
-                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
+                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
                   <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
@@ -182,7 +182,7 @@ $current_product = $products['products'][$pid];
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
 
-                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
+                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
                   <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
@@ -214,7 +214,7 @@ $current_product = $products['products'][$pid];
                       <div class="w-full w-1/3">
                           <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                       </div>
-                      <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Zip Code" type="text" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
+                      <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Zip Code" type="text" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
                   </div>
 
               </div>
@@ -435,6 +435,7 @@ $current_product = $products['products'][$pid];
       submitBtn.addEventListener('click', (e)=> {
         e.preventDefault();
         firstSubmit = true;
+        copyBillingInputValue();
         formValid = pristine.validate();
         console.log(formValid);
         if(formValid) {

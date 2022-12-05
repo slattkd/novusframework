@@ -1,7 +1,7 @@
 <?php
 
 //not ready for primtime, sending to curretn 5gmale index page
-header('Location: https://totalbrainboost.com/');
+header('Location: https://totalbrainboost.com/wsl/energy');
 exit;
 
 
