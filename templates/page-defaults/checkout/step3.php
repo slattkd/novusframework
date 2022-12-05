@@ -165,6 +165,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
       <input type="hidden" name="shippingState" id="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>">
       <input type="hidden" name="shippingCountry" id="shippingCountry" value="<?php echo @$_SESSION["shippingCountry"]; ?>">
+      <input type="hidden" name="shippingId" id="shippingCountry" value="<?php echo @$_SESSION["shippingId"]; ?>">
       <input type="hidden" name="shippingZip" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
 
 

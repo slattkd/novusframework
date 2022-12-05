@@ -42,6 +42,7 @@ $resultsArray = print_r($results, true);
 $logger->info('Thank You Receipt: ' . $resultsArray);
 $products = $results['data'];
 
+
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
 $mailer = 0;
@@ -312,7 +313,7 @@ $firedl = 0;
                     <div class="text">Shipping</div>
                     <!-- number_format((float)$grand_total, 2, '.', '') -->
                     <!-- money_format('%i', $grand_total) -->
-                    <div class="price text-right">$ <?php echo number_format((float)$shippingTotal1, 2, '.', ''); ?></div>
+                    <div class="price text-right">$ <?php echo number_format($info['shipping_amount'], 2); ?></div>
                 </div>
                 <div class="flex justify-between px-3 py-2">
                     <div class="text">Sales Tax</div>
@@ -362,103 +363,7 @@ $firedl = 0;
 ?>
 
     <script>
-        const prod1 = document.getElementById("prod1-btn");
-		const prod2 = document.getElementById("prod2-btn");
-		const prod3 = document.getElementById("prod3-btn");
-
-		const spin1 = document.querySelector(".spinner1");
-		const spin2 = document.querySelector(".spinner2");
-		const spin3 = document.querySelector(".spinner3");
-
-		const ty1 = document.querySelector(".ty1");
-		const ty2 = document.querySelector(".ty2");
-		const ty3 = document.querySelector(".ty3");
-
-		prod1.addEventListener("click", function(){
-
-			display(spin1, true);
-			display(prod1, false);
-            <?php if(isset($_SESSION['declineup'])){ ?>
-				display(spin1, false);
-				display(prod1, true);
-				window.modalHandler('declineModal', true)
-            <?php } else { ?>
-				fetch('//<?= $_SERVER["HTTP_HOST"];?>/process-up.php?pid=815&buy=1&json=1')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					display(spin1, false);
-					display(ty1, true);
-					sessionStorage.setItem("addproduct1", "yes");
-                    // location.reload();
-                    showOrderMessage();
-				});
-			<?php } ?>
-		});
-		prod2.addEventListener("click", function(){
-
-			display(spin2, true);
-			display(prod2, false);
-			<?php if(isset($_SESSION['declineup'])){ ?>
-				display(spin2, false);
-
-				display(prod2, true);
-				window.modalHandler('declineModal', true)
-            <?php } else { ?>
-				fetch('//<?= $_SERVER["HTTP_HOST"];?>/process-up.php?pid=817&buy=1&json=1')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					display(spin2, false);
-					display(ty2, true);
-					sessionStorage.setItem("addproduct2", "yes");
-                    // location.reload();
-                    showOrderMessage();
-				});
-			<?php } ?>
-		});
-		prod3.addEventListener("click", function(){
-
-			display(spin3, true);
-			display(prod3, false);
-			<?php if(isset($_SESSION['declineup'])){ ?>
-				display(spin3, false);
-				display(prod3, true);
-				window.modalHandler('declineModal', true)
-			<?php } else { ?>
-				fetch('//<?= $_SERVER["HTTP_HOST"];?>/process-up.php?pid=818&buy=1&json=1')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					display(spin3, false);
-					display(ty3, true);
-					sessionStorage.setItem("addproduct3", "yes");
-                    // location.reload();
-                    showOrderMessage();
-				});
-			<?php } ?>
-		});
-
-        function showOrderMessage() {
-            if(sessionStorage.getItem("addproduct1") === 'yes') {
-                display(prod1, false);
-                display(ty1, true);
-            }
-
-            if(sessionStorage.getItem("addproduct2") === 'yes') {
-                display(prod2, false);
-                display(ty2, true);
-            }
-
-            if(sessionStorage.getItem("addproduct3") === 'yes') {
-                display(prod3, false);
-                display(ty3, true);
-            }
-        }
-
+        
 
 		// hide or show content with fade in out
 		function display(element, show) {
