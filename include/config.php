@@ -68,7 +68,7 @@ $site['stickyUrl']  = 'gdc.sticky.io';
 
 $site['logo'] = '/images/rp-logo-wide.png';
 $site['imgpath'] = '//s3.amazonaws.com/5gmale/';
-$site['contactlink'] = 'mailto:help@5gmale.com';
+$site['contactlink'] = 'mailto:support@revivalpoint.com';
 
 $site['orderComplete'] = 'thank-you';
 
@@ -86,7 +86,7 @@ $limelight_api_instance     = 'gdc.sticky.io';
 */
 
 // Company Variables
-$company['name'] = 'Total Brain Boost LLC';
+$company['name'] = 'Revival Point LLC';
 $company['billedAs'] = 'Total Brain Boost';
 $company['featuredProduct'] = 'Total Brain Boost';
 $company['email'] = 'support@revivalpoint.com';

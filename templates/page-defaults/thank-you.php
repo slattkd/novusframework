@@ -323,9 +323,6 @@ $firedl = 0;
                     <div class="price text-right ext-xl font-semibold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
                 </div>
 
-                <!-- <div class="w-full py-2 text-right hover:text-red-700" style="color: #e44848;"><a href="http://members.supernaturalman.com/login" target="_blank">Click Here to Access Your Bonuses In Our Member’s Area</a></div> -->
-                <div class="w-full pb-2 text-right">Username:  <?php echo $_SESSION['email']; ?></div>
-
                 <!-- <div class="flex justify-center py-7 text-3xl text-red-700 text-center font-semibold hidden">
 				<h2>"Last Chance! Add These Recommended Products For Free Shipping!"</h2>
 				</div> -->
@@ -344,7 +341,7 @@ $firedl = 0;
         <div class="flex flex-wrap justify-center md:justify-between items-center mt-3">
             <div class="w-full md:w-auto text-center">
                 <span class="question text-sm" aria-hidden="true"></span>
-                Need help? <a class="clickable underline" href="mailto:support@5gmale.com" target="_blank">Contact us</a>
+                Need help? <a class="clickable underline" href="<?php echo ($site['contactlink'])?>" target="_blank">Contact us</a>
             </div>
             <div class="flex">
                   <?php legalLinks("includes/legalLinks");?>
