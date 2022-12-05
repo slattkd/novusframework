@@ -68,7 +68,7 @@ $site['stickyUrl']  = 'gdc.sticky.io';
 
 $site['logo'] = '/images/rp-logo-wide.png';
 $site['imgpath'] = '//s3.amazonaws.com/5gmale/';
-$site['contactlink'] = 'mailto:help@5gmale.com';
+$site['contactlink'] = 'mailto:support@revivalpoint.com';
 
 $site['orderComplete'] = 'thank-you';
 
