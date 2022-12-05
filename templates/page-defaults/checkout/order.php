@@ -362,10 +362,10 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                     </div>
                     <div class="flex flex-col -mt-2 ml-2">
-                        <div class="vip2 mb-0 hidden md:block">Get a Free Bottle of Vitamin D3, an Extra 10% OFF, &amp; Free Newsletter</div>
+                        <div class="vip2 mb-0 hidden md:block">Get an Extra 10% OFF, &amp; Free Newsletter</div>
                         <div class="vip2 mb-0 text-red-700 font-semibold md:hidden">Special Offer - Get an Extra 10% OFF Your Order</div>
                         <p class="click-offer mb-3 hidden md:block">Click the checkbox to get the offer and sign up for easy auto shipments.</p>
-                        
+
                     </div>
                 </div>
                 <p class="click-offer mb-3 md:hidden">Tap here and get an extra 10% off your order with easy monthly refills and free shipping – pause or cancel anytime!</p>
@@ -816,7 +816,7 @@ if (!isset($_SESSION['vip_discount'])) {
             } else {
                 console.log('do nothing');
             }
-            
+
 
         }
 
@@ -825,7 +825,7 @@ if (!isset($_SESSION['vip_discount'])) {
                 form.submit();
             }
         }
-        
+
 
     </script>
 

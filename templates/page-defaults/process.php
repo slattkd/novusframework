@@ -8,11 +8,15 @@ unset($_SESSION['llerrorcode']);
 unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 
-$postArray = print_r($_POST, true);
+//Remove PII from known array values before writing to log
+
+$postArray = $_POST;
+$postArray['creditCardNumber'] = 'XXXX-XXXX-XXXX-' . substr($postArray['creditCardNumber'], -4);
+$postArray['cvv'] = 'XXX';
+$postArray = print_r($postArray, true);
 $logger->info('Posted Values: ' . $postArray);
 
 $sticky = new sticky();
-
 
 //Add Timer Function, output on system.log
 $response = $sticky->newOrder($_POST);
