@@ -3,6 +3,7 @@
 error_reporting(0);
 
 $nextlink = '/checkout/step3' . $querystring;
+$_SESSION['pageType'] = 'order';
 
 // required PID from post
 if ($_POST) {

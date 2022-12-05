@@ -2,17 +2,15 @@
 
 // Standard one time payment
 $product1 = $products['products']['1083'];
-
 $product2 = $products['products']['1084'];
-
 $product3 = $products['products']['1085'];
 
 // VIP autopay
 $product4 = $products['products']['1086'];
-
 $product5 = $products['products']['1088'];
-
 $product6 = $products['products']['1090'];
+
+$_SESSION['pageType'] = 'order';
 
 function savedAmt($retail, $price)
 {

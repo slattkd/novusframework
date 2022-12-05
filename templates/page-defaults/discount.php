@@ -79,7 +79,7 @@ $up_product = $products['products'][$up_pid];
 			text-align: center;
 			font-size: 1.1em;
 			font-weight: 200;
-			line-height: 1.4;
+			line-height: 1.2;
 		}
 
 		.skip-wrap #submitskip {
@@ -100,11 +100,12 @@ $up_product = $products['products'][$up_pid];
 			letter-spacing: .5px;
 			font-family: 'Open Sans', sans-serif;
 		}
+
   </style>
 
 </head>
 <body>
-<div class="container container-vsl mx-auto py-5">
+<div class="container container-vsl mx-auto py-5 p-2">
 	<div class="">
 
 			<h1 class="text-2xl md:text-3xl font-semibold text-center py-4">Before You Continue&hellip;</h1>
@@ -119,8 +120,8 @@ $up_product = $products['products'][$up_pid];
 						<input type="hidden" id="product_id" name="product_id" value="<?= $up_product['product_id']; ?>">
 						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 py-2 clickable">
 					</form>
-				<p>Recommended For All New Customers<br><b>(Limited Time Only)</b></p>
-				<p class="text-gray-500 pb-0 mt-4">No Hassle Guarantee - You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</p>
+				<p>Recommended For All New&nbsp;Customers<br><i>(Limited Time Only)</i></p>
+				<p class="text-gray-500 pb-0 mt-4 text-sm">No Hassle Guarantee - You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</p>
 			</div>
 
 			<div class="skip-wrap">
@@ -131,7 +132,7 @@ $up_product = $products['products'][$up_pid];
           <input type="hidden" id="product_id" name="product_id" value="<?= $current_product['product_id']; ?>">
 					<input type="submit" id="submitskip" name="submit" class="clickable text-xl md:text-2xl text-gray-400 px-4" value="Skip This - I do NOT want 10% OFF my order" style="white-space: break-spaces">
 				</form>
-				<p class="font-normal">(Note, once you skip this offer, you cannot request this discount again)</p>
+				<p class="font-normal text-sm">(Note, once you skip this offer, you cannot <br>request this discount again)</p>
 			</div>
 
 	</div>
