@@ -29,45 +29,6 @@ $current_product = $products['products'][$pid];
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
 
-.protection-header h5 span {
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #006894;
-}
-
-.protection-header h5:after, .protection-header h5:before {
-    height: 1px;
-    content: " ";
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
-    background-color: #006894;
-}
-
-.bull.blue-q div {
-    background-image: url("//<?= $_SERVER['HTTP_HOST'];?>/images/shield.png");
-    background-size: 22px auto;
-    background-position: left 2px;
-    padding-left: 36px;
-    background-repeat: no-repeat;
-}
-
-.bull.blue-q div p {
-    margin-top: 0;
-    line-height: 1.4;
-    font-size: 17px
-}
-
-.bull.blue-q div h6 {
-    text-align: left;
-    font-size: 18px;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
   </style>
 </head>
 
@@ -95,37 +56,37 @@ $current_product = $products['products'][$pid];
     <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 
 						<div class="flex flex-wrap items-center mb-4">
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>">
               </div>
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>">
               </div>
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                 </div>
 								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION['billingAddress2']; ?>">
               </div>
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>">
               </div>
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>">
               </div>
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                 </div>
@@ -137,7 +98,7 @@ $current_product = $products['products'][$pid];
                     <?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/html/billing-countries.php'); ?>
                 </select>
               </div>
-              <div class="input w-full mb-3">
+              <div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                 </div>
@@ -164,27 +125,27 @@ $current_product = $products['products'][$pid];
                 <div class="flex justify-center text-center mb-4">
                   <h3 class="text-xl font-semibold">Enter Your Shipping Information</h3>
                 </div>
-                  <div class="input w-full mb-3">
+                  <div class="input w-full mb-3 md:px-4">
                     <div class="w-full w-1/3">
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
 
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
-                  <div class="input w-full mb-3">
+                  <div class="input w-full mb-3 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                       </div>
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                   </div>
-                  <div class="input w-full mb-3">
+                  <div class="input w-full mb-3 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
 
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
-                  <div class="input w-full mb-3">
+                  <div class="input w-full mb-3 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                       </div>
@@ -196,7 +157,7 @@ $current_product = $products['products'][$pid];
                           </select>
 
                   </div>
-                  <div class="input w-full mb-3">
+                  <div class="input w-full mb-3 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                       </div>
@@ -210,7 +171,7 @@ $current_product = $products['products'][$pid];
                           </select>
 
                   </div>
-                  <div class="input w-full mb-3">
+                  <div class="input w-full mb-3 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                       </div>
@@ -301,6 +262,7 @@ $current_product = $products['products'][$pid];
 
     </div>
   </div>
+
 
   <?php template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {

@@ -35,48 +35,8 @@ $current_product = $products['products'][$pid];
   <!-- CSS -->
   <?php template("includes/header"); ?>
         <title>Total Brain boost - Secure Order</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type">  <style type="text/css">
-
-
-.protection-header h5 span {
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #006894;
-}
-
-.protection-header h5:after, .protection-header h5:before {
-    height: 1px;
-    content: " ";
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
-    background-color: #006894;
-}
-
-.bull.blue-q div {
-    background-image: url("//<?= $_SERVER['HTTP_HOST'];?>/images/shield.png");
-    background-size: 22px auto;
-    background-position: left 2px;
-    padding-left: 36px;
-    background-repeat: no-repeat;
-}
-
-.bull.blue-q div p {
-    margin-top: 0;
-    line-height: 1.4;
-    font-size: 17px
-}
-
-.bull.blue-q div h6 {
-    text-align: left;
-    font-size: 18px;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <style type="text/css">
   </style>
 </head>
 
@@ -115,7 +75,7 @@ $current_product = $products['products'][$pid];
     <form id="step-3" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST'];?>/process.php" style="max-width: 100%;">
 						
 						<div class="flex flex-wrap items-center mb-4">
-							<div class="input w-full mb-3">
+							<div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
                 </div>
@@ -162,7 +122,7 @@ $current_product = $products['products'][$pid];
                       </select>
                   </div>
               </div>
-							<div class="input w-full mb-3">
+							<div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV: <a class="text-xs no-underline" href="//<?= $_SERVER['HTTP_HOST'];?>/card-help" target="_blank">what's this?</a> </label>
                 </div>

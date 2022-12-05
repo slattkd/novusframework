@@ -23,45 +23,7 @@ $current_product = $products['products'][$pid];
   <title>Total Brain boost - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
-    .protection-header h5 span {
-      -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-      flex: 0 1 auto;
-      padding-left: 20px;
-      padding-right: 20px;
-      color: #006894;
-    }
 
-    .protection-header h5:after,
-    .protection-header h5:before {
-      height: 1px;
-      content: " ";
-      -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
-      background-color: #006894;
-    }
-
-    .bull.blue-q div {
-      background-image: url("//<?= $_SERVER['HTTP_HOST']; ?>/images/shield.png");
-      background-size: 22px auto;
-      background-position: left 2px;
-      padding-left: 36px;
-      background-repeat: no-repeat;
-    }
-
-    .bull.blue-q div p {
-      margin-top: 0;
-      line-height: 1.4;
-      font-size: 17px
-    }
-
-    .bull.blue-q div h6 {
-      text-align: left;
-      font-size: 18px;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
   </style>
 </head>
 
@@ -89,19 +51,19 @@ $current_product = $products['products'][$pid];
         <form id="step-1" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 
           <div class="flex flex-wrap items-center mb-4">
-            <div class="input w-full mb-3">
+            <div class="input w-full mb-3 md:px-4">
               <div class="w-full w-1/3">
                 <label for="email" class="text-sm text-gray-600 hidden md:block">Email:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="<?php echo @$_SESSION['email']; ?>" required>
             </div>
-            <div class="input w-full mb-3">
+            <div class="input w-full mb-3 md:px-4">
               <div class="w-full w-1/3">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
-            <div class="input w-full mb-3">
+            <div class="input w-full mb-3 md:px-4">
               <div class="w-full w-1/3">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>
@@ -186,6 +148,7 @@ $current_product = $products['products'][$pid];
 
     </div>
   </div>
+
 
   <?php template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {

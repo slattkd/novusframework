@@ -19,8 +19,8 @@
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
-  color: #444;
-  background: #c3cad1;
+  color: #979797;
+  background: #ededed;
   width: 33.3%;
   text-align: center;
   justify-content: center;
@@ -41,7 +41,7 @@
   bottom: 0;
   width: 0;
   border-style: solid;
-  border-width: 1.1rem 0.75rem;
+  border-width: 1rem 0.75rem;
 }
 @media screen and (min-width: 769px) {
   .step::before,
@@ -51,18 +51,18 @@
     bottom: 0;
     width: 0;
     border-style: solid;
-    border-width: 1.5rem 0.75rem;
+    border-width: 1.4rem 0.75rem;
   }
 }
 .step:not(:last-child)::after {
   content: '';
   left: 100%;
-  border-color: transparent transparent transparent #c3cad1;
+  border-color: transparent transparent transparent #ededed;
 }
 .step:not(:first-child)::before {
   content: '';
   right: 100%;
-  border-color: #c3cad1 #c3cad1 #c3cad1 transparent;
+  border-color: #ededed #ededed #ededed transparent;
 }
 .step:first-child {
   border-radius: 8px 0 0 8px;
@@ -88,8 +88,8 @@
 }
 
 </style>
-  <ul class="steps mx-auto">
-    <li class="step <?php if ($current_step >= 1) echo 'on'; ?>">Step 1<span class="hidden md:block">: Contact Information</span></li>
-    <li class="step <?php if ($current_step >= 2) echo 'on'; ?>">Step 2<span class="hidden md:block">: Shipping Information</span></li>
+  <ul class="steps mx-auto text-sm text-gray-500">
+    <li class="step <?php if ($current_step == 1) echo 'on'; ?>">Step 1<span class="hidden md:block">: Contact Information</span></li>
+    <li class="step <?php if ($current_step == 2) echo 'on'; ?>">Step 2<span class="hidden md:block">: Shipping Information</span></li>
     <li class="step <?php if ($current_step == 3) echo 'on'; ?>">Step 3<span class="hidden md:block">: Complete Order</span></li>
   </ul>

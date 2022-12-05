@@ -15,7 +15,7 @@
       <div class="flex flex-col items-center">
         <div class="flex justify-center w-full md:w-auto mb-5">
         <!-- /images/rp-logo.png -->
-          <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px">
+          <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="width: 90%;max-width:500px">
         </div>
         <div class="text-sm text-center font-gray-600 mb-3">
           © <?= $company['name']?> 2022. All Rights Reserved

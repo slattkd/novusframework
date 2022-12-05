@@ -87,7 +87,6 @@ if (!isset($_SESSION['vip_discount'])) {
         .vipwrap label {
             font-weight: normal !important;
             font-size: 15px;
-            padding: 20px;
             cursor: pointer;
         }
 
@@ -103,10 +102,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
         .vip2 {
             color: #c10e0e;
-            font-size: 17px;
-            font-weight: 600;
             line-height: 1.3;
-            letter-spacing: 1px;
         }
 
         .checked {
@@ -139,7 +135,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
         .vip-pop {
             /* display: none; */
-            min-width: 350px;
+            min-width: 300px;
             max-width: 100%;
             width: 80ch;
             border: 1px solid #777;
@@ -155,7 +151,6 @@ if (!isset($_SESSION['vip_discount'])) {
             visibility: visible;
             padding: 1rem !important;
             margin-top: 1rem;
-            margin-bottom: 2rem;
             transform: translateY(0px);
             pointer-events: none;
         }
@@ -348,12 +343,12 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
 
-        <div class="flex flex-col items-center justify-center text-center mb-4 md:hidden">
-            <div class="font-bold text-3xl text-red-700">Choose Your Discount</div>
-            <div class="text-lg">(The More You Buy, The More You Save!)</div>
+        <div class="flex flex-col items-center justify-center text-center mb-4 md:hidden" style="max-width: 100vw;">
+            <div class="font-bold text-4xl text-red-700 condensed">Choose Your Discount:</div>
+            <div class="font-semibold">(The More You Buy, The More You Save!)</div>
         </div>
 
-        <div class="vipwrap bg-yellow-100 md:bg-transparent md:px-5">
+        <div class="vipwrap bg-yellow-100 md:bg-transparent px-0 md:px-5 md:pt-5 rounded-md md:rounded-none">
             <div class="float-text hidden md:block">LIMITED TIME OFFER!</div>
             <label for="vip" class="flex flex-col p-3 pb-2 w-full">
                 <div class="flex items-start py-1 md:py-3">
@@ -362,18 +357,21 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                     </div>
                     <div class="flex flex-col -mt-2 ml-2">
-                        <div class="vip2 mb-0 hidden md:block">Get a Free Bottle of Vitamin D3, an Extra 10% OFF, &amp; Free Newsletter</div>
-                        <div class="vip2 mb-0 text-red-700 font-semibold md:hidden">Special Offer - Get an Extra 10% OFF Your Order</div>
+                        <div class="vip2 mb-0 text-xl hidden md:block">Get an Extra 10% OFF, &amp; Free Newsletter</div>
+                        <div class="vip2 mb-0 text-red-700 text-lg font-bold md:hidden uppercase">Special Coupon Offer <br> <spa class="text-black text-sm">Get an Extra 10% OFF Your Order</span></div>
                         <p class="click-offer mb-3 hidden md:block">Click the checkbox to get the offer and sign up for easy auto shipments.</p>
                         
                     </div>
                 </div>
                 <p class="click-offer mb-3 md:hidden">Tap here and get an extra 10% off your order with easy monthly refills and free shipping – pause or cancel anytime!</p>
-                <p class="legal"><em>Hassle-Free Guarantee: You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</em></p>
+
             </label>
 
         </div><!-- end .vipwrap -->
-        <div class="pop-container">
+        <div class="flex my-3">
+            <p class="legal"><em>Hassle-Free Guarantee: You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</em></p>
+        </div>
+        <div class="pop-container flex justify-center mx-8 md:mx-0">
             <div class="vip-pop">
                 <p>By checking the sign up box, you agree to receive a shipment of <?= $company['featuredProduct']; ?> each month. You are authorizing us to charge your credit card monthly, matching the package you have selected. You can stop shipments at any time by calling our customer support team at 1-800-253-8173. Agents are standing by 7 days a week, 24 hours per day, to assist you.</p>
             </div>
@@ -387,9 +385,10 @@ if (!isset($_SESSION['vip_discount'])) {
             <!-- single card 1 -->
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col px-5 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue">
-                            DOCTOR RECOMMENDED
+                    <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
+                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-4 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                            <div>DOCTOR RECOMMENDED</div>
+                            <div class="md:hidden text-sm">Take 2-3X The Dose To Boost Results…</div>
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
 
@@ -411,12 +410,12 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product2['product_retail'], 2); ?></span>
                             </div>
-                            <div class="">
+                            <div class="hidden md:block">
                                 You Pay Just <span id="main-price2">$<?= number_format($product2['product_price'],2); ?></span>
                             </div>
-                            <!-- <div class="md:hidden">
-                            Just <span id="main-price2"><?= monthAmt($product2['product_price'], $product2['product_month']); ?> per month!</span>
-                            </div> -->
+                            <div class="md:hidden">
+                            <span id="main-price2">Just $<?= monthAmt($product2['product_price'], $product2['product_month']); ?> per month!</span>
+                            </div>
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
@@ -439,10 +438,10 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- single card 2 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product3['product_id']; ?>, <?= savedAmt($product3['product_retail'], $product3['product_price']); ?>, <?= percentOff($product3['product_price'], $product3['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product3['product_id']; ?>, <?= savedAmt($product3['product_retail'], $product3['product_price']); ?>, <?= percentOff($product3['product_price'], $product3['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
+                    <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
+                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl md:text-2xl ls10 -mx-4 md:mx-0 p-1 text-white md:text-rpblue">
                             BIGGEST DISCOUNT
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -493,12 +492,10 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- single card 3 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product1['product_id']; ?>, <?= savedAmt($product1['product_retail'], $product1['product_price']); ?>, <?= percentOff($product1['product_price'], $product1['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product1['product_id']; ?>, <?= savedAmt($product1['product_retail'], $product1['product_price']); ?>, <?= percentOff($product1['product_price'], $product1['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 hid -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue hidden">
-                            DOCTOR RECOMMENDED
-                        </div>
+                    <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
+
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
@@ -552,9 +549,10 @@ if (!isset($_SESSION['vip_discount'])) {
             <!-- auto card 1 -->
             <div class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col px-5 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue">
-                            DOCTOR RECOMMENDED
+                    <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
+                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                            <div>DOCTOR RECOMMENDED</div>
+                            <div class="md:hidden text-sm">Take 2-3X The Dose To Boost Results…</div>
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
 
@@ -609,10 +607,10 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- auto card 2 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product6['product_id']; ?>, <?= savedAmt($product6['product_retail'], $product6['product_price']); ?>, <?= percentOff($product6['product_price'], $product6['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product6['product_id']; ?>, <?= savedAmt($product6['product_retail'], $product6['product_price']); ?>, <?= percentOff($product6['product_price'], $product6['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
+                    <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
+                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
                             BIGGEST DISCOUNT
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
@@ -668,12 +666,9 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- auto card 3 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product4['product_id']; ?>, <?= savedAmt($product4['product_retail'], $product4['product_price']); ?>, <?= percentOff($product4['product_price'], $product4['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product4['product_id']; ?>, <?= savedAmt($product4['product_retail'], $product4['product_price']); ?>, <?= percentOff($product4['product_price'], $product4['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue hidden">
-                            DOCTOR RECOMMENDED
-                        </div>
+                    <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
@@ -727,14 +722,89 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
         </div>
-        <div class="flex justify-center md:hidden mt-2">
-            <h3 class="text-red-700 font-semibold text-2xl md:text-3xl md:hidden">You Save <span id="save-price-final">...</span></h3>
-        </div>
-        <div class="flex justify-center md:hidden mb-2">
-            <button id="btn-mobile" class="cta-button text-3xl clickable hidden md:block" onclick="submitMobileProduct()"><em>Secure My Order</em></button>
+
+        <div class="flex flex-col bg-white -mx-4 border-t border-b pt-3 md:hidden">
+            <div class="flex justify-center mt-2">
+                <h3 class="text-red-700 font-semibold text-2xl md:text-3xl md:hidden">You Save <span id="save-price-final">...</span></h3>
+            </div>
+            <div class="flex justify-center mb-2">
+                <button id="btn-mobile" class="cta-button text-3xl clickable hidden md:block" onclick="submitMobileProduct()" style="margin-top: 0.5rem"><em>Secure My Order</em></button>
+            </div>
         </div>
 
+        <div class="flex flex-col items-center justify-center w-full py-3 mt-3 md:hidden">
+            <div class="flex justify-center text-center py-3">
+				Certified As Secure & Trustworthy By The Leading Companies:
+            </div>
+            <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons-new.png" style="max-width: 600px;mix-blend-mode: multiply;">
+        </div>
 
+    </div>
+
+    <div class="flex flex-col py-4 border-t border-b items-center bg-white" style="margin: 0 -0.5rem;padding: 2.5rem 1rem;">
+            <div class="container container-sm flex">
+                <div class="gbox flex flex-col w-full md:w-3/5">
+                    <div class="gseal fs-2" id="scroll-trigger">
+                        <img src="https://s3.amazonaws.com/5gm/checkout/90-day-icon.gif" class="seal">
+                    </div>
+                    <h4 class="text-center text-lg">Your Purchase Today Is Fully Protected By Our</h4>
+                    <h1 class="text-center text-4xl font-bold text-rpblue condensed">90-DAY MONEY BACK GUARANTEE</h1>
+                    <p class="my-4">We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for 90 days – that’s <strong>THREE FULL MONTHS</strong> – and make sure you love&nbsp;it. </p>
+                    <p>Any time you want, you can call support at <strong>800-253-8173</strong> or email <strong>support@floraspring.com,</strong> 24 hours a day, 7 days a week to request a refund, with no questions asked and no hassles!
+                    </p>
+                    <div class="flex flex-col md:flex-row items-center justify-center mt-5">
+                        <div class="flex justify-center">
+                            <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/robertallen.png">
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-sm">Robert Allen, Head of Research <br> at <span class="nw-all">REVIVAL POINT LLC</span></p>
+                        </div>
+                    </div>
+                
+                
+                </div>
+                
+                <div class="flex flex-col px-8 py-4 buyer-protection hidden w-2/5 md:flex bg-gray-100 border border-l">
+                    <h5 class="text-rpblue text-2xl font-semibold text-center uppercase mb-4">Buyer Protection</h5>
+                
+                    <div class="bull blue-q pad20">
+                        <div class="mb-5">
+                            <h6><span class="font-semibold">Fast Shipping</span></h6>
+                            <p>Your order ships ASAP with tracking info</p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h6 class="font-semibold">24/7 Live Phone Help
+                        </h6>
+                            <p>Talk to a real, live customer support specialist at any time</p>
+                        </div>
+                
+                        <div class="mb-5">
+                            <h6 class="font-semibold">Credit Card charged as "REVIVAL POINT"
+                        </h6>
+                            <p>Know who’s charging your&nbsp;card</p>
+                        </div>
+                        <div class="mb-5">
+                            <h6 class="font-semibold">Privacy Guaranteed
+                        </h6>
+                            <p>Your information is safe with us and is never shared</p>
+                        </div>
+                        <div class="mb-5">
+                            <h6 class="font-semibold">Lowest Price Guaranteed
+                        </h6>
+                            <p>You will never see this at a lower price, guaranteed.</p>
+                        </div>
+                
+                    </div>
+                
+                </div>
+            </div>
+            <h2 class="text-rpblue font-semibold text-2xl text-center mt-3 md:hidden">3-Day DHL Guaranteed <br> for USA Orders</h2>
+            <h5 class="text-rpblue text-center md:hidden" >(6-8 Days For All Other Countries)</h5>
+    </div>
+
+    <div class="flex container container-vsl py-3 justify-center">
+    <button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><em>Secure My Order</em></button>
     </div>
 
     <!-- hidden inputs -->
@@ -762,9 +832,15 @@ if (!isset($_SESSION['vip_discount'])) {
         vipInput.addEventListener('change', () => {
             if (vipInput.checked) {
                 check.classList.remove('hidden');
+                if (isMobile) {
+                    pop.classList.add('is-open');
+                }
                 showOffers(true);
             } else {
                 check.classList.add('hidden');
+                if (isMobile) {
+                    pop.classList.remove('is-open');
+                }
                 showOffers(false);
             }
         })

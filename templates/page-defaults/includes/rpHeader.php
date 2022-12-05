@@ -23,8 +23,8 @@
 <section>
     <div class=" py-0 md:py-1 border-b bg-white">
       <div class="container container-vsl mx-auto flex justify-center md:justify-between flex-wrap w-full">
-      <div class="flex justify-center w-full md:w-auto" style="margin-left: -15px;">
-        <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:250px">
+      <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0" style="margin-left: -15px;">
+        <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px;object-fit:contain;">
       </div>
       <div class="flex justify-center items-center w-full md:w-auto hidden md:flex">
         <div class="">
