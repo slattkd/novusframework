@@ -47,7 +47,7 @@ $site['freeship'] = 5;
 $site['defaultAffId'] = 2126;
 
 // Tracking
-$site['GTMContainer'] = 'GTM-T7RRXPJ'; //TODO: update to total brain boost id
+$site['GTMContainer'] = 'GTM-WDLKMTB'; //TODO: update to total brain boost id
 $site['googleSiteVerification'] = 'MtiLf9dEfLrFvmiovviCmLHIx4Cc0uD2RGsA72oC29E';
 
 // This URL Key is used to decode the obfuscated URL
