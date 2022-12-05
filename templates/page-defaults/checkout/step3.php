@@ -20,6 +20,7 @@ if ($_POST) {
   $_SESSION["billingState"] = $_POST['billingState'];
   $_SESSION["billingZip"] = $_POST['billingZip'];
   $_SESSION["shippingId"] = $_POST['shippingId'];
+  $_SESSION["joinTextAlerts"] = $_POST['joinTextAlerts'];
 }
 $pid = $_SESSION['pid'];
 
@@ -73,7 +74,7 @@ $current_product = $products['products'][$pid];
 
   <div class="flex">
     <form id="step-3" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST'];?>/process.php" style="max-width: 100%;">
-						
+
 						<div class="flex flex-wrap items-center mb-4">
 							<div class="input w-full mb-3 md:px-4">
                 <div class="w-full w-1/3">

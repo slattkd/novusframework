@@ -2,17 +2,15 @@
 
 // Standard one time payment
 $product1 = $products['products']['1083'];
-
 $product2 = $products['products']['1084'];
-
 $product3 = $products['products']['1085'];
 
 // VIP autopay
 $product4 = $products['products']['1086'];
-
 $product5 = $products['products']['1088'];
-
 $product6 = $products['products']['1090'];
+
+$_SESSION['pageType'] = 'order';
 
 function savedAmt($retail, $price)
 {
@@ -358,9 +356,9 @@ if (!isset($_SESSION['vip_discount'])) {
                     </div>
                     <div class="flex flex-col -mt-2 ml-2">
                         <div class="vip2 mb-0 text-xl hidden md:block">Get an Extra 10% OFF, &amp; Free Newsletter</div>
-                        <div class="vip2 mb-0 text-red-700 text-lg font-bold md:hidden uppercase">Special Coupon Offer <br> <spa class="text-black text-sm">Get an Extra 10% OFF Your Order</span></div>
+                        <div class="vip2 mb-0 text-red-700 text-lg font-bold md:hidden uppercase">Special Coupon Offer <br> <span class="text-black text-sm">Get an Extra 10% OFF Your Order</span></div>
                         <p class="click-offer mb-3 hidden md:block">Click the checkbox to get the offer and sign up for easy auto shipments.</p>
-                        
+
                     </div>
                 </div>
                 <p class="click-offer mb-3 md:hidden">Tap here and get an extra 10% off your order with easy monthly refills and free shipping – pause or cancel anytime!</p>
@@ -892,7 +890,7 @@ if (!isset($_SESSION['vip_discount'])) {
             } else {
                 console.log('do nothing');
             }
-            
+
 
         }
 
@@ -901,7 +899,7 @@ if (!isset($_SESSION['vip_discount'])) {
                 form.submit();
             }
         }
-        
+
 
     </script>
 

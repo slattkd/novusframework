@@ -10,15 +10,16 @@
     }
 </style>
 
+<?php if (@$_SESSION['pageType'] != 'wsl') { ?>
 <section class="headstrip">
   <div class="flex flex-wrap uppercase text-center">
     <div class="mx-auto">
       <div class="hidden md:block"><strong class="black"><span class="lock-icon mr-2"><i class="fas fa-lock"></i></span>  SECURE</strong>&nbsp;|&nbsp;You Are On A 256-Bit Secure Order Page</div>
       <div class="md:hidden"><strong class="black"><i class="fas fa-lock mr-2"></i> SECURE</strong>&nbsp;|&nbsp;256-Bit Secure Order</div>
     </div>
-       
   </div>
 </section>
+<?php } ?>
 
 <section>
     <div class=" py-0 md:py-1 border-b bg-white">

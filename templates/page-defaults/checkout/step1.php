@@ -2,6 +2,7 @@
 
 $nextlink = '/checkout/step2' . $querystring;
 $current_step = 1;
+$_SESSION['pageType'] = 'order';
 
 // required PID from post
 if ($_POST) {

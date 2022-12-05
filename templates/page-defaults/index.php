@@ -1,8 +1,13 @@
 <?php
 
-//not ready for primtime, sending to curretn 5gmale index page
-header('Location: https://totalbrainboost.com/wsl/energy');
-exit;
+//not ready for primetime, sending to 1 of 2 wsl randomly
+if (mt_rand(0,1) == 0) {
+    header('Location: https://totalbrainboost.com/wsl/energy');
+    exit;
+} else {
+    header('Location: https://totalbrainboost.com/wsl/memory');
+    exit;
+}
 
 
 $_SESSION['o'] = $_GET['o'];
