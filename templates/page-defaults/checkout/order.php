@@ -257,10 +257,6 @@ if (!isset($_SESSION['vip_discount'])) {
 
         .bottle-img {
             max-width: 100%;
-            height: 95%;
-            width: auto;
-            margin-top: -10%;
-            object-fit: contain;
         }
 
         .strike:after {
@@ -275,6 +271,24 @@ if (!isset($_SESSION['vip_discount'])) {
             -ms-transform: rotate(-4deg);
             transform: rotate(-4deg);
         }
+
+
+        .wsl p, h1, h2 {
+          margin-bottom: 20px;
+        }
+
+        .wsl h1, .wsl h2 {
+          font-weight: 600;
+        }
+
+        .wsl h2 {
+          margin-top: 50px;
+        }
+
+        .wsl h1 {
+          line-height: 35px;
+        }
+
     </style>
 
 
@@ -299,17 +313,61 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
     </div> -->
-    <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-0">
+    <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-10 wsl">
+        <div>
+            <h1 class="text-3xl">Boost Memory, Focus & Mood With This Powerful 6-Part Formula</h1>
+            <div class="text-2xl text-gray-400 -mt-4">Guaranteed To Work — Or Your Money Back</div>
 
-        <div class="flex hidden md:flex">
-            <div class="w-1/4 hidden md:flex -mb-6">
-                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.png" class="mx-auto w-full bottle-img">
+            <p class="text-lg font-bold -mb-3 mt-5">Clinically proven to:</p>
+            <ul class="list-disc pl-8 -mb-3">
+                <li>Aid memory</li>
+                <li>Improve working memory and sustained attention in as little as 1 hour</li>
+                <li>Improved mood: less stressed, confused, angry, or upset</li>
+                <li>Enhanced brain functioning and cognition</li>
+                <li>Featured on CBS, NBC, ABC, Fox, Reuters, WebMD, LA Times, & more.</li>
+            </ul>
+
+            <h2 class="text-2xl">The Difference? Our Ingredients.</h2>
+
+            <p>Revival Point™, uses the power of nature combined with cutting-edge science to boost energy, fitness, mental sharpness and overall health. That’s why we formulate with the help of leading MDs using the highest quality ingredients backed by strong, double-blind studies. Only these highly-vetting ingredients should be trusted and are most likely to be effective for you.</p>
+
+            <p>Total Brand Boost ingredients far exceed those of other brands. Find out why ours are superior:<p>
+
+            <h2 class="text-2xl">Clinically Studied Ingredients for Better Memory</h2>
+
+            <h3 class="text-xl">CurcuRouge® Bio-Optimized Curcumin </h3>
+            <p>Shown to be absorbed 93 times better by the body thanks to its unique “polymer matrix” technology, CurcuRouge® is able to cross the blood-brain barrier and deliver curcumin’s health-boosting directly to your brain to help fight memory loss, brain fog and depression.</p>
+
+            <h3 class="text-xl">Trans-Resveratrol</h3>
+            <p>A polyphenol found in Red Wine—boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
+
+            <h3 class="text-xl">Magnesium BisGlycinate </h3>
+            <p>Restores signaling speed for sharper thinking and faster memory recall. </p>
+
+            <h3 class="text-xl">Vitamins B12, D, and Folate </h3>
+            <p>Essential vitamin-complex for boosting energy metabolism and fighting cognitive decline.</p>
+
+            <h2 class="text-3xl">Better Memory... or Your Money Back</h2>
+            <div class="text-2xl text-gray-400 -mt-4">If You Don’t Love The Results, You Won’t Pay A Dime</div>
+        </div>
+
+        <div class="flex md:flex flex-col md:flex-row">
+            <div class="w-full md:w-1/4 md:flex display">
+                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png" class="mx-auto w-full bottle-img pr-4 max-h-36 mt-8 object-contain">
             </div>
             <div class="w-full md:w-3/4">
-                <div class="flex flex-wrap">
-                    <div class="flex w-full text-3xl font-semibold text-red-700 mb-8 text-center justify-center md:justify-start">
-                        Step 1: Get My Discount Below Now...
+                <div class="mt-6">
+                    <span class="font-bold">Total Brain Boost</span> comes with our 100% money-back guarantee, including shipping and tax, but we don't stop there…
+
+                    We are so confident in this product and the amazing results you will experience that we want it to be absolutely risk-free for you. If after 3 months you find yourself not completely satisfied, we'll give you your money back — no questions asked.
+
+                    There are absolutely no strings attached, no forms to fill out, and nothing to prove.
+
+                    <!--
+                    <div class="flex w-full text-4xl font-semibold mb-2 text-red-700 text-center justify-center md:justify-start">
+                        Better Memory... or Your Money Back
                     </div>
+                    <p class="text-2xl text-gray-400 mb-6">If You Don’t Love The Results, You Won’t Pay A Dime</p>
                     <div class="flex flex-col items-center md:items-start w-full md:w-1/2 mx-auto">
                         <div class="bull blue-">
                             <div class="mb-5">
@@ -330,15 +388,17 @@ if (!isset($_SESSION['vip_discount'])) {
                             </div>
                         </div>
                     </div>
+                    -->
                 </div>
-                <div class="flex justify-center items-center border-y-2 py-3 mt-8">
-                    <div class="mr-3">
-                        <img class="truck" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/icon-shipping-truck-green.png" style="width: 100px; height:auto;">
-                    </div>
-                    <p>Shipping Not Impacted By Supply Chain Issues! Ultra-fast delivery straight to your door.</p>
-                </div>
-
             </div>
+
+        </div>
+
+        <div class="flex justify-center items-center border-y-2 py-3 mt-8 mb-10">
+            <div class="mr-3">
+                <img class="truck max-h-8 object-contain text-right" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/icon-shipping-truck-green.png" style="width: 100px; height:auto;">
+            </div>
+            <p class="leading-6 pt-4">Shipping Not Impacted By Supply Chain Issues! Ultra-fast delivery straight to your door.</p>
         </div>
 
         <div class="flex flex-col items-center justify-center text-center mb-4 md:hidden" style="max-width: 100vw;">
@@ -391,7 +451,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
-                            <?= $product2['product_qty']; ?> Bottle Supply
+                            3 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -445,7 +505,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
-                            <?= $product3['product_qty']; ?> Bottle Supply
+                            6 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -497,7 +557,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
-                            <?= $product1['product_qty']; ?> Bottle Supply
+                            1 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -536,7 +596,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product1['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + $6.95 USA Shipping</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -555,7 +615,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
-                            <?= $product5['product_qty']; ?> Bottle Supply
+                            3 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -564,11 +624,6 @@ if (!isset($_SESSION['vip_discount'])) {
                             </div>
                             <?= $product5['product_qty']; ?> Bottles
                         </h1>
-
-                        <div class="limited-offer py-3 pt-0 hidden md:block">
-                            <span class="text-red-700 text-xl font-semibold">LIMITED TIME OFFER:</span>
-                            <p class="text-red-700 font-semibold">1 Free Bottle of Vitamin D3 with Purchase!</p>
-                        </div>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
@@ -670,7 +725,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
-                            <?= $product4['product_qty']; ?> Bottle Supply
+                            <?= $product4['product_qty']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -680,10 +735,7 @@ if (!isset($_SESSION['vip_discount'])) {
                             <?= $product4['product_qty']; ?> Bottles
                         </h1>
 
-                        <div class="limited-offer py-3 pt-0 hidden md:block">
-                            <span class="text-red-700 text-xl font-semibold">LIMITED TIME OFFER:</span>
-                            <p class="text-red-700 font-semibold">1 Free Bottle of Vitamin D3 with Purchase!</p>
-                        </div>
+
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
@@ -714,7 +766,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <span id="button-two"><button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="addProduct(<?= $product4['product_id']; ?>)"><em>Secure My Order</em></button></span>
                         <!-- </div> -->
 
-                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + $6.95 USA Shipping</h4>
+                        <h4 class="font-semibold text-2xl mb-3 text-rpblue md:text-black"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
                         <p class="ctr mt3 mb0 fs16 hidden md:block">90-DAY MONEY BACK GUARANTEE</p>
                     </div>
                 </div>
@@ -906,6 +958,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
 
     </script>
+
 
     <?php template("includes/rpFooter"); ?>
     <?php if ($site['debug'] == true) {
