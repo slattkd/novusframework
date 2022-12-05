@@ -37,9 +37,9 @@
 
 <!-- CSS -->
 <!-- <script src="https://cdn.tailwindcss.com"></script>  <!-- Should not be needed for production -->
-<link rel="stylesheet" href="/css/main.css?v=2">
+<link rel="stylesheet" href="/css/main.css?v=3">
 <link rel="stylesheet" href="/css/legal-copy.css?v=2">
-<link rel="stylesheet" href="/css/base.css?v=2">
+<link rel="stylesheet" href="/css/base.css?v=3">
 
 
 <?php if ($site['debug'] !== true) { //Don't need to run this on local?>
