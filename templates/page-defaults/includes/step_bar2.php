@@ -15,7 +15,7 @@
 .step {
   position: relative;
   display: flex;
-  padding: 1em;
+  padding: 0.5rem 1rem;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
@@ -24,6 +24,12 @@
   width: 33.3%;
   text-align: center;
   justify-content: center;
+}
+
+@media screen and (min-width: 769px) {
+  .step {
+    padding: 0.9rem 1rem;
+  }
 }
 .step:not(:last-child) {
   margin-right: 2em;
@@ -35,7 +41,18 @@
   bottom: 0;
   width: 0;
   border-style: solid;
-  border-width: 1.6em 0.75em;
+  border-width: 1.1rem 0.75rem;
+}
+@media screen and (min-width: 769px) {
+  .step::before,
+  .step::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 1.5rem 0.75rem;
+  }
 }
 .step:not(:last-child)::after {
   content: '';
@@ -48,10 +65,10 @@
   border-color: #c3cad1 #c3cad1 #c3cad1 transparent;
 }
 .step:first-child {
-  border-radius: 4px 0 0 4px;
+  border-radius: 8px 0 0 8px;
 }
 .step:last-child {
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 8px 8px 0;
 }
 .step.on {
 	color: white;

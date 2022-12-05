@@ -1,5 +1,4 @@
 <?php
-var_dump($_POST);
 
 $nextlink = '/checkout/step2' . $querystring;
 $current_step = 1;
@@ -70,11 +69,11 @@ $current_product = $products['products'][$pid];
   <?php template("includes/rpHeader"); ?>
   <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
-    <div class="flex justify-center mt-8">
-      <h1 class="text-3xl font-semibold py-0">You’re 3 Steps Away From the Body You Want…</h1>
+    <div class="flex justify-center mt-0 md:mt-8">
+      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 3 Steps Away From the Body You Want…</h1>
     </div>
 
-    <div class="flex my-8">
+    <div class="flex my-4 md:my-8">
       <?php
       template("includes/step_bar2", null, 1);
       ?>
@@ -83,7 +82,7 @@ $current_product = $products['products'][$pid];
 
     <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
       <div class="flex justify-center text-center mb-4">
-        <h3 class="text-xl font-semibold">Enter Your Contact Information</h3>
+        <h3 class="text-xl md:text-2xl font-semibold">Enter Your Contact Information</h3>
       </div>
 
       <div class="flex">
@@ -133,18 +132,18 @@ $current_product = $products['products'][$pid];
 
     </div>
 
-    <div class="flex flex-wrap items-center my-11">
-      <div class="w-full md:w-1/3">
-        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-icon.png" class="seal fs-3 mx-auto md:mx-0" width="175px" height="175px">
+    <div class="flex flex-wrap md:flex-nowrap items-center my-11">
+      <div class="flex mx-auto pr-0 md:pr-8 mb-4 md:mb-0">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-icon.png" class="seal fs-3 mx-auto md:mx-0 w-1/2 md:w-full">
       </div>
-      <div class="flex flex-col w-full md:w-2/3 -md:ml-11">
+      <div class="flex flex-col w-full md:w-4/5 -md:ml-11">
         <div class="flex">
-          <h4 class="text-center md:text-left font-semibold text-2xl">
+          <h4 class="text-center md:text-left text-xl">
             Your Purchase Today is Fully Protected By Our <span class="nw">90-Day Money Back Guarantee</span>
           </h4>
         </div>
         <div class="flex">
-          <p class="text-center md:text-left mt-2">
+          <p class="text-center md:text-left mt-3">
             We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
           </p>
         </div>
@@ -154,20 +153,20 @@ $current_product = $products['products'][$pid];
     </div>
 
     <div class="protection-header my-4">
-      <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> Buyer Protection</span></h5>
+      <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
     </div>
 
 
-    <div class="protection-grid flex flex-wrap w-full my-11">
+    <div class="protection-grid flex flex-wrap w-full my-6 md:my-11">
 
       <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
         <div class="bull blue-q">
           <div class="mb-5">
-            <h6><strong>Fast Shipping:</strong></h6>
+            <h6><span class="font-semibold">Fast Shipping:</span></h6>
             <p>3-Day DHL for USA, 8-Day Worldwide</p>
           </div>
           <div class="mb-5">
-            <h6><strong>24/7 Live Phone Help</strong></h6>
+            <h6><span class="font-semibold">24/7 Live Phone Help</span></h6>
             <p>Talk to a real, live customer support specialist at any time</p>
           </div>
         </div>
@@ -175,11 +174,11 @@ $current_product = $products['products'][$pid];
       <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
         <div class="bull blue-q">
           <div class="mb-5">
-            <h6><strong>Privacy Guaranteed</strong></h6>
+            <h6><span class="font-semibold">Privacy Guaranteed</span></h6>
             <p>Your information is safe and is never shared</p>
           </div>
           <div class="mb-5">
-            <h6><strong>Lowest Price Guaranteed</strong></h6>
+            <h6><span class="font-semibold">Lowest Price Guaranteed</span></h6>
             <p>You will never see this at a lower price, guaranteed.</p>
           </div>
         </div>
@@ -187,6 +186,12 @@ $current_product = $products['products'][$pid];
 
     </div>
   </div>
+
+  <?php template("includes/rpFooter"); ?>
+<?php if ($site['debug'] == true) {
+    // Show Debug bar only on whitelisted domains.
+    template('debug', null, null, 'debug');
+} ?>
 
   <script>
     const isMobile = Math.min(window.innerWidth) < 769;
@@ -221,7 +226,8 @@ $current_product = $products['products'][$pid];
       var formValid = false;
       var firstSubmit = false;
 
-      submitBtn.addEventListener('click', ()=> {
+      submitBtn.addEventListener('click', (e)=> {
+        e.preventDefault();
         firstSubmit = true;
         formValid = pristine.validate();
         console.log(formValid);
@@ -236,7 +242,7 @@ $current_product = $products['products'][$pid];
         }
       });
 
-      function handleValidation() {
+      function handleValidation(e) {
         formValid = pristine.validate(); // returns true or false
         if (!formValid) {
           e.preventDefault();
@@ -253,8 +259,5 @@ $current_product = $products['products'][$pid];
     };
   </script>
 
-  <?php if ($site['debug'] == true) {
-      // Show Debug bar only on whitelisted domains.
-      template('debug', null, null, 'debug');
-  } ?>
 </body>
+</html>

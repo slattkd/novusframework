@@ -14,7 +14,6 @@ if ($_POST) {
   $_SESSION["lastName"] = $_POST['lastName'];
 }
 $pid = $_SESSION['pid'];
-var_dump($_POST);
 $current_product = $products['products'][$pid];
 
 ?>
@@ -76,58 +75,57 @@ $current_product = $products['products'][$pid];
 <?php template("includes/rpHeader"); ?>
 <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
-<div class="flex justify-center mt-8">
-<h1 class="text-3xl font-semibold py-0">You’re 2 Steps Away From the Body You Want…</h1>
-</div>
+<div class="flex justify-center mt-0 md:mt-8">
+      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 2 Steps Away From the Body You Want…</h1>
+    </div>
 
-<div class="flex my-8">
-  <?php
-  $current_step = 2;
-  template("includes/step_bar2", null, 2);
-  ?>
-</div>
+    <div class="flex my-4 md:my-8">
+      <?php
+      template("includes/step_bar2", null, 2);
+      ?>
+    </div>
 
 
-<div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
-  <div class="flex justify-center text-center mb-4">
-    <h3 class="text-xl font-semibold">Enter Your Billing Information</h3>
-  </div>
+    <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
+      <div class="flex justify-center text-center mb-4">
+        <h3 class="text-xl md:text-2xl font-semibold">Enter Your Billing Information</h3>
+      </div>
 
   <div class="flex">
     <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 						
 						<div class="flex flex-wrap items-center mb-4">
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>" required="required">
               </div>
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>" required="required">
               </div>
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                 </div>
 								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION['billingAddress2']; ?>" required="required">
               </div>
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>" required="required">
               </div>
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>" required="required">
               </div>
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                 </div>
@@ -139,7 +137,7 @@ $current_product = $products['products'][$pid];
                     <?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/html/billing-countries.php'); ?>
                 </select>
               </div>
-              <div class="w-full mb-3">
+              <div class="input w-full mb-3">
                 <div class="w-full w-1/3">
                     <label for="billingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                 </div>
@@ -166,27 +164,27 @@ $current_product = $products['products'][$pid];
                 <div class="flex justify-center text-center mb-4">
                   <h3 class="text-xl font-semibold">Enter Your Shipping Information</h3>
                 </div>
-                  <div class="w-full mb-3">
+                  <div class="input w-full mb-3">
                     <div class="w-full w-1/3">
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
 
                       <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
-                  <div class="w-full mb-3">
+                  <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                       </div>
                       <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                   </div>
-                  <div class="w-full mb-3">
+                  <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
 
                       <input required class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
-                  <div class="w-full mb-3">
+                  <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                       </div>
@@ -198,7 +196,7 @@ $current_product = $products['products'][$pid];
                           </select>
 
                   </div>
-                  <div class="w-full mb-3">
+                  <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                       </div>
@@ -212,7 +210,7 @@ $current_product = $products['products'][$pid];
                           </select>
 
                   </div>
-                  <div class="w-full mb-3">
+                  <div class="input w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                       </div>
@@ -227,7 +225,7 @@ $current_product = $products['products'][$pid];
               <input id="product_id" type="hidden" name="product_id" value="<?= $current_product['product_id']; ?>">
 
               <div class="flex justify-center w-full">
-                <button type="submit" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+                <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
               </div>
 
               <div class="flex justify-center w-full mt-3">
@@ -249,60 +247,66 @@ $current_product = $products['products'][$pid];
 
 </div>
 
-  <div class="flex flex-wrap items-center my-11">
-    <div class="w-full md:w-1/3">
-      <img src="//<?= $_SERVER['HTTP_HOST'];?>/images/90-day-icon.png" class="seal fs-3 mx-auto md:mx-0" width="175px" height="175px">
-    </div>
-    <div class="flex flex-col w-full md:w-2/3 -md:ml-11">
-      <div class="flex">
-        <h4 class="text-center md:text-left font-semibold text-2xl">
-          Your Purchase Today is Fully Protected By Our <span class="nw">90-Day Money Back Guarantee</span>
-        </h4>
+<div class="flex flex-wrap md:flex-nowrap items-center my-11">
+      <div class="flex mx-auto pr-0 md:pr-8 mb-4 md:mb-0">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-icon.png" class="seal fs-3 mx-auto md:mx-0 w-1/2 md:w-full">
       </div>
-      <div class="flex">
-        <p class="text-center md:text-left mt-2">
-          We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
-        </p>
+      <div class="flex flex-col w-full md:w-4/5 -md:ml-11">
+        <div class="flex">
+          <h4 class="text-center md:text-left text-xl">
+            Your Purchase Today is Fully Protected By Our <span class="nw">90-Day Money Back Guarantee</span>
+          </h4>
+        </div>
+        <div class="flex">
+          <p class="text-center md:text-left mt-3">
+            We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="protection-header my-4">
+      <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
+    </div>
+
+
+    <div class="protection-grid flex flex-wrap w-full my-6 md:my-11">
+
+      <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
+        <div class="bull blue-q">
+          <div class="mb-5">
+            <h6><span class="font-semibold">Fast Shipping:</span></h6>
+            <p>3-Day DHL for USA, 8-Day Worldwide</p>
+          </div>
+          <div class="mb-5">
+            <h6><span class="font-semibold">24/7 Live Phone Help</span></h6>
+            <p>Talk to a real, live customer support specialist at any time</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
+        <div class="bull blue-q">
+          <div class="mb-5">
+            <h6><span class="font-semibold">Privacy Guaranteed</span></h6>
+            <p>Your information is safe and is never shared</p>
+          </div>
+          <div class="mb-5">
+            <h6><span class="font-semibold">Lowest Price Guaranteed</span></h6>
+            <p>You will never see this at a lower price, guaranteed.</p>
+          </div>
+        </div>
       </div>
 
-
     </div>
   </div>
 
-  <div class="protection-header my-4">
-    <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> Buyer Protection</span></h5>
-  </div>
-
-
-  <div class="protection-grid flex flex-wrap w-full my-11">
-
-				<div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
-				  <div class="bull blue-q">
-						<div class="mb-5">
-							<h6><strong>Fast Shipping:</strong></h6>
-							<p>3-Day DHL for USA, 8-Day Worldwide</p>
-						</div>
-						<div class="mb-5">
-							<h6><strong>24/7 Live Phone Help</strong></h6>
-							<p>Talk to a real, live customer support specialist at any time</p>
-						</div>
-					</div>
-				</div>
-				<div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
-				  <div class="bull blue-q">
-						<div class="mb-5">
-							<h6><strong>Privacy Guaranteed</strong></h6>
-							<p>Your information is safe and is never shared</p>
-						</div>
-						<div class="mb-5">
-							<h6><strong>Lowest Price Guaranteed</strong></h6>
-							<p>You will never see this at a lower price, guaranteed.</p>
-						</div>
-					</div>
-				</div>
-
-    </div>
-  </div>
+  <?php template("includes/rpFooter"); ?>
+<?php if ($site['debug'] == true) {
+    // Show Debug bar only on whitelisted domains.
+    template('debug', null, null, 'debug');
+} ?>
 
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
 <script>
@@ -347,56 +351,6 @@ $current_product = $products['products'][$pid];
 
       })
   }
-
-  // input validation
-  window.onload = function() {
-      // Prsitine Config
-      let defaultConfig = {
-        // class of the parent element where the error/success class is added
-        classTo: 'input',
-        // class of the parent element where error text element is appended
-        errorTextParent: 'input',
-        // type of element to create for the error text
-        errorTextTag: 'div',
-        // class of the error text element
-        errorTextClass: 'text-help text-red-700 border-red-600 font-medium text-sm'
-      };
-      const submitBtn = document.getElementById('secure-button');
-      const form = document.getElementById('step-2');
-      const pristine = new Pristine(form, defaultConfig);
-      var formValid = false;
-      var firstSubmit = false;
-
-      submitBtn.addEventListener('click', ()=> {
-        firstSubmit = true;
-        formValid = pristine.validate();
-        if(formValid) {
-          copyBillingInputValue();
-          form.submit();
-        }
-      })
-
-      form.addEventListener("input", function () {
-        if (firstSubmit) {
-          handleValidation();
-        }
-      });
-
-      function handleValidation() {
-        formValid = pristine.validate(); // returns true or false
-        if (!formValid) {
-          e.preventDefault();
-          // submitBtn.disabled = true;
-          var firstError = document.querySelector('.has-danger');
-          firstError.scrollIntoView({
-            behavior: "smooth",
-            block: "end"
-          });
-        } else {
-          // submitBtn.disabled = false;
-        }
-      }
-    };
 
     function solveprice() {
         // bypass for testing
@@ -458,10 +412,58 @@ $current_product = $products['products'][$pid];
             return;
         }
     }
+
+    // input validation
+    window.onload = function() {
+      // Prsitine Config
+      let defaultConfig = {
+        // class of the parent element where the error/success class is added
+        classTo: 'input',
+        // class of the parent element where error text element is appended
+        errorTextParent: 'input',
+        // type of element to create for the error text
+        errorTextTag: 'div',
+        // class of the error text element
+        errorTextClass: 'text-help text-red-700 border-red-600 font-medium text-sm'
+      };
+      const submitBtn = document.getElementById('secure-button');
+      const form = document.getElementById('step-2');
+      const pristine = new Pristine(form, defaultConfig);
+      var formValid = false;
+      var firstSubmit = false;
+
+      submitBtn.addEventListener('click', (e)=> {
+        e.preventDefault();
+        firstSubmit = true;
+        formValid = pristine.validate();
+        console.log(formValid);
+        if(formValid) {
+          form.submit();
+        }
+      })
+
+      form.addEventListener("input", function () {
+        if (firstSubmit) {
+          handleValidation();
+        }
+      });
+
+      function handleValidation(e) {
+        formValid = pristine.validate(); // returns true or false
+        if (!formValid) {
+          e.preventDefault();
+          // submitBtn.disabled = true;
+          var firstError = document.querySelector('.has-danger');
+          firstError.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+          });
+        } else {
+          // submitBtn.disabled = false;
+        }
+      }
+    };
 </script>
 
-    <?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-    } ?>
 </body>
+</html>

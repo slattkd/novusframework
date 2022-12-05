@@ -11,7 +11,7 @@
 </style>
 
 <section>
-    <div class=" py-8 border-t bg-white">
+    <div class=" p-4 md:p-8 border-t bg-white">
       <div class="flex flex-col items-center">
         <div class="flex justify-center w-full md:w-auto mb-5">
         <!-- /images/rp-logo.png -->

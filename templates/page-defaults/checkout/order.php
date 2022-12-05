@@ -68,7 +68,6 @@ if (!isset($_SESSION['vip_discount'])) {
             position: relative;
             display: flex;
             border: 3px dashed #e00000;
-            margin-top: 1.5rem;
         }
 
         .float-text {
@@ -95,7 +94,7 @@ if (!isset($_SESSION['vip_discount'])) {
         .vipwrap #vip {
             -webkit-appearance: none;
             background-color: #fafafa;
-            border: 3px solid #c10e0e;
+            border: 2px solid #c10e0e;
             box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
             display: inline-block;
             width: 30px;
@@ -181,7 +180,7 @@ if (!isset($_SESSION['vip_discount'])) {
         }
 
         .order-option-box.selected {
-            border: 4px solid #007fbd;
+            border: 4px solid #01699c;
         }
 
         .order-option-box .order-option-row {
@@ -251,7 +250,7 @@ if (!isset($_SESSION['vip_discount'])) {
         #prod-select {
             -webkit-appearance: none;
             background-color: #fafafa;
-            border: 3px solid #c10e0e;
+            border: 2px solid #000;
             box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
             display: inline-block;
             width: 30px;
@@ -261,6 +260,27 @@ if (!isset($_SESSION['vip_discount'])) {
         #prod-select + .checked {
             top: 5px;
             left: 3px;
+        }
+
+        .bottle-img {
+            max-width: 100%;
+            height: 95%;
+            width: auto;
+            margin-top: -10%;
+            object-fit: contain;
+        }
+
+        .strike:after {
+            content: ' ';
+            position: absolute;
+            width: 100%;
+            border-top: 2px solid #c10e0e;
+            left: 0;
+            top: 50%;
+            color: #c10e0e;
+            -webkit-transform: rotate(-4deg);
+            -ms-transform: rotate(-4deg);
+            transform: rotate(-4deg);
         }
     </style>
 
@@ -286,11 +306,11 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
     </div> -->
-    <div class="container container-sm mx-auto py-4 md:py-8 px-2 md:px-0">
+    <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-0">
 
         <div class="flex hidden md:flex">
-            <div class="w-1/4 hidden md:flex">
-                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.png" class="mx-auto w-full" style="max-width: 100%; height: auto; margin-top: -10%;object-fit: cover;">
+            <div class="w-1/4 hidden md:flex -mb-6">
+                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.png" class="mx-auto w-full bottle-img">
             </div>
             <div class="w-full md:w-3/4">
                 <div class="flex flex-wrap">
@@ -333,12 +353,12 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="text-lg">(The More You Buy, The More You Save!)</div>
         </div>
 
-        <div class="vipwrap bg-yellow-100 md:bg-transparent">
+        <div class="vipwrap bg-yellow-100 md:bg-transparent md:px-5">
             <div class="float-text hidden md:block">LIMITED TIME OFFER!</div>
             <label for="vip" class="flex flex-col p-3 pb-2 w-full">
                 <div class="flex items-start py-1 md:py-3">
                     <div class="check-box" style="position:relative;">
-                        <input type="checkbox" id="vip" name="vip" onchange="<?php $_SESSION['vip_discount'] = $_SESSION['vip_discount'] == 0 ? 1 : 0; ?>">
+                        <input type="checkbox" id="vip" name="vip" style="filter:none" onchange="<?php $_SESSION['vip_discount'] = $_SESSION['vip_discount'] == 0 ? 1 : 0; ?>">
                         <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                     </div>
                     <div class="flex flex-col -mt-2 ml-2">
@@ -367,7 +387,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <!-- single card 1 -->
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col p-5 md:p-8 grow md:w-1/2 pt-0 md:pt-8">
+                    <div class="order-details-col px-5 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
                         <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue">
                             DOCTOR RECOMMENDED
                         </div>
@@ -384,15 +404,15 @@ if (!isset($_SESSION['vip_discount'])) {
                             <?= $product2['product_qty']; ?> Bottles
                         </h1>
 
-                        <div class="flex justify-between md:border-y-2 md:py-3">
+                        <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= $product2['product_retail']; ?></span>
+                                Retail Price: <span class="line-through">$<?= number_format($product2['product_retail'], 2); ?></span>
                             </div>
-                            <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
-                                <span class="line-through">$<?= $product2['product_retail']; ?></span>
+                            <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
+                                <span class="strike">$<?= number_format($product2['product_retail'], 2); ?></span>
                             </div>
                             <div class="">
-                                You Pay Just <span id="main-price2">$<?= $product2['product_price']; ?></span>
+                                You Pay Just <span id="main-price2">$<?= number_format($product2['product_price'],2); ?></span>
                             </div>
                             <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product2['product_price'], $product2['product_month']); ?> per month!</span>
@@ -419,9 +439,9 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- single card 2 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product3['product_id']; ?>, <?= savedAmt($product3['product_retail'], $product3['product_price']); ?>, <?= percentOff($product3['product_price'], $product3['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product3['product_id']; ?>, <?= savedAmt($product3['product_retail'], $product3['product_price']); ?>, <?= percentOff($product3['product_price'], $product3['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
+                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
                         <div class="flex justify-center md:justify-start bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
                             BIGGEST DISCOUNT
                         </div>
@@ -438,15 +458,15 @@ if (!isset($_SESSION['vip_discount'])) {
                             <?= $product3['product_qty']; ?> Bottles
                         </h1>
 
-                        <div class="flex justify-between md:border-y-2 md:py-3">
+                        <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= $product3['product_retail']; ?></span>
+                                Retail Price: <span class="line-through">$<?= number_format($product3['product_retail'], 2); ?></span>
                             </div>
-                            <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
-                                <span class="line-through">$<?= $product3['product_retail']; ?></span>
+                            <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
+                                <span class="strike">$<?= number_format($product3['product_retail'], 2); ?></span>
                             </div>
                             <div class="">
-                                You Pay Just <span id="main-price2">$<?= $product3['product_price']; ?></span>
+                                You Pay Just <span id="main-price2">$<?= number_format($product3['product_price'],2); ?></span>
                             </div>
                             <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product3['product_price'], $product3['product_month']); ?> per month!</span>
@@ -473,9 +493,9 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- single card 3 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product1['product_id']; ?>, <?= savedAmt($product1['product_retail'], $product1['product_price']); ?>, <?= percentOff($product1['product_price'], $product1['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product1['product_id']; ?>, <?= savedAmt($product1['product_retail'], $product1['product_price']); ?>, <?= percentOff($product1['product_price'], $product1['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
+                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
                         <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 hid -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue hidden">
                             DOCTOR RECOMMENDED
                         </div>
@@ -492,15 +512,15 @@ if (!isset($_SESSION['vip_discount'])) {
                             <?= $product1['product_qty']; ?> Bottles
                         </h1>
 
-                        <div class="flex justify-between md:border-y-2 md:py-3">
+                        <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= $product1['product_retail']; ?></span>
+                                Retail Price: <span class="line-through">$<?= number_format($product1['product_retail'], 2); ?></span>
                             </div>
-                            <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
-                                <span class="line-through">$<?= $product1['product_retail']; ?></span>
+                            <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
+                                <span class="strike">$<?= number_format($product1['product_retail'], 2); ?></span>
                             </div>
                             <div class="">
-                                You Pay Just <span id="main-price2">$<?= $product1['product_price']; ?></span>
+                                You Pay Just <span id="main-price2">$<?= number_format($product1['product_price'],2); ?></span>
                             </div>
                             <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product1['product_price'], $product1['product_month']); ?> per month!</span>
@@ -532,7 +552,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <!-- auto card 1 -->
             <div class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col p-5 md:p-8 grow md:w-1/2 pt-0 md:pt-8">
+                    <div class="order-details-col px-5 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
                         <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue">
                             DOCTOR RECOMMENDED
                         </div>
@@ -554,15 +574,15 @@ if (!isset($_SESSION['vip_discount'])) {
                             <p class="text-red-700 font-semibold">1 Free Bottle of Vitamin D3 with Purchase!</p>
                         </div>
 
-                        <div class="flex justify-between md:border-y-2 md:py-3">
+                        <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= $product5['product_retail']; ?></span>
+                                Retail Price: <span class="line-through">$<?= number_format($product5['product_retail'], 2); ?></span>
                             </div>
-                            <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
-                                <span class="line-through">$<?= $product5['product_retail']; ?></span>
+                            <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
+                                <span class="strike">$<?= number_format($product5['product_retail'], 2); ?></span>
                             </div>
                             <div class="">
-                                You Pay Just <span id="main-price2">$<?= $product5['product_price']; ?></span>
+                                You Pay Just <span id="main-price2">$<?= number_format($product5['product_price'],2); ?></span>
                             </div>
                             <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product5['product_price'], $product5['product_month']); ?> per month!</span>
@@ -589,9 +609,9 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- auto card 2 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product6['product_id']; ?>, <?= savedAmt($product6['product_retail'], $product6['product_price']); ?>, <?= percentOff($product6['product_price'], $product6['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product6['product_id']; ?>, <?= savedAmt($product6['product_retail'], $product6['product_price']); ?>, <?= percentOff($product6['product_price'], $product6['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
+                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
                         <div class="flex justify-center md:justify-start bg-gray-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
                             BIGGEST DISCOUNT
                         </div>
@@ -613,15 +633,15 @@ if (!isset($_SESSION['vip_discount'])) {
                             <p class="text-red-700 font-semibold">2 Free Bottles of Vitamin D3 with Purchase!</p>
                         </div>
 
-                        <div class="flex justify-between md:border-y-2 md:py-3">
+                        <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= $product6['product_retail']; ?></span>
+                                Retail Price: <span class="line-through">$<?= number_format($product6['product_retail'], 2); ?></span>
                             </div>
-                            <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
-                                <span class="line-through">$<?= $product6['product_retail']; ?></span>
+                            <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
+                                <span class="strike">$<?= number_format($product6['product_retail'], 2); ?></span>
                             </div>
                             <div class="">
-                                You Pay Just <span id="main-price2">$<?= $product6['product_price']; ?></span>
+                                You Pay Just <span id="main-price2">$<?= number_format($product6['product_price'],2); ?></span>
                             </div>
                             <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product6['product_price'], $product6['product_month']); ?> per month!</span>
@@ -648,9 +668,9 @@ if (!isset($_SESSION['vip_discount'])) {
                 </div>
             </div>
             <!-- auto card 3 -->
-            <div class="order-option-box fs-2 w-full mb-5 border-2" onclick="prodSelect(event, <?= $product4['product_id']; ?>, <?= savedAmt($product4['product_retail'], $product4['product_price']); ?>, <?= percentOff($product4['product_price'], $product4['product_retail']); ?>)">
+            <div class="order-option-box fs-2 w-full mb-5 border-3" onclick="prodSelect(event, <?= $product4['product_id']; ?>, <?= savedAmt($product4['product_retail'], $product4['product_price']); ?>, <?= percentOff($product4['product_price'], $product4['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
-                    <div class="order-details-col grow md:w-1/2 p-5 md:p-8 pt-0 md:pt-8">
+                    <div class="order-details-col grow md:w-1/2 px-5 md:px-8 py-3 pt-0 md:pt-4">
                         <div class="flex justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-3 md:p-1 text-white md:text-rpblue hidden">
                             DOCTOR RECOMMENDED
                         </div>
@@ -672,15 +692,15 @@ if (!isset($_SESSION['vip_discount'])) {
                             <p class="text-red-700 font-semibold">1 Free Bottle of Vitamin D3 with Purchase!</p>
                         </div>
 
-                        <div class="flex justify-between md:border-y-2 md:py-3">
+                        <div class="flex md:justify-between md:border-y-2 md:py-3">
                             <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= $product4['product_retail']; ?></span>
+                                Retail Price: <span class="line-through">$<?= number_format($product4['product_retail'], 2); ?></span>
                             </div>
-                            <div class="text-gray-600 md:hidden" style="margin-left: 3rem;">
-                                <span class="line-through">$<?= $product4['product_retail']; ?></span>
+                            <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
+                                <span class="strike">$<?= number_format($product4['product_retail'], 2); ?></span>
                             </div>
                             <div class="">
-                                You Pay Just <span id="main-price2">$<?= $product4['product_price']; ?></span>
+                                You Pay Just <span id="main-price2">$<?= number_format($product4['product_price'],2); ?></span>
                             </div>
                             <!-- <div class="md:hidden">
                             Just <span id="main-price2"><?= monthAmt($product4['product_price'], $product4['product_month']); ?> per month!</span>
@@ -708,7 +728,7 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
         <div class="flex justify-center md:hidden mt-2">
-            <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 md:hidden">You Save <span id="save-price-final">...</span></h3>
+            <h3 class="text-red-700 font-semibold text-2xl md:text-3xl md:hidden">You Save <span id="save-price-final">...</span></h3>
         </div>
         <div class="flex justify-center md:hidden mb-2">
             <button id="btn-mobile" class="cta-button text-3xl clickable hidden md:block" onclick="submitMobileProduct()"><em>Secure My Order</em></button>

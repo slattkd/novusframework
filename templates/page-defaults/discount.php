@@ -120,7 +120,7 @@ $up_product = $products['products'][$up_pid];
 						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 py-2 clickable">
 					</form>
 				<p>Recommended For All New Customers<br><b>(Limited Time Only)</b></p>
-				<p class="bg-gray-500 pb-0 mt-4">No Hassle Guarantee - You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</p>
+				<p class="text-gray-500 pb-0 mt-4">No Hassle Guarantee - You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</p>
 			</div>
 			
 			<div class="skip-wrap">
