@@ -2,10 +2,10 @@
 
 //not ready for primetime, sending to 1 of 2 wsl randomly
 if (mt_rand(0,1) == 0) {
-    header('Location: https://totalbrainboost.com/wsl/energy');
+    header('Location: https://totalbrainboost.com/wsl/energy' . $querystring);
     exit;
 } else {
-    header('Location: https://totalbrainboost.com/wsl/memory');
+    header('Location: https://totalbrainboost.com/wsl/memory' . $querystring);
     exit;
 }
 

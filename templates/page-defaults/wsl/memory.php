@@ -29,7 +29,7 @@
 </head>
 
 <body class="bg-gray-100 wsl">
-  <?php template("includes/rpHeader"); ?>
+  <?php //template("includes/rpHeader"); ?>
   <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 rounded-lg">
 
   <h1 class="text-3xl">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
@@ -128,7 +128,7 @@
   </div>
 
 </div>
-<?php template("includes/rpFooter"); ?>
+<?php //template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
     template('debug', null, null, 'debug');

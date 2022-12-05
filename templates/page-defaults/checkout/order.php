@@ -747,24 +747,24 @@ if (!isset($_SESSION['vip_discount'])) {
                     </div>
                     <h4 class="text-center text-lg">Your Purchase Today Is Fully Protected By Our</h4>
                     <h1 class="text-center text-4xl font-bold text-rpblue condensed">90-DAY MONEY BACK GUARANTEE</h1>
-                    <p class="my-4">We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for 90 days – that’s <strong>THREE FULL MONTHS</strong> – and make sure you love&nbsp;it. </p>
-                    <p>Any time you want, you can call support at <strong>800-253-8173</strong> or email <strong>support@floraspring.com,</strong> 24 hours a day, 7 days a week to request a refund, with no questions asked and no hassles!
+                    <p class="my-4">We want to make 100% sure that you love <?php echo $company['featuredProduct']; ?>, which is why you get to try it completely risk free for 90 days – that’s <strong>THREE FULL MONTHS</strong> – and make sure you love&nbsp;it. </p>
+                    <p>Any time you want, you can call support at <strong>800-253-8173</strong> or email <strong><?php echo $company['email']; ?>,</strong> 24 hours a day, 7 days a week to request a refund, with no questions asked and no hassles!
                     </p>
                     <div class="flex flex-col md:flex-row items-center justify-center mt-5">
                         <div class="flex justify-center">
                             <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/robertallen.png">
                         </div>
                         <div class="text-center md:text-left">
-                            <p class="text-sm">Robert Allen, Head of Research <br> at <span class="nw-all">REVIVAL POINT LLC</span></p>
+                            <p class="text-sm">Robert Allen, Head of Research <br> at <span class="nw-all"><?php echo $company['name']; ?></span></p>
                         </div>
                     </div>
-                
-                
+
+
                 </div>
-                
+
                 <div class="flex flex-col px-8 py-4 buyer-protection hidden w-2/5 md:flex bg-gray-100 border border-l">
                     <h5 class="text-rpblue text-2xl font-semibold text-center uppercase mb-4">Buyer Protection</h5>
-                
+
                     <div class="bull blue-q pad20">
                         <div class="mb-5">
                             <h6><span class="font-semibold">Fast Shipping</span></h6>
@@ -776,7 +776,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </h6>
                             <p>Talk to a real, live customer support specialist at any time</p>
                         </div>
-                
+
                         <div class="mb-5">
                             <h6 class="font-semibold">Credit Card charged as "REVIVAL POINT"
                         </h6>
@@ -792,9 +792,9 @@ if (!isset($_SESSION['vip_discount'])) {
                         </h6>
                             <p>You will never see this at a lower price, guaranteed.</p>
                         </div>
-                
+
                     </div>
-                
+
                 </div>
             </div>
             <h2 class="text-rpblue font-semibold text-2xl text-center mt-3 md:hidden">3-Day DHL Guaranteed <br> for USA Orders</h2>
@@ -829,7 +829,7 @@ if (!isset($_SESSION['vip_discount'])) {
                 pop.classList.remove('is-open');
             })
         }
-        
+
 
         vipInput.addEventListener('change', () => {
             if (vipInput.checked) {

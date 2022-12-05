@@ -38,7 +38,7 @@ $current_product = $products['products'][$pid];
 <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
 <div class="flex justify-center mt-0 md:mt-8">
-      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 2 Steps Away From <br class="md:hidden"> the Body You Want…</h1>
+      <h1 class="text-2xl md:text-3xl text-center font-bold py-0"><?php echo $company['cehckoutHeadline2']; ?></h1>
     </div>
 
     <div class="flex my-4 md:my-8">
@@ -221,7 +221,7 @@ $current_product = $products['products'][$pid];
         </div>
         <div class="flex">
           <p class="text-center md:text-left mt-3">
-            We want to make 100% sure that you love Floraspring, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
+            We want to make 100% sure that you love <?php echo $company['featuredProduct']; ?>, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
           </p>
         </div>
 
