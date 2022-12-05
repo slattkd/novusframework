@@ -96,6 +96,9 @@ $company['address2'] = '';
 $company['city'] = 'San Antonio';
 $company['state'] = 'TX';
 $company['zip'] = '78216';
+$company['checkoutHeadline1'] = 'You’re 3 Steps Away From <br class="md:hidden"> Improving yourself…';
+$company['checkoutHeadline2'] = 'You’re 2 Steps Away From <br class="md:hidden"> Improving yourself…';
+$company['checkoutHeadline3'] = 'You’re 1 Steps Away From <br class="md:hidden"> Improving yourself…';
 
 
 
