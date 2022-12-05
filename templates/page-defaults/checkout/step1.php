@@ -32,7 +32,7 @@ $current_product = $products['products'][$pid];
   <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
     <div class="flex justify-center mt-0 md:mt-8">
-      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 3 Steps Away From the Body You Want…</h1>
+      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 3 Steps Away From <br class="md:hidden"> the Body You Want…</h1>
     </div>
 
     <div class="flex my-4 md:my-8">
@@ -75,7 +75,7 @@ $current_product = $products['products'][$pid];
             <input type="hidden" name="product_id" value="<?= $current_product['product_id']; ?>">
 
             <div class="flex justify-center w-full">
-              <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+              <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
             </div>
 
             <div class="flex justify-center w-full mt-3">

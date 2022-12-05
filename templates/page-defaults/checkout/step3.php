@@ -46,7 +46,7 @@ $current_product = $products['products'][$pid];
 <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
 <div class="flex justify-center mt-0 md:mt-8">
-      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 1 Step Away From the Body You Want…</h1>
+      <h1 class="text-2xl md:text-3xl text-center font-bold py-0">You’re 1 Step Away From <br class="md:hidden"> the Body You Want…</h1>
     </div>
 
     <div class="flex my-4 md:my-8">

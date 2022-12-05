@@ -41,7 +41,6 @@ $up_product = $products['products'][$up_pid];
 
 .discount-wrap {
 			max-width: 550px;
-			margin: 0 auto;
 			padding: 1rem;;
 			border: dashed #ff0000 6px;
 		}
@@ -105,12 +104,12 @@ $up_product = $products['products'][$up_pid];
 
 </head>
 <body>
-<div class="container container-vsl mx-auto py-5 p-2">
+<div class="container container-vsl mx-auto p-2">
 	<div class="">
 
-			<h1 class="text-2xl md:text-3xl font-semibold text-center py-4">Before You Continue&hellip;</h1>
-			<div class="discount-wrap">
-				<h2 class="text-3xl md:text-4xl mb-3" style="line-height: 1.1;">10% OFF INSTANTLY!</h2>
+			<h1 class="text-2xl md:text-3xl font-semibold text-center py-4 md:py-11">Before You Continue&hellip;</h1>
+			<div class="discount-wrap mx-auto">
+				<h2 class="text-3xl md:text-5xl mb-3" style="line-height: 1.1;">10% OFF INSTANTLY!</h2>
 				<p class="subhead">Get <b>10% OFF FOR LIFE</b> on all orders and easy monthly auto refills plus FREE printed monthly newsletter <b>
 
 					<form id="discountform" name="discountform" class="button-wrap w-full mb-0" method="post" action="<?php echo $nextlink; ?>">
@@ -118,7 +117,7 @@ $up_product = $products['products'][$up_pid];
 						<input type="hidden" name="current_page" value="/discount">
 						<input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
 						<input type="hidden" id="product_id" name="product_id" value="<?= $up_product['product_id']; ?>">
-						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 py-2 clickable">
+						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 md:px-5 py-2 md:py-4 clickable">
 					</form>
 				<p>Recommended For All New&nbsp;Customers<br><i>(Limited Time Only)</i></p>
 				<p class="text-gray-500 pb-0 mt-4 text-sm">No Hassle Guarantee - You are always notified before each shipment so you can skip, pause, cancel, or swap out products.</p>

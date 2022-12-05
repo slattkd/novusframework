@@ -24,15 +24,17 @@
 <section>
     <div class=" py-0 md:py-1 border-b bg-white">
       <div class="container container-vsl mx-auto flex justify-center md:justify-between flex-wrap w-full">
-      <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0" style="margin-left: -15px;">
-        <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px;object-fit:contain;">
-      </div>
-      <div class="flex justify-center items-center w-full md:w-auto hidden md:flex">
-        <div class="">
-        <i class="fas fa-phone-square-alt phone-ico"></i> Call
-        <a href="tel:<?= $company['phone']; ?>"><?= $company['phone']; ?></a> <span class="lg-up">Now to Order by Phone</span>
+        <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
+          <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px;object-fit:contain;">
         </div>
-      </div>
+        <?php if ($_SESSION['slug'] !== 'checkout/order'): ?>
+        <div class="flex justify-center items-center w-full md:w-auto mb-2 md:mb-0 text-gray-500">
+          <div class="text-sm flex items-center flex-nowrap">
+          <div class="phone-square mr-1" style="width: 20px;height:20px;"></div> Call
+          <a class="text-rpblue no-underline mx-1" href="tel:<?= $company['phone']; ?>"><?= $company['phone']; ?></a> <span class="lg-up md:hidden">to Order by Phone</span>
+          </div>
+        </div>
+        <?php endif; ?>
       </div>
     </div>
 </section>
