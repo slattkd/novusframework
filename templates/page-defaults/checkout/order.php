@@ -801,7 +801,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <h5 class="text-rpblue text-center md:hidden" >(6-8 Days For All Other Countries)</h5>
     </div>
 
-    <div class="flex container container-vsl py-3 justify-center">
+    <div class="flex container container-vsl py-3 justify-center mx-auto">
     <button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><em>Secure My Order</em></button>
     </div>
 
