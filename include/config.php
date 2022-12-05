@@ -86,7 +86,7 @@ $limelight_api_instance     = 'gdc.sticky.io';
 */
 
 // Company Variables
-$company['name'] = 'Total Brain Boost LLC';
+$company['name'] = 'Revival Point LLC';
 $company['billedAs'] = 'Total Brain Boost';
 $company['featuredProduct'] = 'Total Brain Boost';
 $company['email'] = 'support@revivalpoint.com';
