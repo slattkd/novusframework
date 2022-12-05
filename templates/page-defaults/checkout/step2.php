@@ -110,11 +110,11 @@ $current_product = $products['products'][$pid];
                 </select>
               </div>
               <div class="flex flex-nowrap items-center w-full my-3">
-                  <input type="checkbox" checked name="billingSameAsShipping" id="bill-same" value="<?php echo @$_SESSION['billingSameAsShipping']; ?>"/>
+                  <input type="checkbox" checked name="billingSameAsShipping" id="bill-same" value="<?php echo @$_SESSION['billingSameAsShipping']; ?>" style="filter: none;"/>
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
               <div class="flex flex-nowrap items-center w-full my-3 ">
-                  <input type="checkbox" checked name="joinTextAlerts" id="join-text-alerts" value="checked"/>
+                  <input type="checkbox" checked name="joinTextAlerts" id="join-text-alerts" value="checked" style="filter: none;"/>
                   <label class="ml-2 text-base"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
               <div class="flex text-sm text-gray-500 my-3">
@@ -187,7 +187,7 @@ $current_product = $products['products'][$pid];
               <input id="product_id" type="hidden" name="product_id" value="<?= $current_product['product_id']; ?>">
 
               <div class="flex justify-center w-full">
-                <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+                <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
               </div>
 
               <div class="flex justify-center w-full mt-3">

@@ -57,10 +57,10 @@ $current_product = $products['products'][$pid];
 
 
     <div class="card bg-white rounded-xl shadow-lg border mt-5 p-5">
-      <div class="flex justify-center text-center mb-4">
-        <h3 class="text-xl md:text-2xl font-semibold">Confirm Your Payment Information</h3>
+      <div class="flex justify-center text-center mb-3">
+        <h3 class="text-xl md:text-2xl font-semibold border-b">Confirm Your Payment Info</h3>
       </div>
-  <div class="flex justify-center text-center items-center text-gray-600 text-base mb-3">
+  <div class="flex items-center text-gray-600 text-base mb-4 md:px-4">
     <div><i class="fas fa-lock"></i> Your order will be processed on our 256-bit secure server</div>
   </div>
   <?php
@@ -82,7 +82,7 @@ $current_product = $products['products'][$pid];
                 </div>
 								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required">
               </div>
-              <div class="w-full columns-2 gap-3">
+              <div class="w-full columns-2 gap-3 md:px-4">
                   <div class="w-full mb-3">
                       <div class="w-full w-1/3">
                           <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
@@ -123,19 +123,26 @@ $current_product = $products['products'][$pid];
                       </select>
                   </div>
               </div>
-							<div class="input w-full mb-3 md:px-4">
-                <div class="w-full w-1/3">
-                    <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV: <a class="text-xs no-underline" href="//<?= $_SERVER['HTTP_HOST'];?>/card-help" target="_blank">what's this?</a> </label>
+              <div class="flex w-full columns-2 gap-3 items-center">
+                <div class="input w-full mb-3 md:px-4">
+                  <div class="w-full w-1/3">
+                      <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
+                  </div>
+                  <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
-							</div>
+                <div class="input w-full mb-3 md:px-4">
+                  <div class="text-sm text-rpblue no-underline md:mt-4"  onclick="getPage('card-help.php')">What is a CVV?</div>
+                </div>
+
+              </div>
+							
 
               <!-- hidden fields -->
               <!-- <input type="hidden" name="campaign_id" value="5"> -->
               <input type="hidden" name="product-id" value="<?= @$current_product['product_id']; ?>">
 
               <div class="flex justify-center w-full">
-                <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+                <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
               </div>
 
               <div class="flex justify-center w-full mt-3">
@@ -254,6 +261,19 @@ $current_product = $products['products'][$pid];
 
 </div>
 
+<?php
+		// declare modal variables (requires basic_modal.js)
+		$modal_id = 'cvvModal';
+		$modal_title = "";
+		$max_width = '4xl';
+		$height = 'full';
+		$modal_body = '
+		<div id="cvv-copy"></div>
+		';
+		$modal_footer = '';
+    modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width, $height);
+	?>
+
 <?php template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
@@ -323,6 +343,28 @@ $current_product = $products['products'][$pid];
         }
       }
     };
+
+
+	const cvvModalBody = document.getElementById('cvv-copy');
+	var htmlElement = '';
+
+	var pageData =  null;
+	var isLoading =  false;
+	function getPage(pageName) {
+		isLoading = true;
+		fetch(`/${pageName}`)
+		.then(response => response.text())
+		.then((data) => {
+				isLoading = false;
+				if (data && data !== '') {
+				pageData = data;
+				window.modalHandler('cvvModal', true);
+				cvvModalBody.innerHTML = pageData;
+			} else {
+				cvvModalBody.innerHTML = '<div class="text-center">Content is unavailable at this time.</div>';
+			}
+		})
+	}
 </script>
 </body>
 </html>
