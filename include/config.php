@@ -13,7 +13,7 @@ $debugCookie = $_COOKIE['debug'] ?? 'no';
 
 
 if (
-     $_SERVER['HTTP_HOST'] == 'totalbrainboost1.test' ||
+     $_SERVER['HTTP_HOST'] == 'totalbrainboost.test' ||
     $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ||
     $debugCookie == 'js6^g1hks92%ks7392hald81^11'
 ) {
@@ -60,6 +60,7 @@ $site['cakeApiKey'] = 'QeTXa9UguH3vekAtU5Ttq9V6LWAaGB';
 
 $site['maropostApiKey'] = 'UrxhFyQYEmFCLGT8oVTthbUfmJeXzGsKrcgjK4ctQtzZEUT0BdBTrg';
 $site['maropostApiUrl'] = 'https://api.maropost.com/accounts/2161/';
+$site['maropostListId'] = 244;
 
 $site['stickyApi']  = 'pineappleapi';
 $site['stickyPass'] = 'nWsw3BzrhnFBkJ';

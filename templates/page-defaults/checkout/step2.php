@@ -152,7 +152,7 @@ $current_product = $products['products'][$pid];
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
               <div class="flex flex-nowrap items-center w-full my-3 ">
-                  <input type="checkbox" checked name="joinTextAlerts" id="join-text-alerts" value="<?php echo @$_SESSION['joinTextAlerts']; ?>"/>
+                  <input type="checkbox" checked name="joinTextAlerts" id="join-text-alerts" value="checked"/>
                   <label class="ml-2 text-base"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
               <div class="flex text-sm text-gray-500 my-3">

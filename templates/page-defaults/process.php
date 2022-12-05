@@ -8,8 +8,37 @@ unset($_SESSION['llerrorcode']);
 unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 
-//Remove PII from known array values before writing to log
+//Add me some Maropost
+if( isset($_SESSION['joinTextAlerts']) && $_SESSION['joinTextAlerts'] == 'checked') {
+    if( isset($_SESSION['email']) && filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL) ) {
+        $logger->info('Attempting to add ' . $_SESSION['email'] . ' to Maropost');
+        $maropost = new Maropost($site['maropostApiKey'], $site['maropostApiUrl'], null);
+        if( $maropost->CheckEmailValid($_SESSION['email']) ) {
+            $newContact = [
+                'list_id' => $site['maropostListId'],
+                'contact' => [
+                    'email' => $_SESSION['email'],
+                    'custom_field' => [
+                        'referring_page_url' => @$_SERVER['HTTP_REFERER'],
+                        'cake_id' => $_SESSION['affid']
+                    ],
+                    'subscribe' => true
+                ]
+            ];
+            $postedNewContact = $maropost->post_new_contact_into_list($newContact, true);
+            $logger->info(json_encode($postedNewContact));
+        } else {
+            $logger->info($_SESSION['email'] . ' not valid - Error: 829619');
+            error_log("Maropost::CheckEmailValid('{$_SESSION['email']}') not valid " . __FILE__ . ":" . __LINE__);
+        }
+    } else {
+        $logger->info($_SESSION['email'] . ' not valid - Error: 825927');
+        error_log("'customer_email' not valid in \$_SESSION['assessment'] " . __FILE__ . ":" . __LINE__);
+    }
+}
 
+
+//Remove PII from known array values before writing to log
 $postArray = $_POST;
 $postArray['creditCardNumber'] = 'XXXX-XXXX-XXXX-' . substr($postArray['creditCardNumber'], -4);
 $postArray['cvv'] = 'XXX';
@@ -224,6 +253,9 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
             $_SESSION['formerrors'] = ["Transaction was declined"];
             break;
     }
+
+
+
 
     $url = $_POST['current_page'];
     header("Location: " . $url . $querystring);
