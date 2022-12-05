@@ -13,13 +13,18 @@
       margin-bottom: 20px;
     }
 
+    .wsl h1, .wsl h2 {
+      font-weight: 600;
+    }
+
+    .wsl h2 {
+      margin-top: 50px;
+    }
+
     .wsl h1 {
       line-height: 35px;
     }
 
-    .wsl {
-      margin: auto;
-    }
 
     </style>
 </head>
@@ -43,7 +48,7 @@
 
   <p ><span class="0">The brain has come under attack recently&hellip;</span></p>
 
-  <h2 ><span class="8">Your Body&rsquo;s &ldquo;Energy Control Center&rdquo; Is Under Attack</span></h2>
+  <h2 class="text-2xl">Your Body&rsquo;s &ldquo;Energy Control Center&rdquo; Is Under Attack</h2>
 
   <p ><span>Your brain helps run every function in your body. </span><span class="font-semibold">If your brain is working well, you&rsquo;ll have more energy, sharper focus, and be in a better mood all day long.</span></p>
 
@@ -53,7 +58,7 @@
 
   <p ><span>Hidden toxins in our food like pesticides, herbicides, preservatives and artificial trans-fats have hit sky-high levels, wreaking havoc on your brain&hellip; damaging and killing off cells&hellip; and destroying your energy, focus and mood along with it&hellip;</span></p>
 
-  <h2  ><span class="8">How Indian &ldquo;Super Agers&rdquo; Unlocked The Key To More Energy, Focus &amp; A Stronger Brain &hellip; </span></h2>
+  <h2  class="text-2xl"  ><span class="8">How Indian &ldquo;Super Agers&rdquo; Unlocked The Key To More Energy, Focus &amp; A Stronger Brain &hellip; </span></h2>
 
   <p ><span>One well-known medical </span><span>doctor, Dr. Steven Masley, MD, had</span><span class="0">&nbsp;traveled to India to help those in need, but he noticed people there had much sharper, energetic minds into old age&hellip; allowing them to live much longer, active and healthier lives into their 70s, 80s and even 90s&hellip; &nbsp;</span></p>
 
@@ -62,7 +67,7 @@
   <p ><span class="0">He found the secret to their success was one &ldquo;super nutrient&rdquo; in a drink they drink daily that protects the brain and helps grow new brain cells&hellip; </span></p>
 
 
-  <h2  ><span class="8">Boost Mental Energy, Focus, Mood And More With This Breakthrough Discovery </span></h2>
+  <h2  class="text-2xl" ><span class="8">Boost Mental Energy, Focus, Mood And More With This Breakthrough Discovery </span></h2>
 
   <p ><span>The key active </span><span>ingredient</span><span class="0">&nbsp;in this magic drink is called Cucumin.</span></p>
 
@@ -74,7 +79,7 @@
 
   <p ><span class="0">CurcuRouge&reg; also helps: </span></p>
 
-  <ul class="">
+  <ul class="start my-4 list-disc list-inside">
     <li class="4 c7 li-bullet-0"><span class="6">Decrease toxic buildup in the brain</span></li>
     <li class="4 c7 li-bullet-0"><span class="6">Reduce brain inflammation </span></li>
     <li class="4 c7 li-bullet-0"><span class="6">Protect your brain from oxidative stress </span></li>
@@ -87,7 +92,7 @@
   <p ><span>And Revival Point researched </span><span class="font-semibold">5 additional potent brain-boosting ingredients</span><span class="0">&hellip; &nbsp;</span></p>
 
 
-  <h2 ><span class="11">Plus These 5 Brain-Boosting Nutrients Make CucuRouge</span><span class="18">&reg;</span><span class="11">&nbsp;Even More Powerful</span></h2>
+  <h2 class="text-2xl"><span class="11">Plus These 5 Brain-Boosting Nutrients Make CucuRouge</span><span class="18">&reg;</span><span class="11">&nbsp;Even More Powerful</span></h2>
 
   <p ><span class="0">These additional brain boosting ingredients include&hellip; </span></p>
 
@@ -97,7 +102,7 @@
 
   <p ><span>And </span><span class="font-semibold">Vitamins B12, D, </span><span>and</span><span class="font-semibold">&nbsp;Folate</span><span>, which</span><span class="0">&nbsp;form an essential vitamin-complex for boosting energy metabolism and fighting cognitive decline. </span></p>
 
-  <h2><span class="11">Total Brain Boost</span><span class="18">&reg;</span><span class="11">: A Powerful Formula Using 6 Best, Sciencetifically-Backed Brain-Boosting Nutrients Known To Man</span></h2>
+  <h2 class="text-2xl"><span class="11">Total Brain Boost</span><span class="18">&reg;</span><span class="11">: A Powerful Formula Using 6 Best, Sciencetifically-Backed Brain-Boosting Nutrients Known To Man</span></h2>
 
   <p ><span class="0">The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</span></p>
 

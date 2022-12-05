@@ -13,6 +13,14 @@
       margin-bottom: 20px;
     }
 
+    .wsl h1, .wsl h2 {
+      font-weight: 600;
+    }
+
+    .wsl h2 {
+      margin-top: 50px;
+    }
+
     .wsl h1 {
       line-height: 35px;
     }
@@ -30,7 +38,7 @@
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
 
-  <p><span class="font-semibold">You are not alone.&nbsp;According to experts, memory decline it now worse amount adults than at any point in recorded history&hellip; </p>
+  <p><span class="font-semibold">You are not alone.</span>&nbsp;According to experts, memory decline it now worse amount adults than at any point in recorded history&hellip; </p>
 
   <p>And yet <span class="font-semibold">82% of Americans are aware of this or think it&#39;s just part of &ldquo;normal aging&rdquo;. </p>
 
@@ -38,7 +46,7 @@
 
   <h2 class="text-2xl">1 in 3 Seniors Dies From Some Form of Memory&nbsp;Loss</h2>
 
-  <p>Surveys show it&rsquo;s <span class="font-semibold">the scariest condition facing mankind today.&nbsp;We not only lose our identity and independence, but become a burden to our loved ones.</p>
+  <p>Surveys show it&rsquo;s <span class="font-semibold">the scariest condition facing mankind today.</span>&nbsp;We not only lose our identity and independence, but become a burden to our loved ones.</p>
 
   <p>Imagine being unable to feed yourself or use the bathroom without help. Losing your train of thought every minute, unable to remember people&rsquo;s names of what your wife, children and friends told you even just an hour earlier&hellip;</p>
 
@@ -62,11 +70,11 @@
   <p>However Dr. Masley found the human body cannot absorb cucumin without help...</p>
 
 
-  <h2>The Discovery of A Radical New Weapon Against Chronic Brain&nbsp;Decline</h2>
+  <h2 class="text-2xl">The Discovery of A Radical New Weapon Against Chronic Brain&nbsp;Decline</h2>
 
   <p>After extensive research with Dr. Masley, Revival Point found a powerful, patented Curcumin extract called <span class="font-semibold">CurcuRouge&reg;&nbsp;<span class="font-semibold">Bio-Optimized Curcumin&nbsp;that is absorbed 93 times better by the body&hellip; </p>
 
-  <p>Thanks to <span class="font-semibold">its unique &ldquo;polymer matrix&rdquo; technology, CurcuRouge&reg; is able to cross the blood-brain barrier and deliver curcumin&rsquo;s health-boosting directly to your brain to help fight memory loss, brain fog and depression.</p>
+  <p>Thanks to <span class="font-semibold">its unique &ldquo;polymer matrix&rdquo; technology,</span> CurcuRouge&reg; is able to cross the blood-brain barrier and deliver curcumin&rsquo;s health-boosting directly to your brain to help fight memory loss, brain fog and depression.</p>
 
   <p>CurcuRouge&reg; Bio-Optimized Curcumin is able to help improve cognitive function by: </p>
 
@@ -83,15 +91,15 @@
   <p>But Revival Point didn&rsquo;t stop there&hellip; </p>
 
 
-  <h2 class="15" id="h.1037u28z5amj"><span class="11">Plus These 5 Brain-Boosting Nutrients Make CucuRouge&reg;<span class="11">&nbsp;Even More Powerful</h2>
+  <h2 class="text-2xl">Plus These 5 Brain-Boosting Nutrients Make CucuRouge&reg;&nbsp;Even More Powerful</h2>
 
   <p>With Dr. Masley&rsquo;s help, Revival Point conducted extensive research into brain health, looking at the best scientific journals and clinical studies around the world. </p>
 
-  <p>They found that <span class="font-semibold">Trans-Resveratrol&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
+  <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
 
-  <p>And that <span class="font-semibold">Magnesium BisGlycinate&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
+  <p>And that <span class="font-semibold">Magnesium BisGlycinate</span>&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
 
-  <p>And that <span class="font-semibold">Vitamins B12, D, and<span class="font-semibold">&nbsp;Folate&nbsp;form an essential vitamin-complex for boosting energy metabolism and fighting cognitive decline. </p>
+  <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin-complex for boosting energy metabolism and fighting cognitive decline. </p>
 
   <p>They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;</p>
 
@@ -99,11 +107,11 @@
 
   <p>The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</p>
 
-  <p><span class="font-semibold">Total Brain Boost&reg; by Revival Point&nbsp;is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo controlled studies. </p>
+  <p><span class="font-semibold">Total Brain Boost&reg; by Revival Point&nbsp;</span>is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo controlled studies. </p>
 
   <p>All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</p>
 
-  <p>If you&rsquo;re suffering from memory issues, this is your chance to try something truly revolutionary. Plus, with the added benefit of our <span class="font-semibold">90-day money-back guarantee, your only risk is <span class="font-semibold">better memory.&nbsp;</p>
+  <p>If you&rsquo;re suffering from memory issues, this is your chance to try something truly revolutionary. Plus, with the added benefit of our <span class="font-semibold">90-day money-back guarantee</span>, your only risk is <span class="font-semibold">better memory.</span>&nbsp;</p>
 
   <p>Click below to start your journey to better brain health today.</p>
 
