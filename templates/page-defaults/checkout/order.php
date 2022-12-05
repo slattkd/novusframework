@@ -235,6 +235,11 @@ if (!isset($_SESSION['vip_discount'])) {
             background-color: #0085c6;
         } */
 
+        button.cta-button {
+            padding: 8px 20px;
+            margin-top: 0.5rem;
+        }
+
         .cta-button:hover {
             border-color: #000;
             box-shadow: none;
@@ -273,7 +278,7 @@ if (!isset($_SESSION['vip_discount'])) {
         }
 
 
-        .wsl p, h1, h2 {
+        .wsl p, .wsl h1, .wsl h2 {
           margin-bottom: 20px;
         }
 
@@ -313,8 +318,8 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
     </div> -->
-    <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-10 wsl">
-        <div>
+    <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-10">
+        <div class="wsl">
             <h1 class="text-3xl">Boost Memory, Focus & Mood With This Powerful 6-Part Formula</h1>
             <div class="text-2xl text-gray-400 -mt-4">Guaranteed To Work — Or Your Money Back</div>
 
@@ -351,7 +356,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="text-2xl text-gray-400 -mt-4">If You Don’t Love The Results, You Won’t Pay A Dime</div>
         </div>
 
-        <div class="flex md:flex flex-col md:flex-row">
+        <div class="wsl flex md:flex flex-col md:flex-row">
             <div class="w-full md:w-1/4 md:flex display">
                 <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png" class="mx-auto w-full bottle-img pr-4 max-h-36 mt-8 object-contain">
             </div>
@@ -444,21 +449,22 @@ if (!isset($_SESSION['vip_discount'])) {
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-4 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-4 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
                             <div>DOCTOR RECOMMENDED</div>
-                            <div class="md:hidden text-sm">Take 2-3X The Dose To Boost Results…</div>
+                            <div class="md:hidden text-sm font-normal">Take 2-3X The Dose To Boost Results…</div>
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
                             3 Month Supply
                         </h1>
-                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
+                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
                                 <input type="checkbox" id="prod-select" name="prod-select" style="pointer-events:none">
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
-                            <?= $product2['product_qty']; ?> Bottles
+                            <!-- <?= $product2['product_qty']; ?> Bottles -->
+                            <?= $product2['product_month']; ?> Months
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
@@ -477,12 +483,12 @@ if (!isset($_SESSION['vip_discount'])) {
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
-                        <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
+                        <h3 class="text-red-700 font-semibold text-2xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product2['product_retail'], $product2['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow 5 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-2xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product2['product_price'], $product2['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -499,20 +505,21 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product3['product_id']; ?>, <?= savedAmt($product3['product_retail'], $product3['product_price']); ?>, <?= percentOff($product3['product_price'], $product3['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl md:text-2xl ls10 -mx-4 md:mx-0 p-1 text-white md:text-rpblue">
+                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl font-semibold ls10 -mx-4 md:mx-0 p-1 text-white md:text-gray-500">
                             BIGGEST DISCOUNT
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
                             6 Month Supply
                         </h1>
-                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
+                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
                                 <input type="checkbox" id="prod-select" name="prod-select" style="pointer-events:none">
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
-                            <?= $product3['product_qty']; ?> Bottles
+                            <!-- <?= $product3['product_qty']; ?> Bottles -->
+                            <?= $product3['product_month']; ?> Months
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
@@ -531,12 +538,12 @@ if (!isset($_SESSION['vip_discount'])) {
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product3['product_price'], $product3['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
-                        <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
+                        <h3 class="text-red-700 font-semibold text-2xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product3['product_retail'], $product3['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-2xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product3['product_price'], $product3['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -553,18 +560,22 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product1['product_id']; ?>, <?= savedAmt($product1['product_retail'], $product1['product_price']); ?>, <?= percentOff($product1['product_price'], $product1['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
+                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl font-semibold ls10 -mx-4 md:mx-0 p-1 text-white md:text-gray-500">
+                            STARTER OPTION
+                        </div>
 
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
                             1 Month Supply
                         </h1>
-                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
+                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
                                 <input type="checkbox" id="prod-select" name="prod-select" style="pointer-events:none">
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
-                            <?= $product1['product_qty']; ?> Bottles
+                            <!-- <?= $product1['product_qty']; ?> Bottles -->
+                            <?= $product1['product_month']; ?> Months
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
@@ -582,13 +593,13 @@ if (!isset($_SESSION['vip_discount'])) {
                             </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
-                        <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>%</span> OFF + $6.95 US Shipping</h4>
+                        <h3 class="text-red-700 font-semibold text-2xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product1['product_retail'], $product1['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-2xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product1['product_price'], $product1['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -608,21 +619,22 @@ if (!isset($_SESSION['vip_discount'])) {
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                        <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
                             <div>DOCTOR RECOMMENDED</div>
-                            <div class="md:hidden text-sm">Take 2-3X The Dose To Boost Results…</div>
+                            <div class="md:hidden text-sm font-normal">Take 2-3X The Dose To Boost Results…</div>
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
                             3 Month Supply
                         </h1>
-                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
+                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
                                 <input type="checkbox" id="prod-select" name="prod-select" style="pointer-events:none">
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
-                            <?= $product5['product_qty']; ?> Bottles
+                            <!-- <?= $product5['product_qty']; ?> Bottles -->
+                            <?= $product5['product_month']; ?> Months
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
@@ -641,12 +653,12 @@ if (!isset($_SESSION['vip_discount'])) {
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product5['product_price'], $product5['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
-                        <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
+                        <h3 class="text-red-700 font-semibold text-2xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product5['product_retail'], $product5['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow 5 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-2xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product5['product_price'], $product5['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -663,20 +675,22 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product6['product_id']; ?>, <?= savedAmt($product6['product_retail'], $product6['product_price']); ?>, <?= percentOff($product6['product_price'], $product6['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
-                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-1 text-white md:text-rpblue">
+                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl font-semibold ls10 -mx-4 md:mx-0 p-1 text-white md:text-gray-500">
                             BIGGEST DISCOUNT
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
-                            <?= $product6['product_qty']; ?> Bottle Supply
+                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                            <!-- <?= $product6['product_qty']; ?> Bottle Supply -->
+                            <?= $product6['product_month']; ?> Month Supply
                         </h1>
-                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
+                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
                                 <input type="checkbox" id="prod-select" name="prod-select" style="pointer-events:none">
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
-                            <?= $product6['product_qty']; ?> Bottles
+                            <!-- <?= $product6['product_qty']; ?> Bottles -->
+                            <?= $product6['product_month']; ?> Months
                         </h1>
 
                         <div class="limited-offer py-3 pt-0 hidden md:block">
@@ -700,12 +714,12 @@ if (!isset($_SESSION['vip_discount'])) {
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product6['product_price'], $product6['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
-                        <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
+                        <h3 class="text-red-700 font-semibold text-2xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product6['product_retail'], $product6['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-2xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product6['product_price'], $product6['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -722,17 +736,21 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="order-option-box fs-2 w-full mb-5 border-4" onclick="prodSelect(event, <?= $product4['product_id']; ?>, <?= savedAmt($product4['product_retail'], $product4['product_price']); ?>, <?= percentOff($product4['product_price'], $product4['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col grow md:w-1/2 px-4 md:px-8 py-3 pt-0 md:pt-4">
+                        <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl font-semibold ls10 -mx-4 md:mx-0 p-1 text-white md:text-gray-500">
+                            STARTER OPTION
+                        </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text-5xl font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
                             <?= $product4['product_qty']; ?> Month Supply
                         </h1>
-                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text-5xl font-bold my-3 md:hidden">
+                        <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
                                 <input type="checkbox" id="prod-select" name="prod-select" style="pointer-events:none">
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
-                            <?= $product4['product_qty']; ?> Bottles
+                            <!-- <?= $product4['product_qty']; ?> Bottles -->
+                            <?= $product4['product_month']; ?> Months
                         </h1>
 
 
@@ -752,13 +770,13 @@ if (!isset($_SESSION['vip_discount'])) {
                             </div> -->
 
                         </div>
-                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
-                        <h3 class="text-red-700 font-semibold text-2xl md:text-3xl mt-2 hidden md:block">
+                        <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product4['product_price'], $product4['product_retail']); ?>%</span> OFF + $6.95 US Shipping</h4>
+                        <h3 class="text-red-700 font-semibold text-2xl mt-2 hidden md:block">
                             YOU SAVE <span id="save-price2">$<?= savedAmt($product4['product_retail'], $product4['product_price']); ?></span> TODAY!
                         </h3>
                     </div>
                     <div class="order-cta-col flex justify-center grow p-3 md:p-8 flex-col items-center text-center hidden md:flex">
-                        <h3 class="ctr mt-0 mb-1 text-rpblue text-3xl hidden md:block">
+                        <h3 class="ctr mt-0 mb-1 text-rpblue text-2xl hidden md:block">
                             Just <span id="bottle-price2">$<?= perBottle($product4['product_price'], $product4['product_qty']); ?></span> Per Bottle
                         </h3>
 
@@ -773,25 +791,25 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
 
-        <div class="flex flex-col bg-white -mx-4 border-t border-b pt-3 md:hidden">
-            <div class="flex justify-center mt-2">
-                <h3 class="text-red-700 font-semibold text-2xl md:text-3xl md:hidden">You Save <span id="save-price-final">...</span></h3>
-            </div>
-            <div class="flex justify-center mb-2">
-                <button id="btn-mobile" class="cta-button text-3xl clickable hidden md:block" onclick="submitMobileProduct()" style="margin-top: 0.5rem"><em>Secure My Order</em></button>
-            </div>
-        </div>
-
-        <div class="flex flex-col items-center justify-center w-full py-3 mt-3 md:hidden">
-            <div class="flex justify-center text-center py-3">
-				Certified As Secure & Trustworthy By The Leading Companies:
-            </div>
-            <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons-new.png" style="max-width: 600px;mix-blend-mode: multiply;">
-        </div>
-
     </div>
 
-    <div class="flex flex-col py-4 border-t border-b items-center bg-white" style="margin: 0 -0.5rem;padding: 2.5rem 1rem;">
+    <div class="container container-vsl flex flex-col bg-white border-t border-b pt-3 md:hidden">
+        <div class="flex justify-center mt-2">
+            <h3 class="text-red-700 font-semibold text-2xl md:text-3xl md:hidden">You Save <span id="save-price-final">...</span></h3>
+        </div>
+        <div class="flex justify-center mb-2">
+            <button id="btn-mobile" class="cta-button text-3xl clickable hidden md:block" onclick="submitMobileProduct()" style="margin-top: 0.5rem"><em>Secure My Order</em></button>
+        </div>
+    </div>
+
+    <div class="container container-vsl flex flex-col items-center justify-center w-full py-3 px-2 mt-3 md:hidden">
+        <div class="flex justify-center text-center py-3">
+            Certified As Secure & Trustworthy By The Leading Companies:
+        </div>
+        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons-new.png" style="max-width: 600px;mix-blend-mode: multiply;">
+    </div>
+
+    <div class="flex flex-col py-4 border-t border-b items-center bg-white" style="padding: 2.5rem 0.5rem;">
             <div class="container container-sm flex">
                 <div class="gbox flex flex-col w-full md:w-3/5">
                     <div class="gseal fs-2" id="scroll-trigger">
@@ -854,7 +872,7 @@ if (!isset($_SESSION['vip_discount'])) {
     </div>
 
     <div class="flex container container-vsl py-3 justify-center mx-auto">
-    <button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><em>Secure My Order</em></button>
+    <button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="scrollToCTA();"><em>Secure My Order</em></button>
     </div>
 
     <!-- hidden inputs -->
@@ -954,6 +972,11 @@ if (!isset($_SESSION['vip_discount'])) {
             if (pidInput.value !== '' && pidInput.value !== null && pidInput.value !== undefined) {
                 form.submit();
             }
+        }
+
+        function scrollToCTA() {
+            const ctaArea = document.querySelector('.vipwrap');
+            ctaArea.scrollIntoView({behavior: "smooth", block: "start"});
         }
 
 
