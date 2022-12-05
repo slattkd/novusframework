@@ -91,7 +91,7 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                 </div>
-								<select required class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solvePrice()">
+								<select required class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
                     <option selected value="US">United States</option>
                     <?php foreach ($countries as $key => $value) : ?>
                         <option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -273,9 +273,6 @@ $current_product = $products['products'][$pid];
 
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
 <script>
-  function solvePrice() {
-    console.log('solve country shipping price');
-  }
 
   //show or hide shipping address
   const billSame = document.getElementById("bill-same");
