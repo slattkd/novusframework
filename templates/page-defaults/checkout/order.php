@@ -311,7 +311,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         Step 1: Get My Discount Below Now...
                     </div>
                     <div class="flex flex-col items-center md:items-start w-full md:w-1/2 mx-auto">
-                        <div class="bull blue-q">
+                        <div class="bull blue-">
                             <div class="mb-5">
                                 <div class="check">Helps reduce calorie absorption*</div>
                             </div>
@@ -321,7 +321,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
                     </div>
                     <div class="flex flex-col items-center md:items-start w-full md:w-1/2 mx-auto">
-                        <div class="bull blue-q">
+                        <div class="bull blue-">
                             <div class="mb-5">
                                 <div class="check">Helps support energy and focus*</div>
                             </div>
@@ -545,7 +545,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
         <div id="auto-pay" class="flex flex-col w-full hidden mt-4 md:mt-0">
             <!-- auto card 1 -->
-            <div class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
+            <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
                         <div class="flex flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl md:text-2xl ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
@@ -801,7 +801,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <h5 class="text-rpblue text-center md:hidden" >(6-8 Days For All Other Countries)</h5>
     </div>
 
-    <div class="flex container container-vsl py-3 justify-center">
+    <div class="flex container container-vsl py-3 justify-center mx-auto">
     <button id="btn-two" class="cta-button text-3xl clickable hidden md:block" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><em>Secure My Order</em></button>
     </div>
 
@@ -821,12 +821,16 @@ if (!isset($_SESSION['vip_discount'])) {
         const vipInput = document.getElementById('vip');
         const check = document.querySelector('.checked');
 
-        vip.addEventListener('mouseover', () => {
-            pop.classList.add('is-open');
-        })
-        vip.addEventListener('mouseleave', () => {
-            pop.classList.remove('is-open');
-        })
+        if (!isMobile) {
+            vip.addEventListener('mouseover', () => {
+                pop.classList.add('is-open');
+            })
+            vip.addEventListener('mouseleave', () => {
+                pop.classList.remove('is-open');
+            })
+        }
+        
+
         vipInput.addEventListener('change', () => {
             if (vipInput.checked) {
                 check.classList.remove('hidden');
@@ -841,11 +845,12 @@ if (!isset($_SESSION['vip_discount'])) {
                 }
                 showOffers(false);
             }
-        })
-
-        const firstCard = document.getElementById('first-card');
-        document.addEventListener('DOMContentLoaded', ()=> {
+            let firstCard = document.getElementById('first-card');
             firstCard.click();
+        })
+        const firstProdCard = document.getElementById('first-card');
+        document.addEventListener('DOMContentLoaded', ()=> {
+            firstProdCard.click();
         })
 
         const form = document.getElementById('order-form');
@@ -886,7 +891,6 @@ if (!isset($_SESSION['vip_discount'])) {
                 element.classList.remove('hidden');
                 pidInput.value = id;
                 finalSaveText.innerText = `$ ${save} (${percentOff}% OFF)`;
-                console.log('update you save text');
             } else {
                 console.log('do nothing');
             }
