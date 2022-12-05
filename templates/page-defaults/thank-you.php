@@ -305,42 +305,6 @@ $firedl = 0;
                     }
                 }
 
-                if ($_SESSION['add1'] == 1) { echo '
-                    <div class="flex justify-between px-3 py-2">
-                    <div class="text">Super Lube</div>
-                    <div class="price text-right">$14.95</div>
-                    </div>
-                    ';
-                    $total_sum += 14.95;
-                }
-
-                if ($_SESSION['add1'] == 2) { echo '
-                    <div class="flex justify-between px-3 py-2">
-                    <div class="text">Super Lube</div>
-                    <div class="price text-right">$29.90</div>
-                    </div>
-                    ';
-                    $total_sum += 29.90;
-                }
-
-                if ($_SESSION['add1'] == 3) { echo '
-                    <div class="flex justify-between px-3 py-2">
-                    <div class="text">Super Lube</div>
-                    <div class="price text-right">$44.85</div>
-                    </div>
-                    ';
-                    $total_sum += 44.85;
-                }
-
-                if ($_SESSION['add2'] == 1) { echo '
-                    <div class="flex justify-between px-3 py-2">
-                    <div class="text">Sex Positions</div>
-                    <div class="price text-right">$19.95</div>
-                    </div>
-                    ';
-                    $total_sum += 19.95;
-                }
-
                 $ordertotal = $total_sum + $shippingTotal1 + (float)$total_tax;
                 ?>
 
@@ -359,127 +323,18 @@ $firedl = 0;
                     <div class="price text-right ext-xl font-semibold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
                 </div>
 
-                <div class="w-full py-2 text-right hover:text-red-700" style="color: #e44848;"><a href="http://members.supernaturalman.com/login" target="_blank">Click Here to Access Your Bonuses In Our Member’s Area</a></div>
+                <!-- <div class="w-full py-2 text-right hover:text-red-700" style="color: #e44848;"><a href="http://members.supernaturalman.com/login" target="_blank">Click Here to Access Your Bonuses In Our Member’s Area</a></div> -->
                 <div class="w-full pb-2 text-right">Username:  <?php echo $_SESSION['email']; ?></div>
 
-                <div class="flex justify-center py-7 text-3xl text-red-700 text-center font-semibold hidden">
+                <!-- <div class="flex justify-center py-7 text-3xl text-red-700 text-center font-semibold hidden">
 				<h2>"Last Chance! Add These Recommended Products For Free Shipping!"</h2>
-				</div>
+				</div> -->
 
 				<section>
 					<div class="flex w-full flex-col">
 						<div class="title text-center text-red-700 font-semibold font-2xl">
 						</div>
 					</div>
-				</section>
-
-				<section>
-				<div class="additional-products">
-                <h3 class="text-red-700 font-semibold text-center text-3xl mb-4">"Last Chance! Add These Recommended Products For Free Shipping!"</h3>
-				<div class="prod1">
-					<h4 class="red text-center">
-
-                        <em>"Cum On Me, Please!!"</em>
-                        <br>
-                        Hot Girls Secretly LOVE Big Loads… Do NOT Disappoint Her!
-                        <br>
-                        Shoot 4x Bigger Loads With Volumizer
-
-					</h4>
-
-					<div class="float-left w-full md:w-3/5 p-r md:pr-4">
-						<p class="copy">Supernatural Man’s Volumizer <strong>safely</strong> creates more, better-tasting semen in your body so you’ll shower her in <strong>super sized loads</strong> for multiple rounds. Volumizer sweetens your cum with a fruity candy-like taste… and awakens a cum fetish in even the prudest girls!</p>
-
-						<p  class="copy">This luxury formula normally costs $270.00 for a 3-month’s supply but you can get it for only $119.95 on this page and I’ll add it to your order so there’s no shipping cost.</p>
-
-						<p  class="copy">Last chance to click the button below to secure your savings--you won’t see a price this low on Volumizer again…</p>
-					</div>
-
-					<div class="float-right w-full md:w-2/5"><img class="mx-auto md:m-0" src="//<?= $_SERVER["HTTP_HOST"];?>/images/volumizer+250+px.jpg"></div>
-
-					<div class="bottom w-full">
-						<div class="main-button text-center pb-3">
-                            <button id="prod1-btn" class="mx-auto">Yes, turn her into your personal cumslut now!</button>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="flex w-full justify-center">
-                    <div class="spinner1 text-center pb-3 hide">
-                      <?php template('includes/spinner'); ?>
-                    </div>
-                    <p class="ty1 ty text-green-600 text-center py-3 hide">Thank You! 3 Bottles of Volumizer Have Been Added to Your Order…</p>
-                </div>
-				<hr class="clearfix">
-				<div class="clearfix"></div>
-				<div class="prod2">
-					<h4 class="red text-center">
-						New Research Proves Testosterone Levels Dropping To ‘Unsaveable’ Levels In Men Born Between 1942-1980
-						<br>
-						However, there’s still hope…
-					</h4>
-
-					<div class="float-left w-full md:w-3/5 p-r md:pr-4">
-						<p class="copy">Dr. Clayton Paul’s pioneering research has resulted in the ‘T3 Multiplier’ - a formula that eliminates the excess estrogen and saves dying testosterone in men over 40.</p>
-
-						<p  class="copy">T3 Multiplier allows testosterone to ‘regroup & rebuild’ stronger than ever. Experience your prime youth again with increased energy, sex drive, and muscle mass. </p>
-
-						<p  class="copy">Click the button below to get 3 bottles of ‘T3 Multiplier’ for only $117.95 (regular price is $269.85) and I’ll ship it to you for free.</p>
-
-						<p class="copy">You will never see this offer again so do not miss out. </p>
-					</div>
-					<div class="float-right w-full md:w-2/5"><img class="mx-auto md:m-0" src="//<?= $_SERVER["HTTP_HOST"];?>/images/t3+250+px.jpg"></div>
-
-					<div class="bottom w-full">
-						<div class="main-button text-center pb-3 ">
-                            <button id="prod2-btn" class="mx-auto">Yes, I want to experience my prime again!</button>
-                            
-                        </div>
-                        
-					</div>
-                </div>
-                <div class="flex w-full justify-center">
-                    <div class="spinner2 hide">
-                    <?php template('includes/spinner'); ?>
-                    </div>
-                    <p class="ty2 ty text-green-600 text-center py-3 hide">Thank You! 3 Bottles of T3 Multiplier Have Been Added To Your Order...</p>
-                </div>
-				<hr class="clearfix">
-				<div class="clearfix"></div>
-				<div class="prod3">
-					<h4 class="red text-center">
-						Get Complete Control Over Her Orgasms When You Turn Your Dick Into A ‘Living Vibrator’
-						<br>
-						Rub O.X Gel On Your Dick And Create A Tingling, Pulsing Sensation Inside Her
-						<br>
-						<strong>~Makes <em>Her</em> Prematurely Climax!~</strong>
-					</h4>
-
-					<div class="float-left w-full md:w-3/5 p-r md:pr-4">
-						<p class="copy">Doctor formulated O.X Gel creates a pulsing sensation that makes her uncontrollably cum - without making your dick feel too sensitive. She’ll be begging for anal when it drips to her ass <em>(even if she’s sworn off ass play before!)</em></p>
-
-						<p class="copy"><strong>This is your last chance to get O.X Gel at a fraction of the price everyone else pays.</strong></p>
-
-						<p class="copy">Click the button below and get 3 Bottles of O.X Gel for a mere $59.95 (She’ll be thankful you stocked up). This is the lowest price you’ll see on O.X. Gel from now on… and you’ll <em>never</em> see a price this low again:</p>
-					</div>
-
-					<div class="float-right w-full md:w-2/5"><img class="mx-auto md:m-0" src="//<?= $_SERVER["HTTP_HOST"];?>/images/ox+gel+250+px.jpg"></div>
-
-					<div class="bottom w-full">
-						<div class="main-button text-center pb-3">
-                            <button id="prod3-btn" class="mx-auto">Yes, I want complete control over her orgasms!</button>
-                            
-                        </div>
-                        
-					</div>
-                </div>
-                <div class="flex w-full justify-center">
-                <div class="spinner3 hide">
-                            <?php template('includes/spinner'); ?>
-                            </div>
-                            <p class="ty3 ty text-green-600 text-center py-3 hide">Thank You! 3 Bottles of O.X. Gel Have Been Added To Your Order...</p>
-                </div>
-			</div>
 				</section>
 
                 <div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-4 sans uppercase"> <?php echo $company['name']; ?> </div>
