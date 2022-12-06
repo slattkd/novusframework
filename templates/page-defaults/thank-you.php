@@ -223,7 +223,7 @@ $firedl = 0;
 
 <body class="bg-gray-100">
 
-    <div class="container container-vsl mx-auto py-20 px-5 md:px-8 min-h-screen">
+    <div class="container container-vsl mx-auto py-8 md:py-20 px-5 md:px-8 min-h-screen">
         <div class="conten">
             <div class="flex justify-center mb-3">
                 <h1 class="text-2xl font-bold"><span class="checkmark mr-2"aria-hidden="true"></span> Thank you <?php echo @$_SESSION["first_name"]; ?>!</h1>
