@@ -58,7 +58,7 @@ function setSessionVars($encryptedData = null)
     $whitelistKeys = [
         'a','o','r','s','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
         'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
-        'alink','debug','coupon','vwovar','eftid','pid','up','dn','add1','add2','add3',"buy",
+        'alink','debug','coupon','vwovar','pid','up','dn','add1','add2','add3',"buy",
         "id","pid","last","tid","eftid","next","c1","c2","c3","clickid"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 

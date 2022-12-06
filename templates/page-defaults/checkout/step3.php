@@ -137,7 +137,7 @@ $current_product = $products['products'][$pid];
                 </div>
 
               </div>
-							
+
 
               <!-- hidden fields -->
               <!-- <input type="hidden" name="campaign_id" value="5"> -->
@@ -183,6 +183,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="C1" value="<?php echo @$_SESSION['c1']; ?>">
       <input type="hidden" name="C2" value="<?php echo @$_SESSION['c2']; ?>">
       <input type="hidden" name="C3" value="<?php echo @$_SESSION['c3']; ?>">
+      <input type="hidden" name="o" value="<?php echo @$_SESSION['o']; ?>">
       <input type="hidden" name="utm_source" value="<?php echo @$_SESSION['utm_source']; ?>">
       <input type="hidden" name="utm_medium" value="<?php echo @$_SESSION['utm_medium']; ?>">
       <input type="hidden" name="utm_campaign" value="<?php echo @$_SESSION['utm_campaign']; ?>">
