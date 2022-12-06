@@ -24,6 +24,11 @@ if ($_POST) {
 }
 $pid = $_SESSION['pid'];
 
+$shipping_cost = $_SESSION["shippingCountry"] == 'US' ? 6.95 : 14.95;
+if (!$_SESSION['pid'] == '1083' && !$_SESSION['pid'] == '1086') {
+  $shipping_cost = 0;
+}
+
 $current_product = $products['products'][$pid];
 ?>
 
@@ -34,7 +39,7 @@ $current_product = $products['products'][$pid];
 <head>
   <!-- CSS -->
   <?php template("includes/header"); ?>
-        <title>Total Brain boost - Secure Order</title>
+  <title>Total Brain boost - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
     .seal {
@@ -44,10 +49,10 @@ $current_product = $products['products'][$pid];
 </head>
 
 <body class=" bg-gray-100">
-<?php template("includes/rpHeader"); ?>
-<div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
+  <?php template("includes/rpHeader"); ?>
+  <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
 
-<div class="flex justify-center mt-0 md:mt-8">
+    <div class="flex justify-center mt-0 md:mt-8">
       <h1 class="text-2xl md:text-3xl text-center font-bold py-0"><?php echo $company['checkoutHeadline3']; ?></h1>
     </div>
 
@@ -62,95 +67,139 @@ $current_product = $products['products'][$pid];
       <div class="flex justify-center text-center mb-3">
         <h3 class="text-xl md:text-2xl font-semibold border-b">Confirm Your Payment Info</h3>
       </div>
-  <div class="flex items-center text-gray-600 text-base mb-4 md:px-4">
-    <div><i class="fas fa-lock"></i> Your order will be processed on our 256-bit secure server</div>
-  </div>
-  <?php
-  if (isset($_SESSION['formerrors'])) {
-          ?>
-          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded relative" role="alert">
-              <strong class="font-bold">Whoops, something didn't go right - Error Code: <?php echo $_SESSION['llerrorcode'] ?></strong>
-              <span class="block sm:inline"><?php echo $_SESSION['formError'] ?></span>
-          </div>
-  <?php } ?>
+      <div class="flex items-center text-gray-600 text-base mb-4 md:px-4">
+        <div><i class="fas fa-lock"></i> Your order will be processed on our 256-bit secure server</div>
+      </div>
+      <?php
+      if (isset($_SESSION['formerrors'])) {
+      ?>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded relative" role="alert">
+          <strong class="font-bold">Whoops, something didn't go right - Error Code: <?php echo $_SESSION['llerrorcode'] ?></strong>
+          <span class="block sm:inline"><?php echo $_SESSION['formError'] ?></span>
+        </div>
+      <?php } ?>
 
-  <div class="flex">
-    <form id="step-3" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST'];?>/process.php" style="max-width: 100%;">
+      <div class="flex">
+        <form id="step-3" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST']; ?>/process.php" style="max-width: 100%;">
 
-						<div class="flex flex-wrap items-center mb-4">
-							<div class="input w-full mb-1 md:px-4">
+          <div class="flex flex-wrap items-center mb-4">
+            <div class="input w-full mb-1 md:px-4">
+              <div class="w-full w-1/3">
+                <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
+              </div>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required">
+            </div>
+            <div class="w-full columns-2 gap-3 md:px-4">
+              <div class="w-full mb-3">
+                <div class="input w-full w-1/3">
+                  <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Exp Month:</label>
+                </div>
+                <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
+                <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth">
+                  <option value="01" selected>01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+              <div class="w-full mb-3">
+                <div class="input w-full w-1/3">
+                  <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Exp Year:</label>
+                </div>
+                <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
+                <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear">
+                  <option value="22" selected>2022</option>
+                  <option value="23">2023</option>
+                  <option value="24">2024</option>
+                  <option value="25">2025</option>
+                  <option value="26">2026</option>
+                  <option value="27">2027</option>
+                  <option value="28">2028</option>
+                  <option value="29">2029</option>
+                  <option value="30">2030</option>
+                  <option value="31">2031</option>
+                  <option value="32">2032</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex w-full columns-2 gap-3 items-center">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
-                    <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
+                  <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required">
+                <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
               </div>
-              <div class="w-full columns-2 gap-3 md:px-4">
-                  <div class="w-full mb-3">
-                      <div class="input w-full w-1/3">
-                          <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Exp Month:</label>
-                      </div>
-                      <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                      <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth">
-                          <option value="01" selected>01</option>
-                          <option value="02">02</option>
-                          <option value="03">03</option>
-                          <option value="04">04</option>
-                          <option value="05">05</option>
-                          <option value="06">06</option>
-                          <option value="07">07</option>
-                          <option value="08">08</option>
-                          <option value="09">09</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                      </select>
-                  </div>
-                  <div class="w-full mb-3">
-                    <div class="input w-full w-1/3">
-                        <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Exp Year:</label>
-                    </div>
-                      <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                      <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear">
-                          <option value="22" selected>2022</option>
-                          <option value="23">2023</option>
-                          <option value="24">2024</option>
-                          <option value="25">2025</option>
-                          <option value="26">2026</option>
-                          <option value="27">2027</option>
-                          <option value="28">2028</option>
-                          <option value="29">2029</option>
-                          <option value="30">2030</option>
-                          <option value="31">2031</option>
-                          <option value="32">2032</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="flex w-full columns-2 gap-3 items-center">
-                <div class="input w-full mb-1 md:px-4">
-                  <div class="w-full w-1/3">
-                      <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
-                  </div>
-                  <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
-                </div>
-                <div class="input w-full mb-1 md:px-4">
-                  <div class="text-sm text-rpblue no-underline md:mt-4"  onclick="getPage('card-help.php')">What is a CVV?</div>
-                </div>
-
+              <div class="input w-full mb-1 md:px-4">
+                <div class="text-sm text-rpblue no-underline md:mt-4" onclick="getPage('card-help.php')">What is a CVV?</div>
               </div>
 
+            </div>
 
-              <!-- hidden fields -->
-              <!-- <input type="hidden" name="campaign_id" value="5"> -->
-              <input type="hidden" name="product-id" value="<?= @$current_product['product_id']; ?>">
+          </div>
 
-              <div class="flex justify-center w-full">
-                <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+
+          <!-- hidden fields -->
+          <!-- <input type="hidden" name="campaign_id" value="5"> -->
+          <input type="hidden" name="product-id" value="<?= @$current_product['product_id']; ?>">
+
+          <div class="flex justify-center w-full">
+            <button type="button" id="secure-button" class="cta-button clickable w-full md:w-auto text-3xl py-2 md:py-3">Next Step <span class="chev-right ml-2"></span></button>
+          </div>
+
+          <div class="flex justify-center w-full mt-3">
+            <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons-new.png" style="max-width: 600px;">
+          </div>
+
+          <div class="border p-8 mt-8 md:mx-4 hidden">
+            <div class="flex justify-center text-center">
+              <div class="flex flex-col items-center">
+                <div class="text-2xl font-light">Your Order Summary</div>
+                <div class="font-semibold my-2 text-xl">Product Name Desc Title</div>
+                <div class="text-xl">Extra Bottle Speical Offer Add On!</div>
               </div>
-
-              <div class="flex justify-center w-full mt-3">
-                <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px;">
+            </div>
+            <div class="flex justify-between w-full mt-6">
+              <div class="">Retial Price</div>
+              <div class="line-through">$<?= number_format($current_product['product_retail'],2); ?></div>
+            </div>
+            <!-- <div class="flex justify-between w-full mt-2 text-rpblue font-semibold">
+              <div class="">Doctor's Discount</div>
+              <div class="">-$237.00</div>
+            </div> -->
+            <div class="flex justify-between w-full mt-2 border-b pb-2">
+              <div class="">Your Price</div>
+              <div class="line-through">$<?= number_format($current_product['product_price'],2); ?></div>
+            </div>
+            <div class="flex justify-between w-full mt-2">
+              <div class="">Tax <span class="text-sm">(Estimated)</span></div>
+              <div class="">$0.00</div>
+            </div>
+            <div class="flex justify-between w-full mt-2 pb-2 border-b">
+              <div class="">Shipping</div>
+              <div class="flex flex-nowrap">
+                <div class="<?php echo $shipping_cost == 0 ? 'line-through' : ''; ?>">$<?= number_format($shipping_cost, 2); ?> </div>
+                <?php if ($shipping_cost == 0): ?>
+                <span class="text-rpblue font-semibold ml-2">FREE</span>
+                <?php endif; ?>
               </div>
-						</div>
+            </div>
+            <div class="flex justify-between w-full mt-2">
+              <div class="font-semibold">Today You Pay Only</div>
+              <div class="">$<?= number_format($current_product['product_price'] + $shipping_cost,2); ?></div>
+            </div>
+          </div>
+      
+      </div>
+
+    </div>
 
       <!-- hidden form fields required for submit -->
       <input type="hidden" name="firstName" id="FirstName" value="<?php echo @$_SESSION["firstName"]; ?>">
@@ -172,10 +221,10 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="shippingZip" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
 
 
-      <input type="hidden" name="previous_page" value="//<?= $_SERVER['HTTP_HOST'];?>/checkout/step2">
-      <input type="hidden" name="current_page" value="//<?= $_SERVER['HTTP_HOST'];?>/checkout/step3">
+      <input type="hidden" name="previous_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step2">
+      <input type="hidden" name="current_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step3">
       <input type="hidden" name="next_page" id="next-page" value="/thank-you">
-      <input type="hidden" name="product_id" id='product_id'  value="<?php echo $_SESSION['pid']; ?>">
+      <input type="hidden" name="product_id" id='product_id' value="<?php echo $_SESSION['pid']; ?>">
       <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="AFFID" value="<?php echo @$_SESSION['affid']; ?>">
@@ -190,116 +239,111 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="utm_term" value="<?php echo @$_SESSION['utm_term']; ?>">
       <input type="hidden" name="utm_content" value="<?php echo @$_SESSION['utm_content']; ?>">
       <input type="hidden" name="click_id" value="<?php echo @$_SESSION['clickid']; ?>">
-      <input type="hidden" name="notes" value="<?php echo @$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>">
+      <input type="hidden" name="notes" value="<?php echo @$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
       <input type="hidden" name="shippingId" id="shippingId" value="<?php echo @$_SESSION['shippingId']; ?>">
       <input type="hidden" name="newform" value="yes">
       <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265">
       <input type="hidden" name="upsellCount" value="0">
-      <input type="hidden" name="customer_time" id="customer_time"  value="">
-      <input type="hidden" name="eftid" id="eftid"  value="">
+      <input type="hidden" name="customer_time" id="customer_time" value="">
+      <input type="hidden" name="eftid" id="eftid" value="">
       <input type="hidden" name="sessionId" value="<?php echo @$kount_session; ?>">
       <input type="hidden" name="fid" id="fid" value="<?php echo @$formID; ?>" class="hidden" />
       <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo @$site['campaign']; ?>">
       <input type="hidden" name="37positions" id="37positions" value="<?php echo @$thirtyseven; ?>">
-    </form>
+      </form>
+
+
+  <div class="flex flex-wrap md:flex-nowrap items-center my-11">
+    <div class="flex mx-auto pr-0 md:pr-8 mb-4 md:mb-0">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-icon.png" class="seal fs-3 mx-auto md:mx-0 w-1/2 md:w-full">
+    </div>
+    <div class="flex flex-col w-full md:w-4/5 -md:ml-11">
+      <div class="flex">
+        <h4 class="text-center md:text-left text-xl">
+          Your Purchase Today is Fully Protected By Our <span class="nw">90-Day Money Back Guarantee</span>
+        </h4>
+      </div>
+      <div class="flex">
+        <p class="text-center md:text-left mt-3">
+          We want to make 100% sure that you love <?php echo $company['featuredProduct']; ?>, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="protection-header my-4">
+    <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
   </div>
 
 
+  <div class="protection-grid flex flex-wrap w-full my-6 md:my-11">
 
-
-</div>
-
-<div class="flex flex-wrap md:flex-nowrap items-center my-11">
-      <div class="flex mx-auto pr-0 md:pr-8 mb-4 md:mb-0">
-        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-icon.png" class="seal fs-3 mx-auto md:mx-0 w-1/2 md:w-full">
+    <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
+      <div class="bull blue-q">
+        <div class="mb-5">
+          <h6><span class="font-semibold">Fast Shipping:</span></h6>
+          <p>3-Day DHL for USA, 8-Day Worldwide</p>
+        </div>
+        <div class="mb-5">
+          <h6><span class="font-semibold">24/7 Live Phone Help</span></h6>
+          <p>Talk to a real, live customer support specialist at any time</p>
+        </div>
       </div>
-      <div class="flex flex-col w-full md:w-4/5 -md:ml-11">
-        <div class="flex">
-          <h4 class="text-center md:text-left text-xl">
-            Your Purchase Today is Fully Protected By Our <span class="nw">90-Day Money Back Guarantee</span>
-          </h4>
+    </div>
+    <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
+      <div class="bull blue-q">
+        <div class="mb-5">
+          <h6><span class="font-semibold">Privacy Guaranteed</span></h6>
+          <p>Your information is safe and is never shared</p>
         </div>
-        <div class="flex">
-          <p class="text-center md:text-left mt-3">
-            We want to make 100% sure that you love <?php echo $company['featuredProduct']; ?>, which is why you get to try it completely risk free for three full months and make sure you love it. Any time you want, you can contact support to request a refund, no questions asked!
-          </p>
+        <div class="mb-5">
+          <h6><span class="font-semibold">Lowest Price Guaranteed</span></h6>
+          <p>You will never see this at a lower price, guaranteed.</p>
         </div>
-
-
       </div>
     </div>
 
-    <div class="protection-header my-4">
-      <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
-    </div>
+  </div>
 
+  </div>
 
-    <div class="protection-grid flex flex-wrap w-full my-6 md:my-11">
-
-      <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
-        <div class="bull blue-q">
-          <div class="mb-5">
-            <h6><span class="font-semibold">Fast Shipping:</span></h6>
-            <p>3-Day DHL for USA, 8-Day Worldwide</p>
-          </div>
-          <div class="mb-5">
-            <h6><span class="font-semibold">24/7 Live Phone Help</span></h6>
-            <p>Talk to a real, live customer support specialist at any time</p>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-full md:w-1/2 p-2 mx-auto">
-        <div class="bull blue-q">
-          <div class="mb-5">
-            <h6><span class="font-semibold">Privacy Guaranteed</span></h6>
-            <p>Your information is safe and is never shared</p>
-          </div>
-          <div class="mb-5">
-            <h6><span class="font-semibold">Lowest Price Guaranteed</span></h6>
-            <p>You will never see this at a lower price, guaranteed.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-</div>
-
-<?php
-		// declare modal variables (requires basic_modal.js)
-		$modal_id = 'cvvModal';
-		$modal_title = "";
-		$max_width = '4xl';
-		$height = 'full';
-		$modal_body = '
+  <?php
+  // declare modal variables (requires basic_modal.js)
+  $modal_id = 'cvvModal';
+  $modal_title = "";
+  $max_width = '4xl';
+  $height = 'full';
+  $modal_body = '
 		<div id="cvv-copy"></div>
 		';
-		$modal_footer = '';
-    modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width, $height);
-	?>
+  $modal_footer = '';
+  modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width, $height);
+  ?>
 
-<?php template("includes/rpFooter"); ?>
-<?php if ($site['debug'] == true) {
+  <?php template("includes/rpFooter"); ?>
+  <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
     template('debug', null, null, 'debug');
-} ?>
+  } ?>
 
-<script>
-  const isMobile = Math.min(window.innerWidth) < 769;
-  // || navigator.userAgent.indexOf("Mobi") > -1
+  <script>
+    const isMobile = Math.min(window.innerWidth) < 769;
+    // || navigator.userAgent.indexOf("Mobi") > -1
 
-  if(!isMobile) {
+    if (!isMobile) {
       const placeholderElements = document.querySelectorAll('input');
       placeholderElements.forEach(el => {
-          if (el.hasAttribute('placeholder')) {
-              el.removeAttribute('placeholder');
-          }
+        if (el.hasAttribute('placeholder')) {
+          el.removeAttribute('placeholder');
+        }
 
       })
-  }
+    }
 
-  // input validation
-  window.onload = function() {
+    // input validation
+    window.onload = function() {
       // Prsitine Config
       let defaultConfig = {
         // class of the parent element where the error/success class is added
@@ -317,16 +361,16 @@ $current_product = $products['products'][$pid];
       var formValid = false;
       var firstSubmit = false;
 
-      submitBtn.addEventListener('click', (e)=> {
+      submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
         firstSubmit = true;
         formValid = pristine.validate();
-        if(formValid) {
+        if (formValid) {
           form.submit();
         }
       })
 
-      form.addEventListener("input", function () {
+      form.addEventListener("input", function() {
         if (firstSubmit) {
           handleValidation();
         }
@@ -348,26 +392,28 @@ $current_product = $products['products'][$pid];
     };
 
 
-	const cvvModalBody = document.getElementById('cvv-copy');
-	var htmlElement = '';
+    const cvvModalBody = document.getElementById('cvv-copy');
+    var htmlElement = '';
 
-	var pageData =  null;
-	var isLoading =  false;
-	function getPage(pageName) {
-		isLoading = true;
-		fetch(`/${pageName}`)
-		.then(response => response.text())
-		.then((data) => {
-				isLoading = false;
-				if (data && data !== '') {
-				pageData = data;
-				window.modalHandler('cvvModal', true);
-				cvvModalBody.innerHTML = pageData;
-			} else {
-				cvvModalBody.innerHTML = '<div class="text-center">Content is unavailable at this time.</div>';
-			}
-		})
-	}
-</script>
+    var pageData = null;
+    var isLoading = false;
+
+    function getPage(pageName) {
+      isLoading = true;
+      fetch(`/${pageName}`)
+        .then(response => response.text())
+        .then((data) => {
+          isLoading = false;
+          if (data && data !== '') {
+            pageData = data;
+            window.modalHandler('cvvModal', true);
+            cvvModalBody.innerHTML = pageData;
+          } else {
+            cvvModalBody.innerHTML = '<div class="text-center">Content is unavailable at this time.</div>';
+          }
+        })
+    }
+  </script>
 </body>
+
 </html>
