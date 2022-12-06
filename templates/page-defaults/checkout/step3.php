@@ -24,10 +24,6 @@ if ($_POST) {
 }
 $pid = $_SESSION['pid'];
 
-print_r('bill->', $_SESSION["billingState"]);
-print_r('ship->', $_SESSION["shippingState"]);
-var_dump($_POST);
-
 $current_product = $products['products'][$pid];
 ?>
 
