@@ -183,6 +183,10 @@ function setSessionVars($encryptedData = null)
         if ($queryString == 'clickid') {
             $_SESSION['clickid'] = $value ?? null;
         }
+        if ($queryString == 'r') {
+            $_SESSION['r'] = $value ?? null;
+            $_SESSION['eftid'] = $value ?? null;
+        }
        // $_SESSION[$queryString] = $value
     }
 }
