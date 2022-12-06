@@ -82,7 +82,7 @@ $current_product = $products['products'][$pid];
                 <div class="w-full w-1/3">
                     <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
                 </div>
-								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required">
+								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required" data-private>
               </div>
               <div class="w-full columns-2 gap-3 md:px-4">
                   <div class="w-full mb-3">
@@ -90,7 +90,7 @@ $current_product = $products['products'][$pid];
                           <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Exp Month:</label>
                       </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                      <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth">
+                      <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth" data-private>
                           <option value="01" selected>01</option>
                           <option value="02">02</option>
                           <option value="03">03</option>
@@ -110,7 +110,7 @@ $current_product = $products['products'][$pid];
                         <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Exp Year:</label>
                     </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                      <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear">
+                      <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear" data-private>
                           <option value="22" selected>2022</option>
                           <option value="23">2023</option>
                           <option value="24">2024</option>
@@ -130,7 +130,7 @@ $current_product = $products['products'][$pid];
                   <div class="w-full w-1/3">
                       <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
                   </div>
-                  <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
+                  <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required" data-private>
                 </div>
                 <div class="input w-full mb-1 md:px-4">
                   <div class="text-sm text-rpblue no-underline md:mt-4"  onclick="getPage('card-help.php')">What is a CVV?</div>
