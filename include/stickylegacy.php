@@ -144,6 +144,7 @@ class sticky
                      'utm_content' =>  trim($utm_content),
                      'notes' =>  $notes,
                      'eftid' => $eftid,
+                     'custom_fields' => [array( 'id' => '4' , 'value' => $eftid)],
                      'ipAddress' =>  urlencode($_SERVER['REMOTE_ADDR']));
 
         $Curl_Session = curl_init();
@@ -274,6 +275,7 @@ class sticky
         $notes = (isset($posted['notes'])) ? $posted['notes'] : '';
         $upsellProductIds = (isset($posted['upsellProductIds'])) ? $posted['upsellProductIds'] : '';
         $upsellCount = (isset($posted['upsellCount'])) ? $posted['upsellCount'] : '';
+        $eftid = (isset($posted['eftid'])) ? $posted['eftid'] : '';
 
         if (($billingSameAsShipping == '1') || ($billingSameAsShipping == 'yes')) {
             $billingSameAsShipping = 'YES';
@@ -350,6 +352,7 @@ class sticky
                      'utm_term' =>  trim($utm_term),
                      'utm_content' =>  trim($utm_content),
                      'notes' =>  $notes,
+                     'custom_fields' => [array( 'id' => '4' , 'value' => $eftid)],
                      'ipAddress' =>  urlencode($_SERVER['REMOTE_ADDR']));
 
         $Curl_Session = curl_init();

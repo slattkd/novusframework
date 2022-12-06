@@ -244,8 +244,13 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="newform" value="yes">
       <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265">
       <input type="hidden" name="upsellCount" value="0">
+<<<<<<< HEAD
       <input type="hidden" name="customer_time" id="customer_time" value="">
       <input type="hidden" name="eftid" id="eftid" value="">
+=======
+      <input type="hidden" name="customer_time" id="customer_time"  value="">
+      <input type="hidden" name="eftid" id="eftid"  value="<?php echo @$_SESSION['eftid']; ?>">
+>>>>>>> 2c1bc975e5cc8cb6e51ba09f6f951c037ff3d3ef
       <input type="hidden" name="sessionId" value="<?php echo @$kount_session; ?>">
       <input type="hidden" name="fid" id="fid" value="<?php echo @$formID; ?>" class="hidden" />
       <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo @$site['campaign']; ?>">
