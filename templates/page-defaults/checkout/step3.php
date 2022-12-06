@@ -87,7 +87,7 @@ $current_product = $products['products'][$pid];
               <div class="w-full columns-2 gap-3 md:px-4">
                   <div class="w-full mb-3">
                       <div class="input w-full w-1/3">
-                          <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
+                          <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Exp Month:</label>
                       </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                       <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth">
@@ -107,7 +107,7 @@ $current_product = $products['products'][$pid];
                   </div>
                   <div class="w-full mb-3">
                     <div class="input w-full w-1/3">
-                        <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
+                        <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Exp Year:</label>
                     </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                       <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear">

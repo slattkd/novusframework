@@ -407,7 +407,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <div class="mr-3">
                 <img class="truck max-h-8 object-contain text-right" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/icon-shipping-truck-green.png" style="width: 100px; height:auto;">
             </div>
-            <p class="leading-6 pt-4">Shipping Not Impacted By Supply Chain Issues! Ultra-fast delivery straight to your door.</p>
+            <p class="leading-6 pt-4">Shipping Not Impacted By Supply Chain Issues! Ultra-fast delivery straight to your&nbsp;door.</p>
         </div>
 
         <div class="flex flex-col items-center justify-center text-center mb-4 md:hidden" style="max-width: 100vw;">
