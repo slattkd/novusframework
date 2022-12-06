@@ -53,19 +53,19 @@ $current_product = $products['products'][$pid];
         <form id="step-1" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 
           <div class="flex flex-wrap items-center mb-4">
-            <div class="input w-full mb-2 md:px-4">
+            <div class="input w-full mb-3 md:mb-2 md:px-4">
               <div class="w-full invisible">
                 <label for="email" class="text-sm text-gray-600 hidden md:block">Email:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="<?php echo @$_SESSION['email']; ?>" required>
             </div>
-            <div class="input w-full mb-2 md:px-4">
+            <div class="input w-full mb-3 md:mb-2 md:px-4">
               <div class="w-full invisible">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
-            <div class="input w-full mb-2 md:px-4">
+            <div class="input w-full mb-3 md:mb-2 md:px-4">
               <div class="w-full invisible">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>

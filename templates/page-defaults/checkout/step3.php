@@ -83,14 +83,14 @@ $current_product = $products['products'][$pid];
         <form id="step-3" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST']; ?>/process.php" style="max-width: 100%;">
 
           <div class="flex flex-wrap items-center mb-4">
-            <div class="input w-full mb-2 md:px-4">
+            <div class="input w-full mb-3 md:mb-2 md:px-4">
               <div class="w-full invisible">
                 <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required" data-private>
             </div>
-            <div class="w-full columns-2 gap-3 md:px-4">
-              <div class="w-full mb-1">
+            <div class="w-full columns-2 gap-3 mb-3 md:mb-2 md:px-4">
+              <div class="w-full">
                 <div class="input w-full">
                   <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Exp Month:</label>
                 </div>
@@ -110,7 +110,7 @@ $current_product = $products['products'][$pid];
                   <option value="12">12</option>
                 </select>
               </div>
-              <div class="w-full mb-3">
+              <div class="w-full">
                 <div class="input w-full">
                   <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Exp Year:</label>
                 </div>
@@ -131,7 +131,7 @@ $current_product = $products['products'][$pid];
               </div>
             </div>
             <div class="flex w-full columns-2 gap-3 items-center">
-              <div class="input w-full mb-2 md:px-4">
+              <div class="input w-full mb-3 md:mb-2 md:px-4">
                 <div class="w-full invisible">
                   <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
                 </div>
