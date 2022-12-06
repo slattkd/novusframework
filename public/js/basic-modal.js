@@ -32,11 +32,24 @@
         }
     }
     fade();
+    backgroundClick();
   }
 
   window.closeAll = function() {
     const modals = document.querySelectorAll('.modal-position');
     modals.forEach(modal => fadeOut(modal));
     document.body.style.overflow = 'auto';
+  }
+
+
+  function backgroundClick() {
+    const bg = document.querySelector('.modal-position');
+    bg.addEventListener('click', (e)=> {
+      const isBG = e.target.classList.contains('modal-position');
+      if (isBG) {
+        closeAll();
+      }
+    })
+
   }
 
