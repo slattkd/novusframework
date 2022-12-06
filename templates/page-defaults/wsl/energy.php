@@ -7,7 +7,7 @@
 
 <head>
     <?php template('includes/header'); ?>
-    <title><?php echo $company['name'] ?> Energy</title>
+    <title>This Secret Holds The Key To Endlessly Energy</title>
     <style>
     .wsl p, h1, h2 {
       margin-bottom: 20px;
