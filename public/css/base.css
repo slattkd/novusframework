@@ -316,5 +316,13 @@ input[type="checkbox"] {
   background-position: center;
 }
 
+.input label {
+  transform: translate(10px, 6px);
+  background-color: white;
+  display: inline-block;
+  padding: 0 5px;
+  width: auto;
+}
+
 /* blue - #ff01ff */
 /* green - #6da515 */

@@ -29,7 +29,9 @@ $current_product = $products['products'][$pid];
         <title>Total Brain boost - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
-
+    .seal {
+      max-width: 175px;
+    }
   </style>
 </head>
 
@@ -56,38 +58,50 @@ $current_product = $products['products'][$pid];
   <div class="flex">
     <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
 
-						<div class="flex flex-wrap items-center mb-4">
-              <div class="input w-full mb-3 md:px-4">
+          <div class="flex flex-wrap items-center mb-4">
+            <div class="input w-full mb-1 md:px-4">
+              <div class="w-full w-1/3">
+                <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
+              </div>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
+            </div>
+            <div class="input w-full mb-1 md:px-4">
+              <div class="w-full w-1/3">
+                <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
+              </div>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="<?php echo @$_SESSION['lastName']; ?>" required>
+            </div>
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>">
               </div>
-              <div class="input w-full mb-3 md:px-4">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>">
               </div>
-              <div class="input w-full mb-3 md:px-4">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                 </div>
 								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION['billingAddress2']; ?>">
               </div>
-              <div class="input w-full mb-3 md:px-4">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>">
               </div>
-              <div class="input w-full mb-3 md:px-4">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>">
               </div>
-              <div class="input w-full mb-3 md:px-4">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                 </div>
@@ -99,7 +113,7 @@ $current_product = $products['products'][$pid];
                     <?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/html/billing-countries.php'); ?>
                 </select>
               </div>
-              <div class="input w-full mb-3 md:px-4">
+              <div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="billingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                 </div>
@@ -109,15 +123,15 @@ $current_product = $products['products'][$pid];
                   <?php endforeach; ?>
                 </select>
               </div>
-              <div class="flex flex-nowrap items-center w-full my-3">
+              <div class="flex flex-nowrap items-center w-full my-3  md:px-4">
                   <input type="checkbox" checked name="billingSameAsShipping" id="bill-same" value="<?php echo @$_SESSION['billingSameAsShipping']; ?>" style="filter: none;"/>
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
-              <div class="flex flex-nowrap items-center w-full my-3 ">
+              <div class="flex flex-nowrap items-start w-full my-3  md:px-4">
                   <input type="checkbox" name="joinTextAlerts" id="join-text-alerts" value="checked" style="filter: none;"/>
-                  <label class="ml-2 text-base"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
+                  <label class="ml-2 text-base -mt-1"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
-              <div class="flex text-sm text-gray-500 my-3">
+              <div class="flex text-sm text-gray-500 my-3  md:px-4">
               **I agree to receive recurring text messages from Revival Point LLC. Message & Data Rates Apply. Text HELP for Info. Text STOP to opt out. No purchase necessary. Please read our Privacy Policy and Terms.
               </div>
 
@@ -126,39 +140,27 @@ $current_product = $products['products'][$pid];
                 <div class="flex justify-center text-center mb-4">
                   <h3 class="text-xl font-semibold">Enter Your Shipping Information</h3>
                 </div>
-                  <div class="input w-full mb-3 md:px-4">
+                  <div class="input w-full mb-1 md:px-4">
                     <div class="w-full w-1/3">
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
 
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
-                  <div class="input w-full mb-3 md:px-4">
+                  <div class="input w-full mb-1 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                       </div>
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                   </div>
-                  <div class="input w-full mb-3 md:px-4">
+                  <div class="input w-full mb-1 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
 
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
-                  <div class="input w-full mb-3 md:px-4">
-                      <div class="w-full w-1/3">
-                          <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
-                      </div>
-
-                          <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingState" name="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
-                          <?php foreach ($usStates as $key => $value) : ?>
-                              <option value="<?= $key;?>"> <?= $value; ?> </option>
-                          <?php endforeach; ?>
-                          </select>
-
-                  </div>
-                  <div class="input w-full mb-3 md:px-4">
+                  <div class="input w-full mb-1 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                       </div>
@@ -172,7 +174,19 @@ $current_product = $products['products'][$pid];
                           </select>
 
                   </div>
-                  <div class="input w-full mb-3 md:px-4">
+                  <div class="input w-full mb-1 md:px-4">
+                      <div class="w-full w-1/3">
+                          <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
+                      </div>
+
+                          <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="shippingState" name="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
+                          <?php foreach ($usStates as $key => $value) : ?>
+                              <option value="<?= $key;?>"> <?= $value; ?> </option>
+                          <?php endforeach; ?>
+                          </select>
+
+                  </div>
+                  <div class="input w-full mb-1 md:px-4">
                       <div class="w-full w-1/3">
                           <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                       </div>
@@ -201,6 +215,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
       <input type="hidden" id="shippingId" name="shippingId" value="<?= $site['shippingUs']; ?>">
       <input type="hidden" id="lastName" name="lastName" value="<?= $_SESSION['lastName']; ?>">
+      <!-- <input type="hidden" id="shippingState" name="shippingState" value="<?= $_SESSION['shippingState']; ?>"> -->
     </form>
   </div>
 
@@ -278,6 +293,22 @@ $current_product = $products['products'][$pid];
   const billSame = document.getElementById("bill-same");
   const shipAdd = document.querySelector('.shipping-address');
 
+  const billCountry = document.getElementById("billingCountry");
+  const shipCountry = document.getElementById("shippingCountry");
+
+  const billState = document.getElementById("billingState");
+  const shipState = document.getElementById("shippingState");
+
+  const shipId = document.getElementById("shippingId");
+
+  billCountry.addEventListener('change', ()=> {
+    billState.selectedIndex = 0;
+  })
+
+  shipCountry.addEventListener('change', ()=> {
+    shipState.selectedIndex = 0;
+  })
+
   billSame.addEventListener('change', ()=> {
       if (billSame.checked) {
           display(shipAdd, false);
@@ -325,19 +356,10 @@ $current_product = $products['products'][$pid];
             sexPositions = parseFloat(document.getElementById('sexpositions').textContent);
         }
         var shippingCost = 0;
-
         var productId = document.getElementById('product_id').value;
-
-        // qty 1 = shipping not frameElement
-
-        const billCountry = document.getElementById("billingCountry");
-        const shipCountry = document.getElementById("shippingCountry");
-        const shipId = document.getElementById("shippingId");
-        const upsellIds = document.getElementById("upsellProductIds");
 
         if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
             shipId.value = '<?= $site['shippingUs']; ?>';
-            upsellIds.value = '87,102,265';
             _shippingPrice = <?= $site['shippingUsCost']; ?>;
         } else {
             shipId.value = '<?= $site['shippingIntl']; ?>';
