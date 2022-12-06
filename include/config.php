@@ -42,7 +42,7 @@ $site['useCake'] = true;
 $site['useEverflow'] = true;
 
 //Campaign Settings
-$site['campaign'] = 1; //TODO: update to total brain boost id
+$site['campaign'] = 5;
 $site['freeship'] = 5;
 $site['defaultAffId'] = 2126;
 
