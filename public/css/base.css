@@ -317,11 +317,16 @@ input[type="checkbox"] {
 }
 
 .input label {
-  transform: translate(10px, 6px);
+  transform: translate(10px, 7px);
   background-color: white;
   display: inline-block;
   padding: 0 5px;
   width: auto;
+  transition: all 200ms ease-in-out;
+}
+
+.input input:focus::placeholder {
+  color: transparent;
 }
 
 /* blue - #ff01ff */

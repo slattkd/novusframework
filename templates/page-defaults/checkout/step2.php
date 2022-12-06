@@ -60,49 +60,49 @@ $current_product = $products['products'][$pid];
 
           <div class="flex flex-wrap items-center mb-4">
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full">
+              <div class="w-full invisible">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full">
+              <div class="w-full invisible">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="<?php echo @$_SESSION['lastName']; ?>" required>
             </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" placeholder="Phone" value="<?php echo @$_SESSION['phone']; ?>">
               </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION['billingAddress1']; ?>">
               </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="billingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                 </div>
 								<input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION['billingAddress2']; ?>">
               </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>">
               </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                 </div>
 								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingCity" placeholder="City" value="<?php echo @$_SESSION['billingCity']; ?>">
               </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                 </div>
 								<select required class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solveprice()">
@@ -114,7 +114,7 @@ $current_product = $products['products'][$pid];
                 </select>
               </div>
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                     <label for="billingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                 </div>
 								<select required class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
@@ -141,27 +141,27 @@ $current_product = $products['products'][$pid];
                   <h3 class="text-xl font-semibold">Enter Your Shipping Information</h3>
                 </div>
                   <div class="input w-full mb-1 md:px-4">
-                    <div class="w-full">
+                    <div class="w-full invisible">
                           <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address 1:</label>
                       </div>
 
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                   </div>
                   <div class="input w-full mb-1 md:px-4">
-                      <div class="w-full">
+                      <div class="w-full invisible">
                           <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address 2:</label>
                       </div>
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                   </div>
                   <div class="input w-full mb-1 md:px-4">
-                      <div class="w-full">
+                      <div class="w-full invisible">
                           <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                       </div>
 
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
                   </div>
                   <div class="input w-full mb-1 md:px-4">
-                      <div class="w-full">
+                      <div class="w-full invisible">
                           <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                       </div>
 
@@ -175,7 +175,7 @@ $current_product = $products['products'][$pid];
 
                   </div>
                   <div class="input w-full mb-1 md:px-4">
-                      <div class="w-full">
+                      <div class="w-full invisible">
                           <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
                       </div>
 
@@ -187,7 +187,7 @@ $current_product = $products['products'][$pid];
 
                   </div>
                   <div class="input w-full mb-1 md:px-4">
-                      <div class="w-full">
+                      <div class="w-full invisible">
                           <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                       </div>
                       <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Zip Code" type="text" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
@@ -332,16 +332,19 @@ $current_product = $products['products'][$pid];
 
   const isMobile = Math.min(window.innerWidth) < 769;
   // || navigator.userAgent.indexOf("Mobi") > -1
+  const placeholderElements = document.querySelectorAll('.input input');
 
-  if(!isMobile) {
-      const placeholderElements = document.querySelectorAll('input');
-      placeholderElements.forEach(el => {
-          if (el.hasAttribute('placeholder')) {
-              el.removeAttribute('placeholder');
-          }
-
+  // hide show input labels
+  placeholderElements.forEach(pl => {
+      pl.addEventListener('focus', ()=> {
+        pl.previousElementSibling.classList.add('fade-in-element');
+        pl.previousElementSibling.classList.remove('invisible');
       })
-  }
+      pl.addEventListener('blur', ()=> {
+        pl.previousElementSibling.classList.add('invisible');
+        pl.previousElementSibling.classList.remove('fade-in-element');
+      })
+    })
 
     function solveprice() {
         // bypass for testing

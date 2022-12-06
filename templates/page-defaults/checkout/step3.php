@@ -84,7 +84,7 @@ $current_product = $products['products'][$pid];
 
           <div class="flex flex-wrap items-center mb-4">
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full">
+              <div class="w-full invisible">
                 <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required" data-private>
@@ -96,7 +96,7 @@ $current_product = $products['products'][$pid];
                 </div>
                 <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                 <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_mo" name="expMonth" data-private>
-                  <option value="01" selected>01</option>
+                  <option value="01">01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>
                   <option value="04">04</option>
@@ -132,12 +132,12 @@ $current_product = $products['products'][$pid];
             </div>
             <div class="flex w-full columns-2 gap-3 items-center">
               <div class="input w-full mb-1 md:px-4">
-                <div class="w-full">
+                <div class="w-full invisible">
                   <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
                 </div>
                 <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required" data-private>
               </div>
-              <div class="input w-full mb-1 md:px-4">
+              <div class="w-full mb-1 md:px-4 pl-0 mt-3">
                 <div class="text-sm text-rpblue no-underline md:mt-4 clickable" onclick="getPage('card-help.php')">What is a CVV?</div>
               </div>
 
@@ -331,15 +331,19 @@ $current_product = $products['products'][$pid];
     const isMobile = Math.min(window.innerWidth) < 769;
     // || navigator.userAgent.indexOf("Mobi") > -1
 
-    if (!isMobile) {
-      const placeholderElements = document.querySelectorAll('input');
-      placeholderElements.forEach(el => {
-        if (el.hasAttribute('placeholder')) {
-          el.removeAttribute('placeholder');
-        }
+    const placeholderElements = document.querySelectorAll('.input input');
 
+    // hide show input labels
+    placeholderElements.forEach(pl => {
+      pl.addEventListener('focus', ()=> {
+        pl.previousElementSibling.classList.add('fade-in-element');
+        pl.previousElementSibling.classList.remove('invisible');
       })
-    }
+      pl.addEventListener('blur', ()=> {
+        pl.previousElementSibling.classList.add('invisible');
+        pl.previousElementSibling.classList.remove('fade-in-element');
+      })
+    })
 
     // input validation
     window.onload = function() {

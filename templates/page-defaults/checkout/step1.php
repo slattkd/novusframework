@@ -54,19 +54,19 @@ $current_product = $products['products'][$pid];
 
           <div class="flex flex-wrap items-center mb-4">
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full">
+              <div class="w-full invisible">
                 <label for="email" class="text-sm text-gray-600 hidden md:block">Email:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="<?php echo @$_SESSION['email']; ?>" required>
             </div>
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full">
+              <div class="w-full invisible">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full">
+              <div class="w-full invisible">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="<?php echo @$_SESSION['lastName']; ?>" required>
@@ -162,15 +162,19 @@ $current_product = $products['products'][$pid];
     const isMobile = Math.min(window.innerWidth) < 769;
     // || navigator.userAgent.indexOf("Mobi") > -1
 
-    if (!isMobile) {
-      const placeholderElements = document.querySelectorAll('input');
-      placeholderElements.forEach(el => {
-        if (el.hasAttribute('placeholder')) {
-          el.removeAttribute('placeholder');
-        }
+    const placeholderElements = document.querySelectorAll('.input input');
 
+    // hide show input labels
+    placeholderElements.forEach(pl => {
+      pl.addEventListener('focus', ()=> {
+        pl.previousElementSibling.classList.add('fade-in-element');
+        pl.previousElementSibling.classList.remove('invisible');
       })
-    }
+      pl.addEventListener('blur', ()=> {
+        pl.previousElementSibling.classList.add('invisible');
+        pl.previousElementSibling.classList.remove('fade-in-element');
+      })
+    })
 
     // input validation
     window.onload = function() {
