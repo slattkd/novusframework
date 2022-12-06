@@ -54,19 +54,19 @@ $current_product = $products['products'][$pid];
 
           <div class="flex flex-wrap items-center mb-4">
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full w-1/3">
+              <div class="w-full">
                 <label for="email" class="text-sm text-gray-600 hidden md:block">Email:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" placeholder="Email Address" value="<?php echo @$_SESSION['email']; ?>" required>
             </div>
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full w-1/3">
+              <div class="w-full">
                 <label for="firstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" placeholder="First Name" value="<?php echo @$_SESSION['firstName']; ?>" required>
             </div>
             <div class="input w-full mb-1 md:px-4">
-              <div class="w-full w-1/3">
+              <div class="w-full">
                 <label for="lastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
               </div>
               <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" placeholder="Last Name" value="<?php echo @$_SESSION['lastName']; ?>" required>
