@@ -51,7 +51,7 @@ $site['GTMContainer'] = 'GTM-WDLKMTB'; //TODO: update to total brain boost id
 $site['googleSiteVerification'] = 'MtiLf9dEfLrFvmiovviCmLHIx4Cc0uD2RGsA72oC29E';
 
 $site['logRocketDomain'] = 'totalbrainboost.com';
-$site['logRocketTracking'] = 'izaz0g/total-brain-boost';
+$site['logRocketTracking'] = 'hvwc5v/tbb';
 
 
 // This URL Key is used to decode the obfuscated URL
