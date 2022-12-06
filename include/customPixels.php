@@ -178,50 +178,8 @@ switch ($pageType) {
                 }]
             });
         </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-688388232"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-761912273"></script>
 
-        <!-- Event snippet for Website sale conversion page -->
-        <!--
-        <script>
-            gtag('event', 'conversion', {
-                'send_to': 'AW-688388232/z6adCLjjyLYBEIjxn8gC',
-                'transaction_id': '<?php echo $_SESSION['orderId']; ?>'
-            });
-        </script>
-        -->
-
-        <script>
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'AW-688388232');
-        </script>
-
-        <script>
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'AW-761912273');
-        </script>
         <?php
-
-        //upsell 1 fire
-        //cakePixel($_SESSION['r']);
-        //everflowPixel($_SESSION['eftid']);
-        //taboola();
-        //gtmEvent('up01');
-        //dataLayerPurchase("GTMCore", $dataLayer['transactionId'], $_SESSION['affid'], $orderamt);
-        /*
-        <iframe src="https://safetrkpro.com/p.ashx?o=35&e=1&fb=1&t=<?php echo $_SESSION['step_1_orderId']; ?>&r=<?php echo $_GET['r']; ?>" height="1" width="1" frameborder="0"></iframe>
-        <img src='http://api.content.ad/Lib/TrackConversion.aspx?aid=aa28b4f6-81b8-48dd-ae8a-f1529865501d' width='1' height='1' />
-        */
         break;
     case "up2":
         ?>
@@ -394,21 +352,6 @@ switch ($pageType) {
         });
         </script>
 
-        <!-- TruConversion for 5gmale.com -->
-        <script type="text/javascript">
-            var _tip = _tip || [];
-            (function(d, s, id) {
-                var js, tjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = d.location.protocol + '//app.truconversion.com/ti-js/8480/80413.js';
-                tjs.parentNode.insertBefore(js, tjs);
-            }(document, 'script', 'ti-js'));
-        </script>
         <?php
         break;
     default:
