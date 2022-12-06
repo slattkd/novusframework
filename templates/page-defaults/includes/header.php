@@ -80,11 +80,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- <link href="//<?php echo $_SERVER['HTTP_HOST'];?>/css/upsell.css" rel="stylesheet" media="print" onload="this.media='all'" > -->
 
 <?php
-if ($_SERVER['HTTP_HOST'] == 'totalbrainboost.com' ) {
+if ($_SERVER['HTTP_HOST'] == $site['logRocketDomain']) {
     ?>
     <!-- Temp log rocket logging -->
     <script src="https://cdn.lr-in-prod.com/LogRocket.min.js" crossorigin="anonymous" defer></script>
-    <script>window.LogRocket && window.LogRocket.init('tgpuh6/novus');</script>
+    <script>window.LogRocket && window.LogRocket.init('<?php echo $site['logRocketTracking'] ?>');</script>
 <?php } ?>
 
 <!-- PIXELS -->
