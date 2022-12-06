@@ -180,9 +180,9 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="AFFID" value="<?php echo @$_SESSION['affid']; ?>">
       <input type="hidden" name="AFID" value="<?php echo @$_SESSION['vwovar']; ?>">
-      <input type="hidden" name="C1" value="<?php echo @$_SESSION['c1']; ?>">
-      <input type="hidden" name="C2" value="<?php echo @$_SESSION['c2']; ?>">
-      <input type="hidden" name="C3" value="<?php echo @$_SESSION['c3']; ?>">
+      <input type="hidden" name="C1" value="<?php echo @$_SESSION['s1']; ?>">
+      <input type="hidden" name="C2" value="<?php echo @$_SESSION['s2']; ?>">
+      <input type="hidden" name="C3" value="<?php echo @$_SESSION['s3']; ?>">
       <input type="hidden" name="o" value="<?php echo @$_SESSION['o']; ?>">
       <input type="hidden" name="utm_source" value="<?php echo @$_SESSION['utm_source']; ?>">
       <input type="hidden" name="utm_medium" value="<?php echo @$_SESSION['utm_medium']; ?>">
