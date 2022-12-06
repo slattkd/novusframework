@@ -24,6 +24,10 @@ if ($_POST) {
 }
 $pid = $_SESSION['pid'];
 
+print_r('bill->', $_SESSION["billingState"]);
+print_r('ship->', $_SESSION["shippingState"]);
+var_dump($_POST);
+
 $current_product = $products['products'][$pid];
 ?>
 
@@ -37,6 +41,9 @@ $current_product = $products['products'][$pid];
         <title>Total Brain boost - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
+    .seal {
+      max-width: 175px;
+    }
   </style>
 </head>
 
@@ -75,7 +82,7 @@ $current_product = $products['products'][$pid];
     <form id="step-3" class="mb-0 w-full" method="post" action="//<?= $_SERVER['HTTP_HOST'];?>/process.php" style="max-width: 100%;">
 
 						<div class="flex flex-wrap items-center mb-4">
-							<div class="input w-full mb-3 md:px-4">
+							<div class="input w-full mb-1 md:px-4">
                 <div class="w-full w-1/3">
                     <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
                 </div>
@@ -83,7 +90,7 @@ $current_product = $products['products'][$pid];
               </div>
               <div class="w-full columns-2 gap-3 md:px-4">
                   <div class="w-full mb-3">
-                      <div class="w-full w-1/3">
+                      <div class="input w-full w-1/3">
                           <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
                       </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
@@ -103,7 +110,7 @@ $current_product = $products['products'][$pid];
                       </select>
                   </div>
                   <div class="w-full mb-3">
-                    <div class="w-full w-1/3">
+                    <div class="input w-full w-1/3">
                         <label for="cc_exp_yr" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
                     </div>
                       <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
@@ -123,13 +130,13 @@ $current_product = $products['products'][$pid];
                   </div>
               </div>
               <div class="flex w-full columns-2 gap-3 items-center">
-                <div class="input w-full mb-3 md:px-4">
+                <div class="input w-full mb-1 md:px-4">
                   <div class="w-full w-1/3">
                       <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
                   </div>
                   <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required">
                 </div>
-                <div class="input w-full mb-3 md:px-4">
+                <div class="input w-full mb-1 md:px-4">
                   <div class="text-sm text-rpblue no-underline md:mt-4"  onclick="getPage('card-help.php')">What is a CVV?</div>
                 </div>
 
@@ -158,7 +165,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="billingAddress2" id="billingAddress2" value="<?php echo @$_SESSION["billingAddress2"]; ?>">
       <input type="hidden" name="billingCity" id="billingCity" value="<?php echo @$_SESSION["billingCity"]; ?>">
       <input type="hidden" name="billingState" id="billingState" value="<?php echo @$_SESSION["billingState"]; ?>">
-      <input type="hidden" name="billingCountry" id="billingCountry" value="<?php echo @$_SESSION["billingCountry"]; ?>" onchange="">
+      <input type="hidden" name="billingCountry" id="billingCountry" value="<?php echo @$_SESSION["billingCountry"]; ?>">
       <input type="hidden" name="billingZip" type="text" id="billingZip" placeholder="Postal Code" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>">
       <input type="hidden" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
       <input type="hidden" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
@@ -189,7 +196,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="notes" value="<?php echo @$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>">
       <input type="hidden" name="shippingId" id="shippingId" value="<?php echo @$_SESSION['shippingId']; ?>">
       <input type="hidden" name="newform" value="yes">
-      <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="">
+      <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265">
       <input type="hidden" name="upsellCount" value="0">
       <input type="hidden" name="customer_time" id="customer_time"  value="">
       <input type="hidden" name="eftid" id="eftid"  value="">
