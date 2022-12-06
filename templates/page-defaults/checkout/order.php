@@ -294,6 +294,10 @@ if (!isset($_SESSION['vip_discount'])) {
           line-height: 35px;
         }
 
+        h1.text-4xl {
+            font-size: 2.5rem;
+        }
+
     </style>
 
 
@@ -449,13 +453,13 @@ if (!isset($_SESSION['vip_discount'])) {
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product2['product_id']; ?>, <?= savedAmt($product2['product_retail'], $product2['product_price']); ?>, <?= percentOff($product2['product_price'], $product2['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex flex-col items-center flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                        <div class="flex flex-col items-center flex-wrap justify-center md:justify-start md:items-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
                             <div>DOCTOR RECOMMENDED</div>
                             <div class="md:hidden text-sm font-normal">Take 2-3X The Dose To Boost Results…</div>
                         </div>
-                        <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
+                        <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             3 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
@@ -467,9 +471,10 @@ if (!isset($_SESSION['vip_discount'])) {
                             <?= $product2['product_month']; ?> Months
                         </h1>
 
-                        <div class="flex md:justify-between md:border-y-2 md:py-3">
-                            <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= number_format($product2['product_retail'], 2); ?></span>
+                        <div class="flex flex-nowrap md:justify-between md:border-y-2 md:py-3">
+                            <div class="flex flex-nowrap text-gray-600 hidden md:flex">
+                                <div>Retail Price: </div>
+                                <div class="relative ml-1"><span class="strike">$<?= number_format($product2['product_retail'], 2); ?></span></div>
                             </div>
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product2['product_retail'], 2); ?></span>
@@ -508,9 +513,9 @@ if (!isset($_SESSION['vip_discount'])) {
                         <div class="flex justify-center md:justify-start bg-stone-400 md:bg-white rounded-t-md text-xl font-semibold ls10 -mx-4 md:mx-0 p-1 text-white md:text-gray-500">
                             BIGGEST DISCOUNT
                         </div>
-                        <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
+                        <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             6 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
@@ -523,8 +528,9 @@ if (!isset($_SESSION['vip_discount'])) {
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
-                            <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= number_format($product3['product_retail'], 2); ?></span>
+                        <div class="flex flex-nowrap text-gray-600 hidden md:flex">
+                            <div>Retail Price: </div>
+                                <div class="relative ml-1"><span class="strike">$<?= number_format($product3['product_retail'], 2); ?></span></div>
                             </div>
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product3['product_retail'], 2); ?></span>
@@ -566,7 +572,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             1 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
@@ -579,8 +585,9 @@ if (!isset($_SESSION['vip_discount'])) {
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
-                            <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= number_format($product1['product_retail'], 2); ?></span>
+                            <div class="flex flex-nowrap text-gray-600 hidden md:flex">
+                                <div>Retail Price: </div>
+                                <div class="relative ml-1"><span class="strike">$<?= number_format($product1['product_retail'], 2); ?></span></div>
                             </div>
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product1['product_retail'], 2); ?></span>
@@ -619,13 +626,13 @@ if (!isset($_SESSION['vip_discount'])) {
             <div id="first-card" class="order-option-box selected fs-2 w-full shadow-lg mb-5" onclick="prodSelect(event, <?= $product5['product_id']; ?>, <?= savedAmt($product5['product_retail'], $product5['product_price']); ?>, <?= percentOff($product5['product_price'], $product5['product_retail']); ?>)">
                 <div class="order-option-row flex flex-wrap">
                     <div class="order-details-col px-4 md:px-8 py-3 grow md:w-1/2 pt-0 md:pt-4">
-                        <div class="flex flex-col items-center flex-wrap justify-center md:justify-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
+                        <div class="flex flex-col items-center flex-wrap justify-center md:justify-start md:items-start bg-rpblue md:bg-white rounded-t text-xl font-semibold ls10 -mx-5 md:mx-0 p-2 md:p-1 text-white md:text-rpblue">
                             <div>DOCTOR RECOMMENDED</div>
                             <div class="md:hidden text-sm font-normal">Take 2-3X The Dose To Boost Results…</div>
                         </div>
-                        <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Your Results</p>
+                        <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             3 Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
@@ -638,8 +645,9 @@ if (!isset($_SESSION['vip_discount'])) {
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
-                            <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= number_format($product5['product_retail'], 2); ?></span>
+                            <div class="flex flex-nowrap text-gray-600 hidden md:flex">
+                                <div>Retail Price: </div>
+                                <div class="relative ml-1"><span class="strike">$<?= number_format($product5['product_retail'], 2); ?></span></div>
                             </div>
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product5['product_retail'], 2); ?></span>
@@ -680,7 +688,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-semibold mb-3 hidden md:block">
                             <!-- <?= $product6['product_qty']; ?> Bottle Supply -->
                             <?= $product6['product_month']; ?> Month Supply
                         </h1>
@@ -699,8 +707,9 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
-                            <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= number_format($product6['product_retail'], 2); ?></span>
+                            <div class="flex flex-nowrap text-gray-600 hidden md:flex">
+                                <div>Retail Price: </div>
+                                <div class="relative ml-1"><span class="strike">$<?= number_format($product6['product_retail'], 2); ?></span></div>
                             </div>
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product6['product_retail'], 2); ?></span>
@@ -741,7 +750,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-bold my-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             <?= $product4['product_qty']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
@@ -756,8 +765,9 @@ if (!isset($_SESSION['vip_discount'])) {
 
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
-                            <div class="text-gray-600 hidden md:block">
-                                Retail Price: <span class="line-through">$<?= number_format($product4['product_retail'], 2); ?></span>
+                            <div class="flex flex-nowrap text-gray-600 hidden md:flex">
+                                <div>Retail Price: </div>
+                                <div class="relative ml-1"><span class="strike">$<?= number_format($product4['product_retail'], 2); ?></span></div>
                             </div>
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product4['product_retail'], 2); ?></span>
