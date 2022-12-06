@@ -162,7 +162,7 @@ $current_product = $products['products'][$pid];
             <div class="flex justify-center text-center">
               <div class="flex flex-col items-center">
                 <div class="text-2xl font-light">Your Order Summary</div>
-                <div class="font-semibold my-2 text-xl">Product Name Desc Title</div>
+                <div class="font-semibold my-2 text-xl"><?= $current_product['name']; ?></div>
               </div>
             </div>
             <div class="flex justify-between w-full mt-6">

@@ -10,6 +10,7 @@ module.exports = {
         'blue': '#016ea9',
         'yella': '#F8D990',
         'rpblue': '#01699c',
+        'tygreen': '#14a536'
       }
     },
     borderWidth: {

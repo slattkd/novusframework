@@ -157,7 +157,7 @@ $firedl = 0;
         .checkmark {
             display: inline-block;
             background: transparent;
-            outline: 3px solid red;
+            outline: 3px solid #14a536;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -166,12 +166,18 @@ $firedl = 0;
             transform: rotate(45deg) scale(1.5);
         }
 
+        @media screen and (max-width: 768px) {
+            .checkmark {
+                transform: rotate(45deg) scale(0.9);
+            }
+        }
+
         .checkmark:before {
             content: "";
             position: absolute;
             width: 4px;
             height: 11px;
-            background-color: red;
+            background-color: #14a536;
             left: 11px;
             top: 5px;
         }
@@ -181,7 +187,7 @@ $firedl = 0;
             position: absolute;
             width: 8px;
             height: 4px;
-            background-color: red;
+            background-color: #14a536;
             left: 7px;
             top: 13px;
         }
@@ -223,45 +229,25 @@ $firedl = 0;
 
 <body class="bg-gray-100">
 
-    <div class="container container-vsl mx-auto py-8 md:py-20 px-5 md:px-8 min-h-screen">
+    <div class="container container-vsl mx-auto py-4 md:py-20 px-2 md:px-5 md:px-8 min-h-screen">
         <div class="conten">
-            <div class="flex justify-center mb-3">
-                <h1 class="text-2xl font-bold"><span class="checkmark mr-2"aria-hidden="true"></span> Thank you <?php echo @$_SESSION["first_name"]; ?>!</h1>
+            <div class="flex items-center justify-center mb-0 md:mb-4">
+                <h1 class="text-base md:text-2xl font-semibold pb-0 text-tygreen">
+                <span class="checkmark mr-1 md:mr-2" aria-hidden="true"></span> Thank you, Your Order is Now Complete!
+                </h1>
             </div>
 
-            <div class="flex w-full flex-col bg-white p-4 px-6 border rounded border-black red-top">
-                <div class="flex">
-                    <h3 id="customer" class="text-2xl font-bold mb-0">Customer information</h3>
-                </div>
-                <div class="columns-3xs ...">
-                    <div class="flex flex-col p-3">
-                        <h4 class=" text-xl font-semibold">Shipping Address</h4>
-                        <?php echo $items[$orderid]['shipping_street_address']; ?><br>
-                        <?php if ($items[$orderid]['shipping_street_address2'] != "") {
-                            echo $items[$orderid]['shipping_street_address2'] . '<br>' . '';
-                        } ?>
-                        <?php echo $items[$orderid]['shipping_city']; ?>,
-                        <?php echo $items[$orderid]['shipping_state']; ?>
-                        <?php echo $items[$orderid]['shipping_postcode']; ?>
+            <div class="flex w-full flex-col bg-white border rounded-lg border-2 border-tygreen">
+                    <div class="flex justify-center items-center rounded-t py-2 md:py-3 pr-3 md:pr-6 text-white bg-tygreen">
+                        <div class="w-1/5 mx-3">
+                            <img class="truck max-h-8 object-contain text-right w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/icon-shipping-truck-green.png" style="height:auto;filter: brightness(2);">
+                        </div>
+                        <div class="leading-5 text-sm md:text-lg">Your Order Will Be Shipped The Next Business Day At 9AM</div>
                     </div>
-                    <div class="flex flex-col p-3">
-                        <h4 class=" text-xl font-semibold">Billing Address</h4>
-                        <?php echo $items[$orderid]['billing_street_address']; ?><br>
-                        <?php if ($items[$orderid]['billing_street_address2'] != "") {
-                            echo $items[$orderid]['billing_street_address2'] . '<br>' . '';
-                        } ?>
-                        <?php echo $items[$orderid]['billing_city']; ?>,
-                        <?php echo $items[$orderid]['billing_state']; ?>
-                        <?php echo $items[$orderid]['billing_postcode']; ?>
+                <div class="p-4 px-6">
+                    <div class="flex">
+                        <h3 class="text-2xl font-bold mb-4">Order Information</h3>
                     </div>
-                </div>
-                <div class="flex-flex-col px-3">
-                    <h4 class=" text-xl font-semibold">Email</h4>
-                    <p><?php echo $_SESSION['email']; ?></p>
-                </div>
-                <div class="flex">
-                    <h3 id="customer" class="text-2xl font-bold mb-4 pt-6">Order Information</h3>
-                </div>
 
                 <?php
                     $total_tax = 0;
@@ -276,7 +262,7 @@ $firedl = 0;
                             $stuff = '';
                             $stuff .= "nsOrderItems.push('{{" . $product['name'] . "}}{{" . $product['price'] . "}}{{1}}');\n";
                             echo '
-                            <div class="flex justify-between px-3 py-2">
+                            <div class="flex justify-between px-3 py-1">
                             <div class="text">' . $product['name'] . '</div>
                             <div class="price text-right">$ ' . number_format((float)$product['price'], 2, '.', '') . '</div>
                             </div>
@@ -309,20 +295,53 @@ $firedl = 0;
                 $ordertotal = $total_sum + $shippingTotal1 + (float)$total_tax;
                 ?>
 
-                <div class="flex justify-between px-3 py-2">
+                <div class="flex justify-between px-4 py-1">
                     <div class="text">Shipping</div>
                     <!-- number_format((float)$grand_total, 2, '.', '') -->
                     <!-- money_format('%i', $grand_total) -->
                     <div class="price text-right">$ <?php echo number_format($info['shipping_amount'], 2); ?></div>
                 </div>
-                <div class="flex justify-between px-3 py-2">
+                <div class="flex justify-between px-4 py-1">
                     <div class="text">Sales Tax</div>
                     <div class="price text-right">$ <?php echo number_format((float)$total_tax, 2, '.', ''); ?></div>
                 </div>
-                <div class="flex justify-between px-3 py-2">
+                <div class="flex justify-between px-4 py-2">
                     <div class="text">Total</div>
-                    <div class="price text-right ext-xl font-semibold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
+                    <div class="price text-right ext-xl font-bold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
                 </div>
+
+
+                
+                <div class="flex mt-6">
+                    <h3 id="customer" class="text-2xl font-bold mb-0 mt-6">Customer information</h3>
+                </div>
+                <div class="columns-3xs">
+                    <div class="flex flex-col p-3">
+                        <h4 class=" text-xl font-semibold">Shipping Address</h4>
+                        <?php echo $items[$orderid]['shipping_street_address']; ?><br>
+                        <?php if ($items[$orderid]['shipping_street_address2'] != "") {
+                            echo $items[$orderid]['shipping_street_address2'] . '<br>' . '';
+                        } ?>
+                        <?php echo $items[$orderid]['shipping_city']; ?>,
+                        <?php echo $items[$orderid]['shipping_state']; ?>
+                        <?php echo $items[$orderid]['shipping_postcode']; ?>
+                    </div>
+                    <div class="flex flex-col p-3">
+                        <h4 class=" text-xl font-semibold">Billing Address</h4>
+                        <?php echo $items[$orderid]['billing_street_address']; ?><br>
+                        <?php if ($items[$orderid]['billing_street_address2'] != "") {
+                            echo $items[$orderid]['billing_street_address2'] . '<br>' . '';
+                        } ?>
+                        <?php echo $items[$orderid]['billing_city']; ?>,
+                        <?php echo $items[$orderid]['billing_state']; ?>
+                        <?php echo $items[$orderid]['billing_postcode']; ?>
+                    </div>
+                </div>
+                <div class="flex-flex-col px-3">
+                    <h4 class=" text-xl font-semibold">Email</h4>
+                    <p><?php echo $_SESSION['email']; ?></p>
+                </div>
+                
 
                 <!-- <div class="flex justify-center py-7 text-3xl text-red-700 text-center font-semibold hidden">
 				<h2>"Last Chance! Add These Recommended Products For Free Shipping!"</h2>
@@ -335,16 +354,28 @@ $firedl = 0;
 					</div>
 				</section>
 
-                <div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-4 sans uppercase"> <?php echo $company['name']; ?> </div>
+                <!-- <div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-4 sans uppercase"> <?php echo $company['name']; ?> </div> -->
+            </div>
+                <div class="flex flex-col items-center text-center bg-tygreen text-white p-3">
+                    <div class="img"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/icon-customer-service.png" alt=""></div>
+                    <div class="text-xl my-3">
+                        Want to add or change your order or need help?
+                    </div>
+                    <div class="text-lg">
+                        Email <span class="font-semibold"><?= $company['email']; ?></span>
+                        or call <span class="font-semibold"><?= $company['phone']; ?></span> now to speak to a customer service representative 24/7!
+                    </div>
+
+                </div>
             </div>
         </div>
 
         <div class="flex flex-wrap justify-center md:justify-between items-center mt-3">
-            <div class="w-full md:w-auto text-center">
+            <div class="w-full md:w-auto text-center mb-2 md:mb-0 hidden">
                 <span class="question text-sm" aria-hidden="true"></span>
                 Need help? <a class="clickable underline" href="<?php echo ($site['contactlink'])?>" target="_blank">Contact us</a>
             </div>
-            <div class="flex">
+            <div class="flex justify-center mx-auto w-full">
                   <?php legalLinks("includes/legalLinks");?>
             </div>
         </div>
