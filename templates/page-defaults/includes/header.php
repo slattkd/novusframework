@@ -6,8 +6,8 @@
 //temporary log rocket tracking
 if ($_SERVER['HTTP_HOST'] == $site['logRocketDomain']) {
     ?>
-    <script src="https://cdn.lr-in-prod.com/LogRocket.min.js" crossorigin="anonymous" defer></script>
-    <script>window.LogRocket && window.LogRocket.init('<?php echo $site['logRocketTracking'] ?>');</script>
+    <script src="https://cdn.lr-in-prod.com/LogRocket.min.js" crossorigin="anonymous"></script>
+    <script>window.LogRocket && window.LogRocket.init('hvwc5v/tbb');</script>
 <?php } ?>
 
 <?php if ($_SESSION['slug'] == 'checkout/order' || $_SESSION['slug'] == 'checkout/onepage') { ?>
