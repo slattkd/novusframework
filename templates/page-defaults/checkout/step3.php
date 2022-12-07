@@ -1,6 +1,7 @@
 <?php
 
 $nextlink = '/thank-you' . $querystring;
+$kount_session = str_replace('.', '', microtime(true));
 
 // required PID from post
 if ($_POST) {

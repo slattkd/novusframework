@@ -375,7 +375,7 @@ switch ($pageType) {
 }
 
 //Add Pixel Fired event for each page type
-$pixelsFired[] = 'GTM' . $pageType;
+$pixelsFired[] = 'GTM_' . $pageType;
 
 //fire the logging pixel with corresponding event data
 pixelLogging($loggerPixel, $pixelsFired);
