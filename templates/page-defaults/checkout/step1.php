@@ -199,7 +199,6 @@ $current_product = $products['products'][$pid];
         e.preventDefault();
         firstSubmit = true;
         formValid = pristine.validate();
-        console.log(formValid);
         if(formValid) {
           form.submit();
         }

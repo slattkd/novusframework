@@ -972,7 +972,7 @@ if (!isset($_SESSION['vip_discount'])) {
                 pidInput.value = id;
                 finalSaveText.innerText = `$ ${save} (${percentOff}% OFF)`;
             } else {
-                console.log('do nothing');
+                //console.log('do nothing');
             }
 
 

@@ -80,7 +80,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -90,7 +90,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -100,7 +100,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -110,7 +110,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -120,7 +120,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -130,7 +130,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -140,7 +140,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -150,7 +150,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -160,13 +160,13 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTMCore',
+                'event': 'GTM_Core',
                 'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
                 'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
                 'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -186,7 +186,7 @@ switch ($pageType) {
         <script>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'GTM<?php echo $pageType;?>',
+            'event': 'GTM_<?php echo $pageType;?>',
             'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -205,7 +205,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>',
+                'event': 'GTM_<?php echo $pageType;?>',
                 'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
                 'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
                 'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -227,7 +227,7 @@ switch ($pageType) {
         <script>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'GTM<?php echo $pageType;?>',
+            'event': 'GTM_<?php echo $pageType;?>',
             'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -248,7 +248,7 @@ switch ($pageType) {
     <script>
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        'event': 'GTM<?php echo $pageType;?>',
+        'event': 'GTM_<?php echo $pageType;?>',
         'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
         'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
         'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -267,7 +267,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -277,7 +277,7 @@ switch ($pageType) {
         <script>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'GTM<?php echo $pageType;?>',
+            'event': 'GTM_<?php echo $pageType;?>',
             'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -297,7 +297,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -307,7 +307,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -317,7 +317,7 @@ switch ($pageType) {
         <script>
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'GTM<?php echo $pageType;?>'
+                'event': 'GTM_<?php echo $pageType;?>'
             });
         </script>
         <?php
@@ -327,7 +327,7 @@ switch ($pageType) {
         <script>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'GTM<?php echo $pageType;?>',
+            'event': 'GTM_<?php echo $pageType;?>',
             'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',

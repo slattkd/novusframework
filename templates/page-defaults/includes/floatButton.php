@@ -104,7 +104,7 @@
 		Array.from(scrollNodes).forEach(el => {
 			if (!isHidden(el)) {
 				scrollElement = el;
-				console.log(scrollElement);
+				//console.log(scrollElement);
 			}
 		})
 
@@ -128,7 +128,7 @@
 
 		// scroll to element via floating button
 		dynamicElement.addEventListener('click', function() {
-			console.log(scrollElement);
+			//console.log(scrollElement);
 			scrollElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
 		})
 	})

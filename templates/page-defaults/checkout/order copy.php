@@ -1293,7 +1293,7 @@ function cidgrab() {
     var cid = dtpCallback.getClickID();
     var name = 'cidcookie';
     var days = 45;
-    console.log(cid);
+    //console.log(cid);
     createCookie(name, cid, days);
 }
 <?php if(isset($_GET['cpid'])) { ?>

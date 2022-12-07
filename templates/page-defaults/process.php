@@ -47,7 +47,6 @@ $logger->info('Posted Values: ' . $postArray);
 
 $sticky = new sticky();
 
-//Add Timer Function, output on system.log
 $response = $sticky->newOrder($_POST);
 $logger->info('Sticky New Order Response: ' . json_encode($response));
 
@@ -84,42 +83,6 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
     $logger->info('Order ID: ' . $oid_res[1]);
     $logger->info('Customer ID: ' . $cus_res[1]);
     $logger->info('Is this a Test Order: ' . $test_order[1]);
-
-    // cake pixel
-    if ($_SESSION['r'] != "") {
-        $url = 'https://safetrkpro.com/p.ashx';
-        $fields = array(
-            'o' => $_SESSION['o'],
-            'r' => $_SESSION['r'],
-            't' => $_SESSION['order_id'],
-            'e' => '1',
-            'f' => 'pb'
-        );
-
-        //url-ify the data for the POST
-        foreach ($fields as $key => $value) {
-            $fields_string .= $key . '=' . $value . '&';
-        }
-        rtrim($fields_string, '&');
-
-        //open connection
-        $ch = curl_init();
-
-        //set the url, number of POST vars, POST data
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, count($fields));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        //execute post
-        $cakeresult = curl_exec($ch);
-
-        $logger->info(json_encode($cakeresult));
-
-        //close connection
-        curl_close($ch);
-    }
-    // end cake pixel
 
     $url = $_POST['next_page'];
     header("Location: " . $url . $querystring);

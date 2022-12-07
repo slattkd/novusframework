@@ -369,7 +369,15 @@ $current_product = $products['products'][$pid];
         firstSubmit = true;
         formValid = pristine.validate();
         if (formValid) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = "Processing Payment..."
           form.submit();
+
+          // After 5 seconds, rest form submit button
+          setTimeout(function(){
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = 'Next Step <span class="chev-right ml-2"></span>';
+          }, 5000);
         }
       })
 
