@@ -257,6 +257,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const billingState = document.getElementById('billingState');
     const shippingState = document.getElementById('shippingState');
 
+    billingState.innerHTML = statesArray['US'];
+    shippingState.innerHTML = statesArray['US'];
     billingCountry.addEventListener('change', ()=> {
         billingState.innerHTML = statesArray[billingCountry.value];
     })

@@ -47,6 +47,9 @@ $items = json_decode($results['data'], true);
 $info = $items[$orderid];
 $mailer = 0;
 
+// TODO: test for total price calulation
+// var_dump($info);
+
 if ($_SESSION['affid'] == 1798) {
     $mailer = 1;
 }

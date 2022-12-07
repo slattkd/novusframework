@@ -105,78 +105,35 @@ $company['checkoutHeadline2'] = 'You’re 2 Steps Away From <br class="md:hidden
 $company['checkoutHeadline3'] = 'You’re 1 Steps Away From <br class="md:hidden"> Improving yourself…';
 
 
-
 if ($site['debug'] == true) {
     $debugbar['time']->stopMeasure('collectvars');
 }
 
 
+// Get products from JSON file
+if ($site['debug'] == true) {
+    $debugbar['time']->startMeasure('longop', 'Get Products JSON');
+}
 
+//$productsJson = file_get_contents("../include/products.json");
+//$site['products'] = $someArray = json_decode($productsJson, true);
 
-// Does this need to live in the config, it's a constant and should never change
-$usStates = [
-'AL' => 'Alabama',
-'AK' => 'Alaska',
-'AS' => 'American Samoa',
-'AZ' => 'Arizona',
-'AR' => 'Arkansas',
-'AA' => 'Armed Forces Americas',
-'AE' => 'Armed Forces Middle East',
-'AP' => 'Armed Forces Pacific',
-'CA' => 'California',
-'CO' => 'Colorado',
-'CT' => 'Connecticut',
-'DE' => 'Delaware',
-'DC' => 'District of Columbia',
-'FM' => 'Federated States of Micronesia',
-'FL' => 'Florida',
-'GA' => 'Georgia',
-'GU' => 'Guam',
-'HI' => 'Hawaii',
-'ID' => 'Idaho',
-'IL' => 'Illinois',
-'IN' => 'Indiana',
-'IA' => 'Iowa',
-'KS' => 'Kansas',
-'KY' => 'Kentucky',
-'LA' => 'Louisiana',
-'ME' => 'Maine',
-'MD' => 'Maryland',
-'MA' => 'Massachusetts',
-'MI' => 'Michigan',
-'MN' => 'Minnesota',
-'MS' => 'Mississippi',
-'MO' => 'Missouri',
-'MT' => 'Montana',
-'NE' => 'Nebraska',
-'NV' => 'Nevada',
-'NH' => 'New Hampshire',
-'NJ' => 'New Jersey',
-'NM' => 'New Mexico',
-'NY' => 'New York',
-'NC' => 'North Carolina',
-'ND' => 'North Dakota',
-'MP' => 'Northern Mariana Islands',
-'OH' => 'Ohio',
-'OK' => 'Oklahoma',
-'OR' => 'Oregon',
-'PA' => 'Pennsylvania',
-'PR' => 'Puerto Rico',
-'MH' => 'Republic of Marshall Islands',
-'RI' => 'Rhode Island',
-'SC' => 'South Carolina',
-'SD' => 'South Dakota',
-'TN' => 'Tennessee',
-'TX' => 'Texas',
-'UT' => 'Utah',
-'VT' => 'Vermont',
-'VI' => 'Virgin Islands of the U.S.',
-'VA' => 'Virginia',
-'WA' => 'Washington',
-'WV' => 'West Virginia',
-'WI' => 'Wisconsin',
-'WY' => 'Wyoming'
-];
+//Add JSON products to Products global variable
+// Read the JSON file
+$productsJson = file_get_contents('../include/products.json');
+
+// Decode the JSON file
+$productsData = json_decode($productsJson, true);
+
+// Display data
+//print_r($productsData);
+
+$products = $productsData;
+
+if ($site['debug'] == true) {
+    $debugbar['time']->stopMeasure('longop');
+}
+
 
 // Does this need to live in the config, it's a constant and should never change
 $countries = [
@@ -327,81 +284,6 @@ $countries = [
     "VI" => 'Virgin Islands, U.S.',
     "YE" => 'Yemen'
 ];
-
-//     <!-- "BS" 'BS' >Bahamas -->
-//     <!-- "BM" 'BM' >Bermuda -->
-//     <!-- "BO" 'BO' >Bolivia -->
-//     <!-- "BN" 'BN' >Brunei Darussalam -->
-//     <!-- "BI" => 'Burundi -->
-//     <!-- "KY" 'KY' >Cayman Islands -->
-//     <!-- "CL" 'CL' >Chile -->
-//     <!-- "CN" 'CN' >China -->
-//     <!-- "CZ" 'CZ' >Czech Republic -->
-//     <!-- "DJ" 'DJ' >Djibouti -->
-//     <!-- "EC" 'EC' >Ecuador -->
-//     <!-- "FJ" 'FJ' >Fiji -->
-//     <!-- "PF" 'PF' >French Polynesia -->
-//     <!-- "GM" => 'Gambia -->
-//     <!-- "GW" => 'Guinea-Bissau -->
-//     <!-- "GY" => 'Guyana -->
-//     <!-- "HN" 'HN' >Honduras -->
-//     <!-- "HK" 'HK' >Hong Kong -->
-//     <!-- "JM" 'JM' >Jamaica -->
-//     <!-- "KW" 'KW' >Kuwait -->
-//     <!-- "LB" 'LB' >Lebanon -->
-//     <!-- "LU" => 'Luxembourg -->
-//     <!-- "MO" 'MO' >Macau -->
-//     <!-- "MV" 'MV' >Maldives -->
-//     <!-- "MD" 'MD' >Moldova -->
-//     <!-- "MN" 'MN' >Mongolia -->
-//     <!-- "MM" 'MM' >Myanmar -->
-//     <!-- "NP" 'NP' >Nepal -->
-//     <!-- "NC" 'NC' >New Caledonia -->
-//     <!-- "PA" 'PA' >Panama -->
-//     <!-- "PG" => 'Papua New Guinea -->
-//     <!-- "PY" => 'Paraguay -->
-//     <!-- "PE" 'PE' >Peru -->
-//     <!-- "PH" 'PH' >Philippines -->
-//     <!-- "RW" => 'Rwanda -->
-//     <!-- "KN" => 'St. Kitts And Nevis -->
-//     <!-- "LC" => 'St. Lucia -->
-//     <!-- "WS" 'WS' >Samoa -->
-//     <!-- "SA" 'SA' >Saudi Arabia -->
-//     <!-- "SN" => 'Senegal -->
-//     <!-- "ZA" 'ZA' >South Africa -->
-//     <!-- "LK" 'LK' >Sri Lanka -->
-//     <!-- "SR" 'SR' >Suriname -->
-//     <!-- "TT" 'TT' >Trinidad and Tobago -->
-//     <!-- "WF" 'WF' >Wallis and Futuna -->
-
-
-
-
-// Get products from JSON file
-if ($site['debug'] == true) {
-    $debugbar['time']->startMeasure('longop', 'Get Products JSON');
-}
-
-//$productsJson = file_get_contents("../include/products.json");
-//$site['products'] = $someArray = json_decode($productsJson, true);
-
-//Add JSON products to Products global variable
-// Read the JSON file
-$productsJson = file_get_contents('../include/products.json');
-
-// Decode the JSON file
-$productsData = json_decode($productsJson, true);
-
-// Display data
-//print_r($productsData);
-
-$products = $productsData;
-
-if ($site['debug'] == true) {
-    $debugbar['time']->stopMeasure('longop');
-}
-
-
 
 
 /*
