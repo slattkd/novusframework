@@ -167,6 +167,10 @@ switch ($pageType) {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'GTM_Core',
+                'event_category': 'Ecommerce',
+                'event_action': 'Purchase',
+                'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+                'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
                 'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
                 'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
                 'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -187,6 +191,10 @@ switch ($pageType) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM_<?php echo $pageType;?>',
+            'event_category': 'Ecommerce',
+            'event_action': 'Purchase',
+            'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+            'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -206,6 +214,10 @@ switch ($pageType) {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'GTM_<?php echo $pageType;?>',
+                'event_category': 'Ecommerce',
+                'event_action': 'Purchase',
+                'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+                'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
                 'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
                 'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
                 'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -228,6 +240,10 @@ switch ($pageType) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM_<?php echo $pageType;?>',
+            'event_category': 'Ecommerce',
+            'event_action': 'Purchase',
+            'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+            'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionId': '<?php echo $_SESSION['lastOrderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['lastOrderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -249,6 +265,10 @@ switch ($pageType) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
         'event': 'GTM_<?php echo $pageType;?>',
+        'event_category': 'Ecommerce',
+        'event_action': 'Purchase',
+        'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+        'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
         'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
         'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
         'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -278,6 +298,10 @@ switch ($pageType) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM_<?php echo $pageType;?>',
+            'event_category': 'Ecommerce',
+            'event_action': 'Purchase',
+            'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+            'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
@@ -328,6 +352,10 @@ switch ($pageType) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM_<?php echo $pageType;?>',
+            'event_category': 'Ecommerce',
+            'event_action': 'Purchase',
+            'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
+            'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
             'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
             'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
