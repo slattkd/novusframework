@@ -31,10 +31,6 @@
       background-size: 20px;
     }
 
-    p-break {
-      margin-bottom: 24px;
-    }
-
     </style>
 </head>
 
@@ -70,7 +66,7 @@
   <p><span>But in the last three decades </span><span class="font-semibold">your brain has come under&nbsp;attack.</span></p>
 
   <p><span>Hidden toxins in our food like pesticides, herbicides, preservatives and artificial trans-fats have hit sky-high levels, wreaking havoc on your brain&hellip; damaging and killing off cells&hellip; and destroying your energy, focus and mood along with it&hellip;</span></p>
-  <div class="flex justify-center">
+  <div class="flex justify-center -my-6">
     <img class="w-full md:w-4/5 mx-auto" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/alzheimers-brain.png" alt="alzheimers brain" />
   </div>
 
@@ -88,13 +84,13 @@
   <p>
     <img class="float-right md:ml-3 mb-3 w-full md:w-1/2 " src="//<?= $_SERVER['HTTP_HOST']; ?>/images/basil-ginger-cumin.jpg" alt="herbal ingredients" />
     <span>The key active </span><span>ingredient</span><span class="0">&nbsp;in this magic drink is called Curcumin.</span>
-    <br class="p-break">
+    </p><p>
     <span>There&rsquo;s only one problem: your body doesn&rsquo;t absorb unless it&rsquo;s modified in a lab.</span>
-    <br class="p-break">
+    </p><p>
     <span>Revival Point found a new type of curcumin that is 93 times more absorbable called </span><span class="font-semibold">CurcuRouge&reg;</span><span class="0">&nbsp;&hellip; </span>
-    <br class="p-break">
+    </p><p>
     <span>Thanks to </span><span class="font-semibold">its unique &ldquo;polymer matrix&rdquo; technology</span><span class="0">, CurcuRouge&reg; is able to cross the blood-brain barrier and deliver curcumin&rsquo;s health-boosting benefits directly to your brain</span>
-    <br class="p-break">
+    </p><p>
     <span class="0">CurcuRouge&reg; also helps: </span>
     <br style="clear:both" />
   </p>
@@ -120,11 +116,11 @@
   <p>
   <img class="float-left md:mr-3 mb-3 w-full md:w-1/2 " src="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.jpg" alt="grapes and wine" />
   <span class="0">These additional brain-boosting ingredients include&hellip; </span>
-  <br class="p-break">
+  </p><p>
   <span class="font-semibold">Trans-Resveratrol</span><span class="0">&mdash;a polyphenol found in Red Wine&mdash;boosts brain circulation, flooding brain cells with the oxygen-rich blood they need for optimal function. </span>
-  <br class="p-break">
+  </p><p>
   <span class="font-semibold">Magnesium BisGlycinate, </span><span>which </span><span class="0">restores signaling speed for sharper thinking and faster memory recall. </span>
-  <br class="p-break">
+  </p><p>
   <span>And </span><span class="font-semibold">Vitamins B12, D, </span><span>and</span><span class="font-semibold">&nbsp;Folate</span><span>, which</span><span class="0">&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </span>
   <br style="clear:both" />
   </p>
@@ -133,15 +129,15 @@
   <p>
   <img class="float-right md:ml-3 mb-3 w-full md:w-1/2 " src="//<?= $_SERVER['HTTP_HOST']; ?>/images/age-couple.jpg" alt="couple relationship" />
     <span class="0">The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</span>
-    <br class="p-break">
+    </p><p>
     <span class="font-semibold">Total Brain Boost&reg; by Revival Point</span><span>&nbsp;is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo-controlled studies. </span>
-    <br class="p-break">
-  <span class="0">All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</span>
-  <br class="p-break">
-  <span>If you&rsquo;re suffering from </span><span>low energy, focus or drive</span><span>, this is your chance to try something truly revolutionary. Plus, with the added benefit of our </span><span class="font-semibold">90-day money-back guarantee</span><span>, your only risk is </span><span class="font-semibold">a more energetic, fit and active life.</span><span class="0">&nbsp;</span>
-  <br class="p-break">
-  <span class="0">Click below to start your journey to better brain health and a more energetic, fit body today.</span>
-  <br style="clear:both" />
+    </p><p>
+    <span class="0">All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</span>
+    </p><p>
+    <span>If you&rsquo;re suffering from </span><span>low energy, focus or drive</span><span>, this is your chance to try something truly revolutionary. Plus, with the added benefit of our </span><span class="font-semibold">90-day money-back guarantee</span><span>, your only risk is </span><span class="font-semibold">a more energetic, fit and active life.</span><span class="0">&nbsp;</span>
+    </p><p>
+    <span class="0">Click below to start your journey to better brain health and a more energetic, fit body today.</span>
+    <br style="clear:both" />
 </p>
 
   <div class="flex justify-center my-2">

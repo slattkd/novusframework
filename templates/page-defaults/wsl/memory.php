@@ -40,6 +40,9 @@
 
   <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
   <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
+  <div class="flex justify-center mb-4">
+    <img class="w-full mx-auto" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-sad.jpg" alt="lady on bed" />
+  </div>
 
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
@@ -52,11 +55,18 @@
 
   <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">1 in 3 Seniors Dies From Some Form of Memory&nbsp;Loss</h2>
 
+  <p>
+
+  </p>
   <p>Surveys show it&rsquo;s <span class="font-semibold">the scariest condition facing mankind today.</span>&nbsp;We not only lose our identity and independence, but become a burden to our loved ones.</p>
 
   <p>Imagine being unable to feed yourself or use the bathroom without help. Losing your train of thought every minute, unable to remember people&rsquo;s names of what your wife, children and friends told you even just an hour earlier&hellip;</p>
 
   <p>Imagine ending up a vegetable in a wheelchair&hellip; or dying alone and afraid in a nursing home with no idea where you are, how you got there or who anyone around you is&hellip; terrified and confused&hellip;</p>
+
+  <div class="flex justify-center -my-6">
+    <img class="w-full md:w-4/5 mx-auto" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/alzheimers-brain.png" alt="alzheimers brain" />
+  </div>
 
   <p>This horrifying scenario is becoming more and more likely for Americans as brain&nbsp;health-related conditions and deaths skyrocket&hellip; </p>
 
@@ -69,11 +79,14 @@
 
   <p>He also found India&rsquo;s rates of brain decline are remarkably low compared to the United States, despite India being a much poorer country and with much worse health care.</p>
 
+  <p>
+  <img class="float-left md:mr-3 mb-3 w-full md:w-1/2 " src="//<?= $_SERVER['HTTP_HOST']; ?>/images/basil-ginger-cumin.jpg" alt="herbal ingredients" />
   <p>He found the source of their mental powers hidden in a drink that almost all Indian people drink daily, called Golden Milk.</p>
-
   <p>Golden Milk contains a nutrient called curcumin that boost memory, mood and attention by reducing inflammation in the brain. </p>
-
   <p>However, Dr. Masley found the human body cannot absorb curcumin without help...</p>
+  <br style="clear:both" />
+  </p>
+  
 
 
   <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">The Discovery of A Radical New Weapon Against Chronic Brain&nbsp;Decline</h2>
@@ -95,31 +108,43 @@
   <p>That means a sharper mind, stronger memory, more mental energy, and a better mood&hellip; <span class="font-semibold">so you can enjoy a vibrant, happy, independent life for years to come.&nbsp;</p>
 
   <p>But Revival Point didn&rsquo;t stop there&hellip; </p>
+  <div class="flex justify-center">
+    <img class="w-full mx-auto" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.jpg" alt="doctors research" />
+  </div>
+
 
 
   <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Plus These 5 Brain-Boosting Nutrients Make CucuRouge&reg;&nbsp;Even More Powerful</h2>
 
   <p>With Dr. Masley&rsquo;s help, Revival Point conducted extensive research into brain health, looking at the best scientific journals and clinical studies around the world. </p>
 
+  <p>
+  <img class="float-left md:mr-3 mb-3 w-full md:w-1/2 " src="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.jpg" alt="grapes and wine" />
   <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
-
   <p>And that <span class="font-semibold">Magnesium BisGlycinate</span>&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
-
   <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </p>
-
   <p>They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;</p>
+  <br style="clear:both" />
+  </p>
+  
 
   <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Total Brain Boost&reg;: A Powerful Formula Using 6 Best, Scientifically-Backed Brain-Boosting Nutrients Known To Man</h2>
 
   <p>The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</p>
 
-  <p><span class="font-semibold">Total Brain Boost&reg; by Revival Point&nbsp;</span>is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo-controlled studies. </p>
-
-  <p>All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</p>
-
-  <p>If you&rsquo;re suffering from memory issues, this is your chance to try something truly revolutionary. Plus, with the added benefit of our <span class="font-semibold">90-day money-back guarantee</span>, your only risk is <span class="font-semibold">better memory.</span>&nbsp;</p>
-
-  <p>Click below to start your journey to better brain health today.</p>
+  <div>
+  <img class="float-right md:ml-3 mb-3 w-full md:w-1/2 " src="//<?= $_SERVER['HTTP_HOST']; ?>/images/age-couple.jpg" alt="couple relationship" />
+  <p>
+  <span class="font-semibold">Total Brain Boost&reg; by Revival Point&nbsp;</span>is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo-controlled studies.
+  </p><p>
+  All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.
+  </p><p>
+  If you&rsquo;re suffering from memory issues, this is your chance to try something truly revolutionary. Plus, with the added benefit of our <span class="font-semibold">90-day money-back guarantee</span>, your only risk is <span class="font-semibold">better memory.</span>&nbsp;
+  </p><p>
+  Click below to start your journey to better brain health today.
+  <br style="clear:both" />
+  </p>
+  </div>
 
   <div class="flex justify-center my-4">
     <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2" style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></button>
