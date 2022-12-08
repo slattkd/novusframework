@@ -286,10 +286,6 @@ if (!isset($_SESSION['vip_discount'])) {
           font-weight: 600;
         }
 
-        .wsl h2 {
-          margin-top: 50px;
-        }
-
         .wsl h1 {
           line-height: 35px;
           line-height: 1.3;
@@ -327,7 +323,7 @@ if (!isset($_SESSION['vip_discount'])) {
         <div class="wsl">
             <div class="flex flex-wrap-reverse">
                 <div class="flex flex-col justify-center w-full md:w-3/4 text-center md:text-left">
-                    <h1 class="text-4xl md:text-5xl text-tygreen mb-4 md:mb-8 leading-6 serif">Boost Memory, Focus & Mood With This Powerful <span style="white-space:nowrap">6-Part</span>&nbsp;Formula</h1>
+                    <h1 class="text-3xl md:text-5xl text-tygreen mb-4 md:mb-8 leading-6 serif">Boost Memory, Focus & Mood With This Powerful <span style="white-space:nowrap">6-Part</span>&nbsp;Formula</h1>
                     <div class="text-2xl text-rpblue font-semibold mb-4 md:mb-0">Guaranteed To Work — Or Your Money&nbsp;Back</div>
                 </div>
                 <div class="flex flex-col shrink justify-center w-full md:w-1/4">
@@ -336,7 +332,7 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
             
 
-            <ul class="list-disc pl-8 text-lg md:text-xl text-gray-500 mt-3 md:mt-0">
+            <ul class="list-disc pl-8 text-lg md:text-xl text-gray-500 mt-3 md:-mt-6">
                 <li>Clinically proven to aid memory</li>
                 <li>Improve working memory and sustained attention in as little as 1 hour</li>
                 <li>Improved mood: less stressed, confused, angry, or upset</li>
@@ -344,7 +340,7 @@ if (!isset($_SESSION['vip_discount'])) {
                 <li>Featured on CBS, NBC, ABC, Fox, Reuters, WebMD, LA Times, & more.</li>
             </ul>
 
-            <h2 class="text-3xl mt-8 md:text-4xl text-rpblue mb-4 md:mb-8 leading-9 serif text-center md:text-left">The Difference? Our Ingredients.</h2>
+            <h2 class="text-3xl md:text-4xl text-rpblue mb-4 md:mb-8 leading-9 serif text-center md:text-left mt-8 md:mt-11">The Difference? Our Ingredients.</h2>
 
             <p class="text-gray-500">Revival Point™, uses the power of nature combined with cutting-edge science to boost energy, fitness, mental sharpness and overall health. That’s why we formulate with the help of leading MDs using the highest quality ingredients backed by strong, double-blind studies. Only these highly-vetting ingredients should be trusted and are most likely to be effective for you.</p>
 
@@ -364,7 +360,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <h3 class="text-xl font-semibold">Vitamins B12, D, and Folate </h3>
             <p class="text-gray-500">Essential vitamin-complex for boosting energy metabolism and fighting cognitive decline.</p>
 
-            <h2 class="text-3xl mt-8 md:text-4xl text-rpblue mb-3 leading-9 serif text-center md:text-left" style="margin-bottom: 0.5rem;">Better Memory... or Your Money&nbsp;Back</h2>
+            <h2 class="text-3xl md:text-4xl text-rpblue mb-3 leading-9 serif text-center md:text-left mt-8 md:mt-11" style="margin-bottom: 0.5rem;">Better Memory... or Your Money&nbsp;Back</h2>
             <div class="text-2xl text-2xl text-green-600 font-semibold text-center md:text-left">If You Don’t Love The Results, You Won’t Pay A&nbsp;Dime</div>
         </div>
 
