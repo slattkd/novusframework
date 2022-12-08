@@ -36,9 +36,9 @@ if ($_SERVER['HTTP_HOST'] == $site['logRocketDomain']) {
 <meta name="format-detection" content="telephone=no">
 <meta name="google-site-verification" content="<?php echo $site['googleSiteVerification'];?>" />
 
-<link rel="stylesheet" href="/css/main.css?v=1.2">
-<link rel="stylesheet" href="/css/legal-copy.css?v=1.2">
-<link rel="stylesheet" href="/css/base.css?v=1.2">
+<link rel="stylesheet" href="/css/main.css?v=1.3">
+<link rel="stylesheet" href="/css/legal-copy.css?v=1.3">
+<link rel="stylesheet" href="/css/base.css?v=1.3">
 
 
 <?php if ($site['debug'] !== true) { //Don't need to run this on local?>
