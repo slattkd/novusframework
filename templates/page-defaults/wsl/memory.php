@@ -61,7 +61,7 @@
 
   <p>Dr. Steven Masley, MD traveled to India to help treat the poor and underprivileged. Here he discovered a group of &ldquo;Super Agers&rdquo;&mdash;<span class="font-semibold">men and women whose memory and focus was razor sharp into their 70s, 80s and even 90s.&nbsp;</p>
 
-  <p>He also found India&rsquo;s rates of brain decline ar remarkably low compared to the United States, despite India being a much poorer country and with much worse health care.</p>
+  <p>He also found India&rsquo;s rates of brain decline are remarkably low compared to the United States, despite India being a much poorer country and with much worse health care.</p>
 
   <p>He found the source of their mental powers hidden in a drink that almost all Indian people drink daily, called Golden Milk.</p>
 
