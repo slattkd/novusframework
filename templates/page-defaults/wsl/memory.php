@@ -52,22 +52,22 @@
 
   <p>Imagine ending up a vegetable in a wheelchair&hellip; or dying alone and afraid in a nursing home with no idea where you are, how you got there or who anyone around you is&hellip; terrified and confused&hellip;</p>
 
-  <p>This horrifying scenario is becoming more and more likely for Americans as brain&nbsp;health related conditions and deaths skyrocket&hellip; </p>
+  <p>This horrifying scenario is becoming more and more likely for Americans as brain&nbsp;health-related conditions and deaths skyrocket&hellip; </p>
 
   <p>Brain conditions are now <span class="font-semibold">the 6th leading cause of death in the U.S., killing 1 out of 3 seniors every year. </p>
   <p>But one well-known Florida medical doctor might have found a solution to help&hellip;</p>
 
-  <h2 class="text-2xl">Indian &ldquo;Super Agers&rdquo; Might Unlock The Key To Razor Sharp Memory At Any Age</h2>
+  <h2 class="text-2xl">Indian &ldquo;Super Agers&rdquo; Might Unlock The Secret To Razor Sharp Memory At Any Age</h2>
 
-  <p>Dr. Steven Masley, MD traveled to India to help treat the poor and underprivileged. Here he discovered a group &ldquo;Super Agers&rdquo;&mdash;<span class="font-semibold">men and women who&rsquo;s memory and focus was razor sharp into their 70s, 80s and even 90s.&nbsp;</p>
+  <p>Dr. Steven Masley, MD traveled to India to help treat the poor and underprivileged. Here he discovered a group of &ldquo;Super Agers&rdquo;&mdash;<span class="font-semibold">men and women whose memory and focus was razor sharp into their 70s, 80s and even 90s.&nbsp;</p>
 
-  <p>He also found India&rsquo;s rates of brain decline is remarkably low compared to the United States, despite India being a much poorer country and with much worse health care.</p>
+  <p>He also found India&rsquo;s rates of brain decline ar remarkably low compared to the United States, despite India being a much poorer country and with much worse health care.</p>
 
   <p>He found the source of their mental powers hidden in a drink that almost all Indian people drink daily, called Golden Milk.</p>
 
   <p>Golden Milk contains a nutrient called curcumin that boost memory, mood and attention by reducing inflammation in the brain. </p>
 
-  <p>However Dr. Masley found the human body cannot absorb cucumin without help...</p>
+  <p>However, Dr. Masley found the human body cannot absorb curcumin without help...</p>
 
 
   <h2 class="text-2xl">The Discovery of A Radical New Weapon Against Chronic Brain&nbsp;Decline</h2>
@@ -99,15 +99,15 @@
 
   <p>And that <span class="font-semibold">Magnesium BisGlycinate</span>&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
 
-  <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin-complex for boosting energy metabolism and fighting cognitive decline. </p>
+  <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </p>
 
   <p>They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;</p>
 
-  <h2 class="text-2xl">Total Brain Boost&reg;: A Powerful Formula Using 6 Best, Sciencetifically-Backed Brain-Boosting Nutrients Known To Man</h2>
+  <h2 class="text-2xl">Total Brain Boost&reg;: A Powerful Formula Using 6 Best, Scientifically-Backed Brain-Boosting Nutrients Known To Man</h2>
 
   <p>The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</p>
 
-  <p><span class="font-semibold">Total Brain Boost&reg; by Revival Point&nbsp;</span>is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo controlled studies. </p>
+  <p><span class="font-semibold">Total Brain Boost&reg; by Revival Point&nbsp;</span>is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo-controlled studies. </p>
 
   <p>All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</p>
 
@@ -122,7 +122,7 @@
 
   <div class="mt-4 ml-8 flex flex justify-center italic">
     <ul class="list-disc">
-      <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
+      <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk-Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->97% Said They Would Purchase Again</li>
     </ul>
   </div>
