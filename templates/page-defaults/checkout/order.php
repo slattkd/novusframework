@@ -292,6 +292,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
         .wsl h1 {
           line-height: 35px;
+          line-height: 1.4;
         }
 
         h1.text-4xl {
@@ -324,40 +325,47 @@ if (!isset($_SESSION['vip_discount'])) {
     </div> -->
     <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-10">
         <div class="wsl">
-            <h1 class="text-3xl">Boost Memory, Focus & Mood With This Powerful 6-Part Formula</h1>
-            <div class="text-2xl text-gray-400 -mt-4">Guaranteed To Work — Or Your Money Back</div>
+            <div class="flex flex-wrap-reverse">
+                <div class="flex flex-col w-full md:w-3/4 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl text-tygreen mb-4 md:mb-8 leading-6 serif">Boost Memory, Focus & Mood With This Powerful 6&#8209;Part&nbsp;Formula</h1>
+                    <div class="text-2xl grow items-center text-rpblue font-semibold mb-4 md:mb-0">Guaranteed To Work — Or Your Money&nbsp;Back</div>
+                </div>
+                <div class="w-full md:w-1/4">
+                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.png" alt="brain boost bottle" class="-mt-3 mx-auto w-full bottle-img object-contain w-1/3 md:w-full">
+                </div>
+            </div>
+            
 
-            <p class="text-lg font-bold -mb-3 mt-5">Clinically proven to:</p>
-            <ul class="list-disc pl-8 -mb-3">
-                <li>Aid memory</li>
+            <ul class="list-disc pl-8 text-lg md:text-xl text-gray-500 mt-6 -md:mt-11">
+                <li>Clinically proven to aid memory</li>
                 <li>Improve working memory and sustained attention in as little as 1 hour</li>
                 <li>Improved mood: less stressed, confused, angry, or upset</li>
                 <li>Enhanced brain functioning and cognition</li>
                 <li>Featured on CBS, NBC, ABC, Fox, Reuters, WebMD, LA Times, & more.</li>
             </ul>
 
-            <h2 class="text-2xl">The Difference? Our Ingredients.</h2>
+            <h1 class="text-3xl mt-8 md:text-4xl text-rpblue mb-4 md:mb-8 leading-6 serif text-center md:text-left">The Difference? Our Ingredients.</h1>
 
-            <p>Revival Point™, uses the power of nature combined with cutting-edge science to boost energy, fitness, mental sharpness and overall health. That’s why we formulate with the help of leading MDs using the highest quality ingredients backed by strong, double-blind studies. Only these highly-vetting ingredients should be trusted and are most likely to be effective for you.</p>
+            <p class="text-gray-500">Revival Point™, uses the power of nature combined with cutting-edge science to boost energy, fitness, mental sharpness and overall health. That’s why we formulate with the help of leading MDs using the highest quality ingredients backed by strong, double-blind studies. Only these highly-vetting ingredients should be trusted and are most likely to be effective for you.</p>
 
-            <p>Total Brand Boost ingredients far exceed those of other brands. Find out why ours are superior:<p>
+            <p class="text-gray-500">Total Brand Boost ingredients far exceed those of other brands. Find out why ours are superior:</p>
 
-            <h2 class="text-2xl">Clinically Studied Ingredients for Better Memory</h2>
+            <div class="text-2xl text-tygreen font-semibold mb-3">Clinically Studied Ingredients for Better Memory</div>
 
-            <h3 class="text-xl">CurcuRouge® Bio-Optimized Curcumin </h3>
-            <p>Shown to be absorbed 93 times better by the body thanks to its unique “polymer matrix” technology, CurcuRouge® is able to cross the blood-brain barrier and deliver curcumin’s health-boosting directly to your brain to help fight memory loss, brain fog and depression.</p>
+            <h3 class="text-xl font-semibold">CurcuRouge® Bio-Optimized Curcumin </h3>
+            <p class="text-gray-500">Shown to be absorbed 93 times better by the body thanks to its unique “polymer matrix” technology, CurcuRouge® is able to cross the blood-brain barrier and deliver curcumin’s health-boosting directly to your brain to help fight memory loss, brain fog and depression.</p>
 
-            <h3 class="text-xl">Trans-Resveratrol</h3>
-            <p>A polyphenol found in Red Wine—boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
+            <h3 class="text-xl font-semibold">Trans-Resveratrol</h3>
+            <p class="text-gray-500">A polyphenol found in Red Wine—boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
 
-            <h3 class="text-xl">Magnesium BisGlycinate </h3>
-            <p>Restores signaling speed for sharper thinking and faster memory recall. </p>
+            <h3 class="text-xl font-semibold">Magnesium BisGlycinate </h3>
+            <p class="text-gray-500">Restores signaling speed for sharper thinking and faster memory recall. </p>
 
-            <h3 class="text-xl">Vitamins B12, D, and Folate </h3>
-            <p>Essential vitamin-complex for boosting energy metabolism and fighting cognitive decline.</p>
+            <h3 class="text-xl font-semibold">Vitamins B12, D, and Folate </h3>
+            <p class="text-gray-500">Essential vitamin-complex for boosting energy metabolism and fighting cognitive decline.</p>
 
-            <h2 class="text-3xl">Better Memory... or Your Money Back</h2>
-            <div class="text-2xl text-gray-400 -mt-4">If You Don’t Love The Results, You Won’t Pay A Dime</div>
+            <h1 class="text-3xl mt-8 md:text-4xl text-rpblue mb-3 leading-6 serif text-center md:text-left" style="margin-bottom: 0.5rem;">Better Memory... or Your Money&nbsp;Back</h1>
+            <div class="text-2xl text-2xl text-green-600 font-semibold text-center md:text-left">If You Don’t Love The Results, You Won’t Pay A&nbsp;Dime</div>
         </div>
 
         <div class="wsl flex md:flex flex-col md:flex-row">
