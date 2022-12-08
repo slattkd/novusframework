@@ -48,7 +48,7 @@ if (!empty($_POST))
         <div class="flex justify-center mt-5">
         <h1 class="text-3xl font-semibold text-center px-3" style="letter-spacing: -1px;">Answer These Questions To Qualify For This Discount Now</h1>
         </div>
-        <div class="step-one container container-vsl mx-auto py-8" style="max-width: 455px">
+        <div class="step-one container container-vsl mx-auto py-8 px-2 md:px-0" style="max-width: 455px">
             <div class="flex px-5">
                     <div class="mx-auto">
                         <form id="assessmentForm" method="POST">

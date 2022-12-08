@@ -23,11 +23,11 @@
 
 <section>
     <div class=" py-0 md:py-1 border-b bg-white">
-      <div class="container container-vsl mx-auto flex justify-center md:justify-between flex-wrap w-full">
+      <div class="flex flex-wrap justify-center container <?php echo @$_SESSION['pageType'] !== 'wsl' ? 'container-sm md:justify-between' : 'container-vsl'; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
           <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px;object-fit:contain;">
         </div>
-        <?php if ($_SESSION['slug'] !== 'checkout/order'): ?>
+        <?php if (@$_SESSION['pageType'] !== 'wsl'): ?>
         <div class="flex justify-center items-center w-full md:w-auto mb-2 md:mb-0 text-gray-500">
           <div class="text-sm flex items-center flex-nowrap">
           <div class="phone-square mr-1" style="width: 20px;height:20px;"></div> Call

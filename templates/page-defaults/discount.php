@@ -104,7 +104,7 @@ $up_product = $products['products'][$up_pid];
 </head>
 <body>
 <div class="container container-vsl mx-auto p-2">
-	<div class="">
+	<div class="px-2 md:px-0">
 
 			<h1 class="text-2xl md:text-3xl font-semibold text-center py-4 md:py-11">Before You Continue&hellip;</h1>
 			<div class="discount-wrap mx-auto">

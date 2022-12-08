@@ -36,9 +36,20 @@ if ($_SERVER['HTTP_HOST'] == $site['logRocketDomain']) {
 <meta name="format-detection" content="telephone=no">
 <meta name="google-site-verification" content="<?php echo $site['googleSiteVerification'];?>" />
 
-<link rel="stylesheet" href="/css/main.css?v=1.3">
-<link rel="stylesheet" href="/css/legal-copy.css?v=1.3">
-<link rel="stylesheet" href="/css/base.css?v=1.3">
+<!-- CSS with version control -->
+<!-- <script src="https://cdn.tailwindcss.com"></script>  <!-- Should not be needed for production -->
+<link   href='//<?php echo $_SERVER['HTTP_HOST'];?>/css/main.css?ver=<?php echo get_that_filetime($_SERVER['DOCUMENT_ROOT'] . '/css/main.css'); ?>'
+        rel='stylesheet'
+        type='text/css'
+        media='all' />
+<link   href='//<?php echo $_SERVER['HTTP_HOST'];?>/css/legal-copy.css?ver=<?php echo get_that_filetime($_SERVER['DOCUMENT_ROOT'] . '/css/legal-copy.css'); ?>'
+        rel='stylesheet'
+        type='text/css'
+        media='all' />
+<link   href='//<?php echo $_SERVER['HTTP_HOST'];?>/css/base.css?ver=<?php echo get_that_filetime($_SERVER['DOCUMENT_ROOT'] . '/css/base.css'); ?>'
+        rel='stylesheet'
+        type='text/css'
+        media='all' />
 
 
 <?php if ($site['debug'] !== true) { //Don't need to run this on local?>

@@ -8,7 +8,7 @@
 <body>
 
 <div class="container container-vsl mx-auto py-2">
-  <div class="content px-2 md:px-5">
+  <div class="content  px-2 md:px-0">
     <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
       <tbody>
       <tr>

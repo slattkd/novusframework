@@ -36,7 +36,7 @@
 
 <body class="bg-gray-100 c8 wsl">
   <?php template("includes/rpHeader"); ?>
-  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-8 rounded-lg content-center text-gray-600">
+  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg content-center text-gray-600">
 
   <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title"><span class="5">This Indian &ldquo;Super-Ager&rdquo; Secret Holds The Key To Endlessly Energy &amp; Focus, Keeping You Fit And Active Well Into Your 70s, 80s and 90s&hellip;</span></h1>
 

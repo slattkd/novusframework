@@ -320,3 +320,11 @@ function pixelEvent($template, $event, $affid = null)
     require('../' . $templatePath . '/' . $template . '.php');
 }
 */
+
+// version control for css
+function get_that_filetime($file_url = false) {
+    if (!file_exists($file_url)) {
+        return '';
+    }
+    return filemtime($file_url);
+}
