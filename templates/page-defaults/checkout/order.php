@@ -295,6 +295,15 @@ if (!isset($_SESSION['vip_discount'])) {
             font-size: 2.5rem;
         }
 
+        .wsl li {
+        list-style: none;
+        padding: 6px 25px;
+        background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 18px;
+        }
+
     </style>
 
 
@@ -321,26 +330,26 @@ if (!isset($_SESSION['vip_discount'])) {
     </div> -->
     <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-10">
         <div class="wsl">
-            <div class="flex flex-wrap-reverse">
+            <div class="flex flex-wrap-reverse mb-4">
                 <div class="flex flex-col justify-center w-full md:w-3/4 text-center md:text-left">
-                    <h1 class="text-3xl md:text-5xl text-tygreen mb-4 md:mb-8 leading-6 serif">Boost Memory, Focus & Mood With This Powerful <span style="white-space:nowrap">6-Part</span>&nbsp;Formula</h1>
-                    <div class="text-2xl text-rpblue font-semibold mb-4 md:mb-0">Guaranteed To Work — Or Your Money&nbsp;Back</div>
+                    <h1 class="text-3xl md:text-5xl text-tygreen mb-4 md:mb-6 leading-6 title">Boost Memory, Focus & Mood With This Powerful <span style="white-space:nowrap">6-Part</span>&nbsp;Formula</h1>
+                    <div class="text-2xl text-rpblue font-semibold mb-0">Guaranteed To Work — Or Your Money&nbsp;Back</div>
                 </div>
                 <div class="flex flex-col shrink justify-center w-full md:w-1/4">
-                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.jpg" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/3 md:w-full" style="mix-blend-mode: multiply;">
+                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.jpg" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/3 md:w-full md:translate-y-8" style="mix-blend-mode: multiply;">
                 </div>
             </div>
             
 
-            <ul class="list-disc pl-8 text-lg md:text-xl text-gray-500 mt-3 md:-mt-6">
-                <li>Clinically proven to aid memory</li>
-                <li>Improve working memory and sustained attention in as little as 1 hour</li>
-                <li>Improved mood: less stressed, confused, angry, or upset</li>
-                <li>Enhanced brain functioning and cognition</li>
-                <li>Featured on CBS, NBC, ABC, Fox, Reuters, WebMD, LA Times, & more.</li>
+            <ul class="list-disc pl-8 text-lg md:text-xl text-gray-500 mt-0 lg:-mt-8">
+                <li class="font-semibold">Clinically proven to aid memory</li>
+                <li class="font-semibold">Improve working memory and sustained attention in as little as 1 hour</li>
+                <li class="font-semibold">Improved mood: less stressed, confused, angry, or upset</li>
+                <li class="font-semibold">Enhanced brain functioning and cognition</li>
+                <li class="font-semibold">Featured on CBS, NBC, ABC, Fox, Reuters, WebMD, LA Times, & more.</li>
             </ul>
 
-            <h2 class="text-3xl md:text-4xl text-rpblue mb-4 md:mb-8 leading-9 serif text-center md:text-left mt-8 md:mt-11">The Difference? Our Ingredients.</h2>
+            <h2 class="text-3xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-8 md:mt-11">The Difference? Our Ingredients.</h2>
 
             <p class="text-gray-500">Revival Point™, uses the power of nature combined with cutting-edge science to boost energy, fitness, mental sharpness and overall health. That’s why we formulate with the help of leading MDs using the highest quality ingredients backed by strong, double-blind studies. Only these highly-vetting ingredients should be trusted and are most likely to be effective for you.</p>
 
@@ -360,7 +369,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <h3 class="text-xl font-semibold">Vitamins B12, D, and Folate </h3>
             <p class="text-gray-500">Essential vitamin-complex for boosting energy metabolism and fighting cognitive decline.</p>
 
-            <h2 class="text-3xl md:text-4xl text-rpblue mb-3 leading-9 serif text-center md:text-left mt-8 md:mt-11" style="margin-bottom: 0.5rem;">Better Memory... or Your Money&nbsp;Back</h2>
+            <h2 class="text-3xl md:text-4xl text-rpblue mb-3 leading-9 title text-center md:text-left mt-8 md:mt-11" style="margin-bottom: 0.5rem;">Better Memory... or Your Money&nbsp;Back</h2>
             <div class="text-2xl text-2xl text-green-600 font-semibold text-center md:text-left">If You Don’t Love The Results, You Won’t Pay A&nbsp;Dime</div>
         </div>
 

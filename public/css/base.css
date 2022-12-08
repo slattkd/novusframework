@@ -332,5 +332,11 @@ input[type="checkbox"] {
   color: transparent;
 }
 
+h1.title, h2.title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  line-height: 1.3
+}
+
 /* blue - #ff01ff */
 /* green - #6da515 */
