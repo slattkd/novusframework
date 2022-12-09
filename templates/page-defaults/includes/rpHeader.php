@@ -21,7 +21,7 @@
 </section>
 <?php } ?>
 
-<section>
+<section class="fixed left-0 right-0 top-0 z-10">
     <div class=" py-0 md:py-1 border-b bg-white">
       <div class="flex flex-wrap justify-center container <?php echo @$_SESSION['pageType'] !== 'wsl' ? 'container-sm md:justify-between' : 'container-vsl'; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">

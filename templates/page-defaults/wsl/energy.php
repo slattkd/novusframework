@@ -66,11 +66,11 @@
   <p><span>But in the last three decades </span><span class="font-semibold">your brain has come under&nbsp;attack.</span></p>
 
   <p><span>Hidden toxins in our food like pesticides, herbicides, preservatives and artificial trans-fats have hit sky-high levels, wreaking havoc on your brain&hellip; damaging and killing off cells&hellip; and destroying your energy, focus and mood along with it&hellip;</span></p>
-  <div class="flex justify-center -my-6">
+  <div class="flex justify-center">
     <img class="w-full md:w-4/5 mx-auto" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/alzheimers-brain.png" alt="alzheimers brain" loading="lazy"/>
   </div>
 
-  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"><span class="8">How Indian &ldquo;Super Agers&rdquo; Unlocked The Secret To More Energy, Focus &amp; A Stronger&nbsp;Brain &hellip; </span></h2>
+  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"><span class="8">How Indian &ldquo;Super Agers&rdquo; Unlocked The Secret To More Energy, Focus, and A Stronger&nbsp;Brain&hellip; </span></h2>
 
   <p><span>One well-known medical </span><span>doctor, Dr. Steven Masley, MD, had</span><span class="0">&nbsp;traveled to India to help those in need, but he noticed people there had much sharper, energetic minds into old age&hellip; allowing them to live much longer, active and healthier lives into their 70s, 80s and even 90s&hellip; &nbsp;</span></p>
 
