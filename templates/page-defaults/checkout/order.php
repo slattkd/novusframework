@@ -237,7 +237,6 @@ if (!isset($_SESSION['vip_discount'])) {
 
         button.cta-button {
             padding: 8px 20px;
-            margin-top: 0.5rem;
         }
 
         .cta-button:hover {
@@ -328,7 +327,7 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
         </div>
     </div> -->
-    <div class="container container-sm mx-auto py-4 md:py-6 px-2 md:px-0">
+    <div class="container container-sm mx-auto py-4 px-2 md:px-0">
         <div class="wsl">
             <div class="flex flex-wrap-reverse mb-4">
                 <div class="flex flex-col justify-center w-full md:w-3/4 text-center md:text-left">

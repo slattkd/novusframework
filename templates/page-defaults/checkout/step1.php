@@ -31,7 +31,7 @@ $current_product = $products['products'][$pid];
 
 <body class=" bg-gray-100">
   <?php template("includes/rpHeader"); ?>
-  <div class="container container-vsl mx-auto c8 doc-content py-4 px-2 md:px-0">
+  <div class="container container-vsl mx-auto c8 doc-content pb-4 px-2 md:px-0">
 
     <div class="flex justify-center mt-0 md:mt-8">
       <h1 class="text-2xl md:text-3xl text-center font-bold py-0"><?php echo $company['checkoutHeadline1']; ?></h1>

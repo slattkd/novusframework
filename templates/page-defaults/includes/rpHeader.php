@@ -10,24 +10,31 @@
     }
 </style>
 
-<?php if (@$_SESSION['pageType'] != 'wsl') { ?>
-<section class="headstrip">
-  <div class="flex flex-wrap uppercase text-center">
-    <div class="mx-auto">
-      <div class="hidden md:block"><strong class="black"><span class="lock-icon mr-2"><i class="fas fa-lock"></i></span>  SECURE</strong>&nbsp;|&nbsp;You Are On A 256-Bit Secure Order Page</div>
-      <div class="md:hidden"><strong class="black"><i class="fas fa-lock mr-2"></i> SECURE</strong>&nbsp;|&nbsp;256-Bit Secure Order</div>
-    </div>
-  </div>
-</section>
-<?php } ?>
+<?php
+  $is_order_page = @$_SESSION['SLUG'] == 'checkout/order';
+  $is_wsl = @$_SESSION['pageType'] == 'wsl';
+  $container = $is_order_page ? 'container-sm' : 'container-vsl';
+  $justify = $is_wsl ? 'justify-between' : 'justify-center';
+?>
+
 
 <section class="fixed left-0 right-0 top-0 z-10">
-    <div class=" py-0 md:py-1 border-b bg-white">
-      <div class="flex flex-wrap justify-center container <?php echo @$_SESSION['pageType'] !== 'wsl' ? 'container-sm md:justify-between' : 'container-vsl'; ?> mx-auto  w-full px-2 md:px-0">
+  <?php if (!$is_wsl): ?>
+    <section id="secure-banner" class="headstrip">
+      <div class="flex flex-wrap uppercase text-center">
+        <div class="mx-auto">
+          <div class="hidden md:block"><strong class="black"><span class="lock-icon mr-2"><i class="fas fa-lock"></i></span>  SECURE</strong>&nbsp;|&nbsp;You Are On A 256-Bit Secure Order Page</div>
+          <div class="md:hidden"><strong class="black"><i class="fas fa-lock mr-2"></i> SECURE</strong>&nbsp;|&nbsp;256-Bit Secure Order</div>
+        </div>
+      </div>
+    </section>
+  <?php endif; ?>
+    <div id="logo-banner" class=" py-0 md:py-1 border-b bg-white">
+      <div class="flex flex-wrap <?= $justify; ?> container <?= $container; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
           <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px;object-fit:contain;">
         </div>
-        <?php if (@$_SESSION['pageType'] !== 'wsl'): ?>
+        <?php if ($is_wsl): ?>
         <div class="flex justify-center items-center w-full md:w-auto mb-2 md:mb-0 text-gray-500">
           <div class="text-sm flex items-center flex-nowrap">
           <div class="phone-square mr-1" style="width: 20px;height:20px;"></div> Call
@@ -40,5 +47,14 @@
 </section>
 
 <script>
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const secureBanner = document.getElementById('secure-banner');
+    const secureHeight = secureBanner ? secureBanner.clientHeight : 0;
+    const logoBanner = document.getElementById('logo-banner');
+    const logoHeight = logoBanner.clientHeight;
+
+    document.body.style.paddingTop = `${secureHeight + logoHeight}px`;
+    
+  })
 
 </script>
