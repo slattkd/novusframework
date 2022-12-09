@@ -335,9 +335,10 @@ if (!isset($_SESSION['vip_discount'])) {
                     <h1 class="text-3xl md:text-5xl text-tygreen mb-4 md:mb-6 leading-6 title">Boost Memory, Focus & Mood With This Powerful <span style="white-space:nowrap">6-Part</span>&nbsp;Formula</h1>
                     <div class="text-2xl text-rpblue font-semibold mb-0">Guaranteed To Work — Or Your Money&nbsp;Back</div>
                 </div>
-                <div class="flex flex-col shrink justify-center w-full md:w-1/4">
-                <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.jpg" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/3 md:w-full md:translate-y-8" style="mix-blend-mode: multiply;">
-                </div>
+                <picture class="flex flex-col shrink justify-center w-full md:w-1/4">
+                    <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.avif" type="image/avif">
+                    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.jpg" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/3 md:w-full md:translate-y-8" style="mix-blend-mode: multiply;object-fit:contain">
+                </picture>
             </div>
             
 
