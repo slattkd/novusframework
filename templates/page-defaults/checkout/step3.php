@@ -26,8 +26,6 @@ if ($_POST) {
 }
 $pid = $_SESSION['productId'];
 
-var_dump($_POST);
-
 if(isset($_SESSION['tax_pct'])) {
   $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
 }

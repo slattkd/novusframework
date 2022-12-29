@@ -3,8 +3,6 @@
 $nextlink = '/checkout/step2' . $querystring;
 $current_step = 1;
 
-var_dump($_POST);
-
 // required PID from post
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
