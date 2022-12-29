@@ -328,3 +328,28 @@ function get_that_filetime($file_url = false) {
     }
     return filemtime($file_url);
 }
+
+function savedAmt($retail, $price) {
+    $saved = abs($retail - $price);
+    return number_format($saved, 2, '.', '');
+}
+
+function monthAmt($price, $month) {
+    return number_format($price / $month, 2);
+}
+
+function percentOff($price, $retail) {
+    return round(($retail - $price) / $retail * 100, 0);
+}
+
+function perBottle($price, $qty) {
+    return round($price / $qty, 2);
+}
+
+function taxAmt($price) {
+    $tax_pct = isset($_SESSION['tax_pct']) ? $_SESSION['tax_pct'] : 0;
+    if ($tax_pct == 0) {
+        return 0;
+    }
+    return number_format($tax_pct / 100 * $price, 2);
+}

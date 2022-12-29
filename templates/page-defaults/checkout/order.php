@@ -12,31 +12,6 @@ $product6 = $products['products']['1090'];
 
 $_SESSION['pageType'] = 'order';
 
-function savedAmt($retail, $price)
-{
-    $saved = abs($retail - $price);
-    $saved = number_format($saved, 2, '.', '');
-    return $saved;
-}
-
-function monthAmt($price, $month)
-{
-    return number_format($price / $month, 2);
-}
-
-function percentOff($price, $retail)
-{
-    return round(($retail - $price) / $retail * 100, 0);
-}
-
-function perBottle($price, $qty)
-{
-    return round($price / $qty, 2);
-}
-
-if (!isset($_SESSION['vip_discount'])) {
-    $_SESSION['vip_discount'] = 0;
-}
 
 ?>
 <!DOCTYPE html>
@@ -433,7 +408,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <label for="vip" class="flex flex-col p-3 pb-2 w-full">
                 <div class="flex items-start py-1 md:py-3">
                     <div class="check-box" style="position:relative;">
-                        <input type="checkbox" id="vip" name="vip" style="filter:none" onchange="<?php $_SESSION['vip_discount'] = $_SESSION['vip_discount'] == 0 ? 1 : 0; ?>">
+                        <input type="checkbox" id="vip" name="vip" style="filter:none" onchange="<?php $_SESSION['vip_discount'] = !$_SESSION['vip_discount']; ?>">
                         <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                     </div>
                     <div class="flex flex-col -mt-2 ml-2">

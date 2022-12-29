@@ -93,7 +93,7 @@ $current_product = $products['products'][$pid];
                 <div class="w-full invisible">
                     <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Zip Code:</label>
                 </div>
-								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>">
+								<input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" id="billingZip" name="billingZip" placeholder="Zip Code" value="<?php echo @$_SESSION['billingZip']; ?>">
               </div>
               <div class="input w-full mb-3 md:mb-2 md:px-4">
                 <div class="w-full invisible">
@@ -128,7 +128,7 @@ $current_product = $products['products'][$pid];
                   <label class="ml-2 text-base">Shipping address same as billing?</label>
               </div>
               <div class="flex flex-nowrap items-start w-full my-3  md:px-4">
-                  <input type="checkbox" name="joinTextAlerts" id="join-text-alerts" value="checked" style="filter: none;"/>
+                  <input type="checkbox" name="joinTextAlerts" id="join-text-alerts" value="0" style="filter: none;"/>
                   <label class="ml-2 text-base -mt-1"> Join Revival Point text alerts to get the latest discounts, order updates, and special offers**</label>
               </div>
               <div class="flex text-sm text-gray-500 my-3  md:px-4">
@@ -214,6 +214,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="current_page" value="/checkout/step2">
       <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
       <input type="hidden" id="shippingId" name="shippingId" value="<?= $site['shippingUs']; ?>">
+      <input type="hidden" id="tax_pct" name="tax_pct" value="0">
       <input type="hidden" id="lastName" name="lastName" value="<?= $_SESSION['lastName']; ?>">
       <!-- <input type="hidden" id="shippingState" name="shippingState" value="<?= $_SESSION['shippingState']; ?>"> -->
     </form>
@@ -397,6 +398,12 @@ $current_product = $products['products'][$pid];
         }
     }
 
+    const joinAlerts = document.getElementById('join-text-alerts');
+    joinAlerts.addEventListener('change', ()=> {
+      joinAlerts.value = joinAlerts.checked ? 1 : 0;
+      console.log(joinAlerts.value);
+    })
+
     // input validation
     window.onload = function() {
       // Prsitine Config
@@ -446,6 +453,72 @@ $current_product = $products['products'][$pid];
         }
       }
     };
+
+
+    var taxData = {
+        "campaign_id": 1,
+        "shipping_id": 5,
+        "use_tax_provider":1,
+        "products":[
+            {
+                "id":"4",
+                "quantity":"1"
+            }
+        ],
+        "location":{
+            "state":"AL",
+            "country":"US",
+            "postal_code": 72110
+        }
+    };
+
+    function getTaxData() {
+        var credentials = btoa("<?php echo $site['stickyApi']; ?>:<?php echo $site['stickyPass']; ?>");
+        fetch('https://gdc.sticky.io/api/v2/order_total/calculate', {
+            method: "POST",
+            headers: new Headers({
+                "Authorization": `Basic ${credentials}`,
+                'Content-Type': 'application/json'
+            }),
+            // Set the post data
+            body: JSON.stringify(taxData),
+        })
+        .then(function (response) {
+            return response.json();
+        }) 
+        .then(function (data) {
+            console.log(data.data);
+            if (data.data && data.data.tax) {
+              var taxData = data.data.tax;
+              taxPercent = parseFloat(taxData.pct);
+              document.getElementById('tax_pct').value = taxPercent;
+            }
+        })
+        .catch(function (error){
+            console.log(error);
+        });
+    }
+
+
+    const billZip = document.getElementById('billingZip');
+    var taxPercent = 0;
+    var taxAmount = 0;
+
+    billState.addEventListener('change', ()=> {
+      taxData.location.country = 'US';
+      taxData.location.state = billState.value;
+      taxData.location.postal_code = Number(billZip.value);
+      getTaxData();
+    })
+
+    billZip.addEventListener('blur', ()=> {
+      if (billZip.value && billZip.value.length == 5) {
+          taxData.location.country = 'US';
+          taxData.location.state = billState.value;
+          taxData.location.postal_code = Number(billZip.value);
+          getTaxData();
+      }
+    })
 </script>
 
 </body>

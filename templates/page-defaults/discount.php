@@ -115,7 +115,7 @@ $up_product = $products['products'][$up_pid];
 						<input type="hidden" name="previous_page" value="checkout/order">
 						<input type="hidden" name="current_page" value="/discount">
 						<input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
-						<input type="hidden" id="product_id" name="product_id" value="<?= $up_product['product_id']; ?>">
+						<input type="hidden" id="product_id" name="product_id" value="<?= $up_pid; ?>">
 						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 md:px-5 py-2 md:py-4 clickable">
 					</form>
 				<p>Recommended For All New&nbsp;Customers<br><i>(Limited Time Only)</i></p>

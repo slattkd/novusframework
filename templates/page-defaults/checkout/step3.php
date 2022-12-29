@@ -21,9 +21,14 @@ if ($_POST) {
   $_SESSION["billingState"] = $_POST['billingState'];
   $_SESSION["billingZip"] = $_POST['billingZip'];
   $_SESSION["shippingId"] = $_POST['shippingId'];
-  $_SESSION["joinTextAlerts"] = $_POST['joinTextAlerts'];
+  $_SESSION["tax_pct"] = $_POST['tax_pct'];
+  $_SESSION["joinTextAlerts"] = isset($_POST['joinTextAlerts']) ? $_POST['joinTextAlerts'] : 0;
 }
-$pid = $_SESSION['pid'];
+$pid = $_SESSION['productId'];
+
+if(isset($_SESSION['tax_pct'])) {
+  $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
+}
 
 $shipping_cost = $_SESSION["shippingCountry"] == 'US' ? 6.95 : 14.95;
 if (!$_SESSION['pid'] == '1083' && !$_SESSION['pid'] == '1086') {
@@ -224,7 +229,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="previous_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step2">
       <input type="hidden" name="current_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step3">
       <input type="hidden" name="next_page" id="next-page" value="/thank-you">
-      <input type="hidden" name="product_id" id='product_id' value="<?php echo $_SESSION['pid']; ?>">
+      <input type="hidden" name="product_id" id='product_id' value="<?php echo @$_SESSION['pid']; ?>">
       <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="AFFID" value="<?php echo @$_SESSION['affid']; ?>">
@@ -241,6 +246,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="click_id" value="<?php echo @$_SESSION['clickid']; ?>">
       <input type="hidden" name="notes" value="<?php echo @$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
       <input type="hidden" name="shippingId" id="shippingId" value="<?php echo @$_SESSION['shippingId']; ?>">
+      <input type="hidden" name="tax_pct" id='tax_pct' value="<?php echo $_SESSION['tax_pct']; ?>">
       <input type="hidden" name="newform" value="yes">
       <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265">
       <input type="hidden" name="upsellCount" value="0">
