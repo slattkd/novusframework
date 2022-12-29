@@ -1,16 +1,4 @@
 <?php
-//PageTypes dictate what pixels are bing fired, options should be limited to:
-/*
-  1. vsl
-  2. wsl
-  3. assessemnt
-  4. order
-  5. onepage
-  6. step1, step2, step3
-  7. up1, up2, up3, up4
-  8. dn1, dn2, dn3
-  9. receipt
-*/
 $_SESSION['pageType'] = 'receipt';
 
 unset($_SESSION['declineup']);
@@ -53,9 +41,6 @@ $mailer = 0;
 if ($_SESSION['affid'] == 1798) {
     $mailer = 1;
 }
-
-$firedl = 0;
-
 
 
 ?>
@@ -253,8 +238,8 @@ $firedl = 0;
                     </div>
 
                 <?php
-                    $total_tax = 0;
                     $grand_total = 0;
+                    $product_total = 0;
                     $blocked_skus = array('gift_stick', 'trial_stick', 'research_letter', 'discount_stick', '5gm_auto_stick', '5GPC', '5GPCnoship');
 
                 if (isset($items)) {
@@ -271,15 +256,13 @@ $firedl = 0;
                             </div>
                             ';
 
-                            $total_sum = 0;
-                            $total_sum += $product['price'];
-                            $total_tax += (float)$item['order_sales_tax_amount'];
                             $grand_total += (float)$item['order_total'];
+                            $product_total += $product['price'];
                         }
                     }
                 }
 
-                if ($items[$orderid]['shipping_country'] == 'US') {
+                if ($_SESSION['shippingCountry'] == 'US') {
                     if ($mailer) {
                         $shippingTotal1 = 7.95;
                     } else {
@@ -295,22 +278,25 @@ $firedl = 0;
                     }
                 }
 
-                $ordertotal = $total_sum + $shippingTotal1 + (float)$total_tax;
+                $ordertotal = $product_total + $shippingTotal1;
+                $shipping = number_format($info['shipping_amount'], 2);
+                $tax_total = taxAmt($product_total);
+                $final_total = $product_total + $shipping + $tax_total;
                 ?>
 
                 <div class="flex justify-between px-4 py-1">
                     <div class="text">Shipping</div>
                     <!-- number_format((float)$grand_total, 2, '.', '') -->
                     <!-- money_format('%i', $grand_total) -->
-                    <div class="price text-right">$ <?php echo number_format($info['shipping_amount'], 2); ?></div>
+                    <div class="price text-right">$ <?= $shipping; ?></div>
                 </div>
                 <div class="flex justify-between px-4 py-1">
-                    <div class="text">Sales Tax</div>
-                    <div class="price text-right">$ <?php echo number_format((float)$total_tax, 2, '.', ''); ?></div>
+                    <div class="text">Sales Tax <span class="text-sm text-gray-300">(<?= $_SESSION['tax_pct']; ?>%)</span></div>
+                    <div class="price text-right">$ <?= $tax_total; ?></div>
                 </div>
                 <div class="flex justify-between px-4 py-2">
                     <div class="text">Total</div>
-                    <div class="price text-right ext-xl font-bold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
+                    <div class="price text-right ext-xl font-bold">$ <?= $final_total; ?></div>
                 </div>
 
 

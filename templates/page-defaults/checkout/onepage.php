@@ -1164,6 +1164,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         <input type="hidden" name="click_id" value="<?php echo $_SESSION['clickid']; ?>">
         <input type="hidden" name="notes" value="<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>">
         <input type="hidden" name="shippingId" id="shippingId" value="<?php echo $shippingId; ?>">
+        <input type="hidden" name="tax_pct" id="tax_pct" value="0">
         <input type="hidden" name="newform" value="yes">
         <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265,142<?php echo $add1pid; ?><?php echo $add2pid; ?> ">
         <input type="hidden" name="upsellCount" value="1">
