@@ -8,6 +8,10 @@
 <head>
   <?php template('includes/header'); ?>
   <title>This Secret Boosts Your Memory And Focus</title>
+
+  <meta name="facebook-domain-verification" content="oux76vsu90jp3waq5mxdkmhx81zsvd">
+
+
   <style type="text/css">
     .wsl p, h1, h2 {
       margin-bottom: 20px;
