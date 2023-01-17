@@ -343,7 +343,7 @@ function percentOff($price, $retail) {
 }
 
 function perBottle($price, $qty) {
-    return round($price / $qty, 2);
+    return number_format($price / $qty, 2);
 }
 
 function taxAmt($price) {

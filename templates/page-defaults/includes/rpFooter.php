@@ -19,7 +19,7 @@
         </div>
         <div class="text-xs text-center font-gray-600 mb-3">
             <p class="mb-4">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
-          © <?= $company['name']?> 2022. All Rights Reserved
+          © <?= $company['name']?> <?= date("Y"); ?>. All Rights Reserved
           <?= $company['address1']?>, <?= $company['city']?>, <?= $company['state']?> <?= $company['zip']?>
         </div>
         <div class="flex justify-center">

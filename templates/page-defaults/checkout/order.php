@@ -689,7 +689,7 @@ $_SESSION['pageType'] = 'order';
                             <?= $product6['product_month']; ?> Months
                         </h1>
 
-                        <div class="limited-offer py-3 pt-0 hidden md:block">
+                        <div class="limited-offer py-3 pt-0 hidden">
                             <span class="text-red-700 text-xl font-semibold">LIMITED TIME OFFER:</span>
                             <p class="text-red-700 font-semibold">2 Free Bottles of Vitamin D3 with Purchase!</p>
                         </div>

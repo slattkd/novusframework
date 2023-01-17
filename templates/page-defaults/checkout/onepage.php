@@ -936,8 +936,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                         <div class="w-full border border-gray-400 rounded">
                                             <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                                             <select class="w-full px-1 py-2 rounded " id="cc_exp_yr" name="expYear">
-                                                <option value="22" selected>2022</option>
-                                                <option value="23">2023</option>
+                                                <option value="23" selected>2023</option>
                                                 <option value="24">2024</option>
                                                 <option value="25">2025</option>
                                                 <option value="26">2026</option>
@@ -1134,7 +1133,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
             <div class="flex justify-center flex-wrap text-center mt-0 bg-black md:bg-white p-3 py-6 md:pb-8 mb-0" style="margin-left: -12px; margin-right: -12px;">
                 <p class="text-center md:hidden py-3 text-gray-500">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. 5G Male should be used as a supplement to your active lifestyle.</p>
-                <p class="text-center md:hidden text-gray-500 py-3">© 2022 SUPERNATURAL MAN LLC</p>
+                <p class="text-center md:hidden text-gray-500 py-3">© <?= date("Y"); ?> SUPERNATURAL MAN LLC</p>
                 <!-- <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/terms">Terms and Conditions</a> &nbsp;
                 <a class="mx-3" style="color:#000;text-decoration:underline;" class="fancybox" href="/tailwind/privacy">Privacy Policy</a> &nbsp;
                 <a class="mx-3" href="#" style="color:#000;text-decoration:underline;" onclick="return (function(){zE.activate();return false;})()">Contact Us</a> -->
