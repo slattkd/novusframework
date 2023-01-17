@@ -33,15 +33,6 @@ $products = $results['data'];
 
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
-$mailer = 0;
-
-// TODO: test for total price calulation
-// var_dump($info);
-
-if ($_SESSION['affid'] == 1798) {
-    $mailer = 1;
-}
-
 
 ?>
 <!DOCTYPE>
@@ -264,24 +255,10 @@ if ($_SESSION['affid'] == 1798) {
                     }
                 }
 
-                if ($_SESSION['shippingCountry'] == 'US') {
-                    if ($mailer) {
-                        $shippingTotal1 = 7.95;
-                    } else {
-                        $shippingTotal1 = 6.95;
-                    }
-                } else {
-                    $shippingTotal1 = 14.95;
-                }
+                $shippingCost = $_SESSION['shippingCost'];
 
-                if (isset($_SESSION['pid'])) {
-                    if ($_SESSION['pid'] != '4' && $_SESSION['pid'] != 1 && $_SESSION['pid'] != 952 && $_SESSION['pid'] != 956) {
-                        $shippingTotal1 = 0.00;
-                    }
-                }
-
-                $ordertotal = number_format($sum_total + $shippingTotal1, 2);
-                $shipping = number_format($info['shipping_amount'], 2);
+                $ordertotal = number_format($sum_total + $shippingCost, 2);
+                $shipping = number_format($shippingCost, 2);
                 $tax_total = taxAmt($sum_total);
                 $final_total = number_format($sum_total + $shipping + $tax_total, 2);
                 ?>

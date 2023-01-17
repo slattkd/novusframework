@@ -491,8 +491,6 @@ $current_product = $products['products'][$pid];
       taxData.location.state = document.getElementById('billingState').value;
       taxData.location.country = document.getElementById('billingCountry').value;
       taxData.location.postal_code = document.getElementById('billingZip').value;
-console.log(taxData);
-console.log(shipId.value, shipCost.value);
       return JSON.stringify(taxData);
     }
 
@@ -511,7 +509,6 @@ console.log(shipId.value, shipCost.value);
             return response.json();
         }) 
         .then(function (data) {
-            console.log(data.data);
             if (data.data && data.data.tax) {
               var taxData = data.data.tax;
               taxPercent = parseFloat(taxData.pct);
