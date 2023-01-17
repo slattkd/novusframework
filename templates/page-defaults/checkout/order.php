@@ -12,6 +12,7 @@ $product6 = $products['products']['1090'];
 
 $_SESSION['pageType'] = 'order';
 
+$_SESSION['vip_discount'] = 0;
 
 ?>
 <!DOCTYPE html>

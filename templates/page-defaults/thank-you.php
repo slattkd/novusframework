@@ -145,7 +145,9 @@ if ($_SESSION['affid'] == 1798) {
         .checkmark {
             display: inline-block;
             background: transparent;
-            outline: 3px solid #14a536;
+            padding: 13px;
+            /* outline: 3px solid #14a536; */
+            box-shadow: 0px 0px 0px 3px #14a536 inset;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -156,7 +158,7 @@ if ($_SESSION['affid'] == 1798) {
 
         @media screen and (max-width: 768px) {
             .checkmark {
-                transform: rotate(45deg) scale(0.9);
+                transform: rotate(45deg) scale(1.2);
             }
         }
 
@@ -166,8 +168,8 @@ if ($_SESSION['affid'] == 1798) {
             width: 4px;
             height: 11px;
             background-color: #14a536;
-            left: 11px;
-            top: 5px;
+            left: 13px;
+            top: 7px;
         }
 
         .checkmark:after {
@@ -176,8 +178,8 @@ if ($_SESSION['affid'] == 1798) {
             width: 8px;
             height: 4px;
             background-color: #14a536;
-            left: 7px;
-            top: 13px;
+            left: 9px;
+            top: 15px;
         }
 
         h4 {
@@ -220,7 +222,7 @@ if ($_SESSION['affid'] == 1798) {
     <div class="container container-vsl mx-auto py-4 md:py-20 px-2 md:px-5 md:px-8 min-h-screen">
         <div class="conten">
             <div class="flex items-center justify-center mb-0 md:mb-4">
-                <h1 class="text-base md:text-2xl font-semibold pb-0 text-tygreen">
+                <h1 class="flex items-center text-base md:text-2xl font-semibold pb-0 text-tygreen">
                 <span class="checkmark mr-1 md:mr-2" aria-hidden="true"></span> Thank you, Your Order is Now Complete!
                 </h1>
             </div>
