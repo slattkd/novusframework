@@ -12,7 +12,6 @@ if ($_POST) {
 }
 $pid = $_SESSION['pid'];
 $current_product = $products['products'][$pid];
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +35,7 @@ $current_product = $products['products'][$pid];
 <div class="container container-vsl mx-auto c8 doc-content pb-4 px-2 md:px-0">
 
 <div class="flex justify-center mt-0 md:mt-8">
-      <h1 class="text-2xl md:text-3xl text-center font-bold py-0"><?php echo $company['cehckoutHeadline2']; ?></h1>
+      <h1 class="text-2xl md:text-3xl text-center font-bold py-0"><?php echo $company['checkoutHeadline2']; ?></h1>
     </div>
 
     <div class="flex my-4 md:my-8">
@@ -380,17 +379,16 @@ $current_product = $products['products'][$pid];
 
         if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
             shipId.value = '<?= $site['shippingUs']; ?>';
-            _shippingPrice = <?= $site['shippingUsCost']; ?>;
+            shipCost.value = <?= $site['shippingUsCost']; ?>;
         } else {
             shipId.value = '<?= $site['shippingIntl']; ?>';
-            _shippingPrice = <?= $site['shippingIntlCost']; ?>;
+            shipCost.value = <?= $site['shippingIntlCost']; ?>;
         }
         // hard code check for non free shipping product id
-        if (<?= $pid; ?> !== '1083') {
+        if (<?= $current_product['product_ship']; ?> == 0) {
           shipId.value = '<?= $site['shippingFree']; ?>';
-          _shippingPrice = <?= $site['shippingFreeCost']; ?>;
+          shipCost.value = <?= $site['shippingFreeCost']; ?>;
         }
-        shipCost.value = _shippingPrice;
     }
 
     function copyBillingInputValue() {
@@ -489,11 +487,12 @@ $current_product = $products['products'][$pid];
         }
       };
       taxData.shipping_id = document.getElementById('shippingId').value;
-      taxData.products.id = <?= $pid; ?>;
+      taxData.products[0].id = <?= $pid; ?>;
       taxData.location.state = document.getElementById('billingState').value;
       taxData.location.country = document.getElementById('billingCountry').value;
       taxData.location.postal_code = document.getElementById('billingZip').value;
-
+console.log(taxData);
+console.log(shipId.value, shipCost.value);
       return JSON.stringify(taxData);
     }
 
