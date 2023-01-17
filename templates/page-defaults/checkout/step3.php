@@ -4,7 +4,6 @@ $nextlink = '/thank-you' . $querystring;
 $kount_session = str_replace('.', '', microtime(true));
 
 // required PID from post
-var_dump($_POST);
 if ($_POST) {
   $_SESSION["phone"] = $_POST['phone'];
   $_SESSION["shippingAddress1"] = $_POST['shippingAddress1'];
