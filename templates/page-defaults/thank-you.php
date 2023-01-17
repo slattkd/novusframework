@@ -239,7 +239,7 @@ if ($_SESSION['affid'] == 1798) {
 
                 <?php
                     $grand_total = 0;
-                    $product_total = 0;
+                    $sum_total = 0;
                     $blocked_skus = array('gift_stick', 'trial_stick', 'research_letter', 'discount_stick', '5gm_auto_stick', '5GPC', '5GPCnoship');
 
                 if (isset($items)) {
@@ -256,8 +256,8 @@ if ($_SESSION['affid'] == 1798) {
                             </div>
                             ';
 
-                            $grand_total += (float)$item['order_total'];
-                            $product_total += $product['price'];
+                            $grand_total += $item['order_total'];
+                            $sum_total += $product['price'];
                         }
                     }
                 }
@@ -278,10 +278,10 @@ if ($_SESSION['affid'] == 1798) {
                     }
                 }
 
-                $ordertotal = $product_total + $shippingTotal1;
+                $ordertotal = number_format($sum_total + $shippingTotal1, 2);
                 $shipping = number_format($info['shipping_amount'], 2);
-                $tax_total = taxAmt($product_total);
-                $final_total = $product_total + $shipping + $tax_total;
+                $tax_total = taxAmt($sum_total);
+                $final_total = number_format($sum_total + $shipping + $tax_total, 2);
                 ?>
 
                 <div class="flex justify-between px-4 py-1">

@@ -261,10 +261,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
     shippingState.innerHTML = statesArray['US'];
     billingCountry.addEventListener('change', ()=> {
         billingState.innerHTML = statesArray[billingCountry.value];
+        billingState.selectedIndex = 0;
+        billingState.dispatchEvent(new Event('change'));
     })
 
     shippingCountry.addEventListener('change', ()=> {
         shippingState.innerHTML = statesArray[shippingCountry.value];
+        shippingState.selectedIndex = 0;
+        shippingState.dispatchEvent(new Event('change'));
     })
     
 })

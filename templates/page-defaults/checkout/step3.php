@@ -4,36 +4,31 @@ $nextlink = '/thank-you' . $querystring;
 $kount_session = str_replace('.', '', microtime(true));
 
 // required PID from post
+var_dump($_POST);
 if ($_POST) {
-  $_SESSION['pid'] = $_POST['product_id'];
-  //$_SESSION['productId'] = $_POST['product_id'];
-  //$_SESSION['customerEmail'] = $_POST['email'];
   $_SESSION["phone"] = $_POST['phone'];
   $_SESSION["shippingAddress1"] = $_POST['shippingAddress1'];
   $_SESSION["shippingCountry"] = $_POST['shippingCountry'];
   $_SESSION["shippingCity"] = $_POST['shippingCity'];
   $_SESSION["shippingState"] = $_POST['shippingState'];
   $_SESSION["shippingZip"] = $_POST['shippingZip'];
-  $_SESSION["billingSameAsShipping"] = $_POST['billingSameAsShipping'];
+  $_SESSION["billingSame"] = isset($_POST['billingSame']) ? 1 : 0;
   $_SESSION["billingAddress1"] = $_POST['billingAddress1'];
   $_SESSION["billingCountry"] = $_POST['billingCountry'];
   $_SESSION["billingCity"] = $_POST['billingCity'];
   $_SESSION["billingState"] = $_POST['billingState'];
   $_SESSION["billingZip"] = $_POST['billingZip'];
   $_SESSION["shippingId"] = $_POST['shippingId'];
+  $_SESSION["shippingCost"] = $_POST['shippingCost'];
   $_SESSION["tax_pct"] = $_POST['tax_pct'];
   $_SESSION["joinTextAlerts"] = isset($_POST['joinTextAlerts']) ? $_POST['joinTextAlerts'] : 0;
 }
-$pid = $_SESSION['productId'];
+$pid = $_SESSION['pid'];
 
 if(isset($_SESSION['tax_pct'])) {
   $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
 }
-
-$shipping_cost = $_SESSION["shippingCountry"] == 'US' ? 6.95 : 14.95;
-if (!$_SESSION['pid'] == '1083' && !$_SESSION['pid'] == '1086') {
-  $shipping_cost = 0;
-}
+$shipping_cost = $_SESSION['shippingCost'];
 
 $current_product = $products['products'][$pid];
 ?>
@@ -122,8 +117,7 @@ $current_product = $products['products'][$pid];
                 </div>
                 <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
                 <select class="border border-gray-400 rounded w-full p-2 py-3 text-lg" id="cc_exp_yr" name="expYear" data-private>
-                  <option value="22" selected>2022</option>
-                  <option value="23">2023</option>
+                  <option value="23" selected>2023</option>
                   <option value="24">2024</option>
                   <option value="25">2025</option>
                   <option value="26">2026</option>
@@ -139,9 +133,9 @@ $current_product = $products['products'][$pid];
             <div class="flex w-full columns-2 gap-3 items-center">
               <div class="input w-full mb-3 md:mb-2 md:px-4">
                 <div class="w-full invisible">
-                  <label for="cvv" class="text-sm text-gray-600 hidden md:block">CCV:</label>
+                  <label for="cvv" class="text-sm text-gray-600 hidden md:block">CVV:</label>
                 </div>
-                <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CCV" value="" required="required" data-private>
+                <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CVV" value="" required="required" data-private>
               </div>
               <div class="w-full mb-1 md:px-4 pl-0 mt-3">
                 <div class="text-sm text-rpblue no-underline md:mt-4 clickable" onclick="getPage('card-help.php')">What is a CVV?</div>
@@ -198,7 +192,7 @@ $current_product = $products['products'][$pid];
             </div>
             <div class="flex justify-between w-full mt-2">
               <div class="font-semibold">Today You Pay Only</div>
-              <div class="">$<?= number_format($current_product['product_price'] + $shipping_cost,2); ?></div>
+              <div class="">$<?= number_format($current_product['product_price'] + $shipping_cost, 2); ?></div>
             </div>
           </div>
 
