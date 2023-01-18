@@ -12,7 +12,9 @@ $product6 = $products['products']['1090'];
 
 $_SESSION['pageType'] = 'order';
 
-$_SESSION['vip_discount'] = 0;
+if (!isset($_SESSION['vip_discount'])) {
+    $_SESSION['vip_discount'] = 0;
+}
 
 ?>
 <!DOCTYPE html>
@@ -285,7 +287,10 @@ $_SESSION['vip_discount'] = 0;
 </head>
 
 <body class="bg-gray-100" style="height: 100vh;">
-    <?php template("includes/rpHeader"); ?>
+    <?php 
+        $container = 'container-sm';
+        template("includes/rpHeader"); 
+    ?>
     <!-- <div class="w-full header-strip pr-2 md:pr-4 text-sm py-1 md:py-0">
         <div class="container container-sm mx-auto flex justify-between items-center">
             <div class="flex justify-center w-full md:w-auto hidden md:flex" style="margin-left: -15px;">

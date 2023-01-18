@@ -20,13 +20,11 @@ if ($_POST) {
   $_SESSION["shippingId"] = $_POST['shippingId'];
   $_SESSION["shippingCost"] = $_POST['shippingCost'];
   $_SESSION["tax_pct"] = $_POST['tax_pct'];
+  $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
   $_SESSION["joinTextAlerts"] = isset($_POST['joinTextAlerts']) ? $_POST['joinTextAlerts'] : 0;
 }
 $pid = $_SESSION['pid'];
 
-if(isset($_SESSION['tax_pct'])) {
-  $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
-}
 $shipping_cost = $_SESSION['shippingCost'];
 
 $current_product = $products['products'][$pid];
@@ -39,7 +37,7 @@ $current_product = $products['products'][$pid];
 <head>
   <!-- CSS -->
   <?php template("includes/header"); ?>
-  <title>Total Brain boost - Secure Order</title>
+  <title><?= $company['billedAs']; ?> - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
     .seal {
@@ -49,7 +47,10 @@ $current_product = $products['products'][$pid];
 </head>
 
 <body class=" bg-gray-100">
-  <?php template("includes/rpHeader"); ?>
+  <?php 
+    $container = 'container-vsl';
+    template("includes/rpHeader"); 
+  ?>
   <div class="container container-vsl mx-auto c8 doc-content pb-4 px-2 md:px-0">
 
     <div class="flex justify-center mt-0 md:mt-8">
@@ -161,24 +162,26 @@ $current_product = $products['products'][$pid];
             <div class="flex justify-center text-center">
               <div class="flex flex-col items-center">
                 <div class="text-2xl font-light">Your Order Summary</div>
-                <div class="font-semibold my-2 text-xl"><?= $current_product['name']; ?></div>
+                <div class="font-semibold my-2 text-xl"><?= $current_product['product_name']; ?></div>
               </div>
             </div>
             <div class="flex justify-between w-full mt-6">
               <div class="">Retial Price</div>
               <div class="line-through">$<?= number_format($current_product['product_retail'],2); ?></div>
             </div>
-            <!-- <div class="flex justify-between w-full mt-2 text-rpblue font-semibold">
-              <div class="">Doctor's Discount</div>
-              <div class="">-$237.00</div>
-            </div> -->
+          
             <div class="flex justify-between w-full mt-2 border-b pb-2">
               <div class="">Your Price</div>
               <div class="line-through">$<?= number_format($current_product['product_price'],2); ?></div>
             </div>
             <div class="flex justify-between w-full mt-2">
+              <?php if (isset($_SESSION['tax_pct'])): ?>
+                <div class="">Tax <span class="text-sm">(<?= $_SESSION['tax_pct']?>%)</span></div>
+                <div class="">$<?php echo taxAmt($current_product['product_price']); ?></div>
+              <?php else: ?>
               <div class="">Tax <span class="text-sm">(Estimated)</span></div>
               <div class="">$0.00</div>
+              <?php endif; ?>
             </div>
             <div class="flex justify-between w-full mt-2 pb-2 border-b">
               <div class="">Shipping</div>
@@ -191,7 +194,7 @@ $current_product = $products['products'][$pid];
             </div>
             <div class="flex justify-between w-full mt-2">
               <div class="font-semibold">Today You Pay Only</div>
-              <div class="">$<?= number_format($current_product['product_price'] + $shipping_cost, 2); ?></div>
+              <div class="">$<?= number_format($current_product['product_price'] + $shipping_cost + taxAmt($current_product['product_price']),2); ?></div>
             </div>
           </div>
 
@@ -215,7 +218,6 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
       <input type="hidden" name="shippingState" id="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>">
       <input type="hidden" name="shippingCountry" id="shippingCountry" value="<?php echo @$_SESSION["shippingCountry"]; ?>">
-      <input type="hidden" name="shippingId" id="shippingCountry" value="<?php echo @$_SESSION["shippingId"]; ?>">
       <input type="hidden" name="shippingZip" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
 
 
@@ -242,7 +244,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="shippingCost" id="shippingCost" value="<?php echo @$_SESSION['shippingCost']; ?>">
       <input type="hidden" name="tax_pct" id='tax_pct' value="<?php echo $_SESSION['tax_pct']; ?>">
       <input type="hidden" name="newform" value="yes">
-      <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="87,102,265">
+      <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="1086,1088,1090">
       <input type="hidden" name="upsellCount" value="0">
       <input type="hidden" name="customer_time" id="customer_time"  value="">
       <input type="hidden" name="eftid" id="eftid"  value="<?php echo @$_SESSION['eftid']; ?>">
@@ -323,10 +325,6 @@ $current_product = $products['products'][$pid];
   ?>
 
   <?php template("includes/rpFooter"); ?>
-  <?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-  } ?>
 
   <script>
     const isMobile = Math.min(window.innerWidth) < 769;
@@ -371,7 +369,7 @@ $current_product = $products['products'][$pid];
         formValid = pristine.validate();
         if (formValid) {
           submitBtn.disabled = true;
-          submitBtn.innerHTML = "Processing Payment..."
+          submitBtn.innerHTML = "Processing..."
           form.submit();
 
           // After 10 seconds, rest form submit button
@@ -426,6 +424,10 @@ $current_product = $products['products'][$pid];
         })
     }
   </script>
-</body>
 
+<?php if ($site['debug'] == true) {
+    // Show Debug bar only on whitelisted domains.
+    template('debug', null, null, 'debug');
+} ?>
+</body>
 </html>

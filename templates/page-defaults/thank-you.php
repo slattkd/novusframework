@@ -34,6 +34,8 @@ $products = $results['data'];
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
 
+//no additional project logic
+
 ?>
 <!DOCTYPE>
 <html>
@@ -211,7 +213,7 @@ $info = $items[$orderid];
 <body class="bg-gray-100">
 
     <div class="container container-vsl mx-auto py-4 md:py-20 px-2 md:px-5 md:px-8 min-h-screen">
-        <div class="conten">
+        <div class="">
             <div class="flex items-center justify-center mb-0 md:mb-4">
                 <h1 class="flex items-center text-base md:text-2xl font-semibold pb-0 text-tygreen">
                 <span class="checkmark mr-1 md:mr-2" aria-hidden="true"></span> Thank you, Your Order is Now Complete!
@@ -270,7 +272,11 @@ $info = $items[$orderid];
                     <div class="price text-right">$ <?= $shipping; ?></div>
                 </div>
                 <div class="flex justify-between px-4 py-1">
-                    <div class="text">Sales Tax <span class="text-sm text-gray-300">(<?= $_SESSION['tax_pct']; ?>%)</span></div>
+                    <div class=" flex flex-nowrap items-center" style="white-space:nowrap">Sales Tax
+                    <?php if (isset($_SESSION['tax_pct'])): ?>
+                    <div class="text-sm text-gray-400 ml-2">(<?= $_SESSION['tax_pct']; ?>)</div>
+                    <?php endif; ?>
+                    </div>
                     <div class="price text-right">$ <?= $tax_total; ?></div>
                 </div>
                 <div class="flex justify-between px-4 py-2">
@@ -278,7 +284,9 @@ $info = $items[$orderid];
                     <div class="price text-right ext-xl font-bold">$ <?= $final_total; ?></div>
                 </div>
 
-
+                <div class="border-b flex px-4 py-2 text-gray-500">
+                    <p>All charges will appear on your credit card statement as "<?= $company['billedAs']; ?>"</p>
+                </div>
                 
                 <div class="flex mt-6">
                     <h3 id="customer" class="text-2xl font-bold mb-0 mt-6">Customer information</h3>
