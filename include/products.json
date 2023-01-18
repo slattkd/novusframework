@@ -66,7 +66,7 @@
             "product_qty": 2,
             "product_price": 35.95,
             "product_retail": 59.95,
-            "product_ship": 6.95,
+            "product_ship": 0,
             "product_category_name": "",
             "vertical_name": "Men's Health",
             "product_is_shippable": "1",
