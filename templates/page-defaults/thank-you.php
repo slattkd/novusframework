@@ -274,7 +274,7 @@ $info = $items[$orderid];
                 <div class="flex justify-between px-4 py-1">
                     <div class=" flex flex-nowrap items-center" style="white-space:nowrap">Sales Tax
                     <?php if (isset($_SESSION['tax_pct'])): ?>
-                    <div class="text-sm text-gray-400 ml-2">(<?= $_SESSION['tax_pct']; ?>)</div>
+                    <div class="text-sm text-gray-400 ml-2">(<?= $_SESSION['tax_pct']; ?>%)</div>
                     <?php endif; ?>
                     </div>
                     <div class="price text-right">$ <?= $tax_total; ?></div>
