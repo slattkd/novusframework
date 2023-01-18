@@ -12,6 +12,7 @@ if ($_POST) {
 }
 $pid = $_SESSION['pid'];
 $current_product = $products['products'][$pid];
+// var_dump($current_product);
 ?>
 
 <!DOCTYPE html>
@@ -388,7 +389,8 @@ $current_product = $products['products'][$pid];
             shipCost.value = <?= $site['shippingIntlCost']; ?>;
         }
         // hard code check for non free shipping product id
-        if (<?= $current_product['product_ship']; ?> == 0) {
+        if (<?= $current_product['product_ship']; ?> !== 1083) {
+          console.log('free shipping product');
           shipId.value = '<?= $site['shippingFree']; ?>';
           shipCost.value = <?= $site['shippingFreeCost']; ?>;
         }
@@ -508,6 +510,7 @@ $current_product = $products['products'][$pid];
             body: getTaxObject(),
         })
         .then(function (response) {
+          console.log(response);
             return response.json();
         }) 
         .then(function (data) {
