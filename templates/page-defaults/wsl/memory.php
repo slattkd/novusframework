@@ -35,7 +35,10 @@
 </head>
 
 <body class="bg-gray-100 wsl">
-  <?php template("includes/rpHeader"); ?>
+  <?php 
+    $container = 'container-vsl';
+    template("includes/rpHeader"); 
+  ?>
   <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600">
 
   <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
