@@ -331,7 +331,7 @@ function get_that_filetime($file_url = false) {
 
 function savedAmt($retail, $price) {
     $saved = abs($retail - $price);
-    return number_format($saved, 2, '.', '');
+    return number_format($saved, 2);
 }
 
 function monthAmt($price, $month) {

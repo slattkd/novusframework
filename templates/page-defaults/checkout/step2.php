@@ -380,20 +380,23 @@ $current_product = $products['products'][$pid];
         }
 
         var productId = document.getElementById('product_id').value;
+        updateShipId();
+    }
 
-        if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
-            shipId.value = '<?= $site['shippingUs']; ?>';
-            shipCost.value = <?= $site['shippingUsCost']; ?>;
-        } else {
-            shipId.value = '<?= $site['shippingIntl']; ?>';
-            shipCost.value = <?= $site['shippingIntlCost']; ?>;
-        }
-        // hard code check for non free shipping product id
-        if (<?= $current_product['product_ship']; ?> !== 1083) {
-          console.log('free shipping product');
-          shipId.value = '<?= $site['shippingFree']; ?>';
-          shipCost.value = <?= $site['shippingFreeCost']; ?>;
-        }
+    function updateShipId() {
+      if ((billSame.checked && billingCountry.value == 'US') || (!billSame.checked && shipCountry.value == 'US')) {
+          shipId.value = '<?= $site['shippingUs']; ?>';
+          shipCost.value = <?= $site['shippingUsCost']; ?>;
+      } else {
+          shipId.value = '<?= $site['shippingIntl']; ?>';
+          shipCost.value = <?= $site['shippingIntlCost']; ?>;
+      }
+      // hard code check for non free shipping product id
+      if (<?= $pid; ?> !== 1083) {
+        console.log('free shipping product');
+        shipId.value = '<?= $site['shippingFree']; ?>';
+        shipCost.value = <?= $site['shippingFreeCost']; ?>;
+      }
     }
 
     function copyBillingInputValue() {
@@ -490,7 +493,9 @@ $current_product = $products['products'][$pid];
             "postal_code": 72110
         }
       };
-      taxData.shipping_id = document.getElementById('shippingId').value;
+      updateShipId();
+      console.log(shipId.value);
+      taxData.shipping_id = shipId.value;
       taxData.products[0].id = <?= $pid; ?>;
       taxData.location.state = document.getElementById('billingState').value;
       taxData.location.country = document.getElementById('billingCountry').value;
@@ -510,10 +515,10 @@ $current_product = $products['products'][$pid];
             body: getTaxObject(),
         })
         .then(function (response) {
-          console.log(response);
             return response.json();
         }) 
         .then(function (data) {
+            console.log(data);
             if (data.data && data.data.tax) {
               var taxData = data.data.tax;
               taxPercent = parseFloat(taxData.pct);

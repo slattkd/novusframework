@@ -30,7 +30,6 @@ $resultsArray = print_r($results, true);
 $logger->info('Thank You Receipt: ' . $resultsArray);
 $products = $results['data'];
 
-
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
 

@@ -19,13 +19,15 @@ if ($_POST) {
   $_SESSION["billingZip"] = $_POST['billingZip'];
   $_SESSION["shippingId"] = $_POST['shippingId'];
   $_SESSION["shippingCost"] = $_POST['shippingCost'];
-  $_SESSION["tax_pct"] = $_POST['tax_pct'];
-  $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
   $_SESSION["joinTextAlerts"] = isset($_POST['joinTextAlerts']) ? $_POST['joinTextAlerts'] : 0;
+  $_SESSION["tax_pct"] = $_POST['tax_pct'];
+  if ($_SESSION["tax_pct"] !== 0) {
+    $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
+  } else {
+    $_SESSION['tax_message'] = '+ Applicable Sales Tax';
+  }
 }
 $pid = $_SESSION['pid'];
-
-$shipping_cost = $_SESSION['shippingCost'];
 
 $current_product = $products['products'][$pid];
 ?>
