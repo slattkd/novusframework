@@ -22,9 +22,9 @@ if ($_POST) {
   $_SESSION["joinTextAlerts"] = isset($_POST['joinTextAlerts']) ? $_POST['joinTextAlerts'] : 0;
   $_SESSION["tax_pct"] = $_POST['tax_pct'];
   if ($_SESSION["tax_pct"] !== 0) {
-    $_SESSION['tax_message'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
+    $_SESSION['tax_msg'] = '+ ' . $_SESSION['tax_pct'] . '%  ' . $_SESSION['billingState'] . ' Sales Tax';
   } else {
-    $_SESSION['tax_message'] = '+ Applicable Sales Tax';
+    $_SESSION['tax_msg'] = '+ Applicable Sales Tax';
   }
 }
 $pid = $_SESSION['pid'];

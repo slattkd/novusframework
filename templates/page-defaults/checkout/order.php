@@ -454,7 +454,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            3 Month Supply
+                            <?= $product2['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -473,12 +473,12 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product2['product_retail'], 2); ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= number_format($product2['product_price'],2); ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             <span id="main-price2">Just $<?= monthAmt($product2['product_price'], $product2['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
@@ -510,7 +510,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            6 Month Supply
+                            <?= $product3['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -567,7 +567,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            1 Month Supply
+                            <?= $product1['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -627,7 +627,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            3 Month Supply
+                            <?= $product5['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -682,7 +682,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-semibold mb-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             <!-- <?= $product6['product_qty']; ?> Bottle Supply -->
                             <?= $product6['product_month']; ?> Month Supply
                         </h1>
