@@ -1,14 +1,14 @@
 <?php
 
 // Standard one time payment
-$product1 = $products['products']['1083'];
-$product2 = $products['products']['1084'];
-$product3 = $products['products']['1085'];
+$product1 = $products['products']['1136'];
+$product2 = $products['products']['1137'];
+$product3 = $products['products']['1138'];
 
 // VIP autopay
-$product4 = $products['products']['1086'];
-$product5 = $products['products']['1088'];
-$product6 = $products['products']['1090'];
+$product4 = $products['products']['1139'];
+$product5 = $products['products']['1141'];
+$product6 = $products['products']['1143'];
 
 $_SESSION['pageType'] = 'order';
 
@@ -575,7 +575,7 @@ if (!isset($_SESSION['vip_discount'])) {
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
                             <!-- <?= $product1['product_qty']; ?> Bottles -->
-                            <?= $product1['product_month']; ?> Months
+                            <?= $product1['product_month']; ?> Month
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
@@ -753,7 +753,7 @@ if (!isset($_SESSION['vip_discount'])) {
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
                             <!-- <?= $product4['product_qty']; ?> Bottles -->
-                            <?= $product4['product_month']; ?> Months
+                            <?= $product4['product_month']; ?> Month
                         </h1>
 
 
