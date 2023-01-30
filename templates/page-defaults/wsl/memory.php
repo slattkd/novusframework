@@ -40,10 +40,6 @@
       font-size: 12;
     }
 
-  .table-contents ul {
-
-  }
-
   .table-contents ul li {
     flex-direction: column;
     position: fixed;
