@@ -34,9 +34,9 @@
     .table-contents {
       flex-direction: column;
       position: fixed;
-      left: 140px;
+      left: 0px;
       top: 64px;
-      width: 180px;
+      width: 160px;
       font-size: 12;
     }
 
@@ -45,11 +45,12 @@
   }
 
   .table-contents ul li {
-    list-style: auto;
-    padding: 5px 0;
-    padding-left: 0.25rem;
-    margin-left: 0.5rem;
-    background-image: none;
+    flex-direction: column;
+    position: fixed;
+    left: calc(50vw - 550px);
+    top: 64px;
+    width: 150px;
+    font-size: 12;
   }
 
   </style>
@@ -58,18 +59,18 @@
 <body class="bg-gray-100 wsl">
   <?php template("includes/rpHeader"); ?>
 
-<div class="table-contents rounded flex flex-column bg-white shadow border hidden md:flex">
-<div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
-  <ul class="p-3">
-    <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
-    <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
-    <li class="clickable" onclick="scrollToId('brain-decline')">Brain Health Discovery</li>
-    <li class="clickable" onclick="scrollToId('nutrients')">6 Nutrients for Better Memory</li>
-    <li class="clickable" onclick="scrollToId('powerful-formula')">The Most Powerful Brain Boosting Formula </li>
-  </ul>
-</div>
+  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 
-  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600">
+  <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
+    <div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+    <ul class="p-3">
+      <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
+      <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
+      <li class="clickable" onclick="scrollToId('brain-decline')">Brain Health Discovery</li>
+      <li class="clickable" onclick="scrollToId('nutrients')">6 Nutrients for Better Memory</li>
+      <li class="clickable" onclick="scrollToId('powerful-formula')">The Most Powerful Brain Boosting Formula </li>
+    </ul>
+  </div>
 
   <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
   <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
