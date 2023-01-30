@@ -10,14 +10,14 @@ $pid = $_SESSION['pid'];
 @$totalPrice = intval($price) + intval($ship);
 
 switch ($pid) {
-  case 1083:
-    $up_pid = 1086;
+  case 1136:
+    $up_pid = 1139;
     break;
-  case 1084:
-    $up_pid = 1088;
+  case 1137:
+    $up_pid = 1141;
     break;
-  case 1085:
-    $up_pid = 1090;
+  case 1138:
+    $up_pid = 1143;
 }
 
 @$up_totalPrice = intval($up_price) + intval($up_ship);
