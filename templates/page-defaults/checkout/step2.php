@@ -281,10 +281,6 @@ $current_product = $products['products'][$pid];
 
 
   <?php template("includes/rpFooter"); ?>
-<?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-} ?>
 
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
 <script>

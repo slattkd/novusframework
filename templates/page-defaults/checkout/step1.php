@@ -156,10 +156,6 @@ $current_product = $products['products'][$pid];
 
 
   <?php template("includes/rpFooter"); ?>
-<?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-} ?>
 
   <script>
     const isMobile = Math.min(window.innerWidth) < 769;
