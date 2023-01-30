@@ -388,7 +388,7 @@ $current_product = $products['products'][$pid];
           shipCost.value = <?= $site['shippingIntlCost']; ?>;
       }
       // hard code check for non free shipping product id
-      if (<?= $pid; ?> !== 1083) {
+      if (<?= $pid; ?> !== 1136) {
         console.log('free shipping product');
         shipId.value = '<?= $site['shippingFree']; ?>';
         shipCost.value = <?= $site['shippingFreeCost']; ?>;
@@ -490,7 +490,6 @@ $current_product = $products['products'][$pid];
         }
       };
       updateShipId();
-      console.log(shipId.value);
       taxData.shipping_id = shipId.value;
       taxData.products[0].id = <?= $pid; ?>;
       taxData.location.state = document.getElementById('billingState').value;
@@ -530,6 +529,15 @@ $current_product = $products['products'][$pid];
     var taxAmount = 0;
 
     billState.addEventListener('change', ()=> {
+      getTaxData();
+    })
+
+    billCountry.addEventListener('change', ()=> {
+      getTaxData();
+    })
+
+    shipCountry.addEventListener('change', ()=> {
+      updateShipId();
       getTaxData();
     })
 
