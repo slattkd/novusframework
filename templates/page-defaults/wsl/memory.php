@@ -34,19 +34,18 @@
     .table-contents {
       flex-direction: column;
       position: fixed;
-      left: 0px;
+      left: calc(50vw - 550px);
       top: 64px;
-      width: 160px;
+      width: 150px;
       font-size: 12;
     }
 
   .table-contents ul li {
-    flex-direction: column;
-    position: fixed;
-    left: calc(50vw - 550px);
-    top: 64px;
-    width: 150px;
-    font-size: 12;
+    list-style: auto;
+    padding: 5px 0;
+    padding-left: 0.25rem;
+    margin-left: 0.5rem;
+    background-image: none;
   }
 
   </style>
