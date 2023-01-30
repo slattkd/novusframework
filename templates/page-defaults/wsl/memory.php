@@ -3,7 +3,7 @@
   $_SESSION['pageType'] = 'wsl';
 ?>
 
-<html>
+<html lang="en">
 
 <head>
   <?php template('includes/header'); ?>
@@ -31,14 +31,44 @@
       background-size: 20px;
     }
 
+    .table-contents {
+      flex-direction: column;
+      position: fixed;
+      left: 140px;
+      top: 64px;
+      width: 180px;
+      font-size: 12;
+    }
+
+  .table-contents ul {
+
+  }
+
+  .table-contents ul li {
+    list-style: auto;
+    padding: 5px 0;
+    padding-left: 0.25rem;
+    margin-left: 0.5rem;
+    background-image: none;
+  }
+
   </style>
 </head>
 
 <body class="bg-gray-100 wsl">
-  <?php 
-    $container = 'container-vsl';
-    template("includes/rpHeader"); 
-  ?>
+  <?php template("includes/rpHeader"); ?>
+
+<div class="table-contents rounded flex flex-column bg-white shadow border hidden md:flex">
+<div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+  <ul class="p-3">
+    <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
+    <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
+    <li class="clickable" onclick="scrollToId('brain-decline')">Brain Health Discovery</li>
+    <li class="clickable" onclick="scrollToId('nutrients')">6 Nutrients for Better Memory</li>
+    <li class="clickable" onclick="scrollToId('powerful-formula')">The Most Powerful Brain Boosting Formula </li>
+  </ul>
+</div>
+
   <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600">
 
   <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
@@ -57,7 +87,7 @@
 
   <p>But this &ldquo;mental crisis&rdquo; &nbsp;is far from normal and experts say these &ldquo;forgetful moments&rdquo; are the first warning sign of much more serious metal issues to come and even death&hellip;</p>
 
-  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">1 in 3 Seniors Dies From Some Form of Memory&nbsp;Loss</h2>
+  <h2 id="memory-loss" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">1 in 3 Seniors Dies From Some Form of Memory&nbsp;Loss</h2>
 
   <div>
     <p>Surveys show it&rsquo;s <span class="font-semibold">the scariest condition facing mankind today.</span>&nbsp;We not only lose our identity and independence, but become a burden to our loved ones.</p>
@@ -73,7 +103,7 @@
     <div style="clear:both"></div>
   </div>
 
-  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Indian &ldquo;Super Agers&rdquo; Might Unlock The Secret To Razor Sharp Memory At Any Age</h2>
+  <h2 id="super-agers" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Indian &ldquo;Super Agers&rdquo; Might Unlock The Secret To Razor Sharp Memory At Any Age</h2>
 
   <p>Dr. Steven Masley, MD traveled to India to help treat the poor and underprivileged. Here he discovered a group of &ldquo;Super Agers&rdquo;&mdash;<span class="font-semibold">men and women whose memory and focus was razor sharp into their 70s, 80s and even 90s.&nbsp;</p>
 
@@ -92,7 +122,7 @@
   
 
 
-  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">The Discovery of A Radical New Weapon Against Chronic Brain&nbsp;Decline</h2>
+  <h2 id="brain-decline" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">The Discovery of A Radical New Weapon Against Chronic Brain&nbsp;Decline</h2>
 
   <p>After extensive research with Dr. Masley, Revival Point found a powerful, patented Curcumin extract called <span class="font-semibold">CurcuRouge&reg;&nbsp;<span class="font-semibold">Bio-Optimized Curcumin&nbsp;that is absorbed 93 times better by the body&hellip; </p>
 
@@ -119,7 +149,7 @@
 
 
 
-  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Plus These 5 Brain-Boosting Nutrients Make CucuRouge&reg;&nbsp;Even More Powerful</h2>
+  <h2 id="nutrients" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Plus These 5 Brain-Boosting Nutrients Make CucuRouge&reg;&nbsp;Even More Powerful</h2>
 
   <p>With Dr. Masley&rsquo;s help, Revival Point conducted extensive research into brain health, looking at the best scientific journals and clinical studies around the world. </p>
 
@@ -136,7 +166,7 @@
   </div>
   
 
-  <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Total Brain Boost&reg;: A Powerful Formula Using 6 Best, Scientifically-Backed Brain-Boosting Nutrients Known To Man</h2>
+  <h2 id="powerful-formula" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11">Total Brain Boost&reg;: A Powerful Formula Using 6 Best, Scientifically-Backed Brain-Boosting Nutrients Known To Man</h2>
 
   <p>The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</p>
 
@@ -168,6 +198,10 @@
     </ul>
   </div>
 
+  <div class="flex justify-center mt-4">
+    <img class="w-full md:w-2/3" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" alt="security icons">
+  </div>
+
 </div>
 <?php template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {
@@ -180,6 +214,10 @@
   wslBtn.addEventListener('click', ()=> {
     window.location = '<?= $nextlink; ?>';
   })
+
+  function scrollToId(id) {
+    document.getElementById(id).scrollIntoView({behavior: "smooth"});
+  }
 </script>
 </body>
 
