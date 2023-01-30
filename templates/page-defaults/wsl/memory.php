@@ -46,7 +46,7 @@
 
   .table-contents ul li {
     list-style: auto;
-    padding: 6px 0;
+    padding: 5px 0;
     padding-left: 0.25rem;
     margin-left: 0.5rem;
     background-image: none;
@@ -59,7 +59,7 @@
   <?php template("includes/rpHeader"); ?>
 
 <div class="table-contents rounded flex flex-column bg-white shadow border hidden md:flex">
-<div class="header bg-slate-500 text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+<div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
   <ul class="p-3">
     <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
     <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
