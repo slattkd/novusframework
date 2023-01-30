@@ -2,7 +2,7 @@
   $nextlink = $nextlink = '/checkout/order' . $querystring;
   $_SESSION['pageType'] = 'wsl';
 ?>
-
+<!DOCTYPE html>
 <html>
 
 <head>
