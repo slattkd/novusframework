@@ -86,7 +86,7 @@ $current_product = $products['products'][$pid];
             </div>
 
             <div class="flex justify-center w-full mt-3">
-              <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons-new.png" style="max-width: 600px;">
+              <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons.png" style="max-width: 600px;">
             </div>
           </div>
           <input type="hidden" name="previous_page" value="">
