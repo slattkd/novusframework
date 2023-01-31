@@ -15,7 +15,7 @@
 
     .wsl h1, .wsl h2 {
       font-weight: 600;
-      scroll-margin-top: 50px;
+      scroll-margin-top: 60px;
     }
 
     .wsl h1 {
