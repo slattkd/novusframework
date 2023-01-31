@@ -35,6 +35,9 @@
 </head>
 
 <body class="bg-gray-100 c8 wsl">
+  <?php
+  $container = 'container-vsl';
+  ?>
   <?php template("includes/rpHeader"); ?>
   <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg content-center text-gray-600">
 

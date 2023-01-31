@@ -71,6 +71,7 @@ $site['stickyPass'] = 'nWsw3BzrhnFBkJ';
 $site['stickyUrl']  = 'gdc.sticky.io';
 
 $site['logo'] = '/images/rp-logo-wide.png';
+$site['logo-alt'] = '/images/rp-logo1.png';
 $site['imgpath'] = '//s3.amazonaws.com/5gmale/';
 $site['contactlink'] = 'mailto:support@revivalpoint.com';
 
