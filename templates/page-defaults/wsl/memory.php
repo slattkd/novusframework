@@ -15,7 +15,7 @@
 
     .wsl h1, .wsl h2 {
       font-weight: 600;
-      scroll-margin-top: 50px;
+      scroll-margin-top: 60px;
     }
 
     .wsl h1 {
@@ -199,7 +199,7 @@
   </div>
 
   <div class="flex justify-center mt-4">
-    <img class="w-full md:w-2/3" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" alt="security icons">
+    <img class="w-full md:w-2/3" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px" alt="security icons">
   </div>
 
 </div>
