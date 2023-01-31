@@ -829,7 +829,7 @@ if (!isset($_SESSION['vip_discount'])) {
         <div class="flex justify-center text-center py-3">
             Certified As Secure & Trustworthy By The Leading Companies:
         </div>
-        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons-new.png" style="max-width: 600px;mix-blend-mode: multiply;">
+        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/sec-icons.png" style="max-width: 600px;mix-blend-mode: multiply;">
     </div>
 
     <div class="flex flex-col py-4 border-t border-b items-center bg-white" style="padding: 2.5rem 0.5rem;">

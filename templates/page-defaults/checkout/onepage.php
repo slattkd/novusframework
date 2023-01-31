@@ -1074,7 +1074,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                 <div class="flex flex-col w-full mt-3 md:hidden">
                                     <p class="text-center text-sm text-gray-400">Certified As Secure &amp; Trustworthy By The Leading Companies:</p>
                                     <div class="flex mt-3">
-                                        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px;">
+                                        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons.png" style="max-width: 600px;">
                                     </div>
                                 </div>
                                 <div class="flex flex-col justify-center text-xl my-3 text-center md:hidden">Credit Card Charged As <br> <strong>"<?= $company['name']; ?>"</strong> </div>
