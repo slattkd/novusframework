@@ -903,7 +903,7 @@ if (in_array($dayname, $daysclosed)) {
                 <div class="hidden md:block">
                     <p class="text-center text-sm text-gray-400 mb-2">Certified As Secure &amp; Trustworthy By The Leading Companies:</p>
                     <div class="flex">
-                        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 700px;">
+                        <img class="mx-auto w-full" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px;">
                     </div>
                     <div class="flex justify-center text-4xl mt-8 mb-4 text-center condensed">
                         <h3>Top Rated By The Better Business Bureau!</strong></h3>
