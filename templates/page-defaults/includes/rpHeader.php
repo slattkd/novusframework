@@ -32,7 +32,7 @@
     <div id="logo-banner" class=" py-0 md:py-1 border-b bg-white">
       <div class="flex flex-wrap <?= $justify; ?> container <?= $container; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
-          <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:300px;object-fit:contain;">
+          <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:225px;object-fit:contain;">
         </div>
         <?php if ($is_wsl): ?>
         <div class="flex justify-center items-center w-full md:w-auto mb-2 md:mb-0 text-gray-500">
