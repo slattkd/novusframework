@@ -53,7 +53,7 @@ $logger->info('Sticky New Order Response: ' . json_encode($response));
 $res = explode('&', $response);
 $sessionFields = [ 'firstName', 'lastName', 'email', 'phone', 'shippingAddress1',
                     'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
-                    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip' ];
+                    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip', 'tax_pct' ];
 
 
 foreach ($sessionFields as $sessionField) {

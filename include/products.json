@@ -2,15 +2,15 @@
     "response_code": "100",
     "total_products": "6",
     "product_id": [
-        "1083",
-        "1084",
-        "1085",
-        "1086",
-        "1088",
-        "1090"
+        "1136",
+        "1137",
+        "1138",
+        "1139",
+        "1141",
+        "1143"
     ],
     "products": {
-        "1083": {
+        "1136": {
             "product_name": "Total Brain boost",
             "product_description": "1 Month Supply (2 bottles)",
             "product_sku": "TBB-Q02-X01",
@@ -24,9 +24,9 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
-            "product_id": "1083"
+            "product_id": "1136"
         },
-        "1084": {
+        "1137": {
             "product_name": "Total Brain boost",
             "product_description": "3 Month Supply (6 bottles)",
             "product_sku": "TBB-Q06-X01",
@@ -40,9 +40,9 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
-            "product_id": "1084"
+            "product_id": "1137"
         },
-        "1085": {
+        "1138": {
             "product_name": "Total Brain boost",
             "product_description": "6 Month Supply (12 bottles)",
             "product_sku": "TBB-Q012-X01",
@@ -56,9 +56,9 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
-            "product_id": "1085"
+            "product_id": "1138"
         },
-        "1086": {
+        "1139": {
             "product_name": "Total Brain boost",
             "product_description": "1 Month Supply VIP (2 bottles)",
             "product_sku": "TBB-Q02-X01",
@@ -66,15 +66,15 @@
             "product_qty": 2,
             "product_price": 35.95,
             "product_retail": 59.95,
-            "product_ship": 6.95,
+            "product_ship": 0,
             "product_category_name": "",
             "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
-            "product_id": "1086"
+            "product_id": "1139"
         },
-        "1088": {
+        "1141": {
             "product_name": "Total Brain boost",
             "product_description": "3 Month Supply VIP (6 bottles)",
             "product_sku": "TBB-Q06-X01",
@@ -88,9 +88,9 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
-            "product_id": "1088"
+            "product_id": "1141"
         },
-        "1090": {
+        "1143": {
             "product_name": "Total Brain boost",
             "product_description": "6 Month Supply VIP (12 bottles)",
             "product_sku": "TBB-Q012-X01",
@@ -104,7 +104,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
-            "product_id": "1090"
+            "product_id": "1143"
         }
     }
 }

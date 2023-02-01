@@ -1,38 +1,16 @@
 <?php
 
 // Standard one time payment
-$product1 = $products['products']['1083'];
-$product2 = $products['products']['1084'];
-$product3 = $products['products']['1085'];
+$product1 = $products['products']['1136'];
+$product2 = $products['products']['1137'];
+$product3 = $products['products']['1138'];
 
 // VIP autopay
-$product4 = $products['products']['1086'];
-$product5 = $products['products']['1088'];
-$product6 = $products['products']['1090'];
+$product4 = $products['products']['1139'];
+$product5 = $products['products']['1141'];
+$product6 = $products['products']['1143'];
 
 $_SESSION['pageType'] = 'order';
-
-function savedAmt($retail, $price)
-{
-    $saved = abs($retail - $price);
-    $saved = number_format($saved, 2, '.', '');
-    return $saved;
-}
-
-function monthAmt($price, $month)
-{
-    return number_format($price / $month, 2);
-}
-
-function percentOff($price, $retail)
-{
-    return round(($retail - $price) / $retail * 100, 0);
-}
-
-function perBottle($price, $qty)
-{
-    return round($price / $qty, 2);
-}
 
 if (!isset($_SESSION['vip_discount'])) {
     $_SESSION['vip_discount'] = 0;
@@ -309,7 +287,10 @@ if (!isset($_SESSION['vip_discount'])) {
 </head>
 
 <body class="bg-gray-100" style="height: 100vh;">
-    <?php template("includes/rpHeader"); ?>
+    <?php 
+        $container = 'container-sm';
+        template("includes/rpHeader"); 
+    ?>
     <!-- <div class="w-full header-strip pr-2 md:pr-4 text-sm py-1 md:py-0">
         <div class="container container-sm mx-auto flex justify-between items-center">
             <div class="flex justify-center w-full md:w-auto hidden md:flex" style="margin-left: -15px;">
@@ -433,7 +414,7 @@ if (!isset($_SESSION['vip_discount'])) {
             <label for="vip" class="flex flex-col p-3 pb-2 w-full">
                 <div class="flex items-start py-1 md:py-3">
                     <div class="check-box" style="position:relative;">
-                        <input type="checkbox" id="vip" name="vip" style="filter:none" onchange="<?php $_SESSION['vip_discount'] = $_SESSION['vip_discount'] == 0 ? 1 : 0; ?>">
+                        <input type="checkbox" id="vip" name="vip" style="filter:none" onchange="<?php $_SESSION['vip_discount'] = !$_SESSION['vip_discount']; ?>">
                         <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                     </div>
                     <div class="flex flex-col -mt-2 ml-2">
@@ -473,7 +454,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            3 Month Supply
+                            <?= $product2['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -492,12 +473,12 @@ if (!isset($_SESSION['vip_discount'])) {
                             <div class="text-gray-600 mr-4 md:hidden" style="margin-left: 3rem; position:relative;">
                                 <span class="strike">$<?= number_format($product2['product_retail'], 2); ?></span>
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 You Pay Just <span id="main-price2">$<?= number_format($product2['product_price'],2); ?></span>
                             </div>
-                            <div class="md:hidden">
+                            <!-- <div class="md:hidden">
                             <span id="main-price2">Just $<?= monthAmt($product2['product_price'], $product2['product_month']); ?> per month!</span>
-                            </div>
+                            </div> -->
 
                         </div>
                         <h4 class="font-semibold text-lg mb-0 text-rpblue md:text-black md:hidden" style="margin-left: 3rem;"><span id="off-price2"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>%</span> OFF + FREE SHIPPING</h4>
@@ -529,7 +510,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            6 Month Supply
+                            <?= $product3['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -586,7 +567,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            1 Month Supply
+                            <?= $product1['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -594,7 +575,7 @@ if (!isset($_SESSION['vip_discount'])) {
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
                             <!-- <?= $product1['product_qty']; ?> Bottles -->
-                            <?= $product1['product_month']; ?> Months
+                            <?= $product1['product_month']; ?> Month
                         </h1>
 
                         <div class="flex md:justify-between md:border-y-2 md:py-3">
@@ -646,7 +627,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         <p class="flair-subhead mt0 mb3 hidden md:block">Take Multiple Capsules Per Day to Boost Results</p>
 
                         <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
-                            3 Month Supply
+                            <?= $product5['product_month']; ?> Month Supply
                         </h1>
                         <h1 class="flex items-center mb-0 flex-nowrap text-black text-4xl md:text- font-bold my-3 md:hidden">
                             <div class="check-box mr-2" style="position:relative;">
@@ -701,7 +682,7 @@ if (!isset($_SESSION['vip_discount'])) {
                         </div>
                         <p class="flair-subhead mt0 mb3 hidden">Take Multiple Capsules Per Day to Boost Your Results</p>
 
-                        <h1 class="text-black text-4xl md:text- font-semibold mb-3 hidden md:block">
+                        <h1 class="text-black text-4xl md:text- font-bold mb-3 hidden md:block">
                             <!-- <?= $product6['product_qty']; ?> Bottle Supply -->
                             <?= $product6['product_month']; ?> Month Supply
                         </h1>
@@ -714,7 +695,7 @@ if (!isset($_SESSION['vip_discount'])) {
                             <?= $product6['product_month']; ?> Months
                         </h1>
 
-                        <div class="limited-offer py-3 pt-0 hidden md:block">
+                        <div class="limited-offer py-3 pt-0 hidden">
                             <span class="text-red-700 text-xl font-semibold">LIMITED TIME OFFER:</span>
                             <p class="text-red-700 font-semibold">2 Free Bottles of Vitamin D3 with Purchase!</p>
                         </div>
@@ -772,7 +753,7 @@ if (!isset($_SESSION['vip_discount'])) {
                                 <span class="checked hidden"><img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png" alt="checked" class="vipimg"></span>
                             </div>
                             <!-- <?= $product4['product_qty']; ?> Bottles -->
-                            <?= $product4['product_month']; ?> Months
+                            <?= $product4['product_month']; ?> Month
                         </h1>
 
 

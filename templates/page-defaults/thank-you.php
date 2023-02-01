@@ -1,16 +1,4 @@
 <?php
-//PageTypes dictate what pixels are bing fired, options should be limited to:
-/*
-  1. vsl
-  2. wsl
-  3. assessemnt
-  4. order
-  5. onepage
-  6. step1, step2, step3
-  7. up1, up2, up3, up4
-  8. dn1, dn2, dn3
-  9. receipt
-*/
 $_SESSION['pageType'] = 'receipt';
 
 unset($_SESSION['declineup']);
@@ -42,21 +30,10 @@ $resultsArray = print_r($results, true);
 $logger->info('Thank You Receipt: ' . $resultsArray);
 $products = $results['data'];
 
-
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
-$mailer = 0;
 
-// TODO: test for total price calulation
-// var_dump($info);
-
-if ($_SESSION['affid'] == 1798) {
-    $mailer = 1;
-}
-
-$firedl = 0;
-
-
+//no additional project logic
 
 ?>
 <!DOCTYPE>
@@ -160,7 +137,9 @@ $firedl = 0;
         .checkmark {
             display: inline-block;
             background: transparent;
-            outline: 3px solid #14a536;
+            padding: 13px;
+            /* outline: 3px solid #14a536; */
+            box-shadow: 0px 0px 0px 3px #14a536 inset;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -171,7 +150,7 @@ $firedl = 0;
 
         @media screen and (max-width: 768px) {
             .checkmark {
-                transform: rotate(45deg) scale(0.9);
+                transform: rotate(45deg) scale(1.2);
             }
         }
 
@@ -181,8 +160,8 @@ $firedl = 0;
             width: 4px;
             height: 11px;
             background-color: #14a536;
-            left: 11px;
-            top: 5px;
+            left: 13px;
+            top: 7px;
         }
 
         .checkmark:after {
@@ -191,8 +170,8 @@ $firedl = 0;
             width: 8px;
             height: 4px;
             background-color: #14a536;
-            left: 7px;
-            top: 13px;
+            left: 9px;
+            top: 15px;
         }
 
         h4 {
@@ -235,9 +214,9 @@ $firedl = 0;
 <body class="bg-gray-100">
 
     <div class="container container-vsl mx-auto py-4 md:py-20 px-2 md:px-5 md:px-8 min-h-screen">
-        <div class="conten">
+        <div class="">
             <div class="flex items-center justify-center mb-0 md:mb-4">
-                <h1 class="text-base md:text-2xl font-semibold pb-0 text-tygreen">
+                <h1 class="flex items-center text-base md:text-2xl font-semibold pb-0 text-tygreen">
                 <span class="checkmark mr-1 md:mr-2" aria-hidden="true"></span> Thank you, Your Order is Now Complete!
                 </h1>
             </div>
@@ -255,8 +234,8 @@ $firedl = 0;
                     </div>
 
                 <?php
-                    $total_tax = 0;
                     $grand_total = 0;
+                    $sum_total = 0;
                     $blocked_skus = array('gift_stick', 'trial_stick', 'research_letter', 'discount_stick', '5gm_auto_stick', '5GPC', '5GPCnoship');
 
                 if (isset($items)) {
@@ -273,48 +252,43 @@ $firedl = 0;
                             </div>
                             ';
 
-                            $total_sum = 0;
-                            $total_sum += $product['price'];
-                            $total_tax += (float)$item['order_sales_tax_amount'];
-                            $grand_total += (float)$item['order_total'];
+                            $grand_total += $item['order_total'];
+                            $sum_total += $product['price'];
                         }
                     }
                 }
 
-                if ($items[$orderid]['shipping_country'] == 'US') {
-                    if ($mailer) {
-                        $shippingTotal1 = 7.95;
-                    } else {
-                        $shippingTotal1 = 6.95;
-                    }
-                } else {
-                    $shippingTotal1 = 14.95;
-                }
+                $shippingCost = $_SESSION['shippingCost'];
 
-                if (isset($_SESSION['pid'])) {
-                    if ($_SESSION['pid'] != '4' && $_SESSION['pid'] != 1 && $_SESSION['pid'] != 952 && $_SESSION['pid'] != 956) {
-                        $shippingTotal1 = 0.00;
-                    }
-                }
-
-                $ordertotal = $total_sum + $shippingTotal1 + (float)$total_tax;
+                $ordertotal = number_format($sum_total + $shippingCost, 2);
+                $shipping = number_format($shippingCost, 2);
+                $tax_total = taxAmt($sum_total);
+                $final_total = number_format($sum_total + $shipping + $tax_total, 2);
                 ?>
 
                 <div class="flex justify-between px-4 py-1">
                     <div class="text">Shipping</div>
                     <!-- number_format((float)$grand_total, 2, '.', '') -->
                     <!-- money_format('%i', $grand_total) -->
-                    <div class="price text-right">$ <?php echo number_format($info['shipping_amount'], 2); ?></div>
+                    <div class="price text-right">$ <?= $shipping; ?></div>
                 </div>
                 <div class="flex justify-between px-4 py-1">
-                    <div class="text">Sales Tax</div>
-                    <div class="price text-right">$ <?php echo number_format((float)$total_tax, 2, '.', ''); ?></div>
+                    <div class=" flex flex-nowrap items-center" style="white-space:nowrap">Sales Tax
+                    <?php if (isset($_SESSION['tax_pct'])): ?>
+                    <div class="text-sm text-gray-400 ml-2">(<?= $_SESSION['tax_pct']; ?>%)</div>
+                    <?php endif; ?>
+                    </div>
+                    <div class="price text-right">$ <?= $tax_total; ?></div>
                 </div>
                 <div class="flex justify-between px-4 py-2">
                     <div class="text">Total</div>
-                    <div class="price text-right ext-xl font-bold">$ <?php echo number_format((float)$grand_total, 2, '.', ''); ?></div>
+                    <div class="price text-right ext-xl font-bold">$ <?= $final_total; ?></div>
                 </div>
 
+                <div class="border-b flex px-4 py-2 text-gray-500">
+                    <p>All charges will appear on your credit card statement as "<?= $company['billedAs']; ?>"</p>
+                </div>
+                
 
 
                 <div class="flex mt-6">

@@ -13,7 +13,6 @@
 <?php
   $is_order_page = @$_SESSION['SLUG'] == 'checkout/order';
   $is_wsl = @$_SESSION['pageType'] == 'wsl';
-  $container = $is_order_page ? 'container-sm' : 'container-vsl';
   $justify = $is_wsl ? 'justify-between' : 'justify-center';
 ?>
 

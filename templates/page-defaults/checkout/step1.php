@@ -20,7 +20,7 @@ $current_product = $products['products'][$pid];
 <head>
   <!-- CSS -->
   <?php template("includes/header"); ?>
-  <title>Total Brain boost - Secure Order</title>
+  <title><?= $company['billedAs']; ?> - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
     .seal {
@@ -32,7 +32,10 @@ $current_product = $products['products'][$pid];
 </head>
 
 <body class=" bg-gray-100">
-  <?php template("includes/rpHeader"); ?>
+  <?php 
+    $container = 'container-vsl';
+    template("includes/rpHeader"); 
+  ?>
   <div class="container container-vsl mx-auto c8 doc-content pb-4 px-2 md:px-0">
 
     <div class="flex justify-center mt-0 md:mt-8">
@@ -155,10 +158,6 @@ $current_product = $products['products'][$pid];
 
 
   <?php template("includes/rpFooter"); ?>
-<?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-} ?>
 
   <script>
     const isMobile = Math.min(window.innerWidth) < 769;
@@ -228,5 +227,9 @@ $current_product = $products['products'][$pid];
     };
   </script>
 
+<?php if ($site['debug'] == true) {
+    // Show Debug bar only on whitelisted domains.
+    template('debug', null, null, 'debug');
+} ?>
 </body>
 </html>
