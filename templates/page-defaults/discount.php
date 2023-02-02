@@ -18,6 +18,15 @@ switch ($pid) {
     break;
   case 1138:
     $up_pid = 1143;
+	break;
+  case 1083:
+  	$up_pid = 1086;
+  	break;
+  case 1084:
+  	$up_pid = 1088;
+  	break;
+  case 1085:
+  	$up_pid = 1090;
 }
 
 @$up_totalPrice = intval($up_price) + intval($up_ship);
