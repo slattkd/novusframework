@@ -11,7 +11,6 @@
 	right: 0;
 	left:0;
 	display: flex;
-
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -24,11 +23,12 @@
 	.float-btn-wrapper {
 		padding: 14px;
 		background-color: transparent;
+		align-items: end;
 	}
 }
 
 .float-btn-wrapper .float-btn {
-  background: rgb(255,98,0);
+  background: #fbba1d;
 	background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
   border: 3px solid #ab3600;
   font-family: 'Oswald', sans-serif;
@@ -38,18 +38,25 @@
 	white-space: nowrap;
 	border-radius: 6px;
 	padding: 2px 12px;
-	font-size: 34px;
+	font-size: 28px;
 	width: auto;
+	max-width:100%;
 	cursor: pointer;
 	transition: 200ms ease-in-out;
 	text-align: center;
 	text-shadow: 0.5px 0.9px 1px #fffa65;
 }
 
+.float-btn.clickable:hover {
+	filter: brightness(1.1) contrast(1.1);
+	opacity: 1;
+}
+
 @media screen and (min-width: 769px) {
 	.float-btn-wrapper .float-btn {
 		border-radius: 10px;
 		padding: 10px 18px;
+		font-size: 34px;
 	}
 }
 

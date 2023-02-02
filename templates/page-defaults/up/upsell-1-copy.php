@@ -37,6 +37,29 @@
     background-position: left center;
     background-size: 20px;
   }
+
+  #progress-bar {
+    width: 0;
+  }
+
+  #progress-bar.grow {
+    transition: width 1s ease-in-out;
+    animation: grow 1s ease-in;
+  }
+  @keyframes grow {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .sales-tax {
+    font-size: 12px;
+    color: #ddd;
+    text-align:center;
+  }
   </style>
   <!-- VisiSmart Code - DO NOT MODIFY-->
   <script async type='text/javascript'>
@@ -122,7 +145,7 @@
         This <strong>“Secret Fuel”</strong> Turbo&shy;charges Your Microbes &amp; Allows You&nbsp;to Melt Fat Off Your
         Body <strong class="">EVEN&nbsp;FASTER…</strong>
       </h1>
-      
+
       <h5 class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While further <strong>reducing cravings,</strong> <strong>boosting energy
           levels,</strong> and <strong>eliminating <em class="text-rpblue">up to 5 pounds</em> of toxic sludge</strong> from
         your body… cleaning it out so it <span class="nw">burns fat</span> like an 8-cylinder engine in a Ferrari <span
@@ -327,18 +350,20 @@
       <p>It is <strong>highly recommended</strong> that you take Floraboost in combination with Floraspring to boost
         your results…</p>
       <p>Floraboost normally sells for $479.70 retail…</p>
-      <p><strong>But today, because you’re a new member, you may qualify for a special <span class="hi">“Members Only”
-            discount…</span></strong></p>
+      <p><strong>But today, because you’re a new member, you may qualify for a special 
+        <span class="hi bg-yellow-400 p-1 mt-1">“Members&nbsp;Only”&nbsp;discount…</span></strong>
+      </p>
 
     </div>
-    <div class="w-full">
-      <div class="flex flex-col justify-center items-center border border-3 border-lime-500 bg-lime-100 p-3">
-        <h3 class="fw w670 mt4 mb8">Click The Button Below Now To See If You Qualify For This Discount</h3>
-        <button id="qualify" class="mx-auto cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2"
-        style="padding: 10px 20px;">SEE IF YOU QUALIFY </span></button>
-        <div class="light-grey fix" id="progress-holder"
-          style="display:none;background-color: #e1e1e1; width:70%; margin-left: auto; margin-right:auto;">
-          <div id="progress-bar" class="green" style=" height:10px;width:0;background-color:#40A900;"></div>
+
+
+    <div id="qualify-wrap" class="w-full">
+      <div class="flex flex-col justify-center items-center border border-3 border-lime-500 shadow p-3 md:py-5">
+        <div class="text-center text-xl md:text-2xl font-semibold md:w-3/4">Click The Button Below Now To See If You Qualify For This Discount</div>
+        <button id="qualify-btn" class="mx-auto cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2"
+        style="padding: 10px 20px;min-width: 250px;">See If You Qualify...</span></button>
+        <div class="light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
+            <div id="progress-bar" class="green" style="height:10px;width:0;background-color:#40A900;"></div>
         </div>
       </div>
     </div>
@@ -347,22 +372,50 @@
 
 
 
+    <!-- SECURE ORDER CONTENT -->
+    <!-- SECURE ORDER CONTENT -->
+    <!-- SECURE ORDER CONTENT -->
+    <div id="expand-content" class="hidden">
 
-
-    <!-- SECURE ORDER CONTENT -->
-    <!-- SECURE ORDER CONTENT -->
-    <!-- SECURE ORDER CONTENT -->
-    <p><span class=" font-bold"></span></p>
-    <p class="  title" id="h.qfpmn1wtff6l"><span class=" font-bold">Don&rsquo;t Leave This Page Just Yet</span><span
-        class=" font-bold font-bold1">!</span></p>
-    <p><span class="font-bold "></span></p>
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.dr3tzwdgmoh"><span class="font-bold">Here&rsquo;s An Easy Way To </span><span>Boost</span><span
-        class="font-bold">&nbsp;</span><span>Your</span><span class="font-bold">&nbsp;</span><span>Memory</span><span
-        class="font-bold">,
-      </span><span>Focus</span><span class="font-bold">&nbsp;And Mental </span><span>Energy</span><span>&nbsp;Even
-        Further&hellip;</span></h2>
-    <p><span class=" font-bold"></span></p>
+    <div class="w-full">
+		  <div class="flex flex-col justify-center items-center border border-3 border-lime-500 shadow p-4 md:py-5">
+			  <div class="w-full">
+          <div class="flex justify-center font-bold text-center text-rpblue text-3xl md:text-4xl">Congratulations!</div>
+          <div class="flex justify-center text-center mb-4">You Qualify For This Exclusive Discount of Total Brain Boost</div>
+        <div class="gap-4 columns-1 md:columns-2">
+          <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
+            <div class="sub-title">6 Bottle Discount</div>
+            <div class="title font-semibold text-lg md:text-2xl">6 Bottle Discount</div>
+            <div class="norm taxt-gray-500 strike">Normally: $470.70</div>
+            <div class="today text-red-600 text-lg md:text-2xl"></div>
+            <div class="whop text-red-600">(A WHOPPING 45% Savings!)</div>
+            <p class="sales-tax"><?= $tax_msg; ?></p>
+            <a href="" class="w-full">
+                <img class="mx-auto w-full" style="max-width:250px" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/Yes-Ill-TakeIt.png" alt="yes i'll take it">
+            </a>
+          </div>
+          <div class="flex flex-col text-center justify-center">
+            <div class="sub-title">12 Bottle Discount</div>
+            <div class="title font-semibold text-lg md:text-2xl">12 Bottle Discount</div>
+            <div class="norm taxt-gray-500 strike">Normally: $470.70</div>
+            <div class="today text-red-600 text-lg md:text-2xl"></div>
+            <div class="whop text-red-600">(A WHOPPING 52% Savings!)</div>
+            <p class="sales-tax"><?= $tax_msg; ?></p>
+            <a href="" class="w-full">
+                <img class="mx-auto w-full" style="max-width:250px" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/Yes-Ill-TakeIt.png" alt="yes i'll take it">
+            </a>
+          </div>
+          
+        </div>
+      </div>
+		</div>
+    
+    <p class="text-center text-red-600 font-bold text-2xl md:text-4xl mt-8">Don&rsquo;t Leave This Page Just Yet!</p>
+    
+    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-4 md:mt-8" id="h.dr3tzwdgmoh">
+      Here&rsquo;s An Easy Way To <span class="font-bold'">Boost&nbsp;Your&nbsp;Memory, Focus</span> 
+      And Mental <span class="font-bold">Energy</span><span>&nbsp;Even Further&hellip;</span></h2>
+    
 
     <p><span
         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 287.50px; height: 178.77px;"><img
@@ -663,7 +716,7 @@
 
     <div class="flex justify-center my-2">
       <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2"
-        style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></span></button>
+        style="padding: 10px 20px;">Yes! I'll Take It</span></button>
     </div>
 
 
@@ -695,7 +748,7 @@
 
     <div class="flex justify-center my-2">
       <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2"
-        style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></span></button>
+        style="padding: 10px 20px;">Yes! I'll Take It</button>
     </div>
 
 
@@ -712,14 +765,52 @@
 
     <div class="flex justify-center my-2">
       <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2"
-        style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></span></button>
+        style="padding: 10px 20px;">Yes! I'll Take It</span></button>
     </div>
 
 
     <p><span>I can&rsquo;t wait to hear about the positive changes I hope you experience. </span>
     </p>
+  </div> 
+  <!-- end expand-content -->
 
   </div>
+
+  <?php
+    $button_text = 'Secure My Order';
+    $scroll_id = 'cta';
+    $top_content = '';
+    floatButton('includes/floatButton',$top_content,$button_text,$scroll_id);
+  ?>
+
+<script>
+  const wslBtn = document.getElementById('wsl-btn');
+  wslBtn.addEventListener('click', ()=> {
+    window.location = '<?= $nextlink; ?>';
+  })
+
+  const qualifyButton = document.getElementById('qualify-btn');
+  const qualifyWrap = document.getElementById('qualify-wrap');
+  const buy = document.getElementById('container-buy');
+  const progress = document.getElementById('progress-bar');
+  const expandContent = document.getElementById('expand-content');
+  qualifyButton.addEventListener('click', ()=> {
+    qualifyButton.classList.add('disable');
+    document.querySelector('.light-grey').style.backgroundColor = '#e1e1e1';
+    progress.classList.add('grow');
+
+    setTimeout(() => {
+      qualifyWrap.style.display = 'none';
+      expandContent.style.display = 'block';
+    }, "1000")
+  })
+</script>
+
+<?php template("includes/rpFooter"); ?>
+  <?php if ($site['debug'] == true) {
+      // Show Debug bar only on whitelisted domains.
+      template('debug', null, null, 'debug');
+  } ?>
 </body>
 
 </html>
