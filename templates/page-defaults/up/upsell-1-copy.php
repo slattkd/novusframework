@@ -1,17 +1,16 @@
 <?php
-  $nextlink = $nextlink = '/checkout/order' . $querystring;
+  $nextlink = '/thank-you' . $querystring;
   $_SESSION['pageType'] = 'wsl';
 
-    $product4 = $products['products']['1139'];
-    $product5 = $products['products']['1141'];
-    $product6 = $products['products']['1143'];
+  $product4 = $products['products']['1147'];
+  $product5 = $products['products']['1148'];
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <?php template('includes/header'); ?>
-  <title>This Secret Holds The Key To Endlessly Energy</title>
+  <title>Boost Your Memory</title>
   <style>
   .wsl p,
   h1,
@@ -22,6 +21,7 @@
   .wsl h1,
   .wsl h2 {
     font-weight: 600;
+    hyphens: none;
   }
 
   .wsl h1 {
@@ -34,7 +34,7 @@
     padding: 10px 30px;
     background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: left 10px;
     background-size: 20px;
   }
 
@@ -59,6 +59,19 @@
     font-size: 12px;
     color: #ddd;
     text-align:center;
+  }
+
+  .icon-list p {
+    padding-left: 3.25em;
+    background-size: 2.5em 2.5em;
+    background-position: left 1px;
+    background-repeat: no-repeat;
+  }
+
+  ul.num-list li {
+    list-style: auto;
+    background-image: unset;
+    padding:5px 0
   }
   </style>
   <!-- VisiSmart Code - DO NOT MODIFY-->
@@ -153,10 +166,11 @@
     </div>
 
 
-    <div class="w770 fw fix2 mtsm4">
-      <div class="fllt imgwrap pull-20 masley-intro imgfx mtlg0 radius ">
-        <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/masley.jpg" width="150" height="175" />
-      </div>
+    <div class="">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/masley.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/masley.jpg" alt="dr masley" class="float-left md:mr-6 mb-3 w-full md:w-1/4 rounded border border-white shadow" width="150" height="175">
+      </picture>
       <p>Hi, it’s Dr. Steven Masley again.</p>
       <p><strong>Congratulations</strong> on your order of Floraspring…</p>
       <p>As you know, Floraspring contains 5 “super strains” that reduce calorie absorption, while shutting down your
@@ -165,15 +179,21 @@
 
 
       <p>This way you don’t just <em>look</em> fantastic, you <em>feel</em> fantastic too…</p>
-      <p>And today, because you’re a new customer, I’d like to let you in on <strong class="nw">a members‑only
-          secret</strong>, which is that…</p>
-      <h5 class="">The 5 “super strains” in Floraspring can help you lose fat even faster once they are <strong>combined
-          with a <span class="em bt">secret fuel…</span></strong></h5>
+      <p>And today, because you’re a new customer, I’d like to let you in on <strong class="nw">a members‑only secret</strong>, which is that…</p>
+      <div style="clear:both"></div>
     </div>
+
+    <h5 class="text-center font-semibold text-lg md:text-xl mt-2 mb-6">The 5 “super strains” in Floraspring can help you lose fat even faster once they are 
+          <strong>combined with a <span class="em bt">secret fuel…</span></strong></h5>
+
     <div class="w770 fw fix">
-      <div class="flrt imgwrap imgfx pull-120 mtlg0 radius mdw280 mbmd4 mh250 smw240">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01a.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01a.jpg" alt="woman on scale" class="float-right md:ml-6 mb-3 w-full md:w-2/5 rounded border border-white shadow" width="330" height="450" loading="lazy">
+      </picture>
+      <!-- <div class="flrt imgwrap imgfx pull-120 mtlg0 radius mdw280 mbmd4 mh250 smw240">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01a.jpg" width="330" height="450" />
-      </div>
+      </div> -->
       <p>I recommend this secret fuel to all of my patients who are looking to lose weight.</p>
       <p>Most Americans have <strong>no idea</strong> this fuel exists, or know about its hidden fat-fighting power…</p>
       <p>Imagine the 5 “super strains” in Floraspring suddenly working <strong>MUCH HARDER</strong> to help you lose
@@ -182,29 +202,34 @@
       <p>And on top of that, this fuel has its own, additional fat-reducing power…</p>
       <p><strong>This fuel is called <span class="hi">“prebiotic” fuel…</span></strong></p>
       <p>And while <em>“probiotic”</em> strains live in your gut… <em>“prebiotics”</em> is what helps feed them…</p>
-      <h5 class="">This “Prebiotic” fuel helps you lose fat in 3 very important ways:</h5>
-
-      <div class="bull -tick big-icon fix">
-
-        <p style="background-image: url(img/ico/ico-1.png)" id="floating-button-trigger">First, it <strong>feeds the
+      <h5 class="text-center font-semibold text-lg md:text-xl mb-4">This “Prebiotic” fuel helps you lose fat in 3 very important ways:</h5>
+      <div class="icon-list">
+        <p style="background-image: url(//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/ico-1.png)" id="floating-button-trigger">First, it <strong>feeds the
             “good” microbes</strong> in Floraspring so they increase in number and work harder and for longer…</p>
-        <p style="background-image: url(img/ico/ico-2.png)">Second, it further <strong>reduces hunger cravings</strong>
+        <p style="background-image: url(//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/ico-2.png)">Second, it further <strong>reduces hunger cravings</strong>
           by expanding in your stomach, so you eat much less without even noticing…</p>
-        <p style="background-image: url(img/ico/ico-3.png)">Third, it <strong>flushes your bowels</strong> more
-          regularly, making you feel lighter throughout the day…</p>
+        <p style="background-image: url(//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/ico-3.png)">Third, it <strong>flushes your bowels</strong> more
+          regularly, making you feel lighter throughout the&nbsp;day…</p>
       </div>
 
       <p>And, on top of all that, this fuel can even help <strong>lower blood sugar and cholesterol levels…</strong></p>
       <p>Plus block sugar spikes and insulin spikes…</p>
       <p>Unfortunately, your body has very likely been <strong>starved</strong> of this important fat-burning fuel,
         because…</p>
-      <h4 class="rt">This Secret Fat-Burning Fuel Has Been Pulled Out of Our Food Supply (and from your body) by <span
-          class="nw-all">Big Corporations</span></h4>
+        <div style="clear:both"></div>
     </div>
+
+    <h5 class="text-center font-semibold text-lg md:text-xl mt-2 mb-6">This Secret Fat-Burning Fuel Has Been Pulled Out of Our Food Supply (and from your body) by <span
+          class="nw-all">Big Corporations</span></h5>
+
     <div class="w770 fw fix">
-      <div class="fllt imgwrap imgfx pull-100 mtlg0 radius mdw260 mbmd4 smw300">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01b.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01b.jpg" alt="harvester in field" class="float-left md:mr-6 mb-3 w-full md:w-1/3 rounded border border-white shadow" width="280" height="370" loading="lazy">
+      </picture>
+      <!-- <div class="fllt imgwrap imgfx pull-100 mtlg0 radius mdw260 mbmd4 smw300">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01b.jpg" width="280" height="370" />
-      </div>
+      </div> -->
       <p>Hundreds of years ago, we lived off the land and gathered food from the wild.</p>
       <p>During a single week, you could eat up to <strong>200 different types</strong> of fruits, vegetables, plants
         and grains and get tons of this “prebiotic” fuel…</p>
@@ -212,90 +237,121 @@
         many of the diverse and healthy nutrients from our food, often in the name of profit…</p>
       <p>Now the average American only gets a <strong>fraction</strong> of the “prebiotic” fuel they desperately need…
       </p>
-      <h5 class="reg">Doctors and experts agree <strong>you likely need 3-4 TIMES <em>MORE</em> <span
+
+      <h5 class="text-center font-semibold text-lg md:text-xl mt-2 mb-6">Doctors and experts agree <strong>you likely need 3-4 TIMES <em>MORE</em> <span
             class="nw">prebiotic fuel</span></strong> to burn fat and stay&nbsp;healthy…</h5>
+
       <p>Now when I saw that Americans were in <strong>desperate</strong> need of this fuel, I searched for foods that
         are the best sources of it.</p>
       <p>I started recommending these foods to all my patients, and the ones who ate these foods every day saw <strong
           class="hi">a <em>huge</em> benefit…</strong></p>
-      <div class="bull -tick">
-        <p>My patients saw extra fat disappear from their entire body, <strong>including typical <em>“harder to
-              lose”</em> areas </strong>like their belly, arms, legs, thighs and waist…</p>
-        <p><strong>They saw the results</strong> on the scale and in the mirror…</p>
-        <p>Their friends (and husbands and wives) <strong>noticed</strong> the difference…</p>
-        <p>Their love life and intimate life <strong>heated up…</strong></p>
-        <p>They felt <strong>healthier</strong> and <strong>more energetic…</strong></p>
-        <p>And their <strong>cholesterol and blood sugar control</strong> improved as well…</p>
-      </div>
+      <ul class="p-3">
+        <li>My patients saw extra fat disappear from their entire body, <strong>including typical <em>“harder to
+              lose”</em> areas </strong>like their belly, arms, legs, thighs and waist…</li>
+        <li><strong>They saw the results</strong> on the scale and in the mirror…</li>
+        <li>Their friends (and husbands and wives) <strong>noticed</strong> the difference…</li>
+        <li>Their love life and intimate life <strong>heated up…</strong></li>
+        <li>They felt <strong>healthier</strong> and <strong>more energetic…</strong></li>
+        <li>And their <strong>cholesterol and blood sugar control</strong> improved as well…</li>
+        </ul>
+
       <p>And it’s not just my patients who see these results…</p>
       <p><strong>This fuel is <em class="bt">scientifically proven</em> to work for nearly anyone.</strong></p>
       <p>If you think you’re “too old” to lose the weight… or if you think genetics, hormones or a slow metabolism are
         holding you back…</p>
-      <h4>Here Are 4 Studies That Scientifically Prove That This Fuel Can Burn Off Your Unwanted Fat</h4>
+
+      <h5 class="text-center font-semibold text-lg md:text-xl mt-2 mb-6">Here Are 4 Studies That Scientifically Prove That This Fuel Can Burn Off Your Unwanted Fat</h5>
+
       <p>Scientists have been studying this “prebiotic” fuel even longer than the 5 super strains in Floraspring.</p>
       <p>Here are the 4 incredible studies that prove how well it works:</p>
+      <div style="clear:both"></div>
     </div>
+
     <div class="w770 fw fix">
-      <div class="flrt imgwrap imgfx pull-120 mtlg0 radius mdw280 mbmd4 mh280 smw240">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01c.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01c.jpg" alt="doctor and patient" class="float-right md:ml-6 mb-3 w-full md:w-1/3 rounded border border-white shadow" width="300" height="420" loading="lazy">
+      </picture>
+      <!-- <div class="flrt imgwrap imgfx pull-120 mtlg0 radius mdw280 mbmd4 mh280 smw240">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01c.jpg" width="300" height="420" />
-      </div>
-      <div class="bull -tick">
-        <p>The American Society for Nutrition found that those who ate this fuel for 6&nbsp;months lost <strong>an
-            average of 16&nbsp;pounds and</strong> <strong class="bt">as much as 33.8 pounds</strong><sup>[1]</sup></p>
-        <p>A UK study found people <strong><span class="bt">lost 5% of their body weight</span> in just 9 weeks</strong>
+      </div> -->
+      <ul class="p-3 pt-0">
+        <li>The American Society for Nutrition found that those who ate this fuel for 6&nbsp;months lost <strong>an
+            average of 16&nbsp;pounds and</strong> <strong class="bt">as much as 33.8 pounds</strong><sup>[1]</sup></li>
+        <li>A UK study found people <strong><span class="bt">lost 5% of their body weight</span> in just 9 weeks</strong>
           after taking this “fuel” and lost “significantly more belly fat, total body fat and total weight” than those
-          who didn’t take it.<sup>[2]</sup></p>
-        <p>The National Weight Control Registry found that <strong>this “fuel” is <span class="bt">the biggest
+          who didn’t take it.<sup>[2]</sup></li>
+        <li>The National Weight Control Registry found that <strong>this “fuel” is <span class="bt">the biggest
               predictor</span> of “successful” weight loss</strong> after studying thousands of people who lost weight
-          and kept it off…</p>
-        <p>Another study found people who eat this “fuel” are up to <strong class="bt">30% less likely to die
-            early</strong>…</p>
-      </div>
-      <p class="fix str">So this fuel can not only flatten your belly… <em>it can extend your life!</em></p>
+          and kept it off…</li>
+        <li>Another study found people who eat this “fuel” are up to <strong class="bt">30% less likely to die
+            early</strong>…</li>
+        </ul>
+      <p class="fix font-bold">So this fuel can not only flatten your belly… <em>it can extend your life!</em></p>
       <p>So here’s what I did next:</p>
 
-      <h4>I Found the 4 Most Powerful Sources of this Prebiotic Fuel and Put Them Together to Form a <span
-          class="bt">“Super Fuel”</span></h4>
+      <h5 class="text-center font-semibold text-lg md:text-xl mb-4">I Found the 4 Most Powerful Sources of this Prebiotic Fuel and Put Them Together to Form a “Super Fuel”</h5>
       <p>I worked with the research team at Revival Point, the makers of Floraspring, to find the very best sources of
         prebiotic fuel…</p>
       <p class="str">These are the <strong class="hi">4 best sources</strong> of prebiotic fuel:</p>
-
+      <div style="clear:both"></div>
     </div>
-    <div class="w770 fw fix">
-      <div class="imgwrap mtsm4 imgfx flrt pull-60 mtlg0 smw180 radius">
+
+    <div class="mb-4 md:mb-6">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01d.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01d.jpg" class="float-right md:ml-6 mb-3 w-full md:w-1/3 rounded border border-white shadow" width="240" height="260" loading="lazy">
+      </picture>
+      <!-- <div class="imgwrap mtsm4 imgfx flrt pull-60 mtlg0 smw180 radius">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01d.jpg" width="240" height="260" />
-      </div>
-      <h4 class="ing-title">Inulin Mix</h4>
+      </div> -->
+      <h4 class="ing-title text-tygreen border-b-2 border-tygreen mb-4 pb-1 text-xl md:text-2xl font-semibold">Inulin Mix</h4>
       <p>This comes from the agave plant and Jerusalem artichokes.</p>
       <p>A London study found <strong>those who took this lost 7.6% of their body weight</strong><sup>[3]</sup>.</p>
       <p>Another study saw a “reduction in body weight” and more fullness after meals.<sup>[4]</sup></p>
-
+      <div style="clear:both"></div>
     </div>
-    <div class="w770 fw fix">
-      <div class="imgwrap imgfx flrt pull-60 mtlg0 smw180 mtsm3 mbmd4 mtmd1 radius">
+
+    <div class="mb-4 md:mb-6">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01e.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01e.jpg" class="float-right md:ml-6 mb-3 w-full md:w-1/3 rounded border border-white shadow" width="240" height="260" loading="lazy">
+      </picture>
+      <!-- <div class="imgwrap imgfx flrt pull-60 mtlg0 smw180 mtsm3 mbmd4 mtmd1 radius">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01e.jpg" width="240" height="260" />
-      </div>
-      <h4 class="ing-title">Glucomannan</h4>
+      </div> -->
+      <h4 class="ing-title text-tygreen border-b-2 border-tygreen mb-4 pb-1 text-xl md:text-2xl font-semibold">Glucomannan</h4>
       <p>This ingredient comes from the konjac root, found in Southeast Asia.</p>
       <p><strong>14 different studies show that this “significantly lowers” body weight.<sup>[5]</sup></strong></p>
       <p>And led to “significant weight loss in overweight and obese individuals”<sup>[6]</sup>…</p>
       <p>Consuming glucomannan will also improve your blood sugar and <span class="nw">cholesterol levels.</span></p>
-
+      <div style="clear:both"></div>
     </div>
-    <div class="w770 fw fix">
-      <div class="imgwrap imgfx flrt pull-60 mtlg0  smw180 mtsm3 radius">
+
+    <div class="mb-4 md:mb-6">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01f.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01f.jpg" class="float-right md:ml-6 mb-3 w-full md:w-1/3 rounded border border-white shadow" width="240" height="260" loading="lazy">
+      </picture>
+      <!-- <div class="imgwrap imgfx flrt pull-60 mtlg0  smw180 mtsm3 radius">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01f.jpg" width="240" height="260" />
-      </div>
-      <h4 class="ing-title">Oligosaccharides</h4>
+      </div> -->
+      <h4 class="ing-title text-tygreen border-b-2 border-tygreen mb-4 pb-1 text-xl md:text-2xl font-semibold">Oligosaccharides</h4>
       <p>Oligosaccharides come from the chicory root, grown in ancient Egypt…</p>
       <p>This reduced appetite, food intake and inflammation in overweight adults<sup>[7]</sup>…</p>
       <p>And studies show that it helps <strong>“promote long-term weight loss”</strong><sup>[8]</sup></p>
+      <div style="clear:both"></div>
     </div>
-    <div class="w770 fw fix">
-      <div class="imgwrap imgfx flrt pull-60  smw180 mtsm3 mbmd4 mtmd1 mtlg0 radius">
+
+    <div class="mb-4 md:mb-6">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01g.jpg" type="image/jpg">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01g.jpg" class="float-right md:ml-6 mb-3 w-full md:w-1/3 rounded border border-white shadow" width="240" height="260" loading="lazy">
+      </picture>
+      <!-- <div class="imgwrap imgfx flrt pull-60  smw180 mtsm3 mbmd4 mtmd1 mtlg0 radius">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/s01g.jpg" width="240" height="260" />
-      </div>
-      <h4 class="ing-title">Guar Gum</h4>
+      </div> -->
+      <h4 class="ing-title text-tygreen border-b-2 border-tygreen mb-4 pb-1 text-xl md:text-2xl font-semibold">Guar Gum</h4>
       <p>Guar gum is found in an Indian bean called a cluster bean.</p>
       <p>This bean <strong>shuts down cravings</strong> by slowing digestion and making you feel full<sup>[9]</sup>…</p>
       <p>And another study found it decreased snacking between meals by 20%<sup>[10]</sup></p>
@@ -305,7 +361,7 @@
       <p>The best part of about these four sources is that they are not truly digested and absorbed like food, so they
         essentially provide <strong>zero calories…</strong> and are totally fat free.</p>
 
-      <h5>Now, in order to get all these nutrients, you would need to eat up to <em class="acc nw">five pounds</em> of
+        <h5 class="text-center font-semibold text-lg md:text-xl mt-2 mb-6">Now, in order to get all these nutrients, you would need to eat up to <em class="acc nw">five pounds</em> of
         prebiotic vegetables and fruits every week…</h5>
 
       <p>I’ve found it’s very difficult for most of my patients to eat all this food every week…</p>
@@ -318,16 +374,20 @@
             minute!</span></strong></p>
       <p>It’s all backed by the science I showed you earlier…</p>
       <p>And this extract costs <strong>a <em>fraction</em> of the price</strong> of buying all those exotic foods…</p>
+      <div style="clear:both"></div>
     </div>
+
     <div class="w770 fw fix">
-      <div class="imgwrap mb5 flrt pull-100 mdw320 mtmd2 g20 smhide">
+      <picture>
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/floraboost.png" type="image/png">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/floraboost.jpg" alt="floraboost" class="float-right md:ml-6 mb-3 w-full md:w-2/5" width="380" height="340" loading="lazy">
+      </picture>
+      <!-- <div class="imgwrap mb5 flrt pull-100 mdw320 mtmd2 g20 smhide">
         <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/floraboost.png" width="380" height="340" />
-      </div>
+      </div> -->
       <h5 class="left smctr smh6 reg">This extract is called&hellip;</h5>
-      <h1 class="cnd left smctr lh10 title-intro gt mbmd0">Floraboost</h1>
-      <div class="imgwrap mb5 flrt pull-100 smw260 sm-only">
-        <img class="rounded border border-white shadow" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/floraboost.png" width="260" height="291" />
-      </div>
+      <p class="text-5xl font-bold" style="letter-spacing: -2px;color: #59B87D;">Floraboost</p>
+      
       <h5 class="mt5 mtmd1  smlh14 mtsm2 reg inline">Floraboost combines the four most potent sources of prebiotic fuel
         into one powerful, easy supplement that you can take just <span class="smnw">once per day…</span></h5>
       <p>This Super Fuel is designed to enhance the power of Floraspring by making its fat-burning power <em>even
@@ -336,13 +396,15 @@
           bottle</strong> with a convenient flip top and, one of the best inventions ever, a mixing ball. With the
         mixing ball, your drinks will be smooth, clump-free and delicious in just a few shakes.</p>
       <p>So mix up your Floraboost and take it anywhere… home, office or the gym. You never have to miss a dose.</p>
+      <div style="clear:both"></div>
     </div>
-    <div class="w870 fw fix">
-      <h5 class="reg mdw600 fw">Because you’re a new customer today, I’ve got one more special surprise for you…</h5>
-      <h3 class="lh14 mdw650 mdfw">To Help Make Sure You Succeed, You May Qualify for a Special <span
-          class="bt">One-Time-Only <span class="nw">“New Members”</span> Discount</span></h3>
 
+    <div class="mt-2 mb-6 md:w-4/5 mx-auto">
+      <h5 class="text-center text-lg">Because you’re a new customer today, I’ve got one more special surprise for you…</h5>
+      <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6">To Help Make Sure You Succeed, You May Qualify for a Special 
+        <span class="bt">One-Time-Only <span class="nw">“New Members”</span> Discount</span></h5>
     </div>
+
     <div class="w770 fw fix">
       <p>Floraboost is for those who are <strong>serious</strong> about taking their fat burning to the next level…</p>
       <p>If you’ve been overweight or obese for longer than one year…</p>
@@ -351,7 +413,8 @@
         your results…</p>
       <p>Floraboost normally sells for $479.70 retail…</p>
       <p><strong>But today, because you’re a new member, you may qualify for a special 
-        <span class="hi bg-yellow-400 p-1 mt-1">“Members&nbsp;Only”&nbsp;discount…</span></strong>
+        <!-- <span class="hi bg-yellow-400 px-1 mt-1">“Members&nbsp;Only”&nbsp;discount…</span></strong> -->
+        “Members&nbsp;Only”&nbsp;discount…</strong>
       </p>
 
     </div>
@@ -380,30 +443,29 @@
     <div class="w-full">
 		  <div class="flex flex-col justify-center items-center border border-3 border-lime-500 shadow p-4 md:py-5">
 			  <div class="w-full">
-          <div class="flex justify-center font-bold text-center text-rpblue text-3xl md:text-4xl">Congratulations!</div>
-          <div class="flex justify-center text-center mb-4">You Qualify For This Exclusive Discount of Total Brain Boost</div>
+          <div class="flex justify-center font-bold text-center text-rpblue text-3xl md:text-4xl uppercase">Congratulations!</div>
+          <div class="flex justify-center text-center mb-6 text-tygreen text-base">You Qualify For This Exclusive Discount of Total Brain Boost</div>
         <div class="gap-4 columns-1 md:columns-2">
           <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
             <div class="sub-title">6 Bottle Discount</div>
-            <div class="title font-semibold text-lg md:text-2xl">6 Bottle Discount</div>
-            <div class="norm taxt-gray-500 strike">Normally: $470.70</div>
-            <div class="today text-red-600 text-lg md:text-2xl"></div>
-            <div class="whop text-red-600">(A WHOPPING 45% Savings!)</div>
+            <div class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply for just $197 Today!</div>
+            
             <p class="sales-tax"><?= $tax_msg; ?></p>
             <a href="" class="w-full">
                 <img class="mx-auto w-full" style="max-width:250px" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/Yes-Ill-TakeIt.png" alt="yes i'll take it">
             </a>
+            <div class="whop text-red-600 mt-2 font-semibold">That's 45% OFF the retail price!</div>
           </div>
+          <div class="flex w-full border-b mb-4 md:hidden"></div>
           <div class="flex flex-col text-center justify-center">
-            <div class="sub-title">12 Bottle Discount</div>
-            <div class="title font-semibold text-lg md:text-2xl">12 Bottle Discount</div>
-            <div class="norm taxt-gray-500 strike">Normally: $470.70</div>
-            <div class="today text-red-600 text-lg md:text-2xl"></div>
-            <div class="whop text-red-600">(A WHOPPING 52% Savings!)</div>
+            <div class="sub-title">Even Bigger Discount (Limited Time Only)</div>
+            <div class="title font-semibold text-lg md:text-2xl">Get a 12-month supply for just $347 Today!</div>
+            
             <p class="sales-tax"><?= $tax_msg; ?></p>
             <a href="" class="w-full">
                 <img class="mx-auto w-full" style="max-width:250px" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/Yes-Ill-TakeIt.png" alt="yes i'll take it">
             </a>
+            <div class="whop text-red-600 mt-2 font-semibold">That's 52% OFF the retail price!</div>
           </div>
           
         </div>
@@ -412,16 +474,18 @@
     
     <p class="text-center text-red-600 font-bold text-2xl md:text-4xl mt-8">Don&rsquo;t Leave This Page Just Yet!</p>
     
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-4 md:mt-8" id="h.dr3tzwdgmoh">
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6">
       Here&rsquo;s An Easy Way To <span class="font-bold'">Boost&nbsp;Your&nbsp;Memory, Focus</span> 
-      And Mental <span class="font-bold">Energy</span><span>&nbsp;Even Further&hellip;</span></h2>
+      And Mental <span class="font-bold">Energy</span><span>&nbsp;Even Further&hellip;</span>
+    </h5>
     
 
-    <p><span
-        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 287.50px; height: 178.77px;"><img
-          alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png"
-          style="width: 287.50px; height: 178.77px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-          title=""></span></p>
+    <div>
+    <picture>
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.jpg" alt="dr masley" class="float-left md:mr-6 mb-3 w-full md:w-1/2" width="287" height="179" loading="lazy">
+    </picture>
+    
     <p><span>Hey, Dr. Masley here.</span></p>
 
     <p><span>I want to </span><span class="font-bold">congratulate</span><span>&nbsp;you on your purchase
@@ -443,6 +507,8 @@
     <p><span>And if you&rsquo;ve seen a significant transformation&hellip; </span></p>
 
     <p><span>Then please feel free to send photos or videos if you&rsquo;re comfortable!</span></p>
+    <div style="clear:both"></div>
+    </div>
 
     <p><span>I cannot tell you how much we love hearing about people&rsquo;s </span><span
         class="font-bold">success</span><span>&hellip; </span></p>
@@ -469,12 +535,10 @@
 
     <p><span>On top of this&hellip; </span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.p69wgi609q4v"><span class="font-bold">I Also Want To Share An </span><span>Easy</span><span
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6"><span class="font-bold">I Also Want To Share An </span><span>Easy</span><span
         class="font-bold">&nbsp;Way To </span><span class="font-bold">Save An </span><span>Additional
-      </span><span>XX%</span><span class="font-bold">&nbsp;On Total Brain Boost Today</span><span
-        class="font-bold">&hellip;</span>
-    </h2>
+      </span><span>XX%</span><span class="font-bold">&nbsp;On Total Brain Boost&nbsp;Today&hellip;</span>
+    </h5>
 
     <p><span>This is something that will </span><span>only</span><span>&nbsp;be shared on this page.</span></p>
 
@@ -502,14 +566,14 @@
     <p><span>This means you&rsquo;re literally just days away from having Total Brain Boost in your
         hands.</span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.wm45krk9zf2j"><span class="font-bold">And That Means You&rsquo;re Days Away From Starting
+      <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6"><span class="font-bold">And That Means You&rsquo;re Days Away From Starting
         To</span><span>&nbsp;Think Sharper </span><span class="font-bold">With A </span><span>Stronger
         Memory</span><span class="font-bold">&nbsp;- And </span><span class="font-bold">Feeling</span><span
         class="font-bold">&nbsp;</span><span>Better
       </span><span class="font-bold">And</span><span>&nbsp;More Confident </span><span class="font-bold">In Everything
         You
-        Do&hellip;</span><span class=" font-bold">&nbsp; </span></h2>
+        Do&hellip;</span><span class=" font-bold">&nbsp; </span>
+      </h5>
 
     <p><span>Giving you an advantage you never had before:</span></p>
 
@@ -563,11 +627,9 @@
           mental energy&hellip;</span></li>
     </ul>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.xfugkhri1iib"><span class="font-bold">You&rsquo;ll Feel So </span><span>Good</span><span>&nbsp;</span></h2>
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.2pt5fmsbg"><span class="font-bold">You&rsquo;ll Want To Stay Like This </span><span>Forever</span>
-    </h2>
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6"><span class="font-bold">You&rsquo;ll Feel So </span><span>Good</span><span>&nbsp;</span>
+    <span class="font-bold">You&rsquo;ll Want To Stay Like This </span><span>Forever</span>
+    </h5>
 
     <p><span>Which is why you&rsquo;ll want to take Total Brain Boost not just for one month or a
         few months&hellip; </span></p>
@@ -586,10 +648,10 @@
 
     <p><span>The ingredients in Total Brain Boost are that premium fuel.</span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.sgqkb0v53i17"><span class="font-bold">And You Want To Keep Taking Total Brain </span><span
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6"><span class="font-bold">And You Want To Keep Taking Total Brain </span><span
         class="font-bold">Boost</span><span>&nbsp;Daily To Help Your Mind Stay Sharp, Focused, Energetic, And
-        Healthy&hellip; For Years To Come</span></h2>
+        Healthy&hellip; For Years To Come</span>
+    </h5>
 
     <p><span>One study</span><sup><a href="#ftnt1" id="ftnt_ref1">[1]</a></sup><span>&nbsp;showed
         that when people were taking just one of the nutrients in Total Brain Boost daily for 18 months&hellip;</span>
@@ -612,9 +674,9 @@
     <p><span>And most of the studies I showed you on these ingredients are done over a longer period
         of 3 to 6 months &hellip; which led participants to see significant results.</span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.fdxczcu80clq">These Longer Regimens&nbsp;
-    Will Give You The <span class=" font-bold">Longest-Lasting Results</span></h2>
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6">These Longer Regimens&nbsp;
+    Will Give You The <span class=" font-bold">Longest-Lasting Results</span>
+    </h5>
 
     <p><span>Now, I know there was a strict limit on the amount of Total Brain Boost you could order
         on the previous page&hellip; </span></p>
@@ -634,9 +696,9 @@
     <p><span>Revival Point give you a special, one-time discount on this page today so you can buy
         extra bottles of Total Brain Boost and take it long term</span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.hz1nyb1sis37">Get An Additional 6 or 12 Month Supply of Total Brain Boost At A 
-      <span class="font-bold">Highly Discounted</span>&nbsp;Rate&hellip;</h2>
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6">Get An Additional 6 or 12 Month Supply of Total Brain Boost At A 
+      <span class="font-bold">Highly Discounted</span>&nbsp;Rate&hellip;
+    </h5>
 
     <p><span>On the previous page and on the Revival Point website, one bottle of Total Brain Boost
         costs $19.98. </span></p>
@@ -672,8 +734,7 @@
 
     <p><span>However&hellip; </span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.u9s3475v86fz">There&rsquo;s Just <span class="font-bold">&nbsp;One Catch</span>&hellip;</h2>
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6">There&rsquo;s Just <span class="font-bold">&nbsp;One Catch</span>&hellip;</h5>
 
     <p><span>Which is, Revival Point doesn&rsquo;t want too many people finding out about it.
       </span></p>
@@ -698,9 +759,8 @@
 
     <p><span>Again, it will only be available on this page right here, right now.</span></p>
 
-    <h2 class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-6 md:mt-11"
-      id="h.d5zigzd2i4o"><span>Once You Leave This Page, </span>
-    This Deal Will Be<span class=" font-bold">&nbsp;Gone For Good</span></h2>
+    <h5 class="text-center font-semibold text-xl md:text-2xl mt-2 mb-6"><span>Once You Leave This Page, </span>
+    This Deal Will Be<span class=" font-bold">&nbsp;Gone For Good</span></h5>
 
     <p><span>You cannot email, call, or visit any other web page to get this discount again.</span>
     </p>
@@ -807,6 +867,25 @@
 </script>
 
 <?php template("includes/rpFooter"); ?>
+</div>
+
+
+<div class="flex flex-col justify-center items-center text-sm py-4">
+  <div class="text-lg mb-2 font-semibold">CITATIONS</div>
+  <ul class="num-list">
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/31174214</li>
+    <li>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4619305/</li>
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/26500686</li>
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/19386741</li>
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/16320857</li>
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/18842808</li>
+    <li>https://pubmed.ncbi.nlm.nih.gov/19386741/</li>
+    <li>https://pubmed.ncbi.nlm.nih.gov/26180243/</li>
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/25851425</li>
+    <li>https://www.ncbi.nlm.nih.gov/pubmed/27317834</li>
+  </ul>
+</div>
+
   <?php if ($site['debug'] == true) {
       // Show Debug bar only on whitelisted domains.
       template('debug', null, null, 'debug');
