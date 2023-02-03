@@ -240,7 +240,6 @@ a .cta-button.btn-2 {
   max-width: 200px;
   width: auto;
   text-decoration: none!important;
-  font-style: none;
   min-width: 250px;
   margin: 0 auto;
 }
