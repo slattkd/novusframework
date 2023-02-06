@@ -1,6 +1,6 @@
 <?php
 
-$nextlink = '/thank-you' . $querystring;
+$nextlink = '/up/upsell-1' . $querystring;
 $kount_session = str_replace('.', '', microtime(true));
 
 // required PID from post

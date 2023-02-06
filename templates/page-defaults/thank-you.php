@@ -287,8 +287,6 @@ $info = $items[$orderid];
                     <p>All charges will appear on your credit card statement as "<?= $company['billedAs']; ?>"</p>
                 </div>
                 
-
-
                 <div class="flex mt-6">
                     <h3 id="customer" class="text-2xl font-bold mb-0 mt-6">Customer information</h3>
                 </div>
