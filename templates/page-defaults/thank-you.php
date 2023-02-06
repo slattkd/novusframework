@@ -207,8 +207,6 @@ $info = $items[$orderid];
         }
 
     </style>
-
-    <!-- VisiSmart Code - DO NOT MODIFY--><script async type='text/javascript'>window.visiopt_code=window.visiopt_code||(function(){var visi_wid=513,visi_pid=37,visi_flicker_time=4000,visi_flicker_element='html',c=false,d=document,visi_fn={begin:function(){var a=d.getElementById('visi_flicker');if(!a){var a=d.createElement('style'),b=visi_flicker_element?visi_flicker_element+'{opacity:0!important;background:none!important;}':'',h=d.getElementsByTagName('head')[0];a.setAttribute('id','visi_flicker');a.setAttribute('type','text/css');if(a.styleSheet){a.styleSheet.cssText=b;}else{a.appendChild(d.createTextNode(b));}h.appendChild(a);}},complete:function(){c=true;var a=d.getElementById('visi_flicker');if(a){a.parentNode.removeChild(a);}},completed:function(){return c;},pack:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){visi_fn.complete();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){visi_fn.begin();setTimeout(function(){visi_fn.complete()},visi_flicker_time);this.pack('https://visiopt.com/client/js_test/test.'+visi_wid+'.'+visi_pid+'.js');return true;}};window.visiopt_code_status=visi_fn.init();return visi_fn;}());</script><!--End Of VisiSmart Code -->
 </head>
 
 <body class="bg-gray-100">
@@ -320,7 +318,7 @@ $info = $items[$orderid];
                     <h4 class=" text-xl font-semibold">Email</h4>
                     <p><?php echo $_SESSION['email']; ?></p>
                 </div>
-
+                
 
                 <!-- <div class="flex justify-center py-7 text-3xl text-red-700 text-center font-semibold hidden">
 				<h2>"Last Chance! Add These Recommended Products For Free Shipping!"</h2>
@@ -373,7 +371,7 @@ $info = $items[$orderid];
 ?>
 
     <script>
-
+        
 
 		// hide or show content with fade in out
 		function display(element, show) {
