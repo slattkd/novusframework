@@ -97,8 +97,8 @@
     style="position:relative">
 
     <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title" id="h.gjdgxs">This Florida MD&rsquo;s 20-Second
-      <span class="font-bold">&ldquo;Cerebral&nbsp;Boost&rdquo;</span>&nbsp;Strengthens Your Memory
-        And Focus, Keeping You Razor Sharp Well Into Your 50s, 60s, 70s, and even 80s&hellip;</h1>
+      <span class="font-bold">&ldquo;Cerebral Boost&rdquo;</span> Strengthens Your Memory
+        And Focus, Keeping You Razor Sharp Well Into Your 50s, 60s, 70s, and even&nbsp;80s&hellip;</h1>
 
 
     <h3 class="text-center text-lg md:text-2xl mb-4 md:mb-8" id="h.30j0zll"><span>While Helping To Fight Off Memory
@@ -436,14 +436,13 @@
 
 
     <p><span>And now she was in line for a nice promotion.</span></p>
-    <h3 class="text-center text-lg md:text-2xl my-4 md:my-8" id="h.m3fbvzvv5tq"><span>Then there&rsquo;s
-        Dale&hellip;</span></h3>
+    <h3 class="text-center text-lg md:text-2xl my-4 md:my-8" id="h.m3fbvzvv5tq"><span>Then there&rsquo;s Dale&hellip;</span></h3>
 
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.png"
-          style="  " class="float-left md:mr-4 mb-3 w-full " title="dale">
+          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="dale">
       </picture>
       </span></p>
       <p><span>He had been a </span><span>highly-successful CEO for a local company</span><span>&nbsp;for nearly 10
@@ -483,7 +482,7 @@
 
     <h2 class="text-2xl md:text-4xl text-rpblue mb-4 title text-center md:text-left mt-6 md:mt-11"><span>And when he
         came back, he told me he felt like he&rsquo;d </span><span class="font-bold">turned back
-        the clock 20 years</span><span class=" ">&hellip; </span></h2>
+        the clock&nbsp;20&nbsp;years</span><span class=" ">&hellip; </span></h2>
 
 
     <p><span>He thanked me for giving him his life back.</span></p>
@@ -568,7 +567,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.png"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+          style="  " class="float-right md:ml-4 mb-3 w-full md:w-1/2" title="">
       </picture>
       </span></p>
       <p><span>Now, as I said before, my name is</span><span class="font-bold">&nbsp;Dr. Steven
@@ -1003,8 +1002,8 @@
     </h2>
     <p>
       <picture>
-        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image27.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image27.png"
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.avif" type="image/avif">
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.png"
           style="  " class="mb-3 w-full " title="">
       </picture>
     </p>
@@ -1113,14 +1112,14 @@
     <p><span>And more </span><span class="font-bold">focused</span><span>.</span></p>
     <h3 class="text-center text-lg md:text-2xl my-4 md:my-8" id="h.2xcytpi"><span>And in many cases they saw some of
         these </span><span class="font-bold">benefits</span><span>&nbsp;within the </span><span class="font-bold">first
-        few days</span><span class=" ">&nbsp;of starting my program..</span></h3>
+        few days</span><span class=" ">&nbsp;of starting my program...</span></h3>
 
     <div>
 
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.png"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>I know this because every year I tested brain performance on all the patients in my
@@ -1338,7 +1337,7 @@
 
 
       <p><span>And get a chance to feel these same </span><span class="font-bold">powerful
-          benefits</span><span>&hellip;</span><span class=" ">&nbsp;</span></p>
+          benefits</span>&hellip;</p>
 
       <div style="clear:both"></div>
     </div>
@@ -1544,7 +1543,7 @@
     </div>
 
     <h2 class="text-2xl md:text-4xl text-rpblue mb-4 title text-center md:text-left mt-6 md:mt-11" id="h.2p2csry">
-      <span>Brain-Boosting Nutrient #4: Vitamin B12</span>
+      <span>Brain-Boosting Nutrient #4: Vitamin&nbsp;B12</span>
     </h2>
 
     <div>
@@ -1616,7 +1615,7 @@
     </div>
 
     <h2 class="text-2xl md:text-4xl text-rpblue mb-4 title text-center md:text-left mt-6 md:mt-11" id="h.3o7alnk">
-      <span>Brain-Boosting Nutrient #6: Vitamin D</span>
+      <span>Brain-Boosting Nutrient #6: Vitamin&nbsp;D</span>
     </h2>
 
     <div>
@@ -1720,7 +1719,7 @@
     <h2 class="text-2xl md:text-4xl text-rpblue mb-4 title text-center md:text-left mt-6 md:mt-11" id="h.ihv636"><span
         class="font-bold">Total Brain Boost&reg;</span><span class=" ">: A Powerful
         Formula Using 6 of the Best, Scientifically-Backed, Brain-Boosting Nutrients I&rsquo;ve Found Over 30 Years of
-        Research&hellip; &hellip;</span>
+        Research&hellip;</span>
     </h2>
 
     <div>
@@ -1789,7 +1788,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.png"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Imagine focusing, listening, and socializing better with your family and friends&hellip; </span>
@@ -1989,9 +1988,9 @@
 
     <div>
       <picture>
-        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image29.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image29.png"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png" type="image/png">
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png"
+          style="  " class="float-left md:mr-4 mb-3 w-full md:w-1/4" title="">
       </picture>
 
       <p><span>So if you&rsquo;re not happy with your results for any reason&hellip; </span></p>
@@ -2056,7 +2055,7 @@
     <p><span>Today when you order, Revival Point will also make sure&hellip; </span></p>
     <h2 class="text-2xl md:text-4xl text-rpblue mb-4 title text-center md:text-left mt-6 md:mt-11" id="h.4f1mdlm">
       <span>You Get </span><span class="font-bold">5 Free Bonus Gifts</span><span>&nbsp;Filled With
-        Tips To Further Boost Your Results&hellip; &nbsp;</span>
+        Tips To Further Boost Your&nbsp;Results&hellip;</span>
     </h2>
 
 
@@ -2539,8 +2538,7 @@
     </div>
 
     <h2 class="text-2xl md:text-4xl text-rpblue mb-4 title text-center md:text-left mt-6 md:mt-11" id="h.111kx3o">
-      <span>A Portion Of Your Purchase Will Be Donated To The </span><span class="  text-blue font-bold">Vitamin Angels
-        Charity</span>
+      <span>A Portion Of Your Purchase Will Be Donated To The </span><span class="  text-blue font-bold">Vitamin Angels&nbsp;Charity</span>
     </h2>
 
     <div>
