@@ -53,6 +53,7 @@ if ($_SERVER['HTTP_HOST'] == $site['logRocketDomain']) {
         type='text/css'
         media='all' />
 
+
 <?php if ($site['debug'] !== true) { //Don't need to run this on local?>
 
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
