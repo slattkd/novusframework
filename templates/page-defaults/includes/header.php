@@ -53,7 +53,6 @@ if ($_SERVER['HTTP_HOST'] == $site['logRocketDomain']) {
         type='text/css'
         media='all' />
 
-
 <?php if ($site['debug'] !== true) { //Don't need to run this on local?>
 
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -85,15 +84,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 // Different environments have a trailing slash in the apache config, this fixes it!
 require_once(rtrim($_SERVER['DOCUMENT_ROOT'], '/\\' ) . '../../include/customPixels.php');
 ?>
-
-<style>
-h1 {
-    font-size: 30px;
-}
-</style>
-
-
-
-
-
-

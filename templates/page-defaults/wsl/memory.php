@@ -19,8 +19,24 @@
     }
 
     .wsl h1 {
-      line-height: 35px;
-      line-height: 1.3;
+      font-size: 34px;
+    }
+    .wsl h2 {
+      font-size: 22px;
+    }
+    .wsl p {
+      font-size:18px;
+    }
+    @media screen and (min-width: 769px) {
+      .wsl p {
+        font-size: 20px;
+      }
+      .wsl h1 {
+        font-size: 54px;
+      }
+      .wsl h2 {
+        font-size: 32px;
+      }
     }
 
     .wsl li {
@@ -52,13 +68,13 @@
   </style>
 </head>
 
-<body class="bg-gray-100 wsl">
+<body class="bg-gray-100">
   <?php
   $container = 'container-vsl';
   ?>
   <?php template("includes/rpHeader"); ?>
 
-  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
+  <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 
   <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
     <div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
@@ -77,6 +93,22 @@
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
   </picture>
+
+  <div class="flex mb-4">
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" alt="UCLA David Geffen" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA_Health_logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA_Health_logo.png" alt="UCLA Health" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/georgetown-u-logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/georgetown-u-logo.png" alt="georgetown university" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+
+  </div>
 
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
@@ -99,7 +131,7 @@
     </picture>
     <p>This horrifying scenario is becoming more and more likely for Americans as brain&nbsp;health-related conditions and deaths skyrocket&hellip; </p>
     <p>Brain conditions are now <span class="font-semibold">the 6th leading cause of death in the U.S., killing 1 out of 3 seniors every year. </p>
-    But one well-known Florida medical doctor might have found a solution to help&hellip;
+    <p>But one well-known Florida medical doctor might have found a solution to help&hellip;</p>
     <div style="clear:both"></div>
   </div>
 
@@ -116,7 +148,7 @@
     </picture>
     <p>He found the source of their mental powers hidden in a drink that almost all Indian people drink daily, called Golden Milk.</p>
     <p>Golden Milk contains a nutrient called curcumin that boost memory, mood and attention by reducing inflammation in the brain. </p>
-    However, Dr. Masley found the human body cannot absorb curcumin without help...
+    <p>However, Dr. Masley found the human body cannot absorb curcumin without help...</p>
     <div style="clear:both"></div>
   </div>
   
@@ -161,7 +193,7 @@
     <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
     <p>And that <span class="font-semibold">Magnesium BisGlycinate</span>&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
     <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </p>
-    They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;
+    <p>They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;</p>
     <div style="clear:both"></div>
   </div>
   
@@ -182,7 +214,7 @@
     <p>If you&rsquo;re suffering from memory issues, this is your chance to try something truly revolutionary. Plus, with the added benefit of our 
       <span class="font-semibold">90-day money-back guarantee</span>, your only risk is <span class="font-semibold">better memory.</span>&nbsp;
     </p>
-    Click below to start your journey to better brain health today.
+    <p>Click below to start your journey to better brain health today.</p>
     <div style="clear:both"></div>
   </div>
 
