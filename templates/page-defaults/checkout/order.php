@@ -316,7 +316,7 @@ if (!isset($_SESSION['vip_discount'])) {
                     <div class="text-2xl text-rpblue font-semibold mb-0">Guaranteed To Work — Or Your Money&nbsp;Back</div>
                 </div>
                 <picture class="flex flex-col shrink justify-center w-full md:w-1/4">
-                    <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.avif" type="image/avif">
+                    <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle-1.avif" type="image/avif">
                     <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-bottle.webp" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/3 md:w-full md:translate-y-8" style="mix-blend-mode: multiply;object-fit:contain">
                 </picture>
             </div>
