@@ -182,6 +182,12 @@ switch ($pageType) {
                 }]
             });
         </script>
+        <script type="text/javascript">
+             window._vis_opt_queue = window._vis_opt_queue || [];
+             window._vis_opt_queue.push(function() {
+                 _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
+             });
+        </script>
 
         <?php
         break;
@@ -205,6 +211,13 @@ switch ($pageType) {
                 'quantity': 1
             }]
         });
+        </script>
+
+        <script type="text/javascript">
+             window._vis_opt_queue = window._vis_opt_queue || [];
+             window._vis_opt_queue.push(function() {
+                 _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
+             });
         </script>
         <?php
         break;
@@ -256,7 +269,12 @@ switch ($pageType) {
         });
         </script>
 
-
+        <script type="text/javascript">
+             window._vis_opt_queue = window._vis_opt_queue || [];
+             window._vis_opt_queue.push(function() {
+                 _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
+             });
+        </script>
         <?php
         break;
     case "upinterstitial":
@@ -279,6 +297,12 @@ switch ($pageType) {
             'quantity': 1
         }]
     });
+    </script>
+    <script type="text/javascript">
+         window._vis_opt_queue = window._vis_opt_queue || [];
+         window._vis_opt_queue.push(function() {
+             _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
+         });
     </script>
     <?php
     break;
@@ -312,6 +336,12 @@ switch ($pageType) {
                 'quantity': 1
             }]
         });
+        </script>
+        <script type="text/javascript">
+             window._vis_opt_queue = window._vis_opt_queue || [];
+             window._vis_opt_queue.push(function() {
+                 _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
+             });
         </script>
 
         <?php
@@ -367,7 +397,12 @@ switch ($pageType) {
             }]
         });
         </script>
-
+        <script type="text/javascript">
+             window._vis_opt_queue = window._vis_opt_queue || [];
+             window._vis_opt_queue.push(function() {
+                 _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
+             });
+        </script>
         <?php
         break;
     default:
