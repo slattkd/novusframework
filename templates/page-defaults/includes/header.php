@@ -76,21 +76,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" media="print" onload="this.media='all'">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700,800" rel="stylesheet" media="print" onload="this.media='all'">
-<link href="https://fonts.googleapis.com/css?family=Outfit:400,400i,500,600,700,800" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css?family=Outfit:700" rel="stylesheet" media="print" onload="this.media='all'">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" media="print" onload="this.media='all'">
-<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Cardo:400,400italic,700,800' rel='stylesheet' type='text/css'  media="print" onload="this.media='all'"/>
 
 <!-- PIXELS -->
 <?php
 // Different environments have a trailing slash in the apache config, this fixes it!
 require_once(rtrim($_SERVER['DOCUMENT_ROOT'], '/\\' ) . '../../include/customPixels.php');
 ?>
-
-<style>
-h1 {
-    font-size: 30px;
-}
-</style>
 
 
 
