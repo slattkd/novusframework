@@ -94,6 +94,22 @@
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
   </picture>
 
+  <div class="flex mb-4">
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" alt="UCLA David Geffen" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA_Health_logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA_Health_logo.png" alt="UCLA Health" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/georgetown-u-logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/georgetown-u-logo.png" alt="georgetown university" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+
+  </div>
+
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
 
