@@ -64,6 +64,11 @@
     margin-left: 0.5rem;
     background-image: none;
   }
+  ul.num-list li {
+    list-style: auto;
+    background-image: unset;
+    padding:5px 0
+  }
 
   </style>
 </head>
@@ -148,6 +153,8 @@
     </picture>
     <p>He found the source of their mental powers hidden in a drink that almost all Indian people drink daily, called Golden Milk.</p>
     <p>Golden Milk contains a nutrient called curcumin that boost memory, mood and attention by reducing inflammation in the brain. </p>
+    <p>In 2017, UCLA research<sup>1</sup> showed that seniors with memory complaints, who took curcumin, boosted their memory by 28%.</p>
+    <p>They also saw significant improvements in attention and mood.</p>
     <p>However, Dr. Masley found the human body cannot absorb curcumin without help...</p>
     <div style="clear:both"></div>
   </div>
@@ -190,7 +197,7 @@
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.avif" type="image/avif">
         <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.jpg" alt="grapes and wine" class="float-left md:mr-4 mb-3 w-full md:w-1/2" loading="lazy">
     </picture>
-    <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
+    <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. <sup>2</sup></p>
     <p>And that <span class="font-semibold">Magnesium BisGlycinate</span>&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
     <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </p>
     <p>They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;</p>
@@ -222,6 +229,16 @@
     <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2" style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></button>
   </div>
 
+  <h2 id="powerful-formula" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-4 md:mt-8">About Dr. Steven Masley</h2>
+  <div>
+  <picture>
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/dr-masley.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/dr-masley.png.jpg" alt="dr masley" class="float-right md:ml-4 mb-3  md:w-1/3 hidden md:block" loading="lazy">
+  </picture>
+  <p>Dr. Steven Masley, MD, is the author of four best selling books, including <i>Ten Years Younger, The 30-Day Heart Tune-Up, Smart Fat, and Better Brain Solution</i>. He is also the creator of the #1 health program for Public Television, and his work has been viewed by millions on PBS, the Discovery Channel, the Today Show, and much more. His leading fat loss formula has helped hundreds of his clients and has gained respect from the medical and scientific community.</p>
+  <p>Now, Dr. Masley is bringing his expertise to help support optimal brain health. His latest formula uses 6 scientifically-backed brain boosting nutrients to help with memory, focus, and mental energy. Dr. Masley’s discoveries are revolutionizing people’s lives with better brain health today&hellip;</p>
+  <div style="clear:both"></div>
+  </div>
 
   <div class="mt-4 ml-8 flex flex justify-center italic">
     <ul class="list-disc text-gray-600">
@@ -234,7 +251,17 @@
     <img class="w-full md:w-2/3" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px" alt="security icons">
   </div>
 
+  
 </div>
+
+<div class="flex flex-col justify-center items-center text-sm py-4" style="margin-bottom: 40px">
+  <div class="text-lg mb-2 font-semibold">CITATIONS</div>
+  <ul class="num-list">
+    <li>https://pubmed.ncbi.nlm.nih.gov/29246725/</li>
+    <li>https://pubmed.ncbi.nlm.nih.gov/28086917/</li>
+  </ul>
+</div>
+
 <?php template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
