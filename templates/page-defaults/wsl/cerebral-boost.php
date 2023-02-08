@@ -24,7 +24,7 @@
       font-size: 34px;
     }
     .wsl h2 {
-      font-size: 22px;
+      font-size: 20px;
     }
     .wsl p {
       font-size:18px;
@@ -96,14 +96,14 @@
   <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600"
     style="position:relative">
 
-    <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title" id="h.gjdgxs">This Florida MD&rsquo;s 20-Second
+    <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title" id="h.gjdgxs">This Florida MD&rsquo;s 20-Second
       <span class="font-bold">&ldquo;Cerebral Boost&rdquo;</span> Strengthens Your Memory
         And Focus, Keeping You Razor Sharp Well Into Your 50s, 60s, 70s, and even&nbsp;80s&hellip;</h1>
 
 
-    <h3 class="text-center text-lg md:text-2xl mb-4 md:mb-8" id="h.30j0zll"><span>While Helping To Fight Off Memory
+    <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" id="h.30j0zll"><span>While Helping To Fight Off Memory
         Loss, Brain Fog, And Cognitive Decline
-        At The Source</span><span>&hellip; </span></h3>
+        At The&nbsp;Source</span>&hellip;</div>
 
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image37.jpg" type="image/jpg">

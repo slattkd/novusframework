@@ -22,7 +22,7 @@
       font-size: 34px;
     }
     .wsl h2 {
-      font-size: 22px;
+      font-size: 20px;
     }
     .wsl p {
       font-size:18px;
@@ -59,9 +59,9 @@
   ?>
   <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg content-center text-gray-600">
 
-  <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title"><span class="5">This Indian &ldquo;Super-Ager&rdquo; Secret Holds The Key To Endlessly Energy &amp; Focus, Keeping You Fit And Active Well Into Your 70s, 80s and 90s&hellip;</span></h1>
+  <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title"><span class="5">This Indian &ldquo;Super-Ager&rdquo; Secret Holds The Key To Endlessly Energy &amp; Focus, Keeping You Fit And Active Well Into Your 70s, 80s&nbsp;and&nbsp;90s&hellip;</span></h1>
 
-  <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6"><span class="17">While Helping to Fight Fatigue, Brain Fog, Depression and Even Weight&nbsp;Gain&hellip; </span></div>
+  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While Helping to Fight Fatigue, Brain Fog, Depression and Even Weight&nbsp;Gain&hellip;</div>
   <picture class="flex justify-center mb-4">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-sad.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-sad.jpg" alt="brain boost bottle">
@@ -119,7 +119,7 @@
     <div style="clear:both"></div>
   </div>
 
-  <ul class="start my-4 list-disc list-inside pl-3 md:pl-6 text-gray-600">
+  <ul class="start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold"><span class="6">Decrease toxic buildup in the brain</span></li>
     <li class="font-semibold"><span class="6">Reduce brain inflammation </span></li>
     <li class="font-semibold"><span class="6">Protect your brain from oxidative stress </span></li>
