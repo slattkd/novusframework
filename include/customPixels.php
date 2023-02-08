@@ -194,6 +194,12 @@ switch ($pageType) {
     case "up2":
         ?>
         <script>
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'GTM_<?php echo $pageType;?>'
+            });
+        </script>
+        <script>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'GTM_<?php echo $pageType;?>',
@@ -319,31 +325,11 @@ switch ($pageType) {
     case "dn1":
         ?>
         <script>
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'event': 'GTM_<?php echo $pageType;?>',
-            'event_category': 'Ecommerce',
-            'event_action': 'Purchase',
-            'event_label': 'Order ID: <?php echo $_SESSION['orderId'] ?? ''; ?> ',
-            'event_value': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
-            'transactionId': '<?php echo $_SESSION['orderId'] ?? ''; ?>',
-            'transactionTotal': '<?php echo $_SESSION['orderTotal'] ?? ''; ?>',
-            'transactionAffiliation': '<?php echo $_SESSION['a'] ?? ''; ?>',
-            'transactionProducts': [{
-                'sku': '<?php echo $_SESSION['productId'] ?? ''; ?>',
-                'name': '<?php echo $_SESSION['productName'] ?? ''; ?>',
-                'price': '<?php echo $_SESSION['productPrice'] ?? ''; ?>',
-                'quantity': 1
-            }]
-        });
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'GTM_<?php echo $pageType;?>'
+            });
         </script>
-        <script type="text/javascript">
-             window._vis_opt_queue = window._vis_opt_queue || [];
-             window._vis_opt_queue.push(function() {
-                 _vis_opt_revenue_conversion("<?php echo $_SESSION['orderTotal'] ?? ''; ?>");
-             });
-        </script>
-
         <?php
         break;
     case "dn2":
