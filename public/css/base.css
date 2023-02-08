@@ -347,5 +347,9 @@ h1.title, h2.title {
   font-size: 17px;
 }
 
+.wsl button.cta-button {
+  width: 500px;
+}
+
 /* blue - #ff01ff */
 /* green - #6da515 */

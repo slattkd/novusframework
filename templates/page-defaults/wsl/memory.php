@@ -22,13 +22,13 @@
       font-size: 34px;
     }
     .wsl h2 {
-      font-size: 22px;
+      font-size: 20px;
     }
-    .wsl p {
+    .wsl p, .wsl ul li {
       font-size:18px;
     }
     @media screen and (min-width: 769px) {
-      .wsl p {
+      .wsl p, .wsl ul li {
         font-size: 20px;
       }
       .wsl h1 {
@@ -60,9 +60,10 @@
   .table-contents ul li {
     list-style: auto;
     padding: 5px 0;
-    padding-left: 0.25rem;
-    margin-left: 0.5rem;
+    padding-left: 0.15rem;
+    margin-left: 0.75rem;
     background-image: none;
+    font-size: 13px;
   }
   ul.num-list li {
     list-style: auto;
@@ -82,7 +83,7 @@
   <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 
   <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
-    <div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+    <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
     <ul class="p-3">
       <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
       <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
@@ -92,8 +93,8 @@
     </ul>
   </div>
 
-  <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
-  <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
+  <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
+  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
   <picture class="flex justify-center mb-4">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
@@ -169,7 +170,7 @@
 
   <p>CurcuRouge&reg; Bio-Optimized Curcumin is able to help improve cognitive function by: </p>
 
-  <ul class="start my-4 list-disc list-inside text-gray-600 pl-3 md:pl-6">
+  <ul class="start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold">Decreasing toxic buildup in the brain</li>
     <li class="font-semibold">Reducing brain inflammation </li>
     <li class="font-semibold">Protecting your brain from oxidative stress </li>
