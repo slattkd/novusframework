@@ -38,23 +38,19 @@
     background-size: 1.1em 1.1em;
   }
 
-  #progress-bar {
+  #progress-bar,
+  #second-progress-bar,
+  #third-progress-bar {
     width: 0;
   }
 
-  #progress-bar.grow {
+  #progress-bar.grow,
+  #second-progress-bar.grow ,
+  #third-progress-bar.grow {
     transition: width 1s ease-in-out;
     animation: grow 1s ease-in;
   }
 
-  #second-progress-bar {
-    width: 0;
-  }
-
-  #second-progress-bar.grow {
-    transition: width 1s ease-in-out;
-    animation: grow 1s ease-in;
-  }
   @keyframes grow {
     0% {
       width: 0;
@@ -84,7 +80,9 @@
   }
 
   /* progress bar */
-  #progress_wrapper {
+  #progress_wrapper,
+  #second-progress_wrapper,
+  #third-progress_wrapper {
   position: relative;
   overflow: auto;
   cursor: default;
@@ -286,7 +284,7 @@ a .cta-button.btn-2 {
 
 p,
 .wsl li{
-  font-size: 20px;
+  font-size: 17.5px;
 }
 
 @media (min-width: 768px){
@@ -306,7 +304,7 @@ p,
 }
 
 body{
-  font-weight: normal;
+  font-weight: 100;
 }
 
 .li-hi{
@@ -316,8 +314,6 @@ body{
 .fs-green{
   -webkit-animation: green-glow-large 3s infinite;
   animation: green-glow-large 3s infinite;
-  -webkit-filter: drop-shadow(0 10px 25px rgba(89,184,125,0.125)) drop-shadow(0 7.5px 15px rgba(89,184,125,0.15)) drop-shadow(0 4px 3px rgba(89,184,125,0.2));
-  filter: drop-shadow(0 10px 25px rgba(89,184,125,0.125)) drop-shadow(0 7.5px 15px rgba(89,184,125,0.15)) drop-shadow(0 4px 3px rgba(89,184,125,0.2));
   border-color: #01b38d;
 }
 
@@ -374,6 +370,24 @@ ol.citations li {
 
  .font-gray-600 p{
   font-size: unset;
+}
+
+@media (min-width: 1024px){
+  p{
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 767px){
+  .text-base {
+      font-size: 24px !important;
+      margin: 5px;
+      line-height: 2rem;
+  }
+
+  .fs-green{
+    animation: none;
+  }
 }
   </style>
   <!-- VisiSmart Code - DO NOT MODIFY-->
@@ -582,11 +596,11 @@ ol.citations li {
     <p><span>With this, you&rsquo;ll feel so much healthier, and more energized and happy.</span>
     </p>
 
-    <p><span>And it can be much easier to be active and productive&hellip;</span></p>
+    <p><span>And it can be much easier to be active and&nbsp;productive&hellip;</span></p>
 
     <p><span>And get in great shape.</span></p>
 
-    <p><span>In fact, I think you&rsquo;ll love Total Brain Boost so much&hellip;</span></p>
+    <p><span>In fact, I think you&rsquo;ll love Total Brain Boost so&nbsp;much&hellip;</span></p>
 
     <p><span>You&rsquo;ll see it as essential to your health.</span></p>
 
@@ -627,7 +641,7 @@ ol.citations li {
         you would a multivitamin. </span></p>
 
     <p><span>Because like an expensive car, your brain functions best when it gets only </span><span
-        class="font-bold">premium fuel</span><span>. </span></p>
+        class="font-bold">premium&nbsp;fuel</span><span>. </span></p>
 
     <p><span>The ingredients in Total Brain Boost are that premium fuel.</span></p>
 
@@ -660,11 +674,11 @@ ol.citations li {
 
     <p><span>So to help you achieve </span><span class="font-bold">longer-lasting</span><span>&nbsp;goals</span></p>
 
-    <p><span>I&rsquo;ve asked Revival Point to do something special here</span></p>
+    <p><span>I&rsquo;ve asked Revival Point to do something special&nbsp;here</span></p>
 
     <p><span>Because you&rsquo;re a new customer&hellip;</span></p>
 
-    <p><span>And you&rsquo;ve shown interest in improving your health</span></p>
+    <p><span>And you&rsquo;ve shown interest in improving your&nbsp;health</span></p>
 
     <p><span>I&rsquo;ve asked that, in order to help you succeed&hellip;</span></p>
 
@@ -676,7 +690,7 @@ ol.citations li {
     </h2>
 
     <p><span>On the previous page and on the Revival Point website, one bottle of Total Brain Boost
-        costs $19.98. </span></p>
+        costs&nbsp;$19.98. </span></p>
 
     <p><span>But because you&rsquo;re a new customer today&hellip; </span></p>
 
@@ -697,7 +711,7 @@ ol.citations li {
 
     <p><span>And so you can stock up to make sure you don&rsquo;t run out</span></p>
 
-    <p><span>There is no need to worry if these bottles will expire</span></p>
+    <p><span>There is no need to worry if these bottles will&nbsp;expire</span></p>
 
     <p><span>They are guaranteed to stay fresh for a minimum of two years without any special storage or
         refrigeration needed.</span></p>
@@ -778,7 +792,7 @@ ol.citations li {
           <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl">You Qualify For This Exclusive Discount of Total Brain Boost</p>
         <div class="gap-4 columns-1 md:columns-2">
           <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
-            <p></p>
+            
             <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply for just $<?= $product1['product_price']; ?> Today!</p>
             
             <p class="sales-tax"><?= $tax_msg; ?></p>
@@ -839,7 +853,7 @@ ol.citations li {
         
         <button id="second-qualify-btn" class="mx-auto cta-button clickable w-full md:w-auto text-3xl md:text-4xl py-2"
         style="padding: 15px 40px;min-width: 250px;">See If You Qualify...</span></button>
-        <div class="light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
+        <div class="s-light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
             <div id="second-progress-bar" class="green" style="height:10px;width:0;background-color:#40A900;"></div>
         </div>
       </div>
@@ -857,7 +871,7 @@ ol.citations li {
           <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl">You Qualify For This Exclusive Discount of Total Brain Boost</p>
         <div class="gap-4 columns-1 md:columns-2">
           <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
-            <p></p>
+            
             <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply for just $<?= $product1['product_price']; ?> Today!</p>
             
             <p class="sales-tax"><?= $tax_msg; ?></p>
@@ -903,11 +917,11 @@ ol.citations li {
 </div>
 
     <div id="third-qualify-wrap" class="w-full">
-      <div class="flex flex-col justify-center items-center border border-3 border-lime-500 shadow p-3 md:py-5">
+      <div class="flex flex-col justify-center items-center border border-4 p-3 md:py-5 fs-green">
         <div class="text-center text-2xl md:text-3xl font-semibold md:w-4/5">Click The Button Below Now To See If You Qualify For This Discount</div>
         <button id="third-qualify-btn" class="mx-auto cta-button clickable w-full md:w-auto text-3xl md:text-4xl py-2"
         style="padding: 15px 40px;min-width: 250px;">See If You Qualify...</span></button>
-        <div class="light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
+        <div class="t-light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
             <div id="third-progress-bar" class="green" style="height:10px;width:0;background-color:#40A900;"></div>
         </div>
       </div>
@@ -922,37 +936,39 @@ ol.citations li {
     <!-- SECURE ORDER CONTENT -->
     <div id="third-expand-content" class="hidden">
 
-    <div class="w-full">
-		  <div class="flex flex-col justify-center items-center border border-3 border-lime-500 shadow p-4 md:py-5">
+   <div class="w-full">
+		  <div class="flex flex-col justify-center items-center border border-4 fs-green p-4 md:py-5 mb-5">
 			  <div class="w-full">
-          <div id="third-cta" class="flex justify-center font-bold text-center text-blue text-3xl md:text-4xl uppercase">Congratulations!</div>
-          <div class="flex justify-center text-center mb-6 text-tygreen text-base">You Qualify For This Exclusive Discount of Total Brain Boost</div>
+          <h2 id="cta" class="flex justify-center font-bold text-center text-blue text-3xl md:text-5xl uppercase mb-0">Congratulations!</h2>
+          <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl">You Qualify For This Exclusive Discount of Total Brain Boost</p>
         <div class="gap-4 columns-1 md:columns-2">
           <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
-            <div class="sub-title"><?= $product1['product_qty']; ?> Bottle Discount</div>
-            <div class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply for just $<?= $product1['product_price']; ?> Today!</div>
+            
+            <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply for just $<?= $product1['product_price']; ?> Today!</p>
             
             <p class="sales-tax"><?= $tax_msg; ?></p>
             <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>" class="w-full" style="text-decoration: none;">
                 <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes! I'll Take It</button>
             </a>
-            <div class="whop text-blue mt-2 font-semibold">That's <span class="underline">45% OFF</span> the retail price!</div>
+            <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">45% OFF</span> the retail price!</p>
           </div>
           <div class="flex w-full border-b mb-4 md:hidden"></div>
           <div class="flex flex-col text-center justify-center">
             <div class="sub-title">Even Bigger Discount (Limited Time Only)</div>
-            <div class="title font-semibold text-lg md:text-2xl">Get a <?= $product2['product_month']; ?>-month supply for just $<?= $product2['product_price']; ?> Today!</div>
+            <p class="title font-semibold text-lg md:text-2xl">Get a <?= $product2['product_month']; ?>-month supply for just $<?= $product2['product_price']; ?> Today!</p>
             
             <p class="sales-tax"><?= $tax_msg; ?></p>
             <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>" class="w-full" style="text-decoration: none;">
                 <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes! I'll Take It</button>
             </a>
-            <div class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the retail price!</div>
+            <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the retail price!</p>
           </div>
           
         </div>
       </div>
 		</div>
+</div>
+</div>
     
   <!-- end expand-content -->
 
@@ -971,7 +987,8 @@ ol.citations li {
   wslBtn.addEventListener('click', ()=> {
     window.location = '<?= $nextlink; ?>';
   })
-
+</script>
+<script>
   const qualifyButton = document.getElementById('qualify-btn');
   const qualifyWrap = document.getElementById('qualify-wrap');
   const buy = document.getElementById('container-buy');
@@ -987,7 +1004,9 @@ ol.citations li {
       expandContent.style.display = 'block';
     }, "1000")
   })
-
+</script>
+<script>
+  
   const qualifyButtonSecond = document.getElementById('second-qualify-btn');
   const qualifyWrapSecond = document.getElementById('second-qualify-wrap');
   const buySecond = document.getElementById('second-container-buy');
@@ -995,7 +1014,7 @@ ol.citations li {
   const expandContentSecond = document.getElementById('second-expand-content');
   qualifyButtonSecond.addEventListener('click', ()=> {
   qualifyButtonSecond.classList.add('disable');
-  document.querySelector('.light-grey').style.backgroundColor = '#e1e1e1';
+  document.querySelector('.s-light-grey').style.backgroundColor = '#e1e1e1';
   progressSecond.classList.add('grow');
 
     setTimeout(() => {
@@ -1004,14 +1023,16 @@ ol.citations li {
     }, "1000")
   })
 
-  const qualifyButtonThird = document.getElementById('third-qualify-btn');
+</script>
+<script>
+    const qualifyButtonThird = document.getElementById('third-qualify-btn');
   const qualifyWrapThird = document.getElementById('third-qualify-wrap');
   const buyThird = document.getElementById('third-container-buy');
   const progressThird = document.getElementById('third-progress-bar');
   const expandContentThird = document.getElementById('third-expand-content');
   qualifyButtonThird.addEventListener('click', ()=> {
   qualifyButtonThird.classList.add('disable');
-  document.querySelector('.light-grey').style.backgroundColor = '#e1e1e1';
+  document.querySelector('.t-light-grey').style.backgroundColor = '#e1e1e1';
   progressThird.classList.add('grow');
 
     setTimeout(() => {
@@ -1020,6 +1041,8 @@ ol.citations li {
     }, "1000")
   })
 
+</script>
+<script>
   function scrollToId(id) {
     const scrollElement = document.getElementById(id);
     scrollElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
