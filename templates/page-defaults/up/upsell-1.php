@@ -367,7 +367,7 @@
   }
 
   ol.citations li {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 0.5em;
     background-image: none;
     padding: unset;

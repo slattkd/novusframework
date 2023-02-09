@@ -40,7 +40,7 @@
 	padding: 2px 12px;
 	font-size: 28px;
 	width: auto;
-	max-width:100%;
+	max-width:100vw;
 	cursor: pointer;
 	transition: 200ms ease-in-out;
 	text-align: center;
