@@ -309,6 +309,7 @@ body{
 
 .li-hi{
   background-color: #FFFFC7;
+  font-weight: unset;
 }
 
 .fs-green{
