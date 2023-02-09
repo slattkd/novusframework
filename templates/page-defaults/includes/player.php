@@ -1,6 +1,10 @@
 <div class="video-container">
     <?php if($overlay){
-        echo('<img id="video-overlay" class="click-to-play" onclick="clickOverlay()" src="' . $overlay . '" width="897" height="505">');
+        echo '
+        <button class="play-button"></button>
+        <img id="video-overlay" class="click-to-play" onclick="clickOverlay()" src="' . $overlay . '" width="897" height="505">
+        '
+        ;
     }
     ?>
 
@@ -23,41 +27,46 @@
 <script type="text/javascript">
 var EMBED_CODE_ID = 'vidalytics_embed_<?php echo $videoID; ?>'; // update this to match your Vidalytics Embed ID
 var vidalyticsPlayerAPI = null;
+var isPauseable = true;
 
 function initializePlayerAPI() {
     var player = getPlayer();
     if (player._player) {
         vidalyticsPlayerAPI = player;
         onPlayerAPIAvailableCallback();
-        vidalyticsPlayerAPI.play();
         return;
     }
-    setTimeout(initializePlayerAPI, 20);
+    setTimeout(initializePlayerAPI, 100);
 }
+
+<?php if (!$overlay) { 
+    echo('initializePlayerAPI();'); 
+}?>
 
 function popButton(){
     //Show the pop button
     var popButton = document.getElementById("container-buy");
     popButton.classList.remove("hidden");
+    popButton.scrollIntoView({behavior: "smooth", block: "center"});
 }
 
-
-
-
 function getPlayer() {
-    var embeds = (_vidalytics || {}).embeds || {};
-    if (embeds[EMBED_CODE_ID]) {
-        return embeds[EMBED_CODE_ID].player || {};
+    var embeds = (window._vidalytics || {}).embeds || {};
+    if (embeds[EMBED_CODE_ID]) { 
+    return embeds[EMBED_CODE_ID].player || {};
     }
     return {};
 }
 
 function onPlayerAPIAvailableCallback() {
+    
+    <?php if (!$overlay): ?>
+        vidalyticsPlayerAPI.play();
+    <?php endif; ?>
+
     vidalyticsPlayerAPI._player.addEventHandler('onTimeChanged', function () {
         if (vidalyticsPlayerAPI.getCurrentVideoTime() >= <?php echo $dropTime; ?>) {
             popButton();
-            var containerbuy = document.getElementById("container-buy");
-            containerbuy.scrollIntoView({behavior: "smooth"});
         }
     });
     vidalyticsPlayerAPI._player.addEventHandler('onPaused', function () {
@@ -65,32 +74,48 @@ function onPlayerAPIAvailableCallback() {
             vidalyticsPlayerAPI.play();
         }
     });
+    
 }
 
 const overlay = document.getElementById('video-overlay');
-
+const playButton = document.querySelector('.play-button');
 // remove video overlay image on click
 function clickOverlay() {
     if (overlay) {
         overlay.classList.add('invisible');
+        playButton.classList.add('invisible');
         initializePlayerAPI();
+    }
+    const muteOverlay = document.querySelector('.bmpui-ui-vidalytics-unmute-box');
+    if (muteOverlay) {
+        muteOverlay.click();
     }
 }
 
-<?php if (!$overlay) {
-    echo('initializePlayerAPI();');
-}
-?>
-
 function pausePlayer(){
-    var isPauseable = 1;
+    isPauseable = true;
     vidalyticsPlayerAPI.pause();
 }
 
-window.addEventListener('click', (e)=> {
-    const modalBackground = document.querySelector('.modal-position.modal-bg');
-    window.closeAll();
+
+window.addEventListener('click', (event)=> {
+    let linkElements = document.querySelectorAll('a');
+    let clickInLink = false;
+    // is click on navigation
+    linkElements.forEach((el)=> {
+        if (el.contains(event.target)) {
+            clickInLink = true;
+        }
+    })
+	if( clickInLink ) {
+        // clicking on link
+	} else {
+        // clicking on page
         clickOverlay();
-}, {once : true});
+	}
+});
+
+console.log('Video ID: <?php echo $videoID; ?>');
+console.log('Droptime: <?php echo $dropTime; ?>');
 
 </script>
