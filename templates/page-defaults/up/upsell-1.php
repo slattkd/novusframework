@@ -565,7 +565,7 @@ ol.citations li {
     <p><span>Once it ships, we will send you the tracking number and delivery date and time.</span></p>
 
     <div class="flex justify-center">
-      <img class="w-full md:w-2/3 mx-auto" alt="email confirmation" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/curcumin-graph.jpg" title="" loading="lazy">
+      <img class="w-full md:w-2/3 mx-auto" alt="email confirmation" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/email-confirmation.webp" title="" loading="lazy">
     </div>
 
     <p><span>This means you&rsquo;re literally just days away from having Total Brain Boost in your
