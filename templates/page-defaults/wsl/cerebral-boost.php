@@ -107,7 +107,7 @@
 
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image37.jpg" type="image/jpg">
-      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image37.png"
+      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image37.jpg"
         style="  " class="md:ml-4 mb-3 w-full mx-auto" title="">
     </picture>
 
@@ -115,7 +115,7 @@
     <div class="pt-4">
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image16.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image16.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image16.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -214,7 +214,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image5.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image5.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image5.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>Remembering the simple things that used to slip your memory&hellip;</span></p>
@@ -287,7 +287,7 @@
         World&hellip; </span><span>
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image35.jpg" type="image/jpg">
-          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image35.png"
+          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image35.jpg"
             style="  " class=" mb-3 w-full" title="">
         </picture>
       </span>
@@ -324,7 +324,7 @@
 
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image10.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image10.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image10.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -392,7 +392,7 @@
 
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image15.jpg" type="image/jpg">
-      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image15.png"
+      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image15.jpg"
         style="  " class=" mb-3 w-full" title="">
     </picture>
 
@@ -441,7 +441,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="dale">
       </picture>
       </span></p>
@@ -545,7 +545,7 @@
 
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image38.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image38.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image38.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span class=" ">One that I&rsquo;ve been eating daily myself for nearly 25 years&hellip;</span></p>
@@ -566,7 +566,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-1/2" title="">
       </picture>
       </span></p>
@@ -606,7 +606,7 @@
         style="  ">
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image12.jpg" type="image/jpg">
-          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image12.png"
+          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image12.jpg"
             style="  " class=" mb-3 w-full " title="">
         </picture>
       </span></p>
@@ -705,7 +705,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image31.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image31.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image31.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -807,7 +807,7 @@
         style="  ">
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image21.jpg" type="image/jpg">
-          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image21.png"
+          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image21.jpg"
             style="  " class=" mb-3 w-full " title="">
         </picture>
       </span></p>
@@ -879,7 +879,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image33.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image33.png" class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image33.jpg" class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>The term</span><span class="font-bold">&nbsp;&ldquo;synaptic slowdown&rdquo;</span><span>&nbsp;comes from
@@ -917,7 +917,7 @@
 
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image7.jpg" type="image/jpg">
-      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image7.png"
+      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image7.jpg"
         style="  " class=" mb-3 w-full" title="">
     </picture>
 
@@ -965,7 +965,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image34.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image34.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image34.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>And when you combine the </span><span class=" font-bold">damage</span><span class=" ">&nbsp;from these
@@ -1003,7 +1003,7 @@
     <p>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.avif" type="image/avif">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.jpg"
           style="  " class="mb-3 w-full " title="">
       </picture>
     </p>
@@ -1118,7 +1118,7 @@
 
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1183,7 +1183,7 @@
 
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image13.jpg" type="image/jpg">
-      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image13.png"
+      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image13.jpg"
         style="  " class="mb-3 w-full" title="">
     </picture>
 
@@ -1249,7 +1249,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image17.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image17.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image17.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1300,7 +1300,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image11.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image11.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image11.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1348,7 +1348,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image8.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image8.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image8.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1428,7 +1428,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image9.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image9.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image9.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1506,7 +1506,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image32.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image32.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image32.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1549,7 +1549,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image4.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image4.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image4.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1597,7 +1597,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image24.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image24.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image24.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1621,7 +1621,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image22.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image22.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image22.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1725,7 +1725,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image19.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image19.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image19.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1787,7 +1787,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -1928,7 +1928,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image40.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image40.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image40.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>You don&rsquo;t need a prescription.</span></p>
@@ -2013,7 +2013,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image18.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image18.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image18.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -2066,7 +2066,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image36.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image36.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image36.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -2102,7 +2102,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image14.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image14.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image14.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -2170,7 +2170,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image30.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image30.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image30.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -2242,7 +2242,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image6.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image6.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image6.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -2288,7 +2288,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image1.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image1.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image1.jpg"
           style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
@@ -2410,7 +2410,7 @@
     <div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image26.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image26.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image26.jpg"
           style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>It&rsquo;s put through a thorough series of lab tests by a trusted third party lab.</span>
@@ -2509,7 +2509,7 @@
 
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image23.jpg" type="image/jpg">
-        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image23.png"
+        <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image23.jpg"
           class="float-left md:mr-4 mb-3 w-full md:w-1/4 p-8 md:p-0" title="">
       </picture>
 
@@ -2545,11 +2545,11 @@
       <div class="flex flex-col float-right md:ml-4 mb-3 w-full md:w-2/5">
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image41.jpg" type="image/jpg">
-          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image41.png" title="">
+          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image41.jpg" title="">
         </picture>
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image20.jpg" type="image/jpg">
-          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image20.png" class="border m-1"
+          <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image20.jpg" class="border m-1"
             style="margin-top: -10px;width: 97%;margin-left: auto;margin-right: auto;" title="">
         </picture>
       </div>
@@ -2752,7 +2752,7 @@
 
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image25.jpg" type="image/jpg">
-      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image25.png"
+      <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image25.jpg"
         style="  " class=" mb-3 w-full" title="">
     </picture>
 
