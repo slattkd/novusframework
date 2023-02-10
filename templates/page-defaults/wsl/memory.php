@@ -1,6 +1,10 @@
 <?php
-  $nextlink = $nextlink = '/checkout/order' . $querystring;
+  $nextlink = '/checkout/order' . $querystring;
   $_SESSION['pageType'] = 'wsl';
+
+  $vidcode = 'ZFJaBUp1lypHohgj';
+  $dropTime = 0;
+  $thumb = '//' . $_SERVER['HTTP_HOST'] . '/images/TBB-Non-Masley-Mini-VSL.jpg';
 ?>
 
 <html lang="en">
@@ -11,11 +15,6 @@
   <style type="text/css">
     .wsl p, h1, h2 {
       margin-bottom: 20px;
-    }
-
-    .wsl h1, .wsl h2 {
-      font-weight: 600;
-      scroll-margin-top: 60px;
     }
 
     .wsl h1 {
@@ -44,7 +43,7 @@
       padding: 10px 30px;
       background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
       background-repeat: no-repeat;
-      background-position: left center;
+      background-position: left 15px;
       background-size: 20px;
     }
 
@@ -71,6 +70,14 @@
     padding:5px 0
   }
 
+  a.learn {
+    color: #007bff;
+    text-decoration:
+    none;font-size: 12px;
+  }
+  a.learn:hover {
+    text-decoration: underline;
+  }
   </style>
 </head>
 
@@ -83,7 +90,7 @@
   <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 
   <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
-    <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+    <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t" style="font-size:14px">IN THIS ARTICLE</div>
     <ul class="p-3">
       <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
       <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
@@ -94,13 +101,15 @@
   </div>
 
   <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
-  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
-  <picture class="flex justify-center mb-4">
-      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
-      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
-  </picture>
+  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
 
-  <div class="flex mb-4">
+  <div class="flex w-full mb-4" style="background-color: #CCC;">
+    <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
+  </div>
+  <div class="flex text-sm font-semibold justify-center md:justify-start md:ml-4">
+    <a class="learn" href="<?= $nextlink; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
+  </div>
+  <div class="flex">
   <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" type="image/png">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" alt="UCLA David Geffen" class="w-full h-auto" style="object-fit: contain;">
@@ -115,6 +124,10 @@
   </picture>
 
   </div>
+  <!-- <picture class="flex justify-center mb-4">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
+  </picture> -->
 
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
@@ -241,7 +254,7 @@
   <div style="clear:both"></div>
   </div>
 
-  <div class="mt-4 ml-8 flex flex justify-center italic">
+  <div class="mt-4 md:ml-8 flex flex justify-center italic">
     <ul class="list-disc text-gray-600">
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk-Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->97% Said They Would Purchase Again</li>
