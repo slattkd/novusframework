@@ -303,7 +303,7 @@
 
     p,
     .wsl p {
-      font-size: 20px;
+      font-size: 20px !important;
     }
   
   }
