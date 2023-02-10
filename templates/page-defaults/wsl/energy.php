@@ -118,7 +118,7 @@
     <div style="clear:both"></div>
   </div>
 
-  <ul class="start my-4 list-disc list-inside text-gray-600">
+  <ul class="md:p-3 start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold"><span class="6">Decrease toxic buildup in the brain</span></li>
     <li class="font-semibold"><span class="6">Reduce brain inflammation </span></li>
     <li class="font-semibold"><span class="6">Protect your brain from oxidative stress </span></li>
