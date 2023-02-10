@@ -794,10 +794,12 @@
           src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/product-page.webp" title="" loading="lazy">
       </div>
 
-      <p id="scroll-to-cta"><span>All you need to do now is </span><span class="font-bold">click the button below to see
+      <p><span>All you need to do now is </span><span class="font-bold">click the button below to see
           if you
           qualify</span><span>&nbsp;for your additional discount.</span></p>
 
+      <!-- wrap for float button scroll to -->
+      <div id="scroll-to-cta">    
       <div id="qualify-wrap" class="w-full">
         <div class="flex flex-col justify-center items-center border border-4 fs-green p-3 md:py-5 mb-5">
 
@@ -850,7 +852,7 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -944,7 +946,7 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -1030,7 +1032,7 @@
               </p>
 
               <p class="sales-tax"><?= $tax_msg; ?></p>
-              <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+              <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                 class="w-full" style="text-decoration: none;">
                 <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                   I'll Take It</button>
@@ -1043,6 +1045,9 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- closing div for float button scroll to wrap  -->
   </div>
 
   <!-- end expand-content -->
