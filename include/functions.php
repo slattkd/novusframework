@@ -285,7 +285,7 @@ function modal($template, $modal_id = null, $modal_title = null, $modal_body = n
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
-function floatButton($template, $top_content, $button_text = null, $scroll_id = null, $templatePath = 'templates/page-defaults')
+function floatButton($template, $top_content, $button_text = null, $scroll_start = null, $scroll_id = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;
