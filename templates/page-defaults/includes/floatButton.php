@@ -29,11 +29,11 @@
 
 .float-btn-wrapper .float-btn {
   background: #fbba1d;
-	/* background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%); */
-	background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
+	background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
+	/* background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important; */
   border: 2px solid #ab3600;
   font-family: 'Oswald', sans-serif;
-  /* font-style: italic; */
+  font-style: italic;
   font-weight: bold;
   color: #00234c;
 	white-space: nowrap;
@@ -50,7 +50,7 @@
 }
 
 .float-btn.clickable:hover {
-	filter: brightness(1.15) contrast(0.9);
+	filter: brightness(1.25) contrast(0.8);
 	opacity: 1;
 }
 
@@ -79,7 +79,7 @@
 </style>
 
 <section>
-<div id="float-button" class="float-btn-wrapper fade-in-element" data-scroll="<?= $scroll_id; ?>">
+<div id="float-button" class="float-btn-wrapper fade-in-element" data-scroll="<?= $scroll_id; ?>" data-scroll-start="<?= $scroll_start; ?>">
 
 	<div class="flex flex-col justify-center">
 	<?php echo htmlspecialchars_decode($top_content); ?>
@@ -99,9 +99,13 @@
 		const dynamicElement = document.getElementById('float-button');
 		const scrollId = dynamicElement.dataset.scroll;
 		const scrollNodes = document.querySelectorAll(`[id=${scrollId}]`);
+		const scrollStartId = dynamicElement.dataset.scrollStart;
+
+		if (scrollStartId) {
+			dynamicElement.style.display = "none";
+		}
 
 		// find visible cta/scroll element
-		var scrollElement = null;
 		// for (var i = 0, max = scrollNodes.length; i < max; i++) {
 		// 	if (!isHidden(scrollNodes[i])) {
 		// 		scrollElement = scrollNodes[i];
@@ -109,20 +113,49 @@
 		// 	}
 		// }
 
-		console.log(scrollNodes);
+		var scrollElement = null;
 		Array.from(scrollNodes).forEach(el => {
 			if (!isHidden(el)) {
 				scrollElement = el;
-				//console.log(scrollElement);
 			}
 		})
 
+		var scrollIsBelowElement = false;
+		var buttonShowing = null;
+		window.onscroll = ()=> {
+			let scrollStartElement = null;
+			let belowDiv = false;
+			if (scrollStartId) {
+				scrollStartElement = document.getElementById(scrollStartId);
+				scrollIsBelowElement = window.pageYOffset > window.pageYOffset + scrollStartElement.getBoundingClientRect().top;
+				var elDisplay = dynamicElement.style.display;
+
+				const shouldShow = !elementInView && (scrollStartId && scrollIsBelowElement) || !scrollStartId;
+				const shouldHide = elementInView || (scrollStartId && !scrollIsBelowElement);
+				if (shouldShow) {
+					showButton(true);
+				}
+				if (shouldHide) {
+					showButton(false);
+				}
+			}
+		}
+
+		function showButton(show) {
+			if ((show && buttonShowing == true) || (!show && !buttonShowing)) {
+				return;
+			}
+			dynamicElement.style.display = show ? 'flex' : 'none';
+			buttonShowing = show;
+		}
+
+		var elementInView = false;
 		// display button if element is not in view
 		var observer = new IntersectionObserver(function(entries) {
 				if(entries[0].intersectionRatio > 0) {
-						dynamicElement.style.display = "none";
+						elementInView = true;
 				} else {
-					dynamicElement.style.display = "flex";
+						elementInView = false;
 				}
 		});
 
@@ -137,7 +170,6 @@
 
 		// scroll to element via floating button
 		dynamicElement.addEventListener('click', function() {
-			//console.log(scrollElement);
 			scrollElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
 		})
 	})

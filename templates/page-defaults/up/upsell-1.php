@@ -544,7 +544,7 @@
 
       <p><span>On top of this&hellip; </span></p>
 
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">I Also Want To Share An <span
+      <h2 id="start-float-btn" class="text-center font-semibold text-xl md:text-3xl mb-4">I Also Want To Share An <span
           class="font-bold">Easy</span>&nbsp;Way To Save An <span class="font-bold">Additional </span><span
           class="text-red-600">52%</span>&nbsp;On Total Brain Boost&nbsp;Today&hellip;</span>
       </h2>
@@ -1052,7 +1052,7 @@
 
   <!-- end expand-content -->
   <div class="flex flex-col items-center justify-center w-full md:w-3/4 mx-auto mt-11">
-    <div class="p-4 border-2 clickable hover:bg-gray-100 mb-4 rounded-lg">
+    <div id="wsl-btn" class="p-4 border-2 clickable hover:bg-gray-100 mb-4 rounded-lg">
       Skip This - I understand I will NOT get access to this one-time deal again.
     </div>
     <div class="text-sm text-center mb-4 w-4/5">Please remember that once you leave this page, this deal is gone for
@@ -1066,9 +1066,10 @@
 
   <?php
     $button_text = 'Yes, Give Me This Now!';
+    $scroll_start = 'start-float-btn';
     $scroll_id = 'scroll-to-cta';
     $top_content = '';
-    floatButton('includes/floatButton',$top_content,$button_text,$scroll_id);
+    floatButton('includes/floatButton',$top_content,$button_text,$scroll_start,$scroll_id);
   ?>
 
   <script>
@@ -1076,8 +1077,7 @@
   wslBtn.addEventListener('click', () => {
     window.location = '<?= $nextlink; ?>';
   })
-  </script>
-  <script>
+
   const qualifyButton = document.getElementById('qualify-btn');
   const qualifyWrap = document.getElementById('qualify-wrap');
   const buy = document.getElementById('container-buy');
