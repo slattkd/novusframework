@@ -57,7 +57,7 @@
     }
 
   .table-contents ul li {
-    list-style: auto;
+    list-style: decimal;
     padding: 5px 0;
     padding-left: 0.15rem;
     margin-left: 0.75rem;
