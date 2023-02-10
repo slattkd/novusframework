@@ -119,7 +119,7 @@
     <div style="clear:both"></div>
   </div>
 
-  <ul class="start my-4 list-disc list-inside text-gray-600">
+  <ul class="md:p-3 start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold"><span class="6">Decrease toxic buildup in the brain</span></li>
     <li class="font-semibold"><span class="6">Reduce brain inflammation </span></li>
     <li class="font-semibold"><span class="6">Protect your brain from oxidative stress </span></li>
@@ -175,7 +175,7 @@
     <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2" style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></span></button>
   </div>
 
-  <div class="mt-4 ml-8 flex flex justify-center italic text-gray-600">
+  <div class="mt-4 md:ml-8 flex flex justify-center italic text-gray-600">
     <ul class="list-disc">
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk-Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->97% Said They Would Purchase Again</li>

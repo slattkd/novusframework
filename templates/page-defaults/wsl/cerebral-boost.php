@@ -145,7 +145,7 @@
         transformed</span><span>&nbsp;my life for the better and the lives of my patients as well:</span></p>
 
 
-    <ul class="p-3 mb-4 lst-kix_list_11-0 start">
+    <ul class="md:p-3 mb-4 lst-kix_list_11-0 start">
       <li class="   li-bullet-0"><span>Helping us remember names, people, places, and things better
           &hellip;</span></li>
 
@@ -182,7 +182,7 @@
         class="  font-bold">&nbsp;involve:</span></p>
 
 
-    <ul class="p-3 mb-4 lst-kix_list_14-0 start">
+    <ul class="md:p-3 mb-4 lst-kix_list_14-0 start">
       <li class=" red-x li-bullet-0"><span>Drugs or medical procedures.</span></li>
 
       <li class=" red-x li-bullet-0"><span>Caffeine or energy drinks&hellip;</span></li>
@@ -857,7 +857,7 @@
     <p><span class=" ">And you will feel: </span></p>
 
 
-    <ul class="p-3 mb-4 lst-kix_list_7-0 start">
+    <ul class="md:p-3 mb-4 lst-kix_list_7-0 start">
       <li class="arrow-right">More sluggish</li>
 
       <li class="arrow-right">Less focused</li>
@@ -1062,7 +1062,7 @@
     <p><span>That means that they were able to: </span></p>
 
 
-    <ul class="p-3 mb-4 lst-kix_list_1-0 start">
+    <ul class="md:p-3 mb-4 lst-kix_list_1-0 start">
       <li class="  li-bullet-0"><span>Remember </span><span>things almost</span><span>&nbsp;</span><span
           class="font-bold">25% better</span><span>&hellip; </span></li>
 
@@ -1990,7 +1990,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png" type="image/png">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-1/4" title="">
+          style="  " class="float-left md:mr-4 mb-3 w-full md:w-1/4 p-8 md:p-0" title="">
       </picture>
 
       <p><span>So if you&rsquo;re not happy with your results for any reason&hellip; </span></p>
@@ -2074,7 +2074,7 @@
           including:</span></p>
 
 
-      <ul class="p-3 mb-4 ml-4 lst-kix_list_2-0 start">
+      <ul class="md:p-3 mb-4 ml-4 lst-kix_list_2-0 start">
         <li class="  li-bullet-0 basic"><span>When to take it&hellip; </span></li>
 
         <li class="  li-bullet-0 basic"><span>What to take it with to increase its power and the
@@ -2133,7 +2133,7 @@
           concentration.</span></p>
 
 
-      <ul class="p-3 mb-4 ml-4 lst-kix_list_8-0 start">
+      <ul class="md:p-3 mb-4 ml-4 lst-kix_list_8-0 start">
         <li class="  li-bullet-0 basic"><span>These foods help boost your brain so you feel more
             focused, alert,
             and energized&hellip; </span></li>
@@ -2196,7 +2196,7 @@
     <p><span>In this book, you&rsquo;ll discover:</span></p>
 
 
-    <ul class="p-3 mb-4 ml-4 lst-kix_list_9-0 start">
+    <ul class="md:p-3 mb-4 ml-4 lst-kix_list_9-0 start">
       <li class="  li-bullet-0 basic"><span>The #1 food you&rsquo;ll want to avoid at all costs
           when grocery
           shopping&mdash;make sure you look for this on the label and do not buy foods that contain it&hellip; </span>
@@ -2255,7 +2255,7 @@
       <p><span>A</span><span>nd help you multiply your results from Total Brain Boost.&nbsp;</span>
       </p>
       <p><span>In it you&rsquo;ll discover:</span></p>
-      <ul class="p-3 mb-4 ml-4 lst-kix_list_4-0 start">
+      <ul class="md:p-3 mb-4 ml-4 lst-kix_list_4-0 start">
         <li class="  li-bullet-0 basic"><span>3 quick, easy, physical exercises to boost your
             mental
             clarity</span><span>, </span><span>energy</span><span>, a</span><span>nd focus even
@@ -2301,7 +2301,7 @@
       <p><span>As a result, you&rsquo;ll notice less anxiety, more mental clarity, and even some
           potentially more profound effects as your hormones become more naturally balanced.&nbsp;</span></p>
       <p><span>Inside you&rsquo;ll discover:</span></p>
-      <ul class="p-3 mb-4 ml-4 lst-kix_list_4-0">
+      <ul class="md:p-3 mb-4 ml-4 lst-kix_list_4-0">
         <li class="  li-bullet-0 basic"><span>The simple 1-minute &ldquo;chair meditation&rdquo;
             you can do
             anywhere to center yourself and clear your mind when things get crazy (it&rsquo;s like an instant
@@ -2380,7 +2380,7 @@
     <p><span>I tell my patients: never buy a supplement unless you are 100% certain</span></p>
 
 
-    <ol class="p-3 ml-4 lst-kix_list_10-0 start" start="1">
+    <ol class="md:p-3 ml-4 lst-kix_list_10-0 start" start="1">
       <li class="  li-bullet-0" style="list-style:decimal; padding-left:10px; background-image: none"><span>It&rsquo;s made in a </span><span
           class="font-bold">GMP-certified</span><span>&nbsp;facility</span></li>
 
@@ -2510,7 +2510,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image23.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image23.png"
-          class="float-left md:mr-4 mb-3 w-full md:w-1/4" title="">
+          class="float-left md:mr-4 mb-3 w-full md:w-1/4 p-8 md:p-0" title="">
       </picture>
 
       <p><span>You will get a tracking number by email within </span><span class="font-bold">24 business
