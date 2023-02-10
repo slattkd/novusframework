@@ -260,7 +260,7 @@
   }
 
   .prog-check {
-    filter: brightness(10) saturate(0);
+    filter: brightness(0) invert(1);
     width: 16px;
     height: 16px;
     transform: translate(8px, 9px);
@@ -286,11 +286,6 @@
     max-width: 770px !important;
   }
 
-  p,
-  .wsl li {
-    font-size: 17.5px;
-  }
-
   @media (min-width: 768px) {
     h2 {
       font-size: 1.875rem;
@@ -300,16 +295,17 @@
     .md\:w-1\/2 {
       width: 48%;
     }
+
+    p,
+    .wsl p,
+    .wsl ul li {
+      font-size: 20px !important;
+    }
   }
 
   .text-6xl {
     font-size: 3.75rem !important;
     line-height: 1 !important;
-  }
-
-  .li-hi {
-    background-color: #FFFFC7;
-    font-weight: unset;
   }
 
   .fs-green {
@@ -376,12 +372,6 @@
 
   .font-gray-600 p {
     font-size: unset;
-  }
-
-  @media (min-width: 1024px) {
-    p {
-      font-size: 20px;
-    }
   }
 
   @media (min-width: 1px) and (max-width: 767px) {
@@ -486,7 +476,7 @@
   </div>
   <div class="container-sm mx-auto my-2 p-2 mt-6 mb-11 content-center">
 
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col justify-center">
 
       <h1 class="text-center text-red-600 font-bold text-6xl md:text-4xl md:mt-8" style="font-weight: bold">Don&rsquo;t
         Leave This Page Just&nbsp;Yet!</h1>
@@ -704,7 +694,7 @@
       <p><span>Now, I know there was a strict limit on the amount of Total Brain Boost you could order
           on the previous page&hellip; </span></p>
 
-      <p><span>You were limited to just </span><span class="hi li-hi">a 6-month supply.</span></p>
+      <p><span>You were limited to just </span><span class="hi ">a 6-month supply.</span></p>
 
       <p><span>So to help you achieve </span><span class="font-bold">longer-lasting</span><span>&nbsp;goals</span></p>
 
@@ -738,10 +728,10 @@
       <p><span class="">And a <span class="text-red-600 font-semibold">$162.70</span>&nbsp;total
           savings.</span></p>
 
-      <p><span class="hi li-hi">And if you get the 12 month supply you&rsquo;ll pay just <span
+      <p><span>And if you get the 12 month supply you&rsquo;ll pay just <span
             class="text-red-600 font-semibold">$14.46</span>&nbsp;per bottle&hellip; </span></p>
 
-      <p><span class="hi li-hi">That&rsquo;s <span class="text-red-600 font-semibold">52%</span>&nbsp;off and a <span
+      <p><span>That&rsquo;s <span class="text-red-600 font-semibold">52%</span>&nbsp;off and a <span
             class="text-red-600 font-semibold">$372.40</span>&nbsp;total savings.</span></p>
 
       <p><span>These deeply-discounted packages are designed to ensure you have the best chance at
@@ -978,7 +968,7 @@
 
       <p><span>So make sure you are stocked up on Total Brain Boost.</span></p>
 
-      <p><span>And make sure you take Total Brain Boost for the recommended </span><span class="hi li-hi">6 or 12
+      <p><span>And make sure you take Total Brain Boost for the recommended </span><span class="hi ">6 or 12
           month</span><span>&nbsp;regimen for </span><span class="font-bold">the longest-lasting
           results</span><span>.</span></p>
 
@@ -1067,7 +1057,7 @@
     </div>
     <div class="text-sm text-center mb-4 w-4/5">Please remember that once you leave this page, this deal is gone for
       good, you cannot call or email to get this deal again.</div>
-    <div class="font-semibold text-center text-gray-500 mb-4">FREE Shipping and NO TAX on this order upgrade</div>
+    <div class="font-semibold text-center text-gray-500 mb-4">FREE Shipping on this order upgrade</div>
     <img src="//<?php echo $_SERVER['HTTP_HOST'];?>/images/90-day-icon.png" alt="90 day guarantee" style="width:120px;">
   </div>
 
