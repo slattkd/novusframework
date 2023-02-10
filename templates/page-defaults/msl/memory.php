@@ -91,7 +91,7 @@
 
   <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
     <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t" style="font-size:14px">IN THIS ARTICLE</div>
-    <ul class="p-3">
+    <ul class="md:p-3">
       <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
       <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
       <li class="clickable" onclick="scrollToId('brain-decline')">Brain Health Discovery</li>
@@ -183,7 +183,7 @@
 
   <p>CurcuRouge&reg; Bio-Optimized Curcumin is able to help improve cognitive function by: </p>
 
-  <ul class="start my-4 list-disc list-inside text-gray-600">
+  <ul class="md:p-3 start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold">Decreasing toxic buildup in the brain</li>
     <li class="font-semibold">Reducing brain inflammation </li>
     <li class="font-semibold">Protecting your brain from oxidative stress </li>
