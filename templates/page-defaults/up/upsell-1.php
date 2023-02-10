@@ -34,7 +34,7 @@
     padding: 10px 30px 10px 1.75em;
     background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/tick.webp');
     background-repeat: no-repeat;
-    background-position: left 11px;
+    background-position: left 14px;
     background-size: 1.4rem;
   }
 
