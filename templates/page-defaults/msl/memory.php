@@ -106,7 +106,7 @@
   <div class="flex w-full mb-4" style="background-color: #CCC;">
     <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
   </div>
-  <div class="flex text-sm font-semibold justify-center md:justify-start md:ml-4">
+  <div class="flex text-sm font-semibold md:justify-start md:ml-4">
     <a class="learn" href="<?= $nextlink; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
   </div>
   <div class="flex">
