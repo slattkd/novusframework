@@ -486,7 +486,7 @@
         &nbsp;Even&nbsp;Further&hellip;</span>
       </h2>
 
-
+</div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png" type="image/png">
         <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.jpg" alt="dr masley"
