@@ -1089,12 +1089,10 @@
     progress.classList.add('grow');
 
     setTimeout(() => {
-      qualifyWrap.style.display = 'none';
-      expandContent.style.display = 'block';
+      openAll();
     }, "1000")
   })
-  </script>
-  <script>
+
   const qualifyButtonSecond = document.getElementById('second-qualify-btn');
   const qualifyWrapSecond = document.getElementById('second-qualify-wrap');
   const buySecond = document.getElementById('second-container-buy');
@@ -1106,12 +1104,10 @@
     progressSecond.classList.add('grow');
 
     setTimeout(() => {
-      qualifyWrapSecond.style.display = 'none';
-      expandContentSecond.style.display = 'block';
+      openAll();
     }, "1000")
   })
-  </script>
-  <script>
+
   const qualifyButtonThird = document.getElementById('third-qualify-btn');
   const qualifyWrapThird = document.getElementById('third-qualify-wrap');
   const buyThird = document.getElementById('third-container-buy');
@@ -1123,12 +1119,20 @@
     progressThird.classList.add('grow');
 
     setTimeout(() => {
-      qualifyWrapThird.style.display = 'none';
-      expandContentThird.style.display = 'block';
+      openAll();
     }, "1000")
   })
-  </script>
-  <script>
+
+
+  function openAll() {
+      qualifyWrap.style.display = 'none';
+      expandContent.style.display = 'block';
+      qualifyWrapSecond.style.display = 'none';
+      expandContentSecond.style.display = 'block';
+      qualifyWrapThird.style.display = 'none';
+      expandContentThird.style.display = 'block';
+  }
+
   function scrollToId(id) {
     const scrollElement = document.getElementById(id);
     scrollElement.scrollIntoView({
