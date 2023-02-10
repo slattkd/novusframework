@@ -977,7 +977,7 @@
 
       <p><span>I can&rsquo;t wait to hear about the positive changes I hope you experience. </span></p>
     </div>
-  </div>
+ 
 
   <div id="third-qualify-wrap" class="w-full">
     <div class="flex flex-col justify-center items-center border border-4 p-3 md:py-5 fs-green">
@@ -1046,7 +1046,7 @@
       </div>
     </div>
   </div>
-
+</div>
   <!-- closing div for float button scroll to wrap  -->
   </div>
 
