@@ -174,7 +174,7 @@
     <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2" style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></span></button>
   </div>
 
-  <div class="mt-4 ml-8 flex flex justify-center italic text-gray-600">
+  <div class="mt-4 md:ml-8 flex flex justify-center italic text-gray-600">
     <ul class="list-disc">
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk-Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->97% Said They Would Purchase Again</li>

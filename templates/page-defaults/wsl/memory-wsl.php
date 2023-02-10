@@ -1,10 +1,6 @@
 <?php
-  $nextlink = '/checkout/order' . $querystring;
+  $nextlink = $nextlink = '/checkout/order' . $querystring;
   $_SESSION['pageType'] = 'wsl';
-
-  $vidcode = 'ZFJaBUp1lypHohgj';
-  $dropTime = 0;
-  $thumb = '//' . $_SERVER['HTTP_HOST'] . '/images/TBB-Non-Masley-Mini-VSL.jpg';
 ?>
 
 <html lang="en">
@@ -23,8 +19,24 @@
     }
 
     .wsl h1 {
-      line-height: 35px;
-      line-height: 1.3;
+      font-size: 34px;
+    }
+    .wsl h2 {
+      font-size: 20px;
+    }
+    .wsl p, .wsl ul li {
+      font-size:18px;
+    }
+    @media screen and (min-width: 769px) {
+      .wsl p, .wsl ul li {
+        font-size: 20px;
+      }
+      .wsl h1 {
+        font-size: 54px;
+      }
+      .wsl h2 {
+        font-size: 32px;
+      }
     }
 
     .wsl li {
@@ -32,7 +44,7 @@
       padding: 10px 30px;
       background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
       background-repeat: no-repeat;
-      background-position: left center;
+      background-position: left 15px;
       background-size: 20px;
     }
 
@@ -59,27 +71,19 @@
     padding:5px 0
   }
 
-  a.learn {
-    color: #007bff;
-    text-decoration:
-    none;font-size: 12px;
-  }
-  a.learn:hover {
-    text-decoration: underline;
-  }
   </style>
 </head>
 
-<body class="bg-gray-100 wsl">
+<body class="bg-gray-100">
   <?php
   $container = 'container-vsl';
   ?>
   <?php template("includes/rpHeader"); ?>
 
-  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
+  <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 
   <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
-    <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+    <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t" style="font-size:14px">IN THIS ARTICLE</div>
     <ul class="p-3">
       <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
       <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
@@ -89,16 +93,14 @@
     </ul>
   </div>
 
-  <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
-  <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
+  <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
+  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
+  <picture class="flex justify-center mb-4">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
+  </picture>
 
-  <div class="flex w-full mb-4" style="background-color: #CCC;">
-    <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
-  </div>
-  <div class="flex text-sm font-semibold justify-center md:justify-start md:ml-4">
-    <a class="learn" href="<?= $nextlink; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
-  </div>
-  <div class="flex">
+  <div class="flex mb-4">
   <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" type="image/png">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" alt="UCLA David Geffen" class="w-full h-auto" style="object-fit: contain;">
@@ -113,10 +115,6 @@
   </picture>
 
   </div>
-  <!-- <picture class="flex justify-center mb-4">
-      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
-      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
-  </picture> -->
 
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
@@ -139,7 +137,7 @@
     </picture>
     <p>This horrifying scenario is becoming more and more likely for Americans as brain&nbsp;health-related conditions and deaths skyrocket&hellip; </p>
     <p>Brain conditions are now <span class="font-semibold">the 6th leading cause of death in the U.S., killing 1 out of 3 seniors every year. </p>
-    But one well-known Florida medical doctor might have found a solution to help&hellip;
+    <p>But one well-known Florida medical doctor might have found a solution to help&hellip;</p>
     <div style="clear:both"></div>
   </div>
 
@@ -156,7 +154,9 @@
     </picture>
     <p>He found the source of their mental powers hidden in a drink that almost all Indian people drink daily, called Golden Milk.</p>
     <p>Golden Milk contains a nutrient called curcumin that boost memory, mood and attention by reducing inflammation in the brain. </p>
-    However, Dr. Masley found the human body cannot absorb curcumin without help...
+    <p>In 2017, UCLA research<sup>1</sup> showed that seniors with memory complaints, who took curcumin, boosted their memory by 28%.</p>
+    <p>They also saw significant improvements in attention and mood.</p>
+    <p>However, Dr. Masley found the human body cannot absorb curcumin without help...</p>
     <div style="clear:both"></div>
   </div>
   
@@ -170,7 +170,7 @@
 
   <p>CurcuRouge&reg; Bio-Optimized Curcumin is able to help improve cognitive function by: </p>
 
-  <ul class="start my-4 list-disc list-inside text-gray-600 pl-3 md:pl-6">
+  <ul class="start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold">Decreasing toxic buildup in the brain</li>
     <li class="font-semibold">Reducing brain inflammation </li>
     <li class="font-semibold">Protecting your brain from oxidative stress </li>
@@ -198,10 +198,10 @@
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.avif" type="image/avif">
         <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.jpg" alt="grapes and wine" class="float-left md:mr-4 mb-3 w-full md:w-1/2" loading="lazy">
     </picture>
-    <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
+    <p>They found that <span class="font-semibold">Trans-Resveratrol</span>&mdash;a polyphenol found in Red Wine&mdash;boosts circulation in the brain, flooding brain cells with the oxygen-rich blood they need for optimal function. <sup>2</sup></p>
     <p>And that <span class="font-semibold">Magnesium BisGlycinate</span>&nbsp;restores signaling speed for sharper thinking and faster memory recall. </p>
     <p>And that <span class="font-semibold">Vitamins B12, D</span>, and<span class="font-semibold">&nbsp;Folate</span>&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </p>
-    They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;
+    <p>They combined all these ingredients together to create a powerful formula that boosts brain health with a multi-pronged approach&hellip;</p>
     <div style="clear:both"></div>
   </div>
   
@@ -222,7 +222,7 @@
     <p>If you&rsquo;re suffering from memory issues, this is your chance to try something truly revolutionary. Plus, with the added benefit of our 
       <span class="font-semibold">90-day money-back guarantee</span>, your only risk is <span class="font-semibold">better memory.</span>&nbsp;
     </p>
-    Click below to start your journey to better brain health today.
+    <p>Click below to start your journey to better brain health today.</p>
     <div style="clear:both"></div>
   </div>
 
@@ -230,8 +230,18 @@
     <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2" style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></button>
   </div>
 
+  <h2 id="powerful-formula" class="text-2xl md:text-4xl text-rpblue mb-4 leading-9 title text-center md:text-left mt-4 md:mt-8">About Dr. Steven Masley</h2>
+  <div>
+  <picture>
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/dr-masley.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/dr-masley.png.jpg" alt="dr masley" class="float-right md:ml-4 mb-3  md:w-1/3 hidden md:block" loading="lazy">
+  </picture>
+  <p>Dr. Steven Masley, MD, is the author of four best selling books, including <i>Ten Years Younger, The 30-Day Heart Tune-Up, Smart Fat, and Better Brain Solution</i>. He is also the creator of the #1 health program for Public Television, and his work has been viewed by millions on PBS, the Discovery Channel, the Today Show, and much more. His leading fat loss formula has helped hundreds of his clients and has gained respect from the medical and scientific community.</p>
+  <p>Now, Dr. Masley is bringing his expertise to help support optimal brain health. His latest formula uses 6 scientifically-backed brain boosting nutrients to help with memory, focus, and mental energy. Dr. Masley’s discoveries are revolutionizing people’s lives with better brain health today&hellip;</p>
+  <div style="clear:both"></div>
+  </div>
 
-  <div class="mt-4 ml-8 flex flex justify-center italic">
+  <div class="mt-4 md:ml-8 flex flex justify-center italic">
     <ul class="list-disc text-gray-600">
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk-Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->97% Said They Would Purchase Again</li>
@@ -242,7 +252,17 @@
     <img class="w-full md:w-2/3" src="//<?= $_SERVER['HTTP_HOST'];?>/images/sec-icons-new.png" style="max-width: 600px" alt="security icons">
   </div>
 
+  
 </div>
+
+<div class="flex flex-col justify-center items-center text-sm py-4" style="margin-bottom: 40px">
+  <div class="text-lg mb-2 font-semibold">CITATIONS</div>
+  <ul class="num-list">
+    <li>https://pubmed.ncbi.nlm.nih.gov/29246725/</li>
+    <li>https://pubmed.ncbi.nlm.nih.gov/28086917/</li>
+  </ul>
+</div>
+
 <?php template("includes/rpFooter"); ?>
 <?php if ($site['debug'] == true) {
     // Show Debug bar only on whitelisted domains.
