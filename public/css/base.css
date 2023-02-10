@@ -406,7 +406,7 @@ h1.title, h2.title {
 }
 
 .video-container:hover button.play-button {
-  background-color: rgb(1, 105, 156);
+  background-color: #d52484;
 }
 
 /* blue - #ff01ff */
