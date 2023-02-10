@@ -260,7 +260,7 @@
   }
 
   .prog-check {
-    filter: brightness(10) saturate(0);
+    filter: brightness(0) invert(1);
     width: 16px;
     height: 16px;
     transform: translate(8px, 9px);
