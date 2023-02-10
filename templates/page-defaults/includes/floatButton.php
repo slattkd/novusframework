@@ -29,10 +29,11 @@
 
 .float-btn-wrapper .float-btn {
   background: #fbba1d;
-	background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%);
-  border: 3px solid #ab3600;
+	/* background: linear-gradient(to bottom,#ffffce 0,#fbba1d 14%,#fc9900 40%,#e75f01 100%); */
+	background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
+  border: 2px solid #ab3600;
   font-family: 'Oswald', sans-serif;
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: bold;
   color: #00234c;
 	white-space: nowrap;
@@ -44,11 +45,12 @@
 	cursor: pointer;
 	transition: 200ms ease-in-out;
 	text-align: center;
-	text-shadow: 0.5px 0.9px 1px #fffa65;
+	text-shadow: 1px 1px 0 #f9ffac;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
 }
 
 .float-btn.clickable:hover {
-	filter: brightness(1.1) contrast(1.1);
+	filter: brightness(1.15) contrast(0.9);
 	opacity: 1;
 }
 
