@@ -34,7 +34,7 @@
     padding: 10px 30px 10px 1.75em;
     background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/tick.webp');
     background-repeat: no-repeat;
-    background-position: left 11px;
+    background-position: left 14px;
     background-size: 1.4rem;
   }
 
@@ -486,7 +486,7 @@
         &nbsp;Even&nbsp;Further&hellip;</span>
       </h2>
 
-
+</div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png" type="image/png">
         <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.jpg" alt="dr masley"
