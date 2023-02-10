@@ -63,7 +63,7 @@
     padding-left: 0.15rem;
     margin-left: 0.75rem;
     background-image: none;
-    font-size: 13px;
+    font-size: 12px;
   }
   ul.num-list li {
     list-style: auto;

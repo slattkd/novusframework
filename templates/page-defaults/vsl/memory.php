@@ -48,9 +48,15 @@
   .table-contents ul li {
     list-style: auto;
     padding: 5px 0;
-    padding-left: 0.25rem;
-    margin-left: 0.5rem;
+    padding-left: 0.15rem;
+    margin-left: 0.75rem;
     background-image: none;
+    font-size: 12px;
+  }
+  ul.num-list li {
+    list-style: auto;
+    background-image: unset;
+    padding:5px 0
   }
   </style>
 </head>
