@@ -1,5 +1,5 @@
 <?php
-  $nextlink = $nextlink = '/checkout/order' . $querystring;
+  $nextlink = '/checkout/order' . $querystring;
   $_SESSION['pageType'] = 'wsl';
 
   $vidcode = 'ZFJaBUp1lypHohgj';
@@ -51,12 +51,21 @@
     padding-left: 0.15rem;
     margin-left: 0.75rem;
     background-image: none;
-    font-size: 12px;
+    font-size: 13px;
   }
   ul.num-list li {
     list-style: auto;
     background-image: unset;
     padding:5px 0
+  }
+
+  a.learn {
+    color: #007bff;
+    text-decoration:
+    none;font-size: 12px;
+  }
+  a.learn:hover {
+    text-decoration: underline;
   }
   </style>
 </head>
@@ -70,7 +79,7 @@
   <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 
   <div class="table-contents rounded flex flex-column bg-white shadow border hidden lg:flex">
-    <div class="header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
+    <div class="text-center header bg-rpblue text-white font-semibold p-2 rounded-t">IN THIS ARTICLE</div>
     <ul class="p-3">
       <li class="clickable" onclick="scrollToId('memory-loss')">New Memory Loss Study</li>
       <li class="clickable" onclick="scrollToId('super-agers')">The Secret To Razor Sharp Memory</li>
@@ -83,8 +92,26 @@
   <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
   <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
 
-  <div class="flex w-full" style="background-color: #CCC;">
+  <div class="flex w-full mb-4" style="background-color: #CCC;">
     <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
+  </div>
+  <div class="flex text-sm font-semibold justify-center md:justify-start md:ml-4">
+    <a class="learn" href="<?= $nextlink; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
+  </div>
+  <div class="flex">
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" alt="UCLA David Geffen" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA_Health_logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA_Health_logo.png" alt="UCLA Health" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+  <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/georgetown-u-logo.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/georgetown-u-logo.png" alt="georgetown university" class="w-full h-auto" style="object-fit: contain;">
+  </picture>
+
   </div>
   <!-- <picture class="flex justify-center mb-4">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
