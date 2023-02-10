@@ -299,7 +299,7 @@
     p,
     .wsl p,
     .wsl ul li {
-      font-size: 20px !important;
+      font-size: 20px;
     }
   }
 
