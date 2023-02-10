@@ -1,6 +1,10 @@
 <?php
-  $nextlink = $nextlink = '/checkout/order' . $querystring;
+  $nextlink = '/checkout/order' . $querystring;
   $_SESSION['pageType'] = 'wsl';
+
+  $vidcode = 'ZFJaBUp1lypHohgj';
+  $dropTime = 0;
+  $thumb = '//' . $_SERVER['HTTP_HOST'] . '/images/TBB-Non-Masley-Mini-VSL.jpg';
 ?>
 
 <html lang="en">
@@ -11,11 +15,6 @@
   <style type="text/css">
     .wsl p, h1, h2 {
       margin-bottom: 20px;
-    }
-
-    .wsl h1, .wsl h2 {
-      font-weight: 600;
-      scroll-margin-top: 60px;
     }
 
     .wsl h1 {
@@ -71,6 +70,14 @@
     padding:5px 0
   }
 
+  a.learn {
+    color: #007bff;
+    text-decoration:
+    none;font-size: 12px;
+  }
+  a.learn:hover {
+    text-decoration: underline;
+  }
   </style>
 </head>
 
@@ -94,13 +101,15 @@
   </div>
 
   <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title">This Indian &ldquo;Super-Ager&rdquo; Secret Boosts Your Memory And Focus, Keeping You Razor Sharp Well Into Your 70s, 80s and&nbsp;90s&hellip;</h1>
-  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
-  <picture class="flex justify-center mb-4">
-      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
-      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
-  </picture>
+  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
 
-  <div class="flex mb-4">
+  <div class="flex w-full mb-4" style="background-color: #CCC;">
+    <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
+  </div>
+  <div class="flex text-sm font-semibold justify-center md:justify-start md:ml-4">
+    <a class="learn" href="<?= $nextlink; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
+  </div>
+  <div class="flex">
   <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" type="image/png">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/UCLA-David-Geffen-logo.png" alt="UCLA David Geffen" class="w-full h-auto" style="object-fit: contain;">
@@ -115,6 +124,10 @@
   </picture>
 
   </div>
+  <!-- <picture class="flex justify-center mb-4">
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.avif" type="image/avif">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-hands.jpg" alt="lady face in hands">
+  </picture> -->
 
 
   <p>If you are finding it more difficult to recall simple things&mdash;names of friends and coworkers, words and important dates, even how to perform basic tasks that once came easily&hellip; </p>
