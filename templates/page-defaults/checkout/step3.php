@@ -1,5 +1,4 @@
 <?php
-
 $nextlink = '/up/upsell-1' . $querystring;
 $kount_session = str_replace('.', '', microtime(true));
 
@@ -225,7 +224,7 @@ $current_product = $products['products'][$pid];
 
       <input type="hidden" name="previous_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step2">
       <input type="hidden" name="current_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step3">
-      <input type="hidden" name="next_page" id="next-page" value="/thank-you">
+      <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink?>">
       <input type="hidden" name="product_id" id='product_id' value="<?php echo @$_SESSION['pid']; ?>">
       <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
       <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
