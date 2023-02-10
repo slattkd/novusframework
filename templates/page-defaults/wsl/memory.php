@@ -171,11 +171,11 @@
   <p>CurcuRouge&reg; Bio-Optimized Curcumin is able to help improve cognitive function by: </p>
 
   <ul class="start my-4 list-disc list-inside text-gray-600">
-    <li class="font-semibold">Decreasing toxic buildup in the brain</li>
-    <li class="font-semibold">Reducing brain inflammation </li>
-    <li class="font-semibold">Protecting your brain from oxidative stress </li>
-    <li class="font-semibold">Increasing production of a brain hormone that can rebuild brain cells</li>
-    <li class="font-semibold">Boosting overall mental energy and brain function</li>
+    <li class="font-bold">Decreasing toxic buildup in the brain</li>
+    <li class="font-bold">Reducing brain inflammation </li>
+    <li class="font-bold">Protecting your brain from oxidative stress </li>
+    <li class="font-bold">Increasing production of a brain hormone that can rebuild brain cells</li>
+    <li class="font-bold">Boosting overall mental energy and brain function</li>
   </ul>
   <p class="1"></p>
   <p>That means a sharper mind, stronger memory, more mental energy, and a better mood&hellip; <span class="font-semibold">so you can enjoy a vibrant, happy, independent life for years to come.&nbsp;</p>
