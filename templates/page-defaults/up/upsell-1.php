@@ -286,11 +286,6 @@
     max-width: 770px !important;
   }
 
-  p,
-  .wsl li {
-    font-size: 17.5px;
-  }
-
   @media (min-width: 768px) {
     h2 {
       font-size: 1.875rem;
@@ -302,10 +297,10 @@
     }
 
     p,
-    .wsl p {
+    .wsl p,
+    .wsl ul li {
       font-size: 20px !important;
     }
-  
   }
 
   .text-6xl {
