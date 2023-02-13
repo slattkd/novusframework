@@ -1,7 +1,8 @@
 <!--
     Requires float_button.js served in the <head>
     php variables:
-    $scroll_id = string; (id of the element you want to scroll to and hide button when visible)
+		$scroll_id = string; (id of the element you want to scroll to and hide button when visible)
+		$scroll_start = string; optional (id of the element you want to begin to show the float button wrapper)
 -->
 
 <style>

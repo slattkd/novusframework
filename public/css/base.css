@@ -30,6 +30,7 @@ body {
   transition: all 150ms ease-in-out;
   cursor: pointer;
 }
+
 :disabled, .disabled {
   pointer-events: none;
   cursor: not-allowed !important;
@@ -54,7 +55,6 @@ body {
     max-width: 950px !important;
   }
 }
-
 
 .clickable {
   cursor: pointer;

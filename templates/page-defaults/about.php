@@ -22,7 +22,6 @@
 			<p>Our main ingredients are the highest quality, specially sourced Ginkgo Biloba, Green Tea Extract and Ginseng, which have been used in Asia for thousands of years to impart vigor and male health, so you feel powerful and relaxed, an inner glow of focus and energy that carries through to all the day’s activities.</p>
 
 			<p>We’ve helped many of our members regain their passion for life and now we’ve taken it online to reach the world!</p>
-
 			<h2>Supernatural Man’s Initiative To Help Men Better Themselves</h2>
 
 			<p>Here at Becoming Supernatural we are constantly striving to make the most effective, healthy and useful products for men. We put forth our best effort to meet the needs of our customers. This is done by consolidating years of experience, research and data to provide the highest quality of product for our clients.</p>

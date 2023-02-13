@@ -27,11 +27,8 @@
             "product_price": 39.95,
             "product_retail": 59.95,
             "product_ship": 6.95,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1136"
         },
         "1137": {
@@ -43,11 +40,8 @@
             "product_price": 97.00,
             "product_retail": 179.85,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1137"
         },
         "1138": {
@@ -59,11 +53,8 @@
             "product_price": 167.00,
             "product_retail": 359.70,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1138"
         },
         "1139": {
@@ -75,11 +66,8 @@
             "product_price": 35.95,
             "product_retail": 59.95,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1139"
         },
         "1141": {
@@ -91,11 +79,8 @@
             "product_price": 87.30,
             "product_retail": 179.85,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1141"
         },
         "1143": {
@@ -107,11 +92,8 @@
             "product_price": 150.28,
             "product_retail": 359.70,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1143"
         },
         "1083": {
@@ -123,11 +105,8 @@
             "product_price": 59.95,
             "product_retail": 79.95,
             "product_ship": 6.95,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1083"
         },
         "1084": {
@@ -139,11 +118,8 @@
             "product_price": 97.00,
             "product_retail": 239.85,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1084"
         },
         "1085": {
@@ -155,11 +131,8 @@
             "product_price": 247.00,
             "product_retail": 479.70,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1085"
         },
         "1086": {
@@ -171,11 +144,8 @@
             "product_price": 53.95,
             "product_retail": 79.95,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1086"
         },
         "1088": {
@@ -187,11 +157,8 @@
             "product_price": 87.30,
             "product_retail": 239.85,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1088"
         },
         "1090": {
@@ -203,11 +170,8 @@
             "product_price": 222.30,
             "product_retail": 479.70,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1090"
         },
         "1147": {
@@ -219,11 +183,8 @@
             "product_price": 197.00,
             "product_retail": 359.70,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1147"
         },
         "1148": {
@@ -235,11 +196,8 @@
             "product_price": 347.00,
             "product_retail": 347.00,
             "product_ship": 0,
-            "product_category_name": "",
-            "vertical_name": "Men's Health",
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
-            "cost_of_goods_sold": "",
             "product_id": "1148"
         }
     }

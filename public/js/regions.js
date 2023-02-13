@@ -250,7 +250,7 @@ statesArray["Zaire"]='<option value="none">N/A</option>';
 statesArray["Zambia"]='<option value="Central">Central</option><option value="Copperbelt">Copperbelt</option><option value="Eastern">Eastern</option><option value="Luapula">Luapula</option><option value="Lusaka">Lusaka</option><option value="North-Western">North-Western</option><option value="Northern">Northern</option><option value="Southern">Southern</option><option value="Western">Western</option>';
 statesArray["Zimbabwe"]='<option value="Bulawayo">Bulawayo</option><option value="Harare">Harare</option><option value="Manicaland">Manicaland</option><option value="Mashonaland Central">Mashonaland Central</option><option value="Mashonaland East">Mashonaland East</option><option value="Mashonaland West">Mashonaland West</option><option value="Masvingo">Masvingo</option><option value="Matabeleland North">Matabeleland North</option><option value="Matabeleland South">Matabeleland South</option><option value="Midlands">Midlands<  /option>';
 
-
+// functionality specific to individual inputs on the page
 document.addEventListener('DOMContentLoaded', ()=> {
     const billingCountry = document.getElementById('billingCountry');
     const shippingCountry = document.getElementById('shippingCountry');

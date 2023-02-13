@@ -83,7 +83,11 @@
     }
 </style>
 
+<<<<<<< HEAD
 <main class="mx-auto">
+=======
+<main class="p-8 mx-auto">
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
     <section class="row">
         <div class="accordions">
             <!-- accordian 1 -->
@@ -111,8 +115,13 @@
             <?php foreach ($qas as list($q, $a)): ?>
                 <div class="border-b accordion">
                 <div class="border-l-2 border-transparent relative">
+<<<<<<< HEAD
                     <input class="w-full absolute z-10 cursor-pointer opacity-0" type="checkbox" id="chck1" style="height: 100%;">
                     <div class="flex justify-between items-center p-3 px-0 cursor-pointer select-none accordion-label" for="chck1">
+=======
+                    <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
+                    <div class="flex justify-between items-center p-5 px-0 cursor-pointer select-none accordion-label" for="chck1">
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
                         <span class="text-grey-darkest font-thin text-xl">
                         <?= $q ;?>
                         </span>

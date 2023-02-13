@@ -27,7 +27,6 @@
 					<li class="mb-1 text-gray-600 dark:text-gray-400 text-sm">
 							Supernatural Man, LLC was founded in 2016 in New York City, where we found men were feeling less energy and passion for life than they used to. We decided to create a natural formula with top quality ingredients to supercharge guys like you.
 					</li>
-
 				</ul>
 			</div>
 			<div class="flex md:justify-center">
@@ -42,7 +41,6 @@
 						</li>
 					</ul>
 				</div>
-
 			</div>
 			<div class="flex sm:justify-center">
 				<div class="flex flex-col">
@@ -84,7 +82,6 @@
 	<hr class="container container-md my-12 border-gray-500 mx-auto">
 	<div class="w-full bg-zinc-800 pb-4">
 		<div class="flex flex-wrap items-center justify-center md:justify-between container container-md mx-auto text-sm p-2">
-
 			<div class="flex items-center mt-4 space-x-6 justify-center">
 				<a href="/support" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">CONTACT US</a>
 				<a href="#" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
@@ -124,12 +121,10 @@
 			</div>
 
 		</div>
-
 	</div>
 	<div class="bg-black">
 		<p class="text-center text-gray-500 text-sm py-3">Copyright &copy; <?php echo date('Y'); ?> Supernatural Man, LLC </p>
 	</div>
-
 </footer>
 
 <?php
@@ -149,11 +144,11 @@
 	const modalBody = document.getElementById('legal-copy');
 	var htmlElement = '';
 
+	// TODO: split out into modal component instead of placing on pages
 	function loadLegal(url) {
 		window.modalHandler('legalModal', true);
 
 		var request = new XMLHttpRequest();
-
 		request.onreadystatechange = (evt) => {
 			if (request.readyState === 4) {
 				htmlElement = evt.srcElement.response;
@@ -162,13 +157,11 @@
 				} else {
 					modalBody.innerHTML = '<div class="text-center">Content is unavailable at this time.</div>';
 				}
-
 			}
 		}
 
 		request.open('GET', url, true),
 		request.send('');
 	}
-
 
 </script>

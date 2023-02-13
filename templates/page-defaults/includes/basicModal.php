@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 <!--
+=======
+<!-- 
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
     Requires basic_modal.js served in the <head>
     php variables:
     $modal_id = string;
@@ -7,7 +11,11 @@
     $max_width = optional string (size: sm, md, lg, xl, 23456xl);
     $height = optional string (fractions: 1/2 2/3 3/4 4/5 5/6 full);
     $modal_body = html as string;
+<<<<<<< HEAD
     $modal_footer = html as string;
+=======
+    $modal_footer = html as string; 
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
 -->
 
 <style>
@@ -20,11 +28,18 @@
     }
 
     .body-content {
+<<<<<<< HEAD
+=======
+        overflow-y: scroll;
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
         height: auto;
         border-top: 1px solid #e3e3e3;
         border-bottom: 1px solid #e3e3e3;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
     .modal-position {
         position: fixed;
         top: 0;
@@ -43,6 +58,7 @@
         background-color: rgba(0,0,0,0.75);
     }
 </style>
+<<<<<<< HEAD
 <div class="modal-position modal-bg sans" id="<?= $modal_id; ?>" style="margin-left: 0">
     <div id="modal-wrapper" role="alert" class="container mx-auto w-11/12 md:w-2/3 center-modal <?php echo !empty($max_width) ? 'max-w-' . $max_width : 'max-w-lg'; ?>">
         <div class="flex flex-col relative py-8 px-5 pb-4 md:px-10 bg-white shadow-md rounded border border-gray-400 h-auto <?php echo !empty($height) ? 'h-' . $height : ''; ?>" style="max-height: 90vh">
@@ -51,12 +67,26 @@
                 <h1 id="title-content" class="text-2xl font-bold text-red-700"><?= $modal_title; ?></h1>
             </div>
             <div id="body-content" class="body-content flex-auto my-3 mt-1 py-4 overflow-y-scroll">
+=======
+<div class="modal-position sans" id="<?= $modal_id; ?>" style="margin-left: 0">
+    <div role="alert" class="container mx-auto w-11/12 md:w-2/3 center-modal max-w-lg <?php echo !empty($max_width) ? 'max-w-' . $max_width : ''; ?>">
+        <div class="flex flex-col relative py-8 px-5 pb-4 md:px-10 bg-white shadow-md rounded border border-gray-400 h-auto <?php echo !empty($height) ? 'h-' . $height : ''; ?>" style="max-height: 90vh">
+            <div class="title" style="margin-top: -1rem">
+                <!-- insert title as innerHTML here -->
+                <h1 id="title-content" class="text-2xl font-bold text-red-500"><?= $modal_title; ?></h1>
+            </div>
+            <div id="body-content" class="body-content flex-auto my-3 mt-1 py-4">
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
               <!-- insert body copy as innerHTML here -->
               <?= $modal_body; ?>
             </div>
             <div class="flex items-center justify-start w-full">
                 <?= $modal_footer; ?>
+<<<<<<< HEAD
                 <!-- <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-green-600 bg-green-600 rounded text-white px-8 py-2 text-sm">Submit</button>
+=======
+                <!-- <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-green-600 bg-green-500 rounded text-white px-8 py-2 text-sm">Submit</button>
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
                 <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button> -->
             </div>
             <button class="cursor-pointer absolute top-0 right-0 mt-2 mr-2 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onclick="closeAll()" aria-label="close modal" role="button">
@@ -70,5 +100,9 @@
     </div>
 </div>
 <!-- <div class="w-full flex justify-center py-12" id="button">
+<<<<<<< HEAD
     <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-green-600 bg-green-600 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" onclick="modalHandler(true)">Open Modal</button>
+=======
+    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-green-600 bg-green-500 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" onclick="modalHandler(true)">Open Modal</button>
+>>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
 </div> -->

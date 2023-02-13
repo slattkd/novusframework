@@ -73,7 +73,6 @@ function pixelLogging($loggerPixel, $pixelsFired)
 
 
 
-
 switch ($pageType) {
     case "vsl":
         ?>

@@ -13,7 +13,7 @@ $debugCookie = $_COOKIE['debug'] ?? 'no';
 
 
 if (
-     $_SERVER['HTTP_HOST'] == 'totalbrainboost.test' ||
+    $_SERVER['HTTP_HOST'] == 'novusframework.test' ||
     $_SERVER['HTTP_HOST'] == 'yourlocalurl.test' ||
     $debugCookie == 'js6^g1hks92%ks7392hald81^11'
 ) {
@@ -286,6 +286,10 @@ $countries = [
     "VI" => 'Virgin Islands, U.S.',
     "YE" => 'Yemen'
 ];
+
+
+
+
 
 
 /*
