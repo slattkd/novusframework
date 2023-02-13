@@ -7,6 +7,7 @@ and complex systems in a tidy, easy to update package.
 
 - Open Terminal and CD to local directory
 - Run: npx tailwindcss -i input.css -o ./public/css/main.css --watch --minify
+- For Reference: https://tailwindcss.com/docs/installation
 
 ### Setting up Nginx
 

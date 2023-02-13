@@ -274,6 +274,7 @@ function video($template, $videoID = null, $dropTime = null, $overlay = null, $v
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+// generic modal component with customization for title, body, footer, etc.
 function modal($template, $modal_id = null, $modal_title = null, $modal_body = null, $modal_footer = null, $max_width = null, $height = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
@@ -285,6 +286,7 @@ function modal($template, $modal_id = null, $modal_title = null, $modal_body = n
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+// bottom fixed button to scroll to cta section
 function floatButton($template, $top_content, $button_text = null, $scroll_start = null, $scroll_id = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
@@ -296,6 +298,7 @@ function floatButton($template, $top_content, $button_text = null, $scroll_start
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+// opens models for applicable content
 function legalLinks($template, $templatePath = 'templates/page-defaults')
 {
     global $site;
@@ -321,7 +324,7 @@ function pixelEvent($template, $event, $affid = null)
 }
 */
 
-// version control for css
+// version control for css/js added to header src
 function get_that_filetime($file_url = false) {
     if (!file_exists($file_url)) {
         return '';
@@ -329,6 +332,15 @@ function get_that_filetime($file_url = false) {
     return filemtime($file_url);
 }
 
+/*
+ calculate display prices and amounts with product data from product.json
+ requires numerical values for these fields:
+     "product_month"
+     "product_qty"
+     "product_price"
+     "product_retail"
+     "product_ship"
+*/
 function savedAmt($retail, $price) {
     $saved = abs($retail - $price);
     return number_format($saved, 2);
