@@ -34,7 +34,7 @@
     padding: 10px 30px 10px 1.75em;
     background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/tick.webp');
     background-repeat: no-repeat;
-    background-position: left 11px;
+    background-position: left 14px;
     background-size: 1.4rem;
   }
 
@@ -299,7 +299,7 @@
     p,
     .wsl p,
     .wsl ul li {
-      font-size: 20px !important;
+      font-size: 20px;
     }
   }
 
@@ -486,7 +486,7 @@
         &nbsp;Even&nbsp;Further&hellip;</span>
       </h2>
 
-
+</div>
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png" type="image/png">
         <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.jpg" alt="dr masley"
@@ -544,7 +544,7 @@
 
       <p><span>On top of this&hellip; </span></p>
 
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">I Also Want To Share An <span
+      <h2 id="start-float-btn" class="text-center font-semibold text-xl md:text-3xl mb-4">I Also Want To Share An <span
           class="font-bold">Easy</span>&nbsp;Way To Save An <span class="font-bold">Additional </span><span
           class="text-red-600">52%</span>&nbsp;On Total Brain Boost&nbsp;Today&hellip;</span>
       </h2>
@@ -977,7 +977,7 @@
 
       <p><span>I can&rsquo;t wait to hear about the positive changes I hope you experience. </span></p>
     </div>
-  </div>
+ 
 
   <div id="third-qualify-wrap" class="w-full">
     <div class="flex flex-col justify-center items-center border border-4 p-3 md:py-5 fs-green">
@@ -1046,13 +1046,13 @@
       </div>
     </div>
   </div>
-
+</div>
   <!-- closing div for float button scroll to wrap  -->
   </div>
 
   <!-- end expand-content -->
   <div class="flex flex-col items-center justify-center w-full md:w-3/4 mx-auto mt-11">
-    <div class="p-4 border-2 clickable hover:bg-gray-100 mb-4 rounded-lg">
+    <div id="wsl-btn" class="p-4 border-2 clickable hover:bg-gray-100 mb-4 rounded-lg">
       Skip This - I understand I will NOT get access to this one-time deal again.
     </div>
     <div class="text-sm text-center mb-4 w-4/5">Please remember that once you leave this page, this deal is gone for
@@ -1066,9 +1066,10 @@
 
   <?php
     $button_text = 'Yes, Give Me This Now!';
+    $scroll_start = 'start-float-btn';
     $scroll_id = 'scroll-to-cta';
     $top_content = '';
-    floatButton('includes/floatButton',$top_content,$button_text,$scroll_id);
+    floatButton('includes/floatButton',$top_content,$button_text,$scroll_start,$scroll_id);
   ?>
 
   <script>
@@ -1076,8 +1077,7 @@
   wslBtn.addEventListener('click', () => {
     window.location = '<?= $nextlink; ?>';
   })
-  </script>
-  <script>
+
   const qualifyButton = document.getElementById('qualify-btn');
   const qualifyWrap = document.getElementById('qualify-wrap');
   const buy = document.getElementById('container-buy');
@@ -1089,12 +1089,10 @@
     progress.classList.add('grow');
 
     setTimeout(() => {
-      qualifyWrap.style.display = 'none';
-      expandContent.style.display = 'block';
+      openAll();
     }, "1000")
   })
-  </script>
-  <script>
+
   const qualifyButtonSecond = document.getElementById('second-qualify-btn');
   const qualifyWrapSecond = document.getElementById('second-qualify-wrap');
   const buySecond = document.getElementById('second-container-buy');
@@ -1106,12 +1104,10 @@
     progressSecond.classList.add('grow');
 
     setTimeout(() => {
-      qualifyWrapSecond.style.display = 'none';
-      expandContentSecond.style.display = 'block';
+      openAll();
     }, "1000")
   })
-  </script>
-  <script>
+
   const qualifyButtonThird = document.getElementById('third-qualify-btn');
   const qualifyWrapThird = document.getElementById('third-qualify-wrap');
   const buyThird = document.getElementById('third-container-buy');
@@ -1123,12 +1119,20 @@
     progressThird.classList.add('grow');
 
     setTimeout(() => {
-      qualifyWrapThird.style.display = 'none';
-      expandContentThird.style.display = 'block';
+      openAll();
     }, "1000")
   })
-  </script>
-  <script>
+
+
+  function openAll() {
+      qualifyWrap.style.display = 'none';
+      expandContent.style.display = 'block';
+      qualifyWrapSecond.style.display = 'none';
+      expandContentSecond.style.display = 'block';
+      qualifyWrapThird.style.display = 'none';
+      expandContentThird.style.display = 'block';
+  }
+
   function scrollToId(id) {
     const scrollElement = document.getElementById(id);
     scrollElement.scrollIntoView({

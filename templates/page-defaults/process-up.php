@@ -121,8 +121,8 @@ if ($_SESSION['buy'] == 1) {
     } else {
         $_SESSION['declineup'] = 1;
         //The order was declined. Return the customer to the last page
-        $logger->info('Order Declined - sending back to:' . $_SESSION['last']);
-        header("location: " . $_SESSION['last']);
+        $logger->info('Order Declined - sending back to:' . $_SESSION['next']);
+        header("location: " . $_SESSION['next']);
         exit();
     }
 } else {
