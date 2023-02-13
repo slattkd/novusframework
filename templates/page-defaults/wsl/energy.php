@@ -15,11 +15,28 @@
 
     .wsl h1, .wsl h2 {
       font-weight: 600;
+      scroll-margin-top: 60px;
     }
 
     .wsl h1 {
-      line-height: 35px;
-      line-height: 1.3
+      font-size: 34px;
+    }
+    .wsl h2 {
+      font-size: 20px;
+    }
+    .wsl p {
+      font-size:18px;
+    }
+    @media screen and (min-width: 769px) {
+      .wsl p {
+        font-size: 20px;
+      }
+      .wsl h1 {
+        font-size: 54px;
+      }
+      .wsl h2 {
+        font-size: 32px;
+      }
     }
 
     .wsl li {
@@ -34,16 +51,16 @@
     </style>
 </head>
 
-<body class="bg-gray-100 c8 wsl">
+<body class="bg-gray-100 c8">
   <?php 
     $container = 'container-vsl';
     template("includes/rpHeader"); 
   ?>
-  <div class="container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg content-center text-gray-600">
+  <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg content-center text-gray-600">
 
-  <h1 class="text-3xl md:text-5xl text-tygreen leading-6 title"><span class="5">This Indian &ldquo;Super-Ager&rdquo; Secret Holds The Key To Endlessly Energy &amp; Focus, Keeping You Fit And Active Well Into Your 70s, 80s and 90s&hellip;</span></h1>
+  <h1 class="text-center text-3xl md:text-5xl text-tygreen leading-6 title"><span class="5">This Indian &ldquo;Super-Ager&rdquo; Secret Holds The Key To Endlessly Energy &amp; Focus, Keeping You Fit And Active Well Into Your 70s, 80s&nbsp;and&nbsp;90s&hellip;</span></h1>
 
-  <div class="text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6"><span class="17">While Helping to Fight Fatigue, Brain Fog, Depression and Even Weight&nbsp;Gain&hellip; </span></div>
+  <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6">While Helping to Fight Fatigue, Brain Fog, Depression and Even Weight&nbsp;Gain&hellip;</div>
   <picture class="flex justify-center mb-4">
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-sad.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/lady-sad.jpg" alt="brain boost bottle">
@@ -89,19 +106,19 @@
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/basil-ginger-cumin.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/basil-ginger-cumin.jpg" alt="herbal ingredients" class="float-right md:ml-4 mb-3 w-full md:w-1/2" loading="lazy">
     </picture>
-    <span>The key active </span><span>ingredient</span><span class="0">&nbsp;in this magic drink is called Curcumin.</span>
-    </p><p>
-    <span>There&rsquo;s only one problem: your body doesn&rsquo;t absorb unless it&rsquo;s modified in a lab.</span>
-    </p><p>
-    <span>Revival Point found a new type of curcumin that is 93 times more absorbable called </span><span class="font-semibold">CurcuRouge&reg;</span><span class="0">&nbsp;&hellip; </span>
-    </p><p>
-    <span>Thanks to </span><span class="font-semibold">its unique &ldquo;polymer matrix&rdquo; technology</span><span class="0">, CurcuRouge&reg; is able to cross the blood-brain barrier and deliver curcumin&rsquo;s health-boosting benefits directly to your brain</span>
-    </p>
-    <span class="0">CurcuRouge&reg; also helps: </span>
+    <p>The key active ingredient in this magic drink is called Curcumin.</p>
+    
+    <p>There&rsquo;s only one problem: your body doesn&rsquo;t absorb unless it&rsquo;s modified in a lab.</p>
+    
+    <p>Revival Point found a new type of curcumin that is 93 times more absorbable called </span><span class="font-semibold">CurcuRouge&reg;</span><span class="0">&nbsp;&hellip; </p>
+    
+    <p>Thanks to </span><span class="font-semibold">its unique &ldquo;polymer matrix&rdquo; technology</span><span class="0">, CurcuRouge&reg; is able to cross the blood-brain barrier and deliver curcumin&rsquo;s health-boosting benefits directly to your brain</p>
+    
+    <p class="0">CurcuRouge&reg; also helps: </p>
     <div style="clear:both"></div>
   </div>
 
-  <ul class="start my-4 list-disc list-inside pl-3 md:pl-6 text-gray-600">
+  <ul class="md:p-3 start my-4 list-disc list-inside text-gray-600">
     <li class="font-semibold"><span class="6">Decrease toxic buildup in the brain</span></li>
     <li class="font-semibold"><span class="6">Reduce brain inflammation </span></li>
     <li class="font-semibold"><span class="6">Protect your brain from oxidative stress </span></li>
@@ -124,13 +141,13 @@
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/grapes-wine.jpg" alt="grapes and wine" class="float-left md:mr-4 mb-3 w-full md:w-1/2" loading="lazy">
     </picture>
-    <span class="0">These additional brain-boosting ingredients include&hellip; </span>
-    </p><p>
-    <span class="font-semibold">Trans-Resveratrol</span><span class="0">&mdash;a polyphenol found in Red Wine&mdash;boosts brain circulation, flooding brain cells with the oxygen-rich blood they need for optimal function. </span>
-    </p><p>
-    <span class="font-semibold">Magnesium BisGlycinate, </span><span>which </span><span class="0">restores signaling speed for sharper thinking and faster memory recall. </span>
-    </p>
-    <span>And </span><span class="font-semibold">Vitamins B12, D, </span><span>and</span><span class="font-semibold">&nbsp;Folate</span><span>, which</span><span class="0">&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </span>
+    <p class="0">These additional brain-boosting ingredients include&hellip; </p>
+    
+    <p class="font-semibold">Trans-Resveratrol</span><span class="0">&mdash;a polyphenol found in Red Wine&mdash;boosts brain circulation, flooding brain cells with the oxygen-rich blood they need for optimal function. </p>
+    
+    <p class="font-semibold">Magnesium BisGlycinate, </span><span>which </span><span class="0">restores signaling speed for sharper thinking and faster memory recall. </p>
+    
+    <p>And </span><span class="font-semibold">Vitamins B12, D, </span><span>and</span><span class="font-semibold">&nbsp;Folate</span><span>, which</span><span class="0">&nbsp;form an essential vitamin complex for boosting energy metabolism and fighting cognitive decline. </p>
     <div style="clear:both"></div>
   </div>
 
@@ -141,15 +158,15 @@
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/age-couple.avif" type="image/avif">
       <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/age-couple.jpg" alt="couple relationship" class="float-right md:ml-4 mb-3 w-full md:w-1/2" loading="lazy">
     </picture>
-    <span class="0">The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</span>
-    </p><p>
-    <span class="font-semibold">Total Brain Boost&reg; by Revival Point</span><span>&nbsp;is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo-controlled studies. </span>
-    </p><p>
-    <span class="0">All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</span>
-    </p><p>
-    <span>If you&rsquo;re suffering from </span><span>low energy, focus or drive</span><span>, this is your chance to try something truly revolutionary. Plus, with the added benefit of our </span><span class="font-semibold">90-day money-back guarantee</span><span>, your only risk is </span><span class="font-semibold">a more energetic, fit and active life.</span><span class="0">&nbsp;</span>
-    </p>
-    <span class="0">Click below to start your journey to better brain health and a more energetic, fit body today.</span>
+    <p class="0">The researchers at Revival Point created this powerful formula because they couldn&rsquo;t find anything else on the market that contained all of these ingredients in the exact ratios known to be more effective - including patented absorbable curcumin.</p>
+    
+    <p class="font-semibold">Total Brain Boost&reg; by Revival Point</span><span>&nbsp;is the first, and only, brain health supplement of its kind to combine these 6 powerful ingredients, all backed by double-blind placebo-controlled studies. </p>
+    
+    <p class="0">All with the help of a world-renowned medical doctor, this revolutionary, one-of-a-kind formula is designed to boost brain health at any age.</p>
+    
+    <p>If you&rsquo;re suffering from </span><span>low energy, focus or drive</span><span>, this is your chance to try something truly revolutionary. Plus, with the added benefit of our </span><span class="font-semibold">90-day money-back guarantee</span><span>, your only risk is </span><span class="font-semibold">a more energetic, fit and active life.</span><span class="0">&nbsp;</p>
+    
+    <p class="0">Click below to start your journey to better brain health and a more energetic, fit body today.</p>
     <div style="clear:both"></div>
   </div>
 
@@ -157,7 +174,7 @@
     <button id="wsl-btn" class="cta-button clickable w-full md:w-auto text-2xl md:text-3xl py-2" style="padding: 10px 20px;">LEARN MORE <span class="chev-right ml-2"></span></button>
   </div>
 
-  <div class="mt-4 ml-8 flex flex justify-center italic text-gray-600">
+  <div class="mt-4 md:ml-8 flex flex justify-center italic text-gray-600">
     <ul class="list-disc">
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->Try It Risk-Free With Revival Point&#39;s 90-Day Money-Back Guarantee</li>
       <li><!--<img class="inline" src="//<?= $_SERVER['HTTP_HOST'];?>/images/check-green.png"> -->97% Said They Would Purchase Again</li>

@@ -83,6 +83,8 @@ $site['shippingIntlCost'] = 14.95;
 $site['shippingFree'] = 5;
 $site['shippingFreeCost'] = 0;
 
+$tax_msg = '+ Applicable Sales Tax';
+
 /*
 $limelight_api_username     = '5gmale-funnel';
 $limelight_api_password     = 'MAzpqTRAXa4Dvk';

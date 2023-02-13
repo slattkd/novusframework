@@ -68,8 +68,8 @@
 
 </style>
 
-<section>
-  <div class="flex w-full funnel-progress bg-white border rounded mb-7 sans">
+<section style="width:100%;">
+  <div class="flex w-full funnel-progress bg-white border rounded sans">
       <div class="funnel-progress-step w-1/3 <?php if ($current_step == 1) echo 'bg-yellow-100'; ?>">
           <?php if ($current_step > 1): ?>
             <div class="funnel-progress-icon checked"><span class="checkmark"></span></div>

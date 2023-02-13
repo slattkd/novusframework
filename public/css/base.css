@@ -5,10 +5,14 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .sans {
@@ -337,6 +341,72 @@ h1.title, h2.title {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   line-height: 1.3
+}
+
+.wsl p span.font-semibold {
+  font-weight: 700;
+}
+
+.wsl ul li {
+  font-size: 17px;
+}
+
+.wsl button.cta-button {
+  width: 500px;
+}
+
+.video-container {
+  position: relative;
+  border: 1px solid grey;
+  aspect-ratio: 16/9;
+  width: 100%;
+}
+
+.click-to-play {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.click-to-play:hover {
+  outline: 1px solid rgba(250,250,250,0.5);
+  outline-offset: -1px;
+}
+
+.play-button {
+  font-size: 3em;
+  line-height: 1.5em;
+  height: 2em;
+  width: 2em;
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 1;
+  background-color: #2b333f;
+  background-color: rgba(43,51,63,.7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' width='25' title='play' fill='%23fff'%3E%3Cpath d='M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 54% center;
+  border-radius: 2em;
+  transition: all .4s;
+  z-index:1000;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+.video-container:hover button.play-button {
+  background-color: #d52484;
 }
 
 /* blue - #ff01ff */
