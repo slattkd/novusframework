@@ -837,7 +837,7 @@
                     $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -852,7 +852,7 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -931,7 +931,7 @@
                     $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -946,7 +946,7 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -1016,7 +1016,7 @@
                 $<?= $product1['product_price']; ?> Today!</p>
 
               <p class="sales-tax"><?= $tax_msg; ?></p>
-              <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+              <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                 class="w-full" style="text-decoration: none;">
                 <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                   I'll Take It</button>
@@ -1032,7 +1032,7 @@
               </p>
 
               <p class="sales-tax"><?= $tax_msg; ?></p>
-              <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
+              <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&buy=1&next=<?= $nextlink; ?>"
                 class="w-full" style="text-decoration: none;">
                 <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                   I'll Take It</button>
@@ -1077,6 +1077,23 @@
   wslBtn.addEventListener('click', () => {
     window.location = '<?= $nextlink; ?>';
   })
+
+  const productLinks = document.querySelectorAll('.product-link');
+  productLinks.forEach((link)=> {
+    link.addEventListener('click', (event)=> { 
+      disableProductLinks();
+      link.querySelector('button').innerText = 'Processing...';
+    })
+  })
+
+  function disableProductLinks() {
+    console.log('disable');
+    productLinks.forEach((link)=> {
+      // const button = link.querySelector('button');
+      // link.disabled = true;
+      link.classList.add('disabled');
+    })
+  }
 
   const qualifyButton = document.getElementById('qualify-btn');
   const qualifyWrap = document.getElementById('qualify-wrap');

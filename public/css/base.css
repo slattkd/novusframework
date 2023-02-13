@@ -30,7 +30,8 @@ body {
   transition: all 150ms ease-in-out;
   cursor: pointer;
 }
-:disabled {
+:disabled, .disabled {
+  pointer-events: none;
   cursor: not-allowed !important;
   opacity: 0.75;
   filter: contrast(0.6);
