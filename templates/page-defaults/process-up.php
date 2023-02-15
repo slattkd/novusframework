@@ -9,7 +9,11 @@ unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 unset($_SESSION['declineup']);
 
-
+if ($_SESSION['success_last'] == $_SESSION['last']){
+    $logger->info('Successful order was attempted a second time, skipping to next page');
+    header("location: " . $_SESSION['next']);
+    exit();
+}
 
 /*
 //Check for allowed query string keys, reduces attempts on invalid data.
@@ -105,6 +109,8 @@ if ($_SESSION['buy'] == 1) {
         $_SESSION[$getid] = 1;
         $_SESSION['lastOrderId'] = $oid_res[1];
         $_SESSION['lastOrderTotal'] = $oid_tot[1];
+
+        $_SESSION['success_last'] = $_SESSION['last'];
 
         //Process to the next page in the funnel regardless of InsureShip success
         if ($jsonResponse) {
