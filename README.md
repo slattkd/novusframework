@@ -76,6 +76,27 @@ Product info can be referenced from the products json file through the global va
 
 In the refrenced code, the "4" is the PID of the product. Any variables included in the `include/products.json` will be available in this global variable.
 
+Product JSON keys and values:
+
+product_name          Display Name (string)
+product_description   Description of Product (string)
+product_sku           SKU (string)
+product_month         amount of months the product should last (num)
+product_qty           amount of products shipped (num)
+product_price         sale price of the product (num)
+product_retail        perceived MSRP price of product before mark down (num)
+product_is_shippable  boolean to determine if digital product (0/1)
+product_id            PID of product (string)
+
+Data can be verified in sticky.io at https://gdc.sticky.io/admin/products/products.php?product_id=[PID]
+
+Global PHP functions calculate various display values:
+savedAmt(retail, price)   returns num 
+monthAmt(price, month)    returns num 
+percentOff(price, retail) returns num (rounded)
+perBottle(price, qty)     returns num 
+taxAmt(price)              returns num 
+
 ## Debug in Production Environments
 The debug is automatically setup to work in local environments when using the novusframework.test url as defined in the config.php file.
 

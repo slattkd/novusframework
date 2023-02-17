@@ -7,6 +7,7 @@
 
 <head>
   <?php template('includes/header'); ?>
+  <title><?= $company['billedAs']; ?> - Cerebral Boost</title>
   <style type="text/css">
   .wsl p,
   h1,

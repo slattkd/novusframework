@@ -1,14 +1,14 @@
 <?php
 
 // Standard one time payment
-$product1 = $products['products']['1136'];
-$product2 = $products['products']['1137'];
-$product3 = $products['products']['1138'];
+$product1 = $products['products']['126'];
+$product2 = $products['products']['127'];
+$product3 = $products['products']['128'];
 
 // VIP autopay
-$product4 = $products['products']['1139'];
-$product5 = $products['products']['1141'];
-$product6 = $products['products']['1143'];
+$product4 = $products['products']['1021'];
+$product5 = $products['products']['1022'];
+$product6 = $products['products']['1023'];
 
 $_SESSION['pageType'] = 'order';
 
@@ -22,7 +22,7 @@ if (!isset($_SESSION['vip_discount'])) {
 
 <head>
     <?php template("includes/header"); ?>
-    <title>Total Brain Boost- Secure Order</title>
+    <title><?= $company['billedAs']; ?> - Secure Order</title>
 
     <style>
         .header-strip {
@@ -358,7 +358,7 @@ if (!isset($_SESSION['vip_discount'])) {
             </div>
             <div class="w-full md:w-3/4">
                 <div class="mt-6">
-                    <span class="font-bold">Total Brain Boost</span> comes with our 100% money-back guarantee, including shipping and tax, but we don't stop there…
+                    <span class="font-bold"><?= $company['billedAs']; ?></span> comes with our 100% money-back guarantee, including shipping and tax, but we don't stop there…
 
                     We are so confident in this product and the amazing results you will experience that we want it to be absolutely risk-free for you. If after 3 months you find yourself not completely satisfied, we'll give you your money back — no questions asked.
 

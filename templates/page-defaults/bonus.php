@@ -14,11 +14,7 @@
                 <div class="w-full md:w-1/2 p-4">
                     <h2>A Special Deal For New Customers Only!</h2>
                     <?php echo $site['products'][0]['product_name'];?>
-<<<<<<< HEAD
                     <img src="//<?= $_SERVER['HTTP_HOST'];?>/images/releaseswitchadvanced-6bottle.png" alt="Release Switch Advanced - 6 Bottles">
-=======
-                    <img src="/images/releaseswitchadvanced-6bottle.png" alt="Release Switch Advanced - 6 Bottles">
->>>>>>> 0fed7cf2b0e7bfc13b0e75ad7149d9a73d94f5b1
                 </div>
                 <div class="w-full md:w-1/2 p-4">
                     <h2>Stock Up On ​Release Switch Advanced Now...</h2>

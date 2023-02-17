@@ -7,7 +7,7 @@
 
 <head>
   <?php template('includes/header'); ?>
-  <title>This Secret Boosts Your Memory And Focus</title>
+  <title><?= $company['billedAs']; ?> - This Secret Boosts Your Memory And Focus</title>
   <style type="text/css">
     .wsl p, h1, h2 {
       margin-bottom: 20px;
