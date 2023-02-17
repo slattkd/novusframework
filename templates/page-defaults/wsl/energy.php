@@ -1,5 +1,5 @@
 <?php
-  $nextlink = $nextlink = '/checkout/order' . $querystring;
+  $next = $next = '/checkout/order' ;
   $_SESSION['pageType'] = 'wsl';
 ?>
 <!DOCTYPE html>
@@ -193,7 +193,7 @@
 <script>
   const wslBtn = document.getElementById('wsl-btn');
   wslBtn.addEventListener('click', ()=> {
-    window.location = '<?= $nextlink; ?>';
+    window.location = '<?= $next; ?>';
   })
 </script>
 </body>

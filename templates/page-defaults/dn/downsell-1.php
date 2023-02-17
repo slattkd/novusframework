@@ -12,6 +12,10 @@
   9. receipt
 */
 $_SESSION['pageType'] = 'dn1';
+$next = '/up/upsell-2-blow-her-away.php';
+
+// Include PID of product to process-up here
+$product1 = $products['products']['1023'];
 ?>
 
 
@@ -22,166 +26,15 @@ $_SESSION['pageType'] = 'dn1';
         <title>100% SECURE - Supernatural Man LLC Checkout</title>
         <link rel="shortcut icon" href="https://s3.amazonaws.com/sec-image/upsells/skeletonkey/lock.png" type="image/png" />
 
-         <style>
-             .p1, .color-black {
-				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif !important;
-			}
-		
-			.p1, .color-black {
-				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif !important;
-			}
-		
-			.p4 {
-				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
-				font-size: 26px;
-				font-weight: 400;
-			}
-			
-			.p3 {
-				font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
-			}
-			
-			#cboxOverlay {
-				background: #000 !important;
-			}
-			
-			#cboxClose{
-				top: 0px;
-				    background: url(../../upsells/5gmale/colorbox/images/controls.png) no-repeat -25px 0 !important;
-			}
-			
-			.buy_button {
-					font-weight: bold;
-				    background-color: #82c213;
-				    color: #fff;
-				    font-size: 25px;
-				    border: 1px solid #000;
-				    padding: 15px 10px;
-				    border-radius: 4px;
-				    text-shadow: 1px 1px #000;
-				    box-shadow: 1px 1px 2px #888888;
-				    text-decoration: none;
-			}
-			
-			.buy_button:hover {
-				background-color: transparent;
-				    border: 2px solid #82c213;
-				    color: #82c213;
-				    text-decoration: none;
-				    text-shadow: none;
-			}
-			
-			.main-pop h1 {
-				color: #cc0300;
-				font-size: 60px;
-				text-align: center;
-				margin-top: -20px;
-				margin-bottom: 5px;
-			}
-			.modal-title {
-				position: relative;
-				padding: 12px !important;
-			}
-			p#close-btn {
-				position: absolute;
-				top: 3px;
-				right: 8px;
-				color: #fff;
-				font-weight: bold;
-				font-size: 17px;
-				cursor: pointer
-			}
-			.main-pop h3 {
-				text-align: center;
-				font-size: 27px !important;
-				line-height: 37px;
-				font-weight: normal;
-				margin-top: -15px;
-				color: #000 !important;
-			}
-			.stay-btn-cont, .leave-btn-cont {
-				width: 48%;
-				float: left;
-			}
-			#stay-btn, #leave-btn {
-				font-size: 30px;
-				font-weight: bold;
-				color: #fff;
-				border: none;
-				background: green;
-				padding: 12px 25px;
-				margin-top: 15px;
-				width: 90%;
-				cursor: pointer;
-			}
-			#leave-btn {
-				margin-left: 20px;
-				background: #cc0300;
-			}
-			#ouibounce-modal .modal-footer {
-				border-top: none !important;
-			}
-			.options {
-				width: 100%;
-				float: left;
-				border: 3px dashed red;
-				padding-bottom: 35px;
-				padding-top: 15px;
-			}
-			.option2 {
-				margin-top: 30px;
-			}
-          
-			@media(max-width:767px){
-				.lefts {
-					width:100%
-				}
-				
-				.guarantee {
-					margin-top: 20px;
-				}
-				
-				.buy_button {
-					font-size: 23px;
-				}
-
-                .fancybox-opened {
-                    width: 90% !important;
-                }
-            }
-
-            .buy_button {
-			font-weight: bold;
-			background-color: #82c213;
-			color: #fff;
-			font-size: 25px;
-			border: 1px solid #000;
-			padding: 15px 10px;
-			border-radius: 4px;
-			text-shadow: 1px 1px #000;
-			box-shadow: 1px 1px 2px #888888;
-			text-decoration: none;
-			transform: all 200ms ease-in-out;
-		}
-		
-		.buy_button:hover {
-			background-color: transparent;
-			border: 2px solid #82c213;
-			color: #82c213;
-			text-decoration: none;
-			text-shadow: none;
-		}
-            
-            /* upsell condensed */
-            body{padding:0;margin:0;color:#000;background-color:#eee}.main_container{padding:0;margin:25px auto;overflow:auto;width:680px}.slpage{padding:0 0 20px 0;overflow:hidden;width:100%}.letter-body{position:relative;clear:both;padding:15px 50px;margin:15px auto;float:none;border-radius:5px;border-width:3px 1px 1px;border-style:solid;border-color:#d81e00 #000 #000;background-color:#fff}p{margin:0;padding:0}.p1{font-family:Arial,Verdana,sans-serif;color:#000;text-align:center;font-size:16px;margin:20px 0}.p3{font-family:Arial,sans-serif;font-size:14px;line-height:130%;text-indent:0!important}.p4{font-weight:700;font-size:20px;color:#d81e00}.centered{text-align:center}.color-black{color:#000}#letter_body{margin:0;padding:10px 0}#footer{clear:both;color:silver;margin:80px 0 0;border-top:1px solid #ccc;padding:10px 0 0;text-align:center;text-transform:uppercase}@media (max-width:800px){.letter-body{padding:20px}.p1{text-indent:0}}@media (max-width:460px){.p3{font-size:22px}.main_container{padding:0;padding-top:10px;width:100%;margin:0}.letter-body{margin:0;padding:4px;width:100%}.slpage{padding:20px 0 20px 0;width:100%;float:none;margin:0}}@media (max-width:920px){.main_container{width:96%;margin:0 auto}}
+      <style>
 
          </style>
      </head>
  <!-- HTML code from Bootply.com editor -->
 
- <body>
+ <body class="bg-gray-100">
 
- <div class="main_container">
+ <div>
      <div class="slpage">
              <section>
                 <?php
@@ -190,99 +43,95 @@ $_SESSION['pageType'] = 'dn1';
                 ?>
              </section>
 
-             <div id="letter_body" class=" pr-4 pl-42  md:w-full pr-4 pl-42 flex flex-wrap">
-
-<div class="letter-body">
+<div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600">
 
     <!-- PASTE LETTER HERE -->
 
         <!--p class="p4 flex-growor-black"><b><span id="upSellName" style="font-size: 17px;"><strong style="color: #D81E00;">WARNING:</strong> <u>Do Not</u> Leave This Page Yet, Your Order Is Not Complete!</span></b></p-->
-        <p class="p2"><br></p>
         
-        <p class="p4 centered" style="font-size:55px; line-height: 58px;">Take Just 3 Or 6 Bottles And Get An Even <strong>BIGGER Discount…</strong></p>
         
-        <p class="p2"><br></p>
-        <p class="p3">Hey, it’s Ryan again…</p>
-        <p class="p2"><br></p>
+        <h1 class="mb-5 text-center text-red-600">Take Just 3 Or 6 Bottles And Get An Even <strong>BIGGER Discount…</strong></h1>
+        
+        
+        <p class="pb-4 text-lg md:text-xl">Hey, it’s Ryan again…</p>
+        
 
-        <p class="p3">I understand that $177 is a lot, but I don’t want you to leave empty handed.</p>
-        <p class="p2"><br></p>
-        <p class="p3">Like I said before I really want to make sure you’ve got those thick, rock-hard erections for AS LONG as you want them!</p>
-        <p class="p2"><br></p>
-        <p class="p3">So right now, today only…</p>
-        <p class="p2"><br></p>
-        <p class="p3">I’ll send you a smaller, three-bottle supply and give you an <strong><em>even bigger discount</em></strong>.</p>
-        <p class="p2"><br></p>
-        <p class="p3">Or an extra 6 bottles at a rock bottom crazy discount.</p3>
-        <p class="p2"><br></p>
-        <p class="p3">And YES – I’ll still throw in those <strong>two FREE bonus gifts</strong> as well!</p>
-        <p class="p2"><br></p>
-        <p class="p3">On the last page, you got a 57% OFF discount…</p>
-        <p class="p2"><br></p>
-        <p class="p4 centered">Now I’ll Drop The Price EVEN MORE… And Give You A <strong>WHOPPING 76% OFF!</strong></p>
-        <p class="p2"><br></p>
-        <p class="p3">You heard right!
-        <p class="p2"><br></p>
-        <p class="p3">My marketing department is going to be furious about this… </p>
-        <p class="p2"><br></p>
-        <p class="p3">But because you’re a new customer I want to make sure you’re taken care of… and I know you’re going to be ordering A LOT more of this because I’ve seen how it works…</p>
-        <p class="p2"><br></p>
-        <p class="p3">And I’d really be disappointed if you started getting all these killer results… </p>
-        <p class="p2"><br></p>
-        <p class="p3">And then, your supply ran out!</p>
-        <p class="p2"><br></p>
-        <p class="p3">But this is ONLY available today, <strong>right here</strong> on this page, because you’re a new customer.</p>
-        <p class="p2"><br></p>
-        <p class="p3">Once you leave this page, this deal is <strong>gone for good!</strong></p>
-        <p class="p2"><br></p>
-        <p class="p3">Make sure you secure your <strong>EXTREME DISCOUNT</strong> now…</p>
+        <p class="pb-4 text-lg md:text-xl">I understand that $177 is a lot, but I don’t want you to leave empty handed.</p>
+        
+        <p class="pb-4 text-lg md:text-xl">Like I said before I really want to make sure you’ve got those thick, rock-hard erections for AS LONG as you want them!</p>
+        
+        <p class="pb-4 text-lg md:text-xl">So right now, today only…</p>
+        
+        <p class="pb-4 text-lg md:text-xl">I’ll send you a smaller, three-bottle supply and give you an <strong><em>even bigger discount</em></strong>.</p>
+        
+        <p class="pb-4 text-lg md:text-xl">Or an extra 6 bottles at a rock bottom crazy discount.</p3>
+        
+        <p class="pb-4 text-lg md:text-xl">And YES – I’ll still throw in those <strong>two FREE bonus gifts</strong> as well!</p>
+        
+        <p class="pb-4 text-lg md:text-xl">On the last page, you got a 57% OFF discount…</p>
+        
+        <h2 class="p4 text-center text-red-600">Now I’ll Drop The Price EVEN MORE… And Give You A <strong>WHOPPING 76% OFF!</strong></h2>
+        
+        <p class="pb-4 text-lg md:text-xl">You heard right!
+        
+        <p class="pb-4 text-lg md:text-xl">My marketing department is going to be furious about this… </p>
+        
+        <p class="pb-4 text-lg md:text-xl">But because you’re a new customer I want to make sure you’re taken care of… and I know you’re going to be ordering A LOT more of this because I’ve seen how it works…</p>
+        
+        <p class="pb-4 text-lg md:text-xl">And I’d really be disappointed if you started getting all these killer results… </p>
+        
+        <p class="pb-4 text-lg md:text-xl">And then, your supply ran out!</p>
+        
+        <p class="pb-4 text-lg md:text-xl">But this is ONLY available today, <strong>right here</strong> on this page, because you’re a new customer.</p>
+        
+        <p class="pb-4 text-lg md:text-xl">Once you leave this page, this deal is <strong>gone for good!</strong></p>
+        
+        <p class="pb-4 text-lg md:text-xl">Make sure you secure your <strong>EXTREME DISCOUNT</strong> now…</p>
 
-<p class="p2"><br></p>
 
-<p class="p4 centered" style="font-size:35px;">Secure Your <strong>EXTREME DISCOUNT</strong> On A 3 Or 6-Month Supply of 5G Male PLUS And <strong>Get 78% OFF!</strong></p>
-<p class="p2"><br></p>
-<p class="p3 centered" style="font-size:23px;">Click The Button Below To Get Started Now…</p>
-<p class="p2"><br></p>
+
+<h2 class="p4 text-center text-red-600">Secure Your <strong>EXTREME DISCOUNT</strong> On A 3 Or 6-Month Supply of 5G Male PLUS And <strong>Get 78% OFF!</strong></h2>
+
+<p class="pb-4 text-lg md:text-xl text-center" style="font-size:23px;">Click The Button Below To Get Started Now…</p>
+
 
 <div class="processblock">
-<div id="container-buy" style="">
+<div id="container-buy">
 <div class="options">
-    <div class="option1">
-        <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;">3 Bottle Discount</p>
-        <p class="p3 centered" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $209.85</strike></p>
-        <p class="p3 centered" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $49</strong></p>
-        <p class="p3 centered" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 76% Savings!)</p>
-        <p class="p2"><br></p>
-        <div class="centered" id="buy-btn2">
-        <?php if($newflow) { ?>
-            <div class="flex justify-center mx-auto mt-6"><span><a href="/up/upsell-2-blow-her-away.php/?pid=10&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
-        <?php } else { ?>
-            <div class="flex justify-center mx-auto mt-6"><span><a href="/up/upsell-2-blow-her-away.php/?pid=455&buy=1" id="upsell-buy2" class="buy_button processlink" rel="samewin">Yes, Secure My Discount!</a></span></div>
-        <?php } ?>
+    <div class="option1 border-4 border-dashed border-red-600 p-3 md:p-5">
+        <div class="text-3xl md:text-4xl text-center font-bold">3 Bottle Discount</div>
+        <div class="text-lg md:text-xl text-center text-gray-400" style="padding-bottom:5px;"><strike>Normally: $<?= $product1['product_retail']; ?></strike></div>
+        <div class="text-lg md:text-xl text-center mt-3"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product1['product_price']; ?></strong></div>
+        <div class="pb-2 text-lg md:text-xl text-center text-red-600">(A MASSIVE <?= percentOff($product1['product_price'], $product1['product_retail']); ?>% Savings!)</div>
+				<p class="sales-tax"><?= $tax_msg; ?></p>
+        
+        <div class="text-center" id="buy-btn2">
+            <div class="flex justify-center mx-auto mt-6">
+							<a href="/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy2" class="buy_button processlink clickable" rel="samewin">Yes, Secure My Discount!</a>
+						</div>
         </div>
     </div>
     
 </div>
 
         <div style="clear:both;"></div>
-        <p class="centered flex justify-center"><span><img class="guarantee" src="/images/90-day-icon.png" style="width:114px; height:112px;margin-top:20px;"></span></p>
-        <p class="p7 centered" style="font-size: 20px; font-weight:bold;margin-top: 20px;"><em>(It's Recommended You Take This One-Time Discount)</em>
+        <p class="text-center flex justify-center"><span><img class="guarantee" src="/images/90-day-icon.png" style="width:114px; height:112px;margin-top:20px;"></span></p>
+        <p class="p7 text-center" style="font-size: 20px; font-weight:bold;margin-top: 20px;margin-bottom: 0"><em>(It's Recommended You Take This One-Time Discount)</em>
         </p>
 </div>
 
-<p class="p2"><br></p>
-<p class="p2"><br></p>
 
-        <p class = 'centered p8' style="font-size: 13px; color: #8C8C8C;"><a href="/thank-you" style="color: #8C8C8C; text-decoration:underline;" class="processlink">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line. </p>
+
+
+        <p class="text-center py-6 text-gray-400 mx-auto" style="font-size: 13px; width: 80ch;"><a href="/thank-you" style="color: #8C8C8C; text-decoration:underline;" class="processlink">Skip This</a> - No, Ryan I don’t want this, I understand what a great deal this is and I am giving up my chance to have it, please give my discount to the man in line. </p>
 </div><!-- end .processblock -->
-        <div id="footer"> Supernatural Man LLC </div>
+        <div id="footer" class="text-center border-t pt-3"> <?= $company['name']; ?> </div>
 
 
     <!-- // PASTE LETTER HERE -->
 
 </div>
 
-</div>
 
  </div><!-- /.container -->
 
@@ -305,30 +154,7 @@ $_SESSION['pageType'] = 'dn1';
          document.querySelector('.processblock').style.display = 'none';
      });
 
-     //exit intent
-     document.body.addEventListener('mouseleave', function () {
-             console.log('left');
-                 modalHandler('mouseModal', true);
-         });
-
-     //back button
-     <?php if($detect->isMobile()) { ?>
-         var stateObj = { };
-         history.pushState(stateObj, "100% SECURE - Supernatural Man LLC Checkout", "downsell-1-t.php<?php echo $querystring;?>");
-         window.addEventListener('popstate', function(e) {
-                     modalHandler('mouseModal', true);
-
-                         const finishButton = document.getElementById('finish-btn');
-             finishButton.addEventListener('click', function(e) {
-                             modalHandler('mouseModal', false);
-             });
-         });
-     <?php } ?>
  </script> <!-- Triggers Exit-intent -->
-
- <script>
-     var specialOffer = 'downsell-1-t.php<?php echo trim($querystring); ?>';
- </script>
 
 
  </body>

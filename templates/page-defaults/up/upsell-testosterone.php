@@ -189,9 +189,9 @@ $newflow = 0;
                                 <div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
                                     <p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $bottleprice; ?> PER BOTTLE</p>
                                     <?php if($newflow) { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=21&buy=1&next=up/upsell-final-offer" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=21&next=up/upsell-final-offer" onclick="exit=false;">
                                     <?php } else { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=739&buy=1&next=up/upsell-final-offer" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=739&next=up/upsell-final-offer" onclick="exit=false;">
                                     <?php } ?>
                                     <img src="https://5gm.s3.amazonaws.com/secureorder.gif" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding-top: 3px;" alt="cta">
                                     </a>

@@ -309,7 +309,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<?php if($newflow) { ?>
 										<a id="btn-two" class="split-buy processlink takebtn" href="/OCUS/?id=4&buy=2&vwoupvar=gm968control" onclick="exit=false;">
 									<?php } else { ?>
-										<a id="btn-two" class="split-buy processlink takebtn" href="/OCUS/?id=4&buy=1&vwoupvar=gm968control" onclick="exit=false;">
+										<a id="btn-two" class="split-buy processlink takebtn" href="/OCUS/?id=4&vwoupvar=gm968control" onclick="exit=false;">
 									<?php } ?>
 									<img src="https://5gm.s3.amazonaws.com/secureorder.gif" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding-top: 3px;" alt="cta">
 									</a>

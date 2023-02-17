@@ -59,7 +59,7 @@ function setSessionVars($encryptedData = null)
         'a','o','r','s','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
         'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
         'alink','debug','coupon','vwovar','pid','up','dn','add1','add2','add3',"buy",
-        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid"];
+        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid","qa"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
     foreach ($allowedData as $queryString => $value) {
@@ -187,6 +187,9 @@ function setSessionVars($encryptedData = null)
             $_SESSION['r'] = $value ?? null;
             $_SESSION['eftid'] = $value ?? null;
         }
+        if ($queryString == 'qa') {
+            $_SESSION['qa'] = $value ?? null;
+        }
        // $_SESSION[$queryString] = $value
     }
 }
@@ -209,9 +212,6 @@ if (isset($_SESSION['voltrk'])) {
 if ($voluum) {
     $nextlink = 'https://treach-tutters.com/click' . $querystring;
     $exitlink = 'https://treach-tutters.com/click' . $querystring;
-} else {
-    $nextlink = 'assessmentd.php' . $querystring;
-    $exitlink = 'sl/5gmale.php' . $querystring;
 }
 
 

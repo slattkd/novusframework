@@ -335,9 +335,9 @@ $_SESSION['pageType'] = 'up2';
 								<div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
 									<p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $perbottle; ?> PER BOTTLE</p>
 									<?php if($newflow) { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=24&buy=1&next=up/upsell-testosterone" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=24&next=up/upsell-testosterone" onclick="exit=false;">
                                     <?php } else { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=734&buy=1&next=up/upsell-testosterone" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=734&next=up/upsell-testosterone" onclick="exit=false;">
                                     <?php } ?>
 									<img src="https://5gm.s3.amazonaws.com/yes-secure-my-discount.png" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding: 10px 0 7px;" alt="secure my discount">
 									</a>

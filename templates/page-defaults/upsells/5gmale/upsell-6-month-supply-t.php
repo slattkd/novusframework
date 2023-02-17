@@ -432,7 +432,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 								<p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $179.69</strong></p>
 								<p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 57% Savings!)</p>
 								<div class="flex justify-center mt-3">
-								<a href="/OCUS/?id=2&buy=1" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+								<a href="/OCUS/?id=2" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
 								</div>
 								
 							</div>
@@ -442,7 +442,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 								<p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $297</strong></p>
 								<p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A WHOPPING 65% Savings!)</p>
 								<div class="flex justify-center mt-3">
-								<a href="/OCUS/?id=2&buy=1" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+								<a href="/OCUS/?id=2" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
 								</div>
 							</div>
 						</div>

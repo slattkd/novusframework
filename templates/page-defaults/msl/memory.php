@@ -1,5 +1,5 @@
 <?php
-  $nextlink = '/checkout/order' . $querystring;
+  $next = '/checkout/order' ;
   $_SESSION['pageType'] = 'wsl';
 
   $vidcode = 'ZFJaBUp1lypHohgj';
@@ -13,39 +13,7 @@
   <?php template('includes/header'); ?>
   <title><?= $company['billedAs']; ?> - This Secret Boosts Your Memory And Focus</title>
   <style type="text/css">
-    .wsl p, h1, h2 {
-      margin-bottom: 20px;
-    }
-
-    .wsl h1 {
-      font-size: 34px;
-    }
-    .wsl h2 {
-      font-size: 20px;
-    }
-    .wsl p, .wsl ul li {
-      font-size:18px;
-    }
-    @media screen and (min-width: 769px) {
-      .wsl p, .wsl ul li {
-        font-size: 20px;
-      }
-      .wsl h1 {
-        font-size: 54px;
-      }
-      .wsl h2 {
-        font-size: 32px;
-      }
-    }
-
-    .wsl li {
-      list-style: none;
-      padding: 10px 30px;
-      background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
-      background-repeat: no-repeat;
-      background-position: left 15px;
-      background-size: 20px;
-    }
+    
 
     .table-contents {
       flex-direction: column;
@@ -107,7 +75,7 @@
     <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
   </div>
   <div class="flex text-sm font-semibold md:justify-start md:ml-4">
-    <a class="learn" href="<?= $nextlink; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
+    <a class="learn" href="<?= $next; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>
   </div>
   <div class="flex">
   <picture class="flex justify-center mb-4 w-full md:w-1/3 p-3">
@@ -285,7 +253,7 @@
 <script>
   const wslBtn = document.getElementById('wsl-btn');
   wslBtn.addEventListener('click', ()=> {
-    window.location = '<?= $nextlink; ?>';
+    window.location = '<?= $next; ?>';
   })
 
   function scrollToId(id) {

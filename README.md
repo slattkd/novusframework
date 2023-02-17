@@ -45,6 +45,10 @@ location / {
 
 - Mike McBrien - mike@pineapple.co Pineapple Products
 
+## TEST Credit Card Numbers
+1444....40 = Successful
+1444....41 = Declined
+
 
 ## To Do
 
@@ -53,7 +57,29 @@ location / {
 - Add config variable for one page vs 3 step checkout
 - Add logic for config controlled upsell/downsells
 - Add config variable for DNVB vs Legacy Sticky
--
+
+### Novus Party To-Do List
+#### Dane
+- Remove buy=1 from upsell URL's
+  - process-up.php - Remove logic for buy=1 required on line ~64
+- Add "next" varible to upsel and downsell pages
+- in index.php are we using "require_once('../include/OrderValidation.php');" - if not, remove!
+- disallow characters that are not digits on credit card (checkout/step3)
+- validate "next step" button on credit card digits (checkout/step3)
+- Remove any warnings for "Undefined Key Array"
+- Enable checkout for onepage, include variables to work from config
+- Combine 3 modal pages into one using conditionals
+- Remove unused pages
+
+#### Derek 
+- Check why site[affid] if is not working in director
+- Index.php change default page to dynamic config page
+- if pagetype folder is empty, forward to the default URL
+  - /msl/ but memory.php exists - forward to memory.php
+- Add Option for QA - query param qa=[name]
+  - if QA param is available autofill test CC
+  - if QA param - disable conversion pixels (if we disable how do we test the conversions?)
+
 
 ## The Config File
 Almost everything in Novus Framework can be controlled or changed in the `include/config.php` file. Many fo the setting and variables defined in the

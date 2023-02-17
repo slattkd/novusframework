@@ -9,6 +9,7 @@ unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 unset($_SESSION['declineup']);
 
+//Only work after hitting the Sticky servers
 if ($_SESSION['success_last'] == $_SESSION['last']){
     $logger->info('Successful order was attempted a second time, skipping to next page');
     header("location: " . $_SESSION['next']);
@@ -22,9 +23,6 @@ $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
 foreach ($allowedData as $queryString => $value) {
     // use $queryString to reset values to different session variables or match to query string value
-    if ($queryString == 'buy') {
-        $_SESSION['buy'] = $value ?? null;
-    }
     if ($queryString == 'next') {
         $_SESSION['next'] = $value ?? null;
     }
@@ -33,12 +31,6 @@ foreach ($allowedData as $queryString => $value) {
     }
 }
 */
-
-if (empty($_GET['buy'])) {
-    $logger->info('Missing "Buy" variable of 1');
-    header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request", true, 400);
-    exit;
-}
 
 if (empty($_GET['pid'])) {
     $logger->info('Missing PID for upsell');
@@ -60,78 +52,72 @@ $postArray = print_r($_GET, true);
 $logger->info('Posted Values: ' . $postArray);
 
 
-if ($_SESSION['buy'] == 1) {
-    $params = array(
-        'pid' => $_SESSION['pid'],
-        'buy'  => $_SESSION['buy'],
-        'next' => $_SESSION['next']
-    );
-    unset($_SESSION['vwoupvar']);
-    $vwoupvar = $_GET['vwoupvar'] ?? '';
-    $_SESSION['vwoupvar'] = $vwoupvar;
 
-    $sticky      = new sticky();
-    $response    = $sticky->newOrderCardOnFile($params);
-    $res         = explode('&', $response);
+$params = array(
+    'pid' => $_SESSION['pid'],
+    'next' => $_SESSION['next']
+);
+unset($_SESSION['vwoupvar']);
+$vwoupvar = $_GET['vwoupvar'] ?? '';
+$_SESSION['vwoupvar'] = $vwoupvar;
 
-    /*
-    0 errorFound=0
-    1 &responseCode=100
-    2 &transactionID=Not Available
-    3 &customerId=282249
-    4 &authId=Not Available
-    5 &orderId=52821677
-    6 &orderTotal=297.00
-    7 &orderSalesTaxPercent=0.00&
-    8 orderSalesTaxAmount=0.00
-    9 &test=1
-    10 &gatewayId=22
-    11 &prepaid_match=0
-    12 &line_items[0][product_id]=250
-    13 &line_items[0][variant_id]=0
-    14 &line_items[0][quantity]=1
-    15 &line_items[0][subscription_id]=7724f989ca9e1ccc4d6d82e1bfb55876
-    16 &gatewayCustomerService=800-253-8173
-    17 &gatewayDescriptor=Revival Point
-    18 &subscription_id[250]=7724f989ca9e1ccc4d6d82e1bfb55876
-    19 &resp_msg=Approved
-    */
+$sticky      = new sticky();
+$response    = $sticky->newOrderCardOnFile($params);
+$res         = explode('&', $response);
 
-    $logger->info('Upsell Response: ' . print_r($response, true));
+/*
+0 errorFound=0
+1 &responseCode=100
+2 &transactionID=Not Available
+3 &customerId=282249
+4 &authId=Not Available
+5 &orderId=52821677
+6 &orderTotal=297.00
+7 &orderSalesTaxPercent=0.00&
+8 orderSalesTaxAmount=0.00
+9 &test=1
+10 &gatewayId=22
+11 &prepaid_match=0
+12 &line_items[0][product_id]=250
+13 &line_items[0][variant_id]=0
+14 &line_items[0][quantity]=1
+15 &line_items[0][subscription_id]=7724f989ca9e1ccc4d6d82e1bfb55876
+16 &gatewayCustomerService=800-253-8173
+17 &gatewayDescriptor=Revival Point
+18 &subscription_id[250]=7724f989ca9e1ccc4d6d82e1bfb55876
+19 &resp_msg=Approved
+*/
 
-    if ($res[1] == 'responseCode=100') {
-        //The order was successful. Save the order ID
-        $oid_res    = explode("=", $res[5]);
-        $oid_tot    = explode("=", $res[6]);
-       // $_SESSION['step_' . $_SESSION['pid'] . '_orderId'] = $oid_res[1];
-       // $_SESSION['step_' . $_SESSION['pid']] = $_GET['buy'];
-        $getid = 'bought_' . $_SESSION['pid'];
-        $_SESSION[$getid] = 1;
-        $_SESSION['lastOrderId'] = $oid_res[1];
-        $_SESSION['lastOrderTotal'] = $oid_tot[1];
+$logger->info('Upsell Response: ' . print_r($response, true));
 
-        $_SESSION['success_last'] = $_SESSION['last'];
+if ($res[1] == 'responseCode=100') {
+    //The order was successful. Save the order ID
+    $oid_res    = explode("=", $res[5]);
+    $oid_tot    = explode("=", $res[6]);
+    // $_SESSION['step_' . $_SESSION['pid'] . '_orderId'] = $oid_res[1];
+    $getid = 'bought_' . $_SESSION['pid'];
+    $_SESSION[$getid] = 1;
+    $_SESSION['lastOrderId'] = $oid_res[1];
+    $_SESSION['lastOrderTotal'] = $oid_tot[1];
 
-        //Process to the next page in the funnel regardless of InsureShip success
-        if ($jsonResponse) {
-            $logger->info('Order Success - Giving back JSON string');
-            $data = array("orderId" => $oid_res[1], "orderTotal" => $oid_tot[1], "response" => $res[1]);
-            header("Content-Type: application/json");
-            echo json_encode($data);
-            exit();
-        } else {
-            $logger->info('Order Success - sending to next page:' . $_GET['next']);
-            header("location: " . $_SESSION['next']);
-            exit();
-        }
+    $_SESSION['success_last'] = $_SESSION['last'];
+
+    //Process to the next page in the funnel regardless of InsureShip success
+    if ($jsonResponse) {
+        $logger->info('Order Success - Giving back JSON string');
+        $data = array("orderId" => $oid_res[1], "orderTotal" => $oid_tot[1], "response" => $res[1]);
+        header("Content-Type: application/json");
+        echo json_encode($data);
+        exit();
     } else {
-        $_SESSION['declineup'] = 1;
-        //The order was declined. Return the customer to the last page
-        $logger->info('Order Declined - sending back to:' . $_SESSION['next']);
+        $logger->info('Order Success - sending to next page:' . $_GET['next']);
         header("location: " . $_SESSION['next']);
         exit();
     }
 } else {
-    header("location: " . $_SESSION['last']);
+    $_SESSION['declineup'] = 1;
+    //The order was declined. Return the customer to the last page
+    $logger->info('Order Declined - sending back to:' . $_SESSION['next']);
+    header("location: " . $_SESSION['next']);
     exit();
 }

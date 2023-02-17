@@ -24,21 +24,23 @@ document.addEventListener("mouseout", event => {
 });
 
 window.addEventListener('hashchange', (event) => {
-  event.preventDefault();
   backEvent();
   console.log('has change', event);
 })
 
 window.addEventListener('unload', (event) => {
-  event.preventDefault();
   backEvent();
   console.log('unload', event);
 })
 
 window.addEventListener('popstate', (event) => {
-  event.preventDefault();
   backEvent();
   console.log('popstate', event);
+});
+
+window.addEventListener('beforeunload', function (e) {
+    backEvent();
+    console.log('before unload', event);
 });
 
 
@@ -55,11 +57,14 @@ function exitEvent() {
 
 function backEvent() {
   console.log('back')
+  event.preventDefault();
+  event.returnValue = '';
   // confirmation allows a decision in the browser
   if (confirm("Press a button!") == true) {
     console.log('accepted');
   } else {
     console.log('rejected');
   }
+  return false;
 }
 </script>

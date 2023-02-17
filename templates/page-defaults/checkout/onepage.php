@@ -1,6 +1,6 @@
 <?php
 
-$nextlink = '/process.php' . $querystring;
+$next = '/process.php' ;
 $kount_session = str_replace('.', '', microtime(true));
 
 $currentDate = date("m/d/Y H:i:s");
@@ -107,13 +107,13 @@ switch ($add2) {   //37 Sex Positions
         $add2pid = 0;
         break;
     case 1:
-        $37_product = $products['products'][84];
+        $three7_product = $products['products'][84];
         $threeSex = '<p class="orders">37 Sex Positions</p><hr>';
-        $threeTotal = $37_product['product_price'];
+        $threeTotal = $three7_product['product_price'];
         $threePrice = '<p class="price-sum">$<span id="sexpositions">' . $threeTotal . '</span></p><hr>';
         $thirtyseven = 1;
-        $add2pid = $37_product['product_id'];
-        $untaxableAmount = $37_product['product_price'];
+        $add2pid = $three7_product['product_id'];
+        $untaxableAmount = $three7_product['product_price'];
         break;
     default:
         $threeSex = '';
@@ -370,7 +370,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         .out-of-time {
             background: url('//<?= $_SERVER["HTTP_HOST"];?>/images/popup-timer.gif') no-repeat;
             background-position: center;
-            background-fit: contain;
+            background-size: contain;
             height: 85px;
             width: 85px;
         }
@@ -1004,7 +1004,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
     </div>
 
         <!-- hidden inputs -->
-        <!-- /process-up/?pid=#&buy=1&next=url -->
+        <!-- /process-up/?pid=#&next=url -->
         <input type="hidden" name="previous_page" value="checkout/order">
         <input type="hidden" name="current_page" value="/checkout/onepage">
         <input type="hidden" name="next_page" value="/up/upsell-6-month-supply">

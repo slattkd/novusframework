@@ -1,5 +1,5 @@
 <?php
-  $nextlink = $nextlink = '/checkout/order' . $querystring;
+  $next = $next = '/checkout/order' ;
   $_SESSION['pageType'] = 'wsl';
 ?>
 
@@ -272,7 +272,7 @@
 <script>
   const wslBtn = document.getElementById('wsl-btn');
   wslBtn.addEventListener('click', ()=> {
-    window.location = '<?= $nextlink; ?>';
+    window.location = '<?= $next; ?>';
   })
 
   function scrollToId(id) {

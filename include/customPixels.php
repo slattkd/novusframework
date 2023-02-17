@@ -84,6 +84,16 @@ switch ($pageType) {
         </script>
         <?php
         break;
+    case "msl":
+            ?>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'GTM_<?php echo $pageType;?>'
+                });
+            </script>
+            <?php
+            break;
     case "wsl":
         ?>
         <script>
@@ -246,8 +256,6 @@ switch ($pageType) {
                     'quantity': 1
                 }]
             });
-
-
         </script>
 
         <?php

@@ -1,4 +1,5 @@
 <?php
+$next = '/up/upsell-1';
 
 // Standard one time payment
 $product1 = $products['products']['126'];

@@ -1,6 +1,6 @@
 <?php
 
-$nextlink = '/checkout/step3' . $querystring;
+$next = '/checkout/step3';
 $_SESSION['pageType'] = 'order';
 
 // required PID from post
@@ -55,7 +55,7 @@ $current_product = $products['products'][$pid];
       </div>
 
   <div class="flex">
-    <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $nextlink; ?>">
+    <form id="step-2" class="mb-0 w-full" method="post" action="<?php echo $next; ?>">
 
           <div class="flex flex-wrap items-center mb-4">
             <div class="input w-full mb-3 md:mb-2 md:px-4">
@@ -211,7 +211,7 @@ $current_product = $products['products'][$pid];
             <!-- email alerts value to post? -->
       <input type="hidden" name="previous_page" value="checkout/step1">
       <input type="hidden" name="current_page" value="/checkout/step2">
-      <input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
+      <input type="hidden" name="next_page" id="next-page" value="<?php echo $next; ?>">
       <input type="hidden" id="shippingId" name="shippingId" value="<?= $site['shippingUs']; ?>">
       <input type="hidden" id="shippingCost" name="shippingCost" value="0">
       <input type="hidden" id="tax_pct" name="tax_pct" value="0">

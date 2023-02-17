@@ -6,7 +6,7 @@ date_default_timezone_set("America/New_York");
 require_once('../include/config.php');
 require_once('../include/functions.php');
 require_once('../include/director.php');
-require_once('../include/event-capture.php');
+//require_once('../include/event-capture.php');
 require_once('../include/stickylegacy.php');
 require_once('../include/OrderValidation.php');
 require_once('../include/curlWrapper.php');

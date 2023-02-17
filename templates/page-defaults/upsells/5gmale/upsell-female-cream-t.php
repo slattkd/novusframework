@@ -449,7 +449,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
 									<?php if($newflow) { ?>
 										<a id="btn-two" class="split-buy processlink takebtn" href="OCUS/?id=6&buy=2" onclick="exit=false;">
 									<?php } else { ?>
-										<a id="btn-two" class="split-buy processlink takebtn" href="OCUS/?id=6&buy=1" onclick="exit=false;">
+										<a id="btn-two" class="split-buy processlink takebtn" href="OCUS/?id=6" onclick="exit=false;">
 									<?php } ?>
 									<img src="https://5gm.s3.amazonaws.com/secureorder.gif" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding-top: 3px;" alt="secure my order button">
 									</a>

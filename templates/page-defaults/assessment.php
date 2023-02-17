@@ -5,7 +5,7 @@ if (!empty($_POST))
     //If form validates using pristine.js, save the from data to the session and forward to the next page.
     $_SESSION['assessment'] = serialize($_POST);
     $_SESSION['customerEmail'] = $_POST['customer_email'];
-    header('Location: /checkout/order' . $querystring);
+    header('Location: /checkout/order' );
     die();
 }
 ?>

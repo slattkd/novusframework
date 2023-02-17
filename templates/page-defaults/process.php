@@ -85,7 +85,7 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
     $logger->info('Is this a Test Order: ' . $test_order[1]);
 
     $url = $_POST['next_page'];
-    header("Location: " . $url . $querystring);
+    header("Location: " . $url );
     exit();
 } else {
     if (isset($_SESSION['attemptNum'])) {
@@ -221,6 +221,6 @@ if ($res[1] == 'responseCode=100') {// was prospect api call a success?
 
 
     $url = $_POST['current_page'];
-    header("Location: " . $url . $querystring);
+    header("Location: " . $url );
     exit();
 }

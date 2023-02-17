@@ -1,35 +1,13 @@
 <?php
-
-$nextlink = '//' . $_SERVER['HTTP_HOST'] . '/checkout/step1' . $querystring;
+//This is the variable for the next page in the upsell
+$next = '//' . $_SERVER['HTTP_HOST'] . '/checkout/step1' ;
 
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
 }
 $pid = $_SESSION['pid'];
 
-@$totalPrice = intval($price) + intval($ship);
-
-switch ($pid) {
-  case 1136:
-    $up_pid = 1139;
-    break;
-  case 1137:
-    $up_pid = 1141;
-    break;
-  case 1138:
-    $up_pid = 1143;
-	break;
-  case 1083:
-  	$up_pid = 1086;
-  	break;
-  case 1084:
-  	$up_pid = 1088;
-  	break;
-  case 1085:
-  	$up_pid = 1090;
-}
-
-@$up_totalPrice = intval($up_price) + intval($up_ship);
+$up_pid = $products['upsell'][$pid];
 
 $current_product = $products['products'][$pid];
 $up_product = $products['products'][$up_pid];
@@ -47,7 +25,7 @@ $up_product = $products['products'][$up_pid];
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
 
-.discount-wrap {
+		.discount-wrap {
 			max-width: 550px;
 			padding: 1rem;;
 			border: dashed #ff0000 6px;
@@ -119,10 +97,10 @@ $up_product = $products['products'][$up_pid];
 				<h2 class="text-3xl md:text-5xl mb-3" style="line-height: 1.1;">10% OFF INSTANTLY!</h2>
 				<p class="subhead">Get <b>10% OFF FOR LIFE</b> on all orders and easy monthly auto refills plus FREE printed monthly newsletter <b>
 
-					<form id="discountform" name="discountform" class="button-wrap w-full mb-0" method="post" action="<?php echo $nextlink; ?>">
+					<form id="discountform" name="discountform" class="button-wrap w-full mb-0" method="post" action="<?php echo $next; ?>">
 						<input type="hidden" name="previous_page" value="checkout/order">
 						<input type="hidden" name="current_page" value="/discount">
-						<input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
+						<input type="hidden" name="next_page" id="next-page" value="<?php echo $next; ?>">
 						<input type="hidden" id="product_id" name="product_id" value="<?= $up_pid; ?>">
 						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 md:px-5 py-2 md:py-4 clickable">
 					</form>
@@ -131,10 +109,10 @@ $up_product = $products['products'][$up_pid];
 			</div>
 
 			<div class="skip-wrap">
-				<form id="skipform" name="skipform" class="w-full mb-0 mt-3" method="post" action="<?php echo $nextlink; ?>">
+				<form id="skipform" name="skipform" class="w-full mb-0 mt-3" method="post" action="<?php echo $next; ?>">
 					<input type="hidden" name="previous_page" value="checkout/order">
 					<input type="hidden" name="current_page" value="/discount">
-					<input type="hidden" name="next_page" id="next-page" value="<?php echo $nextlink; ?>">
+					<input type="hidden" name="next_page" id="next-page" value="<?php echo $next; ?>">
           <input type="hidden" id="product_id" name="product_id" value="<?= $current_product['product_id']; ?>">
 					<input type="submit" id="submitskip" name="submit" class="clickable text-xl md:text-2xl text-gray-400 px-4" value="Skip This - I do NOT want 10% OFF my order" style="white-space: break-spaces">
 				</form>
