@@ -35,7 +35,7 @@
 <html>
   <head>
     <?php template("includes/header"); ?>
-    <title><?php echo $company->name; ?> | Cart</title>
+    <title><?php echo $company['name']; ?> | Cart</title>
 
 
   </head>
@@ -150,7 +150,7 @@
       </div>
 
     </div>
-
+    <?php template("includes/exitIntent"); ?>
     
   <script>
     function removeProduct(pid, event) {
