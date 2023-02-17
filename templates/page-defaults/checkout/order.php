@@ -255,31 +255,8 @@ if (!isset($_SESSION['vip_discount'])) {
             transform: rotate(-4deg);
         }
 
-
-        .wsl p, .wsl h1, .wsl h2 {
-          margin-bottom: 20px;
-        }
-
-        .wsl h1, .wsl h2 {
-          font-weight: 600;
-        }
-
-        .wsl h1 {
-          line-height: 35px;
-          line-height: 1.3;
-        }
-
         h1.text-4xl {
             font-size: 2.5rem;
-        }
-
-        .wsl li {
-        list-style: none;
-        padding: 6px 25px;
-        background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
-        background-repeat: no-repeat;
-        background-position: left center;
-        background-size: 18px;
         }
 
     </style>

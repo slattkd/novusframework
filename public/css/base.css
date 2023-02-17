@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
   scroll-behavior: smooth;
   max-width: 100%;
@@ -10,20 +9,20 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   max-width: 100%;
   overflow-x: hidden;
 }
 
 .sans {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: "Open Sans", sans-serif !important;
 }
 .serif {
-  font-family: Georgia, 'Times New Roman', Times, serif !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
 }
 
 .condensed {
-  font-family: 'Open Sans Condensed', sans-serif !important;
+  font-family: "Open Sans Condensed", sans-serif !important;
 }
 
 .clickable {
@@ -31,7 +30,8 @@ body {
   cursor: pointer;
 }
 
-:disabled, .disabled {
+:disabled,
+.disabled {
   pointer-events: none;
   cursor: not-allowed !important;
   opacity: 0.75;
@@ -117,38 +117,63 @@ input[type="checkbox"] {
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-ms-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #modalbutton {
-  float: none!important;
-  opacity: 1!important;
-  font-family: HelveticaNeueLTStd-HvCnO,sans-serif;
+  float: none !important;
+  opacity: 1 !important;
+  font-family: HelveticaNeueLTStd-HvCnO, sans-serif;
   background: #ff0000;
-  background: -moz-linear-gradient(top,#ff0000 0,#f94242 40%,#ef8282 100%);
-  background: -webkit-linear-gradient(top,#ff0000 0,#f94242 40%,#ef8282 100%);
-  background: linear-gradient(to bottom,#ff0000 0,#f94242 40%,#ef8282 100%);
+  background: -moz-linear-gradient(top, #ff0000 0, #f94242 40%, #ef8282 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #ff0000 0,
+    #f94242 40%,
+    #ef8282 100%
+  );
+  background: linear-gradient(to bottom, #ff0000 0, #f94242 40%, #ef8282 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#fff', GradientType=0);
   border: solid 3px #994000;
   font-size: 30px;
@@ -187,7 +212,7 @@ input[type="checkbox"] {
 
 .red-top {
   border-top: 3px solid red;
-  border-color: #D81E00 #000 #000;
+  border-color: #d81e00 #000 #000;
 }
 
 .text-green-600 {
@@ -198,12 +223,12 @@ input[type="checkbox"] {
   background-color: #62b218 !important;
 }
 
-[type=button] {
+[type="button"] {
   -webkit-appearance: auto;
 }
 
 .cta-button {
-  font-family: Open Sans Condensed,Impact,sans-serif;
+  font-family: Open Sans Condensed, Impact, sans-serif;
   cursor: pointer;
   margin: 20px auto 16px;
   font-weight: 900;
@@ -217,8 +242,9 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: center;
   margin: 20px 20px 16px;
-  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
-  background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%),
+    0 3px 1px -2px rgb(0 0 0 / 20%);
+  background-image: linear-gradient(180deg, #f6dda1, #f0c14b) !important;
   border: 1px solid #fff;
   border-color: #a88734 #9c7e31 #846a29;
   border-radius: 5px;
@@ -257,11 +283,12 @@ input[type="checkbox"] {
 }
 
 .gbox {
-    border-style: solid;
-    border-width: 13px 13px 12px 12px;
-    border-image: url(https://s3.amazonaws.com/flora-spring/img/fx/certificate-border.png) 26 26 24 24 repeat;
-    border-width: 26px 26px 24px 24px;
-    padding: 10px 15px;
+  border-style: solid;
+  border-width: 13px 13px 12px 12px;
+  border-image: url(https://s3.amazonaws.com/flora-spring/img/fx/certificate-border.png)
+    26 26 24 24 repeat;
+  border-width: 26px 26px 24px 24px;
+  padding: 10px 15px;
 }
 
 .gseal {
@@ -270,11 +297,15 @@ input[type="checkbox"] {
   text-align: center;
   margin: -50px auto 0;
   max-width: 120px;
-  filter: drop-shadow(0 2px 5px rgba(50, 90, 110, .125)) drop-shadow(0 1px 4px rgba(50, 90, 110, .15)) drop-shadow(0 2px 1.5px rgba(50, 90, 110, .4));
+  filter: drop-shadow(0 2px 5px rgba(50, 90, 110, 0.125))
+    drop-shadow(0 1px 4px rgba(50, 90, 110, 0.15))
+    drop-shadow(0 2px 1.5px rgba(50, 90, 110, 0.4));
 }
 
 .seal {
-  filter: drop-shadow(0 5px 10px rgba(50,90,110,.125)) drop-shadow(0 4px 5px rgba(50,90,110,.15)) drop-shadow(0 2px 1.5px rgba(50,90,110,.4));
+  filter: drop-shadow(0 5px 10px rgba(50, 90, 110, 0.125))
+    drop-shadow(0 4px 5px rgba(50, 90, 110, 0.15))
+    drop-shadow(0 2px 1.5px rgba(50, 90, 110, 0.4));
 }
 
 .protection-header h5 span {
@@ -286,13 +317,14 @@ input[type="checkbox"] {
   color: #006894;
 }
 
-.protection-header h5:after, .protection-header h5:before {
-    height: 1px;
-    content: " ";
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
-    background-color: #006894;
+.protection-header h5:after,
+.protection-header h5:before {
+  height: 1px;
+  content: " ";
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  background-color: #006894;
 }
 
 .bull.blue-q div:not(.check) {
@@ -306,7 +338,7 @@ input[type="checkbox"] {
 .bull.blue-q div p {
   margin-top: 0;
   line-height: 1.4;
-  font-size: 17px
+  font-size: 17px;
 }
 
 .bull.blue-q div h6 {
@@ -317,7 +349,7 @@ input[type="checkbox"] {
 }
 
 .phone-square {
-  background-size:contain;
+  background-size: contain;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3C!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath fill='%23006894' d='M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm90.7 96.7c9.7-2.6 19.9 2.3 23.7 11.6l20 48c3.4 8.2 1 17.6-5.8 23.2L168 231.7c16.6 35.2 45.1 63.7 80.3 80.3l20.2-24.7c5.6-6.8 15-9.2 23.2-5.8l48 20c9.3 3.9 14.2 14 11.6 23.7l-12 44C336.9 378 329 384 320 384C196.3 384 96 283.7 96 160c0-9 6-16.9 14.7-19.3l44-12z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
@@ -338,10 +370,11 @@ input[type="checkbox"] {
   color: transparent;
 }
 
-h1.title, h2.title {
-  font-family: 'Outfit', sans-serif;
+h1.title,
+h2.title {
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
-  line-height: 1.3
+  line-height: 1.3;
 }
 
 .wsl p span.font-semibold {
@@ -354,6 +387,29 @@ h1.title, h2.title {
 
 .wsl button.cta-button {
   width: 500px;
+}
+
+.wsl li {
+  list-style: none;
+  padding: 6px 25px;
+  background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 18px;
+}
+
+.wsl li.red-x {
+  background-image: url("//<?= $_SERVER["HTTP_HOST"]; ?>/images/red-x.png");
+}
+
+.wsl li.arrow-right {
+  background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/arrow-right.png');
+}
+
+.wsl li.basic {
+  background-image: none;
+  list-style: initial;
+  padding-left: 15px;
 }
 
 .video-container {
@@ -377,7 +433,7 @@ h1.title, h2.title {
 }
 
 .click-to-play:hover {
-  outline: 1px solid rgba(250,250,250,0.5);
+  outline: 1px solid rgba(250, 250, 250, 0.5);
   outline-offset: -1px;
 }
 
@@ -394,15 +450,15 @@ h1.title, h2.title {
   cursor: pointer;
   opacity: 1;
   background-color: #2b333f;
-  background-color: rgba(43,51,63,.7);
+  background-color: rgba(43, 51, 63, 0.7);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' width='25' title='play' fill='%23fff'%3E%3Cpath d='M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z' /%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 54% center;
   border-radius: 2em;
-  transition: all .4s;
-  z-index:1000;
-  left:50%;
-  top:50%;
+  transition: all 0.4s;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -410,7 +466,9 @@ h1.title, h2.title {
   background-color: #d52484;
 }
 
-.wsl p, h1, h2 {
+.wsl p,
+h1,
+h2 {
   margin-bottom: 20px;
   line-height: 1.2;
 }
@@ -421,11 +479,13 @@ h1.title, h2.title {
 .wsl h2 {
   font-size: 20px;
 }
-.wsl p, .wsl ul li {
-  font-size:18px;
+.wsl p,
+.wsl ul li {
+  font-size: 18px;
 }
 @media screen and (min-width: 769px) {
-  .wsl p, .wsl ul li {
+  .wsl p,
+  .wsl ul li {
     font-size: 20px;
   }
   .wsl h1 {

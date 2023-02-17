@@ -9,45 +9,6 @@
   <?php template('includes/header'); ?>
   <title><?= $company['billedAs']; ?> - This Secret Boosts Your Memory And Focus</title>
   <style type="text/css">
-    .wsl p, h1, h2 {
-      margin-bottom: 20px;
-    }
-
-    .wsl h1, .wsl h2 {
-      font-weight: 600;
-      scroll-margin-top: 60px;
-    }
-
-    .wsl h1 {
-      font-size: 34px;
-    }
-    .wsl h2 {
-      font-size: 20px;
-    }
-    .wsl p, .wsl ul li {
-      font-size:18px;
-    }
-    @media screen and (min-width: 769px) {
-      .wsl p, .wsl ul li {
-        font-size: 20px;
-      }
-      .wsl h1 {
-        font-size: 54px;
-      }
-      .wsl h2 {
-        font-size: 32px;
-      }
-    }
-
-    .wsl li {
-      list-style: none;
-      padding: 10px 30px;
-      background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/check-green.png');
-      background-repeat: no-repeat;
-      background-position: left 15px;
-      background-size: 20px;
-    }
-
     .table-contents {
       flex-direction: column;
       position: fixed;

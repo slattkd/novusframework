@@ -12,6 +12,10 @@
   9. receipt
 */
 $_SESSION['pageType'] = 'dn0';
+
+$next = '/upsell-2-blow-her-away';
+$product1 = $products['products']['127'];
+$product1 = $products['products']['128'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -189,7 +193,7 @@ $_SESSION['pageType'] = 'dn0';
                         <div class="buttons-left centered">
                             <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:10px;">3 Bottle Discount</p>
                             <p class="price">Price $109</p>
-                            <span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=461&next=up/upsell-2-blow-her-away" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;">
+                            <span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;">
                             <img class="w100" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/Yes-Ill-TakeIt.png" alt="Yes, I'll Take It!" /></a></span>
                             <img class="guarantee mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png" style="width:114px; height:112px;">
                         </div><!-- end .buttons-left -->
@@ -197,7 +201,7 @@ $_SESSION['pageType'] = 'dn0';
                         <div class="buttons-right centered">
                             <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:10px;">6 Bottle Discount</p>
                             <p class="price">Price $179.69</p>
-                            <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=11&next=up/upsell-2-blow-her-away" id="upsell-buy2" class="buy_button processlink" rel="samewin" onclick="exit=false;">
+                            <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=up<?= $next; ?>" id="upsell-buy2" class="buy_button processlink" rel="samewin" onclick="exit=false;">
                             <img class="w100" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/Yes-Ill-TakeIt.png" alt="Yes, I'll Take It!" /></a>
                             <img class="guarantee mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png" style="width:114px; height:112px;">
                         </div><!-- end .buttons-right -->

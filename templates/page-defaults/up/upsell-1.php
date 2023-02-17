@@ -13,21 +13,7 @@
   <?php template('includes/header'); ?>
   <title>Boost Your Memory</title>
   <style>
-  .wsl p,
-  h1,
-  h2 {
-    margin-bottom: 20px;
-  }
-
-  .wsl h1 {
-    font-weight: 600;
-    hyphens: none;
-  }
-
-  .wsl h1 {
-    line-height: 35px;
-    line-height: 1.3
-  }
+  
 
   .wsl li {
     list-style: none;
@@ -61,11 +47,6 @@
     }
   }
 
-  .sales-tax {
-    font-size: 12px;
-    color: #ccc;
-    text-align: center;
-  }
 
   .icon-list p {
     padding-left: 3.25em;

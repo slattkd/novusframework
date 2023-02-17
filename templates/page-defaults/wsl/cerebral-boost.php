@@ -9,61 +9,6 @@
   <?php template('includes/header'); ?>
   <title><?= $company['billedAs']; ?> - Cerebral Boost</title>
   <style type="text/css">
-  .wsl p,
-  h1,
-  h2 {
-    margin-bottom: 20px;
-  }
-
-  .wsl h1,
-  .wsl h2 {
-    font-weight: 600;
-    scroll-margin-top: 60px;
-  }
-
-  .wsl h1 {
-      font-size: 34px;
-    }
-    .wsl h2 {
-      font-size: 20px;
-    }
-    .wsl p {
-      font-size:18px;
-    }
-    @media screen and (min-width: 769px) {
-      .wsl p {
-        font-size: 20px;
-      }
-      .wsl h1 {
-        font-size: 54px;
-      }
-      .wsl h2 {
-        font-size: 32px;
-      }
-    }
-
-  .wsl li {
-    list-style: none;
-    padding: 10px 30px;
-    background-image: url('//<?= $_SERVER['HTTP_HOST']; ?>/images/check-green.png');
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 20px;
-  }
-
-  .wsl li.red-x {
-    background-image: url('//<?= $_SERVER['HTTP_HOST']; ?>/images/red-x.png');
-  }
-
-  .wsl li.arrow-right {
-    background-image: url('//<?= $_SERVER["HTTP_HOST"];?>/images/arrow-right.png');
- }
-
- .wsl li.basic {
-   background-image: none;
-   list-style: initial;
-   padding-left: 15px;
- }
 
   .table-contents {
     flex-direction: column;
@@ -82,9 +27,6 @@
     background-image: none;
   }
 
-  .font-bold {
-    font-weight: bold;
-  }
   </style>
 </head>
 
