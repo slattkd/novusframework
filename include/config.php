@@ -97,6 +97,7 @@ $company['billedAs'] = 'Total Brain Boost';
 $company['featuredProduct'] = 'Total Brain Boost';
 $company['email'] = 'support@revivalpoint.com';
 $company['phone'] = '1-800-253-8173';
+$company['phone_specialist'] = '1-800-214-5604'; //Pre-purchase phone
 $company['address1'] = '13423 Blanco Rd PMB 8024';
 $company['address2'] = '';
 $company['city'] = 'San Antonio';

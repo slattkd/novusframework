@@ -174,7 +174,7 @@ if (!empty($_POST))
 
         <script type="text/javascript">
 
-            const isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
+            const isMobile = Math.min(window.screen.width, window.screen.height) < 768;
 
             // on mobile, update form to only have times and long
 
