@@ -17,6 +17,16 @@ if (!isset($_SESSION['vip_discount'])) {
     $_SESSION['vip_discount'] = 0;
 }
 
+if (!isset($_SESSION['start_time']) || $_SESSION['start_time'] + 86400 <= time()) {
+    $str_time = time();
+    $_SESSION['start_time'] = $str_time;
+}
+$currentDate = date("m/d/Y H:i:s");
+$futureDate = date("m/d/Y H:i:s", ($_SESSION['start_time'] + 900));
+$sessionDate = date("m/d/Y H:i:s", $_SESSION['start_time']);
+$dateString = intval($futureDate); //add 900 seconds to the session start timestamp.
+$displayDeadline = date("j, Y, g:i a", $dateString);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

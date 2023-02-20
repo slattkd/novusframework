@@ -23,13 +23,13 @@ if (isset($_GET['coupon']) && $_GET['coupon'] == 1) {
 
 if ($_POST) {
     $_SESSION['pid']  = $_POST['pid']; //126 127 128 1021 1022 1023
-    $_SESSION['add1'] = isset($_POST['add1']) && $_POST['add1'] !== 0 ? $_POST['add1'] : 0; //superlube 84
+    $_SESSION['add1'] = (isset($_POST['add1']) && $_POST['add1'] !== 0) ? $_POST['add1'] : 0; //superlube 84
     $_SESSION['add2'] = isset($_POST['add2']) ? $_POST['add2'] : 0;  //37 Sex Positions 81 82 83
 }
 
 $pid = $_SESSION['pid'];
-$add1 = $_SESSION['add1'];
-$add2 = $_SESSION['add2'];
+$add1 = $_SESSION['add1'] ?? 0;
+$add2 = $_SESSION['add2'] ?? 0;
 
 $product1 = $products['products']['126'];
 $product2 = $products['products']['127'];
@@ -444,6 +444,11 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         .ryan-yellow {
             background-color: #FFFDBE;
         }
+
+        .pristine-error {
+            border-width: 0;
+            margin-bottom: 4px;
+        }
 </style>
 </head>
 
@@ -656,67 +661,67 @@ $timerDelay = time() - $_SESSION['timer-gm'];
           <form action="/process.php<?php echo trim(@$querystring); ?>"  method='POST' id="step_1" class="col-sm-12">
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="FirstName" class=" hidden md:block">First Name:</label>
+                                <label for="FirstName" class="text-sm text-gray-600 hidden md:block">First Name:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded " type="text" name="firstName" id="FirstName" placeholder="First Name" required value="<?php echo @$_SESSION["firstName"]; ?>" onchange="">
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap items-center mb-4">
-                            <div class="w-full w-1/3">
-                                <label for="LastName" class=" hidden md:block">Last Name:</label>
-                            </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded" type="text" name="lastName" id="LastName" placeholder="Last Name" value="<?php @$_SESSION["lastName"]; ?>" onchange="">
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="firstName" id="FirstName" placeholder="First Name" required value="<?php echo @$_SESSION["firstName"]; ?>" onchange="">
                             </div>
                         </div>
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="Email" class=" hidden md:block">Email:</label>
+                                <label for="LastName" class="text-sm text-gray-600 hidden md:block">Last Name:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded " type="email" name="email" id="Email" placeholder="Email" value="<?php echo @$_SESSION["email"]; ?>" onchange="">
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap items-center mb-4">
-                            <div class="w-full w-1/3">
-                                <label for="Phone" class=" hidden md:block">Phone:</label>
-                            </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded " type="tel" name="phone" id="Phone" placeholder="Phone" value="<?php echo @$_SESSION["phone"]; ?>" onchange="">
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="lastName" id="LastName" placeholder="Last Name" value="<?php @$_SESSION["lastName"]; ?>" onchange="">
                             </div>
                         </div>
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="billingAddress1" class=" hidden md:block">Address:</label>
+                                <label for="Email" class="text-sm text-gray-600 hidden md:block">Email:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded " name="billingAddress1" type="text" id="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap items-center mb-4">
-                            <div class="w-full w-1/3">
-                                <label for="billingAddress2" class=" hidden md:block">Address Cont'd:</label>
-                            </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input class="w-full px-1 py-2 rounded " name="billingAddress2" type="text" id="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["billingAddress2"]; ?>" onchange="">
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" type="email" name="email" id="Email" placeholder="Email" value="<?php echo @$_SESSION["email"]; ?>" onchange="">
                             </div>
                         </div>
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="billingCity" class=" hidden md:block">City:</label>
+                                <label for="Phone" class="text-sm text-gray-600 hidden md:block">Phone:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded " name="billingCity" type="text" id="billingCity" placeholder="City" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" type="tel" name="phone" id="Phone" placeholder="Phone" value="<?php echo @$_SESSION["phone"]; ?>" onchange="">
                             </div>
                         </div>
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="billingState" class=" hidden md:block">State/Province:</label>
+                                <label for="billingAddress1" class="text-sm text-gray-600 hidden md:block">Address:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" placeholder="FirstName" value="" onchange=""> -->
-                                <select class="inf-select default-input sale-text w-full px-1 py-2 rounded" id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" name="billingAddress1" type="text" id="billingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["billingAddress1"]; ?>" onchange="">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center mb-4">
+                            <div class="w-full w-1/3">
+                                <label for="billingAddress2" class="text-sm text-gray-600 hidden md:block">Address Cont'd:</label>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <input class="border border-gray-400 rounded w-full p-2 text-lg" name="billingAddress2" type="text" id="billingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["billingAddress2"]; ?>" onchange="">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center mb-4">
+                            <div class="w-full w-1/3">
+                                <label for="billingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" name="billingCity" type="text" id="billingCity" placeholder="City" value="<?php echo @$_SESSION["billingCity"]; ?>" onchange="">
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center mb-4">
+                            <div class="w-full w-1/3">
+                                <label for="billingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <!-- <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="first_name" id="FirstName" placeholder="FirstName" value="" onchange=""> -->
+                                <select class="inf-select default-input sale-text w-full px-1 py-2 border border-gray-400 rounded " id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>" data-selected="<?php echo @$_SESSION["billingState"]; ?>">
                                     <?php foreach ($usStates as $key => $value) : ?>
                                         <option value="<?= $key;?>"> <?= $value; ?> </option>
                                     <?php endforeach; ?>
@@ -725,11 +730,11 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                         </div>
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="billingCountry" class=" hidden md:block">Country:</label>
+                                <label for="billingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                                <select class="inf-select default-input sale-text w-full px-1 py-2 rounded" id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solvePrice()">
+                            <div class="w-full md:w-2/3">
+                                <!-- <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
+                                <select class="inf-select default-input sale-text w-full px-1 py-2 border border-gray-400 rounded " id="billingCountry" name="billingCountry" data-toggle-element="billingState"  value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solvePrice()">
                                     <option selected value="US">United States</option>
                                     <?php foreach ($countries as $key => $value) : ?>
                                         <option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -739,10 +744,10 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                         </div>
                         <div class="flex flex-wrap items-center mb-4">
                             <div class="w-full w-1/3">
-                                <label for="billingZip" class=" hidden md:block">Postal Code:</label>
+                                <label for="billingZip" class="text-sm text-gray-600 hidden md:block">Postal Code:</label>
                             </div>
-                            <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                <input required class="w-full px-1 py-2 rounded " name="billingZip" type="number" id="billingZip" placeholder="Postal Code" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
+                            <div class="w-full md:w-2/3">
+                                <input required class="border border-gray-400 rounded w-full p-2 text-lg" name="billingZip" type="number" id="billingZip" placeholder="Postal Code" maxlength="12" value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
                             </div>
                         </div>
 
@@ -765,21 +770,21 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                             </div>
                             <div class="flex flex-wrap items-center mb-4">
                                 <div class="w-full w-1/3">
-                                    <label for="cc_no" class=" hidden md:block">Card Number:</label>
+                                    <label for="cc_no" class="text-sm text-gray-600 hidden md:block">Card Number:</label>
                                 </div>
-                                <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                    <input required data-private class="w-full px-1 py-2 rounded " type="number" maxlength="16" name="creditCardNumber" id="cc_no" placeholder="Credit Card Number" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
+                                <div class="w-full md:w-2/3">
+                                    <input required data-private class="border border-gray-400 rounded w-full p-2 text-lg" type="number" maxlength="16" name="creditCardNumber" id="cc_no" placeholder="Credit Card Number" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
                                 </div>
                             </div>
                             <div class="flex flex-wrap items-center mb-4">
                                 <div class="w-full w-1/3">
-                                    <label for="cc_exp_mo" class=" hidden md:block">Exp Date:</label>
+                                    <label for="cc_exp_mo" class="text-sm text-gray-600 hidden md:block">Exp Date:</label>
                                 </div>
                                 <div class="w-full md:w-2/3 ">
                                     <div class="w-full columns-2 gap-3">
                                         <div class="w-full border border-gray-400 rounded">
-                                            <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                                            <select class="w-full px-1 py-2 rounded " id="cc_exp_mo" name="expMonth">
+                                            <!-- <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
+                                            <select class="border border-gray-400 rounded w-full p-2 text-lg" id="cc_exp_mo" name="expMonth">
                                                 <option value="01" selected>01</option>
                                                 <option value="02">02</option>
                                                 <option value="03">03</option>
@@ -795,8 +800,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                             </select>
                                         </div>
                                         <div class="w-full border border-gray-400 rounded">
-                                            <!-- <input class="w-full px-1 py-2 rounded " type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                                            <select class="w-full px-1 py-2 rounded " id="cc_exp_yr" name="expYear">
+                                            <!-- <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
+                                            <select class="border border-gray-400 rounded w-full p-2 text-lg" id="cc_exp_yr" name="expYear">
                                                 <option value="23" selected>2023</option>
                                                 <option value="24">2024</option>
                                                 <option value="25">2025</option>
@@ -815,10 +820,10 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                             </div>
                             <div class="flex flex-wrap items-center mb-4">
                                 <div class="w-1/3">
-                                    <label for="cvv" class=" hidden md:block">CVV: <a class="text-xs" href="//<?= $_SERVER['HTTP_HOST'];?>/card-help" target="_blank">what's this?</a></label>
+                                    <label for="cvv" class="text-sm text-gray-600 hidden md:block">CVV: <a class="text-xs" href="//<?= $_SERVER['HTTP_HOST'];?>/card-help" target="_blank">what's this?</a></label>
                                 </div>
-                                <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                    <input required class="w-full px-1 py-2 rounded " type="number" maxlength="4" name="cvv" id="cvv" placeholder="CVV" value="" onchange="">
+                                <div class="w-full md:w-2/3">
+                                    <input required class="border border-gray-400 rounded w-full p-2 text-lg" type="number" maxlength="4" name="cvv" id="cvv" placeholder="CVV" value="" onchange="">
                                 </div>
                             </div>
 
@@ -838,35 +843,35 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
                                 <div class="flex flex-wrap items-center mb-4">
                                     <div class="w-full w-1/3">
-                                        <label for="shipingAddress1" class=" hidden md:block">Address:</label>
+                                        <label for="shipingAddress1" class="text-sm text-gray-600 hidden md:block">Address:</label>
                                     </div>
-                                    <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                        <input class="w-full px-1 py-2 rounded " placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
-                                    </div>
-                                </div>
-                                <div class="flex flex-wrap items-center mb-4">
-                                    <div class="w-full w-1/3">
-                                        <label for="shippingAddress2" class=" hidden md:block">Address Cont'd:</label>
-                                    </div>
-                                    <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                        <input class="w-full px-1 py-2 rounded " placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
+                                    <div class="w-full md:w-2/3">
+                                        <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 1" name="shippingAddress1" type="text" id="shippingAddress1" placeholder="Address 1" value="<?php echo @$_SESSION["shippingAddress1"]; ?>">
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap items-center mb-4">
                                     <div class="w-full w-1/3">
-                                        <label for="shippingCity" class=" hidden md:block">City:</label>
+                                        <label for="shippingAddress2" class="text-sm text-gray-600 hidden md:block">Address Cont'd:</label>
                                     </div>
-                                    <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                        <input class="w-full px-1 py-2 rounded " placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
+                                    <div class="w-full md:w-2/3">
+                                        <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="Address 2" name="shippingAddress2" type="text" id="shippingAddress2" placeholder="Address 2" value="<?php echo @$_SESSION["shippingAddress2"]; ?>">
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap items-center mb-4">
                                     <div class="w-full w-1/3">
-                                        <label for="shippingState" class=" hidden md:block">State/Province:</label>
+                                        <label for="shippingCity" class="text-sm text-gray-600 hidden md:block">City:</label>
                                     </div>
-                                    <div class="w-full md:w-2/3 border border-gray-400 rounded">
+                                    <div class="w-full md:w-2/3">
+                                        <input class="border border-gray-400 rounded w-full p-2 text-lg" placeholder="City" name="shippingCity" type="text" id="shippingCity" placeholder="City" size="25" value="<?php echo @$_SESSION["shippingCity"]; ?>">
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap items-center mb-4">
+                                    <div class="w-full w-1/3">
+                                        <label for="shippingState" class="text-sm text-gray-600 hidden md:block">State/Province:</label>
+                                    </div>
+                                    <div class="w-full md:w-2/3">
                                         <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                                        <select class="inf-select default-input sale-text w-full px-1 py-2 rounded" id="shippingState" name="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
+                                        <select class="inf-select default-input sale-text w-full px-1 py-2 border border-gray-400 rounded " id="shippingState" name="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>" data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
                                         <?php foreach ($usStates as $key => $value) : ?>
                                             <option value="<?= $key;?>"> <?= $value; ?> </option>
                                         <?php endforeach; ?>
@@ -875,11 +880,11 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                 </div>
                                 <div class="flex flex-wrap items-center mb-4">
                                     <div class="w-full w-1/3">
-                                        <label for="shippingCountry" class=" hidden md:block">Country:</label>
+                                        <label for="shippingCountry" class="text-sm text-gray-600 hidden md:block">Country:</label>
                                     </div>
-                                    <div class="w-full md:w-2/3 border border-gray-400 rounded">
+                                    <div class="w-full md:w-2/3">
                                         <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                                        <select class="inf-select default-input sale-text w-full px-1 py-2 rounded" id="shippingCountry" name="shippingCountry" data-toggle-element="shippingState" onchange="solvePrice()">
+                                        <select class="inf-select default-input sale-text w-full px-1 py-2 border border-gray-400 rounded " id="shippingCountry" name="shippingCountry" data-toggle-element="shippingState" onchange="solvePrice()">
                                             <option selected value="US">United States</option>
                                             <?php foreach ($countries as $key => $value) : ?>
                                                 <option value="<?= $key;?>"> <?= $value; ?> </option>
@@ -890,10 +895,10 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                 </div>
                                 <div class="flex flex-wrap items-center mb-4">
                                     <div class="w-full w-1/3">
-                                        <label for="shippingZip" class=" hidden md:block">Postal Code:</label>
+                                        <label for="shippingZip" class="text-sm text-gray-600 hidden md:block">Postal Code:</label>
                                     </div>
-                                    <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                        <input class="w-full px-1 py-2 rounded" placeholder="Postal Code" type="number" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
+                                    <div class="w-full md:w-2/3">
+                                        <input class="w-full px-1 py-2 border border-gray-400 rounded " placeholder="Postal Code" type="number" name="shippingZip" type="text" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
                                     </div>
                                 </div>
 
@@ -967,7 +972,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                     </div>
                     <div class="flex justify-center my-3 hidden md:flex">
                         <div class="flex w-2/3">
-                            <img class="w-full mx-auto" src="//<?= $_SERVER['HTTP_HOST'];?>/images/bbb-seal.png?ver=1" alt="BBB" style="max-width: 300px">
+                            <img class="w-full mx-auto" src="//<?= $_SERVER['HTTP_HOST'];?>/images/BBB-icon.png?ver=1" alt="BBB" style="max-width: 300px">
                         </div>
                     </div>
 
@@ -1183,6 +1188,20 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         finalPriceDesktop.innerText = total.toFixed(2);
 
     }
+
+    const placeholderElements = document.querySelectorAll('.input input');
+    // hide show input labels
+    placeholderElements.forEach(pl => {
+      pl.addEventListener('focus', ()=> {
+        pl.previousElementSibling.classList.add('fade-in-element');
+        pl.previousElementSibling.classList.remove('invisible');
+        pl.placeholder
+      })
+      pl.addEventListener('blur', ()=> {
+        pl.previousElementSibling.classList.add('invisible');
+        pl.previousElementSibling.classList.remove('fade-in-element');
+      })
+    })
 
     document.addEventListener("DOMContentLoaded", function() {
         const coupon = document.getElementById('applyCoupon');
@@ -1406,15 +1425,15 @@ timer2('<?php echo $shipTodayDate; ?>', function(timeRemaining) {
     };
 
     function getTaxData() {
-        var credentials = btoa("<?php echo $tax_id; ?>:<?php echo $tax_api_key; ?>");
-        if (<?= $add1; ?> !== 0) {
-            let product1 = {"id":"<?= $add1pid; ?>","quantity":"1"};
-            taxData.products.push(product1);
-        }
-        if (<?= $add2; ?> !== 0) {
-            let product2 = {"id":"<?= $add2pid; ?>","quantity":"1"};
-            taxData.products.push(product2);
-        }
+        var credentials = btoa("<?php echo $site['stickyApi']; ?>:<?php echo $site['stickyPass']; ?>");
+        // if (<?= $add1; ?> !== 0) {
+        //     let product1 = {"id":"<?= $add1pid; ?>","quantity":"1"};
+        //     taxData.products.push(product1);
+        // }
+        // if (<?= $add2; ?> !== 0) {
+        //     let product2 = {"id":"<?= $add2pid; ?>","quantity":"1"};
+        //     taxData.products.push(product2);
+        // }
         taxData.products = taxData.products.filter((v,i,a)=>a.findIndex(v2=>(v2.id===v.id))===i);
         taxData.location.country = billCountry.value;
         taxData.location.state = billState.value;

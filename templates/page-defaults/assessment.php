@@ -40,6 +40,10 @@ if (!empty($_POST))
                 cursor: pointer;
                 transition: all 200ms ease-in-out;
             }
+
+            .pristine-error {
+                border-width: 0;
+            }
         </style>
 
     </head>
