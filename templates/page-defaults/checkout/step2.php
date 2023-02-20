@@ -34,7 +34,7 @@ $current_product = $products['products'][$pid];
 <body class=" bg-gray-100">
 <?php 
   $container = 'container-vsl';
-  template("includes/rpHeader"); 
+  rpHeader("includes/rpHeader" ,$container);
 ?>
 <div class="container container-vsl mx-auto c8 doc-content pb-4 px-2 md:px-0">
 
