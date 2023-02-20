@@ -108,7 +108,7 @@ $products_json = json_encode($products);
           <!-- Product image -->
           <div class="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
             <div class=" overflow-hidden">
-              <img id="image-product" class="mx-auto border rounded-lg" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/5g.png" alt="single bottle of product">
+              <img id="image-product" class="mx-auto border rounded-lg" src="//<?= $_SERVER['HTTP_HOST']; ?><?= $company['featuredProductImage']; ?>" alt="single bottle of product">
             </div>
           </div>
 

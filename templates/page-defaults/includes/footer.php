@@ -1,3 +1,8 @@
+<!-- 
+formated portion at bottom of <body>
+	- with legal links opening in modals
+-->
+</body>
 
 <footer id="footer" class="bg-zinc-700">
 	<div class="container container-md mx-auto py-6">
@@ -6,7 +11,8 @@
 				<h3 class="mb-2 w-full text-sm font-semibold text-gray-900 uppercase dark:text-white"><?php echo $company['name']; ?>.</h3>
 				<ul class="w-full">
 					<li class="mb-1 text-gray-600 dark:text-gray-400 text-sm">
-							Supernatural Man, LLC was founded in 2016 in New York City, where we found men were feeling less energy and passion for life than they used to. We decided to create a natural formula with top quality ingredients to supercharge guys like you.
+							<?= $company['name']; ?> 
+							<?= $company['about']; ?> 
 					</li>
 				</ul>
 			</div>
@@ -16,8 +22,8 @@
 					<ul class="">
 						<li class="mb-1">
 							<div class="flex items-center">
-								<img src="//<?= $_SERVER['HTTP_HOST'];?>/images/5g.png" alt="5G Male product bottle" width="45px">
-								<a href="/product"  class="ml-2 text-gray-400 hover:text-white hover:underline transition duration-150 ease-in-out cursor-pointer">5G Male</a>
+								<img src="//<?= $_SERVER['HTTP_HOST'];?><?= $company['featuredProductImage']; ?>" alt="5G Male product bottle" width="45px">
+								<a href="/product"  class="ml-2 text-gray-400 hover:text-white hover:underline transition duration-150 ease-in-out cursor-pointer"><?= $company['featuredProduct']; ?></a>
 							</div>
 						</li>
 					</ul>

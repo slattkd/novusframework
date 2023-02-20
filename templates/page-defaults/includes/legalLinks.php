@@ -1,4 +1,7 @@
-<!-- include in html as needed -->
+<!-- 
+inline formated links
+	- shows legal links within a modal 
+-->
 
 <div class="flex w-100 text-xs">
 	<div class="flex flex-nowrap underline text-gray-600 hover:text-gray-400 ease-in-out duration-200 visited:text-purple-700 mx-2 cursor-pointer" onclick="getPage('terms.php')">Terms <span class="hidden md:block">&nbsp;& Conditions</span></div>

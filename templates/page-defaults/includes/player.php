@@ -1,3 +1,11 @@
+ <!-- 
+$overlay include an image to click or not 
+$videoId replace the element id and the script id value 
+$dropTime when to fire the event to show a cta button 
+    - show element with id of "container-buy" 
+-->
+
+
 <div class="video-container">
     <?php if($overlay){
         echo '

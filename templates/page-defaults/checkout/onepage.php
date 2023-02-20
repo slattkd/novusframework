@@ -507,7 +507,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
     <div class="conten px-2 md:px-5">
       <div class="flex justify-center w-full">
         <div class="flex flex-wrap items-center">
-          <img class="mx-auto" src="//<?= $_SERVER['HTTP_HOST'];?>/images/snm-logo-gray.gif" style="height: 25px" />
+          <img class="mx-auto" src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" style="height: 25px" />
           <?php if ($csactive == 1) : ?>
           <div class="flex flex-nowrap mx-auto items-center mt-2 md:mt-0">
             <!-- <div class="phone ml-2"></div> -->
@@ -1156,7 +1156,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
   <input type="hidden" name="previous_page" value="checkout/order">
   <input type="hidden" name="current_page" value="/checkout/onepage">
   <input type="hidden" name="next_page" value="/up/upsell-6-month-supply">
-  <input type="hidden" name="product_id" id='product_id' value="<?php echo $_SESSION['pid']; ?>">
+  <input type="hidden" name="product_id" id='product_id' value="<?php echo @$_SESSION['pid']; ?>">
   <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
   <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
   <input type="hidden" name="AFFID" value="<?php echo @$_SESSION['affid']; ?>">

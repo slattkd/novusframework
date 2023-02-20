@@ -33,7 +33,7 @@
       <div class="relative flex items-center h-16">
         <div class="flex items-center justify-between w-full px-0">
           <a class="flex-shrink-0" href="/index">
-            <img class="" src="//<?= $_SERVER['HTTP_HOST'];?>/images/snm-logo.png" alt="Supernatural Logo" style="max-width:250px;height:auto;">
+            <img class="" src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" alt="Supernatural Logo" style="max-width:250px;height:auto;">
           </a>
           <div class="hidden md:block md:ml-auto">
             <div class="flex">

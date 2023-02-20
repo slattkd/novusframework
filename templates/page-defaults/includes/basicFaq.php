@@ -1,6 +1,7 @@
-<!-- currently just for 5g FAQ content -->
-<!-- TODO: secondary style option on upsell 1,2,3,4 -->
-<!-- TODO: set to iterate over Q/A array or objects -->
+<!-- 
+currently just for 5g FAQ content
+replace Q/A content as needed
+-->
 <?php
 
     $qas = array(

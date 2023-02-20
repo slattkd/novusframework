@@ -1,3 +1,5 @@
+<!-- Includes all dependencies on every page -->
+
 <?php if ($site['debug'] == true) {
     echo $debugbarRenderer->renderHead();
 }?>

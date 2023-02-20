@@ -52,8 +52,8 @@
 <body class="bg-gray-100">
   <?php
   $container = 'container-vsl';
+  template("includes/rpHeader");
   ?>
-  <?php template("includes/rpHeader"); ?>
 
   <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600" style="position:relative">
 

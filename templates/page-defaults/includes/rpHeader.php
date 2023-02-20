@@ -1,3 +1,13 @@
+<?php
+  // $show_phone show phone on bar with logo
+  // $show_secure hide or show bar with secure checkout message;
+  // $justify center or between for logo and phone
+  // $container set to match the page 'container-[]'
+  $show_phone ?? $show_phone = 1;
+  $show_secure ?? $show_secure = 1;
+  $justify ?? $justify = 'justify-between';
+?>
+
 <style>
     .headstrip {
       display: flex;
@@ -10,15 +20,9 @@
     }
 </style>
 
-<?php
-  $is_order_page = @$_SESSION['SLUG'] == 'checkout/order';
-  $is_wsl = @$_SESSION['pageType'] == 'wsl';
-  $justify = $is_wsl ? 'justify-between' : 'justify-center';
-?>
-
 
 <section class="fixed left-0 right-0 top-0 z-10">
-  <?php if (!$is_wsl): ?>
+  <?php if (!$show_secure): ?>
     <section id="secure-banner" class="headstrip">
       <div class="flex flex-wrap uppercase text-center">
         <div class="mx-auto">
@@ -29,11 +33,11 @@
     </section>
   <?php endif; ?>
     <div id="logo-banner" class=" py-0 md:py-1 border-b bg-white">
-      <div class="flex flex-wrap <?= $justify; ?> container <?= $container; ?> mx-auto  w-full px-2 md:px-0">
+      <div class="flex flex-wrap justify-between <?= $justify; ?> container-vsl <?= $container; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
           <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:225px;object-fit:contain;">
         </div>
-        <?php if ($is_wsl): ?>
+        <?php if ($show_phone): ?>
         <div class="flex justify-center items-center w-full md:w-auto mb-2 md:mb-0 text-gray-500">
           <div class="text-sm flex items-center flex-nowrap">
           <div class="phone-square mr-1" style="width: 20px;height:20px;"></div> Call

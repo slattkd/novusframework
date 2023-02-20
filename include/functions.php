@@ -310,6 +310,19 @@ function legalLinks($template, $templatePath = 'templates/page-defaults')
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+// opens models for applicable content
+function rpHeader($template, $show_phone = null, $show_secure = null, $justify = null, $container = null, $company = null, $site = null, $templatePath = 'templates/page-defaults')
+{
+    global $show_phone;
+    global $show_secure;
+    global $justify;
+    global $container;
+    global $company;
+    global $site;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
 /*
 function pixelEvent($template, $event, $affid = null)
 {
