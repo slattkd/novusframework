@@ -803,8 +803,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 </div>
 
                 <!-- <input class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" type="text" name="first_name" id="FirstName" placeholder="FirstName" value="" onchange=""> -->
-                <select
-                  class="inf-select default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
+                <select class="inf-select bg-white default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
                   id="billingState" name="billingState" value="<?php echo @$_SESSION['billingState']; ?>"
                   data-selected="<?php echo @$_SESSION["billingState"]; ?>">
                   <?php foreach ($usStates as $key => $value) : ?>
@@ -819,8 +818,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 </div>
 
                 <!-- <input class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                <select
-                  class="inf-select default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
+                <select class="inf-select bg-white default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
                   id="billingCountry" name="billingCountry" data-toggle-element="billingState"
                   value="<?php echo @$_SESSION['billingCountry']; ?>" onchange="solvePrice()">
                   <option selected value="US">United States</option>
@@ -836,7 +834,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 </div>
 
                 <input required class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg"
-                  name="billingZip" type="number" id="billingZip" placeholder="Postal Code" maxlength="12"
+                  name="billingZip" type="text" id="billingZip" placeholder="Postal Code"
                   value="<?php echo @$_SESSION['billingZip']; ?>" onchange="">
 
               </div>
@@ -869,8 +867,9 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                     </div>
 
                     <input required data-private
-                      class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" type="number"
-                      maxlength="16" name="creditCardNumber" id="cc_no" placeholder="Credit Card Number" maxlength="16"
+                      class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" type="text"
+                      onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+                      maxlength="16" max="9999999999999999" name="creditCardNumber" id="cc_no" placeholder="Credit Card Number"
                       value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
 
                   </div>
@@ -882,7 +881,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                       <div class="w-full columns-2 gap-3">
                         
                           <!-- <input class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                          <select class="input border border-gray-400 rounded w-full p-2 text-lg"
+                          <select class="input bg-white border border-gray-400 rounded w-full p-2 text-lg"
                             id="cc_exp_mo" name="expMonth">
                             <option value="01" selected>01</option>
                             <option value="02">02</option>
@@ -900,7 +899,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                         
                         
                           <!-- <input class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                          <select class="input border border-gray-400 rounded w-full p-2 text-lg"
+                          <select class="input bg-white border border-gray-400 rounded w-full p-2 text-lg"
                             id="cc_exp_yr" name="expYear">
                             <option value="23" selected>2023</option>
                             <option value="24">2024</option>
@@ -925,7 +924,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                     </div>
 
                     <input required class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg"
-                      type="number" maxlength="4" name="cvv" id="cvv" placeholder="CVV" value="" onchange="">
+                        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+                        type="text" maxlength="4" max="9999" pattern="\d*" name="cvv" id="cvv" placeholder="CVV" value="" onchange="">
 
                   </div>
 
@@ -982,7 +982,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                       </div>
 
                       <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                      <select class="inf-select default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
+                      <select class="inf-select bg-white default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
                         id="shippingState" name="shippingState" value="<?php echo @$_SESSION["shippingState"]; ?>"
                         data-selected="<?php echo @$_SESSION["shippingState"]; ?>">
                         <?php foreach ($usStates as $key => $value) : ?>
@@ -997,7 +997,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                       </div>
 
                       <!-- <input class="w-full px-1 py-2 rounded rounded" type="text" name="first_name" id="FirstName" value="" onchange=""> -->
-                      <select class="inf-select default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
+                      <select class="inf-select bg-white default-input sale-text w-full md:w-2/3 px-1 py-2 border border-gray-400 rounded "
                         id="shippingCountry" name="shippingCountry" data-toggle-element="shippingState"
                         onchange="solvePrice()">
                         <option selected value="US">United States</option>
@@ -1013,7 +1013,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                     </div>
 
                     <input class="input border border-gray-400 rounded w-full md:w-2/3 p-2 text-lg" placeholder="Postal Code"
-                      type="number" name="shippingZip" type="text" id="shippingZip"
+                      name="shippingZip" type="text" id="shippingZip"
                       value="<?php echo @$_SESSION["shippingZip"]; ?>">
 
                 </div>

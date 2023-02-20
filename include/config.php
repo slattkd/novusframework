@@ -107,6 +107,8 @@ $company['checkoutHeadline1'] = 'You’re 3 Steps Away From <br class="md:hidden
 $company['checkoutHeadline2'] = 'You’re 2 Steps Away From <br class="md:hidden"> Improving yourself…';
 $company['checkoutHeadline3'] = 'You’re 1 Steps Away From <br class="md:hidden"> Improving yourself…';
 
+$usZip = '/^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/';
+$caZip = '/^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/';
 
 if ($site['debug'] == true) {
     $debugbar['time']->stopMeasure('collectvars');
