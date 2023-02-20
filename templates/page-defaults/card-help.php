@@ -98,7 +98,7 @@
 </div><!-- end .container -->
 
     <?php if ($site['debug'] == true) {
-        template('debug', 'debug');
+        template('debug', null, null, 'debug');
     } ?>
 </body>
 

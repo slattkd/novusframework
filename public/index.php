@@ -8,7 +8,6 @@ require_once('../include/functions.php');
 require_once('../include/director.php');
 //require_once('../include/event-capture.php');
 require_once('../include/stickylegacy.php');
-require_once('../include/OrderValidation.php');
 require_once('../include/curlWrapper.php');
 require_once('../include/maropost.php');
 //require_once('../include/productSettings.php');

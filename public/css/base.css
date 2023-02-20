@@ -64,6 +64,15 @@ body {
   opacity: 0.75;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 input[type="checkbox"] {
   cursor: pointer;
   filter: brightness(120%) hue-rotate(-51deg) saturate(53%) contrast(300%);

@@ -1,24 +1,5 @@
-<!-- <footer class="max-w-5xl mx-auto bg-white mt-0">
-    <div class="w-full md:w-full p-10 pt-20">
-        <p class="leading-relaxed text-base text-xs text-center">
-        These statements have not been evaluated by the Food and Drug Administration. <br>
-        This product is not intended to diagnose, treat, cure, or prevent any disease.
-        The information contained in this video is not intended as medical advice. <br>
-        Consult your physician before adding any dietary supplements to your diet.
-        </p>
 
-        <div class="flex items-center justify-center">
-          <a class="p-4" href="/privacy" alt="privacy-policy" target="_blank">Privacy Policy</a>
-          <a class="p-4" href="/terms" alt="terms" target="_blank">Terms and Conditions</a>
-          <a class="p-4" href="mailto:<?php echo $company['email'];?>" alt="contact">Contact</a>
-        </div>
-        <p class="text-xs text-center">© <?php echo $company['name'];?>2022 All rights reserved.</p>
-    </div>
-</footer> -->
-
-
-
-<footer class="bg-zinc-700">
+<footer id="footer" class="bg-zinc-700">
 	<div class="container container-md mx-auto py-6">
 		<div class="grid grid-cols-2 gap-10 sm:gap-8 sm:grid-cols-4 ml-6">
 			<div>
@@ -108,13 +89,13 @@
 			</div>
 
 			<div class="flex items-center mt-4 space-x-6 justify-center">
-				<!-- <a href="javascript:void(0)" onclick="loadLegal('terms-body.php')" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
+				<!-- <a href="javascript:void(0)" onclick="loadLegal('terms.php')" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
 					TERMS & CONDITIONS
 				</a>
-				<a href="javascript:void(0)" onclick="loadLegal('privacy-body.php')" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
+				<a href="javascript:void(0)" onclick="loadLegal('privacy.php')" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
 					PRIVACY POLICY
 				</a>
-				<a href="javascript:void(0)" onclick="loadLegal('returns-body.php')" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
+				<a href="javascript:void(0)" onclick="loadLegal('returns.php')" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">
 					RETURN POLICY
         </a> -->
         <?php legalLinks("includes/legalLinks");?>
@@ -129,7 +110,7 @@
 
 <?php
 		// declare modal variables (requires basic_modal.js)
-		$modal_id = 'legalModal';
+		$modal_id = 'legalLinkModal';
 		$max_width = '5xl';
 		$height = '4/5';
 		$modal_title = "";
@@ -146,7 +127,7 @@
 
 	// TODO: split out into modal component instead of placing on pages
 	function loadLegal(url) {
-		window.modalHandler('legalModal', true);
+		window.modalHandler('legalLinkModal', true);
 
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = (evt) => {

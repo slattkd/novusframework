@@ -41,6 +41,10 @@
         display: none;
         background-color: rgba(0,0,0,0.75);
     }
+
+    #legalLinkModal nav#nav, #legalLinkModal footer#footer {
+        display: none;
+    }
 </style>
 <div class="modal-position modal-bg sans" id="<?= $modal_id; ?>" style="margin-left: 0">
     <div id="modal-wrapper" role="alert" class="container mx-auto w-11/12 md:w-2/3 center-modal <?php echo !empty($max_width) ? 'max-w-' . $max_width : 'max-w-lg'; ?>">

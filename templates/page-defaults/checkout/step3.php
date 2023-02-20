@@ -89,7 +89,7 @@ $current_product = $products['products'][$pid];
               <div class="w-full invisible">
                 <label for="creditCardNumber" class="text-sm text-gray-600 hidden md:block">Credit Card Number:</label>
               </div>
-              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required" data-private>
+              <input class="border border-gray-400 rounded w-full p-2 text-lg" type="number" maxlength="16" name="creditCardNumber" placeholder="Credit Card Number" value="" required="required" data-private>
             </div>
             <div class="w-full columns-2 gap-3 mb-3 md:mb-2 md:px-4">
               <div class="w-full">
@@ -136,7 +136,7 @@ $current_product = $products['products'][$pid];
                 <div class="w-full invisible">
                   <label for="cvv" class="text-sm text-gray-600 hidden md:block">CVV:</label>
                 </div>
-                <input class="border border-gray-400 rounded w-full p-2 text-lg" type="text" name="cvv" placeholder="CVV" value="" required="required" data-private>
+                <input class="border border-gray-400 rounded w-full p-2 text-lg" type="number" maxlength="4" name="cvv" placeholder="CVV" value="" required="required" data-private>
               </div>
               <div class="w-full mb-1 md:px-4 pl-0 mt-3">
                 <div class="text-sm text-rpblue no-underline md:mt-4 clickable" onclick="getPage('card-help.php')">What is a CVV?</div>

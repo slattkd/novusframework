@@ -768,7 +768,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                     <label for="cc_no" class=" hidden md:block">Card Number:</label>
                                 </div>
                                 <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                    <input required data-private class="w-full px-1 py-2 rounded " type="number" name="creditCardNumber" id="cc_no" placeholder="Credit Card Number" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
+                                    <input required data-private class="w-full px-1 py-2 rounded " type="number" maxlength="16" name="creditCardNumber" id="cc_no" placeholder="Credit Card Number" maxlength="16" value="<?php echo @$_SESSION['creditCardNumber']; ?>" onchange="">
                                 </div>
                             </div>
                             <div class="flex flex-wrap items-center mb-4">
@@ -818,7 +818,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                                     <label for="cvv" class=" hidden md:block">CVV: <a class="text-xs" href="//<?= $_SERVER['HTTP_HOST'];?>/card-help" target="_blank">what's this?</a></label>
                                 </div>
                                 <div class="w-full md:w-2/3 border border-gray-400 rounded">
-                                    <input required class="w-full px-1 py-2 rounded " type="number" name="cvv" id="cvv" placeholder="CVV" value="" onchange="">
+                                    <input required class="w-full px-1 py-2 rounded " type="number" maxlength="4" name="cvv" id="cvv" placeholder="CVV" value="" onchange="">
                                 </div>
                             </div>
 
