@@ -351,6 +351,7 @@ $current_product = $products['products'][$pid];
       let defaultConfig = {
         // class of the parent element where the error/success class is added
         classTo: 'input',
+        errorClass: 'has-danger',
         // class of the parent element where error text element is appended
         errorTextParent: 'input',
         // type of element to create for the error text
@@ -394,7 +395,7 @@ $current_product = $products['products'][$pid];
           var firstError = document.querySelector('.has-danger');
           firstError.scrollIntoView({
             behavior: "smooth",
-            block: "end"
+            block: "center"
           });
         } else {
           // submitBtn.disabled = false;

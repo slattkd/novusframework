@@ -419,14 +419,6 @@ $timerDelay = time() - $_SESSION['timer-gm'];
     height: 35px;
   }
 
-  .pristine-error {
-    display: flex;
-    float: right;
-    justify-content: flex-end;
-    width: 100%;
-    animation: fadeIn 200ms;
-  }
-
   .has-danger .border-gray-400 rounded {
     border: 1px solid red;
   }
@@ -460,7 +452,6 @@ $timerDelay = time() - $_SESSION['timer-gm'];
   }
 
   .pristine-error {
-    border-width: 0;
     margin-bottom: 4px;
   }
 
@@ -1439,7 +1430,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
         var firstError = document.querySelector('.has-danger');
         firstError.scrollIntoView({
           behavior: "smooth",
-          block: "end"
+          block: "center"
         });
         checkout.disabled = false;
         checkout.innerText = "Complete Purchase";

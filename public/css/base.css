@@ -278,9 +278,13 @@ input[type="checkbox"] {
   height: 0;
   animation: fadeIn 200ms;
   margin: -1px auto;
-  border-width: 1px 0 0 0;
   transform: scaleX(0.98);
   z-index: 10;
+  color: red;
+}
+
+.has-danger input{
+  border: 1px solid red;
 }
 
 .checked.hidden {

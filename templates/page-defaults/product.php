@@ -66,12 +66,6 @@ $products_json = json_encode($products);
       visibility: visible;
     }
 
-    .pristine-error {
-      float: right;
-      justify-content: flex-end;
-      width: 100%;
-    }
-
   </style>
 </head>
 
