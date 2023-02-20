@@ -365,3 +365,7 @@ function taxAmt($price) {
     }
     return number_format($tax_pct / 100 * $price, 2);
 }
+
+function hasGifts($pid, $hasGifts) {
+    return in_array($pid, $hasGifts);
+}

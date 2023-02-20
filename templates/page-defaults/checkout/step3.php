@@ -243,7 +243,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" name="notes" value="<?php echo @$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
       <input type="hidden" name="shippingId" id="shippingId" value="<?php echo @$_SESSION['shippingId']; ?>">
       <input type="hidden" name="shippingCost" id="shippingCost" value="<?php echo @$_SESSION['shippingCost']; ?>">
-      <input type="hidden" name="tax_pct" id='tax_pct' value="<?php echo $_SESSION['tax_pct']; ?>">
+      <input type="hidden" name="tax_pct" id='tax_pct' value="<?php echo @$_SESSION['tax_pct']; ?>">
       <input type="hidden" name="newform" value="yes">
       <input type="hidden" name="upsellProductIds" id="upsellProductIds" value="1086,1088,1090">
       <input type="hidden" name="upsellCount" value="0">

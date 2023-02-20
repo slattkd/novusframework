@@ -31,6 +31,8 @@ $pid = $_SESSION['pid'];
 $add1 = $_SESSION['add1'] ?? 0;
 $add2 = $_SESSION['add2'] ?? 0;
 
+var_dump($pid);
+
 $product1 = $products['products']['126'];
 $product2 = $products['products']['127'];
 $product3 = $products['products']['128'];
@@ -565,6 +567,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                     class="text-greenish font-bold ml-2 invisible">FREE!</span></div>
               </li>
               <?php endif; ?>
+              <!-- TODO hasGifts -->
+              <?php if(hasGifts($pid, $products['hasGifts'])): ?>
               <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
                 <div class="w-full md:w-2/3 mr-2">5G Enhancement Bible</div>
                 <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$19.95</strike> <span
@@ -595,6 +599,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$39.95</strike> <span
                     class="text-greenish font-bold ml-2">FREE!</span></div>
               </li>
+              <?php endif; ?>
               <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
                 <div class="w-full md:w-2/3 mr-2">Shipping</div>
                 <!-- shipping price updates with JS logic on render and shipping country change-->
@@ -606,19 +611,23 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 <div class="flex flex-nowrap text-lg text-gray-400 font-semibold">$ <span id="tax-amt">0.00</span><span
                     class="text-greenish font-bold ml-2 invisible">FREE!</span></div>
               </li>
+              <?php if(hasGifts($pid, $products['hasGifts'])): ?>
               <li class="flex justify-center items-center py-4 mt-4 hidden md:flex">
                 <div class="flex justify-center flex-wrap md:flex-nowrap text-lg font-semibold mx-auto md:mx-0">That's
                   $266.86 of Bonus Gifts, <span class="text-greenish fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
               </li>
+              <?php endif; ?>
               <li class="flex justify-between items-center flex-wrap py-3 border-t">
                 <div class="orders font-semibold ">Today You Pay Only</div>
                 <!-- final price updates with shipping country info -->
                 <div class="font-bold text-redish">$<span id="final-price"><?= $totalPrice; ?></span></div>
               </li>
+              <?php if(hasGifts($pid, $products['hasGifts'])): ?>
               <li class="flex justify-center items-center py-4 md:hidden">
                 <div class="flex justify-center flex-wrap md:flex-nowrap text-xl font-semibold mx-auto md:mx-0">That's
                   $266.86 of Bonus Gifts, <span class="text-greenish fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
               </li>
+              <?php endif; ?>
             </ul>
           </div>
 
