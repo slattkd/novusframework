@@ -1,12 +1,11 @@
 <?php
 //This is the variable for the next page in the upsell
-$next = '//' . $_SERVER['HTTP_HOST'] . '/checkout/step1' ;
+$next = '/checkout/step1';
 
 if ($_POST) {
   $_SESSION['pid'] = $_POST['product_id'];
 }
 $pid = $_SESSION['pid'];
-
 $up_pid = $products['upsell'][$pid];
 
 $current_product = $products['products'][$pid];
@@ -21,8 +20,8 @@ $up_product = $products['products'][$up_pid];
 <head>
   <!-- CSS -->
   <?php template("includes/header"); ?>
-        <title>Total Brain boost - Secure Order</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <title><?= $company['name']; ?> - Secure Order</title>
+  
   <style type="text/css">
 
 		.discount-wrap {
@@ -100,7 +99,7 @@ $up_product = $products['products'][$up_pid];
 					<form id="discountform" name="discountform" class="button-wrap w-full mb-0" method="post" action="<?php echo $next; ?>">
 						<input type="hidden" name="previous_page" value="checkout/order">
 						<input type="hidden" name="current_page" value="/discount">
-						<input type="hidden" name="next_page" id="next-page" value="<?php echo $next; ?>">
+						<input type="hidden" name="next_page" id="next-page" value="//<?php echo $_SERVER['HTTP_HOST']; ?><?php echo $next; ?>">
 						<input type="hidden" id="product_id" name="product_id" value="<?= $up_pid; ?>">
 						<input type="submit" id="submitdiscount" name="btnSubmit" value="ACTIVATE COUPON NOW!" class="goal5 px-3 md:px-5 py-2 md:py-4 clickable">
 					</form>
@@ -112,7 +111,7 @@ $up_product = $products['products'][$up_pid];
 				<form id="skipform" name="skipform" class="w-full mb-0 mt-3" method="post" action="<?php echo $next; ?>">
 					<input type="hidden" name="previous_page" value="checkout/order">
 					<input type="hidden" name="current_page" value="/discount">
-					<input type="hidden" name="next_page" id="next-page" value="<?php echo $next; ?>">
+					<input type="hidden" name="next_page" id="next-page" value="//<?php echo $_SERVER['HTTP_HOST']; ?><?php echo $next; ?>">
           <input type="hidden" id="product_id" name="product_id" value="<?= $current_product['product_id']; ?>">
 					<input type="submit" id="submitskip" name="submit" class="clickable text-xl md:text-2xl text-gray-400 px-4" value="Skip This - I do NOT want 10% OFF my order" style="white-space: break-spaces">
 				</form>

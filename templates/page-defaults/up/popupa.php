@@ -160,7 +160,7 @@ $product2 = $products['products']['128'];
             ?>
             </section>
 
-        <div id="letter_body" class="pr-4 pl-42 md:w-full pr-4 pl-42 flex flex-wrap">
+        <div id="letter_body" class="pr-4 pl-42 md:w-full pr-4 pl-42 mt-6 flex flex-wrap">
 
             <div class="letter-body">
 
@@ -193,7 +193,7 @@ $product2 = $products['products']['128'];
                         <div class="buttons-left centered">
                             <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:10px;">3 Bottle Discount</p>
                             <p class="price">Price $109</p>
-                            <span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;">
+                            <span><a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink" rel="samewin" onclick="exit=false;">
                             <img class="w100" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/Yes-Ill-TakeIt.png" alt="Yes, I'll Take It!" /></a></span>
                             <img class="guarantee mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png" style="width:114px; height:112px;">
                         </div><!-- end .buttons-left -->
@@ -201,7 +201,7 @@ $product2 = $products['products']['128'];
                         <div class="buttons-right centered">
                             <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:10px;">6 Bottle Discount</p>
                             <p class="price">Price $179.69</p>
-                            <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=up<?= $next; ?>" id="upsell-buy2" class="buy_button processlink" rel="samewin" onclick="exit=false;">
+                            <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=up<?= $next; ?>" id="upsell-buy2" class="border-0 processlink" rel="samewin" onclick="exit=false;">
                             <img class="w100" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/Yes-Ill-TakeIt.png" alt="Yes, I'll Take It!" /></a>
                             <img class="guarantee mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png" style="width:114px; height:112px;">
                         </div><!-- end .buttons-right -->
@@ -215,8 +215,8 @@ $product2 = $products['products']['128'];
 
 
 <script type="text/javascript">
-    document.querySelector( ".processlink" ).addEventListener('click', function(e){
-        document.querySelector('.processblock').style.display = 'none';
+    document.querySelector(".processlink").addEventListener('click', function(e) {
+      document.querySelector('.processlink').classList.add('disabled');
     });
 </script>
 </body>

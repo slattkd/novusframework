@@ -57,7 +57,7 @@ $newflow = 0;
                 ?>
             </section>
             <section>
-                <div class="p-3 md:p-5 bg-white rounded">
+                <div class="p-3 md:p-5 bg-white rounded mt-6">
                     <h2 class="text-red-600 text-4xl text-center">This Astonishing Secret Allows Even Average And Old Guys To <strong>TRIPLE</strong> Your Sex Drive So You Have The Desire, Strength, Confidence And Unbridled Lust You Had When You Were In High School And Wanted To Fuck Every Girl You Saw…</h2>
                     <div class="flex flex-col my-5 text-lg">
                     <p class="w-full pb-3"> Hey its Ryan Masters… </p>
@@ -233,6 +233,9 @@ $newflow = 0;
 
 
 <script type='text/javascript'>
+    document.querySelector(".processlink").addEventListener('click', function(e) {
+        document.querySelector('.processlink').classList.add('disabled');
+    });
     document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 

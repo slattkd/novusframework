@@ -326,10 +326,9 @@ if (isset($_SESSION['step_1_orderId'])) {
 			}, "1000")
 		})
 
-		const process = document.querySelector('.processlink');
-		process.addEventListener('click', ()=> {
-			process.classList.add('hidden');
-		})
+		document.querySelector(".processlink").addEventListener('click', function(e) {
+            document.querySelector('.processlink').classList.add('disabled');
+        });
 
 		// modal on mouseleave
 		document.documentElement.addEventListener('mouseleave', () => {

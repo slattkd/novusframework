@@ -26,7 +26,8 @@ if ($_POST) {
     $_SESSION['add1'] = (isset($_POST['add1']) && $_POST['add1'] !== 0) ? $_POST['add1'] : 0; //superlube 84
     $_SESSION['add2'] = isset($_POST['add2']) ? $_POST['add2'] : 0;  //37 Sex Positions 81 82 83
 } else {
-  $_SESSION['pid'] = '126';
+  // sets default pid if not added through post
+  $_SESSION['pid'] = '128';
 }
 
 // default product if user did not navigate through order page
@@ -49,6 +50,9 @@ $customLabel = '';
 $untaxableAmount = 0;
 
 $product = $products['products'][$pid];
+
+$free_gifts = [];
+$free_gifts = $product['free_gifts'] ?? [];
 
 $month = $product['product_month'];
 $price = $product['product_price'];
@@ -568,38 +572,21 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                     class="text-greenish font-bold ml-2 invisible">FREE!</span></div>
               </li>
               <?php endif; ?>
-              <!-- TODO hasGifts -->
-              <?php if(hasGifts($pid, $products['hasGifts'])): ?>
+              <!-- TODO: hasGifts or prod json reference to current product -->
+              <?php if(!empty($free_gifts)): 
+                $gifts_total = 0;
+                ?>
+                <?php foreach ($free_gifts as $gift_pid): 
+                  $product = $products['products'][$gift_pid];
+                  $gift_price = number_format($product['product_retail'], 2);
+                  $gifts_total += $gift_price;
+                  ?>
               <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
-                <div class="w-full md:w-2/3 mr-2">5G Enhancement Bible</div>
-                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$19.95</strike> <span
+                <div class="w-full md:w-2/3 mr-2"><?= $product['product_name']; ?></div>
+                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$<?= $gift_price; ?></strike> <span
                     class="text-greenish font-bold ml-2">FREE!</span></div>
               </li>
-              <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
-                <div class="w-full md:w-2/3 mr-2">The Multiplier Method</div>
-                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$49.00</strike> <span
-                    class="text-greenish font-bold ml-2">FREE!</span></div>
-              </li>
-              <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
-                <div class="w-full md:w-2/3 mr-2">The XXL Formula</div>
-                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$79.95</strike> <span
-                    class="text-greenish font-bold ml-2">FREE!</span></div>
-              </li>
-              <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
-                <div class="w-full md:w-2/3 mr-2">Magic Words That Drive Her Wild</div>
-                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$39.00</strike> <span
-                    class="text-greenish font-bold ml-2">FREE!</span></div>
-              </li>
-              <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
-                <div class="w-full md:w-2/3 mr-2">"Text To Sex" Course</div>
-                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$39.00</strike> <span
-                    class="text-greenish font-bold ml-2">FREE!</span></div>
-              </li>
-              <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
-                <div class="w-full md:w-2/3 mr-2">Become Supernatural</div>
-                <div class="flex flex-nowrap text-lg text-gray-400 font-semibold"><strike>$39.95</strike> <span
-                    class="text-greenish font-bold ml-2">FREE!</span></div>
-              </li>
+              <?php endforeach; ?>
               <?php endif; ?>
               <li class="flex justify-between items-center border-b flex-nowrap md:flex-wrap py-2">
                 <div class="w-full md:w-2/3 mr-2">Shipping</div>
@@ -612,10 +599,10 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 <div class="flex flex-nowrap text-lg text-gray-400 font-semibold">$ <span id="tax-amt">0.00</span><span
                     class="text-greenish font-bold ml-2 invisible">FREE!</span></div>
               </li>
-              <?php if(hasGifts($pid, $products['hasGifts'])): ?>
+              <?php if(!empty($free_gifts)): ?>
               <li class="flex justify-center items-center py-4 mt-4 hidden md:flex">
                 <div class="flex justify-center flex-wrap md:flex-nowrap text-lg font-semibold mx-auto md:mx-0">That's
-                  $266.86 of Bonus Gifts, <span class="text-greenish fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
+                  $<?= number_format($gifts_total, 2); ?> of Bonus Gifts, <span class="text-greenish fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
               </li>
               <?php endif; ?>
               <li class="flex justify-between items-center flex-wrap py-3 border-t">
@@ -623,10 +610,10 @@ $timerDelay = time() - $_SESSION['timer-gm'];
                 <!-- final price updates with shipping country info -->
                 <div class="font-bold text-redish">$<span id="final-price"><?= $totalPrice; ?></span></div>
               </li>
-              <?php if(hasGifts($pid, $products['hasGifts'])): ?>
+              <?php if(!empty($free_gifts)): ?>
               <li class="flex justify-center items-center py-4 md:hidden">
                 <div class="flex justify-center flex-wrap md:flex-nowrap text-xl font-semibold mx-auto md:mx-0">That's
-                  $266.86 of Bonus Gifts, <span class="text-greenish fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
+                  $<?= number_format($gifts_total, 2); ?> of Bonus Gifts, <span class="text-greenish fw-bold mx-auto md:ml-2"> YOURS FREE!</span></div>
               </li>
               <?php endif; ?>
             </ul>

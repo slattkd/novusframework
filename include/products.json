@@ -17,7 +17,6 @@
         "127": "1022",
         "128": "1023"
     },
-    "hasGifts": ["127", "128"],
     "products": {
         "126": {
             "product_name": "FSP-1X-iC",
@@ -56,7 +55,8 @@
             "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "0",
-            "product_id": "128"
+            "product_id": "128",
+            "free_gifts": ["001", "002", "003", "004", "005", "006"]
         },
         "1021": {
             "product_name": "FSP-1X-VTD-rC",
@@ -95,7 +95,8 @@
             "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "1",
-            "product_id": "1023"
+            "product_id": "1023",
+            "free_gifts": ["001", "002", "003", "004", "005", "006"]
         },
         "81": {
             "product_name": "Super Lube-1x-iU",
@@ -104,6 +105,7 @@
             "product_month": 1,
             "product_qty": 1,
             "product_price": 14.95,
+            "product_retail": 14.95,
             "product_is_shippable": "1",
             "product_id": "81"
         },
@@ -114,6 +116,7 @@
             "product_month": 2,
             "product_qty": 2,
             "product_price": 29.90,
+            "product_retail": 29.90,
             "product_is_shippable": "1",
             "product_id": "82"
         },
@@ -124,6 +127,7 @@
             "product_month": 3,
             "product_qty": 3,
             "product_price": 44.85,
+            "product_retail": 44.85,
             "product_is_shippable": "1",
             "product_id": "83"
         },
@@ -134,8 +138,75 @@
             "product_month": 3,
             "product_qty": 3,
             "product_price": 19.95,
+            "product_retail": 19.95,
             "product_is_shippable": "1",
             "product_id": "84"
+        },
+        "001": {
+            "product_name": "5G Enhancement Bible",
+            "product_description": "Digital book",
+            "product_sku": "5G-EB",
+            "product_month": 0,
+            "product_qty": 1,
+            "product_price": 0,
+            "product_retail": 29.95,
+            "product_is_shippable": "0",
+            "product_id": "001"
+        },
+        "002": {
+            "product_name": "The Multiplier Method",
+            "product_description": "Digital Book",
+            "product_sku": "5G-MM",
+            "product_month": 0,
+            "product_qty": 1,
+            "product_price": 0,
+            "product_retail": 49.00,
+            "product_is_shippable": "0",
+            "product_id": "002"
+        },
+        "003": {
+            "product_name": "The XXL Formula",
+            "product_description": "Digital Book",
+            "product_sku": "5G-XLF",
+            "product_month": 0,
+            "product_qty": 1,
+            "product_price": 0,
+            "product_retail": 79.95,
+            "product_is_shippable": "0",
+            "product_id": "003"
+        },
+        "004": {
+            "product_name": "Magic Words That Drive Her Wild",
+            "product_description": "Digital Book",
+            "product_sku": "5G-MWDHW",
+            "product_month": 0,
+            "product_qty": 1,
+            "product_price": 0,
+            "product_retail": 39.00,
+            "product_is_shippable": "0",
+            "product_id": "004"
+        },
+        "005": {
+            "product_name": "Text To Sex Course",
+            "product_description": "Digital Book",
+            "product_sku": "5G-TTS",
+            "product_month": 0,
+            "product_qty": 1,
+            "product_price": 0,
+            "product_retail": 39.00,
+            "product_is_shippable": "0",
+            "product_id": "005"
+        },
+        "006": {
+            "product_name": "Become Supernatural",
+            "product_description": "Digital Book",
+            "product_sku": "5G-BSN",
+            "product_month": 0,
+            "product_qty": 1,
+            "product_price": 0,
+            "product_retail": 39.95,
+            "product_is_shippable": "0",
+            "product_id": "006"
         }
     }
 }

@@ -119,7 +119,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
                 ?>
             </section>
 
-            <h2 class="text-white text-3xl font-bold text-center mb-3 -mt-4 uppercase sans">
+            <h2 class="text-white text-3xl font-bold text-center my-3 uppercase sans">
                 YOUR FINAL NEW MEMBERS DISCOUNT
             </h2>
 
@@ -363,6 +363,10 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
 
 
     <script>
+
+    document.querySelector(".processlink").addEventListener('click', function(e) {
+      document.querySelector('.processlink').classList.add('disabled');
+    });
 
         var scrollPos = window.pageYOffset;
         const docHeight = document.documentElement.scrollHeight;

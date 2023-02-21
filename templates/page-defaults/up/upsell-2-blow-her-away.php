@@ -375,6 +375,10 @@ $pid2 = '734';
 
 <script type='text/javascript'>
     document.addEventListener('contextmenu', event => event.preventDefault());
+
+		document.querySelector(".processlink").addEventListener('click', function(e) {
+      document.querySelector('.processlink').classList.add('disabled');
+    });
 </script>
 
 
