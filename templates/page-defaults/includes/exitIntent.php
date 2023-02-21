@@ -12,6 +12,13 @@
  ?>
 
 <script>
+  // blocks back navigation
+// function preventBack() {
+//     window.history.forward();
+// }
+// setTimeout("preventBack()", 0);
+
+
 // var for showing once
 var shownExit = false;
 
@@ -22,7 +29,7 @@ function exitEvent() {
     setTimeout(() => {
       // Alternatively we could use our own custom modal?
       // modalHandler('mouseModal', true);
-      window.alert('Are you sure you want to leave?');
+      window.confirm('Are you sure you want to leave?');
       shownExit = true;
     }, 2000);
   }
@@ -30,8 +37,6 @@ function exitEvent() {
 
 function backEvent() {
   console.log('back')
-  event.preventDefault();
-  event.returnValue = '';
   // confirmation allows a decision in the browser
   var confirmationMessage = "Are you sure you want to leave this page?";
   (event || window.event).returnValue = confirmationMessage; // Browser support define return
@@ -58,13 +63,15 @@ document.addEventListener("mouseout", function(event) {
 
 window.addEventListener("unload", function(event) {
   event.preventDefault();
-  // Chrome requires the event to be explicitly acknowledged
+  event.returnValue = '';
+  // Chrome requires the event to be explicit
   backEvent();
 });
 
 window.addEventListener("popstate", function(event) {
   event.preventDefault();
-  // Chrome requires the event to be explicitly acknowledged
+  event.returnValue = '';
+  // Chrome requires the event to be explicit
   backEvent();
 });
 

@@ -1045,6 +1045,8 @@
   </div>
   </div>
 
+  <?php template("includes/exitIntent"); ?>
+
   <?php
     $button_text = 'Yes, Give Me This Now!';
     $scroll_start = 'start-float-btn';
@@ -1059,11 +1061,13 @@
     window.location = '<?= $next; ?>';
   })
 
+  // onclick event lock all cta buttons, animate clicked button and update text
   const productLinks = document.querySelectorAll('.product-link');
   productLinks.forEach((link)=> {
     link.addEventListener('click', (event)=> { 
       disableProductLinks();
       link.querySelector('button').innerText = 'Processing...';
+      link.querySelector('button').classList.add('processing');
     })
   })
 

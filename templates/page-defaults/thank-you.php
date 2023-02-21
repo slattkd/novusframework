@@ -3,8 +3,8 @@ $_SESSION['pageType'] = 'receipt';
 
 unset($_SESSION['declineup']);
 
-$orderid = $_SESSION['orderId'];
-//$cid = $_SESSION['customerID'];
+$orderid = $_SESSION['orderId'] ?? 0;
+$customerid = $_SESSION['customerId'] ?? 0;
 
 //include('../ll2/llapi.php');
 
@@ -14,7 +14,7 @@ $complete = array(
     'method' => 'order_find',
     'start_date' => date('m/d/Y', mktime(0, 0, 0, date("m"), date("d") - 1, date("Y"))),
     'end_date' => date('m/d/Y'),
-    'criteria' => 'customer_id=' . (int)$_SESSION['customerId'] . ',approved',
+    'criteria' => 'customer_id=' . (int)$customerid . ',approved',
     'return_type' => 'order_view',
     'search_type' => 'all'
 );
@@ -28,7 +28,7 @@ $results = $sticky->api(2, $complete);
 
 $resultsArray = print_r($results, true);
 $logger->info('Thank You Receipt: ' . $resultsArray);
-$products = $results['data'];
+$products = $results['data'] ?? [];
 
 $items = json_decode($results['data'], true);
 $info = $items[$orderid];
@@ -256,7 +256,7 @@ $info = $items[$orderid];
                     }
                 }
 
-                $shippingCost = $_SESSION['shippingCost'];
+                $shippingCost = $_SESSION['shippingCost'] ?? 0;
 
                 $ordertotal = number_format($sum_total + $shippingCost, 2);
                 $shipping = number_format($shippingCost, 2);
@@ -293,28 +293,28 @@ $info = $items[$orderid];
                 <div class="columns-3xs">
                     <div class="flex flex-col p-3">
                         <h4 class=" text-xl font-semibold">Shipping Address</h4>
-                        <?php echo $items[$orderid]['shipping_street_address']; ?><br>
-                        <?php if ($items[$orderid]['shipping_street_address2'] != "") {
-                            echo $items[$orderid]['shipping_street_address2'] . '<br>' . '';
+                        <?php echo @$items[$orderid]['shipping_street_address']; ?><br>
+                        <?php if (isset($items[$orderid]['shipping_street_address2'])) {
+                            echo @$items[$orderid]['shipping_street_address2'] . '<br>' . '';
                         } ?>
-                        <?php echo $items[$orderid]['shipping_city']; ?>,
-                        <?php echo $items[$orderid]['shipping_state']; ?>
-                        <?php echo $items[$orderid]['shipping_postcode']; ?>
+                        <?php echo @$items[$orderid]['shipping_city']; ?>,
+                        <?php echo @$items[$orderid]['shipping_state']; ?>
+                        <?php echo @$items[$orderid]['shipping_postcode']; ?>
                     </div>
                     <div class="flex flex-col p-3">
                         <h4 class=" text-xl font-semibold">Billing Address</h4>
-                        <?php echo $items[$orderid]['billing_street_address']; ?><br>
-                        <?php if ($items[$orderid]['billing_street_address2'] != "") {
-                            echo $items[$orderid]['billing_street_address2'] . '<br>' . '';
+                        <?php echo @$items[$orderid]['billing_street_address']; ?><br>
+                        <?php if (isset($items[$orderid]['billing_street_address2'])) {
+                            echo @$items[$orderid]['billing_street_address2'] . '<br>' . '';
                         } ?>
-                        <?php echo $items[$orderid]['billing_city']; ?>,
-                        <?php echo $items[$orderid]['billing_state']; ?>
-                        <?php echo $items[$orderid]['billing_postcode']; ?>
+                        <?php echo @$items[$orderid]['billing_city']; ?>,
+                        <?php echo @$items[$orderid]['billing_state']; ?>
+                        <?php echo @$items[$orderid]['billing_postcode']; ?>
                     </div>
                 </div>
                 <div class="flex-flex-col px-3">
                     <h4 class=" text-xl font-semibold">Email</h4>
-                    <p><?php echo $_SESSION['email']; ?></p>
+                    <p><?php echo @$_SESSION['email']; ?></p>
                 </div>
                 
 
@@ -382,6 +382,11 @@ $info = $items[$orderid];
 			}
 		}
     </script>
+
+    <?php if ($site['debug'] == true) {
+      // Show Debug bar only on whitelisted domains.
+      template('debug', null, null, 'debug');
+  } ?>
 </body>
 
 </html>

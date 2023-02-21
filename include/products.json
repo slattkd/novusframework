@@ -10,7 +10,15 @@
         "1023",
         "81",
         "82",
-        "83"
+        "83",
+        "1147",
+        "1148",
+        "001",
+        "002",
+        "003",
+        "004",
+        "005",
+        "006"
     ],
     "upsell": {
         "126": "1021",
@@ -26,7 +34,6 @@
             "product_qty": 1,
             "product_price": 49.95,
             "product_retail": 69.95,
-            "product_ship": 6.95,
             "product_is_shippable": "1",
             "product_is_sub": "0",
             "product_id": "126"
@@ -39,7 +46,6 @@
             "product_qty": 3,
             "product_price": 129.00,
             "product_retail": 237.00,
-            "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "0",
             "product_id": "127"
@@ -52,7 +58,6 @@
             "product_qty": 6,
             "product_price": 197.00,
             "product_retail": 474.00,
-            "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "0",
             "product_id": "128",
@@ -66,7 +71,6 @@
             "product_qty": 1,
             "product_price": 44.95,
             "product_retail": 69.95,
-            "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "1",
             "product_id": "1021"
@@ -79,7 +83,6 @@
             "product_qty": 3,
             "product_price": 116.99,
             "product_retail": 237.00,
-            "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "1",
             "product_id": "1022"
@@ -92,7 +95,6 @@
             "product_qty": 6,
             "product_price": 176.99,
             "product_retail": 474.00,
-            "product_ship": 0,
             "product_is_shippable": "1",
             "product_is_sub": "1",
             "product_id": "1023",
@@ -141,6 +143,28 @@
             "product_retail": 19.95,
             "product_is_shippable": "1",
             "product_id": "84"
+        },
+        "1147": {
+            "product_name": "Total Brain boost",
+            "product_description": "6 Month Supply (12 bottles)",
+            "product_sku": "TBB-Q012-X01",
+            "product_month": 6,
+            "product_qty": 12,
+            "product_price": 197.00,
+            "product_retail": 359.70,
+            "product_is_shippable": "1",
+            "product_id": "1147"
+        },
+        "1148": {
+            "product_name": "Total Brain boost",
+            "product_description": "6 Month Supply (24 bottles)",
+            "product_sku": "TBB-Q012-X01",
+            "product_month": 12,
+            "product_qty": 24,
+            "product_price": 347.00,
+            "product_retail": 347.00,
+            "product_is_shippable": "1",
+            "product_id": "1148"
         },
         "001": {
             "product_name": "5G Enhancement Bible",

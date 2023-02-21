@@ -524,5 +524,19 @@ p.sales-tax {
   text-align: center;
 }
 
+.processing {
+	animation: pulse 1.5s infinite;
+}
+
+a.processing button.cta-button {
+	filter: none;
+}
+
+@keyframes pulse {
+  0% {opacity: 1;}
+	50% {opacity: 0.7;}
+	100% {opacity: 1;}
+}
+
 /* blue - #ff01ff */
 /* green - #6da515 */
