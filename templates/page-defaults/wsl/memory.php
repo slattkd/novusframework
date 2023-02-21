@@ -7,7 +7,7 @@
 
 <head>
   <?php template('includes/header'); ?>
-  <title><?= $company['billedAs']; ?> - This Secret Boosts Your Memory And Focus</title>
+  <title><?= $company['name']; ?> - This Secret Boosts Your Memory And Focus</title>
   <style type="text/css">
     .table-contents {
       flex-direction: column;

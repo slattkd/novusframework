@@ -22,7 +22,7 @@ $current_product = $products['products'][$pid];
 <head>
   <!-- CSS -->
   <?php template("includes/header"); ?>
-        <title><?= $company['billedAs']; ?> - Secure Order</title>
+        <title><?= $company['name']; ?> - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
     .seal {
@@ -215,7 +215,7 @@ $current_product = $products['products'][$pid];
       <input type="hidden" id="shippingId" name="shippingId" value="<?= $site['shippingUs']; ?>">
       <input type="hidden" id="shippingCost" name="shippingCost" value="0">
       <input type="hidden" id="tax_pct" name="tax_pct" value="0">
-      <input type="hidden" id="lastName" name="lastName" value="<?= $_SESSION['lastName']; ?>">
+      <input type="hidden" id="lastName" name="lastName" value="<?echo @$_SESSION['lastName']; ?>">
     </form>
   </div>
 
@@ -245,7 +245,7 @@ $current_product = $products['products'][$pid];
     </div>
 
     <div class="protection-header my-4">
-      <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
+      <h5 class="flex items-center text-xl"><span><?= $company['name']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
     </div>
 
 

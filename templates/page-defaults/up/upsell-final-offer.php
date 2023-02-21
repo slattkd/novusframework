@@ -12,6 +12,9 @@
   9. receipt
 */
 $_SESSION['pageType'] = 'upinterstitial';
+$next = '/up/upsell-female-cream';
+// $pid1 = '18';
+// $pid2 = '753';
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +46,7 @@ $_SESSION['pageType'] = 'upinterstitial';
             or....
             </div>
             <div class="flex w-full text-blue-600 text-2xl mb-3">
-                <a class="underline hover:text-blue-500 font-semibold" href="//<?php echo $_SERVER['HTTP_HOST']?>/up/upsell-female-cream">Click Here Now To Get One FINAL HUGE Discount Because You're A New Member Today...</a>
+                <a class="underline hover:text-blue-500 font-semibold" href="//<?php echo $_SERVER['HTTP_HOST']?><?= $next; ?>">Click Here Now To Get One FINAL HUGE Discount Because You're A New Member Today...</a>
             </div>
             <div class="flex justify-center w-full font-bold">(One Time Only - Ends TODAY!)</div>
         </div>

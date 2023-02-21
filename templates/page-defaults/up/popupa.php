@@ -13,9 +13,9 @@
 */
 $_SESSION['pageType'] = 'dn0';
 
-$next = '/upsell-2-blow-her-away';
+$next = '/up/upsell-2-blow-her-away';
 $product1 = $products['products']['127'];
-$product1 = $products['products']['128'];
+$product2 = $products['products']['128'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

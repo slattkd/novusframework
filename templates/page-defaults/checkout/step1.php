@@ -3,11 +3,18 @@
 $next = '/checkout/step2';
 $current_step = 1;
 
-// required PID from post
 if ($_POST) {
-  $_SESSION['pid'] = $_POST['product_id'];
+  $_SESSION['pid']  = $_POST['pid']; //126 127 128 1021 1022 1023
+  $_SESSION['add1'] = (isset($_POST['add1']) && $_POST['add1'] !== 0) ? $_POST['add1'] : 0; //superlube 84
+  $_SESSION['add2'] = isset($_POST['add2']) ? $_POST['add2'] : 0;  //37 Sex Positions 81 82 83
+} else {
+  $_SESSION['pid'] = '126';
 }
+
+// default product if user did not navigate through order page
 $pid = $_SESSION['pid'];
+$add1 = $_SESSION['add1'] ?? 0;
+$add2 = $_SESSION['add2'] ?? 0;
 
 $current_product = $products['products'][$pid];
 
@@ -20,7 +27,7 @@ $current_product = $products['products'][$pid];
 <head>
   <!-- CSS -->
   <?php template("includes/header"); ?>
-  <title><?= $company['billedAs']; ?> - Secure Order</title>
+  <title><?= $company['name']; ?> - Secure Order</title>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style type="text/css">
     .seal {
@@ -120,7 +127,7 @@ $current_product = $products['products'][$pid];
     </div>
 
     <div class="protection-header my-4">
-      <h5 class="flex items-center text-xl"><span><?= $company['billedAs']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
+      <h5 class="flex items-center text-xl"><span><?= $company['name']; ?> <br class="md:hidden"> Buyer Protection</span></h5>
     </div>
 
 

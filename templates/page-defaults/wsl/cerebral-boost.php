@@ -7,7 +7,7 @@
 
 <head>
   <?php template('includes/header'); ?>
-  <title><?= $company['billedAs']; ?> - Cerebral Boost</title>
+  <title><?= $company['name']; ?> - Cerebral Boost</title>
   <style type="text/css">
 
   .table-contents {

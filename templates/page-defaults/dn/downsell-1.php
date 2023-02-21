@@ -122,7 +122,7 @@ $product1 = $products['products']['1023'];
                 <div class="text-center" id="buy-btn2">
                   <div class="flex justify-center mx-auto mt-6">
                     <a href="/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy2"
-                      class="buy_button processlink clickable" rel="samewin">Yes, Secure My Discount!</a>
+                      class="buy_button processlink clickable" style="min-width: 320px;" rel="samewin">Yes, Secure My Discount!</a>
                   </div>
                 </div>
               </div>
@@ -171,7 +171,8 @@ $product1 = $products['products']['1023'];
 
     <script>
     document.querySelector(".processlink").addEventListener('click', function(e) {
-      document.querySelector('.processblock').style.display = 'none';
+      document.querySelector('.processlink').classList.add('disabled');
+      document.querySelector('.processlink').innerText = 'Processing...';
     });
     </script> <!-- Triggers Exit-intent -->
 

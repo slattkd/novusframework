@@ -4,6 +4,10 @@ $cookie_value = "yes";
 $vidcode = "jSBtEwenrKwiOeKu";
 $droptime = "45";
 
+$next = '/up/upsell-2-blow-her-away';
+$pid1 = '11';
+$pid2 = '250';
+
 //PageTypes dictate what pixels are bing fired, options should be limited to:
 /*
   1. vsl
@@ -216,7 +220,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 				        template('includes/step_bar', null, $current_step);
 				        ?>
             </section>
-            <div class="flex flex-col w-full rounded p-5 bg-white rounded border border-black">
+            <div class="flex flex-col w-full rounded p-5 bg-white rounded border border-black mt-6">
                 <div class="w-full pb-4 text-center">
                     <h2 class="font-bold text-2xl text-red-500">WARNING: <u>Do Not</u> Leave This Page Yet, Your Order Is Not Complete!</h2>
                 </div>
@@ -250,7 +254,9 @@ if (isset($_SESSION['step_1_orderId'])) {
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $179.69</strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 57% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/process-up.php?pid=11&next=up/upsell-2-blow-her-away" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+                                <a href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink" rel="samewin" onclick="exit=false;">
+                                    <img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" />
+                                </a>
                                 </div>
 
                             </div>
@@ -260,7 +266,9 @@ if (isset($_SESSION['step_1_orderId'])) {
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $297</strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A WHOPPING 65% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/process-up.php?pid=250&next=up/upsell-2-blow-her-away" id="upsell-buy" class="buy_button processlink" rel="samewin" onclick="exit=false;"><img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" /></a>
+                                <a href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink" rel="samewin" onclick="exit=false;">
+                                    <img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" />
+                                </a>
                                 </div>
                             </div>
                         </div>

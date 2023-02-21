@@ -33,7 +33,7 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
 
 <head>
     <?php template("includes/header"); ?>
-    <title><?= $company['billedAs']; ?> - Secure Order</title>
+    <title><?= $company['name']; ?> - Secure Order</title>
 
     <style>
         .header-strip {
@@ -288,7 +288,7 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
                 </div>
                 <picture class="flex flex-col shrink justify-center w-full md:w-1/4">
                     <source srcset="//<?= $_SERVER['HTTP_HOST']; ?><?= $company['featuredProductImage']; ?>" type="image/avif">
-                    <img src="//<?= $_SERVER['HTTP_HOST']; ?><?= $company['featuredProductImage']; ?>" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/3 md:w-full md:translate-y-8" style="mix-blend-mode: multiply;object-fit:contain">
+                    <img src="//<?= $_SERVER['HTTP_HOST']; ?><?= $company['featuredProductImage']; ?>" alt="brain boost bottle" class="h-full mx-auto w-full bottle-img object-contain w-1/2 md:w-full" style="object-fit:contain">
                 </picture>
             </div>
 
@@ -372,7 +372,7 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
             <div class="mr-3">
                 <img class="truck max-h-8 object-contain text-right" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/icon-shipping-truck-green.png" style="width: 100px; height:auto;">
             </div>
-            <p class="leading-6 pt-4">Shipping Not Impacted By Supply Chain Issues! Ultra-fast delivery straight to your&nbsp;door.</p>
+            <p class="leading-6">Shipping Not Impacted By Supply Chain Issues! Ultra-fast delivery straight to your&nbsp;door.</p>
         </div>
 
         <div class="flex flex-col items-center justify-center text-center mb-4 md:hidden" style="max-width: 100vw;">

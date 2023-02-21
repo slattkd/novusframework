@@ -25,13 +25,14 @@ if ($_POST) {
     $_SESSION['pid']  = $_POST['pid']; //126 127 128 1021 1022 1023
     $_SESSION['add1'] = (isset($_POST['add1']) && $_POST['add1'] !== 0) ? $_POST['add1'] : 0; //superlube 84
     $_SESSION['add2'] = isset($_POST['add2']) ? $_POST['add2'] : 0;  //37 Sex Positions 81 82 83
+} else {
+  $_SESSION['pid'] = '126';
 }
 
+// default product if user did not navigate through order page
 $pid = $_SESSION['pid'];
 $add1 = $_SESSION['add1'] ?? 0;
 $add2 = $_SESSION['add2'] ?? 0;
-
-var_dump($pid);
 
 $product1 = $products['products']['126'];
 $product2 = $products['products']['127'];
