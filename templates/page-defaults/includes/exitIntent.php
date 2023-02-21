@@ -15,42 +15,15 @@
 // var for showing once
 var shownExit = false;
 
-document.addEventListener("mouseout", event => {
-  if ((event.toElement === null || event.toElement === undefined) && event.relatedTarget === null) {
-    exitEvent();
-    shownExit = true;
-  }
-  console.log('mouseout', event);
-});
-
-window.addEventListener('hashchange', (event) => {
-  backEvent();
-  console.log('has change', event);
-})
-
-window.addEventListener('unload', (event) => {
-  backEvent();
-  console.log('unload', event);
-})
-
-window.addEventListener('popstate', (event) => {
-  backEvent();
-  console.log('popstate', event);
-});
-
-window.addEventListener('beforeunload', function (e) {
-    backEvent();
-    console.log('before unload', event);
-});
-
-
 function exitEvent() {
   console.log('exit');
   if (!shownExit) {
     // not immediate, less abrupt
     setTimeout(() => {
+      // Alternatively we could use our own custom modal?
       // modalHandler('mouseModal', true);
       window.alert('Are you sure you want to leave?');
+      shownExit = true;
     }, 2000);
   }
 }
@@ -60,11 +33,39 @@ function backEvent() {
   event.preventDefault();
   event.returnValue = '';
   // confirmation allows a decision in the browser
-  if (confirm("Press a button!") == true) {
-    console.log('accepted');
-  } else {
-    console.log('rejected');
-  }
-  return false;
+  var confirmationMessage = "Are you sure you want to leave this page?";
+  (event || window.event).returnValue = confirmationMessage; // Browser support define return
+  return confirmationMessage;
 }
+
+
+let isMouseOutOfWindow = true;
+// Add event listener for mouseleave
+document.addEventListener("mouseleave", function(event) {
+  if (event.clientY <= 0) {
+    isMouseOutOfWindow = true;
+    exitEvent();
+  }
+});
+
+// Add event listener for mouseout
+document.addEventListener("mouseout", function(event) {
+  if (event.relatedTarget === null) {
+    isMouseOutOfWindow = true;
+    exitEvent();
+  }
+});
+
+window.addEventListener("unload", function(event) {
+  event.preventDefault();
+  // Chrome requires the event to be explicitly acknowledged
+  backEvent();
+});
+
+window.addEventListener("popstate", function(event) {
+  event.preventDefault();
+  // Chrome requires the event to be explicitly acknowledged
+  backEvent();
+});
+
 </script>
