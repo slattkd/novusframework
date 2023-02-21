@@ -219,7 +219,7 @@ $pid2 = '734';
 					<div>
 					<img class="float-right mb-5 ml-5 w-full mx-auto md:w-1/2" style="max-width: 350px;" src="https://s3.amazonaws.com/5gmale/male-repro.jpg" alt="male reproductive diagram" />
 					<p class=" pb-3">These <strong>“Genesis”</strong> ingredients are the ingredients that help your body create more semen.</p>
-					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong style="#D81E00">as low at 10%</strong>)… </p>
+					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong style="color:#D81E00">as low at 10%</strong>)… </p>
 					<p class=" pb-3">Resulting in a <strong>measly dribble</strong> when you finish…</p>
 					<p class=" pb-3">Once the “Genesis” ingredients enter your body… and are absorbed into your blood steam… they are then used by your testicles to fuel <strong>MASSIVE semen production</strong>…</p>
 					</div>

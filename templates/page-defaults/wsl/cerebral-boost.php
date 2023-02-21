@@ -52,7 +52,7 @@
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image37.jpg" type="image/jpg">
       <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image37.jpg"
-        style="  " class="md:ml-4 mb-3 w-full mx-auto" title="">
+         class="md:ml-4 mb-3 w-full mx-auto" title="">
     </picture>
 
 
@@ -60,7 +60,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image16.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image16.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Hi, I&rsquo;m </span><span class="font-bold">Dr. Steven Masley</span><span class="font-bold">,
@@ -159,7 +159,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image5.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image5.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>Remembering the simple things that used to slip your memory&hellip;</span></p>
 
@@ -232,7 +232,7 @@
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image35.jpg" type="image/jpg">
           <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image35.jpg"
-            style="  " class=" mb-3 w-full" title="">
+             class=" mb-3 w-full" title="">
         </picture>
       </span>
     </h2>
@@ -269,7 +269,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image10.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image10.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Worse, her friends had started to avoid her&hellip; </span></p>
@@ -337,7 +337,7 @@
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image15.jpg" type="image/jpg">
       <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image15.jpg"
-        style="  " class=" mb-3 w-full" title="">
+         class=" mb-3 w-full" title="">
     </picture>
 
 
@@ -386,7 +386,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image2.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="dale">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="dale">
       </picture>
       </span></p>
       <p><span>He had been a </span><span>highly-successful CEO for a local company</span><span>&nbsp;for nearly 10
@@ -490,7 +490,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image38.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image38.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span class=" ">One that I&rsquo;ve been eating daily myself for nearly 25 years&hellip;</span></p>
       <p><span class="   font-bold"></span></p>
@@ -511,7 +511,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image39.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-1/2" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-1/2" title="">
       </picture>
       </span></p>
       <p><span>Now, as I said before, my name is</span><span class="font-bold">&nbsp;Dr. Steven
@@ -547,11 +547,11 @@
 
 
     <p><span
-        style="  ">
+        >
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image12.jpg" type="image/jpg">
           <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image12.jpg"
-            style="  " class=" mb-3 w-full " title="">
+             class=" mb-3 w-full " title="">
         </picture>
       </span></p>
 
@@ -650,7 +650,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image31.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image31.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
 
@@ -748,11 +748,11 @@
       </span>
     </h2>
     <p><span
-        style="  ">
+        >
         <picture>
           <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image21.jpg" type="image/jpg">
           <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image21.jpg"
-            style="  " class=" mb-3 w-full " title="">
+             class=" mb-3 w-full " title="">
         </picture>
       </span></p>
 
@@ -862,7 +862,7 @@
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image7.jpg" type="image/jpg">
       <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image7.jpg"
-        style="  " class=" mb-3 w-full" title="">
+         class=" mb-3 w-full" title="">
     </picture>
 
 
@@ -910,7 +910,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image34.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image34.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>And when you combine the </span><span class=" font-bold">damage</span><span class=" ">&nbsp;from these
           toxins and nutrient deficiencies&hellip; &nbsp;</span></p>
@@ -948,7 +948,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.avif" type="image/avif">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/dr-computer.jpg"
-          style="  " class="mb-3 w-full " title="">
+           class="mb-3 w-full " title="">
       </picture>
     </p>
     <p><span>As I mentioned before&hellip; &nbsp;</span></p>
@@ -1063,7 +1063,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image28.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>I know this because every year I tested brain performance on all the patients in my
@@ -1128,7 +1128,7 @@
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image13.jpg" type="image/jpg">
       <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image13.jpg"
-        style="  " class="mb-3 w-full" title="">
+         class="mb-3 w-full" title="">
     </picture>
 
 
@@ -1194,7 +1194,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image17.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image17.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>And now they&rsquo;re so </span><span class="font-bold">happy</span><span>&nbsp;because of it.
@@ -1245,7 +1245,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image11.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image11.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>I&rsquo;ve got the </span><span class="font-bold">energy to travel</span><span>&hellip;
@@ -1293,7 +1293,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image8.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image8.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span class="font-bold">Curcumin</span><span>&nbsp;is at the top of my list of brain nutrients because it helps
@@ -1373,7 +1373,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image9.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image9.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span class="font-bold">Resveratrol</span><span>&nbsp;is a compound that is naturally found in red </span><span
@@ -1451,7 +1451,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image32.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image32.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
 
@@ -1494,7 +1494,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image4.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image4.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>You&rsquo;ve probably heard of Vitamin B12</span><span class=" ">&nbsp;before.</span></p>
@@ -1542,7 +1542,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image24.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image24.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span class="font-bold">Folate</span><span>&nbsp;helps repair our DNA and remove toxins, which is essential for
@@ -1566,7 +1566,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image22.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image22.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Despite its popularity as a supplement, </span><span class="font-bold">50% of Americans are thought to be
@@ -1670,7 +1670,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image19.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image19.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span class="font-bold">Total Brain Boost</span><span>&nbsp;is the only health supplement that contains all 6
@@ -1732,7 +1732,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image3.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Imagine focusing, listening, and socializing better with your family and friends&hellip; </span>
@@ -1873,7 +1873,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image40.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image40.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>You don&rsquo;t need a prescription.</span></p>
 
@@ -1934,7 +1934,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png" type="image/png">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/90-day-seal-3-x.png"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-1/4 p-8 md:p-0" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-1/4 p-8 md:p-0" title="">
       </picture>
 
       <p><span>So if you&rsquo;re not happy with your results for any reason&hellip; </span></p>
@@ -1958,7 +1958,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image18.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image18.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>All you need to do is call or email within 90 days and say, &ldquo;I want to use my
@@ -2011,7 +2011,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image36.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image36.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>This digital guide shows you exactly how to get the most out of Total Brain Boost,
@@ -2047,7 +2047,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image14.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image14.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Next&hellip; one thing I discovered that helps people boost their brain power&hellip;
@@ -2115,7 +2115,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image30.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image30.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>You&rsquo;re also going to get the </span><span class="font-bold">&ldquo;Brain-Draining Foods To
@@ -2187,7 +2187,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image6.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image6.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>Next</span><span>, you&rsquo;ll also get my </span><span>&ldquo;</span><span class=" font-bold">Simple
@@ -2233,7 +2233,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image1.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image1.jpg"
-          style="  " class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
+           class="float-left md:mr-4 mb-3 w-full md:w-2/5" title="">
       </picture>
 
       <p><span>And finally, you&rsquo;ll also get my &ldquo;</span><span
@@ -2355,7 +2355,7 @@
       <picture>
         <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image26.jpg" type="image/jpg">
         <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image26.jpg"
-          style="  " class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
+           class="float-right md:ml-4 mb-3 w-full md:w-2/5" title="">
       </picture>
       <p><span>It&rsquo;s put through a thorough series of lab tests by a trusted third party lab.</span>
 
@@ -2697,7 +2697,7 @@
     <picture>
       <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image25.jpg" type="image/jpg">
       <img alt="" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/wsl/image25.jpg"
-        style="  " class=" mb-3 w-full" title="">
+         class=" mb-3 w-full" title="">
     </picture>
 
 

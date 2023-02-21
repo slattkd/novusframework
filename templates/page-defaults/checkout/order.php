@@ -78,6 +78,7 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
         }
 
         .vipwrap #vip {
+            appearance: none;
             -webkit-appearance: none;
             background-color: #fafafa;
             border: 2px solid #c10e0e;
@@ -234,6 +235,7 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
         }
 
         #prod-select {
+            appearance: none;
             -webkit-appearance: none;
             background-color: #fafafa;
             border: 2px solid #000;
