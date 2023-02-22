@@ -18,6 +18,8 @@ $add2 = $_SESSION['add2'] ?? 0;
 
 $current_product = $products['products'][$pid];
 
+$is_mobile = isMobile();
+
 ?>
 
 <!DOCTYPE html>
@@ -165,7 +167,7 @@ $current_product = $products['products'][$pid];
   <?php template("includes/rpFooter"); ?>
 
   <script>
-    const isMobile = Math.min(window.innerWidth) < 769;
+    const isMobile = <?= $is_mobile; ?>;
     // || navigator.userAgent.indexOf("Mobi") > -1
 
     const placeholderElements = document.querySelectorAll('.input input');

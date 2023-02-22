@@ -13,6 +13,8 @@ $product6 = $products['products']['1023'];
 
 $_SESSION['pageType'] = 'order';
 
+$is_mobile = isMobile();
+
 if (!isset($_SESSION['vip_discount'])) {
     $_SESSION['vip_discount'] = 0;
 }
@@ -861,7 +863,7 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
     </form>
 
     <script>
-        const isMobile = Math.min(window.innerWidth) < 769;
+        const isMobile = <?= $is_mobile; ?>;
 
         const pop = document.querySelector('.vip-pop');
         const vip = document.querySelector('.vipwrap');
@@ -941,8 +943,6 @@ $displayDeadline = date("j, Y, g:i a", $dateString);
             } else {
                 //console.log('do nothing');
             }
-
-
         }
 
         function submitMobileProduct() {

@@ -8,6 +8,8 @@ if (!empty($_POST))
     header('Location: /checkout/order' );
     die();
 }
+
+$is_mobile = isMobile();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -170,11 +172,9 @@ if (!empty($_POST))
         </div>
 
         <script type="text/javascript">
-
-            const isMobile = Math.min(window.screen.width, window.screen.height) < 768;
-
             // on mobile, update form to only have times and long
 
+            const isMobile = <?php echo $is_mobile; ?>;
 
             window.onload = function () {
                 let defaultConfig = {

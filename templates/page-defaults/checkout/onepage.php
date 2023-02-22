@@ -6,6 +6,8 @@ $kount_session = str_replace('.', '', microtime(true));
 $currentDate = date("m/d/Y H:i:s");
 $futureDate = date("m/d/Y H:i:s", $_SESSION['start_time'] + 900);
 
+$is_mobile = isMobile();
+
 if (date('H') < 16) {
     $shipTodayDate = new DateTime('today 1PM');
 } else {
@@ -1234,7 +1236,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
   });
 
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const isMobile = <?= $is_mobile; ?>;
   // || navigator.userAgent.indexOf("Mobi") > -1
 
   if (!isMobile) {

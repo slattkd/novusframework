@@ -17,5 +17,6 @@ return array(
     'Interop\\Queue\\' => array($vendorDir . '/queue-interop/queue-interop/src'),
     'Enqueue\\Fs\\' => array($vendorDir . '/enqueue/fs'),
     'Enqueue\\Dsn\\' => array($vendorDir . '/enqueue/dsn'),
+    'Detection\\' => array($vendorDir . '/mobiledetect/mobiledetectlib/src'),
     'DebugBar\\' => array($vendorDir . '/maximebf/debugbar/src/DebugBar'),
 );

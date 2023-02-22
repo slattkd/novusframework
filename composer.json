@@ -6,7 +6,8 @@
         "maximebf/debugbar": "^1.17",
         "fordnox/php-queue-manager": "^0.3.0",
         "enqueue/fs": "^0.10.9",
-        "monolog/monolog": "^3.2"
+        "monolog/monolog": "^3.2",
+        "mobiledetect/mobiledetectlib": "^3.74"
     },
     "platform-check": false,
     "authors": [

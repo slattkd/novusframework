@@ -13,6 +13,8 @@ if ($_POST) {
 $pid = $_SESSION['pid'];
 $current_product = $products['products'][$pid];
 // var_dump($current_product);
+
+$is_mobile = isMobile();
 ?>
 
 <!DOCTYPE html>
@@ -345,7 +347,7 @@ $current_product = $products['products'][$pid];
     }
   }
 
-  const isMobile = Math.min(window.innerWidth) < 769;
+  const isMobile = <?= $is_mobile; ?>;
   // || navigator.userAgent.indexOf("Mobi") > -1
   const placeholderElements = document.querySelectorAll('.input input');
 

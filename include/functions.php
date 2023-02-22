@@ -378,3 +378,11 @@ function taxAmt($price) {
     }
     return number_format($tax_pct / 100 * $price, 2);
 }
+
+// Include and instantiate the class.
+require_once '../vendor/mobiledetect/mobiledetectlib/src/MobileDetect.php';
+// Any mobile device (phones or tablets).
+function isMobile() {
+    $detect = new \Detection\MobileDetect;
+    return $detect->isMobile();
+}

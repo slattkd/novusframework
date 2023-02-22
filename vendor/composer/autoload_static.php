@@ -44,6 +44,7 @@ class ComposerStaticInit482984276886e3ef29e23f1ee88f703f
         ),
         'D' => 
         array (
+            'Detection\\' => 10,
             'DebugBar\\' => 9,
         ),
     );
@@ -93,6 +94,10 @@ class ComposerStaticInit482984276886e3ef29e23f1ee88f703f
         array (
             0 => __DIR__ . '/..' . '/enqueue/dsn',
         ),
+        'Detection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/src',
+        ),
         'DebugBar\\' => 
         array (
             0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
@@ -111,6 +116,7 @@ class ComposerStaticInit482984276886e3ef29e23f1ee88f703f
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Detection\\MobileDetect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/src/MobileDetect.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
