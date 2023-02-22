@@ -187,12 +187,13 @@ PageTypes can be overridden on a page by page basis, by overriding the "pageType
 NOTE: Vidalytics uses a "Smart Autoplay" feature, which follows chromes rules and will autoplay videos ONLY if.
 1. The user has already interacted with page.
 2. The user has previously played a video with sound.
+3. Optional $overlay image can be included for click to play functionality
 
 Because of this javascript tricks are no longer needed to click our auto play.
 
 
 To embed videos use the following template include.
-``` <?php video('includes/player', $vidcode, $droptime, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>```
+``` <?php video('includes/player', $videoId, $dropTime, $overlay, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>```
 
 
 

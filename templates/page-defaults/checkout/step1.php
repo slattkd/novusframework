@@ -18,7 +18,7 @@ $add2 = $_SESSION['add2'] ?? 0;
 
 $current_product = $products['products'][$pid];
 
-$is_mobile = isMobile();
+
 
 ?>
 
@@ -167,9 +167,6 @@ $is_mobile = isMobile();
   <?php template("includes/rpFooter"); ?>
 
   <script>
-    const isMobile = <?= $is_mobile; ?>;
-    // || navigator.userAgent.indexOf("Mobi") > -1
-
     const placeholderElements = document.querySelectorAll('.input input');
 
     // hide show input labels

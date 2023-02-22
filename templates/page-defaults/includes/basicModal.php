@@ -1,14 +1,17 @@
 
-<!--
+/*
+modal element that allows for custom title, body, and footer content
     Requires basic_modal.js served in the <head>
     php variables:
-    $modal_id = string;
-    $modal_title = string;
-    $max_width = optional string (size: sm, md, lg, xl, 23456xl);
-    $height = optional string (fractions: 1/2 2/3 3/4 4/5 5/6 full);
+    $modal_id (string) = id to manage modal display
+    $modal_title (string) = text content for title
+    $max_width (string) = size: sm, md, lg, xl, 23456xl - defaults to max-w-[lg];
+    $height (string) = fractions: 1/2 2/3 3/4 4/5 5/6 full - defaults to h-auto;
     $modal_body = html as string;
     $modal_footer = html as string;
--->
+
+    TODO: option for including page view (html/php files) as variable - getPage()
+*/
 
 <style>
     .center-modal {

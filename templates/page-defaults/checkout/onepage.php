@@ -6,7 +6,7 @@ $kount_session = str_replace('.', '', microtime(true));
 $currentDate = date("m/d/Y H:i:s");
 $futureDate = date("m/d/Y H:i:s", $_SESSION['start_time'] + 900);
 
-$is_mobile = isMobile();
+
 
 if (date('H') < 16) {
     $shipTodayDate = new DateTime('today 1PM');
@@ -1236,8 +1236,8 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
   });
 
-  const isMobile = <?= $is_mobile; ?>;
-  // || navigator.userAgent.indexOf("Mobi") > -1
+  const isMobile = "<?= $_SESSION['isMobile']; ?>";
+
 
   if (!isMobile) {
     const placeholderElements = document.querySelectorAll('input');
@@ -1592,12 +1592,16 @@ $timerDelay = time() - $_SESSION['timer-gm'];
           var shipping = data.data.shipping ? parseFloat(data.data.shipping) : 0;
           var total = parseFloat(data.data.total);
           document.getElementById('tax_pct').value = taxPercent;
+          document.getElementById('shippingCost').value = shipping;
           document.getElementById('tax-amt').innerHTML = taxAmount.toFixed(2);
           document.getElementById('tax-amt-m').innerHTML = taxAmount.toFixed(2);
           document.getElementById('tax-pct').innerHTML = taxPercent > 0 ? `(${taxPercent}%)` : '(Estimated)';
           document.getElementById('final-price').innerHTML = (total).toFixed(2);
           document.getElementById('total-mobile').innerHTML = (total).toFixed(2);
           document.getElementById('total-desktop').innerHTML = (total).toFixed(2);
+          if (data.data.tax) {
+            
+          }
 
         }
       })

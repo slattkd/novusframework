@@ -30,7 +30,8 @@ $pid = $_SESSION['pid'];
 
 $current_product = $products['products'][$pid];
 
-$is_mobile = isMobile();
+$shipping_cost = $_SESSION["shippingCost"];
+
 ?>
 
 <!DOCTYPE html>
@@ -239,7 +240,6 @@ $is_mobile = isMobile();
       <input type="hidden" name="shippingCountry" id="shippingCountry" value="<?php echo @$_SESSION["shippingCountry"]; ?>">
       <input type="hidden" name="shippingZip" id="shippingZip" value="<?php echo @$_SESSION["shippingZip"]; ?>">
 
-
       <input type="hidden" name="previous_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step2">
       <input type="hidden" name="current_page" value="//<?= $_SERVER['HTTP_HOST']; ?>/checkout/step3">
       <input type="hidden" name="next_page" id="next-page" value="<?php echo $next?>">
@@ -346,8 +346,6 @@ $is_mobile = isMobile();
   <?php template("includes/rpFooter"); ?>
 
   <script>
-    const isMobile = <?= $is_mobile; ?>;
-    // || navigator.userAgent.indexOf("Mobi") > -1
 
     const placeholderElements = document.querySelectorAll('.input input');
 

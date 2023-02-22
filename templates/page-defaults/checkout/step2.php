@@ -14,7 +14,7 @@ $pid = $_SESSION['pid'];
 $current_product = $products['products'][$pid];
 // var_dump($current_product);
 
-$is_mobile = isMobile();
+
 ?>
 
 <!DOCTYPE html>
@@ -347,8 +347,6 @@ $is_mobile = isMobile();
     }
   }
 
-  const isMobile = <?= $is_mobile; ?>;
-  // || navigator.userAgent.indexOf("Mobi") > -1
   const placeholderElements = document.querySelectorAll('.input input');
 
   // hide show input labels
@@ -516,12 +514,18 @@ $is_mobile = isMobile();
             return response.json();
         }) 
         .then(function (data) {
-            console.log(data);
-            if (data.data && data.data.tax) {
-              var taxData = data.data.tax;
-              taxPercent = parseFloat(taxData.pct);
-              document.getElementById('tax_pct').value = taxPercent;
-            }
+          console.log(data);
+          if (data.data) {
+            var shipping = data.data.shipping ? parseFloat(data.data.shipping) : 0;
+            document.getElementById('shippingCost').value = shipping;
+            var total = parseFloat(data.data.total);
+          }
+          if (data.data && data.data.tax) {
+            var taxData = data.data.tax;
+            var taxPercent = taxData.pct ? parseFloat(taxData.pct) : 0;
+            var taxAmount = taxData.total ? parseFloat(taxData.total) : 0;
+            document.getElementById('tax_pct').value = taxPercent;
+          }
         })
         .catch(function (error){
             console.log(error);

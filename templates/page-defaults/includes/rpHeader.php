@@ -1,8 +1,14 @@
+/*
+branded header bar with phone number and secure message options
+php variables:
+  $show_phone (bool) = show phone on bar with logo
+  $show_secure (bool) = hide or show bar with secure checkout message;
+  $justify (string) = 'center' or between for logo and phone
+  $container (string) = set to match the page 'container-[]'
+*/
+
+
 <?php
-  // $show_phone show phone on bar with logo
-  // $show_secure hide or show bar with secure checkout message;
-  // $justify center or between for logo and phone
-  // $container set to match the page 'container-[]'
   $show_phone ?? $show_phone = 1;
   $show_secure ?? $show_secure = 1;
   $justify ?? $justify = 'justify-between';

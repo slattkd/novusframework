@@ -1,3 +1,7 @@
+/*
+  pure css place wherever a spinner animation is needed for loading
+*/
+
 <style>
 .spin {
   display: inline-block;

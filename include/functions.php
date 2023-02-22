@@ -291,9 +291,6 @@ function floatButton($template, $top_content, $button_text = null, $scroll_start
 {
     global $site;
     global $company;
-    global $products;
-    global $debugbarRenderer;
-    global $debugbar;
 
     require('../' . $templatePath . '/' . $template . '.php');
 }
@@ -303,22 +300,15 @@ function legalLinks($template, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;
-    global $products;
-    global $debugbarRenderer;
-    global $debugbar;
 
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
 // opens models for applicable content
-function rpHeader($template, $show_phone = null, $show_secure = null, $justify = null, $container = null, $company = null, $site = null, $templatePath = 'templates/page-defaults')
+function rpHeader($template, $show_phone = null, $show_secure = null, $justify = null, $container = null, $templatePath = 'templates/page-defaults')
 {
-    global $show_phone;
-    global $show_secure;
-    global $justify;
-    global $container;
-    global $company;
     global $site;
+    global $company;
 
     require('../' . $templatePath . '/' . $template . '.php');
 }
@@ -377,12 +367,4 @@ function taxAmt($price) {
         return 0;
     }
     return number_format($tax_pct / 100 * $price, 2);
-}
-
-// Include and instantiate the class.
-require_once '../vendor/mobiledetect/mobiledetectlib/src/MobileDetect.php';
-// Any mobile device (phones or tablets).
-function isMobile() {
-    $detect = new \Detection\MobileDetect;
-    return $detect->isMobile();
 }

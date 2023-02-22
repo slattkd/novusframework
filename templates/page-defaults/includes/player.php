@@ -1,9 +1,11 @@
- <!-- 
-$overlay include an image to click or not 
-$videoId replace the element id and the script id value 
-$dropTime when to fire the event to show a cta button 
-    - show element with id of "container-buy" 
--->
+/*
+shows vidalytic videos with overlay option (may need update with 1:1 ratio videos)
+php variables:
+    $overlay (string) = include an image src attribute, play will require click
+    $video_id (string) = replace the #myVid element id and the script id value 
+    $drop_time (num) = ms when to fire the event to show a cta button
+        - remove 'hidden' class on element with id of "container-buy" 
+*/
 
 
 <div class="video-container">
@@ -16,7 +18,7 @@ $dropTime when to fire the event to show a cta button
     }
     ?>
 
-<div id="vidalytics_embed_<?php echo $videoID; ?>" style="width: 100%; position:relative;"></div>
+<div id="vidalytics_embed_<?php echo $video_id; ?>" style="width: 100%; position:relative;"></div>
     <script type="text/javascript">
     (function (v, i, d, a, l, y, t, c, s) {
         y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
@@ -26,14 +28,14 @@ $dropTime when to fire the event to show a cta button
             i.getElementsByTagName("head")[0].appendChild(s);
         };}
         vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
-    })(window, document, 'Vidalytics', 'vidalytics_embed_<?php echo $videoID; ?>', 'https://quick.vidalytics.com/embeds/KwmJQD4K/<?php echo $videoID; ?>/');
+    })(window, document, 'Vidalytics', 'vidalytics_embed_<?php echo $video_id; ?>', 'https://quick.vidalytics.com/embeds/KwmJQD4K/<?php echo $video_id; ?>/');
     </script>
 </div>
 
 
 
 <script type="text/javascript">
-var EMBED_CODE_ID = 'vidalytics_embed_<?php echo $videoID; ?>'; // update this to match your Vidalytics Embed ID
+var EMBED_CODE_ID = 'vidalytics_embed_<?php echo $video_id; ?>'; // update this to match your Vidalytics Embed ID
 var vidalyticsPlayerAPI = null;
 var isPauseable = true;
 
@@ -73,7 +75,7 @@ function onPlayerAPIAvailableCallback() {
     <?php endif; ?>
 
     vidalyticsPlayerAPI._player.addEventHandler('onTimeChanged', function () {
-        if (vidalyticsPlayerAPI.getCurrentVideoTime() >= <?php echo $dropTime; ?>) {
+        if (vidalyticsPlayerAPI.getCurrentVideoTime() >= <?php echo $drop_time; ?>) {
             popButton();
         }
     });
@@ -123,7 +125,7 @@ window.addEventListener('click', (event)=> {
 	}
 });
 
-console.log('Video ID: <?php echo $videoID; ?>');
-console.log('Droptime: <?php echo $dropTime; ?>');
+console.log('Video ID: <?php echo $video_id; ?>');
+console.log('Drop_time: <?php echo $drop_time; ?>');
 
 </script>

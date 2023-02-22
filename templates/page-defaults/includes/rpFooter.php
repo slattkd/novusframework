@@ -1,3 +1,7 @@
+/*
+branded footer bar with basic company info and legal links
+*/
+
 <style>
     .headstrip {
       display: flex;

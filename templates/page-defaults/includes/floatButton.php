@@ -1,24 +1,27 @@
-<!--
-    Requires float_button.js served in the <head>
-    php variables:
-		$scroll_id = string; (id of the element you want to scroll to and hide button when visible)
-		$scroll_start = string; optional (id of the element you want to begin to show the float button wrapper)
--->
+/*
+	high z-index button (right on desktop, center on mobile) click to scroll to cta
+	Requires float_button.js served in the <head>
+	php variables:
+		$scroll_id (string) = id of the element you want to scroll to and hide button when visible
+		$scroll_start (string) = optional - id of the element you want to begin to show the float button wrapper
+		$button_text (string) = innerText of float button element
+		$top_content (string) = html for anything shown above the button on mobile view
+*/
 
 <style>
   .float-btn-wrapper {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	left:0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	z-index: 100;
-	padding: 10px;
-	background-color: white;
-}
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		left:0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 100;
+		padding: 10px;
+		background-color: white;
+	}
 
 @media screen and (min-width: 769px) {
 	.float-btn-wrapper {
@@ -30,25 +33,25 @@
 
 .float-btn-wrapper .float-btn {
 	font-family: Open Sans Condensed,Impact,sans-serif;
-    cursor: pointer;
-    font-weight: 900;
-    color: #333;
-    padding: 16px 20px;
-    text-align: center;
-    background-color: #006400 !important;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
-    background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
-    border: 1px solid #fff;
-    border-color: #a88734 #9c7e31 #846a29;
-    border-radius: 5px;
-    text-shadow: 1px 1px 0 #f9ffac;
-    max-width: 500px;
-    max-width: 100%;
+	cursor: pointer;
+	font-weight: 900;
+	color: #333;
+	padding: 16px 20px;
+	text-align: center;
+	background-color: #006400 !important;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+	background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
+	border: 1px solid #fff;
+	border-color: #a88734 #9c7e31 #846a29;
+	border-radius: 5px;
+	text-shadow: 1px 1px 0 #f9ffac;
+	max-width: 500px;
+	max-width: 100%;
 }
 
 .float-btn.clickable:hover {

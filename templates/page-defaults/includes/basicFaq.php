@@ -1,7 +1,7 @@
-<!-- 
+/* 
 currently just for 5g FAQ content
-replace Q/A content as needed
--->
+replace Q/A array content as needed (close attention to apostraphe/quotes)
+*/
 <?php
 
     $qas = array(
@@ -87,28 +87,6 @@ replace Q/A content as needed
 <main class="mx-auto">
     <section class="row">
         <div class="accordions">
-            <!-- accordian 1 -->
-            <!-- <div class="border-b accordion">
-                <div class="border-l-2 border-transparent relative">
-                    <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
-                    <div class="flex justify-between items-center p-5 px-0 cursor-pointer select-none accordion-label" for="chck1">
-                        <span class="text-grey-darkest font-thin text-xl">
-                        Can I Take More Than One Capsule of 5G Male To Get Even Stronger Results?
-                        </span>
-                        <div class="rounded-full w-7 h-7 flex items-center justify-center test">
-                            <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <polyline points="6 9 12 15 18 9">
-                                </polyline>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="p-3 pt-0 text-grey-darkest">
-                            <p>While 1 capsule per day will deliver strong results, it’s recommended you take 2-3 capsules per day if you want even stronger results. One bottle of 5G Male contains 30 capsules. If you increase your dose, it's recommended you order the <span id="six-package" style="cursor:pointer;"><u>6 bottle package</u></span> which provides the biggest discount.</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <?php foreach ($qas as list($q, $a)): ?>
                 <div class="border-b accordion">
                 <div class="border-l-2 border-transparent relative">

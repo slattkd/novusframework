@@ -1,8 +1,8 @@
 <?php
 $cookie_name = "returning_userup1";
 $cookie_value = "yes";
-$vidcode = "jSBtEwenrKwiOeKu";
-$droptime = "45";
+$video_id = "jSBtEwenrKwiOeKu";
+$drop_time = "45";
 
 $next = '/up/upsell-2-blow-her-away';
 $pid1 = '11';
@@ -227,7 +227,7 @@ if (isset($_SESSION['step_1_orderId'])) {
                 <p class="w-full pb-3 text-center text-3xl">Watch This Short Presentation To Get Started With 5G Male And Secure An <strong>Additional 65% OFF</strong>…</p>
                 <!-- <p class="w-full pb-3 text-center text-lg">Tap The Video Below To Play</p> -->
                 <div class="flex flex-col justify-center w-full my-5 upsell">
-                      <?php video('includes/player', $vidcode, $droptime);?>
+                      <?php video('includes/player', $video_id, $drop_time);?>
                 </div>
                 <div class="w-full pb-3 text-center">
                     <h2 class="font-bold text-2xl text-red-500">Click The Button Below Now To See If You Qualify For This Discount</h2>

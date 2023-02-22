@@ -2,9 +2,9 @@
   $next = '/checkout/order' ;
   $_SESSION['pageType'] = 'wsl';
 
-  $vidcode = 'ZFJaBUp1lypHohgj';
-  $dropTime = 0;
-  $thumb = '//' . $_SERVER['HTTP_HOST'] . '/images/TBB-Non-Masley-Mini-VSL.jpg';
+  $video_id = 'ZFJaBUp1lypHohgj';
+  $drop_time = 0;
+  $overlay = '//' . $_SERVER['HTTP_HOST'] . '/images/TBB-Non-Masley-Mini-VSL.jpg';
 ?>
 
 <html lang="en">
@@ -72,7 +72,7 @@
   <div class="text-center text-xl md:text-2xl text-rpblue font-semibold mb-4 md:mb-6" >While Helping to Fight Off Memory Loss And Brain Decline As You&nbsp;Age&hellip; </div>
 
   <div class="flex w-full mb-4" style="background-color: #CCC;">
-    <?php video('includes/player', $vidcode, $dropTime, $thumb);?>
+    <?php video('includes/player', $video_id, $drop_time, $overlay);?>
   </div>
   <div class="flex text-sm font-semibold md:justify-start md:ml-4">
     <a class="learn" href="<?= $next; ?>">LEARN MORE&nbsp;<span style="font-size:10px;vertical-align:bottom">>></span></a>

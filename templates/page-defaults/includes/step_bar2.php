@@ -1,7 +1,7 @@
-<!--
+/*
     php variables:
     $current_step = number 1,2,3; (applies classes for the three steps)
--->
+*/
 
 <style>
   /* step bar */

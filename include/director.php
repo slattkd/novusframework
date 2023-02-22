@@ -42,6 +42,12 @@ $_SESSION['pageType'] = pathinfo($slug, PATHINFO_FILENAME);
 // $_SESSION['last']     = $_SESSION['url']; //<-- this will redirect to the process.php as it stands, and causes a loop ooops.
 $_SESSION['last']     = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
 
+// Include and instantiate the class.
+require_once '../vendor/mobiledetect/mobiledetectlib/src/MobileDetect.php';
+// Any mobile device (phones or tablets).
+$detect = new \Detection\MobileDetect;
+$_SESSION['isMobile'] = $detect->isMobile();
+
 
 // Pull Affiliate Id from cookie
 if (isset($_COOKIE['affid'])) {
@@ -59,9 +65,11 @@ function setSessionVars($encryptedData = null)
         'a','o','r','s','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
         'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
         'alink','debug','coupon','vwovar','pid','up','dn','add1','add2','add3',"buy",
-        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid","qa"];
+        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid","qa", "isMobile"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
+    // for $site variables
+    require_once './config.php';
     foreach ($allowedData as $queryString => $value) {
         // use $queryString to reset values to different session variables or match to query string value
         if ($queryString == 'a') {

@@ -1,7 +1,6 @@
 <?php
 //$_SESSION['vwovar'] = '';
-if (!empty($_POST))
-{
+if (!empty($_POST)) {
     //If form validates using pristine.js, save the from data to the session and forward to the next page.
     $_SESSION['assessment'] = serialize($_POST);
     $_SESSION['customerEmail'] = $_POST['customer_email'];
@@ -9,13 +8,12 @@ if (!empty($_POST))
     die();
 }
 
-$is_mobile = isMobile();
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <?php template("includes/header"); ?>
-        <title>5G Male | Assessment</title>
+        <title><?= $company['name']; ?> | Assessment</title>
 
         <style>
             body {
@@ -84,7 +82,7 @@ $is_mobile = isMobile();
                                 </div>
                                 <div class="radio ml-6" >
                                     <label class="radio" for="65+">
-                                        <input required data-pristine-required-message="" type="radio" name="age" value="65" id="65+"> 65+
+                                        <input required  type="radio" name="age" value="65" id="65+"> 65+
                                     </label>
                                 </div>
 
@@ -110,7 +108,7 @@ $is_mobile = isMobile();
                                 </div>
                                 <div class="radio ml-6" >
                                     <label class="radio" for="7+">
-                                        <input required data-pristine-required-message="" type="radio" name="weeklysex" value="7+" id="7+"> 7 or more times
+                                        <input required  type="radio" name="weeklysex" value="7+" id="7+"> 7 or more times
                                     </label>
                                 </div>
                             </div>
@@ -135,7 +133,7 @@ $is_mobile = isMobile();
                                 </div>
                                 <div class="radio ml-6" >
                                     <label class="radio" for="2h+">
-                                        <input required data-pristine-required-message="" type="radio" name="stayhard" value="2h+" id="2h+"> Over 2 hours
+                                        <input required  type="radio" name="stayhard" value="2h+" id="2h+"> Over 2 hours
                                     </label>
                                 </div>
                             </div>
@@ -148,8 +146,7 @@ $is_mobile = isMobile();
                                         type="email"
                                         name="customer_email"
                                         required
-                                        data-pristine-required-message=""
-                                        value=""
+                                        value="<?= @$_SESSION['customerEmail']; ?>"
                                         id="customer_email"
                                         class="form-control mt-1 px-3 py-2 border shadow-sm border-slate-300 w-3/5 rounded-none placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full sm:text-sm focus:ring-1"
                                         placeholder="firstlast@email.com" />
@@ -174,31 +171,31 @@ $is_mobile = isMobile();
         <script type="text/javascript">
             // on mobile, update form to only have times and long
 
-            const isMobile = <?php echo $is_mobile; ?>;
+            const isMobile = "<?= $_SESSION['isMobile']; ?>";
 
             window.onload = function () {
                 let defaultConfig = {
                     errorClass: 'has-danger',
                     errorTextClass: 'text-help text-red-700 font-medium text-sm fade-in-element hidden',
-                };
+                }
 
                 const email = document.getElementById('email');
                 const howOld = document.getElementById('how-old');
                 if (isMobile) {
-                    email.remove();
-                    howOld.remove();
+                    email.required = false;
+                    howOld.required = false;
                 }
 
                 var form = document.getElementById("assessmentForm");
                 const subButton = document.getElementById('submitButton');
+                
                 var pristine = new Pristine(form, defaultConfig);
 
-
-                form.addEventListener('change', function (e) {
+                form.addEventListener('change', (e)=> {
                     var valid = pristine.validate(); // returns true or false
-                    if(!pristine.validate()){
+                    if(!valid){
                         subButton.disabled = true;
-                      e.preventDefault();
+                        e.preventDefault();
                     } else {
                         subButton.disabled = false;
                     }
@@ -206,10 +203,7 @@ $is_mobile = isMobile();
                     var age = document.querySelector('input[name="age"]:checked').value;
                     var weeklysex = document.querySelector('input[name="weeklysex"]:checked').value;
                     var stayhard = document.querySelector('input[name="stayhard"]:checked').value;
-                    // sessionStorage.setItem("customer_email", $(this).val());
                 });
-
-
             };
         </script>
 

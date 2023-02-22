@@ -412,7 +412,7 @@ h2.title {
 }
 
 .wsl li.red-x {
-  background-image: url("//<?= $_SERVER["HTTP_HOST"]; ?>/images/red-x.png");
+  background-image: url('//<?= $_SERVER["HTTP_HOST"]; ?>/images/red-x.png');
 }
 
 .wsl li.arrow-right {

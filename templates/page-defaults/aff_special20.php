@@ -1,8 +1,9 @@
 <?php
 error_reporting(0);
 //Page Specific Variables
-$vidcode = "7meKmRPVlkYdple_";
-$droptime = "2444";
+$video_id = "7meKmRPVlkYdple_";
+$drop_time = "2444";
+$overlay = "//s3.amazonaws.com/flora-spring/animatedposter.gif";
 $cookie_name = "returning_user";
 $cookie_value = "yes";
 
@@ -184,7 +185,7 @@ $_SESSION['pageType'] = 'vsl';
 </div>
 
 <div class="container-md mx-auto mt-22" style="background-color: #C90000;">
-    <?php video('includes/player', $vidcode, $droptime, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>
+    <?php video('includes/player', $video_id, $drop_time, $overlay);?>
 </div>
 
 <div class="container-md mx-auto mt-8 p-5 pb-5 bg-white">
