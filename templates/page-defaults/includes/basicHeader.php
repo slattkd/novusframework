@@ -1,3 +1,9 @@
+<!-- 
+  mobile and desktop navigation layout
+  - current links are shop, about, support
+-->
+
+
 <style>
     .head-wrap {
     width: 100%;

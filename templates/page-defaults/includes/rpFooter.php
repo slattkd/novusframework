@@ -1,6 +1,4 @@
-/*
-branded footer bar with basic company info and legal links
-*/
+<!-- branded footer bar with basic company info and legal links -->
 
 <style>
     .headstrip {

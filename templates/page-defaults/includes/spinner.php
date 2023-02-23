@@ -1,6 +1,4 @@
-/*
-  pure css place wherever a spinner animation is needed for loading
-*/
+<!-- pure css place wherever a spinner animation is needed for loading -->
 
 <style>
 .spin {

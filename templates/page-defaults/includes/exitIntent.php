@@ -1,9 +1,13 @@
-/*
+<!-- 
 provides messaging for mouseout, close, back, etc events
 TODO: this may need to be included in functions to pass the modal_id variable
 if $modal_id then custom basicModal component will be show
 else simple alert/confirm messages will be displayed
-*/
+ -->
+
+ <?php
+ $modal_id = $modal_id ?? null;
+ ?>
 
 <script>
   // blocks back navigation

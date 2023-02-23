@@ -1,4 +1,4 @@
-/*
+<!-- 
 	high z-index button (right on desktop, center on mobile) click to scroll to cta
 	Requires float_button.js served in the <head>
 	php variables:
@@ -6,7 +6,7 @@
 		$scroll_start (string) = optional - id of the element you want to begin to show the float button wrapper
 		$button_text (string) = innerText of float button element
 		$top_content (string) = html for anything shown above the button on mobile view
-*/
+ -->
 
 <style>
   .float-btn-wrapper {
@@ -36,7 +36,6 @@
 	cursor: pointer;
 	font-weight: 900;
 	color: #333;
-	padding: 16px 20px;
 	text-align: center;
 	background-color: #006400 !important;
 	position: relative;
@@ -52,18 +51,20 @@
 	text-shadow: 1px 1px 0 #f9ffac;
 	max-width: 500px;
 	max-width: 100%;
-}
-
-.float-btn.clickable:hover {
-	opacity: .75;
+	font-size: 1.5em;
+	padding: 10px 20px;
 }
 
 @media screen and (min-width: 769px) {
 	.float-btn-wrapper .float-btn {
 		border-radius: 10px;
-		padding: 10px 18px;
-		font-size: 34px;
+		font-size: 1.1em;
+		padding: 10px 20px;
 	}
+}
+
+.float-btn.clickable:hover {
+	opacity: .75;
 }
 
 @media screen and (min-width: 769px) {
@@ -89,7 +90,7 @@
 	<?php echo htmlspecialchars_decode($top_content); ?>
 	</div>
 
-	<div type="button" class="float-btn clickable"><?= $button_text; ?></div>
+	<button type="button" class="float-btn clickable"><?= $button_text; ?></button>
 
 </div>
 </section>

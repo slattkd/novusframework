@@ -13,8 +13,6 @@
   <?php template('includes/header'); ?>
   <title>Boost Your Memory</title>
   <style>
-  
-
   .wsl li {
     list-style: none;
     padding: 10px 30px 10px 1.75em;
@@ -277,11 +275,7 @@
       width: 48%;
     }
 
-    p,
-    .wsl p,
-    .wsl ul li {
-      font-size: 20px;
-    }
+
   }
 
   .text-6xl {
@@ -431,7 +425,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="c8 wsl">
+<body>
 
   <div class="container-sm mx-auto flex my-4 md:my-8">
 
@@ -455,7 +449,7 @@
 
     </div>
   </div>
-  <div class="container-sm mx-auto my-2 p-2 mt-6 mb-11 content-center">
+  <div class="wsl container-sm mx-auto my-2 p-2 mt-6 mb-11 content-center">
 
     <div class="flex flex-col justify-center">
 
@@ -467,320 +461,317 @@
         &nbsp;Even&nbsp;Further&hellip;</span>
       </h2>
 
-</div>
-      <picture>
-        <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png" type="image/png">
-        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.jpg" alt="dr masley"
-          style="mix-blend-mode: multiply;" class="float-left md:mr-6 mb-3 w-full md:w-1/2" width="287" height="179"
-          loading="lazy">
-      </picture>
+    </div>
+    <picture>
+      <source srcset="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.png" type="image/png">
+      <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/image2.jpg" alt="dr masley"
+        style="mix-blend-mode: multiply;" class="float-left md:mr-6 mb-3 w-full md:w-1/2" width="287" height="179"
+        loading="lazy">
+    </picture>
 
-      <p><span>Hey, Dr. Masley here.</span></p>
+    <p><span>Hey, Dr. Masley here.</span></p>
 
-      <p><span>I want to </span><span class="font-bold">congratulate</span>&nbsp;you on your purchase
-        of Total Brain Boost today&hellip;</p>
+    <p><span>I want to </span><span class="font-bold">congratulate</span>&nbsp;you on your purchase
+      of Total Brain Boost today&hellip;</p>
 
-      <p><span>Because you&rsquo;re making a huge investment in your </span><span
-          class="font-bold">memory</span><span>&nbsp;and </span><span
-          class="font-bold">brain&nbsp;health</span><span>.</span>
-      </p>
+    <p><span>Because you&rsquo;re making a huge investment in your </span><span
+        class="font-bold">memory</span><span>&nbsp;and </span><span
+        class="font-bold">brain&nbsp;health</span><span>.</span>
+    </p>
 
-      <p><span>And not just now, but for years to&nbsp;come.</span></p>
+    <p><span>And not just now, but for years to&nbsp;come.</span></p>
 
-      <p><span>I cannot wait to hear about your </span><span class="font-bold">results</span><span>&nbsp;from
-          using Total Brain Boost. </span></p>
+    <p><span>I cannot wait to hear about your </span><span class="font-bold">results</span><span>&nbsp;from
+        using Total Brain Boost. </span></p>
 
-      <p><span>If you have time, please write to Revival Point about your results.</span></p>
+    <p><span>If you have time, please write to Revival Point about your results.</span></p>
 
-      <p><span>If you really love what you feel and see, tell us what you love&hellip;</span></p>
+    <p><span>If you really love what you feel and see, tell us what you love&hellip;</span></p>
 
-      <p><span>And if you&rsquo;ve seen a significant transformation&hellip; </span></p>
+    <p><span>And if you&rsquo;ve seen a significant transformation&hellip; </span></p>
 
-      <p><span>Then please feel free to send photos or videos if you&rsquo;re comfortable!</span></p>
-      <div style="clear:both"></div>
+    <p><span>Then please feel free to send photos or videos if you&rsquo;re comfortable!</span></p>
+    <div style="clear:both"></div>
 
-      <p><span>I cannot tell you how much we love hearing about people&rsquo;s </span><span
-          class="font-bold">success</span><span>&hellip; </span></p>
+    <p><span>I cannot tell you how much we love hearing about people&rsquo;s </span><span
+        class="font-bold">success</span><span>&hellip; </span></p>
 
-      <ul class="my-4 list-disc list-inside">
-        <li class="  li-bullet-0"><span>Whether it&rsquo;s becoming mentally sharper and more focused&hellip;</span>
-        </li>
+    <ul class="my-4 list-disc list-inside">
+      <li class="  li-bullet-0"><span>Whether it&rsquo;s becoming mentally sharper and more focused&hellip;</span>
+      </li>
 
-        <li class="  li-bullet-0"><span>Building a stronger memory&hellip; </span></li>
+      <li class="  li-bullet-0"><span>Building a stronger memory&hellip; </span></li>
 
-        <li class="  li-bullet-0"><span>Or just feeling healthier and happier.</span></li>
+      <li class="  li-bullet-0"><span>Or just feeling healthier and happier.</span></li>
+    </ul>
+
+    <p><span>But</span><span>&nbsp;don&rsquo;t leave this page just yet&hellip;</span></p>
+
+    <p><span>There are a few important details I need to go over with you.</span></p>
+
+    <p><span>That can help further </span><span class="font-bold">boost your memory, focus, and mental
+        energy</span><span>&hellip;</span></p>
+
+    <p><span>And increase your brain health even more&hellip;</span></p>
+
+    <p><span>Giving you </span><span class="font-bold text-red-600">much longer-lasting results</span><span>.</span>
+    </p>
+
+    <p><span>On top of this&hellip; </span></p>
+
+    <h2 id="start-float-btn" class="text-center font-semibold text-xl md:text-3xl my-11">I Also Want To Share An <span
+        class="font-bold">Easy</span>&nbsp;Way To Save An <span class="font-bold">Additional </span><span
+        class="text-red-600">52%</span>&nbsp;On Total Brain Boost&nbsp;Today&hellip;</span>
+    </h2>
+
+    <p><span class="hi text-red-600">This is something that will <span class="underline">only</span>&nbsp;be shared
+        on this page.</span></p>
+
+    <p><span>Now first, let&rsquo;s talk about your order:</span></p>
+
+    <p><span>Your order will ship today if you ordered before 5pm Eastern. </span></p>
+
+    <p><span>If not, then it will ship the next week day, first thing, at 9am.</span></p>
+
+    <p><span>Your order should arrive at your door no more than three days after it ships&hellip;
+        &nbsp;</span></p>
+
+    <p><span>Thanks to DHL 3-Day Guaranteed Shipping.</span></p>
+
+    <p><span>Or if you&rsquo;re outside the USA and Canada, it will take 8-10 days for
+        shipping.</span></p>
+
+    <p><span>You&rsquo;ll get an email confirmation that looks like this, confirming your order has been
+        placed&hellip;</span></p>
+
+    <p><span>Once it ships, we will send you the tracking number and delivery date and time.</span></p>
+
+    <div class="flex justify-center my-11">
+      <img class="w-full md:w-2/3 mx-auto border" alt="email confirmation"
+        src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/email-confirmation.webp" title="" loading="lazy">
+    </div>
+
+    <p><span>This means you&rsquo;re literally just days away from having Total Brain Boost in your
+        hands.</span></p>
+
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">And That Means You&rsquo;re Days Away From
+      Starting To <span class="font-bold">&nbsp;Think Sharper </span>With A <span class="font-bold">Stronger
+        Memory</span>&nbsp;- And Feeling <span class="font-bold">Better </span>And<span class="font-bold">&nbsp;More
+        Confident </span> In Everything You Do&hellip;</span>
+    </h2>
+
+    <p><span>Giving you an advantage you never had before:</span></p>
+
+    <div class="my-5">
+      <ul class=" lst-kix_3ydq7y3f71fk-0 start">
+        <li class="  li-bullet-0"><span>Boosting your </span><span class="font-bold">brain
+            health</span><span>&hellip;</span></li>
       </ul>
 
-      <p><span>But</span><span>&nbsp;don&rsquo;t leave this page just yet&hellip;</span></p>
+      <ul class=" lst-kix_3ydq7y3f71fk-0">
+        <li class="  li-bullet-0"><span>Helping you strengthen your </span><span class=" font-bold">memory</span>
+        </li>
+      </ul>
 
-      <p><span>There are a few important details I need to go over with you.</span></p>
+      <ul class=" lst-kix_3ydq7y3f71fk-0">
+        <li class="  li-bullet-0"><span>Sharpen your thinking and </span><span
+            class="font-bold">focus</span><span>&hellip;</span></li>
+      </ul>
 
-      <p><span>That can help further </span><span class="font-bold">boost your memory, focus, and mental
-          energy</span><span>&hellip;</span></p>
+      <ul class=" lst-kix_3ydq7y3f71fk-0">
+        <li class="  li-bullet-0"><span>And increase </span><span class="font-bold">mental
+            energy</span><span>&nbsp;and boost your </span><span class="font-bold">mood</span><span>. </span></li>
+      </ul>
+    </div>
+    <p><span>With this, you&rsquo;ll feel so much healthier, and more energized and happy.</span>
+    </p>
 
-      <p><span>And increase your brain health even more&hellip;</span></p>
+    <p><span>And it can be much easier to be active and&nbsp;productive&hellip;</span></p>
 
-      <p><span>Giving you </span><span class="font-bold text-red-600">much longer-lasting results</span><span>.</span>
-      </p>
+    <p><span>And get in great shape.</span></p>
 
-      <p><span>On top of this&hellip; </span></p>
+    <p><span>In fact, I think you&rsquo;ll love Total Brain Boost so&nbsp;much&hellip;</span></p>
 
-      <h2 id="start-float-btn" class="text-center font-semibold text-xl md:text-3xl mb-4">I Also Want To Share An <span
-          class="font-bold">Easy</span>&nbsp;Way To Save An <span class="font-bold">Additional </span><span
-          class="text-red-600">52%</span>&nbsp;On Total Brain Boost&nbsp;Today&hellip;</span>
-      </h2>
+    <p><span>You&rsquo;ll see it as essential to your health.</span></p>
 
-      <p><span class="hi text-red-600">This is something that will <span class="underline">only</span>&nbsp;be shared
-          on this page.</span></p>
+    <p><span>It might even feel as important as brushing your teeth every morning. </span></p>
 
-      <p><span>Now first, let&rsquo;s talk about your order:</span></p>
+    <p><span>And if you get used to the results:</span></p>
 
-      <p><span>Your order will ship today if you ordered before 5pm Eastern. </span></p>
+    <div class="my-5">
+      <ul class=" lst-kix_vhcb0jjjy2ct-0 start">
+        <li class="  li-bullet-0"><span>The </span><span class="font-bold">stronger
+            memory</span><span>&hellip;</span>
+        </li>
+      </ul>
 
-      <p><span>If not, then it will ship the next week day, first thing, at 9am.</span></p>
+      <ul class=" lst-kix_vhcb0jjjy2ct-0">
+        <li class="  li-bullet-0"><span>The </span><span class="font-bold">clearer
+            thinking</span><span>&hellip;</span>
+        </li>
+      </ul>
 
-      <p><span>Your order should arrive at your door no more than three days after it ships&hellip;
-          &nbsp;</span></p>
+      <ul class=" lst-kix_vhcb0jjjy2ct-0">
+        <li class="  li-bullet-0"><span>The </span><span class="font-bold">sharper focus </span><span>and increased
+            mental energy&hellip;</span></li>
+      </ul>
+    </div>
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">You&rsquo;ll Feel So <span class="font-bold">Good</span><span>&nbsp;</span>
+    You&rsquo;ll Want To Stay Like This <span class="font-bold">Forever</span>
+    </h2>
 
-      <p><span>Thanks to DHL 3-Day Guaranteed Shipping.</span></p>
 
-      <p><span>Or if you&rsquo;re outside the USA and Canada, it will take 8-10 days for
-          shipping.</span></p>
+    <p><span>Which is why you&rsquo;ll want to take Total Brain Boost not just for one month or a
+        few months&hellip; </span></p>
 
-      <p><span>You&rsquo;ll get an email confirmation that looks like this, confirming your order has been
-          placed&hellip;</span></p>
+    <p><span>But ideally for 6-12 months or longer for </span><span class=" font-bold">the longest-lasting
+        results.</span></p>
 
-      <p><span>Once it ships, we will send you the tracking number and delivery date and time.</span></p>
+    <p><span>Think of Total Brain Boost as an essential part of your new active and healthy
+        lifestyle.</span></p>
 
-      <div class="flex justify-center">
-        <img class="w-full md:w-2/3 mx-auto" alt="email confirmation"
-          src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/email-confirmation.webp" title="" loading="lazy">
-      </div>
+    <p><span>And something you take each day </span><span class="font-bold">to stay sharp</span><span>&nbsp;- just
+        as
+        you would a multivitamin. </span></p>
 
-      <p><span>This means you&rsquo;re literally just days away from having Total Brain Boost in your
-          hands.</span></p>
+    <p><span>Because like an expensive car, your brain functions best when it gets only </span><span
+        class="font-bold">premium&nbsp;fuel</span><span>. </span></p>
 
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">And That Means You&rsquo;re Days Away From
-        Starting To <span class="font-bold">&nbsp;Think Sharper </span>With A <span class="font-bold">Stronger
-          Memory</span>&nbsp;- And Feeling <span class="font-bold">Better </span>And<span class="font-bold">&nbsp;More
-          Confident </span> In Everything You Do&hellip;</span>
-      </h2>
+    <p><span>The ingredients in Total Brain Boost are that premium fuel.</span></p>
 
-      <p><span>Giving you an advantage you never had before:</span></p>
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">And You Want To Keep Taking Total Brain
+      Boost&nbsp;Daily To Help Your Mind Stay Sharp, Focused, Energetic, And Healthy&hellip; For Years To&nbsp;Come
+    </h2>
 
-      <div class="my-5">
-        <ul class=" lst-kix_3ydq7y3f71fk-0 start">
-          <li class="  li-bullet-0"><span>Boosting your </span><span class="font-bold">brain
-              health</span><span>&hellip;</span></li>
-        </ul>
+    <p><span>One study</span><sup><a href="#ftnt1" id="ftnt_ref1">[1]</a></sup><span>&nbsp;showed
+        that when people were taking just one of the nutrients in Total Brain Boost daily for 18
+        months&hellip;</span>
+    </p>
 
-        <ul class=" lst-kix_3ydq7y3f71fk-0">
-          <li class="  li-bullet-0"><span>Helping you strengthen your </span><span class=" font-bold">memory</span>
-          </li>
-        </ul>
+    <p><span>Their memory continued to improve over that entire period of time:</span></p>
 
-        <ul class=" lst-kix_3ydq7y3f71fk-0">
-          <li class="  li-bullet-0"><span>Sharpen your thinking and </span><span
-              class="font-bold">focus</span><span>&hellip;</span></li>
-        </ul>
+    <div class="flex justify-center">
+      <img class="w-full md:w-2/3 mx-auto" alt=""
+        src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/curcumin-graph.jpg" title="" loading="lazy">
+    </div>
 
-        <ul class=" lst-kix_3ydq7y3f71fk-0">
-          <li class="  li-bullet-0"><span>And increase </span><span class="font-bold">mental
-              energy</span><span>&nbsp;and boost your </span><span class="font-bold">mood</span><span>. </span></li>
-        </ul>
-      </div>
-      <p><span>With this, you&rsquo;ll feel so much healthier, and more energized and happy.</span>
-      </p>
+    <p><span>Which means taking Total Brain Boost long term is most likely</span><span class="font-bold">&nbsp;the
+        best way to achieve longer-lasting results</span><span>.</span></p>
 
-      <p><span>And it can be much easier to be active and&nbsp;productive&hellip;</span></p>
+    <p><span>And most of the studies I showed you on these ingredients are done over a longer period
+        of 3 to 6 months &hellip; which led participants to see significant results.</span></p>
 
-      <p><span>And get in great shape.</span></p>
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">These Longer Regimens Will Give You The 
+      <span class="font-bold">Longest&#8209;Lasting&nbsp;Results</span>
+    </h2>
 
-      <p><span>In fact, I think you&rsquo;ll love Total Brain Boost so&nbsp;much&hellip;</span></p>
+    <p><span>Now, I know there was a strict limit on the amount of Total Brain Boost you could order
+        on the previous page&hellip; </span></p>
 
-      <p><span>You&rsquo;ll see it as essential to your health.</span></p>
+    <p><span>You were limited to just </span><span class="hi ">a 6-month supply.</span></p>
 
-      <p><span>It might even feel as important as brushing your teeth every morning. </span></p>
+    <p><span>So to help you achieve </span><span class="font-bold">longer-lasting</span><span>&nbsp;goals</span></p>
 
-      <p><span>And if you get used to the results:</span></p>
+    <p><span>I&rsquo;ve asked Revival Point to do something special&nbsp;here</span></p>
 
-      <div class="my-5">
-        <ul class=" lst-kix_vhcb0jjjy2ct-0 start">
-          <li class="  li-bullet-0"><span>The </span><span class="font-bold">stronger
-              memory</span><span>&hellip;</span>
-          </li>
-        </ul>
+    <p><span>Because you&rsquo;re a new customer&hellip;</span></p>
 
-        <ul class=" lst-kix_vhcb0jjjy2ct-0">
-          <li class="  li-bullet-0"><span>The </span><span class="font-bold">clearer
-              thinking</span><span>&hellip;</span>
-          </li>
-        </ul>
+    <p><span>And you&rsquo;ve shown interest in improving your&nbsp;health</span></p>
 
-        <ul class=" lst-kix_vhcb0jjjy2ct-0">
-          <li class="  li-bullet-0"><span>The </span><span class="font-bold">sharper focus </span><span>and increased
-              mental energy&hellip;</span></li>
-        </ul>
-      </div>
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-2">You&rsquo;ll Feel So <span
-          class="font-bold">Good</span><span>&nbsp;</span></h2>
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">You&rsquo;ll Want To Stay Like This <span
-          class="font-bold">Forever</span></h2>
+    <p><span>I&rsquo;ve asked that, in order to help you succeed&hellip;</span></p>
 
+    <p><span>Revival Point give you a special, one-time discount on this page today so you can buy
+        extra bottles of Total Brain Boost and take it long term</span></p>
 
-      <p><span>Which is why you&rsquo;ll want to take Total Brain Boost not just for one month or a
-          few months&hellip; </span></p>
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">Get An Additional 6 or 12 Month Supply of Total
+      Brain Boost At A <span class="font-bold">Highly Discounted</span>&nbsp;Rate&hellip;
+    </h2>
 
-      <p><span>But ideally for 6-12 months or longer for </span><span class=" font-bold">the longest-lasting
-          results.</span></p>
+    <p><span>On the previous page and on the Revival Point website, one bottle of Total Brain Boost
+        costs&nbsp;$19.98. </span></p>
 
-      <p><span>Think of Total Brain Boost as an essential part of your new active and healthy
-          lifestyle.</span></p>
+    <p><span>But because you&rsquo;re a new customer today&hellip; </span></p>
 
-      <p><span>And something you take each day </span><span class="font-bold">to stay sharp</span><span>&nbsp;- just
-          as
-          you would a multivitamin. </span></p>
+    <p><span class="">You&rsquo;re going to pay just <span class="text-red-600 font-semibold">$16.42</span>&nbsp;per
+        bottle for a six month supply of
+        Total Brain Boost.</span></p>
 
-      <p><span>Because like an expensive car, your brain functions best when it gets only </span><span
-          class="font-bold">premium&nbsp;fuel</span><span>. </span></p>
+    <p><span class="">That&rsquo;s a <span class="text-red-600 font-semibold">45%</span>&nbsp;discount.</span></p>
 
-      <p><span>The ingredients in Total Brain Boost are that premium fuel.</span></p>
+    <p><span class="">And a <span class="text-red-600 font-semibold">$162.70</span>&nbsp;total
+        savings.</span></p>
 
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">And You Want To Keep Taking Total Brain
-        Boost&nbsp;Daily To Help Your Mind Stay Sharp, Focused, Energetic, And Healthy&hellip; For Years To&nbsp;Come
-      </h2>
+    <p><span>And if you get the 12 month supply you&rsquo;ll pay just <span
+          class="text-red-600 font-semibold">$14.46</span>&nbsp;per bottle&hellip; </span></p>
 
-      <p><span>One study</span><sup><a href="#ftnt1" id="ftnt_ref1">[1]</a></sup><span>&nbsp;showed
-          that when people were taking just one of the nutrients in Total Brain Boost daily for 18
-          months&hellip;</span>
-      </p>
+    <p><span>That&rsquo;s <span class="text-red-600 font-semibold">52%</span>&nbsp;off and a <span
+          class="text-red-600 font-semibold">$372.40</span>&nbsp;total savings.</span></p>
 
-      <p><span>Their memory continued to improve over that entire period of time:</span></p>
+    <p><span>These deeply-discounted packages are designed to ensure you have the best chance at
+        long-lasting results with Total Brain Boost&hellip;</span></p>
 
-      <div class="flex justify-center">
-        <img class="w-full md:w-2/3 mx-auto" alt=""
-          src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/curcumin-graph.jpg" title="" loading="lazy">
-      </div>
+    <p><span>And so you can stock up to make sure you don&rsquo;t run out</span></p>
 
-      <p><span>Which means taking Total Brain Boost long term is most likely</span><span class="font-bold">&nbsp;the
-          best way to achieve longer-lasting results</span><span>.</span></p>
+    <p><span>There is no need to worry if these bottles will&nbsp;expire</span></p>
 
-      <p><span>And most of the studies I showed you on these ingredients are done over a longer period
-          of 3 to 6 months &hellip; which led participants to see significant results.</span></p>
+    <p><span>They are guaranteed to stay fresh for a minimum of two years without any special storage or
+        refrigeration needed.</span></p>
 
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-0">These Longer Regimens&nbsp; </h2>
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">Will Give You The <span
-          class="font-bold">Longest-Lasting&nbsp;Results</span></h2>
+    <p><span>Just place them in any cabinet or anywhere at room temperature away from direct
+        sunlight.</span></p>
 
-      <p><span>Now, I know there was a strict limit on the amount of Total Brain Boost you could order
-          on the previous page&hellip; </span></p>
+    <p><span>However&hellip; </span></p>
 
-      <p><span>You were limited to just </span><span class="hi ">a 6-month supply.</span></p>
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">There&rsquo;s Just<span
+        class="font-bold">&nbsp;One&nbsp;Catch</span>&hellip;</h2>
 
-      <p><span>So to help you achieve </span><span class="font-bold">longer-lasting</span><span>&nbsp;goals</span></p>
+    <p><span>Which is, Revival Point doesn&rsquo;t want too many people finding out about it.
+      </span></p>
 
-      <p><span>I&rsquo;ve asked Revival Point to do something special&nbsp;here</span></p>
+    <p><span>So I&rsquo;ll politely ask you to please not mention this anywhere online. </span></p>
 
-      <p><span>Because you&rsquo;re a new customer&hellip;</span></p>
+    <p><span>Because I don&rsquo;t want tons of men and women calling Revival Point customer
+        service&hellip; </span></p>
 
-      <p><span>And you&rsquo;ve shown interest in improving your&nbsp;health</span></p>
+    <p><span>Saying they heard about some way to get Total Brain Boost cheaper&hellip; </span></p>
 
-      <p><span>I&rsquo;ve asked that, in order to help you succeed&hellip;</span></p>
+    <p><span>Revival Point is only offering this </span><span class="font-bold">one-time
+        discount</span><span>&nbsp;to
+        you right now because:</span></p>
 
-      <p><span>Revival Point give you a special, one-time discount on this page today so you can buy
-          extra bottles of Total Brain Boost and take it long term</span></p>
+    <p><span>I know you&rsquo;re serious about boosting your memory and focus. &nbsp;</span></p>
 
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">Get An Additional 6 or 12 Month Supply of Total
-        Brain Boost At A
-        <span class="font-bold">Highly Discounted</span>&nbsp;Rate&hellip;
-      </h2>
+    <p><span>And I want to make sure you have </span><span class=" font-bold">the best opportunity for long-term
+        results</span></p>
 
-      <p><span>On the previous page and on the Revival Point website, one bottle of Total Brain Boost
-          costs&nbsp;$19.98. </span></p>
+    <p><span>And you&rsquo;re only getting access to this discount right now while you&rsquo;re on
+        this page.</span></p>
 
-      <p><span>But because you&rsquo;re a new customer today&hellip; </span></p>
+    <p><span>Again, it will only be available on this page right here, right now.</span></p>
 
-      <p><span class="">You&rsquo;re going to pay just <span class="text-red-600 font-semibold">$16.42</span>&nbsp;per
-          bottle for a six month supply of
-          Total Brain Boost.</span></p>
+    <h2 class="text-center font-semibold text-xl md:text-3xl my-11">Once You Leave This Page, This Deal Will Be
+      <span class=" font-bold">Gone&nbsp;For&nbsp;Good</span></h2>
 
-      <p><span class="">That&rsquo;s a <span class="text-red-600 font-semibold">45%</span>&nbsp;discount.</span></p>
+    <p><span>You cannot email, call, or visit any other web page to get this discount again.</span>
+    </p>
 
-      <p><span class="">And a <span class="text-red-600 font-semibold">$162.70</span>&nbsp;total
-          savings.</span></p>
+    <p><span>And if you go to the Revival Point website you&rsquo;ll see Total Brain Boost for sale
+        at full price.</span></p>
 
-      <p><span>And if you get the 12 month supply you&rsquo;ll pay just <span
-            class="text-red-600 font-semibold">$14.46</span>&nbsp;per bottle&hellip; </span></p>
+    <p><span>Which is more than twice the price that you&rsquo;ll pay per bottle on this page if you buy the
+        largest package. </span></p>
 
-      <p><span>That&rsquo;s <span class="text-red-600 font-semibold">52%</span>&nbsp;off and a <span
-            class="text-red-600 font-semibold">$372.40</span>&nbsp;total savings.</span></p>
+    <div class="flex justify-center">
+      <img class="w-full mx-auto mb-6 border" alt="product page"
+        src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/product-page.webp" title="" loading="lazy">
+    </div>
 
-      <p><span>These deeply-discounted packages are designed to ensure you have the best chance at
-          long-lasting results with Total Brain Boost&hellip;</span></p>
+    <p><span>All you need to do now is </span><span class="font-bold">click the button below to see
+        if you
+        qualify</span><span>&nbsp;for your additional discount.</span></p>
 
-      <p><span>And so you can stock up to make sure you don&rsquo;t run out</span></p>
-
-      <p><span>There is no need to worry if these bottles will&nbsp;expire</span></p>
-
-      <p><span>They are guaranteed to stay fresh for a minimum of two years without any special storage or
-          refrigeration needed.</span></p>
-
-      <p><span>Just place them in any cabinet or anywhere at room temperature away from direct
-          sunlight.</span></p>
-
-      <p><span>However&hellip; </span></p>
-
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">There&rsquo;s Just<span
-          class="font-bold">&nbsp;One&nbsp;Catch</span>&hellip;</h2>
-
-      <p><span>Which is, Revival Point doesn&rsquo;t want too many people finding out about it.
-        </span></p>
-
-      <p><span>So I&rsquo;ll politely ask you to please not mention this anywhere online. </span></p>
-
-      <p><span>Because I don&rsquo;t want tons of men and women calling Revival Point customer
-          service&hellip; </span></p>
-
-      <p><span>Saying they heard about some way to get Total Brain Boost cheaper&hellip; </span></p>
-
-      <p><span>Revival Point is only offering this </span><span class="font-bold">one-time
-          discount</span><span>&nbsp;to
-          you right now because:</span></p>
-
-      <p><span>I know you&rsquo;re serious about boosting your memory and focus. &nbsp;</span></p>
-
-      <p><span>And I want to make sure you have </span><span class=" font-bold">the best opportunity for long-term
-          results</span></p>
-
-      <p><span>And you&rsquo;re only getting access to this discount right now while you&rsquo;re on
-          this page.</span></p>
-
-      <p><span>Again, it will only be available on this page right here, right now.</span></p>
-
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-0">Once You Leave This Page,</h2>
-      <h2 class="text-center font-semibold text-xl md:text-3xl mb-4">This Deal Will Be<span
-          class=" font-bold">&nbsp;Gone For Good</span></h2>
-
-      <p><span>You cannot email, call, or visit any other web page to get this discount again.</span>
-      </p>
-
-      <p><span>And if you go to the Revival Point website you&rsquo;ll see Total Brain Boost for sale
-          at full price.</span></p>
-
-      <p><span>Which is more than twice the price that you&rsquo;ll pay per bottle on this page if you buy the
-          largest package. </span></p>
-
-      <div class="flex justify-center">
-        <img class="w-full mx-auto mb-4" alt="product page"
-          src="//<?= $_SERVER['HTTP_HOST']; ?>/images/upsell1/product-page.webp" title="" loading="lazy">
-      </div>
-
-      <p><span>All you need to do now is </span><span class="font-bold">click the button below to see
-          if you
-          qualify</span><span>&nbsp;for your additional discount.</span></p>
-
-      <!-- wrap for float button scroll to -->
-      <div id="scroll-to-cta">    
+    <!-- wrap for float button scroll to -->
+    <div id="scroll-to-cta">
       <div id="qualify-wrap" class="w-full">
         <div class="flex flex-col justify-center items-center border border-4 fs-green p-3 md:py-5 mb-5">
 
@@ -818,7 +809,8 @@
                     $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                  <a class="product-link"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -833,7 +825,8 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
+                  <a class="product-link"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -912,7 +905,8 @@
                     $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                  <a class="product-link"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -927,7 +921,8 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
+                  <a class="product-link"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -958,76 +953,79 @@
 
       <p><span>I can&rsquo;t wait to hear about the positive changes I hope you experience. </span></p>
     </div>
- 
 
-  <div id="third-qualify-wrap" class="w-full">
-    <div class="flex flex-col justify-center items-center border border-4 p-3 md:py-5 fs-green">
-      <div class="text-center text-2xl md:text-3xl font-semibold md:w-4/5">Click The Button Below Now To See If You
-        Qualify For This Discount</div>
-      <button id="third-qualify-btn" class="mx-auto cta-button clickable w-full md:w-auto text-3xl md:text-4xl py-2"
-        style="padding: 15px 40px;">See If You Qualify...</span></button>
-      <div class="t-light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
-        <div id="third-progress-bar" class="green" style="height:10px;width:0;background-color:#40A900;"></div>
+
+    <div id="third-qualify-wrap" class="w-full">
+      <div class="flex flex-col justify-center items-center border border-4 p-3 md:py-5 fs-green">
+        <div class="text-center text-2xl md:text-3xl font-semibold md:w-4/5">Click The Button Below Now To See If You
+          Qualify For This Discount</div>
+        <button id="third-qualify-btn" class="mx-auto cta-button clickable w-full md:w-auto text-3xl md:text-4xl py-2"
+          style="padding: 15px 40px;">See If You Qualify...</span></button>
+        <div class="t-light-grey" style="background-color: transparent; width:70%; margin: 0 auto;">
+          <div id="third-progress-bar" class="green" style="height:10px;width:0;background-color:#40A900;"></div>
+        </div>
       </div>
     </div>
-  </div>
 
 
 
 
 
-  <!-- SECURE ORDER CONTENT -->
-  <!-- SECURE ORDER CONTENT -->
-  <!-- SECURE ORDER CONTENT -->
-  <div id="third-expand-content" class="hidden">
+    <!-- SECURE ORDER CONTENT -->
+    <!-- SECURE ORDER CONTENT -->
+    <!-- SECURE ORDER CONTENT -->
+    <div id="third-expand-content" class="hidden">
 
-    <div class="w-full">
-      <div class="flex flex-col justify-center items-center border border-4 fs-green p-4 md:py-5 mb-5">
-        <div class="w-full">
-          <h2 id="cta" class="flex justify-center font-bold text-center text-blue text-3xl md:text-5xl uppercase mb-0">
-            Congratulations!</h2>
-          <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl mt-0">You Qualify For This
-            Exclusive Discount of Total Brain Boost</p>
-          <div class="gap-4 columns-1 md:columns-2">
-            <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
+      <div class="w-full">
+        <div class="flex flex-col justify-center items-center border border-4 fs-green p-4 md:py-5 mb-5">
+          <div class="w-full">
+            <h2 id="cta"
+              class="flex justify-center font-bold text-center text-blue text-3xl md:text-5xl uppercase mb-0">
+              Congratulations!</h2>
+            <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl mt-0">You Qualify For This
+              Exclusive Discount of Total Brain Boost</p>
+            <div class="gap-4 columns-1 md:columns-2">
+              <div class="flex flex-col text-center justify-center mb-6 md:mb-0">
 
-              <!-- to space the second column -->
-              <div class="hidden md:block" style="width: 100%; height:20px"></div>
-              <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply <br> for just
-                $<?= $product1['product_price']; ?> Today!</p>
+                <!-- to space the second column -->
+                <div class="hidden md:block" style="width: 100%; height:20px"></div>
+                <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply <br> for just
+                  $<?= $product1['product_price']; ?> Today!</p>
 
-              <p class="sales-tax"><?= $tax_msg; ?></p>
-              <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
-                class="w-full" style="text-decoration: none;">
-                <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
-                  I'll Take It</button>
-              </a>
-              <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">45% OFF</span> the retail
-                price!</p>
+                <p class="sales-tax"><?= $tax_msg; ?></p>
+                <a class="product-link"
+                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                  class="w-full" style="text-decoration: none;">
+                  <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
+                    I'll Take It</button>
+                </a>
+                <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">45% OFF</span> the retail
+                  price!</p>
+              </div>
+              <div class="flex w-full border-b mb-4 md:hidden"></div>
+              <div class="flex flex-col text-center justify-center">
+                <div class="sub-title">Even Bigger Discount (Limited Time Only)</div>
+                <p class="title font-semibold text-lg md:text-2xl">Get a <?= $product2['product_month']; ?>-month supply
+                  <br> for just $<?= $product2['product_price']; ?> Today!
+                </p>
+
+                <p class="sales-tax"><?= $tax_msg; ?></p>
+                <a class="product-link"
+                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
+                  class="w-full" style="text-decoration: none;">
+                  <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
+                    I'll Take It</button>
+                </a>
+                <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the retail
+                  price!</p>
+              </div>
+
             </div>
-            <div class="flex w-full border-b mb-4 md:hidden"></div>
-            <div class="flex flex-col text-center justify-center">
-              <div class="sub-title">Even Bigger Discount (Limited Time Only)</div>
-              <p class="title font-semibold text-lg md:text-2xl">Get a <?= $product2['product_month']; ?>-month supply
-                <br> for just $<?= $product2['product_price']; ?> Today!
-              </p>
-
-              <p class="sales-tax"><?= $tax_msg; ?></p>
-              <a class="product-link" href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
-                class="w-full" style="text-decoration: none;">
-                <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
-                  I'll Take It</button>
-              </a>
-              <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the retail
-                price!</p>
-            </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
   <!-- closing div for float button scroll to wrap  -->
   </div>
 
@@ -1063,8 +1061,8 @@
 
   // onclick event lock all cta buttons, animate clicked button and update text
   const productLinks = document.querySelectorAll('.product-link');
-  productLinks.forEach((link)=> {
-    link.addEventListener('click', (event)=> { 
+  productLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
       disableProductLinks();
       link.querySelector('button').innerText = 'Processing...';
       link.querySelector('button').classList.add('processing');
@@ -1073,7 +1071,7 @@
 
   function disableProductLinks() {
     console.log('disable');
-    productLinks.forEach((link)=> {
+    productLinks.forEach((link) => {
       // const button = link.querySelector('button');
       // link.disabled = true;
       link.classList.add('disabled');
@@ -1127,12 +1125,12 @@
 
 
   function openAll() {
-      qualifyWrap.style.display = 'none';
-      expandContent.style.display = 'block';
-      qualifyWrapSecond.style.display = 'none';
-      expandContentSecond.style.display = 'block';
-      qualifyWrapThird.style.display = 'none';
-      expandContentThird.style.display = 'block';
+    qualifyWrap.style.display = 'none';
+    expandContent.style.display = 'block';
+    qualifyWrapSecond.style.display = 'none';
+    expandContentSecond.style.display = 'block';
+    qualifyWrapThird.style.display = 'none';
+    expandContentThird.style.display = 'block';
   }
 
   function scrollToId(id) {

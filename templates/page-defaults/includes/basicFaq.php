@@ -1,8 +1,8 @@
+<?php
 /* 
 currently just for 5g FAQ content
 replace Q/A array content as needed (close attention to apostraphe/quotes)
 */
-<?php
 
     $qas = array(
     array(   'Can I Take More Than One Capsule of 5G Male To Get Even Stronger Results?',

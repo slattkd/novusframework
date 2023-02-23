@@ -1,11 +1,11 @@
-/*
+<!-- 
 shows vidalytic videos with overlay option (may need update with 1:1 ratio videos)
 php variables:
     $overlay (string) = include an image src attribute, play will require click
     $video_id (string) = replace the #myVid element id and the script id value 
     $drop_time (num) = ms when to fire the event to show a cta button
         - remove 'hidden' class on element with id of "container-buy" 
-*/
+ -->
 
 
 <div class="video-container">

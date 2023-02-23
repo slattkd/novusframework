@@ -1,3 +1,4 @@
+<?php
 /*
 branded header bar with phone number and secure message options
 php variables:
@@ -7,8 +8,6 @@ php variables:
   $container (string) = set to match the page 'container-[]'
 */
 
-
-<?php
   $show_phone ?? $show_phone = 1;
   $show_secure ?? $show_secure = 1;
   $justify ?? $justify = 'justify-between';

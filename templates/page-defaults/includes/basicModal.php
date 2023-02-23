@@ -1,5 +1,4 @@
-
-/*
+<!-- 
 modal element that allows for custom title, body, and footer content
     Requires basic_modal.js served in the <head>
     php variables:
@@ -11,7 +10,7 @@ modal element that allows for custom title, body, and footer content
     $modal_footer = html as string;
 
     TODO: option for including page view (html/php files) as variable - getPage()
-*/
+ -->
 
 <style>
     .center-modal {

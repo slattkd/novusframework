@@ -1,7 +1,7 @@
-/*
+<!-- 
 shows vidalytic videos with overlay option (may need update with 1:1 ratio videos)
 various company information can be adjusted in config.php
-*/
+ -->
 
 <footer id="footer" class="bg-zinc-700">
 	<div class="container container-md mx-auto py-6">
