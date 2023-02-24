@@ -30,19 +30,19 @@ $next = '/up/upsell-female-cream';
         </style>
     </head>
 <body>
-<div class="wsl container-vsl mx-auto py-8 serif mt-10" style="max-width: 680px">
+<div class="wsl container-vsl mx-auto py-8 mt-10" style="max-width: 680px">
     <div class="content px-1 sans">
         <div class="flex flex-column flex-wrap bg-white p-5 text-center">
-            <div class="flex w-full justify-center text-red-500 mb-5 text-4xl uppsercase" style="font-family:'Teko'">
-                <h1>Last Chance!!!</h1>
+            <div class="flex w-full justify-center text-red-500 mb-5 text-4xl uppercase">
+                <h1 class="text-center text-3xl md:text-5xl leading-6 title">Last Chance!!!</h1>
             </div>
             <div class="flex w-full text-red-500 text-3xl mb-5">
             Choose One of These 2 Free Options to Continue...
             </div>
-            <div class="flex w-full justify-center text-gray-400 mb-5 text-sm">
+            <div class="flex w-full justify-center text-gray-400 mb-5">
                 <a class="underline hover:text-gray-300" href="https://members.supernaturalman.com/login">continue to the members area to start viewing your digital content...</a>
             </div>
-            <div class="flex w-full justify-center text-red-500 text-sm mb-5">
+            <div class="flex w-full justify-center text-red-500 mb-5">
             or....
             </div>
             <div class="flex w-full text-blue-600 text-2xl mb-3">
