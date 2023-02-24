@@ -22,7 +22,7 @@ $product2 = $products['products']['128'];
 
 <head>
   <?php template("includes/header"); ?>
-  <link rel="shortcut icon" href="https://s3.amazonaws.com/sec-image/upsells/skeletonkey/lock.png" type="image/png" />
+  <title><?php echo $company['name']; ?> - Secure Checkout</title>
 
 <style>
   .wait {

@@ -27,8 +27,8 @@ $pid2 = '734';
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
     <?php template("includes/header"); ?>
+		<title><?php echo $company['name']; ?> - blow Her Away</title>
 
         <style>
             body {
@@ -83,7 +83,7 @@ $pid2 = '734';
 				<div class="flex flex-col w-full">
 					<p>Hey it's Ryan Masters again...</p>
 					<p>And I’ll tell you first hand, the <strong>last thing</strong> you want when you’ve got a girl really worked up and horny because of how thick and hard your cock is…</p>
-					<p>Is to have a <strong style="color: #D81E00;">weak finish</strong>… </p>
+					<p>Is to have a <strong class="text-red-600">weak finish</strong>… </p>
 					<p>Any famous actor will tell you, it’s how you <strong>END</strong> the show that matters… </p>
 					<p>That’s what people are going to remember.</p>
 					<p>And when your girl is begging for you to finish inside her (or in her mouth… or on her tits… or anywhere else) she’s expecting a BIG FINISH from you!</p>
@@ -118,13 +118,13 @@ $pid2 = '734';
 
 				<div class="flex flex-col w-4/5 text-center my-5 mx-auto">
 					<p class="w-full pb-1 text-xl md:text-2xl"><strong>BIG LOAD CONFESSION #1:</strong></p>
-					<p class="w-full pb-5 mb-3 text-lg" style="color:#696969;"><em>"I love big loads because I feel like I really got the guy off. <strong>I just feel so satisfied</strong> after seeing that it makes me feel like the sexiest woman alive!"</em></p>
+					<p class="w-full pb-5 mb-3 text-lg text-gray-500"><em>"I love big loads because I feel like I really got the guy off. <strong>I just feel so satisfied</strong> after seeing that it makes me feel like the sexiest woman alive!"</em></p>
 					<p class="w-full pb-1 text-xl md:text-2xl"><strong>BIG LOAD CONFESSION #2:</strong></p>
-					<p class="w-full pb-5 mb-3 text-lg" style="color:#696969;"><em>"I NEED my guy to shoot a big load in order for me to orgasm. I just find it so <strong>incredibly</strong> hot to see him do it. It's not the end of the world if his load isn't big, it's just a <strong>little disappointing.</strong>"</em></p>
+					<p class="w-full pb-5 mb-3 text-lg text-gray-500"><em>"I NEED my guy to shoot a big load in order for me to orgasm. I just find it so <strong>incredibly</strong> hot to see him do it. It's not the end of the world if his load isn't big, it's just a <strong>little disappointing.</strong>"</em></p>
 					<p class="w-full pb-1 text-xl md:text-2xl"><strong>BIG LOAD CONFESSION #3:</strong></p>
-					<p class="w-full pb-5 mb-3 text-lg" style="color:#696969;"><em>“My husband has average sized loads that are easy to swallow, but every once in a while his cock will just keep shooting it out and shooting it out. A few times he's <strong>filled my mouth to overflowing</strong> and I had to start swallowing before he was even done cumming. It was <strong>sexy as heck!</strong>”</em></p>
+					<p class="w-full pb-5 mb-3 text-lg text-gray-500"><em>“My husband has average sized loads that are easy to swallow, but every once in a while his cock will just keep shooting it out and shooting it out. A few times he's <strong>filled my mouth to overflowing</strong> and I had to start swallowing before he was even done cumming. It was <strong>sexy as heck!</strong>”</em></p>
 					<p class="w-full pb-1 text-xl md:text-2xl"><strong>BIG LOAD CONFESSION #4:</strong></p>
-					<p class="w-full pb-5 mb-3 text-lg" style="color:#696969;"><em>“Whenever he shoots out only a little, it's <strong>totally anticlimactic</strong>. Like, is that all? The size and the quality of his load is really important to me.”</em></strong></p>
+					<p class="w-full pb-5 mb-3 text-lg text-gray-500"><em>“Whenever he shoots out only a little, it's <strong>totally anticlimactic</strong>. Like, is that all? The size and the quality of his load is really important to me.”</em></strong></p>
 				</div>
 
 				<div class="flex flex-col w-full">
@@ -167,7 +167,7 @@ $pid2 = '734';
 				<p>And that’s the reason male porn stars get paid the <strong>big bucks</strong> to shoot BIG LOADS in porn movies that millions of people are going to watch...</p>
 				<p>Because EVERYONE loves big loads.</p>
 				<p>Women love them… and men want to achieve them!</p>
-				<p>However, recently there’s been a <strong style="color:#D81E00;">BIG CRISIS</strong> threatening your load size… </p>	
+				<p>However, recently there’s been a <strong class="text-red-600">BIG CRISIS</strong> threatening your load size… </p>	
 				</div>
 				<h2 class="text-red-600 text-2xl md:text-3xl text-center my-11">
 				Over The Last 25 Years, The Average Man’s Healthy Load Size Has <strong>Dropped In <u>HALF</u>!</strong>
@@ -175,9 +175,9 @@ $pid2 = '734';
 
 				<div class="flex flex-col w-full">
 				<p>According to a research study published in the Wall Street Journal… </p>
-				<p class="w-full pb-3 centered" style="font-size:19px;">“Today’s man has less than <strong>HALF</strong> the semen volume that a 
+				<p class="w-full pb-3 centered">“Today’s man has less than <strong>HALF</strong> the semen volume that a 
 				man the same age had back in 1989...”</p>
-				<p>Is so bad… and some men’s semen volume is <strong style="color:#D81E00;">SO LOW…</strong> that they are unable to father children due to infertility… and this has become a SERIOUS concern world-wide.</p>
+				<p>Is so bad… and some men’s semen volume is <strong class="text-red-600">SO LOW…</strong> that they are unable to father children due to infertility… and this has become a SERIOUS concern world-wide.</p>
 				<p>Scientists now know WHY this is happening…</p>
 				<p>See, due to <strong>changes in our environment</strong> and the food we eat… toxins are now entering our bodies that are robbing us of the nutrients needed to produce strong volumes of semen…</p>
 				<p>It’s KILLING our load…</p>
@@ -218,7 +218,7 @@ $pid2 = '734';
 					<div>
 					<img class="float-right mb-5 ml-5 w-full mx-auto md:w-1/2" style="max-width: 350px;" src="https://s3.amazonaws.com/5gmale/male-repro.jpg" alt="male reproductive diagram" />
 					<p class=" pb-3">These <strong>“Genesis”</strong> ingredients are the ingredients that help your body create more semen.</p>
-					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong style="color:#D81E00">as low at 10%</strong>)… </p>
+					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong class="text-red-600">as low at 10%</strong>)… </p>
 					<p class=" pb-3">Resulting in a <strong>measly dribble</strong> when you finish…</p>
 					<p class=" pb-3">Once the “Genesis” ingredients enter your body… and are absorbed into your blood steam… they are then used by your testicles to fuel <strong>MASSIVE semen production</strong>…</p>
 					</div>
@@ -270,7 +270,7 @@ $pid2 = '734';
 				</div>
 				<div class="flex flex-col w-full text-center my-7">
 				<p class="w-full pb-3 text-xl md:text-2xl">And you’re only going to pay just $<?php echo $just; ?></p>
-				<p class="w-full pb-3 text-xl md:text-2xl"><strike style="color:gray;">Normally: $<?php echo $retail; ?></strike> &nbsp;  <strong style="color:#D81E00;">Today Just: $<?php echo $just; ?></strong></p>
+				<p class="w-full pb-3 text-xl md:text-2xl"><strike style="color:gray;">Normally: $<?php echo $retail; ?></strike> &nbsp;  <strong class="text-red-600">Today Just: $<?php echo $just; ?></strong></p>
 				</div>
 				<div class="flex flex-col w-full">
 					<p>That’s more than <strong>HALF OFF</strong> the price! </p>
@@ -336,9 +336,9 @@ $pid2 = '734';
 								<div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
 									<p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $perbottle; ?> PER BOTTLE</p>
 									<?php if($newflow) { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn clickable" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" onclick="exit=false;">
                                     <?php } else { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" onclick="exit=false;">
+                                        <a id="btn-two" class="split-buy processlink takebtn clickable" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" onclick="exit=false;">
                                     <?php } ?>
 									<img src="https://5gm.s3.amazonaws.com/yes-secure-my-discount.png" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding: 10px 0 7px;" alt="secure my discount">
 									</a>
@@ -350,7 +350,7 @@ $pid2 = '734';
 					</section>
 
 				<div class="flex w-full justify-center py-7">
-                <div class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="//<?php echo $_SERVER['HTTP_HOST']?>/dn/downsell-3" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</div>
+                <div class='text-center px-5 split-non-buy processlink text-gray-500 text-sm'><a href="//<?php echo $_SERVER['HTTP_HOST']?>/dn/downsell-3" class="underline clickable" onclick="exit=false;">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</div>
 				</div>
 				<div id="footer" class="flex w-full justify-center text-gray-300 border-t mt-10 pt-3 sans uppercase"> <?php echo $company['name']; ?> </div>
 			</div>
@@ -374,7 +374,6 @@ $pid2 = '734';
 
 <script type='text/javascript'>
     document.addEventListener('contextmenu', event => event.preventDefault());
-
 		document.querySelector(".processlink").addEventListener('click', function(e) {
       document.querySelector('.processlink').classList.add('disabled');
     });

@@ -165,7 +165,7 @@ $timerDelay = time() - $_SESSION['timer-gm'];
 
 <head>
   <?php template("includes/header"); ?>
-  <title>5GMALE - Secure Checkout</title>
+  <title><?php echo $company['name']; ?> - Secure Checkout</title>
 
   <style>
   body {

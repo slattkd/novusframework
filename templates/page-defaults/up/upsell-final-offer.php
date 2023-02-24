@@ -21,7 +21,7 @@ $next = '/up/upsell-female-cream';
 <html lang="en">
     <head>
         <?php template("includes/header"); ?>
-         <title>100% SECURE - Supernatural Man LLC Checkout</title>
+         <title><?php echo $company['name']; ?> - Final Offer</title>
         <style>
             body {
                 background: #000;
@@ -30,7 +30,7 @@ $next = '/up/upsell-female-cream';
         </style>
     </head>
 <body>
-<div class="container-vsl mx-auto py-8 serif mt-10" style="max-width: 680px">
+<div class="wsl container-vsl mx-auto py-8 serif mt-10" style="max-width: 680px">
     <div class="content px-1 sans">
         <div class="flex flex-column flex-wrap bg-white p-5 text-center">
             <div class="flex w-full justify-center text-red-500 mb-5 text-4xl uppsercase" style="font-family:'Teko'">

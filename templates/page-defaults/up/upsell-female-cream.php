@@ -44,7 +44,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
 <html lang="en">
     <head>
         <?php template("includes/header"); ?>
-         <title>100% SECURE - Supernatural Man LLC Checkout</title>
+         <title><?php echo $company['name']; ?> - Female Cream</title>
         <style>
             body {
                 background: #000;
@@ -110,7 +110,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
 </style>
 
 <body>
-    <div class="container-vsl mx-auto py-8 serif" style="max-width: 680px;">
+    <div class="wsl container-vsl mx-auto py-8 serif" style="max-width: 680px;">
         <div class="conten mx-1">
             <section>
                 <?php

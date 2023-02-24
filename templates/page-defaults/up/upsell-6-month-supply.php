@@ -5,122 +5,15 @@ $video_id = "jSBtEwenrKwiOeKu";
 $drop_time = "45";
 
 $next = '/up/upsell-2-blow-her-away';
-$pid1 = '11';
-$pid2 = '250';
+$pid1 = '127';
+$pid2 = '128';
 
-//PageTypes dictate what pixels are bing fired, options should be limited to:
-/*
-  1. vsl
-  2. wsl
-  3. assessemnt
-  4. order
-  5. onepage
-  6. step1, step2, step3
-  7. up1, up2, up3, up4
-  8. dn1, dn2, dn3
-  9. receipt
-*/
+$product1 = $products['products'][$pid1];
+$product2 = $products['products'][$pid2];
+
 $_SESSION['pageType'] = 'up1';
 
 setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
-
-$firedl = 0;
-if (isset($_SESSION['step_1_orderId'])) {
-
-    $firedl = 1;
-    $dataLayer = [
-        'event' => 'GTMCore',
-        'transactionId' => $_SESSION['step_1_orderId'],
-        'transactionTotal' => '',
-        'price' => '',
-        'sku' => '',
-        'name' => ''
-    ];
-
-
-    switch ($_SESSION['pid']) {
-        case 4:
-            $gtmsku = '4';
-            $orderamt = '76.90';
-            $gtmname = '5G Male 1x Auto';
-            break;
-        case 5:
-            $gtmsku = '5';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 3x Auto';
-            break;
-        case 8:
-            $gtmsku = '8';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 3x';
-            break;
-        case 451:
-            $gtmsku = '451';
-            $orderamt = '297.00';
-            $gtmname = '5G Male 6x';
-            break;
-        case 9:
-            $gtmsku = '9';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 6x';
-            break;
-        case 662:
-            $gtmsku = '662';
-            $orderamt = '297.00';
-            $gtmname = '5G Male 6x';
-            break;
-        case 144:
-            $gtmsku = '144';
-            $orderamt = '23.95';
-            $gtmname = '5G Male Payment Plan';
-            break;
-            //BOGO - gm974 and gm975
-        case 952: //v1 - 1x Auto
-            $gtmsku = '952';
-            $orderamt = '76.90';
-            $gtmname = '5G Male 1x Auto';
-            break;
-        case 953: //v1 - 3x
-            $gtmsku = '953';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 3x';
-            break;
-        case 954: //v1 - 3x Auto
-            $gtmsku = '954';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 3x Auto';
-            break;
-        case 955: //v1 - 6x
-            $gtmsku = '955';
-            $orderamt = '297.00';
-            $gtmname = '5G Male 6x';
-            break;
-
-        case 956: //v2 - 1x Auto
-            $gtmsku = '956';
-            $orderamt = '76.90';
-            $gtmname = '5G Male 1x Auto';
-            break;
-        case 957: //v2 - 3x
-            $gtmsku = '957';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 3x';
-            break;
-        case 958: //v2 - 3x Auto
-            $gtmsku = '958';
-            $orderamt = '179.00';
-            $gtmname = '5G Male 3x Auto';
-            break;
-        case 959: //v2 - 6x
-            $gtmsku = '959';
-            $orderamt = '297.00';
-            $gtmname = '5G Male 6x';
-            break;
-    }
-    if (($gtmsku == 952 || $gtmsku == 956) && ($_SESSION['shippingCountry'] != 'US')) {
-        $orderamt = '84.90';
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -128,7 +21,7 @@ if (isset($_SESSION['step_1_orderId'])) {
 
 <head>
 	<?php template("includes/header"); ?>
-    <link rel="shortcut icon" href="https://s3.amazonaws.com/sec-image/upsells/skeletonkey/lock.png" type="image/png" />
+    <title><?php echo $company['name']; ?> - Monthly Supply</title>
 
     <style>
         body {
@@ -153,78 +46,22 @@ if (isset($_SESSION['step_1_orderId'])) {
 		}
     </style>
 
-    <!-- Start Visual Website Optimizer Asynchronous Code -->
-    <script type='text/javascript'>
-        var _vwo_code = (function() {
-            var account_id = 2887,
-                settings_tolerance = 5000,
-                library_tolerance = 5000,
-                use_existing_jquery = false,
-                /* DO NOT EDIT BELOW THIS LINE */
-                f = false,
-                d = document;
-            return {
-                use_existing_jquery: function() {
-                    return use_existing_jquery;
-                },
-                library_tolerance: function() {
-                    return library_tolerance;
-                },
-                finish: function() {
-                    if (!f) {
-                        f = true;
-                        var a = d.getElementById('_vis_opt_path_hides');
-                        if (a) a.parentNode.removeChild(a);
-                    }
-                },
-                finished: function() {
-                    return f;
-                },
-                load: function(a) {
-                    var b = d.createElement('script');
-                    b.src = a;
-                    b.type = 'text/javascript';
-                    b.innerText;
-                    b.onerror = function() {
-                        _vwo_code.finish();
-                    };
-                    d.getElementsByTagName('head')[0].appendChild(b);
-                },
-                init: function() {
-                    settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance);
-                    var a = d.createElement('style'),
-                        b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',
-                        h = d.getElementsByTagName('head')[0];
-                    a.setAttribute('id', '_vis_opt_path_hides');
-                    a.setAttribute('type', 'text/css');
-                    if (a.styleSheet) a.styleSheet.cssText = b;
-                    else a.appendChild(d.createTextNode(b));
-                    h.appendChild(a);
-                    this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random());
-                    return settings_timer;
-                }
-            };
-        }());
-        _vwo_settings_timer = _vwo_code.init();
-    </script>
-    <!-- End Visual Website Optimizer Asynchronous Code -->
 </head>
-<!-- HTML code from Bootply.com editor -->
 
-<body class="serif">
-    <div class="container container-sm mx-auto py-8">
+<body>
+    <div class="wsl container container-sm mx-auto py-8">
         <div class="conten px-1 md:px-5">
             <section>
                 <?php
-                $current_step = 2;
-				        template('includes/step_bar', null, $current_step);
-				        ?>
+                    $current_step = 2;
+                    template('includes/step_bar', null, $current_step);
+                ?>
             </section>
             <div class="flex flex-col w-full rounded p-5 bg-white rounded border border-black mt-6">
                 <div class="w-full pb-4 text-center">
-                    <h2 class="font-bold text-2xl text-red-500">WARNING: <u>Do Not</u> Leave This Page Yet, Your Order Is Not Complete!</h2>
+                    <h1 class="font-bold text-red-600 text-center text-3xl md:text-4xl leading-6 title">WARNING: <u>Do Not</u> Leave This Page Yet, Your Order Is Not Complete!</h1>
                 </div>
-                <p class="w-full pb-3 text-center text-3xl">Watch This Short Presentation To Get Started With 5G Male And Secure An <strong>Additional 65% OFF</strong>…</p>
+                <p class="w-full pb-3 text-center text-3xl">Watch This Short Presentation To Get Started With 5G Male And Secure An <strong>Additional 65%&nbsp;OFF</strong>…</p>
                 <!-- <p class="w-full pb-3 text-center text-lg">Tap The Video Below To Play</p> -->
                 <div class="flex flex-col justify-center w-full my-5 upsell">
                       <?php video('includes/player', $video_id, $drop_time);?>
@@ -249,25 +86,25 @@ if (isset($_SESSION['step_1_orderId'])) {
                         <div class="flex justify-center text-center sans my-3 font-bold"  style="font-size:25px;">Choose Your Discount Now:</div>
                         <div class="flex w-full flex-wrap justify-around border-2 border-red-600 border-dashed" >
                             <div class="flex flex-col justify-around p-4">
-                                <p class="text-center" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;">6 Month Supply</p>
-                                <p class="text-center" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $419.67</strike></p>
-                                <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $179.69</strong></p>
-                                <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE 57% Savings!)</p>
+                                <p class="text-center" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;"><?= $product1['product_month']; ?> Month Supply</p>
+                                <p class="text-center" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $<?= $product1['product_retail']; ?></strike></p>
+                                <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product1['product_price']; ?></strong></p>
+                                <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?= percentOff($product1['product_price'], $product1['product_retail']); ?>% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink" rel="samewin" onclick="exit=false;">
-                                    <img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" />
+                                <a class="cta-link" href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable" rel="samewin" onclick="exit=false;">
+                                    <button class="cta-button">Secure My Discount</button>
                                 </a>
                                 </div>
 
                             </div>
                             <div class="flex flex-col justify-around p-4">
-                                <p class="text-center" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;">12 Month Supply</p>
-                                <p class="text-center" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $839.40</strike></p>
-                                <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $297</strong></p>
-                                <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A WHOPPING 65% Savings!)</p>
+                            <p class="text-center" style="font-size:28px !important; font-weight:bold;margin-bottom:5px;"><?= $product2['product_month']; ?> Month Supply</p>
+                                <p class="text-center" style="padding-bottom:5px;"><strike style="font-size:25px; color:gray;">Normally: $<?= $product2['product_retail']; ?></strike></p>
+                                <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product2['product_price']; ?></strong></p>
+                                <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?= percentOff($product2['product_price'], $product2['product_retail']); ?>% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink" rel="samewin" onclick="exit=false;">
-                                    <img class="mx-auto" src="//5gm.s3.amazonaws.com/yes-secure-my-discount.png" alt="Yes, Secure My Discount" style="max-width: 300px" />
+                                <a class="cta-link" href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable" rel="samewin" onclick="exit=false;">
+                                    <button class="cta-button">Secure My Discount</button>
                                 </a>
                                 </div>
                             </div>
@@ -302,15 +139,6 @@ if (isset($_SESSION['step_1_orderId'])) {
     ?>
 
 <script>
-        window.onload = function() {
-			(function titleScroller(text) {
-					document.title = text;
-					setTimeout(function () {
-							titleScroller(text.substr(1) + text.substr(0, 1));
-					}, 400);
-			}(" Before you go...Choose Your Option Now... Action Needed...Choose Your Upgrade Now... "));
-		}
-
 		const qualify = document.getElementById('qualify-btn');
 		const buy = document.getElementById('container-buy');
 		const order = document.getElementById('order-section');
@@ -322,13 +150,10 @@ if (isset($_SESSION['step_1_orderId'])) {
 
 			setTimeout(() => {
 				document.querySelector('.light-grey').style.display = 'none';
+                qualify.style.display = 'none';
 				order.style.display = 'block';
 			}, "1000")
 		})
-
-		document.querySelector(".processlink").addEventListener('click', function(e) {
-            document.querySelector('.processlink').classList.add('disabled');
-        });
 
 		// modal on mouseleave
 		document.documentElement.addEventListener('mouseleave', () => {
@@ -340,6 +165,25 @@ if (isset($_SESSION['step_1_orderId'])) {
 			window.modalHandler('exitModal', true);
 		});
 
+
+        // disable cta buttons on click
+        const allCTA = document.querySelectorAll('a.cta-link');
+
+        allCTA.forEach((cta)=> {
+            cta.addEventListener('click', (event)=> {
+                cta.classList.add('processing')
+                cta.querySelector('button.cta-button').innerText = 'Processing...';
+                disableCTAButtons();
+            })
+        })
+
+        function disableCTAButtons() {
+            allCTA.forEach((cta)=> {
+                cta.style.pointerEvents = 'none';
+                cta.querySelector('button.cta-button').classList.add('disabled');
+            })
+        }
+
     </script>
 
 
@@ -347,14 +191,12 @@ if (isset($_SESSION['step_1_orderId'])) {
         <script>
             fadeInDelay = 0;
             fadeInDiv = '#container-buy';
-            setTimeout(function() {
-                var scroll = document.querySelector('.video-container');
-                scroll.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-					inline: "nearest"
-				});
-            }, 2000);
+            var scroll = document.querySelector('.video-container');
+            scroll.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest"
+            });
         </script>
 
     <?php } ?>

@@ -263,7 +263,7 @@ function template($template, $vwoVariable = null, $current_step = null, $templat
 /*
 Extends the template based on paths to easily add new versions for A/B testing.
 */
-function video($template, $videoID = null, $dropTime = null, $overlay = null, $vwoVariable = null, $templatePath = 'templates/page-defaults')
+function video($template, $video_id = null, $drop_time = null, $overlay = null, $vwoVariable = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;

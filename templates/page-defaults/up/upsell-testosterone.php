@@ -32,10 +32,7 @@ $newflow = 0;
 <html lang="en">
     <head>
         <?php template("includes/header"); ?>
-        <title>100% SECURE - Supernatural Man LLC Checkout</title>
-        <link rel="shortcut icon" href="https://s3.amazonaws.com/sec-image/upsells/skeletonkey/lock.png" type="image/png" />
-
-
+        <title><?php echo $company['name']; ?> - Testosterone</title>
 
         <style>
             body {
@@ -44,11 +41,10 @@ $newflow = 0;
         </style>
 
     </head>
+    <body>
 
 
-
-
-<div class="container container-vsl mx-auto min-h-screen py-8 serif" style="max-width: 680px">
+<div class="wsl container container-vsl mx-auto min-h-screen py-8 serif" style="max-width: 680px">
         <div class="conten px-1">
             <section>
                 <?php

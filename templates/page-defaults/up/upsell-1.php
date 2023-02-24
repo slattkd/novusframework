@@ -252,15 +252,6 @@
     font-weight: 600;
   }
 
-  a .cta-button.btn-2 {
-    padding: 10px 20px;
-    max-width: 200px;
-    width: auto;
-    text-decoration: none !important;
-
-    margin: 0 auto;
-  }
-
   .container {
     max-width: 770px !important;
   }

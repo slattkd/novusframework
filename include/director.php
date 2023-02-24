@@ -68,8 +68,7 @@ function setSessionVars($encryptedData = null)
         "id","pid","last","tid","eftid","next","c1","c2","c3","clickid","qa", "isMobile"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
-    // for $site variables
-    require_once './config.php';
+    // TODO: for $site variables
     foreach ($allowedData as $queryString => $value) {
         // use $queryString to reset values to different session variables or match to query string value
         if ($queryString == 'a') {

@@ -398,10 +398,6 @@ h2.title {
   font-size: 17px;
 }
 
-.wsl button.cta-button {
-  width: 500px;
-}
-
 .wsl li {
   list-style: none;
   padding: 6px 25px;
@@ -522,6 +518,47 @@ p.sales-tax {
   font-size: 12px;
   color: #ccc;
   text-align: center;
+}
+
+.cta-link {
+	text-decoration: none;
+}
+.cta-button {
+	cursor: pointer;
+  margin: 20px auto 16px;
+  font-weight: 900;
+  color: #333;
+  padding: 8px 16px;
+  text-align: center;
+  background-color: #006400 !important;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 20px 16px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+  background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
+  border: 1px solid #fff;
+  border-color: #a88734 #9c7e31 #846a29;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0 #f9ffac;
+  min-width: 320px;
+  max-width: 100%;
+	font-size: 1.5em;
+	transition: all 200ms ease-in-out;
+}
+
+@media screen and (min-width: 769px) {
+  .cta-button {
+    font-size: 1.75em;
+    min-width: 300px;
+    padding: 10px 24px;
+  }
+}
+
+.cta-button:hover {
+	opacity: 0.75;
 }
 
 .processing {
