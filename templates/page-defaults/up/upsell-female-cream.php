@@ -55,28 +55,6 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
     width: auto;
     max-width: 100vw;
   }
-
-  .floating-btn .button {
-    background: rgb(255, 98, 0);
-    background: linear-gradient(0deg, rgba(255, 98, 0, 1) 0%, rgba(255, 132, 0, 1) 26%, rgba(255, 153, 0, 1) 49%, rgba(255, 165, 0, 1) 63%, rgba(255, 201, 33, 1) 89%, rgba(255, 234, 161, 1) 100%);
-    font-size: 26px;
-    padding: 8px 16px;
-    border: 2px solid #ab3600;
-    border-radius: 10px;
-    font-family: 'Oswald', sans-serif;
-    font-style: italic;
-    font-weight: bold;
-    color: #00234c;
-    cursor: pointer;
-    transition: all 200ms ease-in-out;
-    white-space: nowrap;
-  }
-
-  @media only screen and (min-width: 769px) {
-    .floating-btn .button {
-      font-size: 36px;
-    }
-  }
   </style>
 </head>
 
@@ -328,7 +306,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
                 limited</strong> to just <?php echo $supply; ?> bottles of “O.X. Gel” per customer.) </p>
           </div>
 
-          <section id="processBlock" class="processblock">
+          <section id="process-block" class="processblock">
             <div class="flex flex-col w-full md:mx-auto">
               <div
                 class="flex flex-wrap md:flex-nowrap justify-between bg-yellow-50 border border-orange-400 border-4 sans">
@@ -392,24 +370,27 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
     </div>
 
 
-    <div id="floatButton" class="flex justify-center md:justify-end w-full p-3 floating-btn">
-      <span id="buy-btn" style="display: none;" class="button w-auto">
-        Yes, Give Me This Now!
-      </span>
-    </div>
-
+    <?php
+        // declare modal variables (requires basic_modal.js)
+        $modal_id = 'exitModal';
+        $max_width = 'md';
+        $modal_title = "WAIT! DO NOT LEAVE THIS PAGE!";
+        $modal_body = '
+        <div class="modalsubheader text-center my-2">IT COULD CAUSE ERRORS IN YOUR ORDER</div>
+        <div class="text-sm text-center my-2">Do not hit the back button or close your browser.
+        <br>Click <span class="font-bold">"FINISH CUSTOMIZING MY ORDER"</span> below and <span style="text-decoration: underline;font-weight:bold;">make your decision on this page</span>.</div>
+        ';
+        $modal_footer = '<button id="modalbutton" type="button" class="modalbutton w-full bg-blue-600 p-3 rounded text-white">FINISH CUSTOMIZING MY ORDER</button>';
+        modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width);
+    ?>
+    <?php exitIntent("includes/exitIntent", 'exitModal'); ?>
 
     <?php
-    // declare modal variables (requires basic_modal.js)
-    $modal_id = 'mouseModal';
-    $modal_title = "WAIT! DO NOT LEAVE THIS PAGE!";
-    $modal_body = '
-    <div class="modalsubheader text-center my-2">IT COULD CAUSE ERRORS IN YOUR ORDER</div>
-    <div class="text-sm text-center my-2">Do not hit the back button or close your browser.
-    <br>Click <span class="font-bold">"FINISH CUSTOMIZING MY ORDER"</span> below and <span style="text-decoration: underline;font-weight:bold;">make your decision on this page</span>.</div>
-    ';
-    $modal_footer = '<button id="modalbutton" type="button" class="modalbutton w-full bg-blue-600 p-3 rounded text-white">FINISH CUSTOMIZING MY ORDER</button>';
-    modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer);
+        $button_text = 'Yes, Give Me This Now!';
+        $scroll_start = 'start-float-btn';
+        $scroll_id = 'process-block';
+        $top_content = '';
+        floatButton('includes/floatButton',$top_content,$button_text,$scroll_start,$scroll_id);
     ?>
 
 
@@ -417,40 +398,13 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
     document.querySelector(".processlink").addEventListener('click', function(e) {
       document.querySelector('.processlink').classList.add('disabled');
     });
-
-    var scrollPos = window.pageYOffset;
-    const docHeight = document.documentElement.scrollHeight;
-    const windowHeight = window.innerHeight;
-    // element to scroll to
-    const scrollElement = document.getElementById('processBlock');
-    // flaoting button to hide/show on scroll
-    const dynamicElement = document.getElementById('buy-btn');
-    window.onscroll = () => {
-      let currentScrollPos = window.pageYOffset;
-      let viewportOffset = scrollElement.getBoundingClientRect();
-      let elTop = viewportOffset.top;
-      let elScrollTop = scrollElement.scrollTop;
-      if (elTop < windowHeight) {
-        dynamicElement.style.display = "none";
-      } else {
-        dynamicElement.style.display = "block";
-      }
-    }
-
-    // scroll to element via floating button
-    dynamicElement.addEventListener('click', function() {
-      scrollElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-      });
-    })
     </script>
 
 
   </body>
   <?php if ($site['debug'] == true) {
-    // Show Debug bar only on whitelisted domains.
-    template('debug', null, null, 'debug');
-} ?>
+        // Show Debug bar only on whitelisted domains.
+        template('debug', null, null, 'debug');
+    } ?>
 
 </html>

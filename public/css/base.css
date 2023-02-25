@@ -486,10 +486,14 @@ input[type="checkbox"] {
 .wsl ul li {
   font-size: 18px;
 }
+
 @media screen and (min-width: 769px) {
   .wsl p,
   .wsl ul li {
     font-size: 20px;
+  }
+  .wsl ul {
+    margin-left: 1.5rem;
   }
   .wsl h1 {
     font-size: 54px;

@@ -12,10 +12,6 @@ modal element that allows for custom title, body, and footer content
     TODO: option for including page view (html/php files) as variable - getPage()
  -->
 
- <?php
-    var_dump($max_width);
- ?>
-
 <style>
     .center-modal {
         display: flex;

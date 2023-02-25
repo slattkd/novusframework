@@ -4,7 +4,6 @@ $next = '/up/upsell-final-offer';
 $pid1 = '21';
 $pid2 = '739';
 
-
 $firedl = 0;
 $retail = 540;
 $just = '227.95';
@@ -200,8 +199,9 @@ $newflow = 0;
 </div>
 
 <?php
-// declare modal variables (requires basic_modal.js)
-    $modal_id = 'mouseModal';
+    // declare modal variables (requires basic_modal.js)
+    $modal_id = 'exitModal';
+    $max_width = 'md';
     $modal_title = "WAIT! DO NOT LEAVE THIS PAGE!";
     $modal_body = '
     <div class="modalsubheader text-center my-2">IT COULD CAUSE ERRORS IN YOUR ORDER</div>
@@ -209,8 +209,9 @@ $newflow = 0;
     <br>Click <span class="font-bold">"FINISH CUSTOMIZING MY ORDER"</span> below and <span style="text-decoration: underline;font-weight:bold;">make your decision on this page</span>.</div>
     ';
     $modal_footer = '<button id="modalbutton" type="button" class="modalbutton w-full bg-blue-600 p-3 rounded text-white">FINISH CUSTOMIZING MY ORDER</button>';
-    modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer);
-?>
+    modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width);
+  ?>
+  <?php exitIntent("includes/exitIntent", 'exitModal'); ?>
 
 
 <script type='text/javascript'>
