@@ -190,9 +190,6 @@ $newflow = 0;
                         </div>
                     </section>
 
-
-
-
                     <div class="flex w-full justify-center py-7">
                     <div class='text-center px-5 split-non-buy processlink text-gray-500 font-sm'><a href="//<?php echo $_SERVER['HTTP_HOST']?>/dn/downsell-3" class="underline text-gray-500">Skip This</a> - Yes, Ryan, I understand this deep discount is only available on this page and once I leave it will be gone for good. Please give my discount away to another man.</div>
                     </div>

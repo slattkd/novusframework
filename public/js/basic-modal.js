@@ -2,10 +2,13 @@
   window.modalHandler = function(id, val) {
     let modal = document.getElementById(id);
     if (val && modal) {
+      console.log('modal', id);
         fadeIn(modal, 'flex');
         document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
     } else {
         document.body.style.overflow = 'auto';
+        document.body.style.height = 'auto';
     }
   }
 

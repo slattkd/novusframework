@@ -12,6 +12,10 @@ modal element that allows for custom title, body, and footer content
     TODO: option for including page view (html/php files) as variable - getPage()
  -->
 
+ <?php
+    var_dump($max_width);
+ ?>
+
 <style>
     .center-modal {
         display: flex;
@@ -49,9 +53,9 @@ modal element that allows for custom title, body, and footer content
     }
 </style>
 <div class="modal-position modal-bg sans" id="<?= $modal_id; ?>" style="margin-left: 0">
-    <div id="modal-wrapper" role="alert" class="container mx-auto w-11/12 md:w-2/3 center-modal <?php echo !empty($max_width) ? 'max-w-' . $max_width : 'max-w-lg'; ?>">
-        <div class="flex flex-col relative py-8 px-5 pb-4 md:px-10 bg-white shadow-md rounded border border-gray-400 h-auto <?php echo !empty($height) ? 'h-' . $height : ''; ?>" style="max-height: 90vh">
-            <div class="title" style="margin-top: -1rem">
+    <div id="modal-wrapper" role="alert" class="mx-auto center-modal max-w-md max-w-lg max-w-<?php echo $max_width ?? 'nada' ?>">
+        <div class="flex flex-col relative p-3 md:p-6 bg-white shadow-md rounded border border-gray-400 h-auto <?php echo !empty($height) ? 'h-' . $height : ''; ?>" style="max-height: 90vh">
+            <div class="title">
                 <!-- insert title as innerHTML here -->
                 <h1 id="title-content" class="text-2xl font-bold text-red-700"><?= $modal_title; ?></h1>
             </div>

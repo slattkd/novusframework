@@ -313,6 +313,15 @@ function rpHeader($template, $show_phone = null, $show_secure = null, $justify =
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+// exit intent, pass in a modal_id or default to window alert/confirm
+function exitIntent($template, $modal_id = null, $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
 /*
 function pixelEvent($template, $event, $affid = null)
 {

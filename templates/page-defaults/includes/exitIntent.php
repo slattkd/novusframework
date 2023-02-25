@@ -32,7 +32,7 @@ function exitEvent() {
         window.alert('Are you sure you want to leave?');
       <?php endif; ?>
       shownExit = true;
-    }, 2000);
+    }, 1000);
   }
 }
 
