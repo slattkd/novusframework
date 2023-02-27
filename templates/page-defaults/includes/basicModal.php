@@ -49,7 +49,7 @@ modal element that allows for custom title, body, and footer content
     }
 </style>
 <div class="modal-position modal-bg sans" id="<?= $modal_id; ?>" style="margin-left: 0">
-    <div id="modal-wrapper" role="alert" class="mx-auto center-modal max-w-md max-w-lg max-w-<?php echo $max_width ?? 'nada' ?>">
+    <div id="modal-wrapper" role="alert" class="mx-auto center-modal max-w-<?php echo $max_width ?? 'lg' ?>">
         <div class="flex flex-col relative p-3 md:p-6 bg-white shadow-md rounded border border-gray-400 h-auto <?php echo !empty($height) ? 'h-' . $height : ''; ?>" style="max-height: 90vh">
             <div class="title">
                 <!-- insert title as innerHTML here -->

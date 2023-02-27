@@ -17,12 +17,16 @@ $next = '/up/upsell-testosterone';
 $pid1 = '24';
 $pid2 = '734';
 
-    $retail = '540.00';
-    $just = '227.00';
-    $supply = 6;
-    $save = '313.00';
-    $perbottle = '37.83';
-    $newflow = 0;
+$product = $products['products'][$pid1];
+if(isset($_SESSION['core']) && $_SESSION['core']) {
+	$product = $products['products'][$pid2];
+}
+
+$retail = $product['product_retail'];
+$just = $product['product_price'];
+$supply = $product['product_month'];;
+$save = savedAmt($product['product_retail'], $product['product_price']);
+$perbottle = perBottle($product['product_price'], $product['product_qty']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -335,12 +339,14 @@ $pid2 = '734';
 
 								<div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
 									<p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $perbottle; ?> PER BOTTLE</p>
-									<?php if($newflow) { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn clickable" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" onclick="exit=false;">
-                                    <?php } else { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn clickable" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" onclick="exit=false;">
-                                    <?php } ?>
-									<img src="https://5gm.s3.amazonaws.com/yes-secure-my-discount.png" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding: 10px 0 7px;" alt="secure my discount">
+									
+									<a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
+										class="cta-link"
+										id="upsell-buy" 
+										class="processlink clickable" 
+										 
+										onclick="exit=false;">
+											<button class="cta-button">Secure My Discount</button>
 									</a>
 									<p class="percentoff mt-4"><span class="text-red-400 font-semibold">58% OFF</span> <span class="text-green-400 font-semibold"> + FREE SHIPPING</span></p>
 								</div>
@@ -374,6 +380,7 @@ $pid2 = '734';
 <?php exitIntent("includes/exitIntent", 'exitModal'); ?>
 
 
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
 <script type='text/javascript'>
     document.addEventListener('contextmenu', event => event.preventDefault());
 		document.querySelector(".processlink").addEventListener('click', function(e) {

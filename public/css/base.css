@@ -236,31 +236,6 @@ input[type="checkbox"] {
   -webkit-appearance: auto;
 }
 
-.cta-button {
-  font-family: Open Sans Condensed, Impact, sans-serif;
-  cursor: pointer;
-  margin: 20px auto 16px;
-  font-weight: 900;
-  color: #333;
-  padding: 16px 20px;
-  text-align: center;
-  background-color: #006400 !important;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 20px 16px;
-  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%),
-    0 3px 1px -2px rgb(0 0 0 / 20%);
-  background-image: linear-gradient(180deg, #f6dda1, #f0c14b) !important;
-  border: 1px solid #fff;
-  border-color: #a88734 #9c7e31 #846a29;
-  border-radius: 5px;
-  text-shadow: 1px 1px 0 #f9ffac;
-  min-width: 320px;
-  max-width: 100%;
-}
 .chev-right {
   width: 24px;
   height: 60%;
@@ -516,6 +491,7 @@ p.sales-tax {
   font-size: 12px;
   color: #ccc;
   text-align: center;
+  margin: 0.25rem 0;
 }
 
 .cta-link {
@@ -524,7 +500,6 @@ p.sales-tax {
 .cta-button {
 	cursor: pointer;
   margin: 20px auto 16px;
-  font-weight: 900;
   color: #333;
   padding: 8px 16px;
   text-align: center;
@@ -534,7 +509,7 @@ p.sales-tax {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 20px 16px;
+  margin: 0 auto;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
   background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
   border: 1px solid #fff;
@@ -571,6 +546,23 @@ a.processing button.cta-button {
   0% {opacity: 1;}
 	50% {opacity: 0.7;}
 	100% {opacity: 1;}
+}
+
+#progress-bar {
+  width: 0;
+}
+
+#progress-bar.grow {
+  transition: width 1s ease-in-out;
+  animation: grow 1s ease-in;
+}
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 /* blue - #ff01ff */

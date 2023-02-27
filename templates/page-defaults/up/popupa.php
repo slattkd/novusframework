@@ -347,11 +347,13 @@ $product2 = $products['products']['128'];
               <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:10px;">3 Bottle
                 Discount</p>
               <p class="price">Price $<?= $product1['product_price']; ?></p>
-              <span><a
-                  href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
-                  id="upsell-buy" class="processlink" rel="samewin" onclick="exit=false;">
-                  <img class="w100 mx-auto clickable" style="max-width:320px" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/Yes-Ill-TakeIt.png"
-                    alt="Yes, I'll Take It!" /></a></span>
+              <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                id="upsell-buy" 
+                class="cta-link clickable processlink" 
+                 
+                onclick="exit=false;">
+                <button class="cta-button"><strong>Yes</strong>, Secure My Discount!</button>
+              </a>
               <img class="guarantee mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png"
                 style="width:114px; height:112px;">
             </div><!-- end .buttons-left -->
@@ -360,10 +362,14 @@ $product2 = $products['products']['128'];
               <p class="p3 centered" style="font-size:28px !important; font-weight:bold;margin-bottom:10px;">6 Bottle
                 Discount</p>
               <p class="price">Price $<?= $product2['product_price']; ?></p>
-              <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=up<?= $next; ?>"
-                id="upsell-buy2" class="border-0 processlink" rel="samewin" onclick="exit=false;">
-                <img class="w100 mx-auto clickable" style="max-width:320px" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/Yes-Ill-TakeIt.png"
-                  alt="Yes, I'll Take It!" /></a>
+              <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
+                id="upsell-buy" 
+                class="cta-link clickable processlink" 
+                 
+                onclick="exit=false;">
+                <button class="cta-button"><strong>Yes</strong>, Secure My Discount!</button>
+              </a>
+              
               <img class="guarantee mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-day-icon.png"
                 style="width:114px; height:112px;">
             </div><!-- end .buttons-right -->
@@ -380,6 +386,22 @@ $product2 = $products['products']['128'];
   document.querySelector(".processlink").addEventListener('click', function(e) {
     document.querySelector('.processlink').classList.add('disabled');
   });
+
+  const allCTA = document.querySelectorAll('a.cta-link');
+  allCTA.forEach((cta)=> {
+      cta.addEventListener('click', (event)=> {
+          cta.classList.add('processing')
+          cta.querySelector('button.cta-button').innerText = 'Processing...';
+          disableCTAButtons();
+      })
+  });
+
+  function disableCTAButtons() {
+      allCTA.forEach((cta)=> {
+          cta.style.pointerEvents = 'none';
+          cta.querySelector('button').classList.add('disabled');
+      })
+  }
   </script>
 </body>
 <?php if ($site['debug'] == true) {

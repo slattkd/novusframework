@@ -27,23 +27,6 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
         body {
 			background-color: #e3e3e3;
 		}
-
-		#progress-bar {
-			width: 0;
-		}
-
-		#progress-bar.grow {
-			transition: width 1s ease-in-out;
-			animation: grow 1s ease-in;
-		}
-		@keyframes grow {
-			0% {
-				width: 0;
-			}
-			100% {
-				width: 100%;
-			}
-		}
     </style>
 
 </head>
@@ -91,7 +74,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product1['product_price']; ?></strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?= percentOff($product1['product_price'], $product1['product_retail']); ?>% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a class="cta-link" href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable" rel="samewin" onclick="exit=false;">
+                                <a class="cta-link" href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
                                     <button class="cta-button">Secure My Discount</button>
                                 </a>
                                 </div>
@@ -103,7 +86,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product2['product_price']; ?></strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?= percentOff($product2['product_price'], $product2['product_retail']); ?>% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a class="cta-link" href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable" rel="samewin" onclick="exit=false;">
+                                <a class="cta-link" href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
                                     <button class="cta-button">Secure My Discount</button>
                                 </a>
                                 </div>
@@ -113,7 +96,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                         <div class="flex justify-center my-4 font-bold text-center" style="font-size: 20px;"><em>(It's Recommended You Take This One-Time Discount)</em></div>
                     </div>
 
-                    <p class="text-center p8" style="font-size: 15px; color: #8C8C8C;"><a href="popupa" class="fancybox fancybox.ajax" style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;">Skip This</a> - Ryan, give my one-time-only discount away to another man. I understand I will NOT get access to this discount again under any circumstances.</p>
+                    <p id="skip-link" class="text-center p8 mt-6 mx-auto clickable" style="font-size: 15px; color: #8C8C8C;max-width: 90ch;"><a style="color: #8C8C8C; text-decoration:underline;" onclick="exit=false;getPage('popupa')">Skip This</a> - Ryan, give my one-time-only discount away to another man. I understand I will NOT get access to this discount again under any circumstances.</p>
 
                 </section>
 
@@ -140,46 +123,64 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
     ?>
     <?php exitIntent("includes/exitIntent", 'exitModal'); ?>
 
+    <?php
+		// declare modal variables (requires basic_modal.js)
+		$modal_id = 'upsellModal';
+		$modal_title = "";
+		$max_width = '2xl';
+		$height = 'full';
+		$modal_body = '
+		<div id="upsell-link"></div>
+		';
+		$modal_footer = '';
+        modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width, $height);
+	?>
+
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
 <script>
-		const qualify = document.getElementById('qualify-btn');
-		const buy = document.getElementById('container-buy');
-		const order = document.getElementById('order-section');
-		const green = document.getElementById('progress-bar');
-		qualify.addEventListener('click', ()=> {
-			buy.style.display = 'block';
-			document.querySelector('.light-grey').style.display = 'block';
-			green.classList.add('grow');
+    const qualify = document.getElementById('qualify-btn');
+    const buy = document.getElementById('container-buy');
+    const order = document.getElementById('order-section');
+    const green = document.getElementById('progress-bar');
+    qualify.addEventListener('click', ()=> {
+        buy.style.display = 'block';
+        document.querySelector('.light-grey').style.display = 'block';
+        green.classList.add('grow');
 
-			setTimeout(() => {
-				document.querySelector('.light-grey').style.display = 'none';
-                qualify.style.display = 'none';
-				order.style.display = 'block';
-			}, "1000")
-		})
+        setTimeout(() => {
+            document.querySelector('.light-grey').style.display = 'none';
+            qualify.style.display = 'none';
+            order.style.display = 'block';
+        }, "1000")
+    });
 
-
-        // disable cta buttons on click
-        const allCTA = document.querySelectorAll('a.cta-link');
-
-        allCTA.forEach((cta)=> {
-            cta.addEventListener('click', (event)=> {
-                cta.classList.add('processing')
-                cta.querySelector('button.cta-button').innerText = 'Processing...';
-                disableCTAButtons();
-            })
+    const legalModalBody = document.getElementById('upsell-link');
+    var htmlElement = '';
+    var pageData =  null;
+    var isLoading =  false;
+    function getPage(pageName) {
+        isLoading = true;
+        fetch(`//<?= $_SERVER["HTTP_HOST"];?>/up/${pageName}`)
+        .then(response => response.text())
+        .then((data) => {
+                isLoading = false;
+                if (data && data !== '') {
+                pageData = data;
+                window.modalHandler('upsellModal', true);
+                legalModalBody.innerHTML = pageData;
+                import(`//<?= $_SERVER["HTTP_HOST"];?>/public/js/cta-buttons.js`).then((module) => {
+                    module.onload();
+                });
+            } else {
+                legalModalBody.innerHTML = '<div class="text-center">Content is unavailable at this time.</div>';
+            }
         })
-
-        function disableCTAButtons() {
-            allCTA.forEach((cta)=> {
-                cta.style.pointerEvents = 'none';
-                cta.querySelector('button.cta-button').classList.add('disabled');
-            })
-        }
+    }
 
     </script>
 
 
-    <?php if ($_COOKIE[$cookie_name] == 'yes') { ?>
+    <?php if ($_COOKIE[$cookie_name] == 'yes'): ?>
         <script>
             fadeInDelay = 0;
             fadeInDiv = '#container-buy';
@@ -190,8 +191,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                 inline: "nearest"
             });
         </script>
-
-    <?php } ?>
+    <?php endif; ?>
 
 
 </body>

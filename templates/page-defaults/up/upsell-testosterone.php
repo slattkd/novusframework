@@ -4,15 +4,19 @@ $next = '/up/upsell-final-offer';
 $pid1 = '21';
 $pid2 = '739';
 
+$product = $products['products'][$pid1];
+if(isset($_SESSION['core']) && $_SESSION['core']) {
+	$product = $products['products'][$pid2];
+}
+
 $firedl = 0;
-$retail = 540;
-$just = '227.95';
-$supply = 6;
-$normally = '539.70';
-$savings = 58;
-$saveprice = '312.05';
-$bottleprice = '37.99';
-$newflow = 0;
+$retail = $product['product_retail'];
+$just = $product['product_price'];
+$supply = $product['product_month'];
+$normally = $product['product_retail'];
+$savings = percentOff($product['product_price'], $product['product_retail']);
+$saveprice = savedAmt($product['product_retail'], $product['product_price']);
+$bottleprice = perBottle($product['product_price'], $product['product_qty']);
 
 ?>
 <!DOCTYPE html>
@@ -175,13 +179,11 @@ $newflow = 0;
 
                                 <div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
                                     <p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $bottleprice; ?> PER BOTTLE</p>
-                                    <?php if($newflow) { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" onclick="exit=false;">
-                                    <?php } else { ?>
-                                        <a id="btn-two" class="split-buy processlink takebtn" href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" onclick="exit=false;">
-                                    <?php } ?>
-                                    <img src="https://5gm.s3.amazonaws.com/secureorder.gif" style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding-top: 3px;" alt="cta">
+
+                                    <a class="cta-link" href="/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
+                                        <button class="cta-button">Secure My Discount</button>
                                     </a>
+
                                     <p class="percentoff mt-4"><span class="text-red-400 font-semibold"><?php echo $savings; ?>% OFF</span> <span class="text-green-400 font-semibold"> + FREE SHIPPING</span></p>
                                 </div>
 

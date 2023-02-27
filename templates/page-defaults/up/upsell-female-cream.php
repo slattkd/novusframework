@@ -6,30 +6,21 @@ $next = '/thank-you';
 $pid1 = '127';
 $pid2 = '128';
 
-$product1 = $products['products'][$pid1];
-$product2 = $products['products'][$pid2];
-
-$retail = $product1['product_retail'];
-$just = $product1['product_price'];
-$supply = $product1['product_qty'];
-$normally = $product1['product_retail'];
-$savings = percentOff($product1['product_price'], $product1['product_retail']);
-$saveprice = $product1['product_retail'] - $product1['product_price'];
-$bottleprice = perBottle($product1['product_price'],$product1['product_qty']);
-$uses = 120;
-$newflow = 0;
-
-if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
-    $newflow = 1;
-    $retail = $product2['product_retail'];
-    $just = $product2['product_price'];
-    $supply = $product2['product_qty'];
-    $normally = $product2['product_retail'];
-    $savings = percentOff($product2['product_price'], $product2['product_retail']);
-    $saveprice = $product2['product_retail'] - $product2['product_price'];
-    $bottleprice = perBottle($product2['product_price'],$product2['product_qty']);
-    $uses = 240;
+$product = $products['products'][$pid1];
+if(isset($_SESSION['core']) && $_SESSION['core']) {
+	$product = $products['products'][$pid2];
+    $uses = 120;
 }
+
+$retail = $product['product_retail'];
+$just = $product['product_price'];
+$supply = $product['product_qty'];
+$normally = $product['product_retail'];
+$savings = percentOff($product['product_price'], $product['product_retail']);
+$saveprice = $product['product_retail'] - $product['product_price'];
+$bottleprice = perBottle($product['product_price'],$product['product_qty']);
+$uses = 240;
+
 
 ?>
 <!DOCTYPE html>
@@ -324,19 +315,12 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
                 <div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
                   <div class="text-green-400 font-semibold mb-4 text-lg md:text-xl">JUST $<?php echo $bottleprice; ?>
                     PER BOTTLE</div>
-                  <?php if($newflow) { ?>
-                  <a id="btn-two" class="split-buy processlink takebtn"
-                    href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>"
-                    onclick="exit=false;">
-                    <?php } else { ?>
-                    <a id="btn-two" class="split-buy processlink takebtn"
-                      href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>"
-                      onclick="exit=false;">
-                      <?php } ?>
-                      <img src="https://5gm.s3.amazonaws.com/secureorder.gif"
-                        style="display: block; margin: 0px auto; width: 100%; max-width: 240px;padding-top: 3px;"
-                        alt="secure my order button">
+                  
+                    <a class="cta-link" href="/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
+                        <button class="cta-button">Secure My Discount</button>
                     </a>
+
+                     
                     <div class="percentoff mt-4 text-lg md:text-xl"><span
                         class="text-red-400 font-semibold"><?php echo $savings; ?>%
                         OFF</span> <span class="text-green-400 font-semibold"> + FREE SHIPPING</span></div>
@@ -393,7 +377,7 @@ if (isset($_SESSION['core']) && ($_SESSION['core'] == 6)) {
         floatButton('includes/floatButton',$top_content,$button_text,$scroll_start,$scroll_id);
     ?>
 
-
+    <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
     <script>
     document.querySelector(".processlink").addEventListener('click', function(e) {
       document.querySelector('.processlink').classList.add('disabled');

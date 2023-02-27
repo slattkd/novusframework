@@ -2,9 +2,10 @@
   $next = '/thank-you';
   $_SESSION['pageType'] = 'wsl';
 
-  $product1 = $products['products']['1147'];
-  $product2 = $products['products']['1148'];
+  $pid1 = '127';
+  $pid2 = '128';
 
+  $product = $products['products'][$pid1];
 ?>
 <!DOCTYPE html>
 <html>
@@ -786,7 +787,7 @@
         <div class="w-full">
           <div class="flex flex-col justify-center items-center border border-4 fs-green p-4 md:py-5 mb-5">
             <div class="w-full">
-              <h2 id="cta"
+              <h2 id="cta" style="margin-bottom: 0;"
                 class="flex justify-center font-bold text-center text-blue text-3xl md:text-5xl uppercase mb-0">
                 Congratulations!</h2>
               <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl mt-0">You Qualify For
@@ -797,11 +798,11 @@
                   <!-- to space the second column -->
                   <div class="hidden md:block" style="width: 100%; height:20px"></div>
                   <p class="title font-semibold text-lg md:text-2xl">So you'll get a 6-month supply <br> for just
-                    $<?= $product1['product_price']; ?> Today!</p>
+                    $<?= $product['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link"
-                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                  <a class="product-link mx-auto"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -816,7 +817,7 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link"
+                  <a class="product-link mx-auto"
                     href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
@@ -882,7 +883,7 @@
         <div class="w-full">
           <div class="flex flex-col justify-center items-center border border-4 fs-green p-4 md:py-5 mb-5">
             <div class="w-full">
-              <h2 id="second-cta"
+              <h2 id="second-cta" style="margin-bottom: 0;"
                 class="flex justify-center font-bold text-center text-blue text-3xl md:text-5xl uppercase mb-0">
                 Congratulations!</h2>
               <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl mt-0">You Qualify For
@@ -893,11 +894,11 @@
                   <!-- to space the second column -->
                   <div class="hidden md:block" style="width: 100%; height:20px"></div>
                   <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply <br> for just
-                    $<?= $product1['product_price']; ?> Today!</p>
+                    $<?= $product['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link"
-                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                  <a class="product-link mx-auto"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -912,7 +913,7 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link"
+                  <a class="product-link mx-auto"
                     href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
@@ -970,7 +971,7 @@
       <div class="w-full">
         <div class="flex flex-col justify-center items-center border border-4 fs-green p-4 md:py-5 mb-5">
           <div class="w-full">
-            <h2 id="cta"
+            <h2 id="cta" style="margin-bottom: 0;"
               class="flex justify-center font-bold text-center text-blue text-3xl md:text-5xl uppercase mb-0">
               Congratulations!</h2>
             <p class="flex justify-center text-center mb-6 text-tygreen text-base md:text-2xl mt-0">You Qualify For This
@@ -981,14 +982,14 @@
                 <!-- to space the second column -->
                 <div class="hidden md:block" style="width: 100%; height:20px"></div>
                 <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply <br> for just
-                  $<?= $product1['product_price']; ?> Today!</p>
+                  $<?= $product['product_price']; ?> Today!</p>
 
                 <p class="sales-tax"><?= $tax_msg; ?></p>
-                <a class="product-link"
-                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                <a class="cta-link product-link mx-auto"
+                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
                   class="w-full" style="text-decoration: none;">
-                  <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
-                    I'll Take It</button>
+                  <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">
+                    <strong>Yes</strong>, I'll Take It</button>
                 </a>
                 <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">45% OFF</span> the retail
                   price!</p>
@@ -1001,12 +1002,15 @@
                 </p>
 
                 <p class="sales-tax"><?= $tax_msg; ?></p>
-                <a class="product-link"
-                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
-                  class="w-full" style="text-decoration: none;">
-                  <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
-                    I'll Take It</button>
+
+                <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
+                  id="upsell-buy" 
+                  class="cta-link clickable processlink" 
+                   
+                  onclick="exit=false;">
+                  <button class="cta-button"><strong>Yes</strong>, Secure My Discount!</button>
                 </a>
+
                 <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the retail
                   price!</p>
               </div>
@@ -1058,6 +1062,7 @@
     floatButton('includes/floatButton',$top_content,$button_text,$scroll_start,$scroll_id);
   ?>
 
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
   <script>
   const wslBtn = document.getElementById('wsl-btn');
   wslBtn.addEventListener('click', () => {
@@ -1145,6 +1150,8 @@
       block: 'start'
     });
   }
+
+  
   </script>
 
   <?php template("includes/rpFooter"); ?>

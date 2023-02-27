@@ -3,7 +3,7 @@
         'name' => 'mike/novusframework',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '906092d6142c773e1542c48b74a2faca86bcbd17',
+        'reference' => '0868d03ee054d2ef6573aa28233066ce6d034c47',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'mike/novusframework' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '906092d6142c773e1542c48b74a2faca86bcbd17',
+            'reference' => '0868d03ee054d2ef6573aa28233066ce6d034c47',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
