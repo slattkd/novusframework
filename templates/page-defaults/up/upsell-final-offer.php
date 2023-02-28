@@ -13,8 +13,6 @@
 */
 $_SESSION['pageType'] = 'upinterstitial';
 $next = '/up/upsell-female-cream';
-// $pid1 = '18';
-// $pid2 = '753';
 
 ?>
 <!DOCTYPE html>

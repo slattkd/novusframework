@@ -14,8 +14,8 @@
 $_SESSION['pageType'] = 'up2';
 
 $next = '/up/upsell-testosterone';
-$pid1 = '24';
-$pid2 = '734';
+$pid1 = '127';
+$pid2 = '128';
 
 $product = $products['products'][$pid1];
 if(isset($_SESSION['core']) && $_SESSION['core']) {

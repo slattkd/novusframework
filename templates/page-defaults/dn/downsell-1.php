@@ -15,7 +15,8 @@ $_SESSION['pageType'] = 'dn1';
 $next = '/up/upsell-2-blow-her-away.php';
 
 // Include PID of product to process-up here
-$product1 = $products['products']['1023'];
+$pid1 = '127';
+$product1 = $products['products'][$pid1];
 ?>
 
 
@@ -38,21 +39,16 @@ $product1 = $products['products']['1023'];
     <div class="container-vsl mx-auto">
       <section>
         <?php
-                    $current_step = 2;
-                    template('includes/step_bar', null, $current_step);
-                ?>
+          $current_step = 2;
+          template('includes/step_bar', null, $current_step);
+        ?>
       </section>
 
-      <div class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600 shadow">
-
-        <!-- PASTE LETTER HERE -->
-
-        <!--p class="p4 flex-growor-black"><b><span id="upSellName" style="font-size: 17px;"><strong style="color: #D81E00;">WARNING:</strong> <u>Do Not</u> Leave This Page Yet, Your Order Is Not Complete!</span></b></p-->
-
+      <div
+        class="wsl container-vsl mx-auto my-2 bg-white border-2 p-4 md:p-8 mt-6 mb-11 rounded-lg text-gray-600 shadow">
 
         <h1 class="mb-5 text-center text-red-600">Take Just 3 Or 6 Bottles And Get An Even <strong>BIGGER
             Discount…</strong></h1>
-
 
         <p class="pb-4 text-lg md:text-xl">Hey, it’s Ryan again…</p>
 
@@ -121,8 +117,10 @@ $product1 = $products['products']['1023'];
 
                 <div class="text-center" id="buy-btn2">
                   <div class="flex justify-center mx-auto mt-6">
-                    <a href="/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy2"
-                      class="buy_button processlink clickable" style="min-width: 320px;" >Yes, Secure My Discount!</a>
+                    <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $pid1; ?>&buy=1&next=<?= $next; ?>"
+                      id="upsell-buy" class="cta-link clickable processlink" rel="samewin" onclick="exit=false;">
+                      <button class="cta-button"><strong>Yes!</strong> Secure My Discount!</button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -169,12 +167,7 @@ $product1 = $products['products']['1023'];
  ?>
 
 
-    <script>
-    document.querySelector(".processlink").addEventListener('click', function(e) {
-      document.querySelector('.processlink').classList.add('disabled');
-      document.querySelector('.processlink').innerText = 'Processing...';
-    });
-    </script> <!-- Triggers Exit-intent -->
+    <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
 
 
 </body>

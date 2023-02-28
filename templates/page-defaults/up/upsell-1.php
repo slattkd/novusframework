@@ -5,7 +5,8 @@
   $pid1 = '127';
   $pid2 = '128';
 
-  $product = $products['products'][$pid1];
+  $product1 = $products['products'][$pid1];
+  $product2 = $products['products'][$pid2];
 ?>
 <!DOCTYPE html>
 <html>
@@ -798,11 +799,11 @@
                   <!-- to space the second column -->
                   <div class="hidden md:block" style="width: 100%; height:20px"></div>
                   <p class="title font-semibold text-lg md:text-2xl">So you'll get a 6-month supply <br> for just
-                    $<?= $product['product_price']; ?> Today!</p>
+                    $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
                   <a class="product-link mx-auto"
-                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -894,11 +895,11 @@
                   <!-- to space the second column -->
                   <div class="hidden md:block" style="width: 100%; height:20px"></div>
                   <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply <br> for just
-                    $<?= $product['product_price']; ?> Today!</p>
+                    $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
                   <a class="product-link mx-auto"
-                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
+                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
                     class="w-full" style="text-decoration: none;">
                     <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
                       I'll Take It</button>
@@ -982,12 +983,12 @@
                 <!-- to space the second column -->
                 <div class="hidden md:block" style="width: 100%; height:20px"></div>
                 <p class="title font-semibold text-lg md:text-2xl">So you’ll get a 6-month supply <br> for just
-                  $<?= $product['product_price']; ?> Today!</p>
+                  $<?= $product1['product_price']; ?> Today!</p>
 
                 <p class="sales-tax"><?= $tax_msg; ?></p>
-                <a class="cta-link product-link mx-auto"
-                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
-                  class="w-full" style="text-decoration: none;">
+                <a class="cta-link product-link mx-auto w-full"
+                  href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                  style="text-decoration: none;">
                   <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">
                     <strong>Yes</strong>, I'll Take It</button>
                 </a>
@@ -1003,12 +1004,13 @@
 
                 <p class="sales-tax"><?= $tax_msg; ?></p>
 
-                <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
+                <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
                   id="upsell-buy" 
                   class="cta-link clickable processlink" 
-                   
                   onclick="exit=false;">
-                  <button class="cta-button"><strong>Yes</strong>, Secure My Discount!</button>
+                  <button class="cta-button">
+                    <strong>Yes</strong>, I'll Take It</button>
+                  </button>
                 </a>
 
                 <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the retail
@@ -1068,25 +1070,6 @@
   wslBtn.addEventListener('click', () => {
     window.location = '<?= $next; ?>';
   })
-
-  // onclick event lock all cta buttons, animate clicked button and update text
-  const productLinks = document.querySelectorAll('.product-link');
-  productLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      disableProductLinks();
-      link.querySelector('button').innerText = 'Processing...';
-      link.querySelector('button').classList.add('processing');
-    })
-  })
-
-  function disableProductLinks() {
-    console.log('disable');
-    productLinks.forEach((link) => {
-      // const button = link.querySelector('button');
-      // link.disabled = true;
-      link.classList.add('disabled');
-    })
-  }
 
   const qualifyButton = document.getElementById('qualify-btn');
   const qualifyWrap = document.getElementById('qualify-wrap');

@@ -7,12 +7,7 @@
         "128",
         "1021",
         "1022",
-        "1023",
-        "81",
-        "82",
-        "83",
-        "1147",
-        "1148"
+        "1023"
     ],
     "upsell": {
         "126": "1021",
@@ -221,30 +216,6 @@
             "product_ship": 0,
             "product_is_shippable": "1",
             "product_id": "84"
-        },
-        "1147": {
-            "product_name": "Total Brain boost",
-            "product_description": "6 Month Supply (12 bottles)",
-            "product_sku": "TBB-Q012-X01",
-            "product_month": 6,
-            "product_qty": 12,
-            "product_price": 197.00,
-            "product_retail": 359.70,
-            "product_ship": 0,
-            "product_is_shippable": "1",
-            "product_id": "1147"
-        },
-        "1148": {
-            "product_name": "Total Brain boost",
-            "product_description": "6 Month Supply (24 bottles)",
-            "product_sku": "TBB-Q012-X01",
-            "product_month": 12,
-            "product_qty": 24,
-            "product_price": 347.00,
-            "product_retail": 347.00,
-            "product_ship": 0,
-            "product_is_shippable": "1",
-            "product_id": "1148"
         }
     }
 }

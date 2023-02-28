@@ -1,8 +1,8 @@
 <?php
 $_SESSION['pageType'] = 'up3';
 $next = '/up/upsell-final-offer';
-$pid1 = '21';
-$pid2 = '739';
+$pid1 = '127';
+$pid2 = '128';
 
 $product = $products['products'][$pid1];
 if(isset($_SESSION['core']) && $_SESSION['core']) {
@@ -165,7 +165,7 @@ $bottleprice = perBottle($product['product_price'], $product['product_qty']);
                     </div>
 
                     <section>
-                        <div class="flex flex-col w-full md:w-4/5 md:mx-auto">
+                        <div class="flex flex-col w-full md:mx-auto">
                             <div class="flex flex-wrap md:flex-nowrap justify-between bg-yellow-50 border border-orange-400 border-4 sans">
                                 <div class="p-3 w-full md:w-auto text-center md:text-left">
                                     <p class="text-lg text-orange-500 font-semibold">NEW MEMBER DISCOUNT</p>
@@ -180,7 +180,10 @@ $bottleprice = perBottle($product['product_price'], $product['product_qty']);
                                 <div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
                                     <p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $bottleprice; ?> PER BOTTLE</p>
 
-                                    <a class="cta-link" href="/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
+                                    <a href="/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>" 
+                                        id="upsell-buy" 
+                                        class="cta-link processlink clickable"  
+                                        onclick="exit=false;">
                                         <button class="cta-button">Secure My Discount</button>
                                     </a>
 
@@ -215,13 +218,7 @@ $bottleprice = perBottle($product['product_price'], $product['product_qty']);
   ?>
   <?php exitIntent("includes/exitIntent", 'exitModal'); ?>
 
-
-<script type='text/javascript'>
-    document.querySelector(".processlink").addEventListener('click', function(e) {
-        document.querySelector('.processlink').classList.add('disabled');
-    });
-    document.addEventListener('contextmenu', event => event.preventDefault());
-</script>
+  <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js"></script>
 
 </body>
 <?php if ($site['debug'] == true) {

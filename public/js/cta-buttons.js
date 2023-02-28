@@ -1,17 +1,23 @@
-var allCTA = document.querySelectorAll('a.cta-link');
+// Requires a button structure of:
+// <a class="cta-link"><button class="cta-button">Button Text</button></a>
 
-  allCTA.forEach((cta)=> {
-      cta.addEventListener('click', (event)=> {
-          cta.classList.add('processing')
-          cta.querySelector('button').innerText = 'Processing...';
-          disableCTAButtons();
-      })
-      
-  })
+setTimeout(function() {
+    var allCTA = document.querySelectorAll('a.cta-link');
+    console.log('ctas:',allCTA);
 
-  function disableCTAButtons() {
-      allCTA.forEach((cta)=> {
-          cta.style.pointerEvents = 'none';
-          cta.querySelector('button').classList.add('disabled');
-      })
-  }
+    allCTA.forEach((cta)=> {
+        cta.addEventListener('click', (event)=> {
+            cta.classList.add('processing')
+            cta.querySelector('button').innerText = 'Processing...';
+            disableCTAButtons(allCTA);
+        })
+        
+    })
+}, 200);
+
+function disableCTAButtons(elements) {
+    elements.forEach((cta)=> {
+        cta.style.pointerEvents = 'none';
+        cta.querySelector('button').classList.add('disabled');
+    })
+}

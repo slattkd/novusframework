@@ -518,13 +518,14 @@ p.sales-tax {
   text-shadow: 1px 1px 0 #f9ffac;
   min-width: 320px;
   max-width: 100%;
-	font-size: 1.5em;
+	font-size: 1.3em;
+  font-weight: 600;
 	transition: all 200ms ease-in-out;
 }
 
 @media screen and (min-width: 769px) {
   .cta-button {
-    font-size: 1.75em;
+    font-size: 1.6em;
     min-width: 300px;
     padding: 10px 24px;
   }
