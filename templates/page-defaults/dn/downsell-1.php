@@ -169,7 +169,7 @@ $product1 = $products['products'][$pid1];
  ?>
 
 
-    <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
+    <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js"></script>
 
 
 </body>

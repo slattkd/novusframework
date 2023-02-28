@@ -378,7 +378,7 @@ $perbottle = perBottle($product['product_price'], $product['product_qty']);
 <?php exitIntent("includes/exitIntent", 'exitModal'); ?>
 
 
-<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js"></script>
 <script type='text/javascript'>
     document.addEventListener('contextmenu', event => event.preventDefault());
 		document.querySelector(".processlink").addEventListener('click', function(e) {

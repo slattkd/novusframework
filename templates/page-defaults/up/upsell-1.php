@@ -1066,7 +1066,7 @@
     floatButton('includes/floatButton',$top_content,$button_text,$scroll_start,$scroll_id);
   ?>
 
-<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js"></script>
   <script>
   const wslBtn = document.getElementById('wsl-btn');
   wslBtn.addEventListener('click', () => {

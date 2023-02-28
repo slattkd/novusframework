@@ -142,7 +142,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
         modal("includes/basicModal", $modal_id, $modal_title, $modal_body, $modal_footer, $max_width, $height);
 	?>
 
-<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js" type="text-javascript"></script>
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js"></script>
 <script>
     const qualify = document.getElementById('qualify-btn');
     const buy = document.getElementById('container-buy');
