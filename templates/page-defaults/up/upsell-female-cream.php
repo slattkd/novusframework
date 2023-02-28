@@ -316,7 +316,10 @@ $uses = 240;
                   <div class="text-green-400 font-semibold mb-4 text-lg md:text-xl">JUST $<?php echo $bottleprice; ?>
                     PER BOTTLE</div>
                   
-                    <a class="cta-link" href="/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
+                    <a href="/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>" 
+                        id="upsell-buy" 
+                        class="cta-link processlink clickable"  
+                        onclick="exit=false;">
                         <button class="cta-button">Secure My Discount</button>
                     </a>
 

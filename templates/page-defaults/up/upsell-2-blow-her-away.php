@@ -340,11 +340,9 @@ $perbottle = perBottle($product['product_price'], $product['product_qty']);
 								<div class="p-3 text-center bg-yellow-100 w-full md:w-auto">
 									<p class="text-green-400 font-semibold mb-4 text-lg">JUST $<?php echo $perbottle; ?> PER BOTTLE</p>
 									
-									<a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>"
-										class="cta-link"
+									<a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product['product_id']; ?>&next=<?= $next; ?>
 										id="upsell-buy" 
-										class="processlink clickable" 
-										 
+										class="cta-link processlink clickable" 
 										onclick="exit=false;">
 											<button class="cta-button">Secure My Discount</button>
 									</a>

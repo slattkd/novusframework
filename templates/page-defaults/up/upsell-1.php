@@ -802,14 +802,15 @@
                     $<?= $product1['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link mx-auto"
-                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
-                    class="w-full" style="text-decoration: none;">
-                    <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
-                      I'll Take It</button>
+                  <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
+                    id="upsell-buy" 
+                    class="cta-link clickable processlink" 
+                    onclick="exit=false;">
+                    <button class="cta-button"><strong>Yes</strong>, I'll Take It!</button>
                   </a>
-                  <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">45% OFF</span> the
-                    retail price!</p>
+                  <p class="whop text-blue mt-2 font-semibold">
+                    That's <span class="underline"><?= percentOff($product1['product_price'], $product1['product_retail']); ?>% OFF</span> the retail price!
+                  </p>
                 </div>
                 <div class="flex w-full border-b mb-4 md:hidden"></div>
                 <div class="flex flex-col text-center justify-center">
@@ -818,14 +819,15 @@
                     supply <br> for just $<?= $product2['product_price']; ?> Today!</p>
 
                   <p class="sales-tax"><?= $tax_msg; ?></p>
-                  <a class="product-link mx-auto"
-                    href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
-                    class="w-full" style="text-decoration: none;">
-                    <button class="cta-button mx-auto clickable w-full md:w-auto text-2xl md:text-3xl py-2 btn-2">Yes!
-                      I'll Take It</button>
+                  <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
+                    id="upsell-buy" 
+                    class="cta-link clickable processlink" 
+                    onclick="exit=false;">
+                    <button class="cta-button"><strong>Yes</strong>, I'll Take It!</button>
                   </a>
-                  <p class="whop text-blue mt-2 font-semibold">That's <span class="underline">52% OFF</span> the
-                    retail price!</p>
+                  <p class="whop text-blue mt-2 font-semibold">
+                    That's <span class="underline"><?= percentOff($product2['product_price'], $product2['product_retail']); ?>% OFF</span> the retail price!
+                  </p>
                 </div>
 
               </div>

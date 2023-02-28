@@ -350,7 +350,6 @@ $product2 = $products['products']['128'];
               <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product1['product_id']; ?>&next=<?= $next; ?>"
                 id="upsell-buy" 
                 class="cta-link clickable processlink" 
-                 
                 onclick="exit=false;">
                 <button class="cta-button"><strong>Yes</strong>, Secure My Discount!</button>
               </a>
@@ -365,7 +364,6 @@ $product2 = $products['products']['128'];
               <a href="//<?php echo $_SERVER['HTTP_HOST']?>/process-up.php?pid=<?= $product2['product_id']; ?>&next=<?= $next; ?>"
                 id="upsell-buy" 
                 class="cta-link clickable processlink" 
-                 
                 onclick="exit=false;">
                 <button class="cta-button"><strong>Yes</strong>, Secure My Discount!</button>
               </a>

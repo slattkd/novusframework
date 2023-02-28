@@ -74,7 +74,10 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product1['product_price']; ?></strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?= percentOff($product1['product_price'], $product1['product_retail']); ?>% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a class="cta-link" href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
+                                <a href="/process-up.php?pid=<?= $pid1; ?>&next=<?= $next; ?>" 
+                                    id="upsell-buy" 
+                                    class="cta-link processlink clickable"  
+                                    onclick="exit=false;">
                                     <button class="cta-button">Secure My Discount</button>
                                 </a>
                                 </div>
@@ -86,7 +89,10 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                                 <p class="text-center" style="padding-bottom:5px;"><strong style="font-size:27px; color:#D81E00;">Today Just $<?= $product2['product_price']; ?></strong></p>
                                 <p class="text-center" style="font-weight:600; color:#D81E00; font-size:15px;">(A MASSIVE <?= percentOff($product2['product_price'], $product2['product_retail']); ?>% Savings!)</p>
                                 <div class="flex justify-center mt-3">
-                                <a class="cta-link" href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" id="upsell-buy" class="processlink clickable"  onclick="exit=false;">
+                                <a href="/process-up.php?pid=<?= $pid2; ?>&next=<?= $next; ?>" 
+                                    id="upsell-buy" 
+                                    class="cta-link processlink clickable"  
+                                    onclick="exit=false;">
                                     <button class="cta-button">Secure My Discount</button>
                                 </a>
                                 </div>

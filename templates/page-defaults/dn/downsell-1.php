@@ -118,7 +118,9 @@ $product1 = $products['products'][$pid1];
                 <div class="text-center" id="buy-btn2">
                   <div class="flex justify-center mx-auto mt-6">
                     <a href="//<?php echo $_SERVER['HTTP_HOST'];?>/process-up.php?pid=<?= $pid1; ?>&buy=1&next=<?= $next; ?>"
-                      id="upsell-buy" class="cta-link clickable processlink" rel="samewin" onclick="exit=false;">
+                      id="upsell-buy"
+                      class="cta-link clickable processlink"
+                      onclick="exit=false;">
                       <button class="cta-button"><strong>Yes!</strong> Secure My Discount!</button>
                     </a>
                   </div>
