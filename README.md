@@ -77,8 +77,12 @@ location / {
 - if pagetype folder is empty, forward to the default URL
   - /msl/ but memory.php exists - forward to memory.php
 - Add Option for QA - query param qa=[name]
-  - if QA param is available autofill test CC
+  - if QA param is available autofill test CC (done)
+  - add declined param
   - if QA param - disable conversion pixels (if we disable how do we test the conversions?)
+      - pixel events file: maybe do fake conversion or log conversion event
+      - temporarily skip this
+
 
 
 ## The Config File
