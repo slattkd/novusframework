@@ -107,7 +107,6 @@ $company['zip'] = '78216';
 $company['checkoutHeadline1'] = 'You’re 3 Steps Away From <br class="md:hidden"> Improving yourself…';
 $company['checkoutHeadline2'] = 'You’re 2 Steps Away From <br class="md:hidden"> Improving yourself…';
 $company['checkoutHeadline3'] = 'You’re 1 Steps Away From <br class="md:hidden"> Improving yourself…';
-
 $company['about'] = 'was founded in 2016 in New York City, where we found men were feeling less energy and passion for life than they used to. We decided to create a natural formula with top quality ingredients to supercharge guys like you.';
 
 $usZip = '/^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/';

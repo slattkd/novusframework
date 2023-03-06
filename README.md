@@ -117,6 +117,9 @@ product_price         sale price of the product (num)
 product_retail        perceived MSRP price of product before mark down (num)
 product_is_shippable  boolean to determine if digital product (0/1)
 product_id            PID of product (string)
+free_gifts            array of custom PIDs ('001','002',etc.) if free gifts with purchase
+
+Associated free gift products should be in a separate "free_gifts": object.
 
 Data can be verified in sticky.io at https://gdc.sticky.io/admin/products/products.php?product_id=[PID]
 
@@ -175,17 +178,21 @@ PageTypes dictate what pixels are bing fired, options should be limited to:
 
   1. vsl
   2. wsl
-  3. assessemnt
-  4. order
-  5. onepage
-  6. step1, step2, step3
-  7. up1, up2, up3, up4
-  8. dn1, dn2, dn3
-  9. receipt
+  3. msl
+  4. assessemnt
+  5. order
+  6. onepage
+  7. step1, step2, step3
+  8. up1, up2, up3, up4
+  9. dn1, dn2, dn3
+  10. receipt
 
 PageTypes can be overridden on a page by page basis, by overriding the "pageType" session variable.'
 
 ```$_SESSION['pageType'] = 'vsl';```
+
+## Reusable Components
+Additional documentation can be found at the top of each component file (templates/page-defaults/includes/componentFile.php)
 
 ## Video Embeds
 NOTE: Vidalytics uses a "Smart Autoplay" feature, which follows chromes rules and will autoplay videos ONLY if.
@@ -195,13 +202,18 @@ NOTE: Vidalytics uses a "Smart Autoplay" feature, which follows chromes rules an
 
 Because of this javascript tricks are no longer needed to click our auto play.
 
-
 To embed videos use the following template include.
 ``` <?php video('includes/player', $videoId, $dropTime, $overlay, "//s3.amazonaws.com/flora-spring/animatedposter.gif");?>```
 
-
-
-
-
-
-
+## CTA Buttons
+Functionality added to disable all cta buttons on any cta button click.
+Then, add animation and inner text of "Processing..." to the clicked cta button.
+This will prevent any accidental repurchase while the process-up is handled.
+Structure should be:
+```html
+<a href="process-up-url" class="cta-link"> <button class="cta-button">BUTTON TEXT</button></a>
+```
+Be sure to include script tag before /body close:
+```html
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/public/js/cta-buttons.js"></script>
+```

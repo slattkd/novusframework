@@ -53,7 +53,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                     <h2 class="font-bold text-2xl text-red-500">Click The Button Below Now To See If You Qualify For This Discount</h2>
                 </div>
                 <div class="flex justify-center w-full">
-                    <img id="qualify-btn" class="mx-auto w-full clickable transition-all duration-500 ease-in-out" style="max-width: 350px" src="//5gm.s3.amazonaws.com/see-if-you-qualify.png" alt="See If You Qualify">
+                    <img id="qualify-btn" class="mx-auto w-full clickable transition-all duration-500 ease-in-out" style="max-width: 350px" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/see-if-you-qualify.png" alt="See If You Qualify">
                 </div>
 
 
@@ -98,7 +98,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 90), "/");
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-center my-4"><span><img class="guarantee" src="https://s3.amazonaws.com/5gmale/90-guarantee.jpg" style="width:114px; height:112px;margin-top:20px;"></span></div>
+                        <div class="flex justify-center my-4"><span><img class="guarantee" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/90-guarantee.jpg" style="width:114px; height:112px;margin-top:20px;"></span></div>
                         <div class="flex justify-center my-4 font-bold text-center" style="font-size: 20px;"><em>(It's Recommended You Take This One-Time Discount)</em></div>
                     </div>
 

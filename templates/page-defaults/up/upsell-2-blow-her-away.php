@@ -220,7 +220,7 @@ $perbottle = perBottle($product['product_price'], $product['product_qty']);
 
 				<div class="flex flex-col w-full">
 					<div>
-					<img class="float-right mb-5 ml-5 w-full mx-auto md:w-1/2" style="max-width: 350px;" src="https://s3.amazonaws.com/5gmale/male-repro.jpg" alt="male reproductive diagram" />
+					<img class="float-right mb-5 ml-5 w-full mx-auto md:w-1/2" style="max-width: 350px;" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/male-repro.png" alt="male reproductive diagram" />
 					<p class=" pb-3">These <strong>“Genesis”</strong> ingredients are the ingredients that help your body create more semen.</p>
 					<p class=" pb-3">If your body is lacking these ingredients, then your load size can a FRACTION of what it could be (<strong class="text-red-600">as low at 10%</strong>)… </p>
 					<p class=" pb-3">Resulting in a <strong>measly dribble</strong> when you finish…</p>
@@ -251,7 +251,7 @@ $perbottle = perBottle($product['product_price'], $product['product_qty']);
 				Here are some the fast, powerful results you can see in <strong>as little as 30 days</strong>…
 				</div>
 				<div class="flex w-full justify-center mb-7">
-				<img class="mx-auto" src="https://s3.amazonaws.com/5gmale/natural.jpg" alt="results chart"/>
+				<img class="mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/natural.png" alt="results chart"/>
 				</div>
 				<h2 class="text-red-600 text-2xl md:text-3xl text-center my-11">
 				<strong>100% Natural</strong>. NO Prescription Needed!
@@ -260,7 +260,7 @@ $perbottle = perBottle($product['product_price'], $product['product_qty']);
 				ALL NATURAL. Non-GMO, Gluten FREE, GMP certified and more…
 				</div>
 				<div class="flex w-full justify-center mb-7">
-				<img class="mx-auto" src="https://s3.amazonaws.com/5gmale/powerful.jpg" alt="ease of use images" />
+				<img class="mx-auto" src="//<?php echo $_SERVER['HTTP_HOST']?>/images/powerful.png" alt="ease of use images" />
 				</div>
 				<h2 class="text-red-600 text-2xl md:text-3xl text-center my-11">
 				Secure Your Special <strong>“Members Only”</strong>&nbsp;Discount…
@@ -291,7 +291,7 @@ $perbottle = perBottle($product['product_price'], $product['product_qty']);
 				<section>
 					<div class="flex flex-wrap">
 						<div class="w-full md:w-1/3 mb-4">
-						<img class="mx-auto" src='https://s3.amazonaws.com/5gmale/90-guarantee.jpg' id='guarantee-image-2' alt="guarantee emblem" />
+						<img class="mx-auto" src='//<?php echo $_SERVER['HTTP_HOST']?>/images/90-guarantee.jpg' id='guarantee-image-2' alt="guarantee emblem" />
 						</div>
 						<div class="w-full md:w-2/3">
 						<p>Every man I’ve shared this with has LOVED shooting bigger loads… the excitement it gives women… and the more intense orgasms you will feel for YOURSELF.</p>

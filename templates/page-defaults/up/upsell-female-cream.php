@@ -232,7 +232,7 @@ $uses = 240;
           <section>
             <div class="flex flex-wrap">
               <div class="w-full md:w-1/3 mb-4">
-                <img class="mx-auto" src='https://s3.amazonaws.com/5gmale/90-guarantee.jpg' id='guarantee-image-2'
+                <img class="mx-auto" src='//<?php echo $_SERVER['HTTP_HOST']?>/images/90-guarantee.jpg' id='guarantee-image-2'
                   alt="guarantee emblem" />
               </div>
               <div class="w-full md:w-2/3">
