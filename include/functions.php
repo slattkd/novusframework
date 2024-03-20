@@ -274,6 +274,17 @@ function video($template, $video_id = null, $drop_time = null, $overlay = null, 
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+function videoJS($template, $video_id = null, $video_url = null, $drop_time = null, $overlay = null, $controls = null, $square = null,  $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+    global $products;
+    global $debugbarRenderer;
+    global $debugbar;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
 // generic modal component with customization for title, body, footer, etc.
 function modal($template, $modal_id = null, $modal_title = null, $modal_body = null, $modal_footer = null, $max_width = null, $height = null, $templatePath = 'templates/page-defaults')
 {
@@ -363,7 +374,8 @@ function monthAmt($price, $month) {
 }
 
 function percentOff($price, $retail) {
-    return round(($retail - $price) / $retail * 100, 0);
+    $diff = ($retail - $price) * 100;
+    return round($diff / $retail, 0);
 }
 
 function perBottle($price, $qty) {

@@ -62,10 +62,22 @@ $site['proxyKey']   = 'hsjdh772hjaklh28P8ENDJKJUKJDBAHJ2UBSKJjksjjs';
 $site['cakeApiUrl'] = 'https://gdc.network-stats.com/';
 $site['cakeApiKey'] = 'QeTXa9UguH3vekAtU5Ttq9V6LWAaGB';
 
+// Maropost Variables
+$site['maropostAcctId'] = '2161';
+$site['maropostApiKey'] = 'UrxhFyQYEmFCLGT8oVTthbUfmJeXzGsKrcgjK4ctQtzZEUT0BdBTrg';
 $site['maropostApiKey'] = 'UrxhFyQYEmFCLGT8oVTthbUfmJeXzGsKrcgjK4ctQtzZEUT0BdBTrg';
 $site['maropostApiUrl'] = 'https://api.maropost.com/accounts/2161/';
+$site['maropostApiUrl'] = 'https://api.maropost.com/accounts/'.$site['maropostAcctId'].'/';
+$site['maropostRelTableApiUrl'] = 'https://rdb1.maropost.com/'.$site['maropostAcctId'].'/snm_leads_relational_table';
+$site['maropostBuyersRelTableApiUrl'] = 'https://rdb1.maropost.com/'.$site['maropostAcctId'].'/snm_buyers_relational_table';
 $site['maropostListId'] = 244;
+$site['maropostAbandonedListId'] = 261;
 
+// CAPI config id and token
+$site['fbPixelId'] = "1302570893643975";
+$site['fbToken'] = "EAA6nSNMZCmb8BO2PPd47cEwTSqRpA3OVvX2mE6GgO2YZAm0i9vu3pv69y9hcrMCIzmVKQ5nhxq83wDHDw1Nb9pVOmsTx4X46tzyuvPZC0504JUsjHKBYu6PbYzCb4Oqtr6Sv552SGn3J3DOUWe8gnHro0qyrAqK3HAyYfgIZBf8SOIk9O1v7i5Pb9244N3dMzAZDZD";
+
+//Sticky api credentials
 $site['stickyApi']  = 'pineappleapi';
 $site['stickyPass'] = 'nWsw3BzrhnFBkJ';
 $site['stickyUrl']  = 'gdc.sticky.io';
@@ -83,6 +95,8 @@ $site['shippingIntlCost'] = 14.95;
 $site['shippingFree'] = 5;
 $site['shippingFreeCost'] = 0;
 
+$tax_id = 'pineappleapi';
+$tax_api_key = 'nWsw3BzrhnFBkJ';
 $tax_msg = '+ Applicable Sales Tax';
 
 /*
@@ -144,6 +158,10 @@ if ($site['debug'] == true) {
 
 // Does this need to live in the config, it's a constant and should never change
 $countries = [
+    "US" => 'United States',
+    "CA" => 'Canada',
+    "MX" => 'Mexico',
+    "GB" => 'United Kingdom',
     "AF" => 'Afghanistan',
     "AL" => 'Albania',
     "AS" => 'American Samoa',
@@ -172,7 +190,6 @@ $countries = [
     "IO" => 'British Indian Ocean Territory',
     "KH" => 'Cambodia',
     "CM" => 'Cameroon',
-    "CA" => 'Canada',
     "CV" => 'Cape Verde',
     "CF" => 'Central African Republic',
     "CX" => 'Christmas Island',
@@ -229,7 +246,6 @@ $countries = [
     "MQ" => 'Martinique',
     "MU" => 'Mauritius',
     "YT" => 'Mayotte',
-    "MX" => 'Mexico',
     "FM" => 'Federated States of Micronesia',
     "MC" => 'Monaco',
     "MS" => 'Montserrat',
@@ -279,8 +295,6 @@ $countries = [
     "TV" => 'Tuvalu',
     "UG" => 'Uganda',
     "AE" => 'United Arab Emirates',
-    "GB" => 'United Kingdom',
-    "US" => 'United States',
     "UM" => 'US Minor Outlying Islands',
     "UY" => 'Uruguay',
     "UZ" => 'Uzbekistan',

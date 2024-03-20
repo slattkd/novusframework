@@ -1,102 +1,85 @@
 <?php
 
-//require_once('CurlWrapper.php');
-
-/**
- * GetResponse API
- * Abstractions for common email api tasks
- * https://developer-prod.limelightcrm.com/
- */
 class Maropost {
 
     public $accountId;
     public $httpStatus = '';
     public $referer = null;
+    public $database;
+    public $baseUrl;
+    public $authToken;
+    public $bvKey;
 
-    public $baseUrl = 'https://api.maropost.com/accounts/2161/';
-    public $authToken = 'UrxhFyQYEmFCLGT8oVTthbUfmJeXzGsKrcgjK4ctQtzZEUT0BdBTrg';
+    const BUYER_ROOT = 1131;
 
-    const BV_KEY = '13a21375-7289-470e-b7f0-23b400a6f0c5';
-
-    const BUYER_ROOT = 1131; // page id for buyer root
-
-    public function __Construct($authToken = false, $baseUrl = false, $db) {
-        $this->database = $db;
+    public function __construct($authToken = false, $baseUrl = false, $db = null, $bvKey = null) {
         $this->authToken = $authToken ?: $this->authToken;
-        $this->baseUrl    = $baseUrl ?: $this->baseUrl;
+        $this->baseUrl = $baseUrl ?: $this->baseUrl;
+        $this->bvKey = $bvKey ?: $this->bvKey;
+        $this->database = $db;
+        
     }
+    
 
     /**
-    * CheckEmailValid
-    * @param $email Email address to validate via BriteVerify (cURL)
-    **/
-    public function CheckEmailValid($email) {
+     * CheckEmailValid
+     * @param $email Email address to validate via BriteVerify (cURL)
+     **/
+    public function checkEmailValid($email) {
+        $apikey = !empty($options['bvKey']) ? $options['bvKey'] : $this->bvKey;
         $email = urlencode($email);
-        $apikey = SELF::BV_KEY;
         $url = "https://bpi.briteverify.com/emails.json?apikey=$apikey&address=$email";
 
-        $curl = new CurlWrapper();
+        $curl = new CurlWrapper(); // Assuming CurlWrapper is properly defined elsewhere
         $r = json_decode($curl->get($url));
 
-        // return true if the email is valid
-        return $r->status != 'invalid';
+        // return $r->status != 'invalid';
+        return 'briteverify currently inactive, returning valid';
     }
 
-    //To search a contact with email and get all the details of the contact
     /**
+     * GetContactByContactEmail
      * @param $email
-     *
      * @return mixed
      */
-    function getContactByContactEmail ($email) {
-        return $this->doRequest( "GET", "contacts/email", array("contact[email]"=>$email));
+    public function getContactByContactEmail($email) {
+        return $this->doRequest("GET", "contacts/email", array("contact[email]" => $email));
     }
 
     /**
-     * @param $contact
-     *
+     * PostNewContact
+     * @param array $contact
      * @return mixed
      */
-    function postNewContact (array $contact) {
-        if ( empty( $contact['contact']['email'] ) ) {
-            error_log( "ERROR - Cannot add contact without email." );
-            return FALSE;
+    public function postNewContact(array $contact) {
+        if (empty($contact['contact']['email'])) {
+            error_log("ERROR - Cannot add contact without email.");
+            return false;
         }
 
-        return $this->doRequest( "POST", "contacts", array("contact" => $contact['contact']));
+        return $this->doRequest("POST", "contacts", array("contact" => $contact['contact']));
     }
 
     /**
-    * AddContact
-    * @param $settings email_entry_settings that contains the accounts => campaigns/tags to create
-    * @param $vars parameters from the client's submission, such as email and name
-    **/
-    public function AddContact($workflowPage, $vars) {
+     * AddContact
+     * @param $workflowPage
+     * @param $vars
+     * @return array
+     */
+    public function addContact($workflowPage, $vars) {
+        $campaignArray = $this->getCampaignArray($workflowPage->email_campaign_name_dropdown);
+        $tagArray = $this->getTagArray($workflowPage->email_tag_name_dropdown);
 
-        $campaignArray = array();
-        foreach($workflowPage->email_campaign_name_dropdown as $item) {
-            if(!isset($campaignArray[$item->parent()->title]))
-                $campaignArray[$item->parent()->title] = array();
+        $results = array();
 
-            $campaignArray[$item->parent()->title][] = $item->value;
-        }
-
-        $tagArray = array();
-        foreach($workflowPage->email_tag_name_dropdown as $item) {
-            if(!isset($tagArray[$item->parent()->title]))
-                $tagArray[$item->parent()->title] = array();
-
-            $tagArray[$item->parent()->title][] = $item->value;
-        }
-
-        foreach($campaignArray as $accountGroup => $campaigns) {
-            //$campaignIds = implode(',', $campaigns);
+        foreach ($campaignArray as $accountGroup => $campaigns) {
             $tags = array();
-            foreach($tagArray[$accountGroup] as $tag) {
+
+            foreach ($tagArray[$accountGroup] as $tag) {
                 $tags[] = array('tagId' => $tag);
             }
 
-            foreach($campaigns as $campaign) {
+            foreach ($campaigns as $campaign) {
                 $newContact = array(
                     'email' => $vars['email'],
                     'dayOfCycle' => '0',
@@ -108,14 +91,21 @@ class Maropost {
 
                 $this->addNameToContactIfSet($newContact, $vars);
 
-                // use ->title to obtain the option text of a dropdown vs. the index value
                 $results[] = $this->doRequest('contacts', 'POST', $newContact);
             }
         }
+
         return $results;
     }
 
-    public function Log($pid, $email, $isSuccess, $errorDescription = null) {
+    /**
+     * Log
+     * @param $pid
+     * @param $email
+     * @param $isSuccess
+     * @param null $errorDescription
+     */
+    public function log($pid, $email, $isSuccess, $errorDescription = null) {
         $email = $this->database->escapeStr($email);
         $referer = $this->database->escapeStr($this->referer);
         $errorDescription = $this->database->escapeStr($errorDescription);
@@ -129,59 +119,48 @@ class Maropost {
     }
 
     /**
-    * UpdateBuyer
-    * Either adds one or more tags to an existing contact OR creates a contact with
-    * tags and campaigns based on the buyer page email workflow settings
-    * @param $order the limelight order object, to retrieve the user's email and campaign
-    * @param $pages processwire pages object
-    */
-    public function UpdateBuyer($order, $pages) {
-
+     * UpdateBuyer
+     * @param $order
+     * @param $pages
+     */
+    public function updateBuyer($order, $pages) {
         $cid = $order->campaign_id;
-        $mainProduct = $order->main_product_id;
         $email = $order->email_address;
 
         $isInSystem = $this->database
             ->query("SELECT COUNT(*) FROM gdc_maro_log WHERE email='$email' AND isSuccess = 1")
             ->fetch(PDO::FETCH_COLUMN);
 
-        // do nothing for buyers that aren't in my system (legacies) or that have already failed GR360's blacklists or BriteVerify
-        if($isInSystem == '0') return;
+        if ($isInSystem == '0') return;
 
-        // find the root of all buyer pages so I can easily iterate through them
         $buyerRoot = $pages->find(self::BUYER_ROOT)[0];
 
-        // find the correct 'buyer' page and use those settings to mark the user as a buyer
-        foreach($buyerRoot->children() as $buyerPage) {
-            if($buyerPage->limelight_campaign_id == $cid) {
-                $this->UpdateContactTagsByEmail($email, $buyerPage, $buyerPage->id);
+        foreach ($buyerRoot->children() as $buyerPage) {
+            if ($buyerPage->limelight_campaign_id == $cid) {
+                $this->updateContactTagsByEmail($email, $buyerPage, $buyerPage->id);
             }
         }
     }
 
-    /*
-    * If the contact exists, ADD the tags specified in the settings
-    * Otherwise, CREATE the user and sub them to all campaigns/tags specified in the settings
-    * @param $email email address of user
-    * @param $settings email workflow settings repeater from the page
-    */
-    public function UpdateContactTagsByEmail($email, $settings, $pid) {
-        $tags = array();
-        foreach($settings->email_tag_name_dropdown as $tagPage) {
-            $account = $tagPage->parent()->title;
+    /**
+     * UpdateContactTagsByEmail
+     * @param $email
+     * @param $settings
+     * @param $pid
+     */
+    public function updateContactTagsByEmail($email, $settings, $pid) {
+        $tags = $this->getTags($settings->email_tag_name_dropdown);
 
-            if(!isset($tags[$account])) $tags[$account] = array();
-            $tags[$account][] = $tagPage->value;
-        }
-
-        foreach($tags as $account => $tagArray) {
+        foreach ($tags as $account => $tagArray) {
             $contactId = $this->getContactId($email, $account);
-            if($contactId != null) {
-                $tagsToEnter = array();
-                foreach($tagArray as $tid)
-                    $tagsToEnter[] = array('tagId' => $tid);
 
-                // Update tags - adds a new tag but does not remove old ones
+            if ($contactId != null) {
+                $tagsToEnter = array();
+
+                foreach ($tagArray as $tid) {
+                    $tagsToEnter[] = array('tagId' => $tid);
+                }
+
                 $r = $this->doCall("contacts/$contactId/tags", 'POST', array(
                     'tags' => $tagsToEnter
                 ), $this->getKey($account));
@@ -189,71 +168,139 @@ class Maropost {
         }
     }
 
-
+    /**
+     * addNameToContactIfSet
+     * @param $contact
+     * @param $vars
+     */
     protected function addNameToContactIfSet(&$contact, $vars) {
         $name = '';
-        if(!empty($vars['firstName']))
-            $name .= $vars['firstName'];
-        if(!empty($vars['lastName']))
-            $name .= ' ' . $vars['lastName'];
 
-        if(!empty($name))
+        if (!empty($vars['firstName'])) {
+            $name .= $vars['firstName'];
+        }
+
+        if (!empty($vars['lastName'])) {
+            $name .= ' ' . $vars['lastName'];
+        }
+
+        if (!empty($name)) {
             $contact['name'] = $name;
+        }
     }
 
     /**
+     * postNewContactIntoList
      * @param array $contact
      * @param bool $subscribe
-     *
      * @return bool|mixed
      */
-    function post_new_contact_into_list (array $contact, $subscribe = false) {
-        if ( empty( $contact['list_id'] ) ) {
-            error_log( "428 - Required field: 'list_id' missing on post_new_contact method request." );
-            return FALSE;
+    public function postNewContactIntoList(array $contact, $subscribe = false) {
+        if (empty($contact['list_id'])) {
+            error_log("428 - Required field: 'list_id' missing on post_new_contact method request.");
+            return false;
         }
-        if ( empty( $contact['contact']['email'] ) ) {
-            error_log( "428 - Required field: 'email' missing on post_new_contact method request." );
-            return FALSE;
+
+        if (empty($contact['contact']['email'])) {
+            error_log("428 - Required field: 'email' missing on post_new_contact method request.");
+            return false;
         }
-        $contact['contact']['subscribe'] = $contact['contact']['subscribe'] ? : $subscribe;
-        //$contact['contact']['remove-from-dnm'] = $subscribe ? true : $subscribe;  //remove-from-dnm does not seem to work.
-        return $this->doRequest( "POST", "lists/".$contact['list_id']."/contacts", array("contact" => $contact['contact']));
+
+        $contact['contact']['subscribe'] = $contact['contact']['subscribe'] ?: $subscribe;
+        return $this->doRequest("POST", "lists/" . $contact['list_id'] . "/contacts", array("contact" => $contact['contact']));
     }
 
+    /**
+     * postNewRecordIntoRelTable
+     * @param array $contact
+     * @return bool|mixed
+     */
+    public function postNewRecordIntoRelTable(array $contact) {
+        if (empty($contact['record']['first_name'])) {
+            error_log("426 - Required field: 'first_name' missing on post_new_contact method request.");
+            return "426 - Required field: 'first_name' missing on post_new_contact method request.";
+        }
 
-    protected function doRequest($httpMethod, $endpoint, $dataArray)
-    {
-        $authToken = ! empty( $options['authToken'] ) ? $options['authToken'] : $this->authToken;
-        $baseUrl    = ! empty( $options['baseUrl'] ) ? $options['baseUrl'] : $this->baseUrl;
+        if (empty($contact['record']['last_name'])) {
+            error_log("427 - Required field: 'last_name' missing on post_new_contact method request.");
+            return "427 - Required field: 'last_name' missing on post_new_contact method request.";
+        }
+
+        if (empty($contact['record']['email'])) {
+            error_log("428 - Required field: 'email' missing on post_new_contact method request.");
+            return "428 - Required field: 'email' missing on post_new_contact method request.";
+        }
+
+        $records = $this->getRelTableData("GET", "", $contact);
+        
+        $records = json_decode(json_encode($records), true);
+
+        $key = array_search($contact['record']['email'], array_column($records['records'], 'email'));
+
+        if ($key !== false) {
+            // update RT Record
+            return $this->doRequest("PUT", "/update", $contact);
+        } else {
+            // create new RT record
+            return $this->doRequest("POST", "/create", $contact);
+        }
+    }
+
+    protected function getRelTableData($httpMethod, $endpoint, $dataArray) {
+        $authToken = !empty($options['authToken']) ? $options['authToken'] : $this->authToken;
+        $baseUrl = !empty($options['baseUrl']) ? $options['baseUrl'] : $this->baseUrl;
+
+        $url = $baseUrl . $endpoint . ".json" . "?auth_token=" . $authToken;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $decoded = json_decode($output);
+
+        return $decoded;
+    }
+
+    protected function doRequest($httpMethod, $endpoint, $dataArray) {
+        $authToken = !empty($options['authToken']) ? $options['authToken'] : $this->authToken;
+        $baseUrl = !empty($options['baseUrl']) ? $options['baseUrl'] : $this->baseUrl;
 
         $url = $baseUrl . $endpoint . ".json";
+
+        if (isset($dataArray['record'])) {
+            $url .= "?auth_token=" . $authToken;
+        }
+
         $ch = curl_init();
         $dataArray['auth_token'] = $authToken;
         $json = json_encode($dataArray);
+
         curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-        curl_setopt($ch,CURLOPT_ENCODING, 'gzip,deflate');
-        curl_setopt($ch,CURLOPT_TIMEOUT, '90');
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
+        curl_setopt($ch, CURLOPT_TIMEOUT, '90');
         curl_setopt($ch, CURLOPT_URL, $url);
+
         switch ($httpMethod) {
             case "POST":
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json );
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
                 break;
             case "GET":
-                $newURL = json_encode( $dataArray );
-                $newURL = str_replace( "{", "", $newURL );
-                $newURL = str_replace( "}", "", $newURL );
-                $newURL = str_replace( ":", "=", $newURL );
-                $newURL = str_replace( ",", "&", $newURL );
-                $newURL = str_replace( '"', "", $newURL );
-                $url    = $newURL !== 'null' && ! empty( $newURL ) ? $url . "?" . $newURL : $url;
-                // echo $url . "<br/>";
+                $newURL = json_encode($dataArray);
+                $newURL = str_replace("{", "", $newURL);
+                $newURL = str_replace("}", "", $newURL);
+                $newURL = str_replace(":", "=", $newURL);
+                $newURL = str_replace(",", "&", $newURL);
+                $newURL = str_replace('"', "", $newURL);
+                $url = $newURL !== 'null' && !empty($newURL) ? $url . "?" . $newURL : $url;
+
                 curl_setopt($ch, CURLOPT_URL, $url);
-                $json = json_encode( array( 'authToken' => $authToken ) );
+                $json = json_encode(array('authToken' => $authToken));
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
                 break;
             case "PUT":
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
                 break;
             case "DELETE":
@@ -263,13 +310,79 @@ class Maropost {
                 curl_close($ch);
                 return false;
         }
+
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Accept: application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         $output = curl_exec($ch);
         curl_close($ch);
+
         $decoded = json_decode($output);
         return $decoded;
     }
 
+    // Helper function to get campaign array
+    protected function getCampaignArray($campaignDropdown) {
+        $campaignArray = array();
+
+        foreach ($campaignDropdown as $item) {
+            if (!isset($campaignArray[$item->parent()->title])) {
+                $campaignArray[$item->parent()->title] = array();
+            }
+
+            $campaignArray[$item->parent()->title][] = $item->value;
+        }
+
+        return $campaignArray;
+    }
+
+    // Helper function to get tag array
+    protected function getTagArray($tagDropdown) {
+        $tagArray = array();
+
+        foreach ($tagDropdown as $item) {
+            if (!isset($tagArray[$item->parent()->title])) {
+                $tagArray[$item->parent()->title] = array();
+            }
+
+            $tagArray[$item->parent()->title][] = $item->value;
+        }
+
+        return $tagArray;
+    }
+
+    // Helper function to get tags
+    protected function getTags($tagDropdown) {
+        $tags = array();
+
+        foreach ($tagDropdown as $tagPage) {
+            $account = $tagPage->parent()->title;
+
+            if (!isset($tags[$account])) {
+                $tags[$account] = array();
+            }
+
+            $tags[$account][] = $tagPage->value;
+        }
+
+        return $tags;
+    }
+
+    // Helper function to get contact ID
+    protected function getContactId($email, $account) {
+        // Implement as needed
+        return null;
+    }
+
+    // Helper function to get key
+    protected function getKey($account) {
+        // Implement as needed
+        return null;
+    }
+
+    // Helper function to make a call
+    protected function doCall($url, $method, $data, $key) {
+        // Implement as needed
+        return null;
+    }
 }

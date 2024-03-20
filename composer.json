@@ -1,13 +1,20 @@
 {
-    "name": "mike/novusframework",
+    "name": "mike/novus",
     "description": "Framework for Pineapple Company Funnels",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:pineapplebit/conversion-optimization-wizard.git"
+        }
+    ],
     "require": {
         "maximebf/debugbar": "^1.17",
         "fordnox/php-queue-manager": "^0.3.0",
         "enqueue/fs": "^0.10.9",
         "monolog/monolog": "^3.2",
-        "mobiledetect/mobiledetectlib": "^3.74"
+        "mobiledetect/mobiledetectlib": "^3.74",
+        "pineappleproducts/cow": "dev-main"
     },
     "platform-check": false,
     "authors": [

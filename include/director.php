@@ -42,12 +42,28 @@ $_SESSION['pageType'] = pathinfo($slug, PATHINFO_FILENAME);
 // $_SESSION['last']     = $_SESSION['url']; //<-- this will redirect to the process.php as it stands, and causes a loop ooops.
 $_SESSION['last']     = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
 
+	
+//Add session start time, useful for only firing functions once per session.
+// Set the session start time if not already set
+if (!isset($_SESSION['session_start_time'])) {
+    $_SESSION['session_start_time'] = time();
+}
+
+// Check if 'next-page' was posted
+if (isset($_POST['next_page'])) {
+    // Save it to the session
+    $_SESSION['next'] = $_POST['next_page'];
+}
+
+$eventTimestamp = time();
+$_SESSION['event_id'] = session_id() . '.' . pathinfo($slug, PATHINFO_FILENAME) . '.' . $eventTimestamp;
+
 // Include and instantiate the class.
 require_once '../vendor/mobiledetect/mobiledetectlib/src/MobileDetect.php';
 // Any mobile device (phones or tablets).
 $detect = new \Detection\MobileDetect;
 $_SESSION['isMobile'] = $detect->isMobile();
-
+$_SESSION['isIOS'] = $detect->isiOS();
 
 // Pull Affiliate Id from cookie
 if (isset($_COOKIE['affid'])) {
@@ -58,14 +74,18 @@ if (isset($_COOKIE['affid'])) {
     $_SESSION['a']     = $site['defaultAffId'];
 }
 
+//Globally set session variables if they are not previously set
+$_SESSION['email'] ??= '';
+$_SESSION['productId'] ??= 0;
+
 function setSessionVars($encryptedData = null)
 {
     //Check for allowed query string keys, reduces attempts on invalid data.
     $whitelistKeys = [
         'a','o','r','s','s1','s2','s3','s4','s5','reqid','fbclid','blog','post','offer','voltrk',
-        'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm-term',
+        'cpid','cid','cep','utm_medium','utm_source','utm_campaign','utm_content','utm_term',
         'alink','debug','coupon','vwovar','pid','up','dn','add1','add2','add3',"buy",
-        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid","qa", "isMobile"];
+        "id","pid","last","tid","eftid","next","c1","c2","c3","clickid","qa", "email", "isMobile","cd","st","qa"];
     $allowedData = array_intersect_key($encryptedData, array_flip($whitelistKeys));
 
     // TODO: for $site variables
@@ -75,7 +95,7 @@ function setSessionVars($encryptedData = null)
             //This will override the previous cookie affid
             $_SESSION['affid'] = $value ?? $site['defaultAffId'];
             $_SESSION['a'] = $value ?? $site['defaultAffId'];
-            setCookie('affid', $_SESSION['a'], time() + ( 60 * 60 * 24 * 45 ));
+            setCookie('affid', $_SESSION['a'], time() + ( 60 * 60 * 24 * 45 ), '/');
         }
         if ($queryString == 'pid') {
             $_SESSION['pid'] = $value ?? null;
@@ -131,6 +151,11 @@ function setSessionVars($encryptedData = null)
         }
         if ($queryString == 'reqid') {
             $_SESSION['reqid'] = $value ?? null;
+        }
+        if ($queryString == 'fbclid') {
+            $_SESSION['fbclid'] = $value ?? null;
+            $date = new DateTime();
+            $_SESSION['fbclidCreationTime'] = $date->getTimestamp();
         }
         if ($queryString == 'blog') {
             $_SESSION['blog'] = $value ?? null;
