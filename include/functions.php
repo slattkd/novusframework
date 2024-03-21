@@ -260,6 +260,15 @@ function template($template, $vwoVariable = null, $current_step = null, $templat
     require('../' . $templatePath . '/' . $template . '.php');
 }
 
+// step bar
+function step($template, $current_step = null, $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
 /*
 Extends the template based on paths to easily add new versions for A/B testing.
 */
