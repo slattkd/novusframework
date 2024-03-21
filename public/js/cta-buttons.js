@@ -3,8 +3,6 @@
 
 setTimeout(function() {
     var allCTA = document.querySelectorAll('a.cta-link');
-    console.log('ctas:',allCTA);
-
     allCTA.forEach((cta)=> {
         cta.addEventListener('click', (event)=> {
             cta.classList.add('processing')
@@ -20,4 +18,9 @@ function disableCTAButtons(elements) {
         cta.style.pointerEvents = 'none';
         cta.querySelector('button').classList.add('disabled');
     })
+}
+
+function scrollToDiv(element) {
+    var elem = document.getElementById(element);
+    elem.scrollIntoView();
 }

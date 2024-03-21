@@ -8,7 +8,7 @@
 		$top_content (string) = html for anything shown above the button on mobile view
  -->
 
-<style>
+ <style>
   .float-btn-wrapper {
 		position: fixed;
 		bottom: 0;
@@ -18,9 +18,10 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		z-index: 100;
+		z-index: 50;
 		padding: 10px;
 		background-color: white;
+		box-shadow: 0px -1px 40px 10px rgba(0,0,0,0.15);
 	}
 
 @media screen and (min-width: 769px) {
@@ -28,6 +29,8 @@
 		padding: 14px;
 		background-color: transparent;
 		align-items: end;
+		box-shadow:unset;
+		left:unset;
 	}
 }
 
@@ -44,7 +47,7 @@
 	align-items: center;
 	justify-content: center;
 	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
-	background-image: linear-gradient(180deg,#f6dda1,#f0c14b) !important;
+	background-image: linear-gradient(180deg,#f6dda1,#f0c14b);
 	border: 1px solid #fff;
 	border-color: #a88734 #9c7e31 #846a29;
 	border-radius: 5px;
@@ -52,14 +55,16 @@
 	max-width: 500px;
 	max-width: 100%;
 	font-size: 1.5em;
-	padding: 10px 20px;
+	padding: 5px 25px;
+		min-width: 33%;
 }
 
 @media screen and (min-width: 769px) {
 	.float-btn-wrapper .float-btn {
 		border-radius: 10px;
 		font-size: 1.1em;
-		padding: 10px 20px;
+		padding: 8px 25px;
+		min-width: unset;
 	}
 }
 
@@ -85,56 +90,45 @@
 
 <section>
 <div id="float-button" class="float-btn-wrapper fade-in-element" data-scroll="<?= $scroll_id; ?>" data-scroll-start="<?= $scroll_start; ?>">
-
 	<div class="flex flex-col justify-center">
 	<?php echo htmlspecialchars_decode($top_content); ?>
 	</div>
-
 	<button type="button" class="float-btn clickable"><?= $button_text; ?></button>
-
 </div>
 </section>
-
-
-
 <script>
 	document.addEventListener('DOMContentLoaded', ()=> {
 		const windowHeight = window.innerHeight;
 		// flaoting button to hide/show on scroll
 		const dynamicElement = document.getElementById('float-button');
+		const floatHeight = dynamicElement.clientHeight;
 		const scrollId = dynamicElement.dataset.scroll;
-		const scrollNodes = document.querySelectorAll(`[id=${scrollId}]`);
-		const scrollStartId = dynamicElement.dataset.scrollStart;
-
-		if (scrollStartId) {
-			dynamicElement.style.display = "none";
-		}
-
-		// find visible cta/scroll element
-		// for (var i = 0, max = scrollNodes.length; i < max; i++) {
-		// 	if (!isHidden(scrollNodes[i])) {
-		// 		scrollElement = scrollNodes[i];
-		// 		console.log(scrollElement);
-		// 	}
-		// }
-
+		const scrollStart = dynamicElement.dataset.scrollStart;
+		const scrollNodes = document.querySelectorAll(`[id^="${scrollId}"]`);
+		const scrollStartId = scrollStart;
+		const bodyBottomPad = window.getComputedStyle(document.body, null).getPropertyValue('padding-bottom');
+		document.body.style.paddingBottom = parseInt(bodyBottomPad.replace('px', ''), 10) + floatHeight + 'px';
 		var scrollElement = null;
-		Array.from(scrollNodes).forEach(el => {
+		const scrollToElements = Array.from(scrollNodes);
+		scrollToElements.forEach(el => {
 			if (!isHidden(el)) {
 				scrollElement = el;
 			}
 		})
 
+		if (!scrollStartId) {
+			dynamicElement.style.display = 'none';
+		}
+
+		scrollElement = !scrollElement ? scrollNodes[0] : scrollElement;
 		var scrollIsBelowElement = false;
 		var buttonShowing = null;
 		window.onscroll = ()=> {
-			let scrollStartElement = null;
+			let scrollStartElement = scrollStartId ? document.getElementById(scrollStartId) : null;
 			let belowDiv = false;
-			if (scrollStartId) {
-				scrollStartElement = document.getElementById(scrollStartId);
+			if (scrollStartElement) {
 				scrollIsBelowElement = window.pageYOffset > window.pageYOffset + scrollStartElement.getBoundingClientRect().top;
 				var elDisplay = dynamicElement.style.display;
-
 				const shouldShow = !elementInView && (scrollStartId && scrollIsBelowElement) || !scrollStartId;
 				const shouldHide = elementInView || (scrollStartId && !scrollIsBelowElement);
 				if (shouldShow) {
@@ -143,6 +137,8 @@
 				if (shouldHide) {
 					showButton(false);
 				}
+			} else {
+				showButton(!elementInView);
 			}
 		}
 
@@ -174,21 +170,9 @@
 		}
 
 		// scroll to element via floating button
-		dynamicElement.addEventListener('click', function() {
+		document.querySelector('.float-btn').addEventListener('click', function() {
 			scrollElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
 		})
+		
 	})
-
-
-
-// observer seems to work better than scroll event and clientRect
-// function elementInView(el) {
-// 	var rect = el.getBoundingClientRect();
-// 	var windowH = window.innerHeight;
-// 	var scrollH = window.pageYOffset;
-// 	return (rect.top < windowH && rect.top > 0) || rect.bottom > 0 && rect.bottom < windowH;
-// }
-
-
-
 </script>

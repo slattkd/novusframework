@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="//unpkg.com/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/pristine.min.js" defer></script>
-<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/basic-modal.js" defer></script>
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/basic-modal.js?ver=<?php echo get_that_filetime($_SERVER['DOCUMENT_ROOT'] . '/css/base.css'); ?>" defer></script>
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/countdown.js"></script>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" media="print" onload="this.media='all'">

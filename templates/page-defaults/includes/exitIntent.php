@@ -5,6 +5,22 @@ if $modal_id then custom basicModal component will be show
 else simple alert/confirm messages will be displayed
  -->
 
+ <style>
+
+#title-content {
+  text-align: center;
+  color: #3273DC;
+  font-size: 20px;
+}
+
+#body-content {
+  color: #444;		
+  padding: unset !important;
+  overflow-y: unset;
+  margin: unset;
+}
+</style>
+
  <?php
  $modal_id = $modal_id ?? null;
  ?>
@@ -15,6 +31,22 @@ else simple alert/confirm messages will be displayed
 //     window.history.forward();
 // }
 // setTimeout("preventBack()", 0);
+
+history.pushState(null, null, location.href);
+
+window.addEventListener('popstate', function(event) {
+  history.replaceState(null, null, location.href);
+  event.returnValue = 'Are you sure you want to leave?';
+  if (event.state) {
+    // User clicked back button, handle accordingly
+    history.replaceState(null, null, location.href);
+    event.returnValue = 'Are you sure you want to leave?';
+    backEvent();
+  } else {
+    // User navigated back using browser history, handle accordingly
+    backEvent();
+  }
+});
 
 
 // var for showing once

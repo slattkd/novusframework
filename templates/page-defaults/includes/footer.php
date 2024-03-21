@@ -3,7 +3,7 @@ shows vidalytic videos with overlay option (may need update with 1:1 ratio video
 various company information can be adjusted in config.php
  -->
 
-<footer id="footer" class="bg-zinc-700">
+ <footer id="footer" class="bg-zinc-700">
 	<div class="container container-md mx-auto py-6">
 		<div class="grid grid-cols-2 gap-10 sm:gap-8 sm:grid-cols-4 ml-6">
 			<div>
@@ -22,7 +22,7 @@ various company information can be adjusted in config.php
 						<li class="mb-1">
 							<div class="flex items-center">
 								<img src="//<?= $_SERVER['HTTP_HOST'];?><?= $company['featuredProductImage']; ?>" alt="5G Male product bottle" width="45px">
-								<a href="/product"  class="ml-2 text-gray-400 hover:text-white hover:underline transition duration-150 ease-in-out cursor-pointer"><?= $company['featuredProduct']; ?></a>
+								<a href="//<?= $_SERVER['HTTP_HOST'];?>/checkout/order"  class="ml-2 text-gray-400 hover:text-white hover:underline transition duration-150 ease-in-out cursor-pointer"><?= $company['featuredProduct']; ?></a>
 							</div>
 						</li>
 					</ul>
@@ -33,11 +33,11 @@ various company information can be adjusted in config.php
 					<h3 class="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">Quick Links</h3>
 					<ul>
 						<li class="mb-1">
-							<a href="/index"
+							<a href="//<?= $_SERVER['HTTP_HOST'];?>/index.php"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">Home</a>
 						</li>
 						<li class="mb-1">
-							<a href="//<?= $_SERVER['HTTP_HOST'];?>/product"
+							<a href="//<?= $_SERVER['HTTP_HOST'];?>/checkout/order"
 								class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">Shop</a>
 						</li>
 						<li class="mb-1">
@@ -65,8 +65,9 @@ various company information can be adjusted in config.php
 			</div>
 		</div>
 	</div>
-	<hr class="container container-md my-12 border-gray-500 mx-auto">
-	<div class="w-full bg-zinc-800 pb-4">
+	<!-- section hidden due to no social link info -->
+	<hr class="container container-md my-12 border-gray-500 mx-auto hidden">
+	<div class="w-full bg-zinc-800 pb-4 hidden">
 		<div class="flex flex-wrap items-center justify-center md:justify-between container container-md mx-auto text-sm p-2">
 			<div class="flex items-center mt-4 space-x-6 justify-center">
 				<a href="/support" class="text-gray-400 hover:text-white transition duration-150 ease-in-out cursor-pointer">CONTACT US</a>

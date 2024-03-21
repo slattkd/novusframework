@@ -87,6 +87,48 @@ timer2 = function(endDate, callback, interval) {
 
 timer3 = function(endDate, callback, interval) {
     endDate = new Date(endDate);
+    interval = interval || 100;
+    expired = null;
+
+    var currentDate = new Date()
+        , millisecondDiff = endDate.getTime() - currentDate.getTime() // get difference in milliseconds
+        , timeRemaining = {
+            days: 0
+            , hours: 0
+            , minutes: 0
+            , seconds: 0
+            , milli: 0
+        }
+        ;
+        
+    if(millisecondDiff > 0) {
+        // millisecondDiff = Math.floor( millisecondDiff/1000 ); // kill the "milliseconds" so just secs
+
+        timeRemaining.days = Math.floor( millisecondDiff/86400000 ); // days
+        millisecondDiff = millisecondDiff % 86400000;
+
+        timeRemaining.hours = Math.floor( millisecondDiff/3600000 ); // hours
+        millisecondDiff = millisecondDiff % 3600000;
+
+        timeRemaining.minutes = Math.floor( millisecondDiff/60000 ); // minutes
+        millisecondDiff = millisecondDiff % 60000;
+
+        timeRemaining.seconds = Math.floor(millisecondDiff/1000); // seconds
+        millisecondDiff = millisecondDiff % 1000;
+
+        timeRemaining.milli = Math.floor(millisecondDiff/100); // seconds
+        millisecondDiff = millisecondDiff % 100;
+
+        setTimeout(function() {
+            timer3(endDate, callback);
+        }, interval);
+    }
+
+    callback(timeRemaining);
+}
+
+timerdm = function(endDate, callback, interval) {
+    endDate = new Date(endDate);
     interval = interval || 1000;
     expired = null;
 
@@ -115,7 +157,7 @@ timer3 = function(endDate, callback, interval) {
         timeRemaining.seconds = Math.floor(millisecondDiff); // seconds
 
         setTimeout(function() {
-            timer3(endDate, callback);
+            timerdm(endDate, callback);
         }, interval);
     }
 
