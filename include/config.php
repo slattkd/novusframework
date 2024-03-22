@@ -81,6 +81,11 @@ $site['fbToken'] = "EAA6nSNMZCmb8BO2PPd47cEwTSqRpA3OVvX2mE6GgO2YZAm0i9vu3pv69y9h
 $site['stickyApi']  = 'pineappleapi';
 $site['stickyPass'] = 'nWsw3BzrhnFBkJ';
 $site['stickyUrl']  = 'gdc.sticky.io';
+$tax_id = 'pineappleapi';
+$tax_api_key = 'nWsw3BzrhnFBkJ';
+
+// gmaps api for location component
+$site['gmapsApi'] = 'AIzaSyBeImm8_kBWfjiE-Yb23wr4uxOwzjFL_wA';
 
 $site['logo'] = '/images/rp-logo-short.png';
 $site['imgpath'] = '//s3.amazonaws.com/5gmale/';
@@ -107,9 +112,12 @@ $limelight_api_instance     = 'gdc.sticky.io';
 
 // Company Variables
 $company['name'] = 'Revival Point LLC';
-$company['billedAs'] = 'Total Brain Boost';
+$company['billedAs'] = 'Revival Point';
 $company['featuredProduct'] = 'Total Brain Boost';
-$company['featuredProductImage'] = '/images/rp-bottle.png';
+$company['featuredProduct'] = 'Floraboost';
+$company['featuredProductImage'] = '/images/RP_Floraboost_Product.png';
+$company['featuredProductImageSm'] = '/images/RP_Floraboost_Product-sm.png';
+$company['featuredProductFSP'] = 'Floraspring';
 $company['email'] = 'support@revivalpoint.com';
 $company['phone'] = '1-800-253-8173';
 $company['phone_specialist'] = '1-800-214-5604'; //Pre-purchase phone
@@ -151,6 +159,17 @@ $productsData = json_decode($productsJson, true);
 
 $products = $productsData;
 
+if ($site['debug'] == true) {
+    $debugbar['time']->stopMeasure('longop');
+}
+
+// retrieve json data for product reviews
+if ($site['debug'] == true) {
+    $debugbar['time']->startMeasure('longop', 'Get reviews JSON');
+}
+$reviewsJson = file_get_contents('../include/reviews.json');
+$reviewsData = json_decode($reviewsJson, true);
+$reviews = $reviewsData;
 if ($site['debug'] == true) {
     $debugbar['time']->stopMeasure('longop');
 }

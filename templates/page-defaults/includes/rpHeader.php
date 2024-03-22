@@ -38,7 +38,7 @@ php variables:
     </section>
   <?php endif; ?>
     <div id="logo-banner" class=" py-0 md:py-1 border-b bg-white">
-      <div class="flex flex-wrap justify-between <?= $justify; ?> container-vsl <?= $container; ?> mx-auto  w-full px-2 md:px-0">
+      <div class="flex flex-wrap justify-between justify-<?= $justify; ?> container container-<?= $container; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
           <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:225px;object-fit:contain;">
         </div>

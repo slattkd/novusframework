@@ -33,10 +33,13 @@ debugTimerEnd('pixel-logger');
 if(isset($site['maropostAcctId']) && $_SESSION['pageType'] !== 'receipt' && isset($_SESSION['email'])){
 
 
-    if (!empty($products['products'][$_SESSION['pid']])){
-        $productName = $products['products'][$_SESSION['pid']];
+    if (!empty($_SESSION['pid'])){
+        $product = $products['products'][$_SESSION['pid'][0]];
+        $productName = $product['product_name'];
     } else {
-        $productName = '';
+        $_SESSION['pid'] = $products['default_product'];
+        $product = $products['products'][$_SESSION['pid']];
+        $productName = $product['product_name'];
     }
     
     
@@ -53,22 +56,22 @@ if(isset($site['maropostAcctId']) && $_SESSION['pageType'] !== 'receipt' && isse
 
     $newRecord = [
         'record' => [
-            'first_name' => $_SESSION['firstName'],
-            'last_name' => $_SESSION['lastName'],
-            'email' => $_SESSION['email'],
+            'first_name' => @$_SESSION['firstName'],
+            'last_name' => @$_SESSION['lastName'],
+            'email' => @$_SESSION['email'],
             'page_last_seen' => $_SESSION['maropostTableData']['lastKnownLocation'],
             'product_id' => $_SESSION['pid'],
             'product_name' => $productName,
             'is_iOS' => $_SESSION['isIOS'],
             'is_mobile' => $_SESSION['isMobile'],
             'aff_id' => $_SESSION['affid'],
-            'eftid' => $_SESSION['eftid'],
-            'r' => $_SESSION['r'],
-            'utm_medium' => $_SESSION['utm_medium'],
-            'utm_source' => $_SESSION['utm_source'],
-            'utm_campaign' => $_SESSION['utm_campaign'],
-            'utm_content' => $_SESSION['utm_content'],
-            'utm_term' => $_SESSION['utm_term']
+            'eftid' => @$_SESSION['eftid'],
+            'r' => @$_SESSION['r'],
+            'utm_medium' => @$_SESSION['utm_medium'],
+            'utm_source' => @$_SESSION['utm_source'],
+            'utm_campaign' => @$_SESSION['utm_campaign'],
+            'utm_content' => @$_SESSION['utm_content'],
+            'utm_term' => @$_SESSION['utm_term']
         ]
     ];
 

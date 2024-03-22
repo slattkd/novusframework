@@ -478,7 +478,7 @@ document.addEventListener("visibilitychange", function (event) {
       if (!documentVisible) {
         player.pause();
       }
-    }, "1000");
+    }, "10000");
   }
 });
 

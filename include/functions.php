@@ -254,6 +254,7 @@ function template($template, $vwoVariable = null, $current_step = null, $templat
     global $site;
     global $company;
     global $products;
+    global $reviews;
     global $debugbarRenderer;
     global $debugbar;
 
@@ -272,16 +273,6 @@ function step($template, $current_step = null, $templatePath = 'templates/page-d
 /*
 Extends the template based on paths to easily add new versions for A/B testing.
 */
-function video($template, $video_id = null, $drop_time = null, $overlay = null, $vwoVariable = null, $templatePath = 'templates/page-defaults')
-{
-    global $site;
-    global $company;
-    global $products;
-    global $debugbarRenderer;
-    global $debugbar;
-
-    require('../' . $templatePath . '/' . $template . '.php');
-}
 
 function videoJS($template, $video_id = null, $video_url = null, $drop_time = null, $overlay = null, $controls = null, $square = null,  $templatePath = 'templates/page-defaults')
 {
@@ -338,6 +329,34 @@ function exitIntent($template, $modal_id = null, $templatePath = 'templates/page
 {
     global $site;
     global $company;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
+/*
+Google maps places validation component
+*/
+function address($template, $id_address = null, $simple = null, $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+    global $products;
+    global $debugbarRenderer;
+    global $debugbar;
+
+    require('../' . $templatePath . '/' . $template . '.php');
+}
+
+/*
+Credit card validation function
+*/
+function creditCardInput($template, $id_cc = null, $templatePath = 'templates/page-defaults')
+{
+    global $site;
+    global $company;
+    global $products;
+    global $debugbarRenderer;
+    global $debugbar;
 
     require('../' . $templatePath . '/' . $template . '.php');
 }
