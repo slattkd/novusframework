@@ -33,6 +33,8 @@ $ship = $product['product_ship'];
 $sub_total = $product['product_price'];
 $total = $product['product_price'] + $ship;
 
+$shippingId = $product['product_ship'] > 0 ? $site['shippingUs'] : $site['shippingFree'];
+
 switch ($product['product_qty']) {
   case 1:
       $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/fs-new/FS-1-bottle-sm.png";
@@ -43,11 +45,6 @@ switch ($product['product_qty']) {
   case 6:
       $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/fs-new/FS-6-bottle-sm.png";
       break;
-}
-
-$subscribe_promo = 1;
-if (isset($_GET['checkout_sub']) && $_GET['checkout_sub'] == 'false'){
-  $subscribe_promo = 0;
 }
 
 $today = date("F d, Y"); // for testimonials
@@ -61,50 +58,27 @@ $today = date("F d, Y"); // for testimonials
   <?php template("includes/header"); ?>
   <title><?php echo $company['billedAs']; ?> - Secure Checkout</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
+
   <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 
   <style>
-
-  @font-face {
-      font-family: 'Nexa';
-      src: url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/Nexa.woff2') format('woff2'),
-          url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/Nexa.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-  }
-
-  @font-face {
-      font-family: 'Nexa-Light';
-      src: url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaLight.woff2') format('woff2'),
-          url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaLight.woff') format('woff');
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-  }
-
-  @font-face {
-      font-family: 'Nexa-Bold';
-      src: url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaBold.woff2') format('woff2'),
-          url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaBold.woff') format('woff');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-  }
     body {
       position: relative;
       max-height: 100vh;
       max-width: 100vw;
       overflow-y: auto;
       overflow-x: hidden;
-      font-family: 'Nexa-Light', sans-serif;
-      font-weight: normal;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
       font-size: 16px;
       line-height: 1.5;
     }
 
     .title {
-      font-family: 'Nexa', monospace !important;
+      font-family: 'Anonymous Pro', monospace !important;
     }
 
     @media screen and (min-width: 769px) {
@@ -193,21 +167,19 @@ $today = date("F d, Y"); // for testimonials
     }
 
     ::placeholder {
-      color: #bbb !important;
-      font-weight: 400;
+      color: gray !important;
       opacity: 1; /* Firefox */
     }
 
     ::-ms-input-placeholder { /* Edge 12 -18 */
-      color: #bbb !important;
-      font-weight: 400;
+      color: gray !important;
     }
   </style>
 </head>
 
 <body class="bg-split">
-  <div class="flex justify-center bg-rpt-blue-1 py-4">
-    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/rp-logo-light-trans.png" alt="revival point logo"
+  <div class="flex justify-center bg-fs-blue-dark py-4">
+    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/logo-rp-inv.png" alt="revival point logo"
       style="width:auto; height:30px">
   </div>
 
@@ -216,7 +188,7 @@ $today = date("F d, Y"); // for testimonials
     <!-- First Column -->
     <div class="w-full w-full md:w-1/2 p-4 md:p-8 md:max-w-lg">
       <section class="hidden">
-        <h2 class="text-lg font-bold mb-3">Express Checkout</h2>
+        <h2 class="text-lg font-semibold mb-3">Express Checkout</h2>
         <div class="flex flex-wrap justify-center">
           <button class="m-1 hover:bg-gray-100 border px-4 rounded clickable">
             <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/pay-logo-apple.png" alt="" class="mix-blend-multiply">
@@ -236,40 +208,40 @@ $today = date("F d, Y"); // for testimonials
       <div class="hr-break my-6"><div class="py-2 px-3 text-sm text-gray-400 bg-white z-10">OR</div></div>
 
       <!-- start of form -->
-      <form action="//<?= $_SERVER['HTTP_HOST']; ?>/process.php" method='POST' id="order-form" onsubmit="return false;">
+<form action="//<?= $_SERVER['HTTP_HOST']; ?>/process.php" method='POST' id="order-form" onsubmit="return false;">
 
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-bold mb-1">Contact</h2>
+        <h2 class="text-lg font-semibold mb-1">Contact</h2>
         <div class="input w-full mb-0 ">
           <div class="w-full z-10 invisible">
             <label for="email" class="text-sm text-gray-600 hidden md:block rounded">Email</label>
           </div>
           <input id="email" name="email" data-pristine-type="email"
             data-pristine-email-message="Not a valid email"
-            placeholder="Email" class="w-full p-2 rounded border border-gray-300" required>
+            placeholder="Email" class="w-full p-2 rounded border" required>
         </div>
         <div class="input w-full ">
           <div class="w-full z-10 invisible">
             <label for="phone" class="text-sm text-gray-600 hidden md:block rounded">Phone</label>
           </div>
-          <input id="phone" name="phone" type="text" placeholder="Phone (optional)" class="w-full p-2 rounded border border-gray-300">
+          <input id="phone" name="phone" type="text" placeholder="Phone (optional)" class="w-full p-2 rounded border">
         </div>
       </section>
 
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-bold mb-1">Billing</h2>
+        <h2 class="text-lg font-semibold mb-1">Billing</h2>
         <div class="flex mb-0">
           <div class="input w-1/2 pr-2">
             <div class="w-full z-10 invisible">
               <label for="first-name" class="text-sm text-gray-600 hidden md:block rounded">First Name</label>
             </div>
-            <input id="first-name" name="firstName" type="text" placeholder="First Name" class="w-full p-2 rounded border border-gray-300" required>
+            <input id="first-name" name="firstName" type="text" placeholder="First Name" class="w-full p-2 rounded border" required>
           </div>
           <div class="input w-1/2 pl-2">
             <div class="w-full z-10 invisible">
               <label for="last-name" class="text-sm text-gray-600 hidden md:block rounded">Last Name</label>
             </div>
-            <input id="last-name" name="lastName" type="text" placeholder="Last Name" class="w-full p-2 rounded border border-gray-300" required>
+            <input id="last-name" name="lastName" type="text" placeholder="Last Name" class="w-full p-2 rounded border" required>
           </div>
         </div>
         <div class="flex relative">
@@ -278,7 +250,7 @@ $today = date("F d, Y"); // for testimonials
       </section>
 
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-bold mb-2">Shipping</h2>
+        <h2 class="text-lg font-semibold mb-2">Shipping</h2>
         <label class="flex items-center">
           <input id="bill-same" type="checkbox" class="mr-2" checked>
           Shipping address same as Billing
@@ -291,14 +263,14 @@ $today = date("F d, Y"); // for testimonials
       </section>
 
       <section>
-        <h2 class="text-lg font-bold mb-1">Payment</h2>
+        <h2 class="text-lg font-semibold mb-1">Payment</h2>
         <p class="mb-5">All purchases are secured and encrypted.</p>
         <div class="flex mb-3">
         <?php creditCardInput("includes/creditCardInput", 'credit-card');?>
         </div>
         <div class="flex w-full -mt-3">
           <div class="w-1/3 mr-3 mt-[20px]">
-            <select id="cc-exp-month" class="w-full p-2 rounded border border-gray-300" style="padding:0.6rem" placeholder="Exp. Month">
+            <select id="cc-exp-month" name="expMonth" class="w-full p-2 rounded border" style="padding:0.6rem" placeholder="Exp. Month">
               <!-- Options for Exp. Month -->
               <optgroup id="cc-exp-month-options" label="Exp. Month">
               <?php 
@@ -311,24 +283,25 @@ $today = date("F d, Y"); // for testimonials
             </select>
           </div>
           <div class="w-1/3 mr-3 mt-[20px]">
-            <select id="cc-exp-year" class="w-full p-2 rounded border border-gray-300" style="padding:0.6rem" placeholder="Exp. Day">
+            <select id="cc-exp-year" name="expYear" class="w-full p-2 rounded border" style="padding:0.6rem" placeholder="Exp. Day">
               <!-- Options for Exp. Day -->
               <option class="text-gray-300" value="" disabled>Exp. Year</option>
               <?php 
                 $this_year = date('Y');
                 for ($y = $this_year; $y <= $this_year + 10; $y++) {
-                echo '<option class="text-gray-300" value="' . $y . '">' . $y . '</option>';
+                $short_year = $y - 2000;
+                echo '<option class="text-gray-300" value="' . $short_year . '">' . $y . '</option>';
                 }
               ?>
             </select>
           </div>
           <div class="input w-1/3">
             <div class="w-full z-10 invisible">
-              <label for="ccv" class="text-sm text-gray-600 hidden md:block rounded">CCV#</label>
+              <label for="cvv" class="text-sm text-gray-600 hidden md:block rounded">CVV#</label>
             </div>
-            <input id="ccv" name="ccv" class="w-full p-2 rounded border border-gray-300" placeholder="CCV#"
+            <input id="cvv" name="cvv" class="w-full p-2 rounded border" placeholder="CVV#"
               data-pristine-minlength-message="Too short"
-              minlength="3" maxlength="3" required></input>
+              minlength="3" maxlength="4" required></input>
           </div>
         </div>
       </section>
@@ -337,8 +310,8 @@ $today = date("F d, Y"); // for testimonials
     <!-- Second Column -->
     <div class="w-full w-full md:w-1/2 p-4 md:p-8 md:max-w-lg">
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-bold mb-3">Order Summary</h2>
-        <?php if(!$product['product_is_sub'] && $subscribe_promo == 1): ?>
+        <h2 class="text-lg font-semibold mb-3">Order Summary</h2>
+        <?php if(!$product['product_is_sub']): ?>
         <div id="subscribe" class="flex justify-between items-center flex-nowrap  bg-white title rounded border py-2 px-2 md:px-4 mb-4">
           <div class="flex justify-center items-center text-center">
             <input id="sub" type="checkbox" value="1"
@@ -354,7 +327,7 @@ $today = date("F d, Y"); // for testimonials
         <?php endif; ?>
         <div class="flex justify-between items-center mb-4">
           <div class="flex items-center">
-            <div class="product-image w-12 h-12 mr-3">
+            <div class="product-image bg-white w-12 h-12 border mr-3">
               <img src="<?= $product_image; ?>" alt="product image">
             </div>
             <div class="text-sm"><?= $product['product_description']; ?>
@@ -382,9 +355,7 @@ $today = date("F d, Y"); // for testimonials
             <p class="font-bold mt-3 text-right">$<span id="total-amt"><?= number_format($total, 2); ?></span></p>
           </div>
         </div>
-        <button id="submit-btn" class="w-full mt-6 py-2 pt-3 px-8 bg-greenish text-white border border-greenish clickable text-xl rounded-full uppercase font-bold title">
-          Secure My Order
-        </button>
+        <button id="submit-btn" class="title bg-fs-blue clickable w-full text-xl text-center text-white px-4 py-2 mt-4 rounded">Complete Purchase</button>
         <div class="flex justify-center mt-6">
         <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/securites.png" alt="norton securities" style="max-width: 320px;">
         </div>
@@ -392,13 +363,11 @@ $today = date("F d, Y"); // for testimonials
 
       <hr class="my-6">
 
-      <?php if (isset($reviews)): ?>
       <section>
         <div class="slider-container mt-6">
           <div id="slider-testimonials" class="splide max-w-full md:max-w-screen-sm xl:max-w-screen-md mx-auto mb-16" role="group">
           <div class="splide__track">
             <ul class="splide__list">
-              <?php foreach($reviews['reviews'] as $obj): ?>
               <li class="splide__slide">
                 <div class=" flex flex-col items-center">
                   
@@ -409,22 +378,114 @@ $today = date("F d, Y"); // for testimonials
                   <div class="inline-flex text-sm text-fs-blue uppercase">
                     <div class="icons badge-check mr-2"></div> Verified buyer | <?php echo date('F d, Y'); ?>
                   </div>
-                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">
-                    <?= $obj['title']; ?>
-                  </h3>
+                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">I would definitely recommend Floraspring to
+                    others!</h3>
                   <p class="">
-                  <?= $obj['copy']; ?>
+                    Now, since I started taking Floraspring, what has happened is all the bloating has gone away! I'm
+                    losing weight… still have a few pounds to go, but that's okay and my energy is through the roof! I
+                    have no idea how one little change to your intestines can do all that… but the fact is, Floraspring
+                    has worked! My health is so much better because of using Floraspring for a lot of reasons. First of
+                    all, I've lost some weight, which most of us can afford to do, and that always adds to your health.
                   </p>
-                  <div class="font-semibold title text-fs-blue mt-4"><?= $obj['name']; ?>, <?= $obj['location']; ?></div>
+                  <p class="">
+                    I'm less bloated, I'm more regular, and I have a lot more energy.
+                    All of this adds up to better health and feeling better about myself!...
+                    I would definitely recommend Floraspring to others!
+                  </p>
+                  <div class="font-semibold title text-fs-blue mt-4">Lina S., Austin TX</div>
                 </div>
               </li>
-              <?php endforeach; ?>
+              <li class="splide__slide">
+                <div class=" flex flex-col items-center">
+                  
+                  <div class="flex inline-flex items-center stars">
+                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
+                      alt="5 stars">
+                  </div>
+                  <div class="inline-flex text-sm text-fs-blue uppercase">
+                    <div class="icons badge-check mr-2"></div> Verified buyer |
+                    <?php echo date('F d, Y', strtotime($today. ' - 1 days')); ?>
+                  </div>
+                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">I've Lost 20 Pounds While Taking
+                    Floraspring!</h3>
+                  <p class="">
+                    I feel like my body weight is definitely better. I've lost about 20 pounds while taking Floraspring
+                    and I'm just feeling more energy, feeling slimmer, feeling like my curves are back, which is awesome!
+                    My cravings? Gone. Floraspring has affected my cravings in a very positive way…More than anything
+                    else, Floraspring has definitely made me feel more confident because it's helped me lose the weight,
+                    which has helped me get my curves back and just helped me really feel better about myself.
+                  </p>
+                  <div class="font-semibold title text-fs-blue mt-4">Christina D., Brooklyn NY</div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class=" flex flex-col items-center">
+                  
+                  <div class="flex inline-flex items-center stars">
+                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
+                      alt="5 stars">
+                  </div>
+                  <div class="inline-flex text-sm text-fs-blue uppercase">
+                    <div class="icons badge-check mr-2"></div> Verified buyer |
+                    <?php echo date('F d, Y', strtotime($today. ' - 4 days')); ?>
+                  </div>
+                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">Wearing smaller clothes that wouldn't zip
+                    up before!</h3>
+                  <p class="">
+                    After taking Floraspring, I felt that my cravings weren't as strong as they were before. I started
+                    making healthier choices with my breakfast...I started making better choices with lunch and dinner and
+                    exercising more because I started feeling better about myself because I wasn't craving those
+                    sweets...I've actually gone in the closet and found things that I thought I would never wear again or
+                    dresses that wouldn't zip up, and I just hid in the back of the closet… and now I'm wearing those
+                    smaller clothes again and they look great on me!
+                  </p>
+                  <div class="font-semibold title text-fs-blue mt-4">Lisa M., Fresno CA</div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class=" flex flex-col items-center">
+                  
+                  <div class="flex inline-flex items-center stars">
+                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
+                      alt="5 stars">
+                  </div>
+                  <div class="inline-flex text-sm text-fs-blue uppercase">
+                    <div class="icons badge-check mr-2"></div> Verified buyer |
+                    <?php echo date('F d, Y', strtotime($today. ' - 7 days')); ?>
+                  </div>
+                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">Great Results!</h3>
+                  <p class="">
+                    How to use it: for about 3 months I believe that I've lost about twenty pounds of not water but fat.
+                    I know that it cleaned my body out! I felt so much lighter and so much better. You still need to
+                    follow and maintain a good diet.
+                  </p>
+                  <div class="font-semibold title text-fs-blue mt-4">Susan G., St. Louis, MS</div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class=" flex flex-col items-center">
+                  
+                  <div class="flex inline-flex items-center stars">
+                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
+                      alt="5 stars">
+                  </div>
+                  <div class="inline-flex text-sm text-fs-blue uppercase">
+                    <div class="icons badge-check mr-2"></div> Verified buyer |
+                    <?php echo date('F d, Y', strtotime($today. ' - 8 days')); ?>
+                  </div>
+                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">Works For Me!</h3>
+                  <p class="">
+                    I would tell them that it works for me and that I lost 7 pounds in 2 weeks. And that you are given 3
+                    free sugar-free chocolate bars that have probiotics in them, which also helps you lose weight!
+                  </p>
+                  <div class="font-semibold title text-fs-blue mt-4">Lea M., Tulsa, OK</div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
         </div>
       </section>
-      <?php endif; ?>
     </div>
 
   </div>
@@ -439,7 +500,7 @@ $today = date("F d, Y"); // for testimonials
   <!-- /process-up/?pid=#&buy=1&next=url -->
   <input type="hidden" name="previous_page" value="/checkout/flora-new">
   <input type="hidden" name="current_page" value="/checkout/onepage-new">
-  <input type="hidden" name="next_page" value="/up/extra-bottles">
+  <input type="hidden" name="next_page" value="/thank-you">
   <input type="hidden" name="product_id" id='product_id' value="<?php echo $_SESSION['pid']; ?>">
   <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
   <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
@@ -465,24 +526,24 @@ $today = date("F d, Y"); // for testimonials
   <input type="hidden" name="eftid" id="eftid" value="<?php echo @$_SESSION['eftid']; ?>">
   <input type="hidden" name="sessionId" value="<?php echo @$kount_session; ?>">
   <input type="hidden" name="fid" id="fid" value="<?php echo @$formID; ?>" class="hidden" />
-  <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo @$site['campaign']; ?>"
+  <input type="hidden" name="campaign_id" id="campaign_id" value="<?php echo @$site['campaign']; ?>">
 </form>
 
 <footer>
-    <div class="flex flex-col w-full justify-center items-center border-t-4 border-rpt-blue-1 bg-white">
+    <div class="flex flex-col w-full justify-center items-center border-t-4 border-fs-blue bg-white">
       <div class="py-11">
         <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/logo-rp.png" alt="revival point logo"
           style="max-width: 220px">
       </div>
-      <div class="flex justify-center w-full text-center bg-rpt-blue-1 text-white py-8 md:py-4 font-semibold">
+      <div class="flex justify-center w-full text-center bg-fs-blue text-white py-8 md:py-4 font-light">
         For Help Ordering Call &nbsp;<a href="tel:<?= $company['phone_specialist']; ?>"><?= $company['phone_specialist']; ?></a>
       </div>
       <div class="py-11 text-sm text-gray-500 text-center px-4">
-        <p class="mb-11 mx-auto" style="max-width: 100ch">Dr. Steven Masley is a hired consultant for and endorser of
+        <p class="mb-11 mx-auto" style="max-width: 90ch">Dr. Steven Masley is a hired consultant for and endorser of
           Floraspring. The product is not created by Dr. Masley and Dr. Masley does not work for Revival Point LLC, the
           company that has developed Floraspring. These statements have not been evaluated by the Food and Drug
           Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
-          <p>© <?= $company['name']; ?> <?= date("Y"); ?>. All Rights Reserved <?= $company['address1']; ?>, <?= $company['city']; ?>, <?= $company['state']; ?> <?= $company['zip']; ?></p>
+        <p>© <?= $company['name']; ?> <?= date("Y"); ?>. All Rights Reserved <?= $company['address1']; ?>, <?= $company['city']; ?>, <?= $company['state']; ?> <?= $company['zip']; ?></p>
         <div class="flex justify-center">
           <?php legalLinks("includes/legalLinks");?>
         </div>
@@ -492,18 +553,23 @@ $today = date("F d, Y"); // for testimonials
   </footer>
 
 
-
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <!-- included once for multiple address conponents -->
 <script>
   if(typeof window.google !== 'object' && typeof window.google?.maps !== 'object') {
     const newScript = document.createElement("script");
-    newScript.setAttribute('defer','');
+    newScript.src = 'https://maps.googleapis.com/maps/api/js?key=' + '<?= $site['gmapsApi']; ?>' + '&loading=async&libraries=places&callback=initAutoComplete';
+    newScript.loading = 'async';
     document.head.appendChild(newScript);
-    newScript.src = 'https://maps.googleapis.com/maps/api/js?key=' + '<?= $site['gmapsApi']; ?>' + '&libraries=places&callback=initAutoComplete';
   }
 </script>
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/location-cp.js"></script>
+<!--KOUNT PIXEL-->
+<iframe width=1 height=1 frameborder=0 scrolling=no
+  src="https://gdc.sticky.io/pixel.php?t=htm&campaign_id=1&sessionId=<?= $kount_session ?>">
+  <img width=1 height=1 src="https://gdc.sticky.io/pixel.php?t=gif&campaign_id=1&sessionId=<?= $kount_session ?>>" />
+</iframe>
+<!--/KOUNT PIXEL-->
 <script>
   window.onload = function() {
     const placeholderElements = document.querySelectorAll('.input input');
@@ -554,7 +620,6 @@ $today = date("F d, Y"); // for testimonials
     })
 
     form.addEventListener("input", function() {
-      // a good place to look for all input events
       if (firstSubmit) {
         handleValidation();
       }
@@ -601,6 +666,7 @@ $today = date("F d, Y"); // for testimonials
         const errorElement = document.querySelector('#cc-input-wrap ~ div.pristine-error');
         const parentWrap = document.querySelector('.input.has-danger');
         let isCCValid = creditInput.dataset.valid;
+        console.log('valid cc', typeof creditInput.dataset.valid, creditInput.dataset.valid);
         // manually add and remove error message
         if (isCCValid == 'true') {
           creditInput.pristine.errors = [];
@@ -692,16 +758,14 @@ $today = date("F d, Y"); // for testimonials
   const ccMonthOptionsGroup = document.getElementById('cc-exp-month-options');
   const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   var selectedMonthValue = ccMonthOptionsGroup.children[0].value;
-  var currentYear = new Date().getFullYear().toString();
   ccYear.addEventListener('change', ()=> {
+    let currentYear = new Date().getFullYear().toString();
     if (currentYear.includes(ccYear.value)) {
       remainingMonths();
     } else {
       updateMonthOptions(months);
     }
   })
-  ccYear.selectedIndex = 1;
-  remainingMonths();
 
   ccMonth.addEventListener('change', ()=> {
     selectedMonthValue = ccMonth.value;
@@ -751,7 +815,7 @@ $today = date("F d, Y"); // for testimonials
 
   // values are updated by bill Country State Zip
   var taxData = {
-    "campaign_id": <?= $site['campaign']; ?>,
+    "campaign_id": 5,
     "shipping_id": 5,
     "use_tax_provider": 1,
     "products": [{
@@ -783,6 +847,7 @@ $today = date("F d, Y"); // for testimonials
     if (taxData.shipping_id !== <?= $site['shippingFree']; ?> && shippingCountry !== 'US') {
       taxData.shipping_id = <?= $site['shippingIntl']; ?>;
     }
+    document.getElementById('shippingId').value = taxData.shipping_id;
     console.log('submit taxes: ', taxData);
     
     fetch('https://gdc.sticky.io/api/v2/order_total/calculate', {
