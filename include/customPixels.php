@@ -249,9 +249,9 @@ switch ($pageType) {
 
             window.addEventListener("DOMContentLoaded", (event) => {
                 // Get specific input elements by ID
-                const firstName = document.getElementById('FirstName');
-                const lastName = document.getElementById('LastName');
-                const email = document.getElementById('Email');
+                const firstName = document.getElementById('first-name');
+                const lastName = document.getElementById('last-name');
+                const email = document.getElementById('email');
 
                 // Add event listener to each specific input
                 firstName.addEventListener('change', inputsChanged);

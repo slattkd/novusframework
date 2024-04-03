@@ -105,6 +105,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1245"
         },
         "1246": {
@@ -121,6 +122,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1246"
         },
         "1524": {
@@ -138,6 +140,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1524"
         },
         "1525": {
@@ -155,6 +158,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1525"
         },
         "1526": {
@@ -172,6 +176,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1526"
         },
         "1527": {
@@ -189,6 +194,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1527"
         },
         "1235": {
@@ -205,6 +211,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1235"
         },
         "1234": {
@@ -221,6 +228,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1234"
         },
         "1253": {
@@ -238,6 +246,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1253"
         },
         "1254": {
@@ -255,6 +264,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1254"
         },
         "1249": {
@@ -272,6 +282,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1249"
         },
         "1251": {
@@ -289,6 +300,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1251"
         },
         "1255": {
@@ -306,6 +318,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1255"
         },
         "1256": {
@@ -323,6 +336,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1256"
         },
         "1257": {
@@ -340,6 +354,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1257"
         },
         "1258": {
@@ -357,6 +372,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1258"
         },
         "1136": {
@@ -373,6 +389,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1136",
             "core": "1"
         },
@@ -390,6 +407,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1137",
             "core": "3"
         },
@@ -407,6 +425,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1138",
             "core": "6"
         },
@@ -424,6 +443,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1139",
             "core": "1v"
         },
@@ -441,6 +461,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1141",
             "core": "3v"
         },
@@ -458,6 +479,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1143",
             "core": "6v"
         },
@@ -475,6 +497,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1083",
             "core": "1"
         },
@@ -492,6 +515,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1084",
             "core": "3"
         },
@@ -509,6 +533,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1085",
             "core": "6"
         },
@@ -526,6 +551,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1086",
             "core": "1v"
         },
@@ -543,6 +569,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1088",
             "core": "3v"
         },
@@ -560,6 +587,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1090",
             "core": "6v"
         },
@@ -577,6 +605,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1147"
         },
         "1259": {
@@ -593,6 +622,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1259"
         },
         "1260": {
@@ -610,6 +640,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1260"
         },
         "1261": {
@@ -627,6 +658,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1261"
         },
         "1148": {
@@ -643,6 +675,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1148"
         },
         "775": {
@@ -659,6 +692,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "775"
         },
         "951": {
@@ -675,6 +709,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "951"
         },
         "1262": {
@@ -691,6 +726,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1262"
         },
         "1263": {
@@ -708,6 +744,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1263"
         },
         "1264": {
@@ -725,6 +762,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1264"
         },
         "1652": {
@@ -741,6 +779,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1652"
         },
         "1660": {
@@ -758,6 +797,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1660"
         },
         "1632": {
@@ -775,6 +815,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 1,
             "product_id": "1632"
         },
         "1489": {
@@ -791,6 +832,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1489",
             "core": "1"
         },
@@ -808,6 +850,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1490",
             "core": "3"
         },
@@ -825,6 +868,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1491",
             "core": "6"
         },
@@ -842,6 +886,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1492",
             "core": "1v"
         },
@@ -859,6 +904,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1494",
             "core": "3v"
         },
@@ -876,6 +922,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1496",
             "core": "6v"
         },
@@ -893,6 +940,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1498",
             "core": "1"
         },
@@ -910,6 +958,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1499",
             "core": "3"
         },
@@ -927,6 +976,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1500",
             "core": "6"
         },
@@ -944,6 +994,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1501",
             "core": "1v"
         },
@@ -961,6 +1012,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1503",
             "core": "3v"
         },
@@ -978,6 +1030,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1505",
             "core": "6v"
         },
@@ -995,6 +1048,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1628"
         },
         "1629": {
@@ -1011,6 +1065,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1629"
         },
         "1630": {
@@ -1028,6 +1083,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1630"
         },
         "1631": {
@@ -1045,6 +1101,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1631"
         },
         "1718": {
@@ -1061,6 +1118,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1718",
             "core": "1"
         },
@@ -1078,6 +1136,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1719",
             "core": "3"
         },
@@ -1095,6 +1154,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1720",
             "core": "6"
         },
@@ -1112,6 +1172,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1721",
             "core": "1v"
         },
@@ -1129,6 +1190,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1723",
             "core": "3v"
         },
@@ -1146,6 +1208,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1725",
             "core": "6v"
         },
@@ -1163,6 +1226,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1727",
             "core": "1"
         },
@@ -1180,6 +1244,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1728",
             "core": "3"
         },
@@ -1197,6 +1262,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1729",
             "core": "6"
         },
@@ -1214,6 +1280,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1730",
             "core": "1v"
         },
@@ -1231,6 +1298,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1732",
             "core": "3v"
         },
@@ -1248,6 +1316,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1734",
             "core": "6v"
         },
@@ -1265,6 +1334,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1799",
             "core": "1"
         },
@@ -1282,6 +1352,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1800",
             "core": "3"
         },
@@ -1299,6 +1370,7 @@
             "product_is_shippable": "1",
             "product_max_quantity": "999999",
             "cost_of_goods_sold": "",
+            "product_is_sub": 0,
             "product_id": "1801",
             "core": "6"
         }

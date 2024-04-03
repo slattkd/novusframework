@@ -18,12 +18,18 @@ $pid = $_SESSION['pid'];
 $product = $products['products'][$pid];
 
 $product_upsell = null;
-$upsell_pid = !$product['product_is_sub'] ? $products['upsell'][$pid] : null;
+if (!isset($product['product_is_sub'])) {
+  $product['product_is_sub'] = 0;
+}
+$upsell_pid = !$product['product_is_sub'] 
+  ? $products['upsell'][$pid] 
+  : null;
 if ($upsell_pid ) {
   $product_upsell = $products['products'][$upsell_pid];
 }
 $product_json = json_encode($product);
 $product_upsell_json = $product_upsell ? json_encode($product_upsell) : null;
+
 
 // TODO: handle for multiple products
 $multiple_products = [$pid, 130, 811];
@@ -37,13 +43,13 @@ $shippingId = $product['product_ship'] > 0 ? $site['shippingUs'] : $site['shippi
 
 switch ($product['product_qty']) {
   case 1:
-      $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/fs-new/FS-1-bottle-sm.png";
+      $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/tbb-1bottle.png";
       break;
   case 3:
-      $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/fs-new/FS-3-bottle-sm.png";
+      $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/tbb-3bottles.png";
       break;
   case 6:
-      $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/fs-new/FS-6-bottle-sm.png";
+      $product_image = "//" . $_SERVER['HTTP_HOST'] . "/images/tbb-6bottles.png";
       break;
 }
 
@@ -58,30 +64,55 @@ $today = date("F d, Y"); // for testimonials
   <?php template("includes/header"); ?>
   <title><?php echo $company['billedAs']; ?> - Secure Checkout</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
-
   <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 
+  <script type="module" src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
+
   <style>
+
+  @font-face {
+      font-family: 'Nexa';
+      src: url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/Nexa.woff2') format('woff2'),
+          url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/Nexa.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Nexa-Light';
+      src: url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaLight.woff2') format('woff2'),
+          url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaLight.woff') format('woff');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Nexa-Bold';
+      src: url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaBold.woff2') format('woff2'),
+          url('//<?= $_SERVER['HTTP_HOST']; ?>/fonts/NexaBold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+  }
     body {
       position: relative;
       max-height: 100vh;
       max-width: 100vw;
       overflow-y: auto;
       overflow-x: hidden;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
+      font-family: 'Nexa-Light', sans-serif;
+      font-weight: normal;
       font-size: 16px;
       line-height: 1.5;
     }
 
     .title {
-      font-family: 'Anonymous Pro', monospace !important;
+      font-family: 'Nexa', monospace !important;
     }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1025px) {
       .bg-split {
         background-image: linear-gradient(to right,
             #fff,
@@ -167,81 +198,92 @@ $today = date("F d, Y"); // for testimonials
     }
 
     ::placeholder {
-      color: gray !important;
+      color: #aaa !important;
+      font-weight: 400;
       opacity: 1; /* Firefox */
     }
 
     ::-ms-input-placeholder { /* Edge 12 -18 */
-      color: gray !important;
+      color: #aaa !important;
+      font-weight: 400;
+    }
+    input {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .has-danger {
+      margin-bottom: 0;
     }
   </style>
 </head>
 
 <body class="bg-split">
-  <div class="flex justify-center bg-fs-blue-dark py-4">
-    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/logo-rp-inv.png" alt="revival point logo"
+  <div class="flex justify-center bg-rpt-blue-1 py-4">
+    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-logo-light-trans.png" alt="revival point logo"
       style="width:auto; height:30px">
   </div>
 
-  <div class="container container-md mx-auto flex flex-wrap md:flex-nowrap justify-center mobile-column">
+  <div class="container container-md mx-auto flex flex-wrap lg:flex-nowrap justify-center mobile-column">
     
     <!-- First Column -->
-    <div class="w-full w-full md:w-1/2 p-4 md:p-8 md:max-w-lg">
-      <section class="hidden">
-        <h2 class="text-lg font-semibold mb-3">Express Checkout</h2>
-        <div class="flex flex-wrap justify-center">
-          <button class="m-1 hover:bg-gray-100 border px-4 rounded clickable">
-            <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/pay-logo-apple.png" alt="" class="mix-blend-multiply">
-          </button>
-          <button class="m-1 hover:bg-gray-100 border px-4 rounded clickable">
-            <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/pay-logo-amazon.png" alt="" class="mix-blend-multiply">
-          </button>
-          <button class="m-1 hover:bg-gray-100 border px-4 rounded clickable">
-            <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/pay-logo-google.png" alt="" class="mix-blend-multiply">
-          </button>
-          <button class="m-1 hover:bg-gray-100 border px-4 rounded clickable">
-            <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/pay-logo-affirm.png" alt="" class="mix-blend-multiply">
-          </button>
-        </div>
-      </section>
-
-      <div class="hr-break my-6"><div class="py-2 px-3 text-sm text-gray-400 bg-white z-10">OR</div></div>
+    <div class="w-full lg:w-1/2 p-4 lg:p-8 lg:min-w-[50%] lg:max-w-[50%]">
 
       <!-- start of form -->
 <form action="//<?= $_SERVER['HTTP_HOST']; ?>/process.php" method='POST' id="order-form" onsubmit="return false;">
 
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-semibold mb-1">Contact</h2>
+        <h2 class="text-lg font-bold mb-1">Contact</h2>
         <div class="input w-full mb-0 ">
           <div class="w-full z-10 invisible">
             <label for="email" class="text-sm text-gray-600 hidden md:block rounded">Email</label>
           </div>
-          <input id="email" name="email" data-pristine-type="email"
+          <input id="email" name="email"
+            placeholder="Email"
+            data-valid="false"
+            data-pristine-type="email"
             data-pristine-email-message="Not a valid email"
-            placeholder="Email" class="w-full p-2 rounded border" required>
+            required
+            data-pristine-required-message="Email is required"
+            class="flex p-2 rounded border border-gray-300">
         </div>
+
         <div class="input w-full ">
           <div class="w-full z-10 invisible">
             <label for="phone" class="text-sm text-gray-600 hidden md:block rounded">Phone</label>
           </div>
-          <input id="phone" name="phone" type="text" placeholder="Phone (optional)" class="w-full p-2 rounded border">
+          <input id="phone" name="phone" type="text" placeholder="Phone" required
+            data-pristine-required-message="Phone is required" 
+            class="flex p-2 rounded border border-gray-300">
+        </div>
+
+        <div class="flex flex-nowrap items-start w-full mt-4">
+            <label class="flex items-center clickable">
+              <input type="checkbox" name="joinTextAlerts" id="join-text-alerts" class="mr-2">
+              Join Revival Point text alerts to get the latest news and offers.
+            </label>
         </div>
       </section>
 
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-semibold mb-1">Billing</h2>
-        <div class="flex mb-0">
-          <div class="input w-1/2 pr-2">
+        <h2 class="text-lg font-bold mb-1">Billing</h2>
+        <div class="flex w-available mb-0">
+          <div class="input w-full w-1/2 pr-2">
             <div class="w-full z-10 invisible">
               <label for="first-name" class="text-sm text-gray-600 hidden md:block rounded">First Name</label>
             </div>
-            <input id="first-name" name="firstName" type="text" placeholder="First Name" class="w-full p-2 rounded border" required>
+            <input id="first-name" name="firstName" type="text" placeholder="First Name" class="flex p-2 rounded border border-gray-300" 
+              required
+              data-pristine-required-message="First Name is required"
+              >
           </div>
-          <div class="input w-1/2 pl-2">
+          <div class="input w-full w-1/2 pl-2">
             <div class="w-full z-10 invisible">
               <label for="last-name" class="text-sm text-gray-600 hidden md:block rounded">Last Name</label>
             </div>
-            <input id="last-name" name="lastName" type="text" placeholder="Last Name" class="w-full p-2 rounded border" required>
+            <input id="last-name" name="lastName" type="text" placeholder="Last Name" class="flex p-2 rounded border border-gray-300" 
+              required
+              data-pristine-required-message="Last Name is required"
+              >
           </div>
         </div>
         <div class="flex relative">
@@ -250,27 +292,27 @@ $today = date("F d, Y"); // for testimonials
       </section>
 
       <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-semibold mb-2">Shipping</h2>
-        <label class="flex items-center">
+        <h2 class="text-lg font-bold mb-2">Shipping</h2>
+        <label class="flex items-center clickable">
           <input id="bill-same" type="checkbox" class="mr-2" checked>
           Shipping address same as Billing
         </label>
         <div id="shipping-container" class="flex w-full hidden">
-          <div class="flex relative">
+          <div class="flex w-full relative">
           <?php address("includes/addressSimple", 'shipping', 1);?>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 class="text-lg font-semibold mb-1">Payment</h2>
+        <h2 class="text-lg font-bold mb-1">Payment</h2>
         <p class="mb-5">All purchases are secured and encrypted.</p>
         <div class="flex mb-3">
         <?php creditCardInput("includes/creditCardInput", 'credit-card');?>
         </div>
-        <div class="flex w-full -mt-3">
-          <div class="w-1/3 mr-3 mt-[20px]">
-            <select id="cc-exp-month" name="expMonth" class="w-full p-2 rounded border" style="padding:0.6rem" placeholder="Exp. Month">
+        <div class="flex w-full items-center -mt-3">
+          <div class="input w-full w-1/3 mr-3 mt-[20px]">
+            <select id="cc-exp-month" name="expMonth" class="flex p-2 py-3.5 rounded border border-gray-300" style="padding:0.6rem" placeholder="Exp. Month">
               <!-- Options for Exp. Month -->
               <optgroup id="cc-exp-month-options" label="Exp. Month">
               <?php 
@@ -282,8 +324,8 @@ $today = date("F d, Y"); // for testimonials
               </optgroup>
             </select>
           </div>
-          <div class="w-1/3 mr-3 mt-[20px]">
-            <select id="cc-exp-year" name="expYear" class="w-full p-2 rounded border" style="padding:0.6rem" placeholder="Exp. Day">
+          <div class="input w-full w-1/3 mr-3 mt-[20px]">
+            <select id="cc-exp-year" name="expYear" class="flex p-2 py-3.5 rounded border border-gray-300" style="padding:0.6rem" placeholder="Exp. Day">
               <!-- Options for Exp. Day -->
               <option class="text-gray-300" value="" disabled>Exp. Year</option>
               <?php 
@@ -295,23 +337,33 @@ $today = date("F d, Y"); // for testimonials
               ?>
             </select>
           </div>
-          <div class="input w-1/3">
+          <div class="input w-full w-1/3">
             <div class="w-full z-10 invisible">
               <label for="cvv" class="text-sm text-gray-600 hidden md:block rounded">CVV#</label>
             </div>
-            <input id="cvv" name="cvv" class="w-full p-2 rounded border" placeholder="CVV#"
+            <input id="cvv" name="cvv" class="flex p-2 rounded border border-gray-300" placeholder="CVV#"
               data-pristine-minlength-message="Too short"
-              minlength="3" maxlength="4" required></input>
+              minlength="3" maxlength="4"
+              required
+              data-pristine-required-message="CVV is required"
+              ></input>
           </div>
+        </div>
+        <button id="submit-btn" class="w-full mt-6 py-2 pt-3 px-8 bg-greenish text-white border border-greenish clickable text-xl rounded-full uppercase font-bold title mt-8">
+          Secure My Order
+        </button>
+        <div class="flex justify-center mt-3">
+        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/securites.png" alt="norton securities" style="max-width: 320px;">
         </div>
       </section>
     </div>
 
     <!-- Second Column -->
-    <div class="w-full w-full md:w-1/2 p-4 md:p-8 md:max-w-lg">
-      <section class="mb-6 md:mb-11">
-        <h2 class="text-lg font-semibold mb-3">Order Summary</h2>
-        <?php if(!$product['product_is_sub']): ?>
+    <div class="w-full lg:w-1/2 p-4 lg:p-8 lg:max-w-[50%]">
+      <section class="mb-6 md:mb-8">
+        <h2 class="text-lg font-bold mb-3">Order Summary</h2>
+
+        <?php if($product_upsell): ?>
         <div id="subscribe" class="flex justify-between items-center flex-nowrap  bg-white title rounded border py-2 px-2 md:px-4 mb-4">
           <div class="flex justify-center items-center text-center">
             <input id="sub" type="checkbox" value="1"
@@ -322,16 +374,16 @@ $today = date("F d, Y"); // for testimonials
               Subscribe monthly for 10% OFF <br class="hidden lg:block">+ <strong>FREE</strong> Bottle of Vitamin D3
             </label>
           </div>
-          <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/seal-d3.png" alt="guarantee seal" class="w-14 scale-x-110 pl-3">
+          <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/seal-d3.png" alt="guarantee seal" class="w-14 scale-x-110 pl-3">
         </div>
         <?php endif; ?>
+
         <div class="flex justify-between items-center mb-4">
           <div class="flex items-center">
-            <div class="product-image bg-white w-12 h-12 border mr-3">
+            <div class="product-image w-12 mr-3">
               <img src="<?= $product_image; ?>" alt="product image">
             </div>
-            <div class="text-sm"><?= $product['product_description']; ?>
-              <span id="product-sub"><?= $product['product_is_sub'] ? ' - subscription' : ''?></span>
+            <div id="product-description" class="text-sm"><?= $product['product_description']; ?>
             </div>
           </div>
           <div class="flex flex-col justify-center text-right">
@@ -355,19 +407,17 @@ $today = date("F d, Y"); // for testimonials
             <p class="font-bold mt-3 text-right">$<span id="total-amt"><?= number_format($total, 2); ?></span></p>
           </div>
         </div>
-        <button id="submit-btn" class="title bg-fs-blue clickable w-full text-xl text-center text-white px-4 py-2 mt-4 rounded">Complete Purchase</button>
-        <div class="flex justify-center mt-6">
-        <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/securites.png" alt="norton securities" style="max-width: 320px;">
-        </div>
       </section>
 
       <hr class="my-6">
 
+      <?php if (isset($reviews)): ?>
       <section>
         <div class="slider-container mt-6">
-          <div id="slider-testimonials" class="splide max-w-full md:max-w-screen-sm xl:max-w-screen-md mx-auto mb-16" role="group">
+          <div id="slider-testimonials" class="splide w-full max-w-[100%] mx-auto mb-16" role="group">
           <div class="splide__track">
             <ul class="splide__list">
+              <?php foreach($reviews['reviews'] as $obj): ?>
               <li class="splide__slide">
                 <div class=" flex flex-col items-center">
                   
@@ -378,129 +428,31 @@ $today = date("F d, Y"); // for testimonials
                   <div class="inline-flex text-sm text-fs-blue uppercase">
                     <div class="icons badge-check mr-2"></div> Verified buyer | <?php echo date('F d, Y'); ?>
                   </div>
-                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">I would definitely recommend Floraspring to
-                    others!</h3>
+                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">
+                    <?= $obj['title']; ?>
+                  </h3>
                   <p class="">
-                    Now, since I started taking Floraspring, what has happened is all the bloating has gone away! I'm
-                    losing weight… still have a few pounds to go, but that's okay and my energy is through the roof! I
-                    have no idea how one little change to your intestines can do all that… but the fact is, Floraspring
-                    has worked! My health is so much better because of using Floraspring for a lot of reasons. First of
-                    all, I've lost some weight, which most of us can afford to do, and that always adds to your health.
+                  <?= $obj['copy']; ?>
                   </p>
-                  <p class="">
-                    I'm less bloated, I'm more regular, and I have a lot more energy.
-                    All of this adds up to better health and feeling better about myself!...
-                    I would definitely recommend Floraspring to others!
-                  </p>
-                  <div class="font-semibold title text-fs-blue mt-4">Lina S., Austin TX</div>
+                  <div class="font-semibold title text-fs-blue mt-4"><?= $obj['name']; ?>, <?= $obj['location']; ?></div>
                 </div>
               </li>
-              <li class="splide__slide">
-                <div class=" flex flex-col items-center">
-                  
-                  <div class="flex inline-flex items-center stars">
-                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
-                      alt="5 stars">
-                  </div>
-                  <div class="inline-flex text-sm text-fs-blue uppercase">
-                    <div class="icons badge-check mr-2"></div> Verified buyer |
-                    <?php echo date('F d, Y', strtotime($today. ' - 1 days')); ?>
-                  </div>
-                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">I've Lost 20 Pounds While Taking
-                    Floraspring!</h3>
-                  <p class="">
-                    I feel like my body weight is definitely better. I've lost about 20 pounds while taking Floraspring
-                    and I'm just feeling more energy, feeling slimmer, feeling like my curves are back, which is awesome!
-                    My cravings? Gone. Floraspring has affected my cravings in a very positive way…More than anything
-                    else, Floraspring has definitely made me feel more confident because it's helped me lose the weight,
-                    which has helped me get my curves back and just helped me really feel better about myself.
-                  </p>
-                  <div class="font-semibold title text-fs-blue mt-4">Christina D., Brooklyn NY</div>
-                </div>
-              </li>
-              <li class="splide__slide">
-                <div class=" flex flex-col items-center">
-                  
-                  <div class="flex inline-flex items-center stars">
-                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
-                      alt="5 stars">
-                  </div>
-                  <div class="inline-flex text-sm text-fs-blue uppercase">
-                    <div class="icons badge-check mr-2"></div> Verified buyer |
-                    <?php echo date('F d, Y', strtotime($today. ' - 4 days')); ?>
-                  </div>
-                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">Wearing smaller clothes that wouldn't zip
-                    up before!</h3>
-                  <p class="">
-                    After taking Floraspring, I felt that my cravings weren't as strong as they were before. I started
-                    making healthier choices with my breakfast...I started making better choices with lunch and dinner and
-                    exercising more because I started feeling better about myself because I wasn't craving those
-                    sweets...I've actually gone in the closet and found things that I thought I would never wear again or
-                    dresses that wouldn't zip up, and I just hid in the back of the closet… and now I'm wearing those
-                    smaller clothes again and they look great on me!
-                  </p>
-                  <div class="font-semibold title text-fs-blue mt-4">Lisa M., Fresno CA</div>
-                </div>
-              </li>
-              <li class="splide__slide">
-                <div class=" flex flex-col items-center">
-                  
-                  <div class="flex inline-flex items-center stars">
-                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
-                      alt="5 stars">
-                  </div>
-                  <div class="inline-flex text-sm text-fs-blue uppercase">
-                    <div class="icons badge-check mr-2"></div> Verified buyer |
-                    <?php echo date('F d, Y', strtotime($today. ' - 7 days')); ?>
-                  </div>
-                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">Great Results!</h3>
-                  <p class="">
-                    How to use it: for about 3 months I believe that I've lost about twenty pounds of not water but fat.
-                    I know that it cleaned my body out! I felt so much lighter and so much better. You still need to
-                    follow and maintain a good diet.
-                  </p>
-                  <div class="font-semibold title text-fs-blue mt-4">Susan G., St. Louis, MS</div>
-                </div>
-              </li>
-              <li class="splide__slide">
-                <div class=" flex flex-col items-center">
-                  
-                  <div class="flex inline-flex items-center stars">
-                    <img class="scale-75 mb-2 title" src="//<?= $_SERVER["HTTP_HOST"];?>/images/order-boost/5_stars.png"
-                      alt="5 stars">
-                  </div>
-                  <div class="inline-flex text-sm text-fs-blue uppercase">
-                    <div class="icons badge-check mr-2"></div> Verified buyer |
-                    <?php echo date('F d, Y', strtotime($today. ' - 8 days')); ?>
-                  </div>
-                  <h3 class="title text-2xl text-fs-blue font-semibold my-6 text-center uppercase">Works For Me!</h3>
-                  <p class="">
-                    I would tell them that it works for me and that I lost 7 pounds in 2 weeks. And that you are given 3
-                    free sugar-free chocolate bars that have probiotics in them, which also helps you lose weight!
-                  </p>
-                  <div class="font-semibold title text-fs-blue mt-4">Lea M., Tulsa, OK</div>
-                </div>
-              </li>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
         </div>
       </section>
+      <?php endif; ?>
     </div>
 
   </div>
 
-
-
-
-
-
-
   <!-- hidden inputs -->
   <!-- /process-up/?pid=#&buy=1&next=url -->
-  <input type="hidden" name="previous_page" value="/checkout/flora-new">
-  <input type="hidden" name="current_page" value="/checkout/onepage-new">
-  <input type="hidden" name="next_page" value="/thank-you">
+  <input type="hidden" name="previous_page" value="/checkout/order">
+  <input type="hidden" name="current_page" value="/checkout/step1-tbb41159625v1">
+  <input type="hidden" name="next_page" value="/up/upsell-1">
   <input type="hidden" name="product_id" id='product_id' value="<?php echo $_SESSION['pid']; ?>">
   <input type="hidden" name="form_id" value="step_<?php echo @$_SESSION['s']; ?>">
   <input type="hidden" name="step" value="<?php echo @$_SESSION['s']; ?>">
@@ -530,20 +482,20 @@ $today = date("F d, Y"); // for testimonials
 </form>
 
 <footer>
-    <div class="flex flex-col w-full justify-center items-center border-t-4 border-fs-blue bg-white">
+    <div class="flex flex-col w-full justify-center items-center border-t-4 border-rpt-blue-1 bg-white">
       <div class="py-11">
-        <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/logo-rp.png" alt="revival point logo"
+        <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/logo-rp.png" alt="revival point logo"
           style="max-width: 220px">
       </div>
-      <div class="flex justify-center w-full text-center bg-fs-blue text-white py-8 md:py-4 font-light">
+      <div class="flex justify-center w-full text-center bg-rpt-blue-1 text-white py-8 md:py-4 font-semibold">
         For Help Ordering Call &nbsp;<a href="tel:<?= $company['phone_specialist']; ?>"><?= $company['phone_specialist']; ?></a>
       </div>
       <div class="py-11 text-sm text-gray-500 text-center px-4">
-        <p class="mb-11 mx-auto" style="max-width: 90ch">Dr. Steven Masley is a hired consultant for and endorser of
-          Floraspring. The product is not created by Dr. Masley and Dr. Masley does not work for Revival Point LLC, the
-          company that has developed Floraspring. These statements have not been evaluated by the Food and Drug
+        <p class="mb-11 mx-auto" style="max-width: 100ch">Dr. Steven Masley is a hired consultant for and endorser of
+          <?= $company ['featuredProduct']; ?>. The product is not created by Dr. Masley and Dr. Masley does not work for Revival Point LLC, the
+          company that has developed <?= $company ['featuredProduct']; ?>. These statements have not been evaluated by the Food and Drug
           Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
-        <p>© <?= $company['name']; ?> <?= date("Y"); ?>. All Rights Reserved <?= $company['address1']; ?>, <?= $company['city']; ?>, <?= $company['state']; ?> <?= $company['zip']; ?></p>
+          <p>© <?= $company['name']; ?> <?= date("Y"); ?>. All Rights Reserved <?= $company['address1']; ?>, <?= $company['city']; ?>, <?= $company['state']; ?> <?= $company['zip']; ?></p>
         <div class="flex justify-center">
           <?php legalLinks("includes/legalLinks");?>
         </div>
@@ -553,11 +505,13 @@ $today = date("F d, Y"); // for testimonials
   </footer>
 
 
+
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <!-- included once for multiple address conponents -->
 <script>
   if(typeof window.google !== 'object' && typeof window.google?.maps !== 'object') {
     const newScript = document.createElement("script");
+    newScript.setAttribute('defer','');
     newScript.src = 'https://maps.googleapis.com/maps/api/js?key=' + '<?= $site['gmapsApi']; ?>' + '&loading=async&libraries=places&callback=initAutoComplete';
     newScript.loading = 'async';
     document.head.appendChild(newScript);
@@ -571,122 +525,121 @@ $today = date("F d, Y"); // for testimonials
 </iframe>
 <!--/KOUNT PIXEL-->
 <script>
-  window.onload = function() {
-    const placeholderElements = document.querySelectorAll('.input input');
-
-    // hide show input labels
-    placeholderElements.forEach(pl => {
-      pl.addEventListener('focus', ()=> {
-        pl.previousElementSibling.classList.add('fade-in-element');
-        pl.previousElementSibling.classList.remove('invisible');
-      })
-      pl.addEventListener('blur', ()=> {
-        if (!pl.value) {
-          pl.previousElementSibling.classList.add('invisible');
-          pl.previousElementSibling.classList.remove('fade-in-element');
-        }
-      })
+  const placeholderElements = document.querySelectorAll('.input input');
+  // hide show input labels
+  placeholderElements.forEach(pl => {
+    pl.addEventListener('focus', ()=> {
+      pl.previousElementSibling.classList.add('fade-in-element');
+      pl.previousElementSibling.classList.remove('invisible');
     })
-
-
-    // Prsitine Config
-    let defaultConfig = {
-      // class of the parent element where the error/success class is added
-      classTo: 'input',
-      errorClass: 'has-danger',
-      successClass: 'has-success',
-      // class of the parent element where error text element is appended
-      errorTextParent: 'input',
-      // type of element to create for the error text
-      errorTextTag: 'div',
-      // class of the error text element
-      errorTextClass: 'text-help text-redish font-medium text-sm'
-    };
-
-    var form = document.getElementById('order-form');
-    var pristine = new Pristine(form, defaultConfig);
-
-    var formValid = false;
-    var firstSubmit = false;
-
-    const submitBtn = document.getElementById('submit-btn');
-    submitBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      firstSubmit = true;
-      handleValidation();
-      if (firstSubmit && formValid) {
-        processForm();
+    pl.addEventListener('blur', ()=> {
+      if (!pl.value) {
+        pl.previousElementSibling.classList.add('invisible');
+        pl.previousElementSibling.classList.remove('fade-in-element');
       }
     })
+  })
 
-    form.addEventListener("input", function() {
-      if (firstSubmit) {
-        handleValidation();
-      }
-    });
-
-    function handleValidation() {
-      formValid = pristine.validate(); // returns true or false
-      console.log('form is valid: ', formValid);
-      if (!formValid) {
-        submitBtn.disabled = true;
-        <?php if($_SESSION['isMobile']): ?>
-          var firstError = document.querySelector('.has-danger');
-          firstError.scrollIntoView({
-            behavior: "smooth",
-            block: "end"
-          });
-        <?php endif; ?>
-      } else {
-        submitBtn.disabled = false;
-      }
-    }
-
-    function processForm() {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = "Processing...";
-      // remove spaces from CC masking
-      creditInput.value = creditInput.value.replace(/[\s]/g,'');
-      form.submit();
-
-      // After 10 seconds, reset form submit button
-      setTimeout(function(){
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Complete Purchase';
-      }, 10000);
-    }
-
-    // custom CC validation
-    // cardNumberTest function is on component script
-    const creditInput = document.getElementById('credit-card-input');
-    Pristine.addValidator(creditInput, function(value) {
-      // check data attribute valid after keyup
-      setTimeout(function(){
-        if (creditInput.pristine?.errors == undefined) creditInput.pristine.errors = [];
-        const errorElement = document.querySelector('#cc-input-wrap ~ div.pristine-error');
-        const parentWrap = document.querySelector('.input.has-danger');
-        let isCCValid = creditInput.dataset.valid;
-        console.log('valid cc', typeof creditInput.dataset.valid, creditInput.dataset.valid);
-        // manually add and remove error message
-        if (isCCValid == 'true') {
-          creditInput.pristine.errors = [];
-          creditInput.pristine.messages = {};
-          if (errorElement) { errorElement.classList.add('invisible'); }
-          return true;
-        }
-        if (errorElement) { errorElement.classList.remove('invisible'); }
-        return false;
-      }, 300);
-      return creditInput.dataset.valid === 'true';
-    }, "Not a valid credit card",1,false);
-
-
-    // slider
-    var splide = new Splide('.splide');
-    new Splide('#slider-testimonials').mount();
-
+  // Prsitine Config
+  let defaultConfig = {
+    // class of the parent element where the error/success class is added
+    classTo: 'input',
+    errorClass: 'has-danger',
+    successClass: 'has-success',
+    // class of the parent element where error text element is appended
+    errorTextParent: 'input',
+    // type of element to create for the error text
+    errorTextTag: 'div',
+    // class of the error text element
+    errorTextClass: 'text-help text-redish font-medium text-sm'
   };
 
+  var form = document.getElementById('order-form');
+  var pristine = new Pristine(form, defaultConfig);
+
+  var formValid = false;
+  var firstSubmit = false;
+
+  const submitBtn = document.getElementById('submit-btn');
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    firstSubmit = true;
+    handleValidation();
+    if (firstSubmit && formValid) {
+      processForm();
+    }
+  })
+
+  form.addEventListener("input", function() {
+    // a good place to look for all input events
+    if (firstSubmit) {
+      handleValidation();
+    }
+  });
+
+  function handleValidation() {
+    formValid = pristine.validate(); // returns true or false
+    console.log('form is valid: ', formValid);
+    if (!formValid) {
+      submitBtn.disabled = true;
+      <?php if($_SESSION['isMobile']): ?>
+        var firstError = document.querySelector('.has-danger');
+        firstError.scrollIntoView({
+          behavior: "smooth",
+          block: "end"
+        });
+      <?php endif; ?>
+    } else {
+      submitBtn.disabled = false;
+    }
+  }
+
+  function processForm() {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Processing...";
+    // remove spaces from CC masking
+    creditInput.value = creditInput.value.replace(/[\s]/g,'');
+    if (billingSame) {
+      copyBillingInputValue()
+    }
+    form.submit();
+
+    // After 10 seconds, reset form submit button
+    setTimeout(function(){
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Complete Purchase';
+    }, 10000);
+  }
+
+  // custom CC validation
+  // cardNumberTest function is on component script
+  // const creditInput = document.getElementById('credit-card-input');
+  Pristine.addValidator(creditInput, function(value) {
+    // check data attribute valid after keyup
+    setTimeout(function(){
+      if (creditInput.pristine?.errors == undefined) creditInput.pristine.errors = [];
+      const errorElement = document.querySelector('#cc-input-wrap ~ div.pristine-error');
+      const parentWrap = document.querySelector('.input.has-danger');
+      let isCCValid = creditInput.dataset.valid;
+      // manually add and remove error message
+      if (isCCValid == 'true') {
+        creditInput.pristine.errors = [];
+        creditInput.pristine.messages = {};
+        if (errorElement) { errorElement.classList.add('invisible'); }
+        return true;
+      }
+      if (errorElement) { errorElement.classList.remove('invisible'); }
+      return false;
+    }, 200);
+    return creditInput.dataset.valid === 'true';
+  }, "Not a valid credit card",1,false);
+
+
+  // slider
+  <?php if(!empty($reviews)): ?>
+  var splide = new Splide('.splide');
+  new Splide('#slider-testimonials').mount();
+  <?php endif; ?>
 
   const shippingContainer = document.getElementById('shipping-container');
   const billingSame = document.getElementById('bill-same');
@@ -714,6 +667,7 @@ $today = date("F d, Y"); // for testimonials
       document.getElementById('shippingCity').value = billingCity;
       let billingCountry = document.getElementById('billingCountry').value;
       document.getElementById('shippingCountry').value = billingCountry;
+      document.getElementById('shippingCountry').dispatchEvent(new Event('change'));
       let billingState = document.getElementById('billingState').value;
       document.getElementById('shippingState').value = billingState;
       let billingZip = document.getElementById('billingZip').value;
@@ -724,11 +678,11 @@ $today = date("F d, Y"); // for testimonials
     }
   }
 
+
   // handle for subscription checkbox
   var isSubscribed = <?= $product['product_is_sub']; ?> == 0;
-  <?php if(!$product['product_is_sub']): ?>
   const subscribeBtn = document.getElementById('sub');
-  const productSubDescription = document.getElementById('product-sub');
+  const productDescription = document.getElementById('product-description');
   if (subscribeBtn) {
     var productJSON = subscribeBtn.dataset.prod;
     var singleProduct = JSON.parse(productJSON);
@@ -739,17 +693,18 @@ $today = date("F d, Y"); // for testimonials
         isSubscribed = true;
         console.log('subscription', subProduct);
         document.getElementById('product_id').value = subProduct['product_id'];
-        productSubDescription.innerText = 'subscription';
+        <?php if ($product_upsell): ?>
+        productDescription.innerText = '<?= $product_upsell['product_description']; ?>';
+        <?php endif; ?>
       } else {
         isSubscribed = false;
         console.log('single', singleProduct);
         document.getElementById('product_id').value = singleProduct['product_id'];
-        productSubDescription.innerText = 'single purchase';
+        productDescription.innerText = '<?= $product['product_description']; ?>';
       }
       getTaxData();
     })
   }
-  <?php endif; ?>
 
 
   // controls for remaining CC months
@@ -758,14 +713,16 @@ $today = date("F d, Y"); // for testimonials
   const ccMonthOptionsGroup = document.getElementById('cc-exp-month-options');
   const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   var selectedMonthValue = ccMonthOptionsGroup.children[0].value;
+  var currentYear = new Date().getFullYear().toString();
   ccYear.addEventListener('change', ()=> {
-    let currentYear = new Date().getFullYear().toString();
     if (currentYear.includes(ccYear.value)) {
       remainingMonths();
     } else {
       updateMonthOptions(months);
     }
   })
+  ccYear.selectedIndex = 1;
+  remainingMonths();
 
   ccMonth.addEventListener('change', ()=> {
     selectedMonthValue = ccMonth.value;
@@ -801,9 +758,8 @@ $today = date("F d, Y"); // for testimonials
   document.getElementById('billingZip').addEventListener('input', () => {
     if (billingSame) {
       copyBillingInputValue();
-    } else {
-      getTaxData();
     }
+    getTaxData();
   })
 
   document.getElementById('shippingZip').addEventListener('input', () => {
@@ -815,7 +771,7 @@ $today = date("F d, Y"); // for testimonials
 
   // values are updated by bill Country State Zip
   var taxData = {
-    "campaign_id": 5,
+    "campaign_id": <?= $site ['campaign']; ?>,
     "shipping_id": 5,
     "use_tax_provider": 1,
     "products": [{
@@ -831,6 +787,10 @@ $today = date("F d, Y"); // for testimonials
 
   var finalTotal = null;
 
+  function hasAllTaxData() {
+    return taxData.shipping_id && taxData.location.state && taxData.location.country && taxData.location.postal_code;
+  }
+
   function getTaxData() {
     var credentials = btoa("<?php echo $tax_id; ?>:<?php echo $tax_api_key; ?>");
     taxData.products[0].id = document.getElementById('product_id').value;
@@ -838,17 +798,19 @@ $today = date("F d, Y"); // for testimonials
     // taxData.products = taxData.products.filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i);
     taxData.location.country = document.getElementById('billingCountry').value;
     taxData.location.state = document.getElementById('billingState').value;
-    taxData.location.postal_code = Number(document.getElementById('billingZip').value);
+    taxData.location.postal_code = document.getElementById('billingZip').value;
     //free or us/international shipping
     var shippingCountry = document.getElementById('shippingCountry').value;
     // free or us
-    taxData.shipping_id = <?= $product['product_ship']; ?> == 0 ? <?= $site['shippingFree']; ?> : <?= $site['shippingUs']; ?>;
-    // if not free and not us then intl
-    if (taxData.shipping_id !== <?= $site['shippingFree']; ?> && shippingCountry !== 'US') {
-      taxData.shipping_id = <?= $site['shippingIntl']; ?>;
+    taxData.shipping_id = <?= $site['shippingFree']; ?>;
+    if (document.getElementById('product_id').value == '1083') {
+      taxData.shipping_id = (shippingCountry === 'US') ? <?= $site['shippingUs']; ?> : <?= $site['shippingIntl']; ?>;
     }
     document.getElementById('shippingId').value = taxData.shipping_id;
-    console.log('submit taxes: ', taxData);
+
+    if (!hasAllTaxData()) {
+      return false;
+    }
     
     fetch('https://gdc.sticky.io/api/v2/order_total/calculate', {
         method: "POST",
@@ -886,6 +848,25 @@ $today = date("F d, Y"); // for testimonials
       .catch(function(error) {
         console.log(error);
       });
+  }
+
+  const billState = document.getElementById('billingState');
+  const billCountry = document.getElementById('billingCountry');
+  billState.addEventListener('change', ()=> {
+    if (billingSame) {
+      copyBillingInputValue();
+    }
+    getTaxData();
+  })
+  billCountry.addEventListener('change', ()=> {
+
+  })
+  shippingCountry.addEventListener('change', ()=> {
+    getTaxData();
+  })
+
+  if (billState && billState.value && billCountry && billCountry.value) {
+    getTaxData();
   }
 
   // TODO: Applepay work - https://support.sticky.io/en/articles/5212697-applepay-for-braintree

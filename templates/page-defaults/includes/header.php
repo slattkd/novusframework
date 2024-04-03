@@ -71,7 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <?php } ?>
 
 <script src="//unpkg.com/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
-<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/pristine.min.js" defer></script>
+<script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/pristine.min.js"></script>
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/basic-modal.js?ver=<?php echo get_that_filetime($_SERVER['DOCUMENT_ROOT'] . '/css/base.css'); ?>" defer></script>
 <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/countdown.js"></script>
 
