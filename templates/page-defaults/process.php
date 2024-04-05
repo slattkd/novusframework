@@ -8,6 +8,34 @@ unset($_SESSION['llerrorcode']);
 unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 
+$sessionFields = [ 'firstName', 'lastName', 'email', 'phone', 'shippingAddress1',
+                    'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
+                    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip', 'tax_pct' ];
+
+foreach ($sessionFields as $sessionField) {
+    $_SESSION[$sessionField] = $_POST[$sessionField];
+}
+
+$gender = '';
+if (isset($_SESSION['gender'])){
+    $gender = $_SESSION['gender'];
+} else {
+    if (isset($_SESSION['firstName'])){
+        $gender = getGender($_SESSION['firstName']);
+        $gender = $gender[0]['gender'];
+        if ($gender == 'unknown'){
+            $gender = '';
+        }
+    } if (isset($_POST['firstName'])){
+        $gender = getGender($_POST['firstName']);
+        $gender = $gender[0]['gender'];
+        if ($gender == 'unknown'){
+            $gender = '';
+        }
+    }
+    $_SESSION['gender'] = $gender;
+}
+
 //Add me some Maropost
 if( isset($_SESSION['joinTextAlerts']) && $_SESSION['joinTextAlerts'] == 'checked') {
     if( isset($_SESSION['email']) && filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL) ) {
@@ -19,6 +47,7 @@ if( isset($_SESSION['joinTextAlerts']) && $_SESSION['joinTextAlerts'] == 'checke
                 'contact' => [
                     'email' => $_SESSION['email'],
                     'custom_field' => [
+                        'gender' => $gender,
                         'referring_page_url' => @$_SERVER['HTTP_REFERER'],
                         'cake_id' => $_SESSION['affid']
                     ],
@@ -51,14 +80,6 @@ $response = $sticky->newOrder($_POST);
 $logger->info('Sticky New Order Response: ' . json_encode($response));
 
 $res = explode('&', $response);
-$sessionFields = [ 'firstName', 'lastName', 'email', 'phone', 'shippingAddress1',
-                    'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
-                    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip', 'tax_pct' ];
-
-
-foreach ($sessionFields as $sessionField) {
-    $_SESSION[$sessionField] = $_POST[$sessionField];
-}
 
 if ($res[1] == 'responseCode=100') {// was prospect api call a success?
     debugMessage("Order Processed " . json_encode($response));
