@@ -417,3 +417,18 @@ function taxAmt($price) {
     }
     return number_format($tax_pct / 100 * $price, 2);
 }
+
+function getGender($name){
+
+    $url = 'https://devops.pineapple.co/genderapi/getgender.php?token=hixQIad57rEdDSzZ&name='.$name;
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPGET, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response_json = curl_exec($ch);
+    curl_close($ch);
+    $response = json_decode($response_json, true);
+
+    return $response;
+
+}
