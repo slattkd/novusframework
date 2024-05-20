@@ -18,10 +18,7 @@ $pid = $_SESSION['pid'];
 $product = $products['products'][$pid];
 
 $product_upsell = null;
-if (!isset($product['product_is_sub'])) {
-  $product['product_is_sub'] = 0;
-}
-$upsell_pid = !$product['product_is_sub'] 
+$upsell_pid = (!isset($product['product_is_sub']) || !$product['product_is_sub']) 
   ? $products['upsell'][$pid] 
   : null;
 if ($upsell_pid ) {
@@ -66,7 +63,7 @@ $today = date("F d, Y"); // for testimonials
 
   <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 
-  <script type="module" src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
+  <script src="//<?php echo $_SERVER['HTTP_HOST'];?>/js/regions.js"></script>
 
   <style>
 
@@ -211,15 +208,12 @@ $today = date("F d, Y"); // for testimonials
       font-weight: 600;
       letter-spacing: 1px;
     }
-    .has-danger {
-      margin-bottom: 0;
-    }
   </style>
 </head>
 
 <body class="bg-split">
   <div class="flex justify-center bg-rpt-blue-1 py-4">
-    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/rp-logo-light-trans.png" alt="revival point logo"
+    <img src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/rp-logo-light-trans.png" alt="revival point logo"
       style="width:auto; height:30px">
   </div>
 
@@ -371,10 +365,10 @@ $today = date("F d, Y"); // for testimonials
               data-sub="<?= htmlspecialchars($product_upsell_json); ?>"
               class="w-4 h-4 bg-gray-100 border-gray-300 rounded mr-2">
             <label for="sub" class="ml-3 text-left text-base sans clickable" style="line-height: 1.2;">
-              Subscribe monthly for 10% OFF <br class="hidden lg:block">+ <strong>FREE</strong> Bottle of Vitamin D3
+              Subscribe monthly for 20% OFF <br class="hidden lg:block">+ <strong>FREE</strong> Bottle of Vitamin D3
             </label>
           </div>
-          <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/seal-d3.png" alt="guarantee seal" class="w-14 scale-x-110 pl-3">
+          <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/seal-d3.png" alt="guarantee seal" class="w-14 scale-x-110 pl-3">
         </div>
         <?php endif; ?>
 
@@ -484,7 +478,7 @@ $today = date("F d, Y"); // for testimonials
 <footer>
     <div class="flex flex-col w-full justify-center items-center border-t-4 border-rpt-blue-1 bg-white">
       <div class="py-11">
-        <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/logo-rp.png" alt="revival point logo"
+        <img loading="lazy" src="//<?= $_SERVER['HTTP_HOST']; ?>/images/fs-new/logo-rp.png" alt="revival point logo"
           style="max-width: 220px">
       </div>
       <div class="flex justify-center w-full text-center bg-rpt-blue-1 text-white py-8 md:py-4 font-semibold">
@@ -570,16 +564,15 @@ $today = date("F d, Y"); // for testimonials
     }
   })
 
-  form.addEventListener("input", function() {
+  form.addEventListener("input", function(event) {
     // a good place to look for all input events
     if (firstSubmit) {
-      handleValidation();
+      debounce(() => handleValidation())
     }
   });
 
   function handleValidation() {
     formValid = pristine.validate(); // returns true or false
-    console.log('form is valid: ', formValid);
     if (!formValid) {
       submitBtn.disabled = true;
       <?php if($_SESSION['isMobile']): ?>
@@ -654,57 +647,40 @@ $today = date("F d, Y"); // for testimonials
   })
 
   function copyBillingInputValue() {
-    // Check to Copy values to billing
     let shippingContainer = document.getElementById('shipping-container');
     isChecked = billingSame.checked;
-    if (isChecked) { //checked
+    if (isChecked) {
       document.getElementById('location-shipping').value = document.getElementById('location-billing').value;
-      let billingAddress1 = document.getElementById('billingAddress1').value;
-      document.getElementById('shippingAddress1').value = billingAddress1;
-      let billingAddress2 = document.getElementById('billingAddress2').value;
-      document.getElementById('shippingAddress2').value = billingAddress2;
-      let billingCity = document.getElementById('billingCity').value;
-      document.getElementById('shippingCity').value = billingCity;
-      let billingCountry = document.getElementById('billingCountry').value;
-      document.getElementById('shippingCountry').value = billingCountry;
+      ['Address1', 'Address2', 'City', 'Country', 'State', 'Zip'].forEach(field => {
+        document.getElementById(`shipping${field}`).value = document.getElementById(`billing${field}`).value;
+        // Trigger validation for each shipping input field after updating its value
+        pristine.validate(document.getElementById(`shipping${field}`));
+      });
       document.getElementById('shippingCountry').dispatchEvent(new Event('change'));
-      let billingState = document.getElementById('billingState').value;
-      document.getElementById('shippingState').value = billingState;
-      let billingZip = document.getElementById('billingZip').value;
-      document.getElementById('shippingZip').value = billingZip;
       getTaxData();
-    } else { //unchecked
-      return;
     }
   }
 
 
-  // handle for subscription checkbox
   var isSubscribed = <?= $product['product_is_sub']; ?> == 0;
-  const subscribeBtn = document.getElementById('sub');
-  const productDescription = document.getElementById('product-description');
-  if (subscribeBtn) {
-    var productJSON = subscribeBtn.dataset.prod;
-    var singleProduct = JSON.parse(productJSON);
-    var subJSON = subscribeBtn.dataset.sub;
-    var subProduct = JSON.parse(subJSON);
-    sub.addEventListener('change', ()=> {
-      if (sub.checked) {
-        isSubscribed = true;
-        console.log('subscription', subProduct);
-        document.getElementById('product_id').value = subProduct['product_id'];
-        <?php if ($product_upsell): ?>
-        productDescription.innerText = '<?= $product_upsell['product_description']; ?>';
-        <?php endif; ?>
-      } else {
-        isSubscribed = false;
-        console.log('single', singleProduct);
-        document.getElementById('product_id').value = singleProduct['product_id'];
-        productDescription.innerText = '<?= $product['product_description']; ?>';
-      }
-      getTaxData();
-    })
-  }
+const subscribeBtn = document.getElementById('sub');
+const productDescription = document.getElementById('product-description');
+
+if (subscribeBtn) {
+  var productJSON = subscribeBtn.dataset.prod;
+  var singleProduct = JSON.parse(productJSON);
+  var subJSON = subscribeBtn.dataset.sub;
+  var subProduct = JSON.parse(subJSON);
+  sub.addEventListener('change', ()=> {
+    isSubscribed = sub.checked;
+    let product = isSubscribed ? subProduct : singleProduct;
+    document.getElementById('product_id').value = product['product_id'];
+    productDescription.innerText = isSubscribed ? 
+      '<?= $product_upsell['product_description']; ?>' : 
+      '<?= $product['product_description']; ?>';
+    getTaxData();
+  });
+}
 
 
   // controls for remaining CC months
@@ -759,11 +735,11 @@ $today = date("F d, Y"); // for testimonials
     if (billingSame) {
       copyBillingInputValue();
     }
-    getTaxData();
+    debounce(() => getTaxData());
   })
 
   document.getElementById('shippingZip').addEventListener('input', () => {
-    getTaxData();
+    debounce(() => getTaxData());
   })
 
   var taxPercent = 0;
@@ -781,7 +757,7 @@ $today = date("F d, Y"); // for testimonials
     "location": {
       "state": "AL",
       "country": "US",
-      "postal_code": 72110
+      "postal_code": 35242
     }
   };
 
@@ -798,11 +774,12 @@ $today = date("F d, Y"); // for testimonials
     // taxData.products = taxData.products.filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i);
     taxData.location.country = document.getElementById('billingCountry').value;
     taxData.location.state = document.getElementById('billingState').value;
-    taxData.location.postal_code = document.getElementById('billingZip').value;
+    taxData.location.postal_code = document.getElementById('billingZip').value || 35242;
     //free or us/international shipping
     var shippingCountry = document.getElementById('shippingCountry').value;
     // free or us
     taxData.shipping_id = <?= $site['shippingFree']; ?>;
+    // TODO: should not be hardcoded product id
     if (document.getElementById('product_id').value == '1083') {
       taxData.shipping_id = (shippingCountry === 'US') ? <?= $site['shippingUs']; ?> : <?= $site['shippingIntl']; ?>;
     }
@@ -856,7 +833,7 @@ $today = date("F d, Y"); // for testimonials
     if (billingSame) {
       copyBillingInputValue();
     }
-    getTaxData();
+    debounce(() => getTaxData());
   })
   billCountry.addEventListener('change', ()=> {
 
@@ -865,8 +842,12 @@ $today = date("F d, Y"); // for testimonials
     getTaxData();
   })
 
-  if (billState && billState.value && billCountry && billCountry.value) {
-    getTaxData();
+  function debounce(func, timeout = 150){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
   }
 
   // TODO: Applepay work - https://support.sticky.io/en/articles/5212697-applepay-for-braintree

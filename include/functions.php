@@ -417,3 +417,39 @@ function taxAmt($price) {
     }
     return number_format($tax_pct / 100 * $price, 2);
 }
+
+function getGender($name){
+
+    $url = 'https://devops.pineapple.co/genderapi/getgender.php?token=hixQIad57rEdDSzZ&name='.$name;
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPGET, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response_json = curl_exec($ch);
+    curl_close($ch);
+    $response = json_decode($response_json, true);
+
+    return $response;
+
+}
+
+function IPtoLocation($ip){ 
+    $apiURL = 'https://freegeoip.app/json/'.$ip; 
+     
+    // Make HTTP GET request using cURL 
+    $ch = curl_init($apiURL); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    $apiResponse = curl_exec($ch); 
+    if($apiResponse === FALSE) { 
+        $msg = curl_error($ch); 
+        curl_close($ch); 
+        return false; 
+    } 
+    curl_close($ch); 
+     
+    // Retrieve IP data from API response 
+    $ipData = json_decode($apiResponse, true); 
+     
+    // Return geolocation data 
+    return !empty($ipData)?$ipData:false; 
+}
