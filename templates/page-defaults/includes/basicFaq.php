@@ -71,7 +71,8 @@ replace Q/A array content as needed (close attention to apostraphe/quotes)
     }
     .accordion-content {
     max-height: 0;
-    transition: all 0.5s;
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
     }
     input:checked + .accordion-label .test svg {
       transform: rotate(180deg);
@@ -81,6 +82,10 @@ replace Q/A array content as needed (close attention to apostraphe/quotes)
     }
     input:checked ~ .accordion-content {
       max-height: 100vh;
+      opacity: 1;
+    }
+    .accordion input {
+        z-index: 1;
     }
 </style>
 

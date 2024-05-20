@@ -34,8 +34,9 @@ if(isset($site['maropostAcctId']) && $_SESSION['pageType'] !== 'receipt' && isse
 
 
     if (!empty($_SESSION['pid'])){
-        $product = $products['products'][$_SESSION['pid'][0]];
-        $productName = $product['product_name'];
+        $default_pid = $products['default_product'];
+        $product = $products['products'][$_SESSION['pid'][0]] ?? $products['products'][strval($default_pid)];
+        $productName = $product['product_name'] ?? '';
     } else {
         $_SESSION['pid'] = $products['default_product'];
         $product = $products['products'][$_SESSION['pid']];

@@ -307,7 +307,7 @@ function floatButton($template, $top_content, $button_text = null, $scroll_start
 }
 
 // opens models for applicable content
-function legalLinks($template, $templatePath = 'templates/page-defaults')
+function legalLinks($template, $show_aff = null, $templatePath = 'templates/page-defaults')
 {
     global $site;
     global $company;

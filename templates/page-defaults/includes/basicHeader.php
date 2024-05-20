@@ -38,7 +38,7 @@
     <div class="container container-md mx-auto px-5">
       <div class="relative flex items-center h-16">
         <div class="flex items-center justify-between w-full px-0">
-          <a class="flex-shrink-0" href="/index">
+          <a class="flex-shrink-0" href="//<?= $_SERVER['HTTP_HOST'];?>/index">
             <img class="" src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" alt="Supernatural Logo" style="max-width:250px;height:auto;">
           </a>
           <div class="hidden md:block md:ml-auto">
@@ -65,7 +65,7 @@
     </div>
     <div id="drop-menu" class="hidden md:hidden container px-5">
       <div class="px-2 pt-2 pb-3">
-        <a href="//<?= $_SERVER['HTTP_HOST'];?>/product" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Shop </a>
+        <a href="//<?= $_SERVER['HTTP_HOST'];?>/checkout/order" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Shop </a>
         <a href="//<?= $_SERVER['HTTP_HOST'];?>/about" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">About </a>
         <a href="//<?= $_SERVER['HTTP_HOST'];?>/support" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Support </a>
         <!-- <a href="/checkout/cart" class="mt-1 block px-3 py-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Cart </a> -->

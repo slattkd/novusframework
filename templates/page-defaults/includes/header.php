@@ -84,3 +84,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 // Different environments have a trailing slash in the apache config, this fixes it!
 require_once(rtrim($_SERVER['DOCUMENT_ROOT'], '/\\' ) . '../../include/customPixels.php');
 ?>
+
+<?PHP /* Matomo Tracking */ ?>
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.secinsol.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+<?PHP /* COW Variant Display */ ?>
+<?php
+if (isset($_SESSION['cow']['testVariant'])) {
+    $testVariant = $_SESSION['cow']['testVariant'];
+    
+    // Assuming your variants are named consistently like "control", "variant1", "variant2", ..., "variantN"
+    // You can directly output the variant name. If they are not consistently named, you may need to map them to their output strings.
+    if ($testVariant === "control") {
+        echo '<script>console.log("Control")</script>';
+    } else if (preg_match('/variant(\d+)/', $testVariant, $matches)) {
+        // This will capture the number after "variant" and use it in the log.
+        // If your variant naming convention is different, adjust the regex pattern accordingly.
+        echo '<script>console.log("Variant ' . $matches[1] . '")</script>';
+    } else {
+        // Fallback or default action for unexpected variant names
+        echo '<script>console.log("Unknown Variant")</script>';
+    }
+}
+?>

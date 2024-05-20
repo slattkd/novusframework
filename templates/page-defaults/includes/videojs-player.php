@@ -235,9 +235,16 @@ div.icon-muted.fakecss{
     animation:pulse 3s infinite ease-in-out
 }
 .icon-muted{
+  width:15%;
+  height:15%;
+  margin-bottom:10vw
+}
+@media screen and (min-width: 769px) {
+  .icon-muted {
     width:28%;
     height:28%;
     margin-bottom:2vw
+  }
 }
 .AutoPlayBox__content .AutoPlayBox__icon__blink{
     -webkit-animation:AutoPlayBox__blink 2s infinite;

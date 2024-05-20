@@ -4,7 +4,7 @@ branded header bar with phone number and secure message options
 php variables:
   $show_phone (bool) = show phone on bar with logo
   $show_secure (bool) = hide or show bar with secure checkout message;
-  $justify (string) = 'center' or between for logo and phone
+  $justify (string) = 'justify-center' or between for logo and phone
   $container (string) = set to match the page 'container-[]'
 */
 
@@ -38,7 +38,7 @@ php variables:
     </section>
   <?php endif; ?>
     <div id="logo-banner" class=" py-0 md:py-1 border-b bg-white">
-      <div class="flex flex-wrap justify-between justify-<?= $justify; ?> container container-<?= $container; ?> mx-auto  w-full px-2 md:px-0">
+      <div class="flex flex-wrap justify-between justify-between <?= $justify; ?> container-vsl <?= $container; ?> mx-auto  w-full px-2 md:px-0">
         <div class="flex justify-center w-full md:w-auto py-2 ,d:py-0">
           <img src="//<?= $_SERVER['HTTP_HOST'];?><?= $site['logo']; ?>" class="mx-auto" style="max-width:225px;object-fit:contain;">
         </div>
