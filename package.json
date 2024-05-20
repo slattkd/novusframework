@@ -2,8 +2,5 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
     "tailwindcss": "^3.2.4"
-  },
-  "scripts": {
-    "tailwind-config-viewer": "tailwind-config-viewer -o"
   }
 }

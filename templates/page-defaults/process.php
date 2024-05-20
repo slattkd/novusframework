@@ -8,12 +8,9 @@ unset($_SESSION['llerrorcode']);
 unset($_SESSION['llerror']);
 unset($_SESSION['formerrors']);
 
-
-$sessionFields = [
-    'firstName', 'lastName', 'email', 'phone', 'shippingAddress1',
-    'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
-    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip', 'tax_pct'
-];
+$sessionFields = [ 'firstName', 'lastName', 'email', 'phone', 'shippingAddress1',
+                    'shippingCountry', 'shippingState', 'shippingZip', 'billingSameAsShipping',
+                    'billingAddress1', 'billingCountry', 'billingCity', 'billingState', 'billingZip', 'tax_pct' ];
 
 foreach ($sessionFields as $sessionField) {
     $_SESSION[$sessionField] = $_POST[$sessionField];
@@ -50,6 +47,7 @@ if (isset($_SESSION['joinTextAlerts']) && $_SESSION['joinTextAlerts'] == 'checke
                 'contact' => [
                     'email' => $_SESSION['email'],
                     'custom_field' => [
+                        'gender' => $gender,
                         'referring_page_url' => @$_SERVER['HTTP_REFERER'],
                         'cake_id' => $_SESSION['affid']
                     ],
